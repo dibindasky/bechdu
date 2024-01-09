@@ -5,8 +5,14 @@ const gilroyBold = 'Gilroy-Bold';
 const gilroyMedium = 'Gilroy-Medium';
 const gilroyRegular = 'Gilroy-Regular';
 
-late final double sHeight;
-late final double sWidth;
+const beachdulogo = 'assets/images/beachdu_logo.png';
+const searchIcon = 'assets/images/search_icon.png';
+const sortIcon = 'assets/images/sort_icon.png';
+const joinOurTeam = 'assets/images/join_our_team.png';
+const mobileNetworkImage = 'https://img.freepik.com/free-photo/smartphone-balancing-with-pink-background_23-2150271746.jpg?size=338&ext=jpg&ga=GA1.1.1412446893.1704758400&semt=sph';
+
+double sHeight = 850;
+double sWidth = 350;
 
 const kEmpty = SizedBox();
 
@@ -14,6 +20,7 @@ const kHeight5 = SizedBox(height: 5);
 const kHeight10 = SizedBox(height: 10);
 const kHeight20 = SizedBox(height: 20);
 const kHeight30 = SizedBox(height: 30);
+const kHeight40 = SizedBox(height: 40);
 const kHeight50 = SizedBox(height: 50);
 
 const kWidth5 = SizedBox(width: 5);
@@ -46,6 +53,6 @@ final textHeadRegular1 = TextStyle(
 
 void sizeFinder(BuildContext context) {
   final size = MediaQuery.of(context).size;
-  sHeight = size.height;
-  sWidth = size.width;
+  sHeight = size.height > 850 ? 850 : size.height;
+  sWidth = size.width > 350 ? 350 : size.width;
 }
