@@ -9,10 +9,13 @@ const beachdulogo = 'assets/images/beachdu_logo.png';
 const searchIcon = 'assets/images/search_icon.png';
 const sortIcon = 'assets/images/sort_icon.png';
 const joinOurTeam = 'assets/images/join_our_team.png';
-const mobileNetworkImage = 'https://img.freepik.com/free-photo/smartphone-balancing-with-pink-background_23-2150271746.jpg?size=338&ext=jpg&ga=GA1.1.1412446893.1704758400&semt=sph';
+const mobileWithOutBackgroundNetwork =
+    'https://assets.stickpng.com/images/5cb0633d80f2cf201a4c3253.png';
+const mobileNetworkImage =
+    'https://img.freepik.com/free-photo/smartphone-balancing-with-pink-background_23-2150271746.jpg?size=338&ext=jpg&ga=GA1.1.1412446893.1704758400&semt=sph';
 
-double sHeight = 850;
-double sWidth = 350;
+double sHeight = 900;
+double sWidth = 400;
 
 const kEmpty = SizedBox();
 
@@ -37,25 +40,27 @@ final textHeadBold1 = TextStyle(
   color: kBlack,
   fontFamily: gilroyBold,
   fontWeight: FontWeight.w400,
-  fontSize: sWidth * 0.045,
+  fontSize: sWidth * 0.040,
 );
 
 final textHeadMedium1 = TextStyle(
   color: kBlack,
   fontFamily: gilroyMedium,
   fontWeight: FontWeight.w400,
-  fontSize: sWidth * 0.045,
+  fontSize: sWidth * 0.040,
 );
 
 final textHeadRegular1 = TextStyle(
   color: kBlack,
   fontFamily: gilroyRegular,
   fontWeight: FontWeight.w400,
-  fontSize: sWidth * 0.045,
+  fontSize: sWidth * 0.040,
 );
 
 void sizeFinder(BuildContext context) {
   final size = MediaQuery.of(context).size;
-  sHeight = size.height > 850 ? 850 : size.height;
-  sWidth = size.width > 350 ? 350 : size.width;
+  print(size.height);
+  print(size.width);
+  sHeight = size.height > 900 ? 900 : size.height;
+  sWidth = size.width > 400 ? 400 : size.width;
 }

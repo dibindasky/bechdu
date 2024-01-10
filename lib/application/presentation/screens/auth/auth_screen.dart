@@ -16,56 +16,58 @@ class ScreenAuth extends StatelessWidget {
       child: Center(
         child: ConstrainedBox(
           constraints: const BoxConstraints(maxHeight: 900, maxWidth: 400),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SizedBox(width: sWidth * 0.50, child: Image.asset(beachdulogo)),
-              kHeight50,
-              CustomTextFormFieldLogin(
-                controller: TextEditingController(),
-                hintText: 'Email',
-                prefixIcon: Icons.person,
-              ),
-              kHeight30,
-              CustomTextFormFieldLogin(
-                controller: TextEditingController(),
-                hintText: 'Password',
-                prefixIcon: Icons.lock,
-              ),
-              Align(
-                alignment: Alignment.centerRight,
-                child: TextButton(
-                  onPressed: () {},
-                  child: Text(
-                    'Forgot Password',
-                    style: textHeadRegular1.copyWith(
-                      color: kBluePrimary,
-                      fontSize: sWidth * 0.035,
-                      decoration: TextDecoration.underline,
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(width: sWidth * 0.50, child: Image.asset(beachdulogo)),
+                kHeight50,
+                CustomTextFormFieldLogin(
+                  controller: TextEditingController(),
+                  hintText: 'Email',
+                  prefixIcon: Icons.person,
+                ),
+                kHeight30,
+                CustomTextFormFieldLogin(
+                  controller: TextEditingController(),
+                  hintText: 'Password',
+                  prefixIcon: Icons.lock,
+                ),
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: TextButton(
+                    onPressed: () {},
+                    child: Text(
+                      'Forgot Password',
+                      style: textHeadRegular1.copyWith(
+                        color: kBluePrimary,
+                        fontSize: sWidth * 0.035,
+                        decoration: TextDecoration.underline,
+                      ),
                     ),
                   ),
                 ),
-              ),
-              kHeight20,
-              ElevatedButtonLong(
-                onPressed: () {
-                  Navigator.pushNamed(context, Routes.homeScreen);
-                },
-                text: 'Sign in',
-              ),
-              kHeight30,
-              Text(
-                'OR',
-                style: textHeadBold1.copyWith(color: kBluePrimary),
-              ),
-              kHeight30,
-              ElevatedButtonLong(
-                onPressed: () {
-                  Navigator.pushNamed(context, Routes.homeScreen);
-                },
-                text: 'Sign up',
-              ),
-            ],
+                kHeight20,
+                ElevatedButtonLong(
+                  onPressed: () {
+                    Navigator.pushNamed(context, Routes.homeScreen);
+                  },
+                  text: 'Sign in',
+                ),
+                kHeight30,
+                Text(
+                  'OR',
+                  style: textHeadBold1.copyWith(color: kBluePrimary),
+                ),
+                kHeight30,
+                ElevatedButtonLong(
+                  onPressed: () {
+                    Navigator.pushNamed(context, Routes.homeScreen);
+                  },
+                  text: 'Sign up',
+                ),
+              ],
+            ),
           ),
         ),
       ),

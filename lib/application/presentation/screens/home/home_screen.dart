@@ -24,7 +24,7 @@ class ScreenHome extends StatelessWidget {
               WhatToSellWidget(),
               kHeight40,
               BestSellingMobiles(),
-              kHeight50,
+              kHeight40,
               OffersSession(),
               kHeight30,
               JoinOurTeam()

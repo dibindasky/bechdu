@@ -13,11 +13,11 @@ class BestSellingMobiles extends StatelessWidget {
       children: [
         Text(
           'Best Selling Mobiles',
-          style: textHeadBold1.copyWith(fontSize: sWidth * 0.06),
+          style: textHeadBold1.copyWith(fontSize: sWidth * 0.05),
         ),
         kHeight10,
         SizedBox(
-          height: sWidth * 0.43,
+          height: sWidth * 0.40,
           child: ListView.builder(
             itemCount: 10,
             scrollDirection: Axis.horizontal,
@@ -31,19 +31,17 @@ class BestSellingMobiles extends StatelessWidget {
                   child: Column(
                     children: [
                       SizedBox(
-                          width: sWidth * 0.27,
+                          width: sWidth * 0.24,
                           child: Image.network(mobileNetworkImage,fit: BoxFit.contain,)),
                       ConstrainedBox(
-                          constraints: BoxConstraints(maxWidth: sWidth * 0.27),
+                          constraints: BoxConstraints(maxWidth: sWidth * 0.24),
                           child: Padding(
-                            padding: index == 0
-                                ? const EdgeInsets.only(left: 15, right: 5)
-                                : const EdgeInsets.symmetric(horizontal: 5),
+                            padding: const EdgeInsets.symmetric(horizontal: 5),
                             child: Column(
                               children: [
                                 Text(
                                   'Samsung S23 ultra',
-                                  style: textHeadMedium1,
+                                  style: textHeadMedium1.copyWith(fontSize: sWidth * 0.04),
                                   overflow: TextOverflow.ellipsis,
                                 ),
                                 Text(

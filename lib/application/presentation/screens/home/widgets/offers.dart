@@ -13,11 +13,11 @@ class OffersSession extends StatelessWidget {
       children: [
         Text(
           'New Year Offers',
-          style: textHeadBold1.copyWith(fontSize: sWidth * 0.06),
+          style: textHeadBold1.copyWith(fontSize: sWidth * 0.05),
         ),
         kHeight10,
         SizedBox(
-          height: sWidth * 0.40,
+          height: sWidth * 0.36,
           child: ListView.builder(
             itemCount: 10,
             scrollDirection: Axis.horizontal,
@@ -37,7 +37,7 @@ class OffersSession extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         SizedBox(
-                          width: sWidth * 0.40,
+                          width: sWidth * 0.38,
                           child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
@@ -71,7 +71,7 @@ class OffersSession extends StatelessWidget {
                                 Text(
                                   'OFFER\nNUMBER ${index + 1}',
                                   style: textHeadBold1.copyWith(
-                                      fontSize: sWidth * 0.065, color: kWhite),
+                                      fontSize: sWidth * 0.055, color: kWhite),
                                 ),
                               ]),
                         ),
