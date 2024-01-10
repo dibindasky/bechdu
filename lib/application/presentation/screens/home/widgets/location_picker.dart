@@ -13,12 +13,12 @@ class LocationChooser extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(left: 15, right: 15, top: 15),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const Icon(
             Icons.location_on_rounded,
             color: kBluePrimary,
-          ),
+          ),kWidth5,
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -28,7 +28,7 @@ class LocationChooser extends StatelessWidget {
               ),
               DottedDashedLine(
                 height: 1,
-                width: sWidth * 0.90,
+                width: sWidth * 0.8,
                 axis: Axis.horizontal,
               )
             ],

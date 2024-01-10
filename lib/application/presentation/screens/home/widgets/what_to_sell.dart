@@ -1,3 +1,4 @@
+import 'package:beachdu/application/presentation/routes/routes.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:flutter/material.dart';
@@ -15,11 +16,11 @@ class WhatToSellWidget extends StatelessWidget {
         children: [
           Text(
             'What Do you Want To Sell ?',
-            style: textHeadBold1.copyWith(fontSize: sWidth * 0.06),
+            style: textHeadBold1.copyWith(fontSize: sWidth * 0.05),
           ),
           kHeight20,
           SizedBox(
-            height: sWidth * 0.20,
+            height: sWidth * 0.18,
             child: Center(
               child: ListView.separated(
                 scrollDirection: Axis.horizontal,
@@ -33,23 +34,27 @@ class WhatToSellWidget extends StatelessWidget {
                     shadowColor: kBlack,
                     elevation: 5,
                     borderRadius: BorderRadius.circular(350),
-                    child: CircleAvatar(
-                      radius: sWidth * 0.10,
-                      backgroundColor: kGreenPrimary,
+                    child: InkWell(onTap: (){
+                      Navigator.pushReplacementNamed(context, Routes.searchScreen);
+                    },
                       child: CircleAvatar(
                         radius: sWidth * 0.09,
-                        backgroundColor: kWhite,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            gridData[index][1],
-                            Text(
-                              gridData[index][0],
-                              style: textHeadBold1.copyWith(
-                                fontSize: sWidth * 0.025,
-                              ),
-                            )
-                          ],
+                        backgroundColor: kGreenPrimary,
+                        child: CircleAvatar(
+                          radius: sWidth * 0.08,
+                          backgroundColor: kWhite,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              gridData[index][1],
+                              Text(
+                                gridData[index][0],
+                                style: textHeadBold1.copyWith(
+                                  fontSize: sWidth * 0.023,
+                                ),
+                              )
+                            ],
+                          ),
                         ),
                       ),
                     ),

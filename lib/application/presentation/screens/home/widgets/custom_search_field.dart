@@ -12,17 +12,20 @@ class CustomSearchFieldHome extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15),
       child: SizedBox(
-        height: sWidth * 0.10,
-        child: ClipRRect(
-          borderRadius: kRadius10,
-          child: ColoredBox(
-            color: kBluePrimary,
-            child: TextField(style: textHeadRegular1.copyWith(color: kWhite),
-              decoration: InputDecoration(
-                prefixIcon: const Icon(Icons.search_rounded, color: kWhite),
-                suffixIcon: const Icon(Icons.filter_list, color: kWhite),
-                hintText: 'Search for offers, mobiles etc.',
-                hintStyle: textHeadRegular1.copyWith(color: kWhite),
+        height: sWidth * 0.09,
+        width: sWidth,
+        child: Center(
+          child: ClipRRect(
+            borderRadius: kRadius10,
+            child: ColoredBox(
+              color: kBluePrimary,
+              child: TextField(style: textHeadRegular1.copyWith(color: kWhite),
+                decoration: InputDecoration(
+                  prefixIcon: const Icon(Icons.search_rounded, color: kWhite),
+                  suffixIcon: const Icon(Icons.filter_list, color: kWhite),
+                  hintText: 'Search for offers, mobiles etc.',
+                  hintStyle: textHeadRegular1.copyWith(color: kWhite),
+                ),
               ),
             ),
           ),
