@@ -27,7 +27,7 @@ class ScreenProductSelection extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const FinalProductImage(),
+                    // const FinalProductImage(),
                     const ProductScreenSearchField(),
                     const SizedBox(
                       height: 50,
