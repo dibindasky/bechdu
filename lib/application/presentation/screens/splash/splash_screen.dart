@@ -12,7 +12,7 @@ class ScreenSplash extends StatelessWidget {
   Widget build(BuildContext context) {
     sizeFinder(context);
     Timer(const Duration(seconds: 1), () {
-      Navigator.pushReplacementNamed(context, Routes.signIn);
+      Navigator.pushReplacementNamed(context, Routes.searchScreen);
     });
     return const Scaffold(
       backgroundColor: kGreenPrimary,
