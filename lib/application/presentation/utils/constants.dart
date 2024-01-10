@@ -34,22 +34,25 @@ final kRadius10 = BorderRadius.circular(10);
 final kRadius15 = BorderRadius.circular(15);
 
 final textHeadBold1 = TextStyle(
-    color: kBlack,
-    fontFamily: gilroyBold,
-    fontWeight: FontWeight.w400,
-    fontSize: sWidth * 0.045);
+  color: kBlack,
+  fontFamily: gilroyBold,
+  fontWeight: FontWeight.w400,
+  fontSize: sWidth * 0.045,
+);
 
 final textHeadMedium1 = TextStyle(
-    color: kBlack,
-    fontFamily: gilroyMedium,
-    fontWeight: FontWeight.w400,
-    fontSize: sWidth * 0.045);
+  color: kBlack,
+  fontFamily: gilroyMedium,
+  fontWeight: FontWeight.w400,
+  fontSize: sWidth * 0.045,
+);
 
 final textHeadRegular1 = TextStyle(
-    color: kBlack,
-    fontFamily: gilroyRegular,
-    fontWeight: FontWeight.w400,
-    fontSize: sWidth * 0.045);
+  color: kBlack,
+  fontFamily: gilroyRegular,
+  fontWeight: FontWeight.w400,
+  fontSize: sWidth * 0.045,
+);
 
 void sizeFinder(BuildContext context) {
   final size = MediaQuery.of(context).size;
