@@ -17,9 +17,7 @@ class ProductScreenSearchField extends StatelessWidget {
         ),
         prefixIcon: DropdownButtonHideUnderline(
           child: DropdownButton(
-            onChanged: (String? newValue) {
-              // Handle dropdown value change
-            },
+            onChanged: (String? newValue) {},
             items: const [
               DropdownMenuItem(
                 value: 'Category 1',

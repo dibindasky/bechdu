@@ -10,8 +10,10 @@ class ProductListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 840,
+      height: 550,
       child: GridView.builder(
+        itemCount: 7,
+        scrollDirection: Axis.vertical,
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           crossAxisSpacing: 10,
@@ -73,7 +75,6 @@ class ProductListView extends StatelessWidget {
             ),
           );
         },
-        itemCount: 11,
       ),
     );
   }
