@@ -41,21 +41,28 @@ final textHeadBold1 = TextStyle(
   color: kBlack,
   fontFamily: gilroyBold,
   fontWeight: FontWeight.w400,
-  fontSize: sWidth * 0.040,
+  fontSize: sWidth <400 ? sWidth * 0.040 :sWidth *0.035,
+);
+
+final textHeadBoldBig = TextStyle(
+  color: kBlack,
+  fontFamily: gilroyBold,
+  fontWeight: FontWeight.w400,
+  fontSize: sWidth <400 ? sWidth * 0.056 :sWidth *0.045,
 );
 
 final textHeadMedium1 = TextStyle(
   color: kBlack,
   fontFamily: gilroyMedium,
   fontWeight: FontWeight.w400,
-  fontSize: sWidth * 0.040,
+  fontSize: sWidth <400 ? sWidth * 0.040 :sWidth *0.035,
 );
 
 final textHeadRegular1 = TextStyle(
   color: kBlack,
   fontFamily: gilroyRegular,
   fontWeight: FontWeight.w400,
-  fontSize: sWidth * 0.040,
+  fontSize: sWidth <400 ? sWidth * 0.040 :sWidth *0.035,
 );
 
 void sizeFinder(BuildContext context) {
@@ -63,5 +70,5 @@ void sizeFinder(BuildContext context) {
   print(size.height);
   print(size.width);
   sHeight = size.height > 900 ? 900 : size.height;
-  sWidth = size.width > 400 ? 400 : size.width;
+  sWidth = size.width > 450 ? 450 : size.width;
 }

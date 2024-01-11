@@ -14,7 +14,7 @@ class DisplayTabView extends StatelessWidget {
       children: [
         Text(
           'Select screen/body defects that are applicable!',
-          style: textHeadBold1.copyWith(fontSize: sWidth * 0.056),
+          style: textHeadBoldBig,
         ),
         kHeight10,
         Expanded(

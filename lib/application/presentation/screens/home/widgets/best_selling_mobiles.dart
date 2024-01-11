@@ -13,7 +13,7 @@ class BestSellingMobiles extends StatelessWidget {
       children: [
         Text(
           'Best Selling Mobiles',
-          style: textHeadBold1.copyWith(fontSize: sWidth * 0.05),
+          style: textHeadBoldBig,
         ),
         kHeight10,
         SizedBox(

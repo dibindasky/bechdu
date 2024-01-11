@@ -13,7 +13,7 @@ class OffersSession extends StatelessWidget {
       children: [
         Text(
           'New Year Offers',
-          style: textHeadBold1.copyWith(fontSize: sWidth * 0.05),
+          style: textHeadBoldBig,
         ),
         kHeight10,
         SizedBox(
@@ -70,8 +70,7 @@ class OffersSession extends StatelessWidget {
                                 kHeight10,
                                 Text(
                                   'OFFER\nNUMBER ${index + 1}',
-                                  style: textHeadBold1.copyWith(
-                                      fontSize: sWidth * 0.055, color: kWhite),
+                                  style: textHeadBoldBig.copyWith( color: kWhite),
                                 ),
                               ]),
                         ),

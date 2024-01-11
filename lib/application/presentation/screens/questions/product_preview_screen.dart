@@ -86,7 +86,7 @@ class _PreviewDetailsState extends State<PreviewDetails> {
           color: kGreenPrimary.withOpacity(0.93),
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 25),
-            child: Center(
+            child: FittedBox(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
