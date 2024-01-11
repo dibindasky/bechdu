@@ -1,135 +1,22 @@
-import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 
-class DropDownWidget extends StatefulWidget {
+class DropDownWidget extends StatelessWidget {
   const DropDownWidget({super.key});
 
   @override
-  State<DropDownWidget> createState() => _DropDownWidgetState();
-}
-
-class _DropDownWidgetState extends State<DropDownWidget> {
-  void onClicked(value) {
-    print('$value');
-  }
-
-  String myServices1 = 'Brand'; // Set a default value from options1
-  String myServices2 = 'Series'; // Set a default value from options2
-  String myServices3 = 'Model'; // Set a default value from options3
-  String myServices4 = 'Storage';
-
-  List<String> options1 = [
-    'Brand',
-    'develop',
-    'web',
-    'IOS',
-    'Digital',
-  ];
-  List<String> options2 = [
-    'Series',
-    'Option2',
-    'Option3',
-    'Option4',
-    'Option5'
-  ];
-  List<String> options3 = [
-    'Model',
-    'Item2',
-    'Item3',
-    'Item4',
-    'Item5',
-  ];
-  List<String> options4 = [
-    'Storage',
-    'B',
-    'C',
-    'D',
-    'E',
-  ];
-
-  @override
   Widget build(BuildContext context) {
-    return Column(
+    return const Column(
       children: [
         Row(
           children: [
             Expanded(
-              child: DropdownButtonHideUnderline(
-                child: DropdownButton2<String>(
-                  isExpanded: true,
-                  items: options1.map((String item) {
-                    return DropdownMenuItem<String>(
-                      value: item,
-                      child: Text(
-                        item,
-                      ),
-                    );
-                  }).toList(),
-                  onChanged: (String? value) {
-                    myServices1 = value!;
-                    setState(() {
-                      myServices1 = value;
-                    });
-                  },
-                  value: myServices1,
-                  buttonStyleData: ButtonStyleData(
-                    padding: const EdgeInsets.only(left: 14, right: 14),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(6),
-                      color: kWhite,
-                    ),
-                    elevation: 1,
-                  ),
-                  dropdownStyleData: DropdownStyleData(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(6),
-                      color: kBlueLight,
-                    ),
-                    offset: const Offset(0, 46),
-                    scrollbarTheme: ScrollbarThemeData(
-                      radius: const Radius.circular(10),
-                      thickness: MaterialStateProperty.all<double>(10),
-                      thumbVisibility: MaterialStateProperty.all<bool>(true),
-                    ),
-                  ),
-                ),
-              ),
+              child: DropDownBuilder(searchHint: 'Brand'),
             ),
             kWidth10,
             Expanded(
-              child: Container(
-                padding: const EdgeInsets.only(left: 20),
-                decoration: BoxDecoration(
-                  border: Border.all(color: textFieldBorderColor),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: DropdownButton<String>(
-                  items: options2.map((e) {
-                    return DropdownMenuItem(
-                      value: e,
-                      child: Text(e),
-                    );
-                  }).toList(),
-                  //isExpanded: true,
-                  onChanged: (value) {
-                    myServices2 = value!;
-                    setState(() {
-                      onClicked(myServices2);
-                    });
-                  },
-                  value: myServices2,
-                  hint: const Text('Series                    '),
-                  elevation: 10,
-                  style: textHeadBold1,
-                  icon: const Icon(
-                    Icons.keyboard_arrow_down_sharp,
-                    size: 18,
-                    color: kBlack,
-                  ),
-                ),
-              ),
+              child: DropDownBuilder(searchHint: 'Series'),
             ),
           ],
         ),
@@ -137,75 +24,116 @@ class _DropDownWidgetState extends State<DropDownWidget> {
         Row(
           children: [
             Expanded(
-              child: Container(
-                padding: const EdgeInsets.only(left: 20),
-                decoration: BoxDecoration(
-                  border: Border.all(color: textFieldBorderColor),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: DropdownButton<String>(
-                  items: options3.map((e) {
-                    return DropdownMenuItem(
-                      value: e,
-                      child: Text(e),
-                    );
-                  }).toList(),
-                  //isExpanded: true,
-                  onChanged: (value) {
-                    myServices3 = value!;
-                    setState(() {
-                      onClicked(myServices3);
-                    });
-                  },
-                  value: myServices3,
-                  hint: const Text('                  Model'),
-                  elevation: 10,
-                  style: textHeadBold1,
-                  icon: const Icon(
-                    Icons.keyboard_arrow_down_sharp,
-                    size: 18,
-                    color: kBlack,
-                  ),
-                ),
-              ),
+              child: DropDownBuilder(searchHint: 'Model'),
             ),
             kWidth10,
             Expanded(
-              child: Container(
-                padding: const EdgeInsets.only(left: 20),
-                decoration: BoxDecoration(
-                  border: Border.all(color: textFieldBorderColor),
-                  borderRadius: BorderRadius.circular(10),
+              child: DropDownBuilder(searchHint: 'Storage'),
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+}
+
+class DropDownBuilder extends StatefulWidget {
+  const DropDownBuilder({
+    super.key,
+    required this.searchHint,
+  });
+
+  final String searchHint;
+
+  @override
+  State<DropDownBuilder> createState() => _DropDownBuilderState();
+}
+
+class _DropDownBuilderState extends State<DropDownBuilder> {
+  @override
+  Widget build(BuildContext context) {
+    List<String> options1 = [
+      'Brand',
+      'develop',
+      'web',
+      'IOS',
+      'Digital',
+    ];
+
+    String myServices1 = 'Brand';
+    final textEditingController = TextEditingController();
+
+    return DropdownButtonHideUnderline(
+      child: DropdownButton2<String>(
+        isExpanded: true,
+        items: options1.map(
+          (item) {
+            return DropdownMenuItem(
+              value: item,
+              child: Text(item, style: textHeadBold1),
+            );
+          },
+        ).toList(),
+        value: myServices1,
+        onChanged: (value) {
+          myServices1 = value!;
+          setState(() {
+            myServices1 = value;
+          });
+        },
+        buttonStyleData: const ButtonStyleData(
+          elevation: 0,
+          padding: EdgeInsets.symmetric(horizontal: 16),
+          height: 40,
+          width: 0,
+        ),
+        dropdownStyleData: const DropdownStyleData(
+          offset: Offset(0, 40),
+          maxHeight: 200,
+        ),
+        menuItemStyleData: const MenuItemStyleData(
+          height: 40,
+        ),
+        dropdownSearchData: DropdownSearchData(
+          searchController: textEditingController,
+          searchInnerWidgetHeight: 50,
+          searchInnerWidget: Container(
+            height: 50,
+            padding: const EdgeInsets.only(
+              top: 8,
+              bottom: 4,
+              right: 8,
+              left: 8,
+            ),
+            child: TextFormField(
+              expands: true,
+              maxLines: null,
+              controller: textEditingController,
+              decoration: InputDecoration(
+                icon: const Icon(Icons.search),
+                isDense: true,
+                contentPadding: const EdgeInsets.symmetric(
+                  horizontal: 10,
+                  vertical: 8,
                 ),
-                child: DropdownButton<String>(
-                  items: options4.map((e) {
-                    return DropdownMenuItem(
-                      value: e,
-                      child: Text(e),
-                    );
-                  }).toList(),
-                  //isExpanded: true,
-                  onChanged: (value) {
-                    myServices4 = value!;
-                    setState(() {
-                      onClicked(myServices4);
-                    });
-                  },
-                  value: myServices4,
-                  hint: const Text('          Storage      '),
-                  elevation: 10,
-                  style: textHeadBold1,
-                  icon: const Icon(
-                    Icons.keyboard_arrow_down_sharp,
-                    size: 18,
-                    color: kBlack,
-                  ),
+                hintText: 'Search ${widget.searchHint}',
+                hintStyle: const TextStyle(fontSize: 12),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
                 ),
               ),
             ),
-          ],
-        )
-      ],
+          ),
+          searchMatchFn: (item, searchValue) {
+            return item.value.toString().contains(searchValue);
+          },
+        ),
+        onMenuStateChange: (isOpen) {
+          if (!isOpen) {
+            textEditingController.clear();
+          }
+        },
+      ),
     );
   }
 }
