@@ -21,7 +21,7 @@ class _ConditionTabViewState extends State<ConditionTabView> {
       children: [
         Text(
           'How Old Is Your Mobile ?',
-          style: textHeadBold1.copyWith(fontSize: sWidth * 0.056),
+          style: textHeadBoldBig,
           textAlign: TextAlign.center,
         ),
         kHeight10,

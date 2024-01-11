@@ -20,7 +20,7 @@ class ScreenQuestions extends StatefulWidget {
 late TabController tabController;
 
 class _ScreenQuestionsState extends State<ScreenQuestions>
-    with SingleTickerProviderStateMixin {
+    with TickerProviderStateMixin {
   final List<Widget> tabChildren = [
     const DeviceTabView(),
     const DisplayTabView(),
@@ -28,16 +28,23 @@ class _ScreenQuestionsState extends State<ScreenQuestions>
     const AccessoriesTabView(),
     const ConditionTabView()
   ];
+  late AnimationController _animationControllerFade;
+  late Animation<double> _animationFade;
 
   @override
   void initState() {
     tabController = TabController(length: 5, vsync: this);
+    _animationControllerFade = AnimationController(
+        vsync: this, duration: const Duration(milliseconds: 500));
+    _animationFade =
+        Tween<double>(begin: 0, end: 1).animate(_animationControllerFade);
     super.initState();
   }
 
   @override
   void dispose() {
     tabController.dispose();
+    _animationControllerFade.dispose();
     super.dispose();
   }
 
@@ -50,33 +57,35 @@ class _ScreenQuestionsState extends State<ScreenQuestions>
         toolbarHeight: sWidth * 0.40,
         bottom: PreferredSize(
           preferredSize: Size(MediaQuery.of(context).size.width, sWidth * 0.10),
-          child: ValueListenableBuilder(valueListenable: questionsIndexNotifier,
-            builder: (context,value,_) {
+          child: ValueListenableBuilder(
+            valueListenable: questionsIndexNotifier,
+            builder: (context, value, _) {
               return TabBar(
-                  tabAlignment: TabAlignment.center,
-                  automaticIndicatorColorAdjustment: false,
-                  controller: tabController,
-                  dividerHeight: 0,
-                  labelStyle: textHeadBold1.copyWith(fontSize: sWidth * 0.031),
-                  indicator:
-                      BoxDecoration(color: kGreenPrimary, borderRadius: kRadius15),
-                  isScrollable: false,
-                  indicatorSize: TabBarIndicatorSize.tab,
-                  indicatorPadding: const EdgeInsets.all(10),
-                  onTap: (value) {
-                    questionsIndexNotifier.value = value;
-                    questionsIndexNotifier.notifyListeners();
-                    setState(() {});
-                  },
-                  overlayColor: const MaterialStatePropertyAll(knill),
-                  tabs: const [
-                    Tab(text: 'Device'),
-                    Tab(text: 'Display'),
-                    Tab(text: 'Functionality'),
-                    Tab(text: 'Accessories'),
-                    Tab(text: 'Condition'),
-                  ]);
-            }
+                tabAlignment: TabAlignment.center,
+                automaticIndicatorColorAdjustment: false,
+                controller: tabController,
+                dividerHeight: 0,
+                labelStyle: textHeadBold1.copyWith(fontSize: sWidth < 400 ?  sWidth * 0.031 :  sWidth * 0.024),
+                indicator: BoxDecoration(
+                    color: kGreenPrimary, borderRadius: kRadius15),
+                isScrollable: false,
+                indicatorSize: TabBarIndicatorSize.tab,
+                indicatorPadding: const EdgeInsets.all(10),
+                onTap: (value) {
+                  questionsIndexNotifier.value = value;
+                  questionsIndexNotifier.notifyListeners();
+                  setState(() {});
+                },
+                overlayColor: const MaterialStatePropertyAll(knill),
+                tabs: const [
+                  Tab(text: 'Device'),
+                  Tab(text: 'Display'),
+                  Tab(text: 'Functionality'),
+                  Tab(text: 'Accessories'),
+                  Tab(text: 'Condition'),
+                ],
+              );
+            },
           ),
         ),
       ),

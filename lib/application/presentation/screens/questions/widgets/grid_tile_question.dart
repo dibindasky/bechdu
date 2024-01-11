@@ -34,7 +34,7 @@ class _GridTileQuestionState extends State<GridTileQuestion> {
             padding: const EdgeInsets.all(8.0),
             child: Column(
               children: [
-                Image.asset(defectedMobile),
+                FittedBox(child: Image.asset(defectedMobile)),
                 Text(
                   'Broken/scratch on device screen',
                   style: textHeadBold1,

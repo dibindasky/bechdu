@@ -29,9 +29,8 @@ class JoinOurTeam extends StatelessWidget {
           children: [
             Text(
               'Join Our Team',
-              style: textHeadBold1.copyWith(
+              style: textHeadBoldBig.copyWith(
                 color: kWhite,
-                fontSize: sWidth * 0.06,
               ),
             ),
             FittedBox(fit: BoxFit.contain,

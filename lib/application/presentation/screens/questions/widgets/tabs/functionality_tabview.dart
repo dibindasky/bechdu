@@ -16,7 +16,7 @@ class FunctionalityTabView extends StatelessWidget {
           alignment: Alignment.centerLeft,
           child: Text(
             'Device Functionality & problems!',
-            style: textHeadBold1.copyWith(fontSize: sWidth * 0.056),
+            style: textHeadBoldBig,
           ),
         ),
         kHeight10,
@@ -25,7 +25,7 @@ class FunctionalityTabView extends StatelessWidget {
             shrinkWrap: true,
             itemCount: 9,
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                childAspectRatio: 1 / 1.4,
+                childAspectRatio: 1 / 1.41,
                 mainAxisSpacing: 20,
                 crossAxisSpacing: 20,
                 crossAxisCount: 3),

@@ -32,39 +32,44 @@ class ProductPreviewQuestion extends StatelessWidget {
                     child: FittedBox(
                       child: HeroWidget(
                           tag: HeroTag.image(mobileWithOutBackgroundNetwork),
-                          child:
-                              Image.network(mobileWithOutBackgroundNetwork)),
+                          child: Image.network(mobileWithOutBackgroundNetwork)),
                     ),
                   ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
+                  SizedBox(width: sWidth * 0.45,
+                    child: FittedBox(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          HeroWidget(tag: HeroTag.text('Iphone 13'),
-                            child: Text(
-                              'Iphone 13',
-                              style: textHeadRegular1.copyWith(
-                                  color: kWhite, fontSize: sWidth * 0.055), 
-                            ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              HeroWidget(
+                                tag: HeroTag.text('Iphone 13'),
+                                child: Text(
+                                  'Iphone 13',
+                                  style: textHeadRegular1.copyWith(
+                                      color: kWhite, fontSize: sWidth * 0.055),
+                                ),
+                              ),
+                              kWidth5,
+                              HeroWidget(
+                                tag: HeroTag.text('256 GB | Black'),
+                                child: Text(
+                                  '256 GB | Black',
+                                  style: textHeadMedium1.copyWith(
+                                      color: kWhite, fontSize: sWidth * 0.035),
+                                ),
+                              )
+                            ],
                           ),
-                          kWidth5,
-                          HeroWidget(tag: HeroTag.text('256 GB | Black'),
-                            child: Text(
-                              '256 GB | Black',
-                              style: textHeadMedium1.copyWith(
-                                  color: kWhite, fontSize: sWidth * 0.035),
-                            ),
+                          Text(
+                            'Device Diagnosis',
+                            style: textHeadBold1.copyWith(
+                                color: kWhite, fontSize: sWidth * 0.065),
                           )
                         ],
                       ),
-                      Text(
-                        'Device Diagnosis',
-                        style: textHeadBold1.copyWith(
-                            color: kWhite, fontSize: sWidth * 0.065),
-                      )
-                    ],
+                    ),
                   ),
                   const Spacer(),
                   const RotatedBox(

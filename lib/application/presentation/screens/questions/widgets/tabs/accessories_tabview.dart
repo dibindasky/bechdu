@@ -13,7 +13,7 @@ class AccessoriesTabView extends StatelessWidget {
       children: [
         Text(
           'Mention The Accessories you Have With The mobile!',
-          style: textHeadBold1.copyWith(fontSize: sWidth * 0.056),
+          style: textHeadBoldBig,
           textAlign: TextAlign.center,
         ),
         kHeight20,
