@@ -1,9 +1,11 @@
 
+import 'package:beachdu/application/presentation/routes/animated_routes.dart';
 import 'package:beachdu/application/presentation/routes/routes.dart';
 import 'package:beachdu/application/presentation/screens/auth/auth_screen.dart';
 import 'package:beachdu/application/presentation/screens/home/home_screen.dart';
 import 'package:beachdu/application/presentation/screens/pickup/pickup_screen.dart';
 import 'package:beachdu/application/presentation/screens/product/product_screen.dart';
+import 'package:beachdu/application/presentation/screens/questions/product_preview_screen.dart';
 import 'package:beachdu/application/presentation/screens/questions/questions_screen.dart';
 import 'package:beachdu/application/presentation/screens/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
@@ -22,6 +24,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (ctx) => const ScreenPickUp());
       case Routes.questions:
         return MaterialPageRoute(builder: (ctx) => const ScreenQuestions());
+      case Routes.produtPreview:
+        return noTrancitionRoute(screen:const ScreenProductPreview());
       case Routes.searchScreen:
         return MaterialPageRoute(builder: (ctx) => const ScreenProductSelection());
       // case Routes.questions:
