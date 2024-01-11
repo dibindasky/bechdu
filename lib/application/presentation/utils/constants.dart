@@ -10,7 +10,11 @@ const beachdulogo = 'assets/images/beachdu_logo.png';
 const searchIcon = 'assets/images/search_icon.png';
 const sortIcon = 'assets/images/sort_icon.png';
 const joinOurTeam = 'assets/images/join_our_team.png';
+
 const mobileTransperantassetImage = 'assets/images/phone pic.png';
+
+const defectedMobile = 'assets/images/diffectImage.png';
+
 const mobileWithOutBackgroundNetwork =
     'https://assets.stickpng.com/images/5cb0633d80f2cf201a4c3253.png';
 const mobileNetworkImage =
@@ -42,21 +46,28 @@ final textHeadBold1 = TextStyle(
   color: kBlack,
   fontFamily: gilroyBold,
   fontWeight: FontWeight.w400,
-  fontSize: sWidth * 0.040,
+  fontSize: sWidth <400 ? sWidth * 0.040 :sWidth *0.035,
+);
+
+final textHeadBoldBig = TextStyle(
+  color: kBlack,
+  fontFamily: gilroyBold,
+  fontWeight: FontWeight.w400,
+  fontSize: sWidth <400 ? sWidth * 0.056 :sWidth *0.045,
 );
 
 final textHeadMedium1 = TextStyle(
   color: kBlack,
   fontFamily: gilroyMedium,
   fontWeight: FontWeight.w400,
-  fontSize: sWidth * 0.040,
+  fontSize: sWidth <400 ? sWidth * 0.040 :sWidth *0.035,
 );
 
 final textHeadRegular1 = TextStyle(
   color: kBlack,
   fontFamily: gilroyRegular,
   fontWeight: FontWeight.w400,
-  fontSize: sWidth * 0.040,
+  fontSize: sWidth <400 ? sWidth * 0.040 :sWidth *0.035,
 );
 
 final textHeadSemiBold1 = TextStyle(
@@ -71,5 +82,5 @@ void sizeFinder(BuildContext context) {
   print(size.height);
   print(size.width);
   sHeight = size.height > 900 ? 900 : size.height;
-  sWidth = size.width > 400 ? 400 : size.width;
+  sWidth = size.width > 450 ? 450 : size.width;
 }

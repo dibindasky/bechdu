@@ -16,7 +16,7 @@ class WhatToSellWidget extends StatelessWidget {
         children: [
           Text(
             'What Do you Want To Sell ?',
-            style: textHeadBold1.copyWith(fontSize: sWidth * 0.05),
+            style: textHeadBoldBig,
           ),
           kHeight20,
           SizedBox(

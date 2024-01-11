@@ -11,3 +11,5 @@ const Color kGreenPrimary = Color.fromARGB(255, 125, 174, 0);
 const Color kRadioButtnOuter = Color.fromARGB(255, 200, 220, 151);
 const Color kGreenLight = Color.fromARGB(255, 118, 255, 123);
 const Color kRedLight = Color.fromARGB(255, 255, 118, 118);
+const Color kRed = Colors.redAccent;
+const Color knill = Colors.transparent;

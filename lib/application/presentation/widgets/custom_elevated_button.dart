@@ -26,9 +26,11 @@ class ElevatedButtonLong extends StatelessWidget {
         backgroundColor: color,
         shape: RoundedRectangleBorder(borderRadius: kRadius5),
       ),
-      child: Text(
-        text,
-        style: textHeadBold1.copyWith(color: kWhite),
+      child: FittedBox(
+        child: Text(
+          text,
+          style: textHeadBold1.copyWith(color: kWhite),
+        ),
       ),
     );
   }

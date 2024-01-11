@@ -14,10 +14,13 @@ class ScreenSplash extends StatelessWidget {
     Timer(const Duration(seconds: 1), () {
       Navigator.pushReplacementNamed(context, Routes.searchScreen);
     });
-    return const Scaffold(
+    return Scaffold(
       backgroundColor: kGreenPrimary,
       body: Center(
-        child: Text('Beachdu'),
+        child: Text(
+          'BEACHDU',
+          style: textHeadBold1.copyWith(color: kWhite, fontSize: sWidth * 0.07),
+        ),
       ),
     );
   }
