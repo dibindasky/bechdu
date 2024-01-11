@@ -1,3 +1,4 @@
+import 'package:beachdu/application/presentation/screens/questions/questions_screen.dart';
 import 'package:beachdu/application/presentation/screens/questions/widgets/grid_tile_question.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
@@ -11,7 +12,8 @@ class FunctionalityTabView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Align(alignment: Alignment.centerLeft,
+        Align(
+          alignment: Alignment.centerLeft,
           child: Text(
             'Device Functionality & problems!',
             style: textHeadBold1.copyWith(fontSize: sWidth * 0.056),
@@ -35,7 +37,11 @@ class FunctionalityTabView extends StatelessWidget {
         SizedBox(
           width: sWidth * 0.50,
           child: ElevatedButtonLong(
-            onPressed: () {},
+            onPressed: () {
+              tabController.index++;
+              questionsIndexNotifier.value++;
+              questionsIndexNotifier.notifyListeners();
+            },
             text: 'Continue',
             color: kGreenPrimary,
           ),

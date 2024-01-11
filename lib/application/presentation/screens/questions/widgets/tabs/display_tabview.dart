@@ -1,3 +1,4 @@
+import 'package:beachdu/application/presentation/screens/questions/questions_screen.dart';
 import 'package:beachdu/application/presentation/screens/questions/widgets/grid_tile_question.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
@@ -33,7 +34,11 @@ class DisplayTabView extends StatelessWidget {
         SizedBox(
           width: sWidth * 0.50,
           child: ElevatedButtonLong(
-            onPressed: () {},
+            onPressed: () {
+              tabController.index++;
+              questionsIndexNotifier.value++;
+              questionsIndexNotifier.notifyListeners();
+            },
             text: 'Continue',
             color: kGreenPrimary,
           ),

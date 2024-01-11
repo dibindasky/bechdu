@@ -1,3 +1,4 @@
+import 'package:beachdu/application/presentation/routes/routes.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/application/presentation/widgets/custom_elevated_button.dart';
@@ -60,7 +61,9 @@ class _ConditionTabViewState extends State<ConditionTabView> {
         SizedBox(
           width: sWidth * 0.50,
           child: ElevatedButtonLong(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(context, Routes.produtPreview);
+            },
             text: 'Continue',
             color: kGreenPrimary,
           ),
