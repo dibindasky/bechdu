@@ -1,4 +1,4 @@
-import 'package:beachdu/application/presentation/screens/product/widgets/custom_dropdown.dart';
+import 'package:beachdu/application/presentation/screens/product/widgets/drop_down_custom.dart';
 import 'package:beachdu/application/presentation/screens/product/widgets/product_custom_listview.dart';
 import 'package:beachdu/application/presentation/screens/product/widgets/product_serch_field.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
@@ -24,36 +24,10 @@ class ScreenProductSelection extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // const FinalProductImage(),
+                  kHeight20,
                   const ProductScreenSearchField(),
-                  const SizedBox(
-                    height: 50,
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: CustomDropDown(),
-                        ),
-                        kWidth10,
-                        Expanded(
-                          child: CustomDropDown(),
-                        )
-                      ],
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 50,
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: CustomDropDown(),
-                        ),
-                        kWidth10,
-                        Expanded(
-                          child: CustomDropDown(),
-                        ),
-                      ],
-                    ),
-                  ),
+                  kHeight10,
+                  const DropDownWidget(),
                   kHeight10,
                   Text(
                     'Showing All Products',
@@ -61,6 +35,7 @@ class ScreenProductSelection extends StatelessWidget {
                   ),
                   kHeight10,
                   const ProductListView(),
+                  // const FinalProductImage(),
                 ],
               ),
             ),

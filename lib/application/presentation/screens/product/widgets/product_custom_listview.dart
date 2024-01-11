@@ -10,7 +10,7 @@ class ProductListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 550,
+      height: sHeight * .65,
       child: GridView.builder(
         itemCount: 7,
         scrollDirection: Axis.vertical,
@@ -18,7 +18,7 @@ class ProductListView extends StatelessWidget {
           crossAxisCount: 2,
           crossAxisSpacing: 10,
           mainAxisSpacing: 10,
-          mainAxisExtent: 260,
+          mainAxisExtent: 255,
         ),
         itemBuilder: (context, index) {
           return Container(

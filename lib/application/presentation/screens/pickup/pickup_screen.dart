@@ -56,12 +56,8 @@ class ScreenPickUp extends StatelessWidget {
                 style: textHeadBold1.copyWith(fontSize: sWidth * .05),
               ),
               kHeight20,
-
-              //This is for container Circle avatars
               const RowIconsValueListanable(),
               kHeight30,
-
-              //This is for container building
               const DataValueListanableContainers(),
             ],
           ),
