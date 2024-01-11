@@ -4,12 +4,17 @@ import 'package:flutter/material.dart';
 const gilroyBold = 'Gilroy-Bold';
 const gilroyMedium = 'Gilroy-Medium';
 const gilroyRegular = 'Gilroy-Regular';
+const gilroySemiBold = 'Gilroy-SemiBold';
 
 const beachdulogo = 'assets/images/beachdu_logo.png';
 const searchIcon = 'assets/images/search_icon.png';
 const sortIcon = 'assets/images/sort_icon.png';
 const joinOurTeam = 'assets/images/join_our_team.png';
+
+const mobileTransperantassetImage = 'assets/images/phone pic.png';
+
 const defectedMobile = 'assets/images/diffectImage.png';
+
 const mobileWithOutBackgroundNetwork =
     'https://assets.stickpng.com/images/5cb0633d80f2cf201a4c3253.png';
 const mobileNetworkImage =
@@ -63,6 +68,13 @@ final textHeadRegular1 = TextStyle(
   fontFamily: gilroyRegular,
   fontWeight: FontWeight.w400,
   fontSize: sWidth <400 ? sWidth * 0.040 :sWidth *0.035,
+);
+
+final textHeadSemiBold1 = TextStyle(
+  color: kBlack,
+  fontFamily: gilroySemiBold,
+  fontWeight: FontWeight.w400,
+  fontSize: sWidth * 0.040,
 );
 
 void sizeFinder(BuildContext context) {

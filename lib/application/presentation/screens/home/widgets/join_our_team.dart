@@ -10,11 +10,12 @@ class JoinOurTeam extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(onTap: (){
-      Navigator.pushNamed(context, Routes.questions);
-    },
+    return InkWell(
+      onTap: () {
+        Navigator.pushNamed(context, Routes.questions);
+      },
       child: Container(
-        margin: EdgeInsets.symmetric(horizontal: 15),
+        margin: const EdgeInsets.symmetric(horizontal: 15),
         padding: const EdgeInsets.symmetric(horizontal: 15),
         height: sWidth * 0.27,
         width: sWidth,
@@ -25,7 +26,8 @@ class JoinOurTeam extends StatelessWidget {
             fit: BoxFit.cover,
           ),
         ),
-        child: Column(mainAxisAlignment: MainAxisAlignment.center,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
               'Join Our Team',
@@ -33,7 +35,8 @@ class JoinOurTeam extends StatelessWidget {
                 color: kWhite,
               ),
             ),
-            FittedBox(fit: BoxFit.contain,
+            FittedBox(
+              fit: BoxFit.contain,
               child: Text(
                 'Lorem ipsum dolor sit amet consectetur. Augue\nin mauris leo duis platea et in tempor in ',
                 style: textHeadRegular1.copyWith(
