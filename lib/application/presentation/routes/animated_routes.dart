@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-PageRouteBuilder fadePageRoute() {
+PageRouteBuilder fadePageRoute({required Widget screen,int milliseconds=800}) {
   return PageRouteBuilder(
     pageBuilder: (context, animation, secondaryAnimation) => Container(),
     transitionsBuilder: (context, animation, secondaryAnimation, child) {
@@ -16,11 +16,11 @@ PageRouteBuilder fadePageRoute() {
 
       return FadeTransition(
         opacity: opacityAnimation,
-        child: child,
+        child: screen,
       );
     },
-    transitionDuration: const Duration(milliseconds: 800),
-    reverseTransitionDuration: const Duration(milliseconds: 800),
+    transitionDuration: Duration(milliseconds: milliseconds),
+    reverseTransitionDuration: Duration(milliseconds: milliseconds),
     opaque: false,
     barrierColor: Colors.black.withOpacity(0.5),
     barrierDismissible: false,

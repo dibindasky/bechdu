@@ -1,4 +1,3 @@
-
 import 'package:beachdu/application/presentation/routes/animated_routes.dart';
 import 'package:beachdu/application/presentation/routes/routes.dart';
 import 'package:beachdu/application/presentation/screens/auth/auth_screen.dart';
@@ -15,19 +14,19 @@ class RouteGenerator {
     // final arguments = settings.arguments;
     switch (settings.name) {
       case Routes.initial:
-        return MaterialPageRoute(builder: (ctx) => const ScreenSplash());
+        return fadePageRoute(screen: const ScreenSplash());
       case Routes.signIn:
-        return MaterialPageRoute(builder: (ctx) => const ScreenAuth());
+        return fadePageRoute(milliseconds: 1500,screen: const ScreenAuth());
       case Routes.homeScreen:
-        return MaterialPageRoute(builder: (ctx) => const ScreenHome());
+        return fadePageRoute(screen: const ScreenHome());
       case Routes.pickUpDetailScreen:
-        return MaterialPageRoute(builder: (ctx) => const ScreenPickUp());
+        return fadePageRoute(screen: const ScreenPickUp());
       case Routes.questions:
-        return MaterialPageRoute(builder: (ctx) => const ScreenQuestions());
+        return fadePageRoute(screen: const ScreenQuestions());
       case Routes.produtPreview:
-        return noTrancitionRoute(screen:const ScreenProductPreview());
+        return noTrancitionRoute(screen: const ScreenProductPreview());
       case Routes.searchScreen:
-        return MaterialPageRoute(builder: (ctx) => const ScreenProductSelection());
+        return fadePageRoute(screen: const ScreenProductSelection());
       // case Routes.questions:
       //   return arguments is String
       //       ? MaterialPageRoute(

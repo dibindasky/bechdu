@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:beachdu/application/presentation/routes/routes.dart';
 import 'package:beachdu/application/presentation/screens/auth/widgets/custom_textfield_login.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
@@ -5,8 +7,31 @@ import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/application/presentation/widgets/custom_elevated_button.dart';
 import 'package:flutter/material.dart';
 
-class ScreenAuth extends StatelessWidget {
+class ScreenAuth extends StatefulWidget {
   const ScreenAuth({super.key});
+
+  @override
+  State<ScreenAuth> createState() => _ScreenAuthState();
+}
+
+class _ScreenAuthState extends State<ScreenAuth>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _logoAnimationController;
+  late Animation<Offset> _logoAnimation;
+  @override
+  void initState() {
+    _logoAnimationController = AnimationController(
+        vsync: this, duration: const Duration(milliseconds: 800));
+    _logoAnimation =
+        Tween<Offset>(begin: const Offset(0, 0), end: const Offset(0, -2))
+            .animate(
+      CurvedAnimation(
+        parent: _logoAnimationController,
+        curve: Curves.linear,
+      ),
+    );
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +45,10 @@ class ScreenAuth extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SizedBox(width: sWidth * 0.50, child: Image.asset(beachdulogo)),
+                SlideTransition(
+                    position: _logoAnimation,
+                    child: SizedBox(
+                        width: sWidth * 0.50, child: Image.asset(beachdulogo))),
                 kHeight50,
                 CustomTextFormFieldLogin(
                   controller: TextEditingController(),
@@ -50,7 +78,7 @@ class ScreenAuth extends StatelessWidget {
                 kHeight20,
                 ElevatedButtonLong(
                   onPressed: () {
-                    Navigator.pushNamed(context, Routes.homeScreen);
+                    loginOrSignup();
                   },
                   text: 'Sign in',
                 ),
@@ -62,7 +90,7 @@ class ScreenAuth extends StatelessWidget {
                 kHeight30,
                 ElevatedButtonLong(
                   onPressed: () {
-                    Navigator.pushNamed(context, Routes.homeScreen);
+                    loginOrSignup();
                   },
                   text: 'Sign up',
                 ),
@@ -72,5 +100,12 @@ class ScreenAuth extends StatelessWidget {
         ),
       ),
     ));
+  }
+
+  loginOrSignup() {
+    _logoAnimationController.forward();
+    Timer(const Duration(microseconds: 500), () {
+     Navigator.pushNamed(context, Routes.homeScreen);
+    });
   }
 }
