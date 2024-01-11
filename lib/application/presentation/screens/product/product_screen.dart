@@ -27,7 +27,37 @@ class ScreenProductSelection extends StatelessWidget {
                   kHeight20,
                   const ProductScreenSearchField(),
                   kHeight10,
-                  const DropDownWidget(),
+                  const Row(
+                    children: [
+                      Expanded(
+                        child: DropDownBuilder(
+                          searchHint: 'Brand',
+                        ),
+                      ),
+                      kWidth10,
+                      Expanded(
+                        child: DropDownBuilder(
+                          searchHint: 'Series',
+                        ),
+                      ),
+                    ],
+                  ),
+                  kHeight10,
+                  const Row(
+                    children: [
+                      Expanded(
+                        child: DropDownBuilder(
+                          searchHint: 'Model',
+                        ),
+                      ),
+                      kWidth10,
+                      Expanded(
+                        child: DropDownBuilder(
+                          searchHint: 'Storage',
+                        ),
+                      ),
+                    ],
+                  ),
                   kHeight10,
                   Text(
                     'Showing All Products',

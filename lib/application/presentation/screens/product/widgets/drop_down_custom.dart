@@ -1,41 +1,7 @@
+import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
-
-class DropDownWidget extends StatelessWidget {
-  const DropDownWidget({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Column(
-      children: [
-        Row(
-          children: [
-            Expanded(
-              child: DropDownBuilder(searchHint: 'Brand'),
-            ),
-            kWidth10,
-            Expanded(
-              child: DropDownBuilder(searchHint: 'Series'),
-            ),
-          ],
-        ),
-        kHeight10,
-        Row(
-          children: [
-            Expanded(
-              child: DropDownBuilder(searchHint: 'Model'),
-            ),
-            kWidth10,
-            Expanded(
-              child: DropDownBuilder(searchHint: 'Storage'),
-            ),
-          ],
-        ),
-      ],
-    );
-  }
-}
 
 class DropDownBuilder extends StatefulWidget {
   const DropDownBuilder({
@@ -70,17 +36,17 @@ class _DropDownBuilderState extends State<DropDownBuilder> {
           (item) {
             return DropdownMenuItem(
               value: item,
-              child: Text(item, style: textHeadBold1),
+              child: Text(item, style: textHeadBold1.copyWith(color: kBlack)),
             );
           },
         ).toList(),
-        value: myServices1,
         onChanged: (value) {
-          myServices1 = value!;
+          //myServices1 = value!;
           setState(() {
-            myServices1 = value;
+            myServices1 = value!;
           });
         },
+        value: myServices1,
         buttonStyleData: const ButtonStyleData(
           elevation: 0,
           padding: EdgeInsets.symmetric(horizontal: 16),
@@ -88,6 +54,7 @@ class _DropDownBuilderState extends State<DropDownBuilder> {
           width: 0,
         ),
         dropdownStyleData: const DropdownStyleData(
+          decoration: BoxDecoration(color: kBlueLight),
           offset: Offset(0, 40),
           maxHeight: 200,
         ),
