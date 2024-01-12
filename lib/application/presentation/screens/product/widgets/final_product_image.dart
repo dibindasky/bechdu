@@ -1,6 +1,8 @@
+import 'package:beachdu/application/presentation/routes/routes.dart';
 import 'package:beachdu/application/presentation/screens/product/widgets/custom_button.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
+import 'package:beachdu/application/presentation/widgets/custom_elevated_button.dart';
 import 'package:flutter/material.dart';
 
 class FinalProductImage extends StatelessWidget {
@@ -11,7 +13,7 @@ class FinalProductImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 200,
+      height: sWidth * .54,
       decoration: BoxDecoration(
         color: kBlueLight,
         borderRadius: BorderRadius.circular(10),
@@ -20,11 +22,10 @@ class FinalProductImage extends StatelessWidget {
       child: Row(
         children: [
           SizedBox(
-            height: 200,
-            width: 100,
-            child: Image.network(
-              'https://www.designinfo.in/wp-content/uploads/2023/01/Apple-iPhone-14-Pro-Mobile-Phone-493177786-i-4-1200Wx1200H-485x485-optimized.jpeg',
-              fit: BoxFit.cover,
+            height: sWidth * .33,
+            width: sWidth * .24,
+            child: Image.asset(
+              mobileTransperantassetImage,
             ),
           ),
           Expanded(
@@ -45,17 +46,38 @@ class FinalProductImage extends StatelessWidget {
                       Text(
                         '256 GB | Black',
                         style: textHeadMedium1.copyWith(
-                            color: kWhite, fontSize: sWidth * .033),
+                          color: kWhite,
+                          fontSize: sWidth * .033,
+                        ),
                       ),
                     ],
                   ),
-                  const Text('upto ₹ 20,000'),
-                  const Text(
+                  Text(
+                    'upto ₹ 20,000',
+                    style: textHeadMedium1.copyWith(
+                      color: kWhite,
+                      fontSize: sWidth * .035,
+                    ),
+                  ),
+                  Text(
                     'Note : The Price stated above depends on the condition of the product and is not final.',
                     overflow: TextOverflow.ellipsis,
+                    style: textHeadMedium1.copyWith(
+                      fontSize: sWidth * .035,
+                      color: kWhite,
+                    ),
                     maxLines: 6,
                   ),
-                  const CustomButton()
+                  kHeight20,
+                  CustomButton(
+                    text: 'Get Exact Value',
+                    onPressed: () => Navigator.of(context)
+                        .pushNamed(Routes.pickUpDetailScreen),
+                  )
+                  // ElevatedButtonLong(
+                  //   onPressed: () {},
+                  //   text: '',
+                  // ),
                 ],
               ),
             ),

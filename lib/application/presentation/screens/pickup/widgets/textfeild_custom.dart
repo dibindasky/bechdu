@@ -10,12 +10,14 @@ class TTextFormField extends StatelessWidget {
   final int? maxlegth;
   final double? height;
   final int? maxLines;
+  final Widget? suffixIcon;
   final Color? clr;
   final Function(String)? onChanaged;
   final VoidCallback? onTap;
   const TTextFormField({
     Key? key,
     this.clr,
+    this.suffixIcon,
     required this.text,
     this.inputType,
     this.controller,
@@ -72,6 +74,7 @@ class TTextFormField extends StatelessWidget {
         },
         controller: controller,
         decoration: InputDecoration(
+          suffixIcon: suffixIcon,
           hintText: text,
           disabledBorder: const OutlineInputBorder(
               borderSide: BorderSide(width: .1, color: textFieldBorderColor)),
