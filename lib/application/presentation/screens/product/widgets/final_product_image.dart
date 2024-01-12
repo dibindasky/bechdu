@@ -1,3 +1,4 @@
+import 'package:beachdu/application/presentation/routes/routes.dart';
 import 'package:beachdu/application/presentation/screens/product/widgets/custom_button.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
@@ -55,7 +56,7 @@ class FinalProductImage extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                     maxLines: 6,
                   ),
-                  const CustomButton()
+                  CustomButton(onPressed: () => Navigator.pushNamed(context, Routes.questions),)
                 ],
               ),
             ),

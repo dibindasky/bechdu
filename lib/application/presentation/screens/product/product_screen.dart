@@ -1,4 +1,5 @@
 import 'package:beachdu/application/presentation/screens/product/widgets/drop_down_custom.dart';
+import 'package:beachdu/application/presentation/screens/product/widgets/final_product_image.dart';
 import 'package:beachdu/application/presentation/screens/product/widgets/product_custom_listview.dart';
 import 'package:beachdu/application/presentation/screens/product/widgets/product_serch_field.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
@@ -64,8 +65,8 @@ class ScreenProductSelection extends StatelessWidget {
                     style: textHeadBold1,
                   ),
                   kHeight10,
-                  const ProductListView(),
-                  // const FinalProductImage(),
+                  // const ProductListView(),
+                  const FinalProductImage(),
                 ],
               ),
             ),
