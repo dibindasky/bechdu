@@ -37,10 +37,7 @@ class TTextFormField extends StatelessWidget {
         keyboardType: inputType,
         onTap: onTap,
         maxLines: maxLines ?? 1,
-        style: TextStyle(
-          color: kBlack,
-          fontSize: sWidth * 0.04,
-        ),
+        style: textHeadSemiBold1.copyWith(fontSize: sWidth * 0.04),
         maxLength: maxlegth,
         onChanged: onChanaged,
         validator: (value) {

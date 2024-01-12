@@ -23,43 +23,51 @@ class ScreenPickUp extends StatelessWidget {
     WidgetsBinding.instance.addPostFrameCallback(
       (_) => PickupDetailContainers.personalDetails,
     );
-    return Scaffold(
-      appBar: AppBar(),
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Stack(
-                children: [
-                  Positioned(
-                    top: -30,
-                    right: 59,
-                    child: CircleAvatar(
-                      radius: 50,
-                      backgroundColor: kBlueLight.withOpacity(.16),
+    return GestureDetector(
+      onTap: () {
+        FocusScopeNode focusScopeNode = FocusScope.of(context);
+        if (!focusScopeNode.hasPrimaryFocus) {
+          focusScopeNode.unfocus();
+        }
+      },
+      child: Scaffold(
+        appBar: AppBar(),
+        body: SafeArea(
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                Stack(
+                  children: [
+                    Positioned(
+                      top: -30,
+                      right: 59,
+                      child: CircleAvatar(
+                        radius: 50,
+                        backgroundColor: kBlueLight.withOpacity(.16),
+                      ),
                     ),
-                  ),
-                  Positioned(
-                    left: 150,
-                    bottom: -20,
-                    child: CircleAvatar(
-                      radius: 40,
-                      backgroundColor: kBlueLight.withOpacity(.15),
+                    Positioned(
+                      left: 150,
+                      bottom: -20,
+                      child: CircleAvatar(
+                        radius: 40,
+                        backgroundColor: kBlueLight.withOpacity(.15),
+                      ),
                     ),
-                  ),
-                  const SelectedTopImage(),
-                ],
-              ),
-              kHeight10,
-              Text(
-                'Pickup Details',
-                style: textHeadBold1.copyWith(fontSize: sWidth * .05),
-              ),
-              kHeight20,
-              const RowIconsValueListanable(),
-              kHeight30,
-              const DataValueListanableContainers(),
-            ],
+                    const SelectedTopImage(),
+                  ],
+                ),
+                kHeight10,
+                Text(
+                  'Pickup Details',
+                  style: textHeadBold1.copyWith(fontSize: sWidth * .05),
+                ),
+                kHeight20,
+                const RowIconsValueListanable(),
+                kHeight30,
+                const DataValueListanableContainers(),
+              ],
+            ),
           ),
         ),
       ),
