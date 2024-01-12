@@ -10,10 +10,8 @@ class MyRadioButtons extends StatefulWidget {
 }
 
 class _MyRadioButtonsState extends State<MyRadioButtons> {
-  // Variable to store the selected radio button value
   String selectedRadio = '';
 
-  // Function to handle radio button selection
   void handleRadioValueChanged(String? value) {
     setState(() {
       selectedRadio = value!;
@@ -39,8 +37,9 @@ class _MyRadioButtonsState extends State<MyRadioButtons> {
       child: Container(
         padding: const EdgeInsets.all(10.0),
         decoration: BoxDecoration(
-            border: Border.all(color: textFieldBorderColor),
-            borderRadius: BorderRadius.circular(10)),
+          border: Border.all(color: textFieldBorderColor),
+          borderRadius: BorderRadius.circular(10),
+        ),
         child: Row(
           children: [
             Text(
