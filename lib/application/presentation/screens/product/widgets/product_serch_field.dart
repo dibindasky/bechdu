@@ -9,28 +9,45 @@ class ProductScreenSearchField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 40,
-      child: TextFormField(
-        decoration: InputDecoration(
-          prefixIcon: const Text(''),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(7),
-            borderSide: const BorderSide(
-              color: kBlueLight,
-            ),
+    return TextFormField(
+      style: textHeadBold1.copyWith(fontSize: sWidth * .044),
+      decoration: InputDecoration(
+        contentPadding: const EdgeInsets.symmetric(
+          vertical: .0,
+        ),
+        prefixIcon: DropdownButtonHideUnderline(
+          child: DropdownButton(
+            onChanged: (String? newValue) {},
+            items: const [
+              DropdownMenuItem(
+                value: 'Category 1',
+                child: Text('A  '),
+              ),
+              DropdownMenuItem(
+                value: 'Category 2',
+                child: Text('S  '),
+              ),
+            ],
+            hint: const Text('  All'),
           ),
-          hintText: 'Search for product...',
-          hintStyle: textHeadBold1.copyWith(
-            fontSize: sWidth * .034,
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(7),
+          borderSide: const BorderSide(
+            color: kBlueLight,
           ),
-          border: OutlineInputBorder(
-            borderSide: const BorderSide(
-              color: kBlueLight,
-              width: .2,
-            ),
-            borderRadius: BorderRadius.circular(7),
+        ),
+        hintText: 'Search for product...',
+        hintStyle: textHeadBold1.copyWith(
+          fontSize: sWidth * .043,
+          color: kBlueLight,
+        ),
+        border: OutlineInputBorder(
+          borderSide: const BorderSide(
+            color: kBlueLight,
+            width: .2,
           ),
+          borderRadius: BorderRadius.circular(7),
         ),
       ),
     );
