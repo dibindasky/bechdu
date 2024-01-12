@@ -1,4 +1,3 @@
-import 'package:beachdu/application/presentation/routes/routes.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:flutter/material.dart';
@@ -12,7 +11,7 @@ class JoinOurTeam extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.pushNamed(context, Routes.questions);
+        //Navigator.pushNamed(context, Routes.questions);
       },
       child: Container(
         margin: const EdgeInsets.symmetric(horizontal: 15),

@@ -27,7 +27,7 @@ class DateOrTime extends StatelessWidget {
                 Icons.access_time,
                 color: kBlueLight,
               ),
-            )
+            ),
           ],
         ),
       ),

@@ -68,6 +68,7 @@ class FinalProductImage extends StatelessWidget {
                     ),
                     maxLines: 6,
                   ),
+
                   kHeight20,
                   CustomButton(
                     text: 'Get Exact Value',
