@@ -80,7 +80,7 @@ class _GridTileAccessoriesQuestionState
               Icon(
                 Icons.receipt_long,
                 size: sWidth * 0.10,
-                color: selected ? kBluePrimary : kGreenPrimary,
+                color: selected ? kWhite : kGreenPrimary,
               ),
               Text(
                 'Charger',

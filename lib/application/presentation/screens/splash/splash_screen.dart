@@ -12,13 +12,13 @@ class ScreenSplash extends StatelessWidget {
   Widget build(BuildContext context) {
     sizeFinder(context);
     Timer(const Duration(seconds: 1), () {
-      Navigator.pushReplacementNamed(context, Routes.homeScreen);
+      Navigator.pushReplacementNamed(context, Routes.signIn);
     });
     return Scaffold(
       backgroundColor: kGreenPrimary,
       body: Center(
         child: Text(
-          'BEACHDU',
+          'BECHDU',
           style: textHeadBold1.copyWith(color: kWhite, fontSize: sWidth * 0.07),
         ),
       ),

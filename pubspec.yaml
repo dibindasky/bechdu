@@ -39,6 +39,7 @@ dependencies:
   location: ^5.0.3
   dropdown_search: ^5.0.6
   dropdown_button2: ^2.3.9
+  iconsax: ^0.0.8
 
 
 dev_dependencies:
