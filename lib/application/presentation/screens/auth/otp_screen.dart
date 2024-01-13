@@ -6,6 +6,7 @@ import 'package:beachdu/application/presentation/screens/auth/widgets/count_down
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/application/presentation/widgets/custom_elevated_button.dart';
+import 'package:beachdu/application/presentation/widgets/snackbar.dart';
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
 
@@ -56,7 +57,7 @@ class _OTPScreenState extends State<OTPScreen>
     final defaultPinTheme = PinTheme(
       width: 55,
       height: 55,
-      textStyle: textHeadMedium1,
+      textStyle: textHeadMedium1.copyWith(fontSize: sWidth * .060),
       decoration: BoxDecoration(
         boxShadow: [
           BoxShadow(
@@ -85,9 +86,11 @@ class _OTPScreenState extends State<OTPScreen>
             children: [
               SlideTransition(
                 position: _logoAnimation,
-                child: SizedBox(
-                  height: sWidth * .19,
-                  child: Center(child: Image.asset(bechduMainlogo)),
+                child: Center(
+                  child: SizedBox(
+                    height: sWidth * .19,
+                    child: Image.asset(bechduMainlogo),
+                  ),
                 ),
               ),
               kHeight40,
@@ -133,15 +136,18 @@ class _OTPScreenState extends State<OTPScreen>
                 "I didn't receive any code. RESEND",
                 style: textHeadMedium1,
               ),
-              kHeight30,
+              kHeight50,
               ElevatedButtonLong(
                 onPressed: () {
                   if (otpController.text.isEmpty) {
                     log('Empty');
+                    showSnack(context: context, message: 'Otp Field is empty');
+                  } else {
+                    showSnack(context: context, message: 'Please wait');
+                    loginOrSignup();
                   }
-                  loginOrSignup();
                 },
-                text: 'Get OTP',
+                text: 'Submit',
               ),
             ],
           ),
