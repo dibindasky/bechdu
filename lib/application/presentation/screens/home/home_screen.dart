@@ -2,7 +2,6 @@ import 'package:beachdu/application/presentation/screens/home/widgets/recomented
 import 'package:beachdu/application/presentation/screens/home/widgets/caurosal_offers_home.dart';
 import 'package:beachdu/application/presentation/screens/home/widgets/custom_search_field.dart';
 import 'package:beachdu/application/presentation/screens/home/widgets/join_our_team.dart';
-import 'package:beachdu/application/presentation/screens/home/widgets/location_picker.dart';
 import 'package:beachdu/application/presentation/screens/home/widgets/hot_deals.dart';
 import 'package:beachdu/application/presentation/screens/home/widgets/what_to_sell.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
@@ -22,7 +21,7 @@ class ScreenHome extends StatelessWidget {
             Align(
               alignment: Alignment.topCenter,
               child: Container(
-                height: sHeight *0.6, width: double.infinity,
+                height: sHeight * 0.6, width: double.infinity,
                 color: kGreenPrimary,
                 //     child: ClipPath(
                 //       clipper: CustomShapeClipper(),
@@ -32,7 +31,8 @@ class ScreenHome extends StatelessWidget {
                 // ),
               ),
             ),
-            const Column(mainAxisSize: MainAxisSize.min,
+            const Column(
+              mainAxisSize: MainAxisSize.min,
               children: [
                 // LocationChooser(),
                 kHeight30,
@@ -48,7 +48,6 @@ class ScreenHome extends StatelessWidget {
                 JoinOurTeam(),
                 kHeight30,
                 HotDealsSession(),
-
               ],
             ),
           ],

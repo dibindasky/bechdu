@@ -16,19 +16,19 @@ class DropDownBuilder extends StatefulWidget {
 }
 
 class _DropDownBuilderState extends State<DropDownBuilder> {
+  List<String> options1 = [
+    'Brand',
+    'develop',
+    'web',
+    'IOS',
+    'Digital',
+  ];
+
+  String myServices1 = 'Brand';
+  final textEditingController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
-    List<String> options1 = [
-      'Brand',
-      'develop',
-      'web',
-      'IOS',
-      'Digital',
-    ];
-
-    String myServices1 = 'Brand';
-    final textEditingController = TextEditingController();
-
     return DropdownButtonHideUnderline(
       child: DropdownButton2<String>(
         isExpanded: true,
@@ -36,14 +36,16 @@ class _DropDownBuilderState extends State<DropDownBuilder> {
           (item) {
             return DropdownMenuItem(
               value: item,
-              child: Text(item, style: textHeadBold1.copyWith(color: kBlack)),
+              child: Text(
+                item,
+                style: textHeadBold1.copyWith(color: kBlack),
+              ),
             );
           },
         ).toList(),
         onChanged: (value) {
-          myServices1 = value!;
           setState(() {
-            myServices1 = value;
+            myServices1 = value!;
           });
         },
         value: myServices1,
@@ -55,7 +57,7 @@ class _DropDownBuilderState extends State<DropDownBuilder> {
         ),
         dropdownStyleData: DropdownStyleData(
           decoration: BoxDecoration(color: kBlueLight, borderRadius: kRadius10),
-          offset: const Offset(0, 40),
+          offset: const Offset(0, -5),
           maxHeight: 200,
         ),
         menuItemStyleData: const MenuItemStyleData(
@@ -97,7 +99,10 @@ class _DropDownBuilderState extends State<DropDownBuilder> {
             ),
           ),
           searchMatchFn: (item, searchValue) {
-            return item.value.toString().contains(searchValue);
+            return item.value
+                .toString()
+                .toLowerCase()
+                .contains(searchValue.toLowerCase());
           },
         ),
         onMenuStateChange: (isOpen) {

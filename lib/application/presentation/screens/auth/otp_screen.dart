@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:developer';
 import 'package:beachdu/application/presentation/routes/routes.dart';
 import 'package:beachdu/application/presentation/screens/auth/widgets/count_down_widget.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';

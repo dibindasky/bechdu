@@ -9,6 +9,8 @@ class ScreenMyOrders extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
+        automaticallyImplyLeading: false,
         title: Text(
           'My Orders',
           style: textHeadBoldBig,
@@ -17,10 +19,10 @@ class ScreenMyOrders extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 5),
         child: ListView.builder(
-            itemCount: 15,
-            itemBuilder: (context, index) => const MyOrderExpansionTile()),
+          itemCount: 15,
+          itemBuilder: (context, index) => const MyOrderExpansionTile(),
+        ),
       ),
     );
   }
 }
-
