@@ -10,7 +10,7 @@ class SelectedTopImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 15),
       child: SizedBox(
         height: sWidth * .37,
         width: double.infinity,
