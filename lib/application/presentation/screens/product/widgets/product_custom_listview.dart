@@ -10,8 +10,9 @@ class ProductListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: sHeight * .55,
       child: GridView.builder(
+        physics: const NeverScrollableScrollPhysics(),
+        shrinkWrap: true,
         itemCount: 7,
         scrollDirection: Axis.vertical,
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -25,9 +26,7 @@ class ProductListView extends StatelessWidget {
             padding: const EdgeInsets.all(10),
             decoration: BoxDecoration(
               border: Border.all(color: kBlack),
-              borderRadius: const BorderRadius.all(
-                Radius.circular(10),
-              ),
+              borderRadius: kRadius10,
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -49,9 +48,8 @@ class ProductListView extends StatelessWidget {
                 kHeight10,
                 Container(
                   padding: const EdgeInsets.all(5),
-                  decoration: BoxDecoration(
-                      color: ksmalLight,
-                      borderRadius: BorderRadius.circular(5)),
+                  decoration:
+                      BoxDecoration(color: ksmalLight, borderRadius: kRadius5),
                   child: Text(
                     'New',
                     style: textHeadBold1.copyWith(
