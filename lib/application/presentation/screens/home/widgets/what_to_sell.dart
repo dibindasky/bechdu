@@ -21,28 +21,41 @@ class WhatToSellWidget extends StatelessWidget {
           kHeight20,
           Container(
             decoration: BoxDecoration(
-                color: kWhite.withOpacity(0.6),
-                borderRadius: const BorderRadius.all(Radius.circular(30)),
-                border: Border.all(color: kBluePrimary, width: 2)),
+              color: kWhite.withOpacity(0.6),
+              borderRadius: const BorderRadius.all(
+                Radius.circular(
+                  30,
+                ),
+              ),
+              border: Border.all(
+                color: kBluePrimary,
+                width: 2,
+              ),
+            ),
             child: GridView.builder(
               physics: const NeverScrollableScrollPhysics(),
               itemCount: 6,
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  childAspectRatio: 1, crossAxisCount: 3),
+                childAspectRatio: 1,
+                crossAxisCount: 3,
+              ),
               shrinkWrap: true,
               itemBuilder: (context, index) {
                 return InkWell(
                   onTap: () {
-                    Navigator.pushReplacementNamed(
-                        context, Routes.searchScreen);
+                    Navigator.pushNamed(context, Routes.searchScreen);
                   },
                   child: Column(
                     children: [
                       Container(
                         decoration: BoxDecoration(
-                            color: kGreenPrimary,
-                            borderRadius:kRadius5,
-                            border: Border.all(color: kBluePrimary, width: 2)),
+                          color: kGreenPrimary,
+                          borderRadius: kRadius5,
+                          border: Border.all(
+                            color: kBluePrimary,
+                            width: 2,
+                          ),
+                        ),
                         child: Padding(
                           padding: const EdgeInsets.all(10),
                           child: gridData[index % 4][1],
