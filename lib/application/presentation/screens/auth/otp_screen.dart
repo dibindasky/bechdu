@@ -155,7 +155,7 @@ class _OTPScreenState extends State<OTPScreen>
     // print(phoneNumber);
     _logoAnimationController.forward();
     Timer(const Duration(microseconds: 500), () {
-      Navigator.pushNamed(context, Routes.homeScreen);
+      Navigator.pushNamed(context, Routes.bottomBar);
     });
   }
 }

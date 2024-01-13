@@ -1,7 +1,7 @@
 import 'package:beachdu/application/presentation/screens/home/home_screen.dart';
 import 'package:beachdu/application/presentation/screens/order/my_orders_screen.dart';
-import 'package:beachdu/application/presentation/screens/pickup/pickup_screen.dart';
 import 'package:beachdu/application/presentation/screens/product/product_screen.dart';
+import 'package:beachdu/application/presentation/screens/profile/profile_screen.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:flutter/material.dart';
 
@@ -12,7 +12,7 @@ class ScreenBottomNavigation extends StatelessWidget {
     const ScreenHome(),
     const ScreenProductSelection(),
     const ScreenMyOrders(),
-    const ScreenPickUp()
+    const ScreenProfile()
   ];
   ScreenBottomNavigation({super.key});
 

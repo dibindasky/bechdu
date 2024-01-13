@@ -1,6 +1,5 @@
 import 'package:beachdu/application/presentation/routes/animated_routes.dart';
 import 'package:beachdu/application/presentation/routes/routes.dart';
-import 'package:beachdu/application/presentation/screens/auth/auth_screen.dart';
 import 'package:beachdu/application/presentation/screens/auth/login_screen.dart';
 import 'package:beachdu/application/presentation/screens/auth/otp_screen.dart';
 import 'package:beachdu/application/presentation/screens/home/home_screen.dart';
@@ -19,18 +18,12 @@ class RouteGenerator {
     switch (settings.name) {
       case Routes.initial:
         return fadePageRoute(screen: const ScreenSplash());
-      case Routes.signIn:
-        return fadePageRoute(milliseconds: 1500,screen: const ScreenAuth());
       case Routes.bottomBar:
         return fadePageRoute(screen: ScreenBottomNavigation());
-      case Routes.login:
-        return fadePageRoute(milliseconds: 1500, screen: const ScreenAuth());
       case Routes.signInOrLogin:
         return fadePageRoute(screen: const ScreenLogin());
       case Routes.otpVerification:
         return fadePageRoute(screen: const OTPScreen());
-      //  : _errorScreen();
-
       case Routes.homeScreen:
         return fadePageRoute(screen: const ScreenHome());
       case Routes.pickUpDetailScreen:
