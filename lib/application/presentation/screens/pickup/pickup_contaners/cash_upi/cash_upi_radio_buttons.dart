@@ -2,14 +2,14 @@ import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:flutter/material.dart';
 
-class MyRadioButtons extends StatefulWidget {
-  const MyRadioButtons({super.key});
+class CashOrUPI extends StatefulWidget {
+  const CashOrUPI({super.key});
 
   @override
-  _MyRadioButtonsState createState() => _MyRadioButtonsState();
+  State<CashOrUPI> createState() => _CashOrUPIState();
 }
 
-class _MyRadioButtonsState extends State<MyRadioButtons> {
+class _CashOrUPIState extends State<CashOrUPI> {
   String selectedRadio = '';
 
   void handleRadioValueChanged(String? value) {
@@ -20,11 +20,21 @@ class _MyRadioButtonsState extends State<MyRadioButtons> {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return Column(
       children: [
-        Expanded(child: customRadioButton('Cash', 'Option 1')),
-        kWidth10,
-        Expanded(child: customRadioButton('UPI', 'Option 2')),
+        Text(
+          'CASH / UPI',
+          style: textHeadMedium1.copyWith(
+            fontSize: sWidth * .033,
+          ),
+        ),
+        Row(
+          children: [
+            Expanded(child: customRadioButton('Cash', 'Option 1')),
+            kWidth10,
+            Expanded(child: customRadioButton('UPI', 'Option 2')),
+          ],
+        ),
       ],
     );
   }
