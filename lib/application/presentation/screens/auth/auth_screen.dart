@@ -105,7 +105,7 @@ class _ScreenAuthState extends State<ScreenAuth>
   loginOrSignup() {
     _logoAnimationController.forward();
     Timer(const Duration(microseconds: 500), () {
-     Navigator.pushNamed(context, Routes.homeScreen);
+     Navigator.pushNamed(context, Routes.bottomBar);
     });
   }
 }

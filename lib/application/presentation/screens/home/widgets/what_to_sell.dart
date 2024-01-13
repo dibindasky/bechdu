@@ -15,52 +15,48 @@ class WhatToSellWidget extends StatelessWidget {
       child: Column(
         children: [
           Text(
-            'What Do you Want To Sell ?',
-            style: textHeadBoldBig,
+            'What Do You Wanna Do Today ?',
+            style: textHeadBoldBig.copyWith(color: kWhite),
           ),
           kHeight20,
-          SizedBox(
-            height: sWidth * 0.18,
-            child: Center(
-              child: ListView.separated(
-                scrollDirection: Axis.horizontal,
-                itemCount: 4,
-                separatorBuilder: (context, index) => kWidth20,
-                itemBuilder: (context, index) => Padding(
-                  padding: index == 0
-                      ? const EdgeInsets.only(left: 10)
-                      : const EdgeInsets.all(0),
-                  child: Material(
-                    shadowColor: kBlack,
-                    elevation: 5,
-                    borderRadius: BorderRadius.circular(350),
-                    child: InkWell(onTap: (){
-                      Navigator.pushReplacementNamed(context, Routes.searchScreen);
-                    },
-                      child: CircleAvatar(
-                        radius: sWidth * 0.09,
-                        backgroundColor: kGreenPrimary,
-                        child: CircleAvatar(
-                          radius: sWidth * 0.08,
-                          backgroundColor: kWhite,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              gridData[index][1],
-                              Text(
-                                gridData[index][0],
-                                style: textHeadBold1.copyWith(
-                                  fontSize: sWidth * 0.023,
-                                ),
-                              )
-                            ],
-                          ),
+          Container(
+            decoration: BoxDecoration(
+                color: kWhite.withOpacity(0.6),
+                borderRadius: const BorderRadius.all(Radius.circular(30)),
+                border: Border.all(color: kBluePrimary, width: 2)),
+            child: GridView.builder(
+              physics: const NeverScrollableScrollPhysics(),
+              itemCount: 6,
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  childAspectRatio: 1, crossAxisCount: 3),
+              shrinkWrap: true,
+              itemBuilder: (context, index) {
+                return InkWell(
+                  onTap: () {
+                    Navigator.pushReplacementNamed(
+                        context, Routes.searchScreen);
+                  },
+                  child: Column(
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(
+                            color: kGreenPrimary,
+                            borderRadius:kRadius5,
+                            border: Border.all(color: kBluePrimary, width: 2)),
+                        child: Padding(
+                          padding: const EdgeInsets.all(10),
+                          child: gridData[index % 4][1],
                         ),
                       ),
-                    ),
+                      kHeight5,
+                      Text(
+                        gridData[index % 4][0],
+                        style: textHeadMedium1,
+                      )
+                    ],
                   ),
-                ),
-              ),
+                );
+              },
             ),
           ),
         ],
@@ -70,11 +66,11 @@ class WhatToSellWidget extends StatelessWidget {
 }
 
 List<List> gridData = [
-  ['Mobile', const Icon(Icons.phone_android_sharp)],
-  ['laptop', const Icon(Icons.laptop)],
-  ['Tablet', const Icon(Icons.tablet_android)],
+  ['Mobile', const Icon(Icons.phone_android_sharp, color: kWhite)],
+  ['laptop', const Icon(Icons.laptop, color: kWhite)],
+  ['Tablet', const Icon(Icons.tablet_android, color: kWhite)],
   [
     'Earbuds',
-    const Icon(Icons.earbuds),
+    const Icon(Icons.earbuds, color: kWhite),
   ],
 ];

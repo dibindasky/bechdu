@@ -10,6 +10,7 @@ const beachdulogo = 'assets/images/beachdu_logo.png';
 const searchIcon = 'assets/images/search_icon.png';
 const sortIcon = 'assets/images/sort_icon.png';
 const joinOurTeam = 'assets/images/join_our_team.png';
+const homeOfferImage = 'assets/images/home_offer.png';
 
 const mobileTransperantassetImage = 'assets/images/phone pic.png';
 const defectedMobile = 'assets/images/diffectImage.png';
