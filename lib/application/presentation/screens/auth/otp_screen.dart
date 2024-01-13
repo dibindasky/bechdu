@@ -1,12 +1,11 @@
 import 'dart:async';
 import 'dart:developer';
-
 import 'package:beachdu/application/presentation/routes/routes.dart';
 import 'package:beachdu/application/presentation/screens/auth/widgets/count_down_widget.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
+import 'package:beachdu/application/presentation/utils/snackbar/snackbar.dart';
 import 'package:beachdu/application/presentation/widgets/custom_elevated_button.dart';
-import 'package:beachdu/application/presentation/widgets/snackbar.dart';
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
 
@@ -137,15 +136,17 @@ class _OTPScreenState extends State<OTPScreen>
                 style: textHeadMedium1,
               ),
               kHeight50,
+              kHeight50,
+              kHeight50,
               ElevatedButtonLong(
                 onPressed: () {
-                  if (otpController.text.isEmpty) {
-                    log('Empty');
-                    showSnack(context: context, message: 'Otp Field is empty');
-                  } else {
-                    showSnack(context: context, message: 'Please wait');
-                    loginOrSignup();
-                  }
+                  // if (otpController.text.isEmpty) {
+                  //   log('Empty');
+                  //   showSnack(context: context, message: 'Otp Field is empty');
+                  // } else {
+                  showSnack(context: context, message: 'Please wait');
+                  loginOrSignup();
+                  //}
                 },
                 text: 'Submit',
               ),

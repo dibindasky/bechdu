@@ -18,25 +18,46 @@ class _DateOrTimeState extends State<DateOrTime> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 15),
       child: SizedBox(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Text('PICKUP DETAILS'),
-            TTextFormField(
-              inputType: TextInputType.datetime,
-              controller: dateController,
-              text: 'Date',
-              suffixIcon: InkWell(
-                onTap: () => showDateModalBottomSheet(context),
-                child: const Icon(
-                  Icons.calendar_month,
-                  color: kBlueLight,
+            kHeight10,
+            InkWell(
+              onTap: () => showDateModalBottomSheet(context),
+              child: Container(
+                padding: const EdgeInsets.only(left: 10, right: 12),
+                height: 60,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  border: Border.all(color: textFieldBorderColor),
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Text(
+                        dateController.text.isEmpty
+                            ? 'Date'
+                            : dateController.text,
+                        style: dateController.text.isEmpty
+                            ? textHeadSemiBold1.copyWith(
+                                color: textFieldBorderColor,
+                              )
+                            : textHeadSemiBold1,
+                      ),
+                    ),
+                    const Icon(
+                      Icons.calendar_month,
+                      color: kBlueLight,
+                    ),
+                  ],
                 ),
               ),
             ),
-            kHeight5,
+            kHeight20,
             Container(
               padding: const EdgeInsets.only(left: 10, right: 12),
               height: 60,
@@ -62,18 +83,29 @@ class _DateOrTimeState extends State<DateOrTime> {
                         },
                         items: <String>[
                           'Time',
-                          '12:00 PM',
+                          '3:01 PM',
                           '3:00 PM',
-                          '6:00 PM'
+                          '7:00 PM',
+                          '8:00 PM'
                         ].map<DropdownMenuItem<String>>(
                           (String value) {
+                            if (value == 'Time') {
+                              return DropdownMenuItem<String>(
+                                value: value,
+                                child: Text(
+                                  value,
+                                  style: textHeadSemiBold1.copyWith(
+                                      color: textFieldBorderColor),
+                                ),
+                              );
+                            }
                             return DropdownMenuItem<String>(
                               value: value,
                               child: Text(
                                 value,
                                 style: textHeadSemiBold1.copyWith(
-                                    fontSize: sWidth * 0.04,
-                                    color: textFieldBorderColor),
+                                  fontSize: sWidth * 0.04,
+                                ),
                               ),
                             );
                           },

@@ -41,9 +41,9 @@ class _DropDownBuilderState extends State<DropDownBuilder> {
           },
         ).toList(),
         onChanged: (value) {
-          //myServices1 = value!;
+          myServices1 = value!;
           setState(() {
-            myServices1 = value!;
+            myServices1 = value;
           });
         },
         value: myServices1,
@@ -53,9 +53,9 @@ class _DropDownBuilderState extends State<DropDownBuilder> {
           height: 40,
           width: 0,
         ),
-        dropdownStyleData: const DropdownStyleData(
-          decoration: BoxDecoration(color: kBlueLight),
-          offset: Offset(0, 40),
+        dropdownStyleData: DropdownStyleData(
+          decoration: BoxDecoration(color: kBlueLight, borderRadius: kRadius10),
+          offset: const Offset(0, 40),
           maxHeight: 200,
         ),
         menuItemStyleData: const MenuItemStyleData(
@@ -77,16 +77,21 @@ class _DropDownBuilderState extends State<DropDownBuilder> {
               maxLines: null,
               controller: textEditingController,
               decoration: InputDecoration(
-                icon: const Icon(Icons.search),
+                labelStyle: textHeadBoldBig,
+                icon: const Icon(
+                  Icons.search,
+                  color: kWhite,
+                ),
                 isDense: true,
                 contentPadding: const EdgeInsets.symmetric(
                   horizontal: 10,
                   vertical: 8,
                 ),
                 hintText: 'Search ${widget.searchHint}',
-                hintStyle: const TextStyle(fontSize: 12),
+                hintStyle: textHeadMedium1.copyWith(color: kWhite),
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(8),
+                  borderSide: const BorderSide(color: kWhite),
+                  borderRadius: kRadius10,
                 ),
               ),
             ),

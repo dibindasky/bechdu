@@ -3,8 +3,8 @@ import 'dart:async';
 import 'package:beachdu/application/presentation/routes/routes.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
+import 'package:beachdu/application/presentation/utils/snackbar/snackbar.dart';
 import 'package:beachdu/application/presentation/widgets/custom_elevated_button.dart';
-import 'package:beachdu/application/presentation/widgets/snackbar.dart';
 import 'package:flutter/material.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 
@@ -141,13 +141,14 @@ class _ScreenLoginState extends State<ScreenLogin>
                 ),
               ),
               kHeight50,
+              kHeight50,
               ElevatedButtonLong(
                 onPressed: () {
                   if (phoneController.text.isEmpty) {
-                    showSnack(
-                        context: context, message: 'Number Field is empty');
-                    print('No number');
-                  } else {
+                    //   showSnack(
+                    //       context: context, message: 'Number Field is empty');
+                    //   print('No number');
+                    // } else {
                     showSnack(context: context, message: 'Done');
                     loginOrSignup();
                     print(phoneController.text);
@@ -167,7 +168,7 @@ class _ScreenLoginState extends State<ScreenLogin>
     print(phoneNumber);
     _logoAnimationController.forward();
     Timer(const Duration(microseconds: 500), () {
-      Navigator.pushNamed(context, Routes.otpVerification);
+      Navigator.pushReplacementNamed(context, Routes.otpVerification);
     });
   }
 
