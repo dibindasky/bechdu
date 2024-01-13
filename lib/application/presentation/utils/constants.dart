@@ -5,7 +5,7 @@ const gilroyBold = 'Gilroy-Bold';
 const gilroyMedium = 'Gilroy-Medium';
 const gilroyRegular = 'Gilroy-Regular';
 const gilroySemiBold = 'Gilroy-SemiBold';
-
+const bechduMainlogo = 'assets/images/bechdu_logo.png';
 const beachdulogo = 'assets/images/beachdu_logo.png';
 const searchIcon = 'assets/images/search_icon.png';
 const sortIcon = 'assets/images/sort_icon.png';
@@ -18,7 +18,8 @@ const mobileWithOutBackgroundNetwork =
     'https://assets.stickpng.com/images/5cb0633d80f2cf201a4c3253.png';
 const mobileNetworkImage =
     'https://img.freepik.com/free-photo/smartphone-balancing-with-pink-background_23-2150271746.jpg?size=338&ext=jpg&ga=GA1.1.1412446893.1704758400&semt=sph';
-
+const profileImage =
+    'https://cdn4.sharechat.com/WhatsAppprofiledpboys_d7f9b06_1658641555734_sc_cmprsd_75.jpg?tenant=sc&referrer=trending-feed-service&f=rsd_75.jpg';
 double sHeight = 900;
 double sWidth = 400;
 
@@ -45,35 +46,35 @@ final textHeadBold1 = TextStyle(
   color: kBlack,
   fontFamily: gilroyBold,
   fontWeight: FontWeight.w400,
-  fontSize: sWidth <400 ? sWidth * 0.040 :sWidth *0.035,
+  fontSize: sWidth < 400 ? sWidth * 0.040 : sWidth * 0.035,
 );
 
 final textHeadBoldBig = TextStyle(
   color: kBlack,
   fontFamily: gilroyBold,
   fontWeight: FontWeight.w400,
-  fontSize: sWidth <400 ? sWidth * 0.056 :sWidth *0.045,
+  fontSize: sWidth < 400 ? sWidth * 0.056 : sWidth * 0.045,
 );
 
 final textHeadMedium1 = TextStyle(
   color: kBlack,
   fontFamily: gilroyMedium,
   fontWeight: FontWeight.w400,
-  fontSize: sWidth <400 ? sWidth * 0.040 :sWidth *0.035,
+  fontSize: sWidth < 400 ? sWidth * 0.040 : sWidth * 0.035,
 );
 
 final textHeadRegular1 = TextStyle(
   color: kBlack,
   fontFamily: gilroyRegular,
   fontWeight: FontWeight.w400,
-  fontSize: sWidth <400 ? sWidth * 0.040 :sWidth *0.035,
+  fontSize: sWidth < 400 ? sWidth * 0.040 : sWidth * 0.035,
 );
 
 final textHeadSemiBold1 = TextStyle(
   color: kBlack,
   fontFamily: gilroySemiBold,
   fontWeight: FontWeight.w400,
-  fontSize: sWidth <400 ? sWidth * 0.040 :sWidth *0.035,
+  fontSize: sWidth < 400 ? sWidth * 0.040 : sWidth * 0.035,
 );
 
 void sizeFinder(BuildContext context) {

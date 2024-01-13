@@ -40,6 +40,8 @@ dependencies:
   dropdown_search: ^5.0.6
   dropdown_button2: ^2.3.9
   iconsax: ^0.0.8
+  intl_phone_number_input: ^0.7.4
+  pinput: ^3.0.1
 
 
 dev_dependencies:

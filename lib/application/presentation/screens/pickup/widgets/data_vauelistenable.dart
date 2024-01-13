@@ -1,4 +1,5 @@
-import 'package:beachdu/application/presentation/screens/pickup/pickup_contaners/widgets/cash_or_upi.dart';
+import 'package:beachdu/application/presentation/screens/pickup/pickup_contaners/cash_upi/cash_or_upi.dart';
+import 'package:beachdu/application/presentation/screens/pickup/pickup_contaners/date_selection/date_and_time.dart';
 import 'package:beachdu/application/presentation/screens/pickup/pickup_contaners/widgets/personal_details.dart';
 import 'package:beachdu/application/presentation/screens/pickup/pickup_contaners/widgets/street_address.dart';
 import 'package:beachdu/application/presentation/screens/pickup/pickup_screen.dart';
@@ -24,7 +25,7 @@ class DataValueListanableContainers extends StatelessWidget {
           return const CashOrUPI();
         }
         if (value == PickupDetailContainers.dateSelect) {
-          return const SizedBox();
+          return const DateOrTime();
         } else {
           return const SizedBox();
         }

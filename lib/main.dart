@@ -19,6 +19,9 @@ class Beachdu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(
+          //colorScheme: const ColorScheme.dark(primary: kGreenPrimary),
+          ),
       debugShowCheckedModeBanner: false,
       initialRoute: Routes.initial,
       onGenerateRoute: routeGenerator.onGenerateRoute,
