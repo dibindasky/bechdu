@@ -10,7 +10,7 @@ class ProductListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: sHeight * .65,
+      height: sHeight * .55,
       child: GridView.builder(
         itemCount: 7,
         scrollDirection: Axis.vertical,
@@ -35,8 +35,8 @@ class ProductListView extends StatelessWidget {
                 Center(
                   child: SizedBox(
                     height: 100,
-                    child: Image.network(
-                      'https://www.designinfo.in/wp-content/uploads/2023/01/Apple-iPhone-14-Pro-Mobile-Phone-493177786-i-4-1200Wx1200H-485x485-optimized.jpeg',
+                    child: Image.asset(
+                      mobileTransperantassetImage,
                       fit: BoxFit.cover,
                       errorBuilder: (context, error, stackTrace) {
                         return const Icon(

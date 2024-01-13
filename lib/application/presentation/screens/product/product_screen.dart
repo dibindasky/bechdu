@@ -21,54 +21,54 @@ class ScreenProductSelection extends StatelessWidget {
         body: SafeArea(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  kHeight20,
-                  const ProductScreenSearchField(),
-                  kHeight10,
-                  const Row(
-                    children: [
-                      Expanded(
-                        child: DropDownBuilder(
-                          searchHint: 'Brand',
-                        ),
+            child: ListView(
+              //  crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                kHeight20,
+                const ProductScreenSearchField(),
+                kHeight10,
+                const Row(
+                  children: [
+                    Expanded(
+                      child: DropDownBuilder(
+                        searchHint: 'Brand',
                       ),
-                      kWidth10,
-                      Expanded(
-                        child: DropDownBuilder(
-                          searchHint: 'Series',
-                        ),
+                    ),
+                    kWidth10,
+                    Expanded(
+                      child: DropDownBuilder(
+                        searchHint: 'Series',
                       ),
-                    ],
-                  ),
-                  kHeight10,
-                  const Row(
-                    children: [
-                      Expanded(
-                        child: DropDownBuilder(
-                          searchHint: 'Model',
-                        ),
+                    ),
+                  ],
+                ),
+                kHeight10,
+                const Row(
+                  children: [
+                    Expanded(
+                      child: DropDownBuilder(
+                        searchHint: 'Model',
                       ),
-                      kWidth10,
-                      Expanded(
-                        child: DropDownBuilder(
-                          searchHint: 'Storage',
-                        ),
+                    ),
+                    kWidth10,
+                    Expanded(
+                      child: DropDownBuilder(
+                        searchHint: 'Storage',
                       ),
-                    ],
-                  ),
-                  kHeight10,
-                  Text(
-                    'Showing All Products',
-                    style: textHeadBold1,
-                  ),
-                  kHeight10,
-                  // const ProductListView(),
-                  const FinalProductImage(),
-                ],
-              ),
+                    ),
+                  ],
+                ),
+                kHeight10,
+                Text(
+                  'Showing All Products',
+                  style: textHeadBold1,
+                ),
+                kHeight10,
+                const ProductListView(),
+                kHeight20,
+                const FinalProductImage(),
+                kHeight20,
+              ],
             ),
           ),
         ),
