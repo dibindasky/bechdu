@@ -3,7 +3,7 @@ import 'package:beachdu/application/presentation/screens/home/widgets/caurosal_o
 import 'package:beachdu/application/presentation/screens/home/widgets/custom_search_field.dart';
 import 'package:beachdu/application/presentation/screens/home/widgets/join_our_team.dart';
 import 'package:beachdu/application/presentation/screens/home/widgets/location_picker.dart';
-import 'package:beachdu/application/presentation/screens/home/widgets/offers.dart';
+import 'package:beachdu/application/presentation/screens/home/widgets/hot_deals.dart';
 import 'package:beachdu/application/presentation/screens/home/widgets/what_to_sell.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
@@ -32,9 +32,9 @@ class ScreenHome extends StatelessWidget {
                 // ),
               ),
             ),
-            Column(
+            const Column(mainAxisSize: MainAxisSize.min,
               children: [
-                //LocationChooser(),
+                // LocationChooser(),
                 kHeight30,
                 kHeight30,
                 CustomSearchFieldHome(),
@@ -45,9 +45,10 @@ class ScreenHome extends StatelessWidget {
                 kHeight40,
                 RecommendedMobile(),
                 kHeight40,
-                OffersSession(),
+                JoinOurTeam(),
                 kHeight30,
-                JoinOurTeam()
+                HotDealsSession(),
+
               ],
             ),
           ],
