@@ -1,5 +1,6 @@
 import 'package:beachdu/application/presentation/routes/route_generator.dart';
 import 'package:beachdu/application/presentation/routes/routes.dart';
+import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 

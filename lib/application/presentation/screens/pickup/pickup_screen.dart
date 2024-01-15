@@ -31,13 +31,14 @@ class ScreenPickUp extends StatelessWidget {
         }
       },
       child: Scaffold(
-        appBar: AppBar(
-          automaticallyImplyLeading: false,
-        ),
+        // appBar: AppBar(
+        //   automaticallyImplyLeading: false,
+        // ),
         body: SafeArea(
           child: SingleChildScrollView(
             child: Column(
               children: [
+                kHeight30,
                 Stack(
                   children: [
                     Positioned(

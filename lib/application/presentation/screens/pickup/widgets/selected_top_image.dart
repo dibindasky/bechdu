@@ -1,5 +1,7 @@
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
+import 'package:beachdu/application/presentation/utils/hero/hero_animation.dart';
+import 'package:beachdu/application/presentation/utils/hero/hero_tag.dart';
 import 'package:flutter/material.dart';
 
 class SelectedTopImage extends StatelessWidget {
@@ -23,25 +25,33 @@ class SelectedTopImage extends StatelessWidget {
                 SizedBox(
                   height: sWidth * .3,
                   width: sWidth * .3,
-                  child: Image.asset(mobileTransperantassetImage),
+                  child: HeroWidget(
+                      tag: HeroTag.image(mobileTransperantassetImage),
+                      child: Image.asset(mobileTransperantassetImage)),
                 ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
-                      'Iphone 13',
-                      style: textHeadBold1,
+                    HeroWidget(
+                      tag: HeroTag.text('Iphone 13'),
+                      child: Text(
+                        'Iphone 13',
+                        style: textHeadBold1.copyWith(color: kWhite),
+                      ),
                     ),
                     kHeight5,
-                    Text(
-                      '256 GB | Black',
-                      style: textHeadMedium1,
+                    HeroWidget(
+                      tag: HeroTag.text('256 GB | Black'),
+                      child: Text(
+                        '256 GB | Black',
+                        style: textHeadMedium1.copyWith(color: kWhite),
+                      ),
                     ),
                     kHeight5,
                     Text(
                       '₹ 18,000',
-                      style: textHeadBold1,
+                      style: textHeadBold1.copyWith(color: kWhite),
                     ),
                   ],
                 ),

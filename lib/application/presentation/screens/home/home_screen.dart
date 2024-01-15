@@ -3,7 +3,11 @@ import 'package:beachdu/application/presentation/screens/home/widgets/caurosal_o
 import 'package:beachdu/application/presentation/screens/home/widgets/custom_search_field.dart';
 import 'package:beachdu/application/presentation/screens/home/widgets/join_our_team.dart';
 import 'package:beachdu/application/presentation/screens/home/widgets/hot_deals.dart';
+import 'package:beachdu/application/presentation/screens/home/widgets/stack_background_home.dart';
 import 'package:beachdu/application/presentation/screens/home/widgets/what_to_sell.dart';
+import 'package:beachdu/application/presentation/utils/clippers/custom_shape_home.dart';
+import 'package:beachdu/application/presentation/utils/clippers/wave_bottom.dart';
+import 'package:beachdu/application/presentation/utils/clippers/wave_top.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:flutter/material.dart';
@@ -14,23 +18,15 @@ class ScreenHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: kGreenPrimary,
       body: SingleChildScrollView(
         child: Stack(
           children: [
-            Align(
-              alignment: Alignment.topCenter,
-              child: Container(
-                height: sHeight * 0.6, width: double.infinity,
-                color: kGreenPrimary,
-                //     child: ClipPath(
-                //       clipper: CustomShapeClipper(),
-                // child: Container(
-                //   height: 200,
-                //   color: kWhite,
-                // ),
-              ),
-            ),
+            StackBackgroundHomePage(
+                color: kGreenPrimary, path: TopWaveClipper()),
+            StackBackgroundHomePage(
+                color: kBluePrimary, path: BottomWavwClipper()),
+            StackBackgroundHomePage(
+                color: kGreenPrimary, path: CustomShapeClipper()),
             const Column(
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -57,34 +53,3 @@ class ScreenHome extends StatelessWidget {
   }
 }
 
-class CustomShapeClipper extends CustomClipper<Path> {
-  @override
-  Path getClip(Size size) {
-    final path = Path();
-
-    // Starting point at the top-left
-    path.moveTo(0, 0);
-
-    // Straight line to the bottom-left
-    path.lineTo(0, size.height);
-
-    // Curve from bottom-left to left-bottom corner
-    path.quadraticBezierTo(0, size.height - 20, 20, size.height);
-
-    // Wave pattern from left-top to bottom-right
-    for (double i = 20; i < size.width; i += 20) {
-      path.lineTo(i + 10, (i % 40 == 0) ? size.height - 10 : 10);
-      path.lineTo(i + 20, (i % 40 == 0) ? size.height : 0);
-    }
-
-    // Straight line to the bottom-right
-    path.lineTo(size.width, 0);
-
-    return path;
-  }
-
-  @override
-  bool shouldReclip(CustomClipper<Path> oldClipper) {
-    return false;
-  }
-}

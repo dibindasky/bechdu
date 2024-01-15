@@ -72,12 +72,8 @@ class FinalProductImage extends StatelessWidget {
                   CustomButton(
                     text: 'Get Exact Value',
                     onPressed: () => Navigator.of(context)
-                        .pushNamed(Routes.pickUpDetailScreen),
+                        .pushNamed(Routes.questions),
                   )
-                  // ElevatedButtonLong(
-                  //   onPressed: () {},
-                  //   text: '',
-                  // ),
                 ],
               ),
             ),

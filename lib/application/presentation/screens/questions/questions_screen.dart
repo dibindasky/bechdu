@@ -20,7 +20,7 @@ class ScreenQuestions extends StatefulWidget {
 late TabController tabController;
 
 class _ScreenQuestionsState extends State<ScreenQuestions>
-    with TickerProviderStateMixin {
+    with SingleTickerProviderStateMixin {
   final List<Widget> tabChildren = [
     const DeviceTabView(),
     const DisplayTabView(),
@@ -28,23 +28,16 @@ class _ScreenQuestionsState extends State<ScreenQuestions>
     const AccessoriesTabView(),
     const ConditionTabView()
   ];
-  late AnimationController _animationControllerFade;
-  late Animation<double> _animationFade;
 
   @override
   void initState() {
     tabController = TabController(length: 5, vsync: this);
-    _animationControllerFade = AnimationController(
-        vsync: this, duration: const Duration(milliseconds: 500));
-    _animationFade =
-        Tween<double>(begin: 0, end: 1).animate(_animationControllerFade);
     super.initState();
   }
 
   @override
   void dispose() {
     tabController.dispose();
-    _animationControllerFade.dispose();
     super.dispose();
   }
 

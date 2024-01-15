@@ -1,4 +1,4 @@
-import 'package:beachdu/application/presentation/routes/routes.dart';
+import 'package:beachdu/application/presentation/screens/navbar/bottombar.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:flutter/material.dart';
@@ -36,14 +36,15 @@ class WhatToSellWidget extends StatelessWidget {
               physics: const NeverScrollableScrollPhysics(),
               itemCount: 6,
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                childAspectRatio: 1,
+                childAspectRatio: 1/0.8,
                 crossAxisCount: 3,
               ),
               shrinkWrap: true,
               itemBuilder: (context, index) {
                 return InkWell(
                   onTap: () {
-                    Navigator.pushNamed(context, Routes.searchScreen);
+                    bottomBarNotifier.value=1;
+                    bottomBarNotifier.notifyListeners();
                   },
                   child: Column(
                     children: [

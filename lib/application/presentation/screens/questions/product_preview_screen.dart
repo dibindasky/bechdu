@@ -52,7 +52,7 @@ class PreviewDetails extends StatefulWidget {
 }
 
 class _PreviewDetailsState extends State<PreviewDetails> {
-  double height = 0.8;
+  double height = 1;
   bool showItems = false;
 
   @override
