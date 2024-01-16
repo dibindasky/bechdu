@@ -31,7 +31,7 @@ class CustomButton extends StatelessWidget {
             text,
             style: textHeadMedium1.copyWith(
               color: kWhite,
-              fontSize: sWidth * .040,
+              fontSize: sWidth * .035,
             ),
           ),
         ),

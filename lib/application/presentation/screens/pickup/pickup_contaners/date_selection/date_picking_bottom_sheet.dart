@@ -16,17 +16,11 @@ class Date extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
-      height: sHeight * 2.4 / 4,
+      height: sWidth * 4.8 / 4,
       child: Column(
         children: [
-          Container(
-            padding: const EdgeInsets.all(22),
-            height: sWidth * 0.18,
-            decoration: const BoxDecoration(
-              borderRadius: BorderRadius.all(
-                Radius.circular(7),
-              ),
-            ),
+          Padding(
+            padding: const EdgeInsets.only(top: 20, left: 20, right: 20),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -41,6 +35,7 @@ class Date extends StatelessWidget {
               ],
             ),
           ),
+          kHeight10,
           Column(
             children: [
               CalendarDatePicker(

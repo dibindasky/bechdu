@@ -27,41 +27,21 @@ class ScreenProductSelection extends StatelessWidget {
                 kHeight20,
                 const ProductScreenSearchField(),
                 kHeight10,
-                const Row(
-                  children: [
-                    Expanded(
-                      child: DropDownBuilder(
-                        searchHint: 'Brand',
-                      ),
-                    ),
-                    kWidth10,
-                    Expanded(
-                      child: DropDownBuilder(
-                        searchHint: 'Series',
-                      ),
-                    ),
-                  ],
-                ),
-                kHeight10,
-                const Row(
-                  children: [
-                    Expanded(
-                      child: DropDownBuilder(
-                        searchHint: 'Model',
-                      ),
-                    ),
-                    kWidth10,
-                    Expanded(
-                      child: DropDownBuilder(
-                        searchHint: 'Storage',
-                      ),
-                    ),
-                  ],
-                ),
-                kHeight10,
-                Text(
-                  'Showing All Products',
-                  style: textHeadBold1,
+                GridView.builder(
+                  physics: const NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  itemCount: 7,
+                  scrollDirection: Axis.vertical,
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 10,
+                      mainAxisSpacing: 10,
+                      childAspectRatio: 1 / .2),
+                  itemBuilder: (context, index) {
+                    return const DropDownBuilder(
+                      searchHint: 'Brand',
+                    );
+                  },
                 ),
                 kHeight10,
                 const ProductListView(),

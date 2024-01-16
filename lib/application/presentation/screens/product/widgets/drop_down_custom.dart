@@ -49,9 +49,13 @@ class _DropDownBuilderState extends State<DropDownBuilder> {
           });
         },
         value: myServices1,
-        buttonStyleData: const ButtonStyleData(
+        buttonStyleData: ButtonStyleData(
+          decoration: BoxDecoration(
+            border: Border.all(color: textFieldBorderColor),
+            borderRadius: kRadius5,
+          ),
           elevation: 0,
-          padding: EdgeInsets.symmetric(horizontal: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 16),
           height: 40,
           width: 0,
         ),
@@ -66,14 +70,8 @@ class _DropDownBuilderState extends State<DropDownBuilder> {
         dropdownSearchData: DropdownSearchData(
           searchController: textEditingController,
           searchInnerWidgetHeight: 50,
-          searchInnerWidget: Container(
+          searchInnerWidget: SizedBox(
             height: 50,
-            padding: const EdgeInsets.only(
-              top: 8,
-              bottom: 4,
-              right: 8,
-              left: 8,
-            ),
             child: TextFormField(
               expands: true,
               maxLines: null,

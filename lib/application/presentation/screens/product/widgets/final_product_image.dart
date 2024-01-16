@@ -12,7 +12,7 @@ class FinalProductImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: sWidth * .54,
+      height: sWidth * .5,
       decoration: BoxDecoration(
         color: kBlueLight,
         borderRadius: BorderRadius.circular(10),
@@ -39,14 +39,14 @@ class FinalProductImage extends StatelessWidget {
                       Text(
                         'Iphone 13',
                         style: textHeadBold1.copyWith(
-                            color: kWhite, fontSize: sWidth * .057),
+                            color: kWhite, fontSize: sWidth * .045),
                       ),
-                      kWidth5,
+                      kWidth10,
                       Text(
                         '256 GB | Black',
                         style: textHeadMedium1.copyWith(
                           color: kWhite,
-                          fontSize: sWidth * .033,
+                          fontSize: sWidth * .03,
                         ),
                       ),
                     ],
@@ -55,24 +55,23 @@ class FinalProductImage extends StatelessWidget {
                     'upto ₹ 20,000',
                     style: textHeadMedium1.copyWith(
                       color: kWhite,
-                      fontSize: sWidth * .035,
+                      fontSize: sWidth * .03,
                     ),
                   ),
                   Text(
                     'Note : The Price stated above depends on the condition of the product and is not final.',
                     overflow: TextOverflow.ellipsis,
                     style: textHeadMedium1.copyWith(
-                      fontSize: sWidth * .035,
+                      fontSize: sWidth * .03,
                       color: kWhite,
                     ),
                     maxLines: 6,
                   ),
-
                   kHeight20,
                   CustomButton(
                     text: 'Get Exact Value',
-                    onPressed: () => Navigator.of(context)
-                        .pushNamed(Routes.questions),
+                    onPressed: () =>
+                        Navigator.of(context).pushNamed(Routes.questions),
                   )
                 ],
               ),
