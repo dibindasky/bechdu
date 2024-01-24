@@ -12,7 +12,12 @@ class ConditionTabView extends StatefulWidget {
 }
 
 class _ConditionTabViewState extends State<ConditionTabView> {
-  List<String> old = ['0-3 Months', '3-6 Months', '6-11 Months', '6-11 Months'];
+  List<String> old = [
+    '0-3 Months',
+    '3-6 Months',
+    '6-11 Months',
+    '6-11 Months',
+  ];
   int? selectedIndex;
 
   @override
@@ -38,17 +43,21 @@ class _ConditionTabViewState extends State<ConditionTabView> {
                   padding: const EdgeInsets.all(8.0),
                   child: DecoratedBox(
                     decoration: BoxDecoration(
-                        color: selectedIndex == index ? kBluePrimary : knill,
-                        border: Border.all(color: kBluePrimary, width: 2)),
+                      color: selectedIndex == index ? kBluePrimary : knill,
+                      border: Border.all(
+                        color: kBluePrimary,
+                        width: 2,
+                      ),
+                    ),
                     child: Padding(
                       padding: const EdgeInsets.symmetric(vertical: 15),
                       child: Center(
                         child: Text(
                           old[index],
                           style: textHeadBold1.copyWith(
-                              color: selectedIndex == index
-                                  ? kWhite
-                                  : kBluePrimary),
+                            color:
+                                selectedIndex == index ? kWhite : kBluePrimary,
+                          ),
                         ),
                       ),
                     ),
@@ -64,7 +73,7 @@ class _ConditionTabViewState extends State<ConditionTabView> {
             onPressed: () {
               Navigator.pushNamed(context, Routes.produtPreview);
             },
-            text: 'Continue',
+            text: 'Proceed',
             color: kGreenPrimary,
           ),
         )

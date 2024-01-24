@@ -14,7 +14,7 @@ class DeviceTabView extends StatelessWidget {
         Expanded(
           child: ListView.builder(
             shrinkWrap: true,
-            itemCount: 10,
+            itemCount: 1,
             itemBuilder: (context, index) {
               return const DeviceQuestionTile();
             },
@@ -40,7 +40,10 @@ class DeviceTabView extends StatelessWidget {
 class DeviceQuestionTile extends StatefulWidget {
   const DeviceQuestionTile({
     super.key,
+    this.text,
   });
+
+  final String? text;
 
   @override
   State<DeviceQuestionTile> createState() => _DeviceQuestionTileState();
@@ -48,7 +51,6 @@ class DeviceQuestionTile extends StatefulWidget {
 
 class _DeviceQuestionTileState extends State<DeviceQuestionTile> {
   bool? selected;
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -62,7 +64,7 @@ class _DeviceQuestionTileState extends State<DeviceQuestionTile> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Are You Able to make and receive calls ?',
+                widget.text ?? 'Are You Able to make and receive calls ?',
                 style: textHeadBold1,
               ),
               kHeight10,
@@ -72,7 +74,7 @@ class _DeviceQuestionTileState extends State<DeviceQuestionTile> {
                   kWidth20,
                   yesOrNoButton(yesOrNo: false),
                 ],
-              ),
+              )
             ],
           ),
         ),
@@ -81,7 +83,7 @@ class _DeviceQuestionTileState extends State<DeviceQuestionTile> {
   }
 
   Widget yesOrNoButton({required bool yesOrNo}) {
-    return InkWell(
+    return GestureDetector(
       onTap: () {
         setState(() {
           selected = yesOrNo ? true : false;

@@ -8,28 +8,33 @@ class ElevatedButtonLong extends StatelessWidget {
     required this.onPressed,
     required this.text,
     this.height = 40,
+    this.wdth,
     this.color = kBluePrimary,
     this.textStyle,
   });
   final VoidCallback onPressed;
   final String text;
+  final double? wdth;
   final double height;
   final Color color;
   final TextStyle? textStyle;
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: onPressed,
-      style: ElevatedButton.styleFrom(
-        minimumSize: Size(sWidth, height),
-        backgroundColor: color,
-        shape: RoundedRectangleBorder(borderRadius: kRadius5),
-      ),
-      child: FittedBox(
-        child: Text(
-          text,
-          style: textHeadBold1.copyWith(color: kWhite),
+    return SizedBox(
+      width: wdth,
+      child: ElevatedButton(
+        onPressed: onPressed,
+        style: ElevatedButton.styleFrom(
+          minimumSize: Size(sWidth, height),
+          backgroundColor: color,
+          shape: RoundedRectangleBorder(borderRadius: kRadius5),
+        ),
+        child: FittedBox(
+          child: Text(
+            text,
+            style: textHeadBold1.copyWith(color: kWhite),
+          ),
         ),
       ),
     );

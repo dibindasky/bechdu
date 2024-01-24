@@ -1,6 +1,8 @@
+import 'package:beachdu/application/presentation/routes/routes.dart';
 import 'package:beachdu/application/presentation/screens/pickup/pickup_contaners/date_selection/date_picking_bottom_sheet.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
+import 'package:beachdu/application/presentation/widgets/custom_elevated_button.dart';
 import 'package:flutter/material.dart';
 
 class DateOrTime extends StatefulWidget {
@@ -113,6 +115,16 @@ class _DateOrTimeState extends State<DateOrTime> {
                     ),
                   ),
                 ],
+              ),
+            ),
+            Align(
+              alignment: Alignment.center,
+              child: ElevatedButtonLong(
+                wdth: 200,
+                onPressed: () {
+                  Navigator.of(context).pushNamed(Routes.pickUpDetailScreen);
+                },
+                text: 'Place Order',
               ),
             ),
           ],

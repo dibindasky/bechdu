@@ -27,15 +27,17 @@ class ProductPreviewQuestion extends StatelessWidget {
                 children: [
                   kWidth20,
                   SizedBox(
-                    height: sWidth * 0.30,
-                    width: sWidth * 0.22,
+                    height: sWidth * 0.26,
+                    width: sWidth * 0.2,
                     child: FittedBox(
                       child: HeroWidget(
-                          tag: HeroTag.image(mobileWithOutBackgroundNetwork),
-                          child: Image.network(mobileWithOutBackgroundNetwork)),
+                        tag: HeroTag.image(mobileWithOutBackgroundNetwork),
+                        child: Image.network(mobileWithOutBackgroundNetwork),
+                      ),
                     ),
                   ),
-                  SizedBox(width: sWidth * 0.45,
+                  SizedBox(
+                    width: sWidth * 0.45,
                     child: FittedBox(
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -48,7 +50,7 @@ class ProductPreviewQuestion extends StatelessWidget {
                                 child: Text(
                                   'Iphone 13',
                                   style: textHeadRegular1.copyWith(
-                                      color: kWhite, fontSize: sWidth * 0.055),
+                                      color: kWhite, fontSize: sWidth * 0.05),
                                 ),
                               ),
                               kWidth5,
@@ -65,20 +67,17 @@ class ProductPreviewQuestion extends StatelessWidget {
                           Text(
                             'Device Diagnosis',
                             style: textHeadBold1.copyWith(
-                                color: kWhite, fontSize: sWidth * 0.065),
+                                color: kWhite, fontSize: sWidth * 0.06),
                           )
                         ],
                       ),
                     ),
                   ),
                   const Spacer(),
-                  const RotatedBox(
-                      quarterTurns: 1,
-                      child: Icon(
-                        Icons.arrow_forward_ios,
-                        color: kWhite,
-                      )),
-                  const Spacer(),
+                  const Icon(
+                    Icons.keyboard_arrow_down_sharp,
+                    color: kWhite,
+                  ),
                 ],
               ),
             ),

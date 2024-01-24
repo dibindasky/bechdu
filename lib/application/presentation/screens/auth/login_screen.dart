@@ -141,18 +141,39 @@ class _ScreenLoginState extends State<ScreenLogin>
                 ),
               ),
               kHeight50,
+              Align(
+                alignment: Alignment.center,
+                child: TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pushReplacementNamed(
+                      Routes.bottomBar,
+                    );
+                  },
+                  child: Text(
+                    'Skip for now',
+                    style: textHeadInter.copyWith(
+                      fontSize: sWidth * .045,
+                      color: klightGreen,
+                      decoration: TextDecoration.underline,
+                      decorationColor:
+                          klightGreen, // You can set the color of the underline
+                      decorationThickness: 1.4,
+                    ),
+                  ),
+                ),
+              ),
               kHeight50,
               ElevatedButtonLong(
                 onPressed: () {
-                  if (phoneController.text.isEmpty) {
-                    //   showSnack(
-                    //       context: context, message: 'Number Field is empty');
-                    //   print('No number');
-                    // } else {
-                    showSnack(context: context, message: 'Done');
-                    loginOrSignup();
-                    print(phoneController.text);
-                  }
+                  // if (phoneController.text.isEmpty) {
+                  //   showSnack(
+                  //       context: context, message: 'Number Field is empty');
+                  //   print('No number');
+                  // } else {
+                  showSnack(context: context, message: 'Done');
+                  loginOrSignup();
+                  print(phoneController.text);
+                  // }
                 },
                 text: 'Get OTP',
               ),

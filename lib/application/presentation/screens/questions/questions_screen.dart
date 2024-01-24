@@ -58,10 +58,11 @@ class _ScreenQuestionsState extends State<ScreenQuestions>
                 automaticIndicatorColorAdjustment: false,
                 controller: tabController,
                 dividerHeight: 0,
-                labelStyle: textHeadBold1.copyWith(fontSize: sWidth < 400 ?  sWidth * 0.031 :  sWidth * 0.024),
+                labelStyle: textHeadBold1.copyWith(
+                    fontSize: sWidth < 400 ? sWidth * 0.031 : sWidth * 0.024),
                 indicator: BoxDecoration(
                     color: kGreenPrimary, borderRadius: kRadius15),
-                isScrollable: false,
+                isScrollable: true,
                 indicatorSize: TabBarIndicatorSize.tab,
                 indicatorPadding: const EdgeInsets.all(10),
                 onTap: (value) {
@@ -86,10 +87,11 @@ class _ScreenQuestionsState extends State<ScreenQuestions>
         child: Padding(
           padding: const EdgeInsets.all(15),
           child: ValueListenableBuilder(
-              valueListenable: questionsIndexNotifier,
-              builder: (context, value, _) {
-                return tabChildren[tabController.index];
-              }),
+            valueListenable: questionsIndexNotifier,
+            builder: (context, value, _) {
+              return tabChildren[tabController.index];
+            },
+          ),
         ),
       ),
     );

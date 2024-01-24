@@ -20,6 +20,7 @@ class HotDealsSession extends StatelessWidget {
             style: textHeadBoldBig,
           ),
           ListView.builder(
+            padding: const EdgeInsets.only(top: 5),
             physics: const NeverScrollableScrollPhysics(),
             shrinkWrap: true,
             itemCount: 2,

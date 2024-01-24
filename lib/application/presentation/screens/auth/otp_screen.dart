@@ -136,6 +136,25 @@ class _OTPScreenState extends State<OTPScreen>
               ),
               kHeight50,
               kHeight50,
+              Align(
+                alignment: Alignment.center,
+                child: TextButton(
+                  onPressed: () {
+                    loginOrSignup();
+                  },
+                  child: Text(
+                    'Skip for now',
+                    style: textHeadInter.copyWith(
+                      fontSize: sWidth * .045,
+                      color: klightGreen,
+                      decoration: TextDecoration.underline,
+                      decorationColor:
+                          klightGreen, // You can set the color of the underline
+                      decorationThickness: 1.4,
+                    ),
+                  ),
+                ),
+              ),
               kHeight50,
               ElevatedButtonLong(
                 onPressed: () {

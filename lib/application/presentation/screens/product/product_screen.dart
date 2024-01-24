@@ -22,37 +22,47 @@ class ScreenProductSelection extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: ListView(
-              //  crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
+              children: const [
                 kHeight20,
-                const ProductScreenSearchField(),
+                ProductScreenSearchField(),
                 kHeight10,
-                GridView.builder(
-                  physics: const NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  itemCount: 7,
-                  scrollDirection: Axis.vertical,
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      crossAxisSpacing: 10,
-                      mainAxisSpacing: 10,
-                      childAspectRatio: 1 / .2),
-                  itemBuilder: (context, index) {
-                    return const DropDownBuilder(
-                      searchHint: 'Brand',
-                    );
-                  },
-                ),
+                PridustsSelectinDropDowNBuilder(),
                 kHeight10,
-                const ProductListView(),
+                ProductListView(),
                 kHeight20,
-                const FinalProductImage(),
+                FinalProductImage(),
                 kHeight20,
               ],
             ),
           ),
         ),
       ),
+    );
+  }
+}
+
+class PridustsSelectinDropDowNBuilder extends StatelessWidget {
+  const PridustsSelectinDropDowNBuilder({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GridView.builder(
+      physics: const NeverScrollableScrollPhysics(),
+      shrinkWrap: true,
+      itemCount: 7,
+      scrollDirection: Axis.vertical,
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          crossAxisSpacing: 10,
+          mainAxisSpacing: 10,
+          childAspectRatio: 1 / .2),
+      itemBuilder: (context, index) {
+        return const DropDownBuilder(
+          searchHint: 'Brand',
+        );
+      },
     );
   }
 }

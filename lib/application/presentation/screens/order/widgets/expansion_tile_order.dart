@@ -31,74 +31,79 @@ class _MyOrderExpansionTileState extends State<MyOrderExpansionTile> {
           margin: const EdgeInsets.all(10),
           width: double.infinity,
           child: ExpansionTile(
-              controlAffinity: ListTileControlAffinity.platform,
-              shape: BeveledRectangleBorder(borderRadius: kRadius10),
-              onExpansionChanged: (value) => setState(() {
-                    isExpanded = value;
-                  }),
-              title: Text(
-                'Heading',
-                style: textHeadMedium1,
-              ),
-              subtitle: Text(
-                '₹ 13,999',
-                style: textHeadRegular1,
-              ),
-              trailing: ClipRRect(
-                borderRadius: kRadius5,
-                child: ColoredBox(
-                  color: kRedLight.withOpacity(0.5),
-                  child: Padding(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                    child: Text(
-                      'Pickup Pending',
-                      style: textHeadRegular1.copyWith(color: kRed),
-                    ),
+            controlAffinity: ListTileControlAffinity.platform,
+            shape: BeveledRectangleBorder(borderRadius: kRadius10),
+            onExpansionChanged: (value) => setState(() {
+              isExpanded = value;
+            }),
+            title: Text(
+              'Heading',
+              style: textHeadMedium1,
+            ),
+            subtitle: Text(
+              '₹ 13,999',
+              style: textHeadRegular1,
+            ),
+            trailing: ClipRRect(
+              borderRadius: kRadius5,
+              child: ColoredBox(
+                color: kRedLight.withOpacity(0.5),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 10,
+                    vertical: 5,
+                  ),
+                  child: Text(
+                    'Pickup Pending',
+                    style: textHeadRegular1.copyWith(color: kRed),
                   ),
                 ),
               ),
-              children: [
-                ListTile(
-                    title: Text(
-                      'Mukesh Sharma',
-                      style: textHeadBold1,
-                    ),
-                    subtitle: Text(
-                      'mukeshsharma@gmail.com',
-                      style: textHeadRegular1,
-                    ),
-                    trailing: Container(
-                      padding: const EdgeInsets.all(6),
-                      decoration: BoxDecoration(
-                          border: Border.all(color: kGreenPrimary),
-                          borderRadius: BorderRadius.circular(350)),
-                      child: const Icon(Icons.phone),
-                    )),
-                ListTile(
-                  title: Text(
-                    'Pickup location',
-                    style: textHeadBold1,
+            ),
+            children: [
+              ListTile(
+                title: Text(
+                  'Mukesh Sharma',
+                  style: textHeadBold1,
+                ),
+                subtitle: Text(
+                  'mukeshsharma@gmail.com',
+                  style: textHeadRegular1,
+                ),
+                trailing: Container(
+                  padding: const EdgeInsets.all(6),
+                  decoration: BoxDecoration(
+                    border: Border.all(color: kGreenPrimary),
+                    borderRadius: BorderRadius.circular(350),
                   ),
-                  subtitle: Text(
-                    "Nikhita Stores, 201/B, Nirant Apts, Andheri East 400069",
-                    maxLines: 2,
-                    style: textHeadRegular1,
+                  child: const Icon(Icons.phone),
+                ),
+              ),
+              ListTile(
+                title: Text(
+                  'Pickup location',
+                  style: textHeadBold1,
+                ),
+                subtitle: Text(
+                  "Nikhita Stores, 201/B, Nirant Apts, Andheri East 400069",
+                  maxLines: 2,
+                  style: textHeadRegular1,
+                ),
+                trailing: const CircleAvatar(
+                  backgroundColor: kGreenPrimary,
+                  child: Icon(
+                    Icons.edit,
+                    color: kWhite,
                   ),
-                  trailing: const CircleAvatar(
-                    backgroundColor: kGreenPrimary,
-                    child: Icon(
-                      Icons.edit,
-                      color: kWhite,
-                    ),
-                  ),
-                )
-              ]),
+                ),
+              )
+            ],
+          ),
         ),
         isExpanded
             ? kEmpty
             : Positioned(
-                bottom: 8,
+                bottom: 10,
                 left: sWidth / 2 - 21,
                 child: const IgnorePointer(
                   child: Icon(Icons.keyboard_arrow_down_sharp),

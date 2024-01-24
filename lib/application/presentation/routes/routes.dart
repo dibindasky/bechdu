@@ -8,6 +8,8 @@ class Routes {
   static const String searchScreen = '/search_screen';
   static const String profile = '/profile';
   static const String questions = '/questions_screen';
+  static const String afterQuestionScreen = '/after_question_screen';
+  static const String finalPriceScreen = '/final_price_screen';
   static const String produtPreview = '/product_preview_screen';
   static const String pickUpDetailScreen = '/pickup_detail_screen';
 }

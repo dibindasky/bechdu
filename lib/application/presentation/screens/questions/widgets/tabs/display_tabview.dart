@@ -42,7 +42,7 @@ class DisplayTabView extends StatelessWidget {
             text: 'Continue',
             color: kGreenPrimary,
           ),
-        )
+        ),
       ],
     );
   }

@@ -36,14 +36,14 @@ class WhatToSellWidget extends StatelessWidget {
               physics: const NeverScrollableScrollPhysics(),
               itemCount: 6,
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                childAspectRatio: 1/0.8,
+                childAspectRatio: 1 / 0.8,
                 crossAxisCount: 3,
               ),
               shrinkWrap: true,
               itemBuilder: (context, index) {
                 return InkWell(
                   onTap: () {
-                    bottomBarNotifier.value=1;
+                    bottomBarNotifier.value = 1;
                     bottomBarNotifier.notifyListeners();
                   },
                   child: Column(
@@ -66,7 +66,7 @@ class WhatToSellWidget extends StatelessWidget {
                       Text(
                         gridData[index % 4][0],
                         style: textHeadMedium1,
-                      )
+                      ),
                     ],
                   ),
                 );

@@ -19,7 +19,10 @@ class ScreenSplash extends StatelessWidget {
       body: Center(
         child: Text(
           'BECHDU',
-          style: textHeadBold1.copyWith(color: kWhite, fontSize: sWidth * 0.07),
+          style: textHeadBold1.copyWith(
+            color: kWhite,
+            fontSize: sWidth * 0.07,
+          ),
         ),
       ),
     );

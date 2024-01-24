@@ -82,7 +82,7 @@ class ProfileIndro extends StatelessWidget {
               backgroundColor: kGreenPrimary,
               radius: 13,
               child: Icon(
-                Icons.drive_file_rename_outline_outlined,
+                Icons.edit,
                 color: kWhite,
                 size: 15,
               ),

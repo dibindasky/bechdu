@@ -95,6 +95,9 @@ flutter:
     - family: Gilroy-SemiBold
       fonts:
         - asset: assets/fonts/Gilroy-SemiBold.ttf
+    - family: Inter-VariableFont_slnt,wght.ttf
+      fonts:
+        - asset: assets/fonts/Inter-VariableFont_slnt,wght.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

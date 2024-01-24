@@ -26,17 +26,22 @@ class _GridTileQuestionState extends State<GridTileQuestion> {
         borderRadius: kRadius10,
         child: DecoratedBox(
           decoration: BoxDecoration(
-              border: Border.all(
-                  color: selected ? kGreenPrimary : kBlack,
-                  width: selected ? 3 : 1),
-              borderRadius: kRadius10),
+            border: Border.all(
+              color: selected ? kGreenPrimary : kBlack,
+              width: selected ? 3 : 1,
+            ),
+            borderRadius: kRadius10,
+          ),
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Column(
               children: [
                 AspectRatio(
-                    aspectRatio: 1,
-                    child: FittedBox(child: Image.asset(defectedMobile))),
+                  aspectRatio: 1,
+                  child: FittedBox(
+                    child: Image.asset(defectedMobile),
+                  ),
+                ),
                 Text(
                   'Broken/scratch on device screen',
                   style: textHeadBold1,

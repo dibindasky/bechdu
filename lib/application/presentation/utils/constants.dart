@@ -5,6 +5,8 @@ const gilroyBold = 'Gilroy-Bold';
 const gilroyMedium = 'Gilroy-Medium';
 const gilroyRegular = 'Gilroy-Regular';
 const gilroySemiBold = 'Gilroy-SemiBold';
+const inter = 'Inter-VariableFont_slnt,wght';
+
 const bechduMainlogo = 'assets/images/bechdu_logo.png';
 const beachdulogo = 'assets/images/beachdu_logo.png';
 const searchIcon = 'assets/images/search_icon.png';
@@ -74,6 +76,12 @@ final textHeadRegular1 = TextStyle(
 final textHeadSemiBold1 = TextStyle(
   color: kBlack,
   fontFamily: gilroySemiBold,
+  fontWeight: FontWeight.w400,
+  fontSize: sWidth < 400 ? sWidth * 0.040 : sWidth * 0.035,
+);
+final textHeadInter = TextStyle(
+  color: kBlack,
+  fontFamily: inter,
   fontWeight: FontWeight.w400,
   fontSize: sWidth < 400 ? sWidth * 0.040 : sWidth * 0.035,
 );

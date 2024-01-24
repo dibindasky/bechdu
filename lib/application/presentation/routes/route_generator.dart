@@ -7,7 +7,8 @@ import 'package:beachdu/application/presentation/screens/navbar/bottombar.dart';
 import 'package:beachdu/application/presentation/screens/pickup/pickup_screen.dart';
 import 'package:beachdu/application/presentation/screens/product/product_screen.dart';
 import 'package:beachdu/application/presentation/screens/profile/profile_screen.dart';
-import 'package:beachdu/application/presentation/screens/questions/product_preview_screen.dart';
+import 'package:beachdu/application/presentation/screens/questions/after_question_checked/final_price_screen/final_price_screen.dart';
+import 'package:beachdu/application/presentation/screens/questions/after_question_checked/product_preview_screen.dart';
 import 'package:beachdu/application/presentation/screens/questions/questions_screen.dart';
 import 'package:beachdu/application/presentation/screens/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
@@ -34,14 +35,10 @@ class RouteGenerator {
         return noTrancitionRoute(screen: const ScreenProductPreview());
       case Routes.searchScreen:
         return fadePageRoute(screen: const ScreenProductSelection());
+      case Routes.finalPriceScreen:
+        return fadePageRoute(screen: const FinalPriceScreen());
       case Routes.profile:
         return fadePageRoute(screen: const ScreenProfile());
-
-      // case Routes.questions:
-      //   return arguments is String
-      //       ? MaterialPageRoute(
-      //           builder: (ctx) => ScreenQuestions(aa: arguments,))
-      //       : _errorScreen();
       default:
         return _errorScreen();
     }
