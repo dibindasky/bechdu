@@ -28,20 +28,37 @@ class FinalProductPriceDetaails extends StatelessWidget {
                 'Free',
                 style: textHeadMedium1.copyWith(color: kGreenPrimary),
               ),
-              const Text('₹ 200'),
+              Text(
+                '₹ 200',
+                style: textHeadMedium1.copyWith(
+                  decoration: TextDecoration.lineThrough,
+                  decorationColor:
+                      kBlack, // You can set the color of the strikethrough
+                  decorationThickness: 2.0,
+                ),
+              ),
             ],
           ),
         ),
         kHeight10,
         TextFormField(
+          style: TextStyle(
+            color: kWhite,
+            fontSize: sWidth * 0.033,
+          ),
+          keyboardType: TextInputType.name,
           decoration: InputDecoration(
-            hintText: 'BCHDUFIRST',
-            hintStyle: textHeadMedium1.copyWith(color: Colors.grey),
+            suffixText: 'Apply',
+            fillColor: kWhiteextra,
             filled: true,
-            fillColor: kWhite.withOpacity(.2),
+            hintText: 'BCHDUFIRST',
+            border: UnderlineInputBorder(
+              borderSide: BorderSide.none,
+              borderRadius: BorderRadius.circular(7),
+            ),
           ),
         ),
-        kHeight10,
+        kHeight20,
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10),
           child: Row(
@@ -55,7 +72,7 @@ class FinalProductPriceDetaails extends StatelessWidget {
             ],
           ),
         ),
-        kHeight10,
+        kHeight20,
         const Divider(thickness: 2),
         kHeight20,
         Padding(

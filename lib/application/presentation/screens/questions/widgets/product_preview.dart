@@ -1,7 +1,5 @@
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
-import 'package:beachdu/application/presentation/utils/hero/hero_animation.dart';
-import 'package:beachdu/application/presentation/utils/hero/hero_tag.dart';
 import 'package:flutter/material.dart';
 
 class ProductPreviewQuestion extends StatelessWidget {
@@ -27,14 +25,9 @@ class ProductPreviewQuestion extends StatelessWidget {
                 children: [
                   kWidth20,
                   SizedBox(
-                    height: sWidth * 0.26,
-                    width: sWidth * 0.2,
-                    child: FittedBox(
-                      child: HeroWidget(
-                        tag: HeroTag.image(mobileWithOutBackgroundNetwork),
-                        child: Image.network(mobileWithOutBackgroundNetwork),
-                      ),
-                    ),
+                    height: sWidth * 0.23,
+                    width: sWidth * 0.13,
+                    child: Image.asset(mobileTransperantassetImage),
                   ),
                   SizedBox(
                     width: sWidth * 0.45,
@@ -45,30 +38,28 @@ class ProductPreviewQuestion extends StatelessWidget {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              HeroWidget(
-                                tag: HeroTag.text('Iphone 13'),
-                                child: Text(
-                                  'Iphone 13',
-                                  style: textHeadRegular1.copyWith(
-                                      color: kWhite, fontSize: sWidth * 0.05),
+                              Text(
+                                'Iphone 13',
+                                style: textHeadRegular1.copyWith(
+                                  color: kWhite,
+                                  fontSize: sWidth * 0.045,
                                 ),
                               ),
                               kWidth5,
-                              HeroWidget(
-                                tag: HeroTag.text('256 GB | Black'),
-                                child: Text(
-                                  '256 GB | Black',
-                                  style: textHeadMedium1.copyWith(
-                                      color: kWhite, fontSize: sWidth * 0.035),
-                                ),
+                              Text(
+                                '256 GB | Black',
+                                style: textHeadMedium1.copyWith(
+                                    color: kWhite, fontSize: sWidth * 0.03),
                               )
                             ],
                           ),
                           Text(
                             'Device Diagnosis',
                             style: textHeadBold1.copyWith(
-                                color: kWhite, fontSize: sWidth * 0.06),
-                          )
+                              color: kWhite,
+                              fontSize: sWidth * 0.056,
+                            ),
+                          ),
                         ],
                       ),
                     ),

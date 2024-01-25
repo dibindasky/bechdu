@@ -70,8 +70,9 @@ class FinalProductImage extends StatelessWidget {
                   kHeight20,
                   CustomButton(
                     text: 'Get Exact Value',
-                    onPressed: () =>
-                        Navigator.of(context).pushNamed(Routes.questions),
+                    onPressed: () {
+                      Navigator.of(context).pushNamed(Routes.questions);
+                    },
                   )
                 ],
               ),

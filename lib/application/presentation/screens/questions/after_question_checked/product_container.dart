@@ -1,3 +1,4 @@
+import 'package:beachdu/application/presentation/routes/routes.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/application/presentation/utils/hero/hero_animation.dart';
@@ -25,15 +26,8 @@ class ProductContainer extends StatelessWidget {
               SizedBox(
                 height: sWidth * 0.2,
                 width: sWidth * 0.15,
-                child: FittedBox(
-                  child: HeroWidget(
-                    tag: HeroTag.image(
-                      mobileWithOutBackgroundNetwork,
-                    ),
-                    child: Image.network(
-                      mobileWithOutBackgroundNetwork,
-                    ),
-                  ),
+                child: Image.asset(
+                  mobileTransperantassetImage,
                 ),
               ),
               kWidth20,
@@ -47,25 +41,19 @@ class ProductContainer extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          HeroWidget(
-                            tag: HeroTag.text('Iphone 13'),
-                            child: Text(
-                              'Iphone 13',
-                              style: textHeadRegular1.copyWith(
-                                color: kWhite,
-                                fontSize: sWidth * 0.05,
-                              ),
+                          Text(
+                            'Iphone 13',
+                            style: textHeadRegular1.copyWith(
+                              color: kWhite,
+                              fontSize: sWidth * 0.05,
                             ),
                           ),
                           kWidth5,
-                          HeroWidget(
-                            tag: HeroTag.text('256 GB | Black'),
-                            child: Text(
-                              '256 GB | Black',
-                              style: textHeadMedium1.copyWith(
-                                color: kWhite,
-                                fontSize: sWidth * 0.035,
-                              ),
+                          Text(
+                            '256 GB | Black',
+                            style: textHeadMedium1.copyWith(
+                              color: kWhite,
+                              fontSize: sWidth * 0.035,
                             ),
                           )
                         ],
@@ -88,7 +76,10 @@ class ProductContainer extends StatelessWidget {
                             ),
                           ),
                           TextButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.of(context).pushNamedAndRemoveUntil(
+                                  Routes.questions, (route) => false);
+                            },
                             child: Text(
                               'Recalculate',
                               style: textHeadBold1.copyWith(

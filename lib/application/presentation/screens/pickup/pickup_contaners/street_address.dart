@@ -1,4 +1,5 @@
 import 'package:beachdu/application/presentation/screens/pickup/widgets/textfeild_custom.dart';
+import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:flutter/material.dart';
 
@@ -15,6 +16,8 @@ class StreetAddress extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            PickupScreenAddressListView(),
+            kHeight20,
             Text(
               'STREET ADDRESS',
               style: textHeadMedium1.copyWith(
@@ -55,6 +58,56 @@ class StreetAddress extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+}
+
+class PickupScreenAddressListView extends StatelessWidget {
+  PickupScreenAddressListView({
+    super.key,
+  });
+
+  bool isSelected = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.separated(
+      separatorBuilder: (context, index) {
+        return kHeight20;
+      },
+      itemCount: 2,
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      itemBuilder: (context, index) {
+        return Material(
+          elevation: 2,
+          child: Padding(
+            padding: const EdgeInsets.all(12),
+            child: Align(
+              alignment: Alignment.centerLeft,
+              child: FittedBox(
+                child: Row(
+                  children: [
+                    const CircleAvatar(
+                      radius: 17,
+                      child: Icon(
+                        Icons.location_pin,
+                        color: kGreenPrimary,
+                      ),
+                    ),
+                    kWidth10,
+                    Text(
+                      'Zikrabyte Solutions, jayanagar 9th block, bangalore',
+                      style: textHeadMedium1,
+                      textAlign: TextAlign.center,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        );
+      },
     );
   }
 }

@@ -23,6 +23,8 @@ const mobileNetworkImage =
     'https://img.freepik.com/free-photo/smartphone-balancing-with-pink-background_23-2150271746.jpg?size=338&ext=jpg&ga=GA1.1.1412446893.1704758400&semt=sph';
 const profileImage =
     'https://cdn4.sharechat.com/WhatsAppprofiledpboys_d7f9b06_1658641555734_sc_cmprsd_75.jpg?tenant=sc&referrer=trending-feed-service&f=rsd_75.jpg';
+const orderSuccessNetwrokImage =
+    'https://s3-alpha-sig.figma.com/img/0c88/1cbc/8744bb18caf793eaadc694435afa0ebf?Expires=1707091200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=A017~DJZjkzYM6URwdWMSAgfe5uIFNxttsFoqrT4I3j9ykGTh5i~h-aFqbwChF6LYA~JBB9omy8FkuD4bDqi~VX~68PIeQiXTeIkkHcaGigVbdZtc~VvKFW1gXkBu-3I9ionTIp15XhV7TJzpVoangnY0EB-CylKRhhfvc4Y0V7OQ2cWNiOwHuuOZlqnjko0q~N5-JQUsZcp-LGmJVJD342tYj3EdZTZ0Yw860ZMN2aD2YQkTO4HnSHHQK5eLg-wOEay2hLAMn92n6VS6PmPy6PlaOoNH9rZbte2Ni-Z3dc82QIx4vhUbr2q7WEFMD4ROn6vs5RDVDlzRIXeESZsMg__';
 double sHeight = 900;
 double sWidth = 400;
 

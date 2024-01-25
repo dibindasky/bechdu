@@ -10,25 +10,42 @@ class FinalPriceScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-      ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 15),
-        child: Column(
-          children: [
-            const FinalProductContiner(),
-            kHeight10,
-            const FinalProductPriceDetaails(),
-            ElevatedButtonLong(
-              wdth: 200,
-              onPressed: () {
-                Navigator.of(context).pushNamed(Routes.pickUpDetailScreen);
-              },
-              text: 'Continue to Details',
+    return GestureDetector(
+      onTap: () {
+        FocusScopeNode focusScopeNode = FocusScope.of(context);
+        if (!focusScopeNode.hasPrimaryFocus) {
+          focusScopeNode.unfocus();
+        }
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          automaticallyImplyLeading: false,
+        ),
+        body: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 15),
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                SizedBox(
+                  height: sHeight * .76,
+                  child: const Column(
+                    children: [
+                      FinalProductContiner(),
+                      kHeight30,
+                      FinalProductPriceDetaails(),
+                    ],
+                  ),
+                ),
+                ElevatedButtonLong(
+                  wdth: 200,
+                  onPressed: () {
+                    Navigator.of(context).pushNamed(Routes.pickUpDetailScreen);
+                  },
+                  text: 'Continue to Details',
+                ),
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );

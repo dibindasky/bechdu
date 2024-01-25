@@ -23,6 +23,7 @@ class _CashOrUPIState extends State<CashOrUPI> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
             'CASH / UPI',
@@ -30,6 +31,7 @@ class _CashOrUPIState extends State<CashOrUPI> {
               fontSize: sWidth * .033,
             ),
           ),
+          kHeight10,
           Row(
             children: [
               Expanded(child: customRadioButton('Cash', 'Option 1')),

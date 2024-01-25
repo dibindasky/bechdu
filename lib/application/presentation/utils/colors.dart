@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 const Color kBlack = Colors.black;
 const Color kWhite = Colors.white;
+const Color kWhiteextra = Color.fromARGB(255, 239, 239, 239);
 const Color klightBlack = Colors.black87;
 const Color textFieldBorderColor = Color.fromARGB(255, 125, 125, 125);
 const Color kBlueLight = Color(0xFF175076);

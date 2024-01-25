@@ -10,6 +10,8 @@ class Routes {
   static const String questions = '/questions_screen';
   static const String afterQuestionScreen = '/after_question_screen';
   static const String finalPriceScreen = '/final_price_screen';
+  static const String myOrders = '/my_orders';
+  static const String successOder = '/succes_order';
   static const String produtPreview = '/product_preview_screen';
   static const String pickUpDetailScreen = '/pickup_detail_screen';
 }
