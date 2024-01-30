@@ -1,14 +1,11 @@
-import 'package:beachdu/application/presentation/routes/routes.dart';
+import 'package:beachdu/application/presentation/screens/navbar/bottombar.dart';
+import 'package:beachdu/application/presentation/screens/questions/questions_screen.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
-import 'package:beachdu/application/presentation/utils/hero/hero_animation.dart';
-import 'package:beachdu/application/presentation/utils/hero/hero_tag.dart';
 import 'package:flutter/material.dart';
 
 class ProductContainer extends StatelessWidget {
-  const ProductContainer({
-    super.key,
-  });
+  const ProductContainer({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -77,8 +74,10 @@ class ProductContainer extends StatelessWidget {
                           ),
                           TextButton(
                             onPressed: () {
-                              Navigator.of(context).pushNamedAndRemoveUntil(
-                                  Routes.questions, (route) => false);
+                              // Navigator.of(context).pushNamedAndRemoveUntil(
+                              //     Routes.questions, (route) => false);
+                              body[1] = const ScreenQuestions();
+                              bottomBarNotifier.notifyListeners();
                             },
                             child: Text(
                               'Recalculate',

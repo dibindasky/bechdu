@@ -1,4 +1,4 @@
-import 'package:beachdu/application/presentation/screens/order/widgets/expansion_tile_order.dart';
+import 'package:beachdu/application/presentation/screens/order/widgets/my_order_container.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:flutter/material.dart';
 
@@ -9,7 +9,6 @@ class ScreenMyOrders extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        centerTitle: true,
         automaticallyImplyLeading: false,
         title: Text(
           'My Orders',
@@ -19,8 +18,8 @@ class ScreenMyOrders extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 5),
         child: ListView.builder(
-          itemCount: 15,
-          itemBuilder: (context, index) => const MyOrderExpansionTile(),
+          itemCount: 1,
+          itemBuilder: (context, index) => const MyOrderContainer(),
         ),
       ),
     );

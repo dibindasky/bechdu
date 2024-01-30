@@ -1,5 +1,6 @@
-import 'package:beachdu/application/presentation/routes/routes.dart';
+import 'package:beachdu/application/presentation/screens/navbar/bottombar.dart';
 import 'package:beachdu/application/presentation/screens/questions/after_question_checked/expansion_tile_Product_preview.dart';
+import 'package:beachdu/application/presentation/screens/questions/after_question_checked/final_price_screen/final_price_screen.dart';
 import 'package:beachdu/application/presentation/screens/questions/after_question_checked/product_container.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
@@ -20,7 +21,7 @@ class ScreenProductPreview extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             Container(
-              height: sHeight * .6,
+              height: sHeight * .61,
               decoration: BoxDecoration(
                 boxShadow: [
                   BoxShadow(
@@ -44,7 +45,9 @@ class ScreenProductPreview extends StatelessWidget {
             ElevatedButtonLong(
               wdth: 200,
               onPressed: () {
-                Navigator.of(context).pushNamed(Routes.finalPriceScreen);
+                //Navigator.of(context).pushNamed(Routes.finalPriceScreen);
+                body[1] = const FinalPriceScreen();
+                bottomBarNotifier.notifyListeners();
               },
               text: 'Continue',
             ),

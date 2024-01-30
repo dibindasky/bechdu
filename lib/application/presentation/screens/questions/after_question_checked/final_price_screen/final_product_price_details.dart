@@ -32,8 +32,7 @@ class FinalProductPriceDetaails extends StatelessWidget {
                 '₹ 200',
                 style: textHeadMedium1.copyWith(
                   decoration: TextDecoration.lineThrough,
-                  decorationColor:
-                      kBlack, // You can set the color of the strikethrough
+                  decorationColor: kBlack,
                   decorationThickness: 2.0,
                 ),
               ),

@@ -1,4 +1,6 @@
 import 'package:beachdu/application/presentation/routes/routes.dart';
+import 'package:beachdu/application/presentation/screens/navbar/bottombar.dart';
+import 'package:beachdu/application/presentation/screens/pickup/pickup_screen.dart';
 import 'package:beachdu/application/presentation/screens/questions/after_question_checked/final_price_screen/final_product_container.dart';
 import 'package:beachdu/application/presentation/screens/questions/after_question_checked/final_price_screen/final_product_price_details.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
@@ -18,11 +20,11 @@ class FinalPriceScreen extends StatelessWidget {
         }
       },
       child: Scaffold(
-        appBar: AppBar(
-          automaticallyImplyLeading: false,
-        ),
+        // appBar: AppBar(
+        //   automaticallyImplyLeading: false,
+        // ),
         body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15),
+          padding: const EdgeInsets.only(left: 15, right: 15, top: 60),
           child: SingleChildScrollView(
             child: Column(
               children: [
@@ -39,7 +41,9 @@ class FinalPriceScreen extends StatelessWidget {
                 ElevatedButtonLong(
                   wdth: 200,
                   onPressed: () {
-                    Navigator.of(context).pushNamed(Routes.pickUpDetailScreen);
+                    //Navigator.of(context).pushNamed(Routes.pickUpDetailScreen);
+                    body[1] = const ScreenPickUp();
+                    bottomBarNotifier.notifyListeners();
                   },
                   text: 'Continue to Details',
                 ),

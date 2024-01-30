@@ -1,5 +1,7 @@
 import 'package:beachdu/application/presentation/routes/routes.dart';
+import 'package:beachdu/application/presentation/screens/navbar/bottombar.dart';
 import 'package:beachdu/application/presentation/screens/pickup/pickup_contaners/date_selection/date_picking_bottom_sheet.dart';
+import 'package:beachdu/application/presentation/screens/questions/after_question_checked/success_order/success_product_place_rder.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/application/presentation/widgets/custom_elevated_button.dart';
@@ -128,7 +130,9 @@ class _DateOrTimeState extends State<DateOrTime> {
             child: ElevatedButtonLong(
               wdth: 200,
               onPressed: () {
-                Navigator.of(context).pushNamed(Routes.successOder);
+                //Navigator.of(context).pushNamed(Routes.successOder);
+                body[1] = const SuuccessOrderPlaced();
+                bottomBarNotifier.notifyListeners();
               },
               text: 'Place Order',
             ),

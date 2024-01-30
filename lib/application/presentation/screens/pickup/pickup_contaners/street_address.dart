@@ -80,7 +80,7 @@ class PickupScreenAddressListView extends StatelessWidget {
       physics: const NeverScrollableScrollPhysics(),
       itemBuilder: (context, index) {
         return Material(
-          elevation: 2,
+          elevation: 1.3,
           child: Padding(
             padding: const EdgeInsets.all(12),
             child: Align(

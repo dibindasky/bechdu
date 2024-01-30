@@ -7,24 +7,26 @@ class DropDownBuilder extends StatefulWidget {
   const DropDownBuilder({
     super.key,
     required this.searchHint,
+    required this.optionsList,
   });
 
   final String searchHint;
+  final List<List<String>> optionsList;
 
   @override
   State<DropDownBuilder> createState() => _DropDownBuilderState();
 }
 
 class _DropDownBuilderState extends State<DropDownBuilder> {
-  List<String> options1 = [
-    'Brand',
-    'develop',
-    'web',
-    'IOS',
-    'Digital',
-  ];
+  late List<String> selectedOption;
+  int selectedIndex = 0;
 
-  String myServices1 = 'Brand';
+  @override
+  void initState() {
+    super.initState();
+    selectedOption = widget.optionsList.map((option) => option.first).toList();
+  }
+
   final textEditingController = TextEditingController();
 
   @override
@@ -32,23 +34,25 @@ class _DropDownBuilderState extends State<DropDownBuilder> {
     return DropdownButtonHideUnderline(
       child: DropdownButton2<String>(
         isExpanded: true,
-        items: options1.map(
-          (item) {
+        items: widget.optionsList.asMap().entries.map(
+          (entry) {
+            final options = entry.value;
             return DropdownMenuItem(
-              value: item,
+              value: options.first,
               child: Text(
-                item,
-                style: textHeadBold1.copyWith(color: kBlack),
+                options.first,
+                style: const TextStyle(color: kBlack),
               ),
             );
           },
         ).toList(),
         onChanged: (value) {
+          selectedIndex = selectedOption.indexOf(value!);
           setState(() {
-            myServices1 = value!;
+            selectedOption[selectedIndex] = value;
           });
         },
-        value: myServices1,
+        value: selectedOption[selectedIndex],
         buttonStyleData: ButtonStyleData(
           decoration: BoxDecoration(
             border: Border.all(color: textFieldBorderColor),
@@ -60,7 +64,7 @@ class _DropDownBuilderState extends State<DropDownBuilder> {
           width: 0,
         ),
         dropdownStyleData: DropdownStyleData(
-          decoration: BoxDecoration(color: kBlueLight, borderRadius: kRadius10),
+          decoration: BoxDecoration(borderRadius: kRadius10),
           offset: const Offset(0, -5),
           maxHeight: 200,
         ),
@@ -72,26 +76,31 @@ class _DropDownBuilderState extends State<DropDownBuilder> {
           searchInnerWidgetHeight: 50,
           searchInnerWidget: SizedBox(
             height: 50,
-            child: TextFormField(
-              expands: true,
-              maxLines: null,
-              controller: textEditingController,
-              decoration: InputDecoration(
-                labelStyle: textHeadBoldBig,
-                icon: const Icon(
-                  Icons.search,
-                  color: kWhite,
-                ),
-                isDense: true,
-                contentPadding: const EdgeInsets.symmetric(
-                  horizontal: 10,
-                  vertical: 8,
-                ),
-                hintText: 'Search ${widget.searchHint}',
-                hintStyle: textHeadMedium1.copyWith(color: kWhite),
-                border: OutlineInputBorder(
-                  borderSide: const BorderSide(color: kWhite),
-                  borderRadius: kRadius10,
+            child: Padding(
+              padding: const EdgeInsets.only(right: 10, top: 5),
+              child: TextFormField(
+                expands: true,
+                maxLines: null,
+                controller: textEditingController,
+                decoration: InputDecoration(
+                  labelStyle: textHeadBoldBig,
+                  icon: const Padding(
+                    padding: EdgeInsets.only(left: 8.0, top: 5),
+                    child: Icon(
+                      Icons.search,
+                    ),
+                  ),
+                  isDense: true,
+                  contentPadding: const EdgeInsets.symmetric(
+                    horizontal: 10,
+                    vertical: 8,
+                  ),
+                  hintText: 'Search ${widget.searchHint.toLowerCase()}',
+                  hintStyle: textHeadMedium1,
+                  border: OutlineInputBorder(
+                    borderSide: const BorderSide(color: kWhite),
+                    borderRadius: kRadius10,
+                  ),
                 ),
               ),
             ),

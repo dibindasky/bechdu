@@ -1,5 +1,5 @@
-import 'package:beachdu/application/presentation/routes/routes.dart';
 import 'package:beachdu/application/presentation/screens/navbar/bottombar.dart';
+import 'package:beachdu/application/presentation/screens/product/product_screen.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/application/presentation/widgets/custom_elevated_button.dart';
 import 'package:flutter/material.dart';
@@ -31,6 +31,7 @@ class SuuccessOrderPlaced extends StatelessWidget {
                 // Navigator.of(context)
                 //     .pushNamedAndRemoveUntil(Routes.myOrders, (route) => false);
                 bottomBarNotifier.value = 2;
+                body[1] = const ScreenProductSelection();
                 bottomBarNotifier.notifyListeners();
               },
               text: 'My Orders',

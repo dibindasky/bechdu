@@ -48,7 +48,7 @@ class UsersProfileStackRecomended extends StatelessWidget {
                           color: kBlack,
                           fontSize: sWidth * .024,
                         ),
-                      )
+                      ),
                     ],
                   ),
                 ),
@@ -62,7 +62,7 @@ class UsersProfileStackRecomended extends StatelessWidget {
 
   CircleAvatar imageCircleMaker() {
     return const CircleAvatar(
-      radius: 17,
+      radius: 15,
       backgroundColor: kWhite,
       child: Padding(
         padding: EdgeInsets.all(2),

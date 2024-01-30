@@ -1,4 +1,6 @@
 import 'package:beachdu/application/presentation/routes/routes.dart';
+import 'package:beachdu/application/presentation/screens/navbar/bottombar.dart';
+import 'package:beachdu/application/presentation/screens/questions/after_question_checked/product_preview_screen.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/application/presentation/widgets/custom_elevated_button.dart';
@@ -71,7 +73,9 @@ class _ConditionTabViewState extends State<ConditionTabView> {
           width: sWidth * 0.50,
           child: ElevatedButtonLong(
             onPressed: () {
-              Navigator.pushNamed(context, Routes.produtPreview);
+              //Navigator.pushNamed(context, Routes.produtPreview);
+              body[1] = const ScreenProductPreview();
+              bottomBarNotifier.notifyListeners();
             },
             text: 'Proceed',
             color: kGreenPrimary,

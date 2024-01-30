@@ -11,6 +11,7 @@ class ElevatedButtonLong extends StatelessWidget {
     this.wdth,
     this.color = kBluePrimary,
     this.textStyle,
+    this.borderRadius,
   });
   final VoidCallback onPressed;
   final String text;
@@ -18,6 +19,7 @@ class ElevatedButtonLong extends StatelessWidget {
   final double height;
   final Color color;
   final TextStyle? textStyle;
+  final BorderRadius? borderRadius;
 
   @override
   Widget build(BuildContext context) {
@@ -28,12 +30,15 @@ class ElevatedButtonLong extends StatelessWidget {
         style: ElevatedButton.styleFrom(
           minimumSize: Size(sWidth, height),
           backgroundColor: color,
-          shape: RoundedRectangleBorder(borderRadius: kRadius5),
+          shape: RoundedRectangleBorder(
+            borderRadius: borderRadius ?? kRadius10,
+          ),
         ),
         child: FittedBox(
           child: Text(
             text,
-            style: textHeadBold1.copyWith(color: kWhite),
+            style:
+                textHeadBold1.copyWith(color: kWhite, fontSize: sWidth * .045),
           ),
         ),
       ),

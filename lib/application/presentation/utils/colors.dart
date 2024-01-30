@@ -17,3 +17,4 @@ const Color kRedLight = Color.fromARGB(255, 255, 118, 118);
 const Color kRedlightsmall = Color.fromARGB(255, 252, 201, 201);
 const Color kRed = Colors.redAccent;
 const Color knill = Colors.transparent;
+const Color klightgrey = Color.fromARGB(255, 155, 154, 154);

@@ -14,4 +14,5 @@ class Routes {
   static const String successOder = '/succes_order';
   static const String produtPreview = '/product_preview_screen';
   static const String pickUpDetailScreen = '/pickup_detail_screen';
+  static const String addressAdd = '/address_add';
 }

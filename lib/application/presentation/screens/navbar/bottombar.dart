@@ -7,20 +7,22 @@ import 'package:flutter/material.dart';
 
 ValueNotifier<int> bottomBarNotifier = ValueNotifier(0);
 
+final List<Widget> body = [
+  const ScreenHome(),
+  const ScreenProductSelection(),
+  const ScreenMyOrders(),
+  const ScreenProfile()
+];
+
 class ScreenBottomNavigation extends StatelessWidget {
-  final List<Widget> body = [
-    const ScreenHome(),
-    const ScreenProductSelection(),
-    const ScreenMyOrders(),
-    const ScreenProfile()
-  ];
-  ScreenBottomNavigation({super.key});
+  const ScreenBottomNavigation({super.key});
 
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
       valueListenable: bottomBarNotifier,
       builder: (context, currentIndex, _) {
+        print('ValueListenableBuilder rebuild');
         return Scaffold(
           body: body[currentIndex],
           bottomNavigationBar: ClipRRect(
@@ -41,7 +43,7 @@ class ScreenBottomNavigation extends StatelessWidget {
                     bottomBarNotifier.notifyListeners();
                   },
                   unselectedItemColor: kWhite,
-                  showUnselectedLabels: true, //
+                  showUnselectedLabels: true,
                   backgroundColor: kBlack,
                   currentIndex: currentIndex,
                   selectedItemColor: kGreenPrimary,
