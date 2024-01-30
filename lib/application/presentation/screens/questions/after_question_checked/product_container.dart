@@ -1,5 +1,5 @@
 import 'package:beachdu/application/presentation/screens/navbar/bottombar.dart';
-import 'package:beachdu/application/presentation/screens/questions/questions_screen.dart';
+import 'package:beachdu/application/presentation/screens/questions/dynamic_tabs/questions_screen.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:flutter/material.dart';
@@ -76,7 +76,7 @@ class ProductContainer extends StatelessWidget {
                             onPressed: () {
                               // Navigator.of(context).pushNamedAndRemoveUntil(
                               //     Routes.questions, (route) => false);
-                              body[1] = const ScreenQuestions();
+                              body[1] = const QuestionTabs();
                               bottomBarNotifier.notifyListeners();
                             },
                             child: Text(

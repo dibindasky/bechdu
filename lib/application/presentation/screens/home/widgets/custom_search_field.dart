@@ -1,3 +1,4 @@
+import 'package:beachdu/application/presentation/routes/routes.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:flutter/material.dart';
@@ -15,22 +16,27 @@ class CustomSearchFieldHome extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          SizedBox(
-            width: sWidth * 0.7,
-            child: Center(
-              child: Container(
-                decoration: BoxDecoration(
+          GestureDetector(
+            onTap: () => Navigator.of(context).pushNamed(Routes.location),
+            child: SizedBox(
+              width: sWidth * 0.7,
+              child: Center(
+                child: Container(
+                  height: 50,
+                  decoration: BoxDecoration(
                     color: kBlack.withOpacity(0.5),
                     borderRadius: kRadius10,
-                    border: Border.all(color: kWhite)),
-                child: TextField(
-                  style: textHeadRegular1.copyWith(color: kWhite),
-                  decoration: InputDecoration(
-                    border: InputBorder.none,
-                    prefixIcon:
-                        const Icon(Iconsax.search_normal5, color: kWhite),
-                    hintText: ' Find things to do',
-                    hintStyle: textHeadRegular1.copyWith(color: kWhite),
+                    border: Border.all(color: kWhite),
+                  ),
+                  child: Row(
+                    children: [
+                      const Icon(Iconsax.search_normal5, color: kWhite),
+                      kWidth10,
+                      Text(
+                        ' Find things to do',
+                        style: textHeadRegular1.copyWith(color: kWhite),
+                      )
+                    ],
                   ),
                 ),
               ),
@@ -38,16 +44,18 @@ class CustomSearchFieldHome extends StatelessWidget {
           ),
           Container(
             decoration: BoxDecoration(
-                color: kBlack.withOpacity(0.5),
-                borderRadius: kRadius10,
-                border: Border.all(color: kWhite)),
+              color: kBlack.withOpacity(0.5),
+              borderRadius: kRadius10,
+              border: Border.all(color: kWhite),
+            ),
             child: IconButton(
-                icon: const Icon(
-                  Iconsax.location,
-                  color: kWhite,
-                ),
-                onPressed: () {}),
-          )
+              icon: const Icon(
+                Iconsax.location,
+                color: kWhite,
+              ),
+              onPressed: () {},
+            ),
+          ),
         ],
       ),
     );

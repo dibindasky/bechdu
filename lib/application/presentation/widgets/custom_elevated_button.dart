@@ -11,6 +11,7 @@ class ElevatedButtonLong extends StatelessWidget {
     this.wdth,
     this.color = kBluePrimary,
     this.textStyle,
+    this.padding,
     this.borderRadius,
   });
   final VoidCallback onPressed;
@@ -20,10 +21,12 @@ class ElevatedButtonLong extends StatelessWidget {
   final Color color;
   final TextStyle? textStyle;
   final BorderRadius? borderRadius;
+  final EdgeInsets? padding;
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Container(
+      padding: padding,
       width: wdth,
       child: ElevatedButton(
         onPressed: onPressed,

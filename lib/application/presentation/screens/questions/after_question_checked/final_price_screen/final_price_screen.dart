@@ -1,4 +1,3 @@
-import 'package:beachdu/application/presentation/routes/routes.dart';
 import 'package:beachdu/application/presentation/screens/navbar/bottombar.dart';
 import 'package:beachdu/application/presentation/screens/pickup/pickup_screen.dart';
 import 'package:beachdu/application/presentation/screens/questions/after_question_checked/final_price_screen/final_product_container.dart';

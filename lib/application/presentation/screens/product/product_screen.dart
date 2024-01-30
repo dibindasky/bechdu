@@ -1,10 +1,10 @@
 import 'package:beachdu/application/presentation/screens/navbar/bottombar.dart';
 import 'package:beachdu/application/presentation/screens/product/widgets/drop_down_custom.dart';
-import 'package:beachdu/application/presentation/screens/product/widgets/final_product_image.dart';
 import 'package:beachdu/application/presentation/screens/product/widgets/product_custom_listview.dart';
 import 'package:beachdu/application/presentation/screens/product/widgets/product_serch_field.dart';
-import 'package:beachdu/application/presentation/screens/questions/questions_screen.dart';
+import 'package:beachdu/application/presentation/screens/questions/dynamic_tabs/questions_screen.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
+import 'package:beachdu/application/presentation/utils/exit_app_daillogue/exit_app_dailogue.dart';
 import 'package:beachdu/application/presentation/widgets/custom_elevated_button.dart';
 import 'package:flutter/material.dart';
 
@@ -22,52 +22,60 @@ class ScreenProductSelection extends StatelessWidget {
           focusScopeNode.unfocus();
         }
       },
-      child: Scaffold(
-        body: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: ListView(
-              children: [
-                kHeight20,
-                const ProductScreenSearchField(),
-                kHeight10,
-                GridView.builder(
-                  physics: const NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  itemCount: 4,
-                  scrollDirection: Axis.vertical,
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    crossAxisSpacing: 10,
-                    mainAxisSpacing: 10,
-                    childAspectRatio: 1 / .2,
-                  ),
-                  itemBuilder: (context, index) {
-                    List<String> hints = [
-                      'Brand',
-                      'Series',
-                      'Model',
-                      'Storage',
-                    ];
+      child: WillPopScope(
+        onWillPop: () async {
+          bool shouldPop = await showExitConfirmationDialog(context);
+          return shouldPop;
+        },
+        child: Scaffold(
+          body: SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: ListView(
+                children: [
+                  kHeight20,
+                  const ProductScreenSearchField(),
+                  kHeight10,
+                  GridView.builder(
+                    physics: const NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    itemCount: 4,
+                    scrollDirection: Axis.vertical,
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 10,
+                      mainAxisSpacing: 10,
+                      childAspectRatio: 1 / .2,
+                    ),
+                    itemBuilder: (context, index) {
+                      List<String> hints = [
+                        'Brand',
+                        'Series',
+                        'Model',
+                        'Storage',
+                      ];
 
-                    return DropDownBuilder(
-                      searchHint: hints[index],
-                      optionsList: getDynamicOptions(index),
-                    );
-                  },
-                ),
-                kHeight10,
-                const ProductListView(),
-                kHeight20,
-                ElevatedButtonLong(
+                      return DropDownBuilder(
+                        searchHint: hints[index],
+                        optionsList: getDynamicOptions(index),
+                      );
+                    },
+                  ),
+                  kHeight10,
+                  const ProductListView(),
+                  kHeight20,
+                  ElevatedButtonLong(
                     onPressed: () {
-                      body[1] = const ScreenQuestions();
+                      body[1] = const QuestionTabs();
                       bottomBarNotifier.notifyListeners();
                     },
-                    text: 'Get exact value'),
-                //const FinalProductImage(),
-                kHeight20,
-              ],
+                    text: 'Get exact value',
+                  ),
+                  //const FinalProductImage(),
+                  kHeight20,
+                ],
+              ),
             ),
           ),
         ),

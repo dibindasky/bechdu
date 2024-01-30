@@ -3,6 +3,7 @@ import 'package:beachdu/application/presentation/screens/pickup/widgets/row_icon
 import 'package:beachdu/application/presentation/screens/pickup/widgets/selected_top_image.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
+import 'package:beachdu/application/presentation/utils/exit_app_daillogue/exit_app_dailogue.dart';
 import 'package:flutter/material.dart';
 
 enum PickupDetailContainers {
@@ -30,43 +31,49 @@ class ScreenPickUp extends StatelessWidget {
           focusScopeNode.unfocus();
         }
       },
-      child: Scaffold(
-        body: SafeArea(
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                kHeight30,
-                Stack(
-                  children: [
-                    Positioned(
-                      top: -30,
-                      right: 59,
-                      child: CircleAvatar(
-                        radius: 50,
-                        backgroundColor: kBlueLight.withOpacity(.16),
+      child: WillPopScope(
+        onWillPop: () async {
+          bool shouldPop = await showExitConfirmationDialog(context);
+          return shouldPop;
+        },
+        child: Scaffold(
+          body: SafeArea(
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  kHeight30,
+                  Stack(
+                    children: [
+                      Positioned(
+                        top: -30,
+                        right: 59,
+                        child: CircleAvatar(
+                          radius: 50,
+                          backgroundColor: kBlueLight.withOpacity(.16),
+                        ),
                       ),
-                    ),
-                    Positioned(
-                      left: 150,
-                      bottom: -20,
-                      child: CircleAvatar(
-                        radius: 40,
-                        backgroundColor: kBlueLight.withOpacity(.15),
+                      Positioned(
+                        left: 150,
+                        bottom: -20,
+                        child: CircleAvatar(
+                          radius: 40,
+                          backgroundColor: kBlueLight.withOpacity(.15),
+                        ),
                       ),
-                    ),
-                    const SelectedTopImage(),
-                  ],
-                ),
-                kHeight10,
-                Text(
-                  'Pickup Details',
-                  style: textHeadBold1.copyWith(fontSize: sWidth * .05),
-                ),
-                kHeight20,
-                const RowIconsValueListanable(),
-                kHeight30,
-                const DataValueListanableContainers(),
-              ],
+                      const SelectedTopImage(),
+                    ],
+                  ),
+                  kHeight10,
+                  Text(
+                    'Pickup Details',
+                    style: textHeadBold1.copyWith(fontSize: sWidth * .05),
+                  ),
+                  kHeight20,
+                  const RowIconsValueListanable(),
+                  kHeight30,
+                  const DataValueListanableContainers(),
+                ],
+              ),
             ),
           ),
         ),

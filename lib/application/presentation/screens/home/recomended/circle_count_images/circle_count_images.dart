@@ -60,11 +60,11 @@ class UsersProfileStackRecomended extends StatelessWidget {
     );
   }
 
-  CircleAvatar imageCircleMaker() {
-    return const CircleAvatar(
-      radius: 15,
+  Widget imageCircleMaker() {
+    return CircleAvatar(
+      radius: sWidth * .042,
       backgroundColor: kWhite,
-      child: Padding(
+      child: const Padding(
         padding: EdgeInsets.all(2),
         child: CircleAvatar(
           backgroundImage: AssetImage(homeOfferImage),

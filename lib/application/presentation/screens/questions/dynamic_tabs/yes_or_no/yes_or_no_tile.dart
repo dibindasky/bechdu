@@ -1,51 +1,19 @@
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
-import 'package:beachdu/application/presentation/widgets/custom_elevated_button.dart';
 import 'package:flutter/material.dart';
 
-class DeviceTabView extends StatelessWidget {
-  const DeviceTabView({super.key});
+class YesOrNoTile extends StatefulWidget {
+  const YesOrNoTile({super.key, required this.map});
+
+  final Map<String, dynamic> map;
 
   @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Expanded(
-          child: ListView.builder(
-            shrinkWrap: true,
-            itemCount: 1,
-            itemBuilder: (context, index) {
-              return const DeviceQuestionTile();
-            },
-          ),
-        ),
-        SizedBox(
-          width: sWidth * 0.50,
-          child: ElevatedButtonLong(
-            onPressed: () {},
-            text: 'Continue',
-            color: kGreenPrimary,
-          ),
-        )
-      ],
-    );
-  }
+  State<YesOrNoTile> createState() => _YesOrNoTileState();
 }
 
-class DeviceQuestionTile extends StatefulWidget {
-  const DeviceQuestionTile({
-    super.key,
-    this.text,
-  });
-
-  final String? text;
-
-  @override
-  State<DeviceQuestionTile> createState() => _DeviceQuestionTileState();
-}
-
-class _DeviceQuestionTileState extends State<DeviceQuestionTile> {
+class _YesOrNoTileState extends State<YesOrNoTile> {
   bool? selected;
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -59,7 +27,7 @@ class _DeviceQuestionTileState extends State<DeviceQuestionTile> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                widget.text ?? 'Are You Able to make and receive calls ?',
+                widget.map['description'],
                 style: textHeadBold1,
               ),
               kHeight10,
@@ -69,7 +37,7 @@ class _DeviceQuestionTileState extends State<DeviceQuestionTile> {
                   kWidth20,
                   yesOrNoButton(yesOrNo: false),
                 ],
-              )
+              ),
             ],
           ),
         ),
@@ -78,7 +46,7 @@ class _DeviceQuestionTileState extends State<DeviceQuestionTile> {
   }
 
   Widget yesOrNoButton({required bool yesOrNo}) {
-    return GestureDetector(
+    return InkWell(
       onTap: () {
         setState(() {
           selected = yesOrNo ? true : false;
