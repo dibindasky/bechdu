@@ -23,9 +23,12 @@ class RouteGenerator {
     // final arguments = settings.arguments;
     switch (settings.name) {
       case Routes.initial:
-        return fadePageRoute(screen: const ScreenSplash());
+        return MaterialPageRoute(
+          builder: (context) => const ScreenSplash(),
+        );
       case Routes.onBoardingScreen:
-        return fadePageRoute(screen: const BechDuUserOnBoardingScreens());
+        return MaterialPageRoute(
+            builder: (context) => const BechDuUserOnBoardingScreens());
       case Routes.bottomBar:
         return fadePageRoute(screen: const ScreenBottomNavigation());
       case Routes.signInOrLogin:

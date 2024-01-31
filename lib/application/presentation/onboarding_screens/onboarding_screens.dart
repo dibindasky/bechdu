@@ -19,7 +19,7 @@ class _BechDuUserOnBoardingScreensState
   late Animation<double> _textOpacityAnimation;
 
   int currentPage = 0;
-  final int totalPages = 3; // Number of onboarding pages
+  final int totalPages = 3;
 
   @override
   void initState() {
@@ -38,15 +38,7 @@ class _BechDuUserOnBoardingScreensState
         curve: Curves.linear,
       ),
     );
-    _textOpacityAnimation = Tween<double>(
-      begin: 0.0,
-      end: 1.0,
-    ).animate(
-      CurvedAnimation(
-        parent: _logoAnimationController,
-        curve: Curves.easeInOut,
-      ),
-    );
+
     super.initState();
   }
 
@@ -56,10 +48,15 @@ class _BechDuUserOnBoardingScreensState
     super.dispose();
   }
 
-  List<String> textList = [
-    'Hi There!\n Welcome to Bechdu!',
-    'Want to sell \nyour phone for a better ?',
-    'Say No More! Bechdu It!',
+  List<String> textListFirst = [
+    'Hi There!',
+    'Want to sell',
+    'Say No More!',
+  ];
+  List<String> textListSecond = [
+    'Welcome to Bechdu!',
+    'your phone for a better ?',
+    'Bechdu It!',
   ];
 
   @override
@@ -110,11 +107,19 @@ class _BechDuUserOnBoardingScreensState
             ),
             kHeight40,
             AnimatedOpacity(
-              opacity: .7,
-              duration: const Duration(milliseconds: 1000),
-              child: Text(
-                textList[currentPage],
-                style: textHeadBoldBig.copyWith(color: kWhite),
+              opacity: .9,
+              duration: const Duration(milliseconds: 100),
+              child: Column(
+                children: [
+                  Text(
+                    textListFirst[currentPage],
+                    style: textHeadBoldBig.copyWith(color: kWhite),
+                  ),
+                  Text(
+                    textListSecond[currentPage],
+                    style: textHeadBoldBig.copyWith(color: kWhite),
+                  ),
+                ],
               ),
             ),
             Text(
@@ -124,14 +129,11 @@ class _BechDuUserOnBoardingScreensState
               ),
             ),
             kHeight30,
-            SizedBox(
-              height: 20,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: List.generate(
-                  totalPages,
-                  (index) => buildPageIndicator(index),
-                ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: List.generate(
+                totalPages,
+                (index) => buildPageIndicator(index),
               ),
             ),
           ],
