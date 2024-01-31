@@ -1,23 +1,29 @@
 import 'package:flutter/material.dart';
 
-showExitConfirmationDialog(BuildContext context) async {
+showConfirmationDialog(
+  BuildContext context, {
+  bool textButtonNo = false,
+  String? heading,
+}) async {
   return showDialog(
     context: context,
     builder: (context) => AlertDialog(
-      title: const Text('Do you really want to exit?'),
+      title: Text(heading ?? 'Do you really want to exit from Bechdu?'),
       actions: [
         TextButton(
           onPressed: () {
-            Navigator.of(context).pop(true); // Pop the screen
+            Navigator.of(context).pop(true);
           },
-          child: const Text('Yes'),
+          child: Text(textButtonNo ? 'Sure' : 'Yes'),
         ),
-        TextButton(
-          onPressed: () {
-            Navigator.of(context).pop(false); // Stay on the screen
-          },
-          child: const Text('No'),
-        ),
+        textButtonNo
+            ? const SizedBox()
+            : TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop(false);
+                },
+                child: const Text('No'),
+              ),
       ],
     ),
   );

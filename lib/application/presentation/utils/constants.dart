@@ -27,7 +27,7 @@ const orderSuccessNetwrokImage =
     'https://s3-alpha-sig.figma.com/img/0c88/1cbc/8744bb18caf793eaadc694435afa0ebf?Expires=1707091200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=A017~DJZjkzYM6URwdWMSAgfe5uIFNxttsFoqrT4I3j9ykGTh5i~h-aFqbwChF6LYA~JBB9omy8FkuD4bDqi~VX~68PIeQiXTeIkkHcaGigVbdZtc~VvKFW1gXkBu-3I9ionTIp15XhV7TJzpVoangnY0EB-CylKRhhfvc4Y0V7OQ2cWNiOwHuuOZlqnjko0q~N5-JQUsZcp-LGmJVJD342tYj3EdZTZ0Yw860ZMN2aD2YQkTO4HnSHHQK5eLg-wOEay2hLAMn92n6VS6PmPy6PlaOoNH9rZbte2Ni-Z3dc82QIx4vhUbr2q7WEFMD4ROn6vs5RDVDlzRIXeESZsMg__';
 
 const onBoardingpersonScreen = 'assets/images/onboarding_first_person.png';
-const onBoardingsecondScreen = 'assets/images/onboarding_second_phone.png';
+const onBoardingsecondScreen = 'assets/images/onboard second_phone image.jpeg';
 const onBoardingThirdScreen = 'assets/images/onboarding_third_screen.png';
 
 double sHeight = 900;
@@ -100,6 +100,17 @@ void sizeFinder(BuildContext context) {
   sHeight = size.height > 900 ? 900 : size.height;
   sWidth = size.width > 450 ? 450 : size.width;
 }
+
+List<String> textListFirst = [
+  'Hi There!',
+  'Want to sell',
+  'Say No More!',
+];
+List<String> textListSecond = [
+  'Welcome to Bechdu!',
+  'your phone for a better ?',
+  'Bechdu It!',
+];
 
 List<Map<String, dynamic>> testQuestionMap = [
   {

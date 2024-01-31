@@ -2,12 +2,13 @@ import 'package:beachdu/application/presentation/screens/navbar/bottombar.dart';
 import 'package:beachdu/application/presentation/screens/pickup/widgets/textfeild_custom.dart';
 import 'package:beachdu/application/presentation/screens/profile/profile_screen.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
-import 'package:beachdu/application/presentation/utils/exit_app_daillogue/exit_app_dailogue.dart';
 import 'package:beachdu/application/presentation/widgets/custom_elevated_button.dart';
 import 'package:flutter/material.dart';
 
 class AddAddressScreen extends StatelessWidget {
-  const AddAddressScreen({super.key});
+  AddAddressScreen({super.key});
+
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -20,6 +21,15 @@ class AddAddressScreen extends StatelessWidget {
       },
       child: Scaffold(
         appBar: AppBar(
+          leading: IconButton(
+            onPressed: () {
+              body[3] = const ScreenProfile();
+              bottomBarNotifier.notifyListeners();
+            },
+            icon: const Icon(
+              Icons.arrow_back,
+            ),
+          ),
           title: Text(
             'Create address',
             style: textHeadBoldBig,
@@ -27,50 +37,57 @@ class AddAddressScreen extends StatelessWidget {
         ),
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          child: ListView(
             children: [
-              Text(
-                'STATE',
-                style: textHeadMedium1.copyWith(
-                  fontSize: sWidth * .033,
+              Form(
+                key: _formKey,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'STATE',
+                      style: textHeadMedium1.copyWith(
+                        fontSize: sWidth * .033,
+                      ),
+                    ),
+                    const TTextFormField(
+                      text: 'Kerala',
+                    ),
+                    Text(
+                      'DISTRICT',
+                      style: textHeadMedium1.copyWith(
+                        fontSize: sWidth * .033,
+                      ),
+                    ),
+                    const TTextFormField(
+                      text: 'Wayanad',
+                    ),
+                    Text(
+                      'LANDMARK',
+                      style: textHeadMedium1.copyWith(
+                        fontSize: sWidth * .033,
+                      ),
+                    ),
+                    const TTextFormField(
+                      text: 'School',
+                    ),
+                    Text(
+                      'PINCODE',
+                      style: textHeadMedium1.copyWith(
+                        fontSize: sWidth * .033,
+                      ),
+                    ),
+                    const TTextFormField(
+                      text: 'xxxxxx',
+                    ),
+                  ],
                 ),
               ),
-              const TTextFormField(
-                text: 'Kerala',
-              ),
-              Text(
-                'DISTRICT',
-                style: textHeadMedium1.copyWith(
-                  fontSize: sWidth * .033,
-                ),
-              ),
-              const TTextFormField(
-                text: 'Wayanad',
-              ),
-              Text(
-                'LANDMARK',
-                style: textHeadMedium1.copyWith(
-                  fontSize: sWidth * .033,
-                ),
-              ),
-              const TTextFormField(
-                text: 'School',
-              ),
-              Text(
-                'PINCODE',
-                style: textHeadMedium1.copyWith(
-                  fontSize: sWidth * .033,
-                ),
-              ),
-              const TTextFormField(
-                text: 'xxxxxx',
-              ),
-              const Spacer(),
               ElevatedButtonLong(
                 onPressed: () {
-                  body[3] = const ScreenProfile();
-                  bottomBarNotifier.notifyListeners();
+                  if (_formKey.currentState?.validate() ?? false) {
+                    _formKey.currentState!.save();
+                  }
                 },
                 text: 'Save',
               ),

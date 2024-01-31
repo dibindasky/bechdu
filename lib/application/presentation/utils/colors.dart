@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+const Color onBoardBlack = Color(0xFF181818);
 const Color kBlack = Colors.black;
 const Color kWhite = Colors.white;
 const Color kWhiteextra = Color.fromARGB(255, 239, 239, 239);

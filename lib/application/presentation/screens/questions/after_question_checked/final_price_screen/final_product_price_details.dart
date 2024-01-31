@@ -12,6 +12,7 @@ class FinalProductPriceDetaails extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        kHeight30,
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10),
           child: Row(
@@ -41,8 +42,8 @@ class FinalProductPriceDetaails extends StatelessWidget {
         ),
         kHeight10,
         TextFormField(
-          style: TextStyle(
-            color: kWhite,
+          style: textHeadMedium1.copyWith(
+            color: kBlack,
             fontSize: sWidth * 0.033,
           ),
           keyboardType: TextInputType.name,
@@ -90,7 +91,6 @@ class FinalProductPriceDetaails extends StatelessWidget {
             ],
           ),
         ),
-        const PrivacyPolicyCheckbox(),
       ],
     );
   }

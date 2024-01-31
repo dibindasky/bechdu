@@ -29,7 +29,7 @@ class _ScreenLoginState extends State<ScreenLogin> {
       },
       child: WillPopScope(
         onWillPop: () async {
-          bool shouldPop = await showExitConfirmationDialog(context);
+          bool shouldPop = await showConfirmationDialog(context);
           return shouldPop;
         },
         child: Scaffold(

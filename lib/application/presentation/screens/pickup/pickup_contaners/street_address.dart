@@ -16,7 +16,7 @@ class StreetAddress extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            PickupScreenAddressListView(),
+            const PickupScreenAddressListView(),
             kHeight20,
             Text(
               'STREET ADDRESS',
@@ -62,13 +62,19 @@ class StreetAddress extends StatelessWidget {
   }
 }
 
-class PickupScreenAddressListView extends StatelessWidget {
-  PickupScreenAddressListView({
+class PickupScreenAddressListView extends StatefulWidget {
+  const PickupScreenAddressListView({
     super.key,
   });
 
-  bool isSelected = false;
+  @override
+  State<PickupScreenAddressListView> createState() =>
+      _PickupScreenAddressListViewState();
+}
 
+class _PickupScreenAddressListViewState
+    extends State<PickupScreenAddressListView> {
+  int isSelected = 0;
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
@@ -79,29 +85,46 @@ class PickupScreenAddressListView extends StatelessWidget {
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
       itemBuilder: (context, index) {
-        return Material(
-          elevation: 1.3,
-          child: Padding(
-            padding: const EdgeInsets.all(12),
-            child: Align(
-              alignment: Alignment.centerLeft,
-              child: FittedBox(
-                child: Row(
-                  children: [
-                    const CircleAvatar(
-                      radius: 17,
-                      child: Icon(
-                        Icons.location_pin,
-                        color: kGreenPrimary,
+        final listAddress = [
+          'Zikrabyte Solutions, jayanagar 9th block, bangalore',
+          'Zikrabyte Solutions,'
+        ];
+        return InkWell(
+          onTap: () {
+            setState(() {
+              isSelected = index;
+            });
+          },
+          child: Material(
+            elevation: 1,
+            child: ClipRRect(
+              borderRadius: kRadius10,
+              child: ColoredBox(
+                color: isSelected == index ? klightgrey : kWhite,
+                child: Padding(
+                  padding: const EdgeInsets.all(12),
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: FittedBox(
+                      child: Row(
+                        children: [
+                          const CircleAvatar(
+                            radius: 17,
+                            child: Icon(
+                              Icons.location_pin,
+                              color: kGreenPrimary,
+                            ),
+                          ),
+                          kWidth10,
+                          Text(
+                            listAddress[index],
+                            style: textHeadMedium1,
+                            textAlign: TextAlign.center,
+                          ),
+                        ],
                       ),
                     ),
-                    kWidth10,
-                    Text(
-                      'Zikrabyte Solutions, jayanagar 9th block, bangalore',
-                      style: textHeadMedium1,
-                      textAlign: TextAlign.center,
-                    ),
-                  ],
+                  ),
                 ),
               ),
             ),

@@ -10,7 +10,7 @@ class ScreenMyOrders extends StatelessWidget {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async {
-        bool shouldPop = await showExitConfirmationDialog(context);
+        bool shouldPop = await showConfirmationDialog(context);
         return shouldPop;
       },
       child: Scaffold(

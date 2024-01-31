@@ -13,15 +13,9 @@ class ScreenProfile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    WidgetsBinding.instance.addPostFrameCallback(
-      (timeStamp) {
-        body[3] = const ScreenProfile();
-        bottomBarNotifier.notifyListeners();
-      },
-    );
     return WillPopScope(
       onWillPop: () async {
-        bool shouldPop = await showExitConfirmationDialog(context);
+        bool shouldPop = await showConfirmationDialog(context);
         return shouldPop;
       },
       child: Scaffold(
@@ -68,7 +62,7 @@ class ScreenProfile extends StatelessWidget {
                       ),
                       GestureDetector(
                         onTap: () {
-                          body[3] = const AddAddressScreen();
+                          body[3] = AddAddressScreen();
                           bottomBarNotifier.notifyListeners();
                         },
                         child: const CircleAvatar(
@@ -83,7 +77,7 @@ class ScreenProfile extends StatelessWidget {
                     ],
                   ),
                   kHeight10,
-                  PickupScreenAddressListView(),
+                  const PickupScreenAddressListView(),
                   kHeight10,
                   const Divider(),
                   kHeight30,

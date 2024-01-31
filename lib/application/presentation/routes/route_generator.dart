@@ -1,4 +1,4 @@
-import 'package:beachdu/application/presentation/onboarding_screens/onboarding_screens.dart';
+import 'package:beachdu/application/presentation/screens/onboarding_screens/onboarding_screens.dart';
 import 'package:beachdu/application/presentation/routes/animated_routes.dart';
 import 'package:beachdu/application/presentation/routes/routes.dart';
 import 'package:beachdu/application/presentation/screens/auth/login_screen/login_screen.dart';
@@ -56,7 +56,7 @@ class RouteGenerator {
       case Routes.successOder:
         return fadePageRoute(screen: const SuuccessOrderPlaced());
       case Routes.addressAdd:
-        return fadePageRoute(screen: const AddAddressScreen());
+        return fadePageRoute(screen: AddAddressScreen());
       default:
         return _errorScreen();
     }

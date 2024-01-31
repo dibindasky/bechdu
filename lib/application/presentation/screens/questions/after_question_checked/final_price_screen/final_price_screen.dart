@@ -3,6 +3,7 @@ import 'package:beachdu/application/presentation/screens/pickup/pickup_screen.da
 import 'package:beachdu/application/presentation/screens/questions/after_question_checked/final_price_screen/final_product_container.dart';
 import 'package:beachdu/application/presentation/screens/questions/after_question_checked/final_price_screen/final_product_price_details.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
+import 'package:beachdu/application/presentation/utils/exit_app_daillogue/exit_app_dailogue.dart';
 import 'package:beachdu/application/presentation/widgets/custom_elevated_button.dart';
 import 'package:flutter/material.dart';
 
@@ -19,9 +20,6 @@ class FinalPriceScreen extends StatelessWidget {
         }
       },
       child: Scaffold(
-        // appBar: AppBar(
-        //   automaticallyImplyLeading: false,
-        // ),
         body: Padding(
           padding: const EdgeInsets.only(left: 15, right: 15, top: 60),
           child: SingleChildScrollView(
@@ -32,19 +30,10 @@ class FinalPriceScreen extends StatelessWidget {
                   child: const Column(
                     children: [
                       FinalProductContiner(),
-                      kHeight30,
                       FinalProductPriceDetaails(),
+                      PrivacyPolicyCheckbox(),
                     ],
                   ),
-                ),
-                ElevatedButtonLong(
-                  wdth: 200,
-                  onPressed: () {
-                    //Navigator.of(context).pushNamed(Routes.pickUpDetailScreen);
-                    body[1] = const ScreenPickUp();
-                    bottomBarNotifier.notifyListeners();
-                  },
-                  text: 'Continue to Details',
                 ),
               ],
             ),
@@ -69,19 +58,41 @@ class _PrivacyPolicyCheckboxState extends State<PrivacyPolicyCheckbox> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(16.0),
-      child: Row(
+      child: Column(
         children: [
-          Checkbox(
-            value: isPrivacyPolicyAccepted,
-            onChanged: (bool? value) {
-              setState(() {
-                isPrivacyPolicyAccepted = value ?? false;
-              });
-            },
+          Row(
+            children: [
+              Checkbox(
+                value: isPrivacyPolicyAccepted,
+                onChanged: (value) {
+                  setState(() {
+                    isPrivacyPolicyAccepted = value ?? false;
+                  });
+                },
+              ),
+              kWidth10,
+              const Text(
+                'By signing up I agree to the \nTerms of use and Privacy Policy.',
+              ),
+            ],
           ),
-          const SizedBox(width: 8),
-          const Text(
-              'By signing up I agree to the\nTerms of use and Privacy Policy.'),
+          kHeight30,
+          ElevatedButtonLong(
+            wdth: 200,
+            onPressed: () {
+              if (isPrivacyPolicyAccepted) {
+                body[1] = const ScreenPickUp();
+                bottomBarNotifier.notifyListeners();
+              } else {
+                showConfirmationDialog(
+                  context,
+                  heading: 'Please accept Privacy Policies',
+                  textButtonNo: true,
+                );
+              }
+            },
+            text: 'Continue to Details',
+          ),
         ],
       ),
     );
