@@ -1,5 +1,6 @@
 class Routes {
   static const String initial = '/';
+  static const String onBoardingScreen = '/on_boarding_screen';
   static const String bottomBar = '/bottom_navigation_bar';
   static const String signInOrLogin = '/sign_in';
   static const String otpVerification = '/OTPscreen';

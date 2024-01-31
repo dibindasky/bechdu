@@ -1,3 +1,4 @@
+import 'package:beachdu/application/presentation/onboarding_screens/onboarding_screens.dart';
 import 'package:beachdu/application/presentation/routes/animated_routes.dart';
 import 'package:beachdu/application/presentation/routes/routes.dart';
 import 'package:beachdu/application/presentation/screens/auth/login_screen/login_screen.dart';
@@ -23,6 +24,8 @@ class RouteGenerator {
     switch (settings.name) {
       case Routes.initial:
         return fadePageRoute(screen: const ScreenSplash());
+      case Routes.onBoardingScreen:
+        return fadePageRoute(screen: const BechDuUserOnBoardingScreens());
       case Routes.bottomBar:
         return fadePageRoute(screen: const ScreenBottomNavigation());
       case Routes.signInOrLogin:

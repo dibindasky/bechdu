@@ -1,8 +1,8 @@
 import 'package:beachdu/application/presentation/screens/auth/otp_screen/widgets/bottom_section.dart';
 import 'package:beachdu/application/presentation/screens/auth/otp_screen/widgets/logo_to_countdown.dart';
 import 'package:beachdu/application/presentation/screens/auth/otp_screen/widgets/pinput.dart';
-import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:flutter/material.dart';
+
 
 class OTPScreen extends StatelessWidget {
   const OTPScreen({super.key});
@@ -24,7 +24,7 @@ class OTPScreen extends StatelessWidget {
             children: [
               const LogoToCountDownSection(),
               PinEnterField(),
-              const BottomSection()
+              const BottomSection(),
             ],
           ),
         ),

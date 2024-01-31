@@ -1,7 +1,6 @@
 import 'package:beachdu/application/business_logic/question_tab/question_tab_bloc.dart';
 import 'package:beachdu/application/presentation/routes/route_generator.dart';
 import 'package:beachdu/application/presentation/routes/routes.dart';
-import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -11,13 +10,11 @@ void main() {
   SystemChrome.setPreferredOrientations(
     [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown],
   );
-  runApp(Beachdu());
+  runApp(const Beachdu());
 }
 
 class Beachdu extends StatelessWidget {
-  Beachdu({super.key});
-
-  final RouteGenerator routeGenerator = RouteGenerator();
+  const Beachdu({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +22,7 @@ class Beachdu extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (context) => QuestionTabBloc(),
-        )
+        ),
       ],
       child: MaterialApp(
         theme: ThemeData(
@@ -33,7 +30,7 @@ class Beachdu extends StatelessWidget {
             ),
         debugShowCheckedModeBanner: false,
         initialRoute: Routes.initial,
-        onGenerateRoute: routeGenerator.onGenerateRoute,
+        onGenerateRoute: RouteGenerator().onGenerateRoute,
       ),
     );
   }
