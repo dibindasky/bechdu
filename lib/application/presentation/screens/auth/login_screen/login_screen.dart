@@ -1,21 +1,20 @@
 import 'package:beachdu/application/presentation/screens/auth/login_screen/widget/bottom_sections.dart';
 import 'package:beachdu/application/presentation/screens/auth/login_screen/widget/logo_to_mobile_no.dart';
+import 'package:beachdu/application/presentation/utils/colors.dart';
+import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/application/presentation/utils/exit_app_daillogue/exit_app_dailogue.dart';
 import 'package:flutter/material.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 
-class ScreenLogin extends StatefulWidget {
-  const ScreenLogin({super.key});
+class ScreenLogin extends StatelessWidget {
+  ScreenLogin({super.key});
 
-  @override
-  State<ScreenLogin> createState() => _ScreenLoginState();
-}
-
-class _ScreenLoginState extends State<ScreenLogin> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   final TextEditingController phoneController = TextEditingController();
+
   String initialCountry = 'NG';
+
   PhoneNumber number = PhoneNumber(isoCode: 'IN');
 
   @override
@@ -48,12 +47,14 @@ class _ScreenLoginState extends State<ScreenLogin> {
                     //print(value);
                   },
                   selectorConfig: const SelectorConfig(
+                    trailingSpace: false,
+                    showFlags: false,
                     selectorType: PhoneInputSelectorType.BOTTOM_SHEET,
                     useBottomSheetSafeArea: true,
                   ),
                   ignoreBlank: false,
                   autoValidateMode: AutovalidateMode.disabled,
-                  selectorTextStyle: const TextStyle(color: Colors.black),
+                  selectorTextStyle: const TextStyle(color: kBlack),
                   initialValue: number,
                   textFieldController: phoneController,
                   formatInput: true,
@@ -62,9 +63,9 @@ class _ScreenLoginState extends State<ScreenLogin> {
                     decimal: true,
                   ),
                   inputBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: kRadius10,
                     borderSide: const BorderSide(
-                      color: Colors.grey,
+                      color: klightgrey,
                       width: 1.0,
                     ),
                   ),

@@ -130,9 +130,8 @@ class _DateOrTimeState extends State<DateOrTime> {
             child: ElevatedButtonLong(
               wdth: 200,
               onPressed: () {
-                //Navigator.of(context).pushNamed(Routes.successOder);
                 body[1] = const SuuccessOrderPlaced();
-                bottomBarNotifier.notifyListeners();
+                //bottomBarNotifier.notifyListeners();
               },
               text: 'Place Order',
             ),

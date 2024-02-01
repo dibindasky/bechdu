@@ -77,7 +77,7 @@ class ProductContainer extends StatelessWidget {
                               // Navigator.of(context).pushNamedAndRemoveUntil(
                               //     Routes.questions, (route) => false);
                               body[1] = const QuestionTabs();
-                              bottomBarNotifier.notifyListeners();
+                              //  bottomBarNotifier.notifyListeners();
                             },
                             child: Text(
                               'Recalculate',

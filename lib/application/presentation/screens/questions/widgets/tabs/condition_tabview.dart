@@ -75,7 +75,7 @@ class _ConditionTabViewState extends State<ConditionTabView> {
             onPressed: () {
               //Navigator.pushNamed(context, Routes.produtPreview);
               body[1] = const ScreenProductPreview();
-              bottomBarNotifier.notifyListeners();
+              //bottomBarNotifier.notifyListeners();
             },
             text: 'Proceed',
             color: kGreenPrimary,

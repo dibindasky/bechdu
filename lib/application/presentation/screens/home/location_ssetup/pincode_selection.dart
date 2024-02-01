@@ -1,46 +1,48 @@
-import 'package:beachdu/application/presentation/screens/home/location_ssetup/pincode_selection.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:iconsax/iconsax.dart';
 
-class LocationCityChoosing extends StatefulWidget {
-  const LocationCityChoosing({Key? key}) : super(key: key);
+class LocationPinCodes extends StatefulWidget {
+  const LocationPinCodes({
+    super.key,
+    required this.selectedLocation,
+  });
+
+  final String selectedLocation;
 
   @override
-  _LocationCityChoosingState createState() => _LocationCityChoosingState();
+  State<LocationPinCodes> createState() => _LocationPinCodesState();
 }
 
-class _LocationCityChoosingState extends State<LocationCityChoosing> {
-  List<String> locations = [
-    'Bangalore',
-    'Mumbai',
-    'Delhi',
-    'Chennai',
-    'Hyderabad',
-    'Kolkata',
-    'Pune',
+class _LocationPinCodesState extends State<LocationPinCodes> {
+  List<String> filteredPincodes = [];
+  String selectedPincode = '';
+
+  List<String> pincodes = [
+    '560001',
+    '400001',
+    '110001',
+    '600001',
+    '500001',
+    '700001',
+    '411001',
   ];
-
-  List<String> filteredLocations = [];
-
-  TextEditingController searchController = TextEditingController();
 
   @override
   void initState() {
-    filteredLocations = locations;
+    filteredPincodes = pincodes;
     super.initState();
   }
 
-  void filterLocations(String query) {
+  void filteredPicodes(String query) {
     setState(() {
       if (query.isEmpty) {
-        filteredLocations = locations;
+        filteredPincodes = pincodes;
       } else {
-        filteredLocations = locations
-            .where((location) =>
-                location.toLowerCase().contains(query.toLowerCase()))
+        filteredPincodes = pincodes
+            .where((pincode) =>
+                pincode.toLowerCase().contains(query.toLowerCase()))
             .toList();
       }
     });
@@ -64,39 +66,30 @@ class _LocationCityChoosingState extends State<LocationCityChoosing> {
               children: [
                 kHeight40,
                 Text(
-                  'Select City',
-                  style: textHeadBold1.copyWith(fontSize: sWidth * .04),
+                  widget.selectedLocation,
+                  style: const TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-                kHeight10,
+                const SizedBox(height: 10),
                 CupertinoTextField(
-                  onChanged: filterLocations,
+                  onChanged: filteredPicodes,
                   style: textHeadMedium1.copyWith(
-                    color: kWhite,
-                  ),
-                  suffix: Container(
-                    padding: const EdgeInsets.only(right: 13),
-                    height: 20,
-                    child: Image.asset('assets/images/location_list_png.png'),
-                  ),
-                  prefix: const Padding(
-                    padding: EdgeInsets.only(left: 8.0),
-                    child: Icon(
-                      Iconsax.search_favorite,
-                      color: kWhite,
-                      size: 18,
-                    ),
+                    color: kBlack,
                   ),
                   decoration: BoxDecoration(
-                    color: kBlueLight,
+                    color: kWhiteextra,
                     borderRadius: kRadius5,
                   ),
-                  placeholder: 'Search...',
+                  placeholder: 'Enter pincode to continue',
                   placeholderStyle: textHeadInter.copyWith(
                     color: klightgrey,
                   ),
                 ),
+                kHeight20,
                 GridView.builder(
-                  itemCount: filteredLocations.length,
+                  itemCount: filteredPincodes.length,
                   physics: const NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -107,15 +100,7 @@ class _LocationCityChoosingState extends State<LocationCityChoosing> {
                   ),
                   itemBuilder: (context, index) {
                     return GestureDetector(
-                      onTap: () {
-                        Navigator.of(context).pushReplacement(
-                          MaterialPageRoute(
-                            builder: (context) => LocationPinCodes(
-                              selectedLocation: filteredLocations[index],
-                            ),
-                          ),
-                        );
-                      },
+                      onTap: () {},
                       child: ClipRRect(
                         borderRadius: kRadius15,
                         child: Row(
@@ -130,14 +115,13 @@ class _LocationCityChoosingState extends State<LocationCityChoosing> {
                               ),
                             ),
                             kWidth10,
-                            Text(filteredLocations[index]),
+                            Text(filteredPincodes[index]),
                           ],
                         ),
                       ),
                     );
                   },
                 ),
-                kHeight10
               ],
             ),
           ),

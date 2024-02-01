@@ -29,6 +29,7 @@ const orderSuccessNetwrokImage =
 const onBoardingpersonScreen = 'assets/images/onboarding_first_person.png';
 const onBoardingsecondScreen = 'assets/images/onboard second_phone image.jpeg';
 const onBoardingThirdScreen = 'assets/images/onboarding_third_screen.png';
+const locationbackgropundImage = 'assets/images/location_backgrounds.png';
 
 double sHeight = 900;
 double sWidth = 400;
@@ -136,25 +137,6 @@ List<Map<String, dynamic>> testQuestionMap = [
     ],
   },
   {
-    "sectionType": "grid",
-    "sectionCriteria": "one",
-    "sectionHeading": "Age",
-    "data": [
-      {
-        "description": "0-3 Months",
-      },
-      {
-        "description": "3-6 Months",
-      },
-      {
-        "description": "6-11 Months",
-      },
-      {
-        "description": "Above 11 Months",
-      },
-    ],
-  },
-  {
     "sectionType": "image",
     "sectionCriteria": "none",
     "sectionHeading": "Display",
@@ -220,6 +202,25 @@ List<Map<String, dynamic>> testQuestionMap = [
       {
         "description": "Headset",
         "img": "imageDiffectedPhone",
+      },
+    ],
+  },
+  {
+    "sectionType": "grid",
+    "sectionCriteria": "one",
+    "sectionHeading": "Age",
+    "data": [
+      {
+        "description": "0-3 Months",
+      },
+      {
+        "description": "3-6 Months",
+      },
+      {
+        "description": "6-11 Months",
+      },
+      {
+        "description": "Above 11 Months",
       },
     ],
   },

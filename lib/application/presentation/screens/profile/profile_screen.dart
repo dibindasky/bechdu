@@ -1,4 +1,3 @@
-import 'package:beachdu/application/presentation/screens/navbar/bottombar.dart';
 import 'package:beachdu/application/presentation/screens/pickup/pickup_contaners/street_address.dart';
 import 'package:beachdu/application/presentation/screens/profile/add_address/add_address.dart';
 import 'package:beachdu/application/presentation/screens/profile/widgets/containers.dart';
@@ -7,6 +6,13 @@ import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/application/presentation/utils/exit_app_daillogue/exit_app_dailogue.dart';
 import 'package:beachdu/application/presentation/widgets/custom_elevated_button.dart';
 import 'package:flutter/material.dart';
+
+ValueNotifier<int> profileScreensNotifier = ValueNotifier(0);
+
+List<Widget> profilrSections = [
+  const ScreenProfile(),
+  AddAddressScreen(),
+];
 
 class ScreenProfile extends StatelessWidget {
   const ScreenProfile({super.key});
@@ -62,8 +68,7 @@ class ScreenProfile extends StatelessWidget {
                       ),
                       GestureDetector(
                         onTap: () {
-                          body[3] = AddAddressScreen();
-                          bottomBarNotifier.notifyListeners();
+                          profileScreensNotifier.value = 1;
                         },
                         child: const CircleAvatar(
                           backgroundColor: kBlack,
@@ -90,12 +95,27 @@ class ScreenProfile extends StatelessWidget {
                     text: 'Save',
                   ),
                   kHeight20,
+                  if (profileScreensNotifier.value == 1) AddAddressScreen(),
                 ],
               ),
             ),
           ),
         ),
       ),
+    );
+  }
+}
+
+class PrfileLastBuilder extends StatelessWidget {
+  const PrfileLastBuilder({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return ValueListenableBuilder(
+      valueListenable: profileScreensNotifier,
+      builder: (context, value, child) {
+        return profilrSections[value];
+      },
     );
   }
 }

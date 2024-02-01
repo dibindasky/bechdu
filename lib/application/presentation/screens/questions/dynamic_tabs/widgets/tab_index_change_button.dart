@@ -1,6 +1,5 @@
 import 'package:beachdu/application/business_logic/question_tab/question_tab_bloc.dart';
-import 'package:beachdu/application/presentation/screens/navbar/bottombar.dart';
-import 'package:beachdu/application/presentation/screens/questions/after_question_checked/final_price_screen/final_price_screen.dart';
+import 'package:beachdu/application/presentation/screens/product/product_screen.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:flutter/material.dart';
@@ -30,8 +29,8 @@ class TabIndexChangeButton extends StatelessWidget {
         return ElevatedButton(
           onPressed: () {
             if (state.selectedTabIndex >= state.tabItems.length - 1) {
-              body[1] = const FinalPriceScreen();
-              bottomBarNotifier.notifyListeners();
+              secondtabScreensNotifier.value = 2;
+              secondtabScreensNotifier.notifyListeners();
             } else {
               print('Added');
               print('${state.selectedTabIndex}');

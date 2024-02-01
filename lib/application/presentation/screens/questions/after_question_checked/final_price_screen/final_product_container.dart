@@ -14,7 +14,7 @@ class FinalProductContiner extends StatelessWidget {
       child: ColoredBox(
         color: kGreenPrimary,
         child: SizedBox(
-          height: sWidth * 0.5,
+          height: sWidth * 0.4,
           width: sWidth,
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,

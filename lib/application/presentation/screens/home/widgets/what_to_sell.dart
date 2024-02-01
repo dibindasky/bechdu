@@ -1,7 +1,9 @@
+import 'package:beachdu/application/business_logic/navbar/navbar_cubit.dart';
 import 'package:beachdu/application/presentation/screens/navbar/bottombar.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class WhatToSellWidget extends StatelessWidget {
   const WhatToSellWidget({
@@ -41,34 +43,37 @@ class WhatToSellWidget extends StatelessWidget {
               ),
               shrinkWrap: true,
               itemBuilder: (context, index) {
-                return InkWell(
-                  onTap: () {
-                    bottomBarNotifier.value = 1;
-                    bottomBarNotifier.notifyListeners();
-                  },
-                  child: Column(
-                    children: [
-                      Container(
-                        decoration: BoxDecoration(
-                          color: kGreenPrimary,
-                          borderRadius: kRadius5,
-                          border: Border.all(
-                            color: kBluePrimary,
-                            width: 2,
+                return BlocBuilder<NavbarCubit, NavbarState>(
+                  builder: (context, state) {
+                    return InkWell(
+                      onTap: () {
+                        context.read<NavbarCubit>().changeNavigationIndex(1);
+                      },
+                      child: Column(
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                              color: kGreenPrimary,
+                              borderRadius: kRadius5,
+                              border: Border.all(
+                                color: kBluePrimary,
+                                width: 2,
+                              ),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(10),
+                              child: gridData[index % 4][1],
+                            ),
                           ),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(10),
-                          child: gridData[index % 4][1],
-                        ),
+                          kHeight5,
+                          Text(
+                            gridData[index % 4][0],
+                            style: textHeadMedium1,
+                          ),
+                        ],
                       ),
-                      kHeight5,
-                      Text(
-                        gridData[index % 4][0],
-                        style: textHeadMedium1,
-                      ),
-                    ],
-                  ),
+                    );
+                  },
                 );
               },
             ),

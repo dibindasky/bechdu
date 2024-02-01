@@ -16,28 +16,25 @@ class CustomSearchFieldHome extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          GestureDetector(
-            onTap: () => Navigator.of(context).pushNamed(Routes.location),
-            child: SizedBox(
-              width: sWidth * 0.7,
-              child: Center(
-                child: Container(
-                  height: 50,
-                  decoration: BoxDecoration(
-                    color: kBlack.withOpacity(0.5),
-                    borderRadius: kRadius10,
-                    border: Border.all(color: kWhite),
-                  ),
-                  child: Row(
-                    children: [
-                      const Icon(Iconsax.search_normal5, color: kWhite),
-                      kWidth10,
-                      Text(
-                        ' Find things to do',
-                        style: textHeadRegular1.copyWith(color: kWhite),
-                      )
-                    ],
-                  ),
+          SizedBox(
+            width: sWidth * 0.7,
+            child: Center(
+              child: Container(
+                height: 50,
+                decoration: BoxDecoration(
+                  color: kBlack.withOpacity(0.5),
+                  borderRadius: kRadius10,
+                  border: Border.all(color: kWhite),
+                ),
+                child: Row(
+                  children: [
+                    const Icon(Iconsax.search_normal5, color: kWhite),
+                    kWidth10,
+                    Text(
+                      ' Find things to do',
+                      style: textHeadRegular1.copyWith(color: kWhite),
+                    )
+                  ],
                 ),
               ),
             ),
@@ -53,7 +50,9 @@ class CustomSearchFieldHome extends StatelessWidget {
                 Iconsax.location,
                 color: kWhite,
               ),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).pushNamed(Routes.location);
+              },
             ),
           ),
         ],

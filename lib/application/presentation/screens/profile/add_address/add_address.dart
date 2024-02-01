@@ -19,80 +19,88 @@ class AddAddressScreen extends StatelessWidget {
           focusScopeNode.unfocus();
         }
       },
-      child: Scaffold(
-        appBar: AppBar(
-          leading: IconButton(
-            onPressed: () {
-              body[3] = const ScreenProfile();
-              bottomBarNotifier.notifyListeners();
-            },
-            icon: const Icon(
-              Icons.arrow_back,
+      child: WillPopScope(
+        onWillPop: () async {
+          profileScreensNotifier.value = 0;
+          profileScreensNotifier.notifyListeners();
+          return false;
+        },
+        child: Scaffold(
+          appBar: AppBar(
+            leading: IconButton(
+              onPressed: () {
+                profileScreensNotifier.value = 0;
+                profileScreensNotifier.notifyListeners();
+              },
+              icon: const Icon(
+                Icons.arrow_back,
+              ),
+            ),
+            title: Text(
+              'Create address',
+              style: textHeadBoldBig,
             ),
           ),
-          title: Text(
-            'Create address',
-            style: textHeadBoldBig,
-          ),
-        ),
-        body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15),
-          child: ListView(
-            children: [
-              Form(
-                key: _formKey,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'STATE',
-                      style: textHeadMedium1.copyWith(
-                        fontSize: sWidth * .033,
+          body: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 15),
+            child: ListView(
+              children: [
+                Form(
+                  key: _formKey,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'STATE',
+                        style: textHeadMedium1.copyWith(
+                          fontSize: sWidth * .033,
+                        ),
                       ),
-                    ),
-                    const TTextFormField(
-                      text: 'Kerala',
-                    ),
-                    Text(
-                      'DISTRICT',
-                      style: textHeadMedium1.copyWith(
-                        fontSize: sWidth * .033,
+                      const TTextFormField(
+                        text: 'Kerala',
                       ),
-                    ),
-                    const TTextFormField(
-                      text: 'Wayanad',
-                    ),
-                    Text(
-                      'LANDMARK',
-                      style: textHeadMedium1.copyWith(
-                        fontSize: sWidth * .033,
+                      Text(
+                        'DISTRICT',
+                        style: textHeadMedium1.copyWith(
+                          fontSize: sWidth * .033,
+                        ),
                       ),
-                    ),
-                    const TTextFormField(
-                      text: 'School',
-                    ),
-                    Text(
-                      'PINCODE',
-                      style: textHeadMedium1.copyWith(
-                        fontSize: sWidth * .033,
+                      const TTextFormField(
+                        text: 'Wayanad',
                       ),
-                    ),
-                    const TTextFormField(
-                      text: 'xxxxxx',
-                    ),
-                  ],
+                      Text(
+                        'LANDMARK',
+                        style: textHeadMedium1.copyWith(
+                          fontSize: sWidth * .033,
+                        ),
+                      ),
+                      const TTextFormField(
+                        text: 'School',
+                      ),
+                      Text(
+                        'PINCODE',
+                        style: textHeadMedium1.copyWith(
+                          fontSize: sWidth * .033,
+                        ),
+                      ),
+                      const TTextFormField(
+                        text: 'xxxxxx',
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-              ElevatedButtonLong(
-                onPressed: () {
-                  if (_formKey.currentState?.validate() ?? false) {
-                    _formKey.currentState!.save();
-                  }
-                },
-                text: 'Save',
-              ),
-              kHeight40
-            ],
+                kHeight30,
+                ElevatedButtonLong(
+                  onPressed: () {
+                    if (_formKey.currentState?.validate() ?? false) {
+                      _formKey.currentState!.save();
+                    }
+                  },
+                  text: 'Save',
+                ),
+                kHeight40
+              ],
+            ),
           ),
         ),
       ),

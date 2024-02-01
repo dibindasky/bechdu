@@ -12,15 +12,18 @@ class QuestionTabs extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          ProductPreviewQuestion(),
-          QuestionScreenTabs(),
-          QuestionTabAnswerSession(),
-          TabIndexChangeButton(),
-        ],
+    return const SafeArea(
+      child: Scaffold(
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            ProductPreviewQuestion(),
+            QuestionScreenTabs(),
+            kHeight20,
+            QuestionTabAnswerSession(),
+            TabIndexChangeButton(),
+          ],
+        ),
       ),
     );
   }

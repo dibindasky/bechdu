@@ -17,27 +17,32 @@ class _BechDuUserOnBoardingScreensState
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<Offset> _offsetController;
+  late Animation<double> _animation;
   @override
   void initState() {
     _controller = AnimationController(
       vsync: this,
-      duration: const Duration(seconds: 2),
-    )..repeat(reverse: true);
+      duration: const Duration(milliseconds: 500),
+    );
     _offsetController = Tween<Offset>(
       begin: Offset.zero,
-      end: const Offset(1.5, 0.0),
+      end: const Offset(-2, 0.0),
     ).animate(
       CurvedAnimation(
         parent: _controller,
-        curve: Curves.elasticIn,
+        curve: Curves.linearToEaseOut,
       ),
+    );
+    // Create Tween for opacity
+    _animation = Tween<double>(begin: 0, end: 2.0).animate(
+      _controller,
     );
     super.initState();
   }
 
   void startAnimation() {
-    _controller.reset(); // Reset the animation to its beginning state
-    _controller.forward(); // Start the animation from the beginning
+    _controller.reset();
+    _controller.forward();
   }
 
   @override
@@ -53,10 +58,14 @@ class _BechDuUserOnBoardingScreensState
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        if (selectedIndex == 2) {
+        if (selectedIndex == 1) {
           startAnimation();
-        }
-        if (selectedIndex < totalPages - 1) {
+          Future.delayed(const Duration(milliseconds: 500)).then((value) {
+            setState(() {
+              selectedIndex += 1;
+            });
+          });
+        } else if (selectedIndex < totalPages - 1) {
           setState(() {
             selectedIndex += 1;
           });
@@ -125,7 +134,7 @@ class _BechDuUserOnBoardingScreensState
                     child: SlideTransition(
                       position: _offsetController,
                       child: SizedBox(
-                        height: sWidth * 0.45,
+                        height: sWidth * 0.4,
                         child: Image.asset(onBoardingsecondScreen),
                       ),
                     ),
@@ -134,9 +143,12 @@ class _BechDuUserOnBoardingScreensState
               ),
             if (selectedIndex == 2)
               Center(
-                child: SizedBox(
-                  height: sWidth * 0.45,
-                  child: Image.asset(onBoardingThirdScreen),
+                child: FadeTransition(
+                  opacity: _animation,
+                  child: SizedBox(
+                    height: sWidth * 0.45,
+                    child: Image.asset(onBoardingThirdScreen),
+                  ),
                 ),
               ),
             kHeight40,

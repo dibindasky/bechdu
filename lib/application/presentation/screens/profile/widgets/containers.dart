@@ -2,8 +2,18 @@ import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:flutter/material.dart';
 
-class Containers extends StatelessWidget {
+class Containers extends StatefulWidget {
   const Containers({super.key});
+
+  @override
+  State<Containers> createState() => _ContainersState();
+}
+
+class _ContainersState extends State<Containers> {
+  bool isTExtFieldUsername = false;
+  bool isTExtFieldEmail = false;
+  bool isTExtFieldNumber = false;
+  final usernameController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -15,11 +25,38 @@ class Containers extends StatelessWidget {
           style: textHeadRegular1.copyWith(color: klightgrey),
         ),
         kHeight10,
-        Text(
-          'Jaisai gopisetty',
-          style: textHeadRegular1,
-        ),
-        const Divider(),
+        isTExtFieldUsername
+            ? TextField(
+                controller: usernameController,
+                decoration: const InputDecoration(
+                  hintText: 'Enter username',
+                ),
+              )
+            : Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Name',
+                        style: textHeadRegular1,
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          setState(() {
+                            isTExtFieldUsername = !isTExtFieldUsername;
+                          });
+                        },
+                        child: Text(
+                          'Change',
+                          style: textHeadInter.copyWith(color: kGreenLight),
+                        ),
+                      ),
+                    ],
+                  ),
+                  const Divider(),
+                ],
+              ),
         kHeight20,
         Text(
           'Email',

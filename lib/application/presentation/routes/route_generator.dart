@@ -32,15 +32,15 @@ class RouteGenerator {
       case Routes.bottomBar:
         return fadePageRoute(screen: const ScreenBottomNavigation());
       case Routes.signInOrLogin:
-        return fadePageRoute(screen: const ScreenLogin());
+        return fadePageRoute(screen: ScreenLogin());
       case Routes.otpVerification:
         return fadePageRoute(screen: const OTPScreen());
       case Routes.homeScreen:
         return fadePageRoute(screen: const ScreenHome());
-      case Routes.pickUpDetailScreen:
-        return fadePageRoute(screen: const ScreenPickUp());
       case Routes.location:
         return fadePageRoute(screen: const LocationCityChoosing());
+      case Routes.pickUpDetailScreen:
+        return fadePageRoute(screen: const ScreenPickUp());
       case Routes.questions:
         return fadePageRoute(screen: const QuestionTabs());
       case Routes.produtPreview:

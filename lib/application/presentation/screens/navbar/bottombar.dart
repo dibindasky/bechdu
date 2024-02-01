@@ -1,17 +1,17 @@
+import 'package:beachdu/application/business_logic/navbar/navbar_cubit.dart';
 import 'package:beachdu/application/presentation/screens/home/home_screen.dart';
 import 'package:beachdu/application/presentation/screens/order/my_orders_screen.dart';
 import 'package:beachdu/application/presentation/screens/product/product_screen.dart';
 import 'package:beachdu/application/presentation/screens/profile/profile_screen.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:flutter/material.dart';
-
-ValueNotifier<int> bottomBarNotifier = ValueNotifier(0);
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 final List<Widget> body = [
   const ScreenHome(),
-  const ScreenProductSelection(),
+  const SecondTabvaluelistanableBBuilder(),
   const ScreenMyOrders(),
-  const ScreenProfile()
+  const PrfileLastBuilder(),
 ];
 
 class ScreenBottomNavigation extends StatelessWidget {
@@ -19,12 +19,10 @@ class ScreenBottomNavigation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ValueListenableBuilder(
-      valueListenable: bottomBarNotifier,
-      builder: (context, currentIndex, _) {
-        print('ValueListenableBuilder rebuild');
+    return BlocBuilder<NavbarCubit, NavbarState>(
+      builder: (context, state) {
         return Scaffold(
-          body: body[currentIndex],
+          body: body[state.selectedIndex],
           bottomNavigationBar: ClipRRect(
             borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(40),
@@ -39,13 +37,12 @@ class ScreenBottomNavigation extends StatelessWidget {
                   type: BottomNavigationBarType.fixed,
                   enableFeedback: false,
                   onTap: (value) {
-                    bottomBarNotifier.value = value;
-                    bottomBarNotifier.notifyListeners();
+                    context.read<NavbarCubit>().changeNavigationIndex(value);
                   },
                   unselectedItemColor: kWhite,
                   showUnselectedLabels: true,
                   backgroundColor: kBlack,
-                  currentIndex: currentIndex,
+                  currentIndex: state.selectedIndex,
                   selectedItemColor: kGreenPrimary,
                   items: const [
                     BottomNavigationBarItem(

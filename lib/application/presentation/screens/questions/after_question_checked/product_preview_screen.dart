@@ -47,7 +47,7 @@ class ScreenProductPreview extends StatelessWidget {
               onPressed: () {
                 //Navigator.of(context).pushNamed(Routes.finalPriceScreen);
                 body[1] = const FinalPriceScreen();
-                bottomBarNotifier.notifyListeners();
+                // bottomBarNotifier.notifyListeners();
               },
               text: 'Continue',
             ),

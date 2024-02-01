@@ -1,3 +1,4 @@
+import 'package:beachdu/application/business_logic/navbar/navbar_cubit.dart';
 import 'package:beachdu/application/business_logic/question_tab/question_tab_bloc.dart';
 import 'package:beachdu/application/presentation/routes/route_generator.dart';
 import 'package:beachdu/application/presentation/routes/routes.dart';
@@ -22,6 +23,9 @@ class Beachdu extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (context) => QuestionTabBloc(),
+        ),
+        BlocProvider(
+          create: (context) => NavbarCubit(),
         ),
       ],
       child: MaterialApp(

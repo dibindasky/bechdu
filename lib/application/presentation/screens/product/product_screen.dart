@@ -1,14 +1,22 @@
-import 'package:beachdu/application/presentation/screens/navbar/bottombar.dart';
 import 'package:beachdu/application/presentation/screens/product/widgets/drop_down_custom.dart';
 import 'package:beachdu/application/presentation/screens/product/widgets/product_custom_listview.dart';
 import 'package:beachdu/application/presentation/screens/product/widgets/product_serch_field.dart';
+import 'package:beachdu/application/presentation/screens/questions/after_question_checked/final_price_screen/final_price_screen.dart';
+import 'package:beachdu/application/presentation/screens/questions/after_question_checked/success_order/success_product_place_rder.dart';
 import 'package:beachdu/application/presentation/screens/questions/dynamic_tabs/questions_screen.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/application/presentation/utils/exit_app_daillogue/exit_app_dailogue.dart';
 import 'package:beachdu/application/presentation/widgets/custom_elevated_button.dart';
 import 'package:flutter/material.dart';
 
-List<Widget> stackWdget = [];
+List<Widget> productSections = [
+  const ScreenProductSelection(),
+  const QuestionTabs(),
+  const FinalPriceScreen(),
+  const SuuccessOrderPlaced()
+];
+
+ValueNotifier<int> secondtabScreensNotifier = ValueNotifier(0);
 
 class ScreenProductSelection extends StatelessWidget {
   const ScreenProductSelection({Key? key}) : super(key: key);
@@ -67,8 +75,8 @@ class ScreenProductSelection extends StatelessWidget {
                   kHeight20,
                   ElevatedButtonLong(
                     onPressed: () {
-                      body[1] = const QuestionTabs();
-                      bottomBarNotifier.notifyListeners();
+                      secondtabScreensNotifier.value = 1;
+                      secondtabScreensNotifier.notifyListeners();
                     },
                     text: 'Get exact value',
                   ),
@@ -104,5 +112,19 @@ class ScreenProductSelection extends StatelessWidget {
       default:
         return [];
     }
+  }
+}
+
+class SecondTabvaluelistanableBBuilder extends StatelessWidget {
+  const SecondTabvaluelistanableBBuilder({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return ValueListenableBuilder(
+      valueListenable: secondtabScreensNotifier,
+      builder: (context, value, child) {
+        return productSections[value];
+      },
+    );
   }
 }
