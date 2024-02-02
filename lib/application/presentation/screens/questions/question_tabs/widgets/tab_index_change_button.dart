@@ -1,5 +1,5 @@
 import 'package:beachdu/application/business_logic/question_tab/question_tab_bloc.dart';
-import 'package:beachdu/application/presentation/screens/product/product_screen.dart';
+import 'package:beachdu/application/presentation/screens/product_selection/product_screen.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:flutter/material.dart';

@@ -1,5 +1,5 @@
 import 'package:beachdu/application/presentation/routes/routes.dart';
-import 'package:beachdu/application/presentation/screens/product/widgets/custom_button.dart';
+import 'package:beachdu/application/presentation/screens/product_selection/widgets/custom_button.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:flutter/material.dart';
@@ -71,7 +71,6 @@ class FinalProductImage extends StatelessWidget {
                   CustomButton(
                     text: 'Get Exact Value',
                     onPressed: () {
-                      
                       Navigator.of(context).pushNamed(Routes.questions);
                     },
                   )

@@ -8,11 +8,11 @@ import 'package:beachdu/application/presentation/screens/home/location_ssetup/ci
 import 'package:beachdu/application/presentation/screens/navbar/bottombar.dart';
 import 'package:beachdu/application/presentation/screens/order/my_orders_screen.dart';
 import 'package:beachdu/application/presentation/screens/pickup/pickup_screen.dart';
-import 'package:beachdu/application/presentation/screens/product/product_screen.dart';
+import 'package:beachdu/application/presentation/screens/product_selection/product_screen.dart';
 import 'package:beachdu/application/presentation/screens/profile/add_address/add_address.dart';
 import 'package:beachdu/application/presentation/screens/profile/profile_screen.dart';
 import 'package:beachdu/application/presentation/screens/questions/after_question_checked/final_price_screen/final_price_screen.dart';
-import 'package:beachdu/application/presentation/screens/questions/after_question_checked/product_preview_screen.dart';
+import 'package:beachdu/application/presentation/screens/questions/after_question_checked/preview_product_screen/product_preview_screen.dart';
 import 'package:beachdu/application/presentation/screens/questions/after_question_checked/success_order/success_product_place_rder.dart';
 import 'package:beachdu/application/presentation/screens/questions/dynamic_tabs/questions_screen.dart';
 import 'package:beachdu/application/presentation/screens/splash/splash_screen.dart';

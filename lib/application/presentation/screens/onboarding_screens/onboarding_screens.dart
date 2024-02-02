@@ -16,22 +16,12 @@ class _BechDuUserOnBoardingScreensState
     extends State<BechDuUserOnBoardingScreens>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
-  late Animation<Offset> _offsetController;
   late Animation<double> _animation;
   @override
   void initState() {
     _controller = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 500),
-    );
-    _offsetController = Tween<Offset>(
-      begin: Offset.zero,
-      end: const Offset(-2, 0.0),
-    ).animate(
-      CurvedAnimation(
-        parent: _controller,
-        curve: Curves.linearToEaseOut,
-      ),
     );
     // Create Tween for opacity
     _animation = Tween<double>(begin: 0, end: 2.0).animate(
@@ -131,10 +121,10 @@ class _BechDuUserOnBoardingScreensState
                     ),
                   ),
                   Center(
-                    child: SlideTransition(
-                      position: _offsetController,
+                    child: Transform.translate(
+                      offset: const Offset(-50.0, 0.0),
                       child: SizedBox(
-                        height: sWidth * 0.4,
+                        height: sWidth * 0.45,
                         child: Image.asset(onBoardingsecondScreen),
                       ),
                     ),

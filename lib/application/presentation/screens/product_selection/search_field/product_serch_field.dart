@@ -2,11 +2,18 @@ import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:flutter/material.dart';
 
-class ProductScreenSearchField extends StatelessWidget {
+class ProductScreenSearchField extends StatefulWidget {
   const ProductScreenSearchField({
     super.key,
   });
 
+  @override
+  State<ProductScreenSearchField> createState() =>
+      _ProductScreenSearchFieldState();
+}
+
+class _ProductScreenSearchFieldState extends State<ProductScreenSearchField> {
+  String? selectedCategory;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
@@ -17,18 +24,34 @@ class ProductScreenSearchField extends StatelessWidget {
         ),
         prefixIcon: DropdownButtonHideUnderline(
           child: DropdownButton(
-            onChanged: (String? newValue) {},
+            onChanged: (String? newValue) {
+              setState(() {
+                selectedCategory = newValue;
+              });
+            },
             items: const [
               DropdownMenuItem(
-                value: 'Category 1',
-                child: Text('A  '),
+                value: 'All',
+                child: Text('All '),
               ),
               DropdownMenuItem(
-                value: 'Category 2',
-                child: Text('S  '),
+                value: 'Mobile',
+                child: Text('Mobile '),
+              ),
+              DropdownMenuItem(
+                value: 'Earbuds',
+                child: Text('Earbuds'),
+              ),
+              DropdownMenuItem(
+                value: 'Lapatops',
+                child: Text('Lapatops'),
+              ),
+              DropdownMenuItem(
+                value: 'Watch',
+                child: Text('Watch'),
               ),
             ],
-            hint: const Text('  All'),
+            hint: Text('  ${selectedCategory ?? " All"}'),
           ),
         ),
         focusedBorder: OutlineInputBorder(

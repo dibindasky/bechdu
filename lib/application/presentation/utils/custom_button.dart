@@ -7,12 +7,14 @@ class CustomButton extends StatelessWidget {
     super.key,
     this.width,
     this.height,
+    this.backgroundColor,
     this.onPressed,
     required this.text,
   });
   final String text;
   final double? width;
   final double? height;
+  final Color? backgroundColor;
   final VoidCallback? onPressed;
 
   @override
@@ -21,7 +23,7 @@ class CustomButton extends StatelessWidget {
       onTap: onPressed,
       child: Container(
         decoration: BoxDecoration(
-          color: kGreenPrimary,
+          color: backgroundColor ?? kGreenPrimary,
           borderRadius: BorderRadius.circular(6),
         ),
         width: width ?? 220,

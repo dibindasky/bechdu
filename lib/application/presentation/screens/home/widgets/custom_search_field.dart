@@ -12,43 +12,59 @@ class CustomSearchFieldHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 15),
+      padding: const EdgeInsets.symmetric(horizontal: 5),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           SizedBox(
             width: sWidth * 0.7,
-            child: Center(
-              child: Container(
-                height: 50,
-                decoration: BoxDecoration(
-                  color: kBlack.withOpacity(0.5),
-                  borderRadius: kRadius10,
-                  border: Border.all(color: kWhite),
+            child: TextField(
+              style: textHeadMedium1,
+              decoration: InputDecoration(
+                filled: true,
+                fillColor: klightwhite,
+                hintText: 'Search products',
+                prefixIcon: const Icon(
+                  Icons.search,
+                  color: kBlack,
+                  size: 20,
                 ),
-                child: Row(
-                  children: [
-                    const Icon(Iconsax.search_normal5, color: kWhite),
-                    kWidth10,
-                    Text(
-                      ' Find things to do',
-                      style: textHeadRegular1.copyWith(color: kWhite),
-                    )
-                  ],
-                ),
+                border: InputBorder.none,
               ),
             ),
+            // Container(
+            //   height: 50,
+            //   decoration: BoxDecoration(
+            //     color: klightwhite,
+            //     borderRadius: kRadius10,
+            //   ),
+            //   child: Row(
+            //     children: [
+            //       kWidth10,
+            //       const Icon(
+            //         Icons.search,
+            //         color: kBlack,
+            //       ),
+            //       kWidth20,
+            //       Text(
+            //         'Search products',
+            //         style: textHeadRegular1.copyWith(
+            //           color: kBlack,
+            //         ),
+            //       ),
+            //     ],
+            //   ),
+            // ),
           ),
           Container(
             decoration: BoxDecoration(
-              color: kBlack.withOpacity(0.5),
+              color: klightwhite,
               borderRadius: kRadius10,
-              border: Border.all(color: kWhite),
             ),
             child: IconButton(
               icon: const Icon(
                 Iconsax.location,
-                color: kWhite,
+                color: kBlack,
               ),
               onPressed: () {
                 Navigator.of(context).pushNamed(Routes.location);

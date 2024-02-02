@@ -1,6 +1,4 @@
-import 'package:beachdu/application/presentation/screens/navbar/bottombar.dart';
-import 'package:beachdu/application/presentation/screens/pickup/pickup_screen.dart';
-import 'package:beachdu/application/presentation/screens/product/product_screen.dart';
+import 'package:beachdu/application/presentation/screens/product_selection/product_screen.dart';
 import 'package:beachdu/application/presentation/screens/questions/after_question_checked/final_price_screen/final_product_container.dart';
 import 'package:beachdu/application/presentation/screens/questions/after_question_checked/final_price_screen/final_product_price_details.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
@@ -20,23 +18,29 @@ class FinalPriceScreen extends StatelessWidget {
           focusScopeNode.unfocus();
         }
       },
-      child: Scaffold(
-        body: Padding(
-          padding: const EdgeInsets.only(left: 15, right: 15, top: 60),
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                SizedBox(
-                  height: sHeight * .76,
-                  child: const Column(
+      child: WillPopScope(
+        onWillPop: () async {
+          secondtabScreensNotifier.value = 2;
+          secondtabScreensNotifier.notifyListeners();
+          return false;
+        },
+        child: const Scaffold(
+          body: Padding(
+            padding: EdgeInsets.only(left: 15, right: 15, top: 60),
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  Column(
                     children: [
                       FinalProductContiner(),
                       FinalProductPriceDetaails(),
+                      kHeight40,
+                      kHeight40,
                       PrivacyPolicyCheckbox(),
                     ],
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),
@@ -82,7 +86,7 @@ class _PrivacyPolicyCheckboxState extends State<PrivacyPolicyCheckbox> {
             wdth: 200,
             onPressed: () {
               if (isPrivacyPolicyAccepted) {
-                secondtabScreensNotifier.value = 3;
+                secondtabScreensNotifier.value = 4;
                 secondtabScreensNotifier.notifyListeners();
               } else {
                 showConfirmationDialog(

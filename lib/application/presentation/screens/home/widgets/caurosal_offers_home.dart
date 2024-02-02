@@ -1,51 +1,67 @@
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-class CaurosalViewHomePageOffers extends StatelessWidget {
+class CaurosalViewHomePageOffers extends StatefulWidget {
   const CaurosalViewHomePageOffers({
     super.key,
   });
 
   @override
+  State<CaurosalViewHomePageOffers> createState() =>
+      _CaurosalViewHomePageOffersState();
+}
+
+class _CaurosalViewHomePageOffersState
+    extends State<CaurosalViewHomePageOffers> {
+  int selectedIndex = 0;
+
+  @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 15),
-      child: ClipRRect(
-        borderRadius: kRadius10,
-        child: ColoredBox(
-          color: kBlack,
-          child: AspectRatio(
-            aspectRatio: 2.2,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(left: 10),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        'Get Extra',
-                        style:
-                            textHeadBold1.copyWith(color: kWhite),
-                      ),
-                      SizedBox(width: sWidth * 0.3,
-                        child: FittedBox(
-                            child: Text(
-                          '10%',
-                          style: textHeadBoldBig.copyWith(
-                              color: kWhite, fontSize: sWidth * 0.2),
-                        )),
-                      ),
-                    ],
-                  ),
-                ),
-                Image.asset(homeOfferImage),
-              ],
-            ),
+    return Column(
+      children: [
+        CarouselSlider.builder(
+          itemCount: 4,
+          itemBuilder: (context, index, realIndex) {
+            return SizedBox(
+              width: MediaQuery.of(context).size.width,
+              child: Image.asset(
+                'assets/images/home screen offer tile .png',
+                fit: BoxFit.fill,
+              ),
+            );
+          },
+          options: CarouselOptions(
+            height: 170,
+            autoPlay: true,
+            reverse: true,
+            autoPlayAnimationDuration: const Duration(seconds: 1),
+            enlargeStrategy: CenterPageEnlargeStrategy.height,
+            enlargeCenterPage: true,
+            onPageChanged: (index, reason) {
+              setState(() {
+                selectedIndex = index;
+              });
+            },
           ),
         ),
+        kHeight10,
+        buildIndicator(),
+      ],
+    );
+  }
+
+  buildIndicator() {
+    return AnimatedSmoothIndicator(
+      activeIndex: selectedIndex,
+      count: 4,
+      effect: const ExpandingDotsEffect(
+        dotWidth: 20,
+        activeDotColor: Colors.blue,
+        dotHeight: 3,
+        dotColor: Colors.blue,
       ),
     );
   }

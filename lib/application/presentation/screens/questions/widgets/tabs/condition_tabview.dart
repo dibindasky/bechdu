@@ -1,6 +1,6 @@
 import 'package:beachdu/application/presentation/routes/routes.dart';
 import 'package:beachdu/application/presentation/screens/navbar/bottombar.dart';
-import 'package:beachdu/application/presentation/screens/questions/after_question_checked/product_preview_screen.dart';
+import 'package:beachdu/application/presentation/screens/questions/after_question_checked/preview_product_screen/product_preview_screen.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/application/presentation/widgets/custom_elevated_button.dart';

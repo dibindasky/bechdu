@@ -16,12 +16,8 @@ class QuestionTabBloc extends Bloc<QuestionTabEvent, QuestionTabState> {
       } else {
         emit(state.copyWith(
           selectedTabIndex: state.selectedTabIndex + 1,
-          // message: 'Saved in Database',
         ));
       }
-      // if (state.selectedTabIndex < state.tabItems.length - 1) {
-      //   print('_TabChange bloc ${state.selectedTabIndex}');
-      // }
     });
   }
 }

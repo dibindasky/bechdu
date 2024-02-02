@@ -11,16 +11,17 @@ class RecommendedMobile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'Recommended',
+          '   Recommended',
           style: textHeadBoldBig,
         ),
         kHeight10,
         AspectRatio(
           aspectRatio: 1.8,
           child: ListView.builder(
-            itemCount: 10,
+            itemCount: 3,
             scrollDirection: Axis.horizontal,
             itemBuilder: (context, index) => Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -82,14 +83,16 @@ class RecommendedMobile extends StatelessWidget {
                             borderRadius: kRadius10,
                           ),
                           child: Padding(
-                            padding: const EdgeInsets.all(5),
+                            padding: const EdgeInsets.all(3),
                             child: Text(
                               'GO',
-                              style: textHeadBold1,
+                              style: textHeadBold1.copyWith(
+                                fontSize: sWidth * .032,
+                              ),
                             ),
                           ),
                         ),
-                      )
+                      ),
                     ],
                   ),
                 ),

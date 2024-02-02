@@ -1,7 +1,7 @@
 import 'package:beachdu/application/business_logic/navbar/navbar_cubit.dart';
 import 'package:beachdu/application/presentation/screens/home/home_screen.dart';
 import 'package:beachdu/application/presentation/screens/order/my_orders_screen.dart';
-import 'package:beachdu/application/presentation/screens/product/product_screen.dart';
+import 'package:beachdu/application/presentation/screens/product_selection/product_screen.dart';
 import 'package:beachdu/application/presentation/screens/profile/profile_screen.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:flutter/material.dart';

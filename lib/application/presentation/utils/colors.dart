@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 const Color onBoardBlack = Color(0xFF181818);
 const Color kBlack = Colors.black;
 const Color kWhite = Colors.white;
+Color klightwhite = const Color(0xFFF5F6F7);
 const Color kWhiteextra = Color.fromARGB(255, 239, 239, 239);
 const Color klightBlack = Colors.black87;
 const Color textFieldBorderColor = Color.fromARGB(255, 125, 125, 125);

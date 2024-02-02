@@ -17,7 +17,6 @@ class QuestionTabAnswerSession extends StatelessWidget {
     return BlocConsumer<QuestionTabBloc, QuestionTabState>(
       listener: (context, state) {
         if (state.message != null) {
-          //print('emit message');
           showSnack(context: context, message: state.message!);
         }
       },

@@ -1,5 +1,5 @@
 import 'package:beachdu/application/business_logic/navbar/navbar_cubit.dart';
-import 'package:beachdu/application/presentation/screens/product/product_screen.dart';
+import 'package:beachdu/application/presentation/screens/product_selection/product_screen.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/application/presentation/widgets/custom_elevated_button.dart';
 import 'package:flutter/material.dart';
