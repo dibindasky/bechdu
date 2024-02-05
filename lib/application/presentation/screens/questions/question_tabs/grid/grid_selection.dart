@@ -1,4 +1,4 @@
-import 'package:beachdu/application/presentation/screens/questions/dynamic_tabs/grid/grid_tile.dart';
+import 'package:beachdu/application/presentation/screens/questions/question_tabs/grid/grid_tile.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:flutter/material.dart';
 

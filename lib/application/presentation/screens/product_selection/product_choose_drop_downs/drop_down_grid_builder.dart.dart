@@ -1,4 +1,4 @@
-import 'package:beachdu/application/presentation/screens/product_selection/widgets/drop_down_custom.dart';
+import 'package:beachdu/application/presentation/screens/product_selection/product_choose_drop_downs/drop_down_custom.dart';
 import 'package:flutter/material.dart';
 
 class ScreenProductSelectionProductFindDropdownGridView

@@ -1,7 +1,7 @@
 import 'package:beachdu/application/business_logic/navbar/navbar_cubit.dart';
 import 'package:beachdu/application/presentation/screens/product_selection/product_screen.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
-import 'package:beachdu/application/presentation/widgets/custom_elevated_button.dart';
+import 'package:beachdu/application/presentation/utils/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -28,14 +28,13 @@ class SuuccessOrderPlaced extends StatelessWidget {
             kHeight30,
             BlocBuilder<NavbarCubit, NavbarState>(
               builder: (context, state) {
-                return ElevatedButtonLong(
-                  wdth: 270,
+                return CustomButton(
                   onPressed: () {
                     context.read<NavbarCubit>().changeNavigationIndex(2);
                     secondtabScreensNotifier.value = 0;
                     secondtabScreensNotifier.notifyListeners();
                   },
-                  text: 'My Orders',
+                  text: 'My orders',
                 );
               },
             ),

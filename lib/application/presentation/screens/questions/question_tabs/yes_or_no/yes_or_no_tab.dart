@@ -1,5 +1,4 @@
-import 'package:beachdu/application/presentation/screens/questions/dynamic_tabs/widgets/tab_index_change_button.dart';
-import 'package:beachdu/application/presentation/screens/questions/dynamic_tabs/yes_or_no/yes_or_no_tile.dart';
+import 'package:beachdu/application/presentation/screens/questions/question_tabs/yes_or_no/yes_or_no_tile.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:flutter/material.dart';
 
@@ -26,8 +25,6 @@ class YesOrNoListMaker extends StatelessWidget {
               ),
             ),
             kHeight30,
-            // const TabIndexChangeButton(),
-            // kHeight30
           ],
         ),
       ),

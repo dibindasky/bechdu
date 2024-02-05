@@ -2,8 +2,8 @@ import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:flutter/material.dart';
 
-class Date extends StatelessWidget {
-  const Date({
+class DatePickingBottomSheet extends StatelessWidget {
+  const DatePickingBottomSheet({
     super.key,
     required this.datePicker,
     required this.onPressed,

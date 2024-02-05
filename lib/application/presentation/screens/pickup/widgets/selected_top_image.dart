@@ -25,9 +25,7 @@ class SelectedTopImage extends StatelessWidget {
                 SizedBox(
                   height: sWidth * .3,
                   width: sWidth * .3,
-                  child: HeroWidget(
-                      tag: HeroTag.image(mobileTransperantassetImage),
-                      child: Image.asset(mobileTransperantassetImage)),
+                  child: Image.asset(mobileTransperantassetImage),
                 ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,

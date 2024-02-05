@@ -1,5 +1,4 @@
-import 'package:beachdu/application/presentation/screens/navbar/bottombar.dart';
-import 'package:beachdu/application/presentation/screens/questions/dynamic_tabs/questions_screen.dart';
+import 'package:beachdu/application/presentation/screens/product_selection/product_screen.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:flutter/material.dart';
@@ -22,14 +21,13 @@ class ProductContainer extends StatelessWidget {
               kWidth20,
               SizedBox(
                 height: sWidth * 0.2,
-                width: sWidth * 0.15,
+                width: sWidth * 0.1,
                 child: Image.asset(
                   mobileTransperantassetImage,
                 ),
               ),
               kWidth20,
               SizedBox(
-                width: sWidth * 0.55,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -45,7 +43,7 @@ class ProductContainer extends StatelessWidget {
                               fontSize: sWidth * 0.05,
                             ),
                           ),
-                          kWidth5,
+                          kWidth10,
                           Text(
                             '256 GB | Black',
                             style: textHeadMedium1.copyWith(
@@ -63,34 +61,31 @@ class ProductContainer extends StatelessWidget {
                         fontSize: sWidth * 0.06,
                       ),
                     ),
-                    FittedBox(
-                      child: Row(
-                        children: [
-                          Text(
-                            'Not Satisfied With our Price ?',
+                    Row(
+                      children: [
+                        Text(
+                          'Not Satisfied With \nour Price ?',
+                          style: textHeadBold1.copyWith(
+                            color: kWhite,
+                          ),
+                        ),
+                        kWidth10,
+                        TextButton(
+                          onPressed: () {
+                            secondtabScreensNotifier.value = 1;
+                            secondtabScreensNotifier.notifyListeners();
+                          },
+                          child: Text(
+                            'Recalculate',
                             style: textHeadBold1.copyWith(
                               color: kWhite,
+                              decoration: TextDecoration.underline,
+                              decorationColor: kWhite,
+                              decorationThickness: 2,
                             ),
                           ),
-                          TextButton(
-                            onPressed: () {
-                              // Navigator.of(context).pushNamedAndRemoveUntil(
-                              //     Routes.questions, (route) => false);
-                              body[1] = const QuestionTabs();
-                              //  bottomBarNotifier.notifyListeners();
-                            },
-                            child: Text(
-                              'Recalculate',
-                              style: textHeadBold1.copyWith(
-                                color: kWhite,
-                                decoration: TextDecoration.underline,
-                                decorationColor: kWhite,
-                                decorationThickness: 2,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                   ],
                 ),

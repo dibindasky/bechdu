@@ -1,10 +1,11 @@
+import 'package:beachdu/application/presentation/screens/pickup/pickup_screen.dart';
 import 'package:beachdu/application/presentation/screens/product_selection/product_choose_drop_downs/drop_down_grid_builder.dart.dart';
 import 'package:beachdu/application/presentation/screens/product_selection/product_lists/product_list_builder.dart';
 import 'package:beachdu/application/presentation/screens/product_selection/search_field/product_serch_field.dart';
 import 'package:beachdu/application/presentation/screens/questions/after_question_checked/final_price_screen/final_price_screen.dart';
-import 'package:beachdu/application/presentation/screens/questions/after_question_checked/preview_product_screen/product_preview_screen.dart';
+import 'package:beachdu/application/presentation/screens/questions/after_question_checked/preview_product_screen/main_screen.dart';
 import 'package:beachdu/application/presentation/screens/questions/after_question_checked/success_order/success_product_place_rder.dart';
-import 'package:beachdu/application/presentation/screens/questions/dynamic_tabs/questions_screen.dart';
+import 'package:beachdu/application/presentation/screens/questions/questions_screen.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/application/presentation/utils/exit_app_daillogue/exit_app_dailogue.dart';
 import 'package:beachdu/application/presentation/widgets/custom_elevated_button.dart';
@@ -17,6 +18,7 @@ List<Widget> secondNavigationScreens = [
   const QuestionTabs(),
   const ScreenProductPreview(),
   const FinalPriceScreen(),
+  const ScreenPickUp(),
   const SuuccessOrderPlaced(),
 ];
 

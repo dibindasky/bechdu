@@ -1,10 +1,10 @@
 import 'package:beachdu/application/business_logic/question_tab/question_tab_bloc.dart';
 import 'package:beachdu/application/presentation/screens/product_selection/product_screen.dart';
-import 'package:beachdu/application/presentation/screens/questions/dynamic_tabs/question_anwer_sesstion/answer_session.dart';
-import 'package:beachdu/application/presentation/screens/questions/after_question_checked/preview_product_screen/product_preview.dart';
-import 'package:beachdu/application/presentation/screens/questions/dynamic_tabs/widgets/tab_index_change_button.dart';
+import 'package:beachdu/application/presentation/screens/questions/question_tabs/question_anwer_sesstion/answer_session.dart';
+import 'package:beachdu/application/presentation/screens/questions/question_tabs/widget/question_top_image.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
+import 'package:beachdu/application/presentation/utils/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -19,16 +19,40 @@ class QuestionTabs extends StatelessWidget {
         secondtabScreensNotifier.notifyListeners();
         return false;
       },
-      child: const SafeArea(
+      child: SafeArea(
         child: Scaffold(
+          appBar: AppBar(
+            automaticallyImplyLeading: false,
+          ),
           body: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              ProductPreviewQuestion(),
-              QuestionScreenTabs(),
+              const ProductPreviewQuestion(),
+              kHeight10,
+              const QuestionScreenTabs(),
               kHeight20,
-              QuestionTabAnswerSession(),
-              TabIndexChangeButton(),
+              const QuestionTabAnswerSession(),
+              BlocBuilder<QuestionTabBloc, QuestionTabState>(
+                builder: (context, state) {
+                  return CustomButton(
+                    onPressed: () {
+                      if (state.selectedTabIndex >= state.tabItems.length - 1) {
+                        secondtabScreensNotifier.value = 2;
+                        secondtabScreensNotifier.notifyListeners();
+                        context
+                            .read<QuestionTabBloc>()
+                            .add(const QuestionTabEvent.resetTabSelection());
+                      } else {
+                        context
+                            .read<QuestionTabBloc>()
+                            .add(const QuestionTabEvent.tabChange());
+                      }
+                    },
+                    text: state.selectedTabIndex != state.tabItems.length - 1
+                        ? 'Continue'
+                        : 'Proceed',
+                  );
+                },
+              ),
             ],
           ),
         ),

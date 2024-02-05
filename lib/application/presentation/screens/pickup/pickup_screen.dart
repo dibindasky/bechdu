@@ -1,9 +1,9 @@
-import 'package:beachdu/application/presentation/screens/pickup/widgets/data_vauelistenable.dart';
+import 'package:beachdu/application/presentation/screens/pickup/widgets/data_value_listenable.dart';
 import 'package:beachdu/application/presentation/screens/pickup/widgets/row_icons_value_listanable.dart';
 import 'package:beachdu/application/presentation/screens/pickup/widgets/selected_top_image.dart';
+import 'package:beachdu/application/presentation/screens/product_selection/product_screen.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
-import 'package:beachdu/application/presentation/utils/exit_app_daillogue/exit_app_dailogue.dart';
 import 'package:flutter/material.dart';
 
 enum PickupDetailContainers {
@@ -33,8 +33,9 @@ class ScreenPickUp extends StatelessWidget {
       },
       child: WillPopScope(
         onWillPop: () async {
-          bool shouldPop = await showConfirmationDialog(context);
-          return shouldPop;
+          secondtabScreensNotifier.value = 3;
+          secondtabScreensNotifier.notifyListeners();
+          return false;
         },
         child: Scaffold(
           body: SafeArea(

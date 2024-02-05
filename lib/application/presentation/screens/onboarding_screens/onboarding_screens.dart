@@ -1,7 +1,6 @@
 import 'package:beachdu/application/presentation/routes/routes.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 class BechDuUserOnBoardingScreens extends StatefulWidget {
@@ -121,8 +120,8 @@ class _BechDuUserOnBoardingScreensState
                     ),
                   ),
                   Center(
-                    child: Transform.translate(
-                      offset: const Offset(-50.0, 0.0),
+                    child: Transform.rotate(
+                      angle: _animation.value * 0.5,
                       child: SizedBox(
                         height: sWidth * 0.45,
                         child: Image.asset(onBoardingsecondScreen),

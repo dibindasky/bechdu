@@ -19,6 +19,7 @@ mixin _$QuestionTabEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() tabChange,
+    required TResult Function() resetTabSelection,
     required TResult Function(Map<String, dynamic> markedAnswers)
         markedWuestions,
   }) =>
@@ -26,12 +27,14 @@ mixin _$QuestionTabEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? tabChange,
+    TResult? Function()? resetTabSelection,
     TResult? Function(Map<String, dynamic> markedAnswers)? markedWuestions,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? tabChange,
+    TResult Function()? resetTabSelection,
     TResult Function(Map<String, dynamic> markedAnswers)? markedWuestions,
     required TResult orElse(),
   }) =>
@@ -39,18 +42,21 @@ mixin _$QuestionTabEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_TabChange value) tabChange,
+    required TResult Function(_ResetTabSelection value) resetTabSelection,
     required TResult Function(_MarkedAnswers value) markedWuestions,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_TabChange value)? tabChange,
+    TResult? Function(_ResetTabSelection value)? resetTabSelection,
     TResult? Function(_MarkedAnswers value)? markedWuestions,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_TabChange value)? tabChange,
+    TResult Function(_ResetTabSelection value)? resetTabSelection,
     TResult Function(_MarkedAnswers value)? markedWuestions,
     required TResult orElse(),
   }) =>
@@ -120,6 +126,7 @@ class _$TabChangeImpl with DiagnosticableTreeMixin implements _TabChange {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() tabChange,
+    required TResult Function() resetTabSelection,
     required TResult Function(Map<String, dynamic> markedAnswers)
         markedWuestions,
   }) {
@@ -130,6 +137,7 @@ class _$TabChangeImpl with DiagnosticableTreeMixin implements _TabChange {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? tabChange,
+    TResult? Function()? resetTabSelection,
     TResult? Function(Map<String, dynamic> markedAnswers)? markedWuestions,
   }) {
     return tabChange?.call();
@@ -139,6 +147,7 @@ class _$TabChangeImpl with DiagnosticableTreeMixin implements _TabChange {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? tabChange,
+    TResult Function()? resetTabSelection,
     TResult Function(Map<String, dynamic> markedAnswers)? markedWuestions,
     required TResult orElse(),
   }) {
@@ -152,6 +161,7 @@ class _$TabChangeImpl with DiagnosticableTreeMixin implements _TabChange {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_TabChange value) tabChange,
+    required TResult Function(_ResetTabSelection value) resetTabSelection,
     required TResult Function(_MarkedAnswers value) markedWuestions,
   }) {
     return tabChange(this);
@@ -161,6 +171,7 @@ class _$TabChangeImpl with DiagnosticableTreeMixin implements _TabChange {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_TabChange value)? tabChange,
+    TResult? Function(_ResetTabSelection value)? resetTabSelection,
     TResult? Function(_MarkedAnswers value)? markedWuestions,
   }) {
     return tabChange?.call(this);
@@ -170,6 +181,7 @@ class _$TabChangeImpl with DiagnosticableTreeMixin implements _TabChange {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_TabChange value)? tabChange,
+    TResult Function(_ResetTabSelection value)? resetTabSelection,
     TResult Function(_MarkedAnswers value)? markedWuestions,
     required TResult orElse(),
   }) {
@@ -182,6 +194,124 @@ class _$TabChangeImpl with DiagnosticableTreeMixin implements _TabChange {
 
 abstract class _TabChange implements QuestionTabEvent {
   const factory _TabChange() = _$TabChangeImpl;
+}
+
+/// @nodoc
+abstract class _$$ResetTabSelectionImplCopyWith<$Res> {
+  factory _$$ResetTabSelectionImplCopyWith(_$ResetTabSelectionImpl value,
+          $Res Function(_$ResetTabSelectionImpl) then) =
+      __$$ResetTabSelectionImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ResetTabSelectionImplCopyWithImpl<$Res>
+    extends _$QuestionTabEventCopyWithImpl<$Res, _$ResetTabSelectionImpl>
+    implements _$$ResetTabSelectionImplCopyWith<$Res> {
+  __$$ResetTabSelectionImplCopyWithImpl(_$ResetTabSelectionImpl _value,
+      $Res Function(_$ResetTabSelectionImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$ResetTabSelectionImpl
+    with DiagnosticableTreeMixin
+    implements _ResetTabSelection {
+  const _$ResetTabSelectionImpl();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'QuestionTabEvent.resetTabSelection()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+        .add(DiagnosticsProperty('type', 'QuestionTabEvent.resetTabSelection'));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$ResetTabSelectionImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() tabChange,
+    required TResult Function() resetTabSelection,
+    required TResult Function(Map<String, dynamic> markedAnswers)
+        markedWuestions,
+  }) {
+    return resetTabSelection();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? tabChange,
+    TResult? Function()? resetTabSelection,
+    TResult? Function(Map<String, dynamic> markedAnswers)? markedWuestions,
+  }) {
+    return resetTabSelection?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? tabChange,
+    TResult Function()? resetTabSelection,
+    TResult Function(Map<String, dynamic> markedAnswers)? markedWuestions,
+    required TResult orElse(),
+  }) {
+    if (resetTabSelection != null) {
+      return resetTabSelection();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_TabChange value) tabChange,
+    required TResult Function(_ResetTabSelection value) resetTabSelection,
+    required TResult Function(_MarkedAnswers value) markedWuestions,
+  }) {
+    return resetTabSelection(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_TabChange value)? tabChange,
+    TResult? Function(_ResetTabSelection value)? resetTabSelection,
+    TResult? Function(_MarkedAnswers value)? markedWuestions,
+  }) {
+    return resetTabSelection?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_TabChange value)? tabChange,
+    TResult Function(_ResetTabSelection value)? resetTabSelection,
+    TResult Function(_MarkedAnswers value)? markedWuestions,
+    required TResult orElse(),
+  }) {
+    if (resetTabSelection != null) {
+      return resetTabSelection(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ResetTabSelection implements QuestionTabEvent {
+  const factory _ResetTabSelection() = _$ResetTabSelectionImpl;
 }
 
 /// @nodoc
@@ -267,6 +397,7 @@ class _$MarkedAnswersImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() tabChange,
+    required TResult Function() resetTabSelection,
     required TResult Function(Map<String, dynamic> markedAnswers)
         markedWuestions,
   }) {
@@ -277,6 +408,7 @@ class _$MarkedAnswersImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? tabChange,
+    TResult? Function()? resetTabSelection,
     TResult? Function(Map<String, dynamic> markedAnswers)? markedWuestions,
   }) {
     return markedWuestions?.call(markedAnswers);
@@ -286,6 +418,7 @@ class _$MarkedAnswersImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? tabChange,
+    TResult Function()? resetTabSelection,
     TResult Function(Map<String, dynamic> markedAnswers)? markedWuestions,
     required TResult orElse(),
   }) {
@@ -299,6 +432,7 @@ class _$MarkedAnswersImpl
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_TabChange value) tabChange,
+    required TResult Function(_ResetTabSelection value) resetTabSelection,
     required TResult Function(_MarkedAnswers value) markedWuestions,
   }) {
     return markedWuestions(this);
@@ -308,6 +442,7 @@ class _$MarkedAnswersImpl
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_TabChange value)? tabChange,
+    TResult? Function(_ResetTabSelection value)? resetTabSelection,
     TResult? Function(_MarkedAnswers value)? markedWuestions,
   }) {
     return markedWuestions?.call(this);
@@ -317,6 +452,7 @@ class _$MarkedAnswersImpl
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_TabChange value)? tabChange,
+    TResult Function(_ResetTabSelection value)? resetTabSelection,
     TResult Function(_MarkedAnswers value)? markedWuestions,
     required TResult orElse(),
   }) {

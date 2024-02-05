@@ -1,8 +1,9 @@
 import 'package:beachdu/application/presentation/screens/product_selection/product_screen.dart';
-import 'package:beachdu/application/presentation/screens/questions/after_question_checked/expansion_tile_Product_preview.dart';
-import 'package:beachdu/application/presentation/screens/questions/after_question_checked/product_container.dart';
+import 'package:beachdu/application/presentation/screens/questions/after_question_checked/preview_product_screen/expansion_tile.dart';
+import 'package:beachdu/application/presentation/screens/questions/after_question_checked/preview_product_screen/product_container.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
+import 'package:beachdu/application/presentation/utils/custom_button.dart';
 import 'package:beachdu/application/presentation/widgets/custom_elevated_button.dart';
 import 'package:flutter/material.dart';
 
@@ -65,14 +66,13 @@ class ScreenProductPreview extends StatelessWidget {
               ),
               kHeight40,
               kHeight40,
-              ElevatedButtonLong(
-                wdth: 200,
+              CustomButton(
+                text: 'Continue',
                 onPressed: () {
                   secondtabScreensNotifier.value = 3;
                   secondtabScreensNotifier.notifyListeners();
                 },
-                text: 'Continue',
-              ),
+              )
             ],
           ),
         ),

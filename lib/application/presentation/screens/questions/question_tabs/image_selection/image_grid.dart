@@ -1,5 +1,4 @@
-import 'package:beachdu/application/presentation/screens/questions/dynamic_tabs/image_selection/image_selection_tile.dart';
-import 'package:beachdu/application/presentation/screens/questions/dynamic_tabs/widgets/tab_index_change_button.dart';
+import 'package:beachdu/application/presentation/screens/questions/question_tabs/image_selection/image_selection_tile.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:flutter/material.dart';
 
@@ -32,8 +31,6 @@ class ImageGridMaker extends StatelessWidget {
               ),
             ),
             kHeight30,
-            // const TabIndexChangeButton(),
-            // kHeight30
           ],
         ),
       ),

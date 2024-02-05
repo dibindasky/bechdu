@@ -1,7 +1,7 @@
 import 'package:beachdu/application/business_logic/question_tab/question_tab_bloc.dart';
-import 'package:beachdu/application/presentation/screens/questions/dynamic_tabs/grid/grid_selection.dart';
-import 'package:beachdu/application/presentation/screens/questions/dynamic_tabs/image_selection/image_grid.dart';
-import 'package:beachdu/application/presentation/screens/questions/dynamic_tabs/yes_or_no/yes_or_no_tab.dart';
+import 'package:beachdu/application/presentation/screens/questions/question_tabs/grid/grid_selection.dart';
+import 'package:beachdu/application/presentation/screens/questions/question_tabs/image_selection/image_grid.dart';
+import 'package:beachdu/application/presentation/screens/questions/question_tabs/yes_or_no/yes_or_no_tab.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/application/presentation/utils/snackbar/snackbar.dart';
 import 'package:flutter/material.dart';

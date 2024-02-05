@@ -1,10 +1,9 @@
-import 'package:beachdu/application/presentation/routes/routes.dart';
-import 'package:beachdu/application/presentation/screens/navbar/bottombar.dart';
 import 'package:beachdu/application/presentation/screens/pickup/pickup_contaners/date_selection/date_picking_bottom_sheet.dart';
-import 'package:beachdu/application/presentation/screens/questions/after_question_checked/success_order/success_product_place_rder.dart';
+import 'package:beachdu/application/presentation/screens/pickup/pickup_screen.dart';
+import 'package:beachdu/application/presentation/screens/product_selection/product_screen.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
-import 'package:beachdu/application/presentation/widgets/custom_elevated_button.dart';
+import 'package:beachdu/application/presentation/utils/custom_button.dart';
 import 'package:flutter/material.dart';
 
 class DateOrTime extends StatefulWidget {
@@ -32,7 +31,20 @@ class _DateOrTimeState extends State<DateOrTime> {
                 const Text('TIME SLOT'),
                 kHeight10,
                 InkWell(
-                  onTap: () => showDateModalBottomSheet(context),
+                  onTap: () => showModalBottomSheet(
+                    context: context,
+                    isScrollControlled: true,
+                    builder: (BuildContext context) {
+                      return DatePickingBottomSheet(
+                        onPressed: (date) {
+                          setState(() {
+                            dateController.text = date;
+                          });
+                        },
+                        datePicker: dateController,
+                      );
+                    },
+                  ),
                   child: Container(
                     padding: const EdgeInsets.only(left: 10, right: 12),
                     height: 60,
@@ -125,36 +137,19 @@ class _DateOrTimeState extends State<DateOrTime> {
               ],
             ),
           ),
-          Align(
-            alignment: Alignment.center,
-            child: ElevatedButtonLong(
-              wdth: 200,
-              onPressed: () {
-                body[1] = const SuuccessOrderPlaced();
-                //bottomBarNotifier.notifyListeners();
-              },
-              text: 'Place Order',
-            ),
+          CustomButton(
+            onPressed: () {
+              secondtabScreensNotifier.value = 5;
+              secondtabScreensNotifier.notifyListeners();
+              pickupDetailChangeNotifier.value =
+                  PickupDetailContainers.personalDetails;
+              pickupDetailChangeNotifier.notifyListeners();
+            },
+            text: 'Place Order',
+            backgroundColor: kBluePrimary,
           ),
         ],
       ),
-    );
-  }
-
-  void showDateModalBottomSheet(BuildContext context) {
-    showModalBottomSheet(
-      context: context,
-      isScrollControlled: true,
-      builder: (BuildContext context) {
-        return Date(
-          onPressed: (date) {
-            setState(() {
-              dateController.text = date;
-            });
-          },
-          datePicker: dateController,
-        );
-      },
     );
   }
 }
