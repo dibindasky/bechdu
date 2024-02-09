@@ -1,9 +1,13 @@
+import 'package:beachdu/application/business_logic/brands_bloc/category_bloc_bloc.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
+import 'package:beachdu/application/presentation/utils/skeltons/skelton.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lottie/lottie.dart';
 
-class ProductListView extends StatelessWidget {
-  const ProductListView({
+class ProductListViewBuilder extends StatelessWidget {
+  const ProductListViewBuilder({
     super.key,
   });
 
@@ -18,68 +22,92 @@ class ProductListView extends StatelessWidget {
           style: textHeadBold1,
         ),
         kHeight10,
-        GridView.builder(
-          physics: const NeverScrollableScrollPhysics(),
-          shrinkWrap: true,
-          itemCount: 7,
-          scrollDirection: Axis.vertical,
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            crossAxisSpacing: 10,
-            mainAxisSpacing: 10,
-            childAspectRatio: 1 / 1.5,
-          ),
-          itemBuilder: (context, index) {
-            return Container(
-              padding: const EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                border: Border.all(color: kBlack),
-                borderRadius: kRadius10,
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Center(
-                    child: SizedBox(
-                      height: 100,
-                      child: Image.asset(
-                        mobileTransperantassetImage,
-                        fit: BoxFit.cover,
-                        errorBuilder: (context, error, stackTrace) {
-                          return const Icon(
-                            Icons.error,
-                          );
-                        },
+        BlocBuilder<CategoryBlocBloc, CategoryBlocState>(
+          builder: (context, categoryState) {
+            if (categoryState.isLoading) {
+              return const Skeleton(
+                crossAxisCount: 2,
+                itemCount: 15,
+                height: 200,
+              );
+            } else if (categoryState.hasError) {
+              return Center(child: Text(categoryState.message!));
+            } else {
+              if (categoryState.getProductsResponceModel == null ||
+                  categoryState.getProductsResponceModel!.product!.isEmpty) {
+                return Center(child: Lottie.asset(emptyLottie));
+              } else {
+                final products =
+                    categoryState.getProductsResponceModel!.product!;
+                return GridView.builder(
+                  physics: const NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  itemCount: products.length,
+                  scrollDirection: Axis.vertical,
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    crossAxisSpacing: 10,
+                    mainAxisSpacing: 10,
+                    childAspectRatio: 1 / 1.5,
+                  ),
+                  itemBuilder: (context, index) {
+                    return Container(
+                      padding: const EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        border: Border.all(color: kBlack),
+                        borderRadius: kRadius10,
                       ),
-                    ),
-                  ),
-                  kHeight10,
-                  Container(
-                    padding: const EdgeInsets.all(5),
-                    decoration: BoxDecoration(
-                        color: ksmalLight, borderRadius: kRadius5),
-                    child: Text(
-                      'New',
-                      style: textHeadBold1.copyWith(
-                        color: kYellowLight,
-                        fontSize: sWidth * .034,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Center(
+                            child: SizedBox(
+                              height: 100,
+                              child: Image.network(
+                                products[index].productImage!,
+                                fit: BoxFit.cover,
+                                errorBuilder: (context, error, stackTrace) {
+                                  return const Icon(
+                                    Icons.error,
+                                  );
+                                },
+                              ),
+                            ),
+                          ),
+                          kHeight10,
+                          Container(
+                            padding: const EdgeInsets.all(5),
+                            decoration: BoxDecoration(
+                                color: ksmalLight, borderRadius: kRadius5),
+                            child: Text(
+                              'New',
+                              style: textHeadBold1.copyWith(
+                                color: kYellowLight,
+                                fontSize: sWidth * .034,
+                              ),
+                            ),
+                          ),
+                          kHeight10,
+                          Text(products[index].seriesName!,
+                              style: textHeadBold1),
+                          Text(
+                            'Upto ₹${products[index].basePrice}',
+                            style: textHeadMedium1.copyWith(
+                                fontSize: sWidth * .034),
+                          ),
+                          kHeight5,
+                          Text(
+                            '12 mobiles sold in last 22 Hrs',
+                            style: textHeadMedium1.copyWith(
+                                fontSize: sWidth * .029),
+                          )
+                        ],
                       ),
-                    ),
-                  ),
-                  kHeight10,
-                  Text('I phone 12', style: textHeadBold1),
-                  Text(
-                    'Upto ₹20,000/-',
-                    style: textHeadMedium1.copyWith(fontSize: sWidth * .034),
-                  ),
-                  kHeight5,
-                  Text(
-                    '12 mobiles sold in last 22 Hrs',
-                    style: textHeadMedium1.copyWith(fontSize: sWidth * .029),
-                  )
-                ],
-              ),
-            );
+                    );
+                  },
+                );
+              }
+            }
           },
         ),
       ],

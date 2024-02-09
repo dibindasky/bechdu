@@ -47,14 +47,7 @@ class _BechDuUserOnBoardingScreensState
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        if (selectedIndex == 1) {
-          startAnimation();
-          Future.delayed(const Duration(milliseconds: 500)).then((value) {
-            setState(() {
-              selectedIndex += 1;
-            });
-          });
-        } else if (selectedIndex < totalPages - 1) {
+        if (selectedIndex < totalPages - 1) {
           setState(() {
             selectedIndex += 1;
           });
@@ -63,7 +56,6 @@ class _BechDuUserOnBoardingScreensState
         }
       },
       child: Scaffold(
-        backgroundColor: onBoardBlack,
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -100,15 +92,15 @@ class _BechDuUserOnBoardingScreensState
                   const Center(
                     child: CircleAvatar(
                       backgroundColor: kBluePrimary,
-                      radius: 86,
+                      radius: 87,
                       child: CircleAvatar(
-                        backgroundColor: onBoardBlack,
+                        backgroundColor: kWhite,
                         radius: 85,
                         child: CircleAvatar(
                           backgroundColor: kBluePrimary,
-                          radius: 78,
+                          radius: 79,
                           child: CircleAvatar(
-                            backgroundColor: onBoardBlack,
+                            backgroundColor: kWhite,
                             radius: 77,
                             child: CircleAvatar(
                               backgroundColor: kBluePrimary,
@@ -120,34 +112,28 @@ class _BechDuUserOnBoardingScreensState
                     ),
                   ),
                   Center(
-                    child: Transform.rotate(
-                      angle: _animation.value * 0.5,
-                      child: SizedBox(
-                        height: sWidth * 0.45,
-                        child: Image.asset(onBoardingsecondScreen),
-                      ),
+                    child: SizedBox(
+                      height: sWidth * 0.45,
+                      child: Image.asset(onBoardingsecondScreen),
                     ),
                   ),
                 ],
               ),
             if (selectedIndex == 2)
               Center(
-                child: FadeTransition(
-                  opacity: _animation,
-                  child: SizedBox(
-                    height: sWidth * 0.45,
-                    child: Image.asset(onBoardingThirdScreen),
-                  ),
+                child: SizedBox(
+                  height: sWidth * 0.45,
+                  child: Image.asset(onBoardingThirdScreen),
                 ),
               ),
             kHeight40,
             Text(
               textListFirst[selectedIndex],
-              style: textHeadBoldBig.copyWith(color: kWhite),
+              style: textHeadBoldBig.copyWith(color: kBlack),
             ),
             Text(
               textListSecond[selectedIndex],
-              style: textHeadBoldBig.copyWith(color: kWhite),
+              style: textHeadBoldBig.copyWith(color: kBlack),
             ),
             Text(
               'Lorem ipsum dolor sit amet,\n consectetur adipiscing elit.',
@@ -176,7 +162,7 @@ class _BechDuUserOnBoardingScreensState
         height: 10,
         child: CircleAvatar(
           radius: selectedIndex == index ? 5 : 3,
-          backgroundColor: selectedIndex == index ? kGreenPrimary : kWhite,
+          backgroundColor: selectedIndex == index ? kGreenPrimary : kBlack,
         ),
       ),
     );

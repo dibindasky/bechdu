@@ -6,7 +6,7 @@ import 'package:pinput/pinput.dart';
 class PinEnterField extends StatelessWidget {
   PinEnterField({super.key});
 
-  TextEditingController otpController = TextEditingController();
+  final TextEditingController otpController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {

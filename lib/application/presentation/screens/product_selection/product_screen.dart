@@ -1,4 +1,5 @@
 import 'package:beachdu/application/presentation/screens/pickup/pickup_screen.dart';
+import 'package:beachdu/application/presentation/screens/product_selection/brand_lists/brand_list_builder.dart';
 import 'package:beachdu/application/presentation/screens/product_selection/product_choose_drop_downs/drop_down_grid_builder.dart.dart';
 import 'package:beachdu/application/presentation/screens/product_selection/product_lists/product_list_builder.dart';
 import 'package:beachdu/application/presentation/screens/product_selection/search_field/product_serch_field.dart';
@@ -12,7 +13,6 @@ import 'package:beachdu/application/presentation/widgets/custom_elevated_button.
 import 'package:flutter/material.dart';
 
 ValueNotifier<int> secondtabScreensNotifier = ValueNotifier(0);
-
 List<Widget> secondNavigationScreens = [
   const ScreenProductSelection(),
   const QuestionTabs(),
@@ -20,6 +20,12 @@ List<Widget> secondNavigationScreens = [
   const FinalPriceScreen(),
   const ScreenPickUp(),
   const SuuccessOrderPlaced(),
+];
+
+ValueNotifier<int> brandandProductValueNotifier = ValueNotifier(0);
+List<Widget> brandAndPoductList = [
+  const BrandListviewBuilder(),
+  const ProductListViewBuilder(),
 ];
 
 class SecondTabvaluelistanableBBuilder extends StatelessWidget {
@@ -60,11 +66,20 @@ class ScreenProductSelection extends StatelessWidget {
               child: ListView(
                 children: [
                   kHeight20,
-                  const ProductScreenSearchField(),
+                  ProductScreenSearchField(),
                   kHeight10,
                   const ScreenProductSelectionProductFindDropdownGridView(),
                   kHeight10,
-                  const ProductListView(),
+                  ValueListenableBuilder(
+                    valueListenable: brandandProductValueNotifier,
+                    builder: (
+                      context,
+                      value,
+                      child,
+                    ) {
+                      return brandAndPoductList[value];
+                    },
+                  ),
                   kHeight20,
                   ElevatedButtonLong(
                     onPressed: () {

@@ -1,6 +1,7 @@
 import 'package:beachdu/application/presentation/screens/home/location_ssetup/pincode_selection.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
+import 'package:beachdu/application/presentation/utils/custom_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
@@ -13,7 +14,7 @@ class LocationCityChoosing extends StatefulWidget {
 }
 
 class _LocationCityChoosingState extends State<LocationCityChoosing> {
-  List<String> locations = [
+  final List<String> locations = [
     'Bangalore',
     'Mumbai',
     'Delhi',
@@ -50,15 +51,15 @@ class _LocationCityChoosingState extends State<LocationCityChoosing> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Container(
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage(locationbackgropundImage),
-                fit: BoxFit.cover,
-              ),
+        child: Container(
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage(locationbackgropundImage),
+              fit: BoxFit.cover,
             ),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -137,7 +138,17 @@ class _LocationCityChoosingState extends State<LocationCityChoosing> {
                     );
                   },
                 ),
-                kHeight10
+                kHeight10,
+                const Spacer(),
+                Center(
+                  child: CustomButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    text: 'Go back',
+                  ),
+                ),
+                kHeight40,
               ],
             ),
           ),

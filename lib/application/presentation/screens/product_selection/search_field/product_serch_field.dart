@@ -2,21 +2,15 @@ import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:flutter/material.dart';
 
-class ProductScreenSearchField extends StatefulWidget {
-  const ProductScreenSearchField({
-    super.key,
-  });
+class ProductScreenSearchField extends StatelessWidget {
+  ProductScreenSearchField({super.key});
 
-  @override
-  State<ProductScreenSearchField> createState() =>
-      _ProductScreenSearchFieldState();
-}
-
-class _ProductScreenSearchFieldState extends State<ProductScreenSearchField> {
   String? selectedCategory;
+
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      onChanged: (value) {},
       style: textHeadBold1.copyWith(fontSize: sWidth * .044),
       decoration: InputDecoration(
         contentPadding: const EdgeInsets.symmetric(
@@ -24,10 +18,10 @@ class _ProductScreenSearchFieldState extends State<ProductScreenSearchField> {
         ),
         prefixIcon: DropdownButtonHideUnderline(
           child: DropdownButton(
-            onChanged: (String? newValue) {
-              setState(() {
-                selectedCategory = newValue;
-              });
+            onChanged: (newValue) {
+              // setState(() {
+              //   selectedCategory = newValue;
+              // });
             },
             items: const [
               DropdownMenuItem(
@@ -60,7 +54,7 @@ class _ProductScreenSearchFieldState extends State<ProductScreenSearchField> {
             color: kBlueLight,
           ),
         ),
-        hintText: 'Search for product...',
+        hintText: 'Search for Brands...',
         hintStyle: textHeadBold1.copyWith(
           fontSize: sWidth * .043,
           color: kBlueLight,
@@ -70,7 +64,7 @@ class _ProductScreenSearchFieldState extends State<ProductScreenSearchField> {
             color: kBlueLight,
             width: .2,
           ),
-          borderRadius: BorderRadius.circular(7),
+          borderRadius: BorderRadius.circular(6),
         ),
       ),
     );

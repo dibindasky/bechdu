@@ -3,7 +3,6 @@ import 'package:beachdu/application/presentation/screens/auth/otp_screen/widgets
 import 'package:beachdu/application/presentation/screens/auth/otp_screen/widgets/pinput.dart';
 import 'package:flutter/material.dart';
 
-
 class OTPScreen extends StatelessWidget {
   const OTPScreen({super.key});
 

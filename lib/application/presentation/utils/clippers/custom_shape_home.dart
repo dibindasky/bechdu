@@ -10,7 +10,7 @@ class CustomShapeClipper extends CustomClipper<Path> {
     path.quadraticBezierTo(
         firstStart.dx, firstStart.dy, firstEnd.dx, firstEnd.dy);
     final secondStart = Offset(size.width * 0.3, size.height * 0.1);
-    final seconfEnd = Offset(size.width , size.height * 0.2);
+    final seconfEnd = Offset(size.width, size.height * 0.2);
     path.quadraticBezierTo(
         secondStart.dx, secondStart.dy, seconfEnd.dx, seconfEnd.dy);
     return path;

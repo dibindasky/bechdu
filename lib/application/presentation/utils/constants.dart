@@ -28,9 +28,9 @@ const orderSuccessNetwrokImage =
 
 const onBoardingpersonScreen = 'assets/images/onboarding_first_person.png';
 const onBoardingsecondScreen = 'assets/images/onboard second_phone image.jpeg';
-const onBoardingThirdScreen = 'assets/images/onboarding_third_screen.png';
+const onBoardingThirdScreen = 'assets/images/onboarding icon third.png';
 const locationbackgropundImage = 'assets/images/location_backgrounds.png';
-
+const emptyLottie = 'assets/lottie/animation_lmyr4fc2.json';
 double sHeight = 900;
 double sWidth = 400;
 

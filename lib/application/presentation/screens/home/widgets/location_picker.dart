@@ -14,8 +14,7 @@ class LocationChooser extends StatefulWidget {
 }
 
 class _LocationChooserState extends State<LocationChooser> {
-
-  LocationService locationService=LocationService();
+  LocationService locationService = LocationService();
   @override
   void initState() {
     getPosition();
@@ -47,8 +46,8 @@ class _LocationChooserState extends State<LocationChooser> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(LocationService.locationData?.toString()??
-                'Select Location',
+              Text(
+                LocationService.locationData?.toString() ?? 'Select Location',
                 style: textHeadMedium1,
               ),
               DottedDashedLine(
@@ -65,7 +64,6 @@ class _LocationChooserState extends State<LocationChooser> {
 }
 
 class LocationService {
-
   Location location = Location();
   static LocationData? locationData;
 
@@ -77,7 +75,7 @@ class LocationService {
   Future<LocationData> getCurrentLocation() async {
     final serviceEnabled = await location.serviceEnabled();
     if (!serviceEnabled) {
-      final result =await location.requestService;
+      final result = await location.requestService;
       if (result == true) {
         print('Service has been enabled');
       } else {
@@ -86,8 +84,8 @@ class LocationService {
     }
 
     final locations = await location.getLocation();
-    locationData=locations;
-    
+    locationData = locations;
+
     return locations;
   }
 }
