@@ -20,27 +20,24 @@ class _CashOrUPIState extends State<CashOrUPI> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 15),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'CASH / UPI',
-            style: textHeadMedium1.copyWith(
-              fontSize: sWidth * .033,
-            ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'CASH / UPI',
+          style: textHeadMedium1.copyWith(
+            fontSize: sWidth * .033,
           ),
-          kHeight10,
-          Row(
-            children: [
-              Expanded(child: customRadioButton('Cash', 'Option 1')),
-              kWidth10,
-              Expanded(child: customRadioButton('UPI', 'Option 2')),
-            ],
-          ),
-        ],
-      ),
+        ),
+        kHeight10,
+        Row(
+          children: [
+            Expanded(child: customRadioButton('Cash', 'Option 1')),
+            kWidth10,
+            Expanded(child: customRadioButton('UPI', 'Option 2')),
+          ],
+        ),
+      ],
     );
   }
 

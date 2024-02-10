@@ -4,3 +4,9 @@ enum TypeDisplay {
   one,
   none,
 }
+
+enum FromWhere {
+  questionScreen,
+  recalculateWithAmount,
+  checkoutAndPickupScreen,
+}

@@ -2,8 +2,10 @@ import 'package:beachdu/application/presentation/screens/product_selection/produ
 import 'package:beachdu/application/presentation/screens/questions/after_question_checked/final_price_screen/final_product_container.dart';
 import 'package:beachdu/application/presentation/screens/questions/after_question_checked/final_price_screen/final_product_price_details.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
+import 'package:beachdu/application/presentation/utils/enums/type_display.dart';
 import 'package:beachdu/application/presentation/utils/exit_app_daillogue/exit_app_dailogue.dart';
 import 'package:beachdu/application/presentation/widgets/custom_elevated_button.dart';
+import 'package:beachdu/application/presentation/widgets/top_image.dart';
 import 'package:flutter/material.dart';
 
 class FinalPriceScreen extends StatelessWidget {
@@ -32,7 +34,7 @@ class FinalPriceScreen extends StatelessWidget {
                 children: [
                   Column(
                     children: [
-                      FinalProductContiner(),
+                      TopImage(fromWhere: FromWhere.checkoutAndPickupScreen),
                       FinalProductPriceDetaails(),
                       kHeight40,
                       kHeight40,

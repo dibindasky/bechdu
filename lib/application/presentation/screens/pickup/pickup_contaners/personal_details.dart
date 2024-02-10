@@ -10,50 +10,47 @@ class PersonalDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 15),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'FIRST NAME',
-              style: textHeadMedium1.copyWith(
-                fontSize: sWidth * .033,
-              ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'FIRST NAME',
+            style: textHeadMedium1.copyWith(
+              fontSize: sWidth * .033,
             ),
-            const TTextFormField(
-              text: 'Jonathan',
+          ),
+          const TTextFormField(
+            text: 'Jonathan',
+          ),
+          Text(
+            'LAST NAME',
+            style: textHeadMedium1.copyWith(
+              fontSize: sWidth * .033,
             ),
-            Text(
-              'LAST NAME',
-              style: textHeadMedium1.copyWith(
-                fontSize: sWidth * .033,
-              ),
+          ),
+          const TTextFormField(
+            text: 'Rosario',
+          ),
+          Text(
+            'PHONE NUMBER',
+            style: textHeadMedium1.copyWith(
+              fontSize: sWidth * .033,
             ),
-            const TTextFormField(
-              text: 'Rosario',
+          ),
+          const TTextFormField(
+            text: 'xxxxxxxxx',
+            inputType: TextInputType.number,
+          ),
+          Text(
+            'EMAIL ADDRESS',
+            style: textHeadMedium1.copyWith(
+              fontSize: sWidth * .033,
             ),
-            Text(
-              'PHONE NUMBER',
-              style: textHeadMedium1.copyWith(
-                fontSize: sWidth * .033,
-              ),
-            ),
-            const TTextFormField(
-              text: 'xxxxxxxxx',
-              inputType: TextInputType.number,
-            ),
-            Text(
-              'EMAIL ADDRESS',
-              style: textHeadMedium1.copyWith(
-                fontSize: sWidth * .033,
-              ),
-            ),
-            const TTextFormField(
-              text: '@gmail.com',
-            ),
-          ],
-        ),
+          ),
+          const TTextFormField(
+            text: '@gmail.com',
+          ),
+        ],
       ),
     );
   }

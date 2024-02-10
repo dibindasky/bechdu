@@ -13,22 +13,20 @@ class ImageGridMaker extends StatelessWidget {
       child: SingleChildScrollView(
         child: Column(
           children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: GridView.builder(
-                shrinkWrap: true,
-                itemCount: map['data'].length,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  childAspectRatio: 1 / 1.5,
-                  mainAxisSpacing: 20,
-                  crossAxisSpacing: 20,
-                  crossAxisCount: 3,
-                ),
-                physics: const NeverScrollableScrollPhysics(),
-                itemBuilder: (context, index) {
-                  return GridTileQuestion(map: map['data'][index]);
-                },
+            GridView.builder(
+              padding: const EdgeInsets.all(0),
+              shrinkWrap: true,
+              itemCount: map['data'].length,
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                childAspectRatio: 1 / 1.5,
+                mainAxisSpacing: 20,
+                crossAxisSpacing: 20,
+                crossAxisCount: 3,
               ),
+              physics: const NeverScrollableScrollPhysics(),
+              itemBuilder: (context, index) {
+                return GridTileQuestion(map: map['data'][index]);
+              },
             ),
             kHeight30,
           ],

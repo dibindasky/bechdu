@@ -72,22 +72,20 @@ class ScreenProductSelection extends StatelessWidget {
                   kHeight10,
                   ValueListenableBuilder(
                     valueListenable: brandandProductValueNotifier,
-                    builder: (
-                      context,
-                      value,
-                      child,
-                    ) {
+                    builder: (context, value, child) {
                       return brandAndPoductList[value];
                     },
                   ),
                   kHeight20,
-                  ElevatedButtonLong(
-                    onPressed: () {
-                      secondtabScreensNotifier.value = 1;
-                      secondtabScreensNotifier.notifyListeners();
-                    },
-                    text: 'Get exact value',
-                  ),
+                  brandandProductValueNotifier.value == 0
+                      ? kEmpty
+                      : ElevatedButtonLong(
+                          onPressed: () {
+                            secondtabScreensNotifier.value = 1;
+                            secondtabScreensNotifier.notifyListeners();
+                          },
+                          text: 'Get exact value',
+                        ),
                   kHeight20,
                 ],
               ),

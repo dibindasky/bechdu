@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:developer';
+import 'package:beachdu/domain/model/category_model/single_category_brands_responce_model/brands.dart';
 import 'package:beachdu/domain/model/category_model/single_category_brands_responce_model/single_category_brands_responce_model.dart';
 import 'package:beachdu/domain/model/products_model/get_products_responce_model.dart';
 import 'package:beachdu/domain/repository/brands_repo.dart';
@@ -54,9 +55,8 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
       categoryType: event.categoryType,
       brandName: event.brandName,
     );
-
-    log('bloc categoryType >>>>=== : ${event.categoryType}');
-    log('bloc brandName >>>>=== : ${event.brandName}');
+    // log('bloc categoryType >>>>=== : ${event.categoryType}');
+    // log('bloc brandName >>>>=== : ${event.brandName}');
     data.fold((failure) {
       emit(state.copyWith(
         isLoading: false,

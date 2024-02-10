@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:beachdu/application/business_logic/brands_bloc/category_bloc_bloc.dart';
@@ -6,6 +7,7 @@ import 'package:beachdu/application/presentation/screens/product_selection/produ
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/application/presentation/utils/skeltons/skelton.dart';
+import 'package:beachdu/domain/core/api_endpoints/api_endpoints.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
@@ -26,7 +28,7 @@ class BrandListviewBuilder extends StatelessWidget {
         } else if (state.hasError) {
           return Center(child: Text(state.message!));
         } else {
-          if (state.getSingleCategoryResponce == null) {
+          if (state.getSingleCategoryResponce?.brands == null) {
             return Center(child: LottieBuilder.asset(emptyLottie));
           } else {
             final data = state.getSingleCategoryResponce;
@@ -47,6 +49,9 @@ class BrandListviewBuilder extends StatelessWidget {
                     mainAxisSpacing: 10,
                   ),
                   itemBuilder: (context, index) {
+                    String base64String = data.brands![index].brandImage!;
+                    base64String = base64String.replaceFirst(
+                        RegExp(r'data:image/[^;]+;base64,'), '');
                     return BlocBuilder<HomeBloc, HomeState>(
                       builder: (context, homeBloc) {
                         return InkWell(
@@ -78,9 +83,12 @@ class BrandListviewBuilder extends StatelessWidget {
                                         color: klightgrey.withOpacity(.1),
                                         child: Padding(
                                           padding: const EdgeInsets.all(8.0),
-                                          child: Image.network(
-                                            data.brands![index].brandImage ??
-                                                orderSuccessNetwrokImage,
+                                          child: Image.memory(
+                                            base64.decode(base64String),
+                                            errorBuilder:
+                                                (context, error, stackTrace) {
+                                              return const Icon(Icons.error);
+                                            },
                                           ),
                                         ),
                                       ),
@@ -94,7 +102,6 @@ class BrandListviewBuilder extends StatelessWidget {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(data.brands![index].brandName!),
-                                      const Text('Count')
                                     ],
                                   ),
                                 ),
@@ -113,4 +120,9 @@ class BrandListviewBuilder extends StatelessWidget {
       },
     );
   }
+
+  // Uint8List _decodeBase64(String input) {
+
+  //   return bytes;
+  // }
 }

@@ -1,10 +1,10 @@
 import 'package:beachdu/application/presentation/screens/product_selection/product_screen.dart';
 import 'package:beachdu/application/presentation/screens/questions/after_question_checked/preview_product_screen/expansion_tile.dart';
-import 'package:beachdu/application/presentation/screens/questions/after_question_checked/preview_product_screen/product_container.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/application/presentation/utils/custom_button.dart';
-import 'package:beachdu/application/presentation/widgets/custom_elevated_button.dart';
+import 'package:beachdu/application/presentation/utils/enums/type_display.dart';
+import 'package:beachdu/application/presentation/widgets/top_image.dart';
 import 'package:flutter/material.dart';
 
 class ScreenProductPreview extends StatelessWidget {
@@ -44,7 +44,7 @@ class ScreenProductPreview extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const ProductContainer(),
+                    const TopImage(fromWhere: FromWhere.recalculateWithAmount),
                     ListView.builder(
                       scrollDirection: Axis.vertical,
                       itemCount: testQuestionMap.length,

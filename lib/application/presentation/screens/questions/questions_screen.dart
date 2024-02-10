@@ -5,6 +5,8 @@ import 'package:beachdu/application/presentation/screens/questions/question_tabs
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/application/presentation/utils/custom_button.dart';
+import 'package:beachdu/application/presentation/utils/enums/type_display.dart';
+import 'package:beachdu/application/presentation/widgets/top_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -24,36 +26,41 @@ class QuestionTabs extends StatelessWidget {
           appBar: AppBar(
             automaticallyImplyLeading: false,
           ),
-          body: Column(
-            children: [
-              const ProductPreviewQuestion(),
-              kHeight10,
-              const QuestionScreenTabs(),
-              kHeight20,
-              const QuestionTabAnswerSession(),
-              BlocBuilder<QuestionTabBloc, QuestionTabState>(
-                builder: (context, state) {
-                  return CustomButton(
-                    onPressed: () {
-                      if (state.selectedTabIndex >= state.tabItems.length - 1) {
-                        secondtabScreensNotifier.value = 2;
-                        secondtabScreensNotifier.notifyListeners();
-                        context
-                            .read<QuestionTabBloc>()
-                            .add(const QuestionTabEvent.resetTabSelection());
-                      } else {
-                        context
-                            .read<QuestionTabBloc>()
-                            .add(const QuestionTabEvent.tabChange());
-                      }
-                    },
-                    text: state.selectedTabIndex != state.tabItems.length - 1
-                        ? 'Continue'
-                        : 'Proceed',
-                  );
-                },
-              ),
-            ],
+          body: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Column(
+              children: [
+                const TopImage(fromWhere: FromWhere.questionScreen),
+                kHeight10,
+                const QuestionScreenTabs(),
+                kHeight20,
+                const QuestionTabAnswerSession(),
+                BlocBuilder<QuestionTabBloc, QuestionTabState>(
+                  builder: (context, state) {
+                    return CustomButton(
+                      onPressed: () {
+                        if (state.selectedTabIndex >=
+                            state.tabItems.length - 1) {
+                          secondtabScreensNotifier.value = 2;
+                          secondtabScreensNotifier.notifyListeners();
+                          context
+                              .read<QuestionTabBloc>()
+                              .add(const QuestionTabEvent.resetTabSelection());
+                        } else {
+                          context
+                              .read<QuestionTabBloc>()
+                              .add(const QuestionTabEvent.tabChange());
+                        }
+                      },
+                      text: state.selectedTabIndex != state.tabItems.length - 1
+                          ? 'Continue'
+                          : 'Calculate price',
+                    );
+                  },
+                ),
+                kHeight10
+              ],
+            ),
           ),
         ),
       ),
@@ -70,33 +77,28 @@ class QuestionScreenTabs extends StatelessWidget {
       buildWhen: (previous, current) =>
           previous.selectedTabIndex != current.selectedTabIndex,
       builder: (context, state) {
-        return Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8.0),
-          child: SizedBox(
-            width: sWidth,
-            child: FittedBox(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: List.generate(
-                  state.tabItems.length,
-                  (index) => ClipRRect(
-                    borderRadius: kRadius15,
-                    child: ColoredBox(
-                      color: index == state.selectedTabIndex
-                          ? kGreenPrimary
-                          : knill,
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 10,
-                          vertical: 3,
-                        ),
-                        child: Text(
-                          state.tabItems[index]['sectionHeading'] as String,
-                          style: textHeadSemiBold1.copyWith(
-                            color: index == state.selectedTabIndex
-                                ? kWhite
-                                : kBlack,
-                          ),
+        return SizedBox(
+          width: sWidth,
+          child: FittedBox(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: List.generate(
+                state.tabItems.length,
+                (index) => ClipRRect(
+                  borderRadius: kRadius15,
+                  child: ColoredBox(
+                    color:
+                        index == state.selectedTabIndex ? kGreenPrimary : knill,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 10,
+                        vertical: 3,
+                      ),
+                      child: Text(
+                        state.tabItems[index]['sectionHeading'] as String,
+                        style: textHeadSemiBold1.copyWith(
+                          color:
+                              index == state.selectedTabIndex ? kWhite : kBlack,
                         ),
                       ),
                     ),

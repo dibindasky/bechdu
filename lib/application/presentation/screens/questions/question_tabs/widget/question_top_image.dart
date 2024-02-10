@@ -2,10 +2,8 @@ import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:flutter/material.dart';
 
-class ProductPreviewQuestion extends StatelessWidget {
-  const ProductPreviewQuestion({
-    super.key,
-  });
+class QuestionTopImage extends StatelessWidget {
+  const QuestionTopImage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -29,6 +27,7 @@ class ProductPreviewQuestion extends StatelessWidget {
                     width: sWidth * 0.13,
                     child: Image.asset(mobileTransperantassetImage),
                   ),
+                  kWidth10,
                   SizedBox(
                     width: sWidth * 0.45,
                     child: FittedBox(

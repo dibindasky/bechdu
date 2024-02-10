@@ -13,16 +13,14 @@ class YesOrNoListMaker extends StatelessWidget {
       child: SingleChildScrollView(
         child: Column(
           children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: ListView.builder(
-                physics: const NeverScrollableScrollPhysics(),
-                itemCount: map['data'].length,
-                shrinkWrap: true,
-                itemBuilder: (context, index) {
-                  return YesOrNoTile(map: map['data'][index]);
-                },
-              ),
+            ListView.builder(
+              padding: const EdgeInsets.all(0),
+              physics: const NeverScrollableScrollPhysics(),
+              itemCount: map['data'].length,
+              shrinkWrap: true,
+              itemBuilder: (context, index) {
+                return YesOrNoTile(map: map['data'][index]);
+              },
             ),
             kHeight30,
           ],

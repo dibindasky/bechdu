@@ -1,9 +1,9 @@
 import 'package:beachdu/application/presentation/screens/pickup/widgets/data_value_listenable.dart';
 import 'package:beachdu/application/presentation/screens/pickup/widgets/row_icons_value_listanable.dart';
-import 'package:beachdu/application/presentation/screens/pickup/widgets/selected_top_image.dart';
 import 'package:beachdu/application/presentation/screens/product_selection/product_screen.dart';
-import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
+import 'package:beachdu/application/presentation/utils/enums/type_display.dart';
+import 'package:beachdu/application/presentation/widgets/top_image.dart';
 import 'package:flutter/material.dart';
 
 enum PickupDetailContainers {
@@ -40,40 +40,25 @@ class ScreenPickUp extends StatelessWidget {
         child: Scaffold(
           body: SafeArea(
             child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  kHeight30,
-                  Stack(
-                    children: [
-                      Positioned(
-                        top: -30,
-                        right: 59,
-                        child: CircleAvatar(
-                          radius: 50,
-                          backgroundColor: kBlueLight.withOpacity(.16),
-                        ),
-                      ),
-                      Positioned(
-                        left: 150,
-                        bottom: -20,
-                        child: CircleAvatar(
-                          radius: 40,
-                          backgroundColor: kBlueLight.withOpacity(.15),
-                        ),
-                      ),
-                      const SelectedTopImage(),
-                    ],
-                  ),
-                  kHeight10,
-                  Text(
-                    'Pickup Details',
-                    style: textHeadBold1.copyWith(fontSize: sWidth * .05),
-                  ),
-                  kHeight20,
-                  const RowIconsValueListanable(),
-                  kHeight30,
-                  const DataValueListanableContainers(),
-                ],
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Column(
+                  children: [
+                    kHeight30,
+                    const TopImage(
+                      fromWhere: FromWhere.checkoutAndPickupScreen,
+                    ),
+                    kHeight10,
+                    Text(
+                      'Pickup Details',
+                      style: textHeadBold1.copyWith(fontSize: sWidth * .05),
+                    ),
+                    kHeight20,
+                    const RowIconsValueListanable(),
+                    kHeight30,
+                    const DataValueListanableContainers(),
+                  ],
+                ),
               ),
             ),
           ),

@@ -8,9 +8,11 @@ class CategoryBlocState with _$CategoryBlocState {
     String? message,
     SingleCategoryBrandsResponceModel? getSingleCategoryResponce,
     GetProductsResponceModel? getProductsResponceModel,
+    required List<Brands> brands,
   }) = _Initial;
   factory CategoryBlocState.intial() => const CategoryBlocState(
         isLoading: false,
         hasError: false,
+        brands: [],
       );
 }

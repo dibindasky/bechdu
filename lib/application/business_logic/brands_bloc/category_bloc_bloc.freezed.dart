@@ -711,6 +711,7 @@ mixin _$CategoryBlocState {
       throw _privateConstructorUsedError;
   GetProductsResponceModel? get getProductsResponceModel =>
       throw _privateConstructorUsedError;
+  List<Brands> get brands => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $CategoryBlocStateCopyWith<CategoryBlocState> get copyWith =>
@@ -728,7 +729,8 @@ abstract class $CategoryBlocStateCopyWith<$Res> {
       bool hasError,
       String? message,
       SingleCategoryBrandsResponceModel? getSingleCategoryResponce,
-      GetProductsResponceModel? getProductsResponceModel});
+      GetProductsResponceModel? getProductsResponceModel,
+      List<Brands> brands});
 }
 
 /// @nodoc
@@ -749,6 +751,7 @@ class _$CategoryBlocStateCopyWithImpl<$Res, $Val extends CategoryBlocState>
     Object? message = freezed,
     Object? getSingleCategoryResponce = freezed,
     Object? getProductsResponceModel = freezed,
+    Object? brands = null,
   }) {
     return _then(_value.copyWith(
       isLoading: null == isLoading
@@ -771,6 +774,10 @@ class _$CategoryBlocStateCopyWithImpl<$Res, $Val extends CategoryBlocState>
           ? _value.getProductsResponceModel
           : getProductsResponceModel // ignore: cast_nullable_to_non_nullable
               as GetProductsResponceModel?,
+      brands: null == brands
+          ? _value.brands
+          : brands // ignore: cast_nullable_to_non_nullable
+              as List<Brands>,
     ) as $Val);
   }
 }
@@ -788,7 +795,8 @@ abstract class _$$InitialImplCopyWith<$Res>
       bool hasError,
       String? message,
       SingleCategoryBrandsResponceModel? getSingleCategoryResponce,
-      GetProductsResponceModel? getProductsResponceModel});
+      GetProductsResponceModel? getProductsResponceModel,
+      List<Brands> brands});
 }
 
 /// @nodoc
@@ -807,6 +815,7 @@ class __$$InitialImplCopyWithImpl<$Res>
     Object? message = freezed,
     Object? getSingleCategoryResponce = freezed,
     Object? getProductsResponceModel = freezed,
+    Object? brands = null,
   }) {
     return _then(_$InitialImpl(
       isLoading: null == isLoading
@@ -829,6 +838,10 @@ class __$$InitialImplCopyWithImpl<$Res>
           ? _value.getProductsResponceModel
           : getProductsResponceModel // ignore: cast_nullable_to_non_nullable
               as GetProductsResponceModel?,
+      brands: null == brands
+          ? _value._brands
+          : brands // ignore: cast_nullable_to_non_nullable
+              as List<Brands>,
     ));
   }
 }
@@ -841,7 +854,9 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
       required this.hasError,
       this.message,
       this.getSingleCategoryResponce,
-      this.getProductsResponceModel});
+      this.getProductsResponceModel,
+      required final List<Brands> brands})
+      : _brands = brands;
 
   @override
   final bool isLoading;
@@ -853,10 +868,17 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
   final SingleCategoryBrandsResponceModel? getSingleCategoryResponce;
   @override
   final GetProductsResponceModel? getProductsResponceModel;
+  final List<Brands> _brands;
+  @override
+  List<Brands> get brands {
+    if (_brands is EqualUnmodifiableListView) return _brands;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_brands);
+  }
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'CategoryBlocState(isLoading: $isLoading, hasError: $hasError, message: $message, getSingleCategoryResponce: $getSingleCategoryResponce, getProductsResponceModel: $getProductsResponceModel)';
+    return 'CategoryBlocState(isLoading: $isLoading, hasError: $hasError, message: $message, getSingleCategoryResponce: $getSingleCategoryResponce, getProductsResponceModel: $getProductsResponceModel, brands: $brands)';
   }
 
   @override
@@ -870,7 +892,8 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
       ..add(DiagnosticsProperty(
           'getSingleCategoryResponce', getSingleCategoryResponce))
       ..add(DiagnosticsProperty(
-          'getProductsResponceModel', getProductsResponceModel));
+          'getProductsResponceModel', getProductsResponceModel))
+      ..add(DiagnosticsProperty('brands', brands));
   }
 
   @override
@@ -888,12 +911,19 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
                 other.getSingleCategoryResponce == getSingleCategoryResponce) &&
             (identical(
                     other.getProductsResponceModel, getProductsResponceModel) ||
-                other.getProductsResponceModel == getProductsResponceModel));
+                other.getProductsResponceModel == getProductsResponceModel) &&
+            const DeepCollectionEquality().equals(other._brands, _brands));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isLoading, hasError, message,
-      getSingleCategoryResponce, getProductsResponceModel);
+  int get hashCode => Object.hash(
+      runtimeType,
+      isLoading,
+      hasError,
+      message,
+      getSingleCategoryResponce,
+      getProductsResponceModel,
+      const DeepCollectionEquality().hash(_brands));
 
   @JsonKey(ignore: true)
   @override
@@ -904,12 +934,12 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
 
 abstract class _Initial implements CategoryBlocState {
   const factory _Initial(
-          {required final bool isLoading,
-          required final bool hasError,
-          final String? message,
-          final SingleCategoryBrandsResponceModel? getSingleCategoryResponce,
-          final GetProductsResponceModel? getProductsResponceModel}) =
-      _$InitialImpl;
+      {required final bool isLoading,
+      required final bool hasError,
+      final String? message,
+      final SingleCategoryBrandsResponceModel? getSingleCategoryResponce,
+      final GetProductsResponceModel? getProductsResponceModel,
+      required final List<Brands> brands}) = _$InitialImpl;
 
   @override
   bool get isLoading;
@@ -921,6 +951,8 @@ abstract class _Initial implements CategoryBlocState {
   SingleCategoryBrandsResponceModel? get getSingleCategoryResponce;
   @override
   GetProductsResponceModel? get getProductsResponceModel;
+  @override
+  List<Brands> get brands;
   @override
   @JsonKey(ignore: true)
   _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>

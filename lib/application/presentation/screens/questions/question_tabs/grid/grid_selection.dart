@@ -14,6 +14,7 @@ class GridOptionMaker extends StatelessWidget {
         child: Column(
           children: [
             ListView.builder(
+              padding: const EdgeInsets.all(0),
               physics: const NeverScrollableScrollPhysics(),
               itemCount: map['data'].length,
               shrinkWrap: true,
@@ -22,8 +23,6 @@ class GridOptionMaker extends StatelessWidget {
               ),
             ),
             kHeight30,
-            // const TabIndexChangeButton(),
-            // kHeight30
           ],
         ),
       ),

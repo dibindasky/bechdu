@@ -1,7 +1,10 @@
+import 'dart:developer';
+
 import 'package:beachdu/application/business_logic/brands_bloc/category_bloc_bloc.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/application/presentation/utils/skeltons/skelton.dart';
+import 'package:beachdu/domain/core/api_endpoints/api_endpoints.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
@@ -33,7 +36,7 @@ class ProductListViewBuilder extends StatelessWidget {
             } else if (categoryState.hasError) {
               return Center(child: Text(categoryState.message!));
             } else {
-              if (categoryState.getProductsResponceModel == null ||
+              if (categoryState.getProductsResponceModel!.product == null ||
                   categoryState.getProductsResponceModel!.product!.isEmpty) {
                 return Center(child: Lottie.asset(emptyLottie));
               } else {
@@ -48,9 +51,11 @@ class ProductListViewBuilder extends StatelessWidget {
                     crossAxisCount: 2,
                     crossAxisSpacing: 10,
                     mainAxisSpacing: 10,
-                    childAspectRatio: 1 / 1.5,
+                    childAspectRatio: 1 / 1.4,
                   ),
                   itemBuilder: (context, index) {
+                    String url =
+                        "${ApiEndPoints.baseUrlImagePath}${Uri.encodeComponent(products[index].productImage!)}";
                     return Container(
                       padding: const EdgeInsets.all(10),
                       decoration: BoxDecoration(
@@ -62,9 +67,9 @@ class ProductListViewBuilder extends StatelessWidget {
                         children: [
                           Center(
                             child: SizedBox(
-                              height: 100,
+                              height: 80,
                               child: Image.network(
-                                products[index].productImage!,
+                                url,
                                 fit: BoxFit.cover,
                                 errorBuilder: (context, error, stackTrace) {
                                   return const Icon(

@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:beachdu/domain/core/api_endpoints/api_endpoints.dart';
 import 'package:beachdu/domain/core/failure/failure.dart';
 import 'package:beachdu/domain/model/category_model/single_category_brands_responce_model/brands.dart';
@@ -27,10 +26,10 @@ class BrandsService implements BrandsRepository {
           responseData.map((item) => Brands.fromJson(item)).toList();
       return Right(SingleCategoryBrandsResponceModel(brands: brandsList));
     } on DioException catch (e) {
-      log('Error getSingleCategory got 400 $e');
+      //log('Error getSingleCategory got 400 $e');
       return Left(Failure(message: e.message ?? errorMessage));
     } catch (e) {
-      log('Error catch getSingleCategory $e');
+      //log('Error catch getSingleCategory $e');
       return Left(Failure(message: e.toString()));
     }
   }
@@ -50,13 +49,13 @@ class BrandsService implements BrandsRepository {
     try {
       final responce =
           await _dio.get('${ApiEndPoints.getProducts}$categoryType/$brandName');
-      log(' getproducts data ${responce.data}');
+      //log(' getproducts data ${responce.data}');
       return Right(GetProductsResponceModel.fromJson(responce.data));
     } on DioException catch (e) {
-      log('getProducts DioException $e');
+      //log('getProducts DioException $e');
       return Left(Failure(message: e.message ?? errorMessage));
     } catch (e) {
-      log('getProducts catch $e');
+      //log('getProducts catch $e');
       return Left(Failure(message: errorMessage));
     }
   }

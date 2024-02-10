@@ -1,5 +1,7 @@
+import 'package:beachdu/application/business_logic/brands_bloc/category_bloc_bloc.dart';
 import 'package:beachdu/application/presentation/screens/product_selection/product_choose_drop_downs/drop_down_custom.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ScreenProductSelectionProductFindDropdownGridView
     extends StatelessWidget {
@@ -9,27 +11,31 @@ class ScreenProductSelectionProductFindDropdownGridView
 
   @override
   Widget build(BuildContext context) {
-    return GridView.builder(
-      physics: const NeverScrollableScrollPhysics(),
-      shrinkWrap: true,
-      itemCount: 4,
-      scrollDirection: Axis.vertical,
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-        crossAxisSpacing: 10,
-        mainAxisSpacing: 10,
-        childAspectRatio: 1 / .2,
-      ),
-      itemBuilder: (context, index) {
-        List<String> hints = [
-          'Brand',
-          'Series',
-          'Model',
-          'Storage',
-        ];
-        return DropDownBuilder(
-          searchHint: hints[index],
-          optionsList: getDynamicOptions(index),
+    return BlocBuilder<CategoryBlocBloc, CategoryBlocState>(
+      builder: (context, state) {
+        return GridView.builder(
+          physics: const NeverScrollableScrollPhysics(),
+          shrinkWrap: true,
+          itemCount: 4,
+          scrollDirection: Axis.vertical,
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            crossAxisSpacing: 10,
+            mainAxisSpacing: 10,
+            childAspectRatio: 1 / .2,
+          ),
+          itemBuilder: (context, index) {
+            List<String> hints = [
+              'Brand',
+              'Series',
+              'Model',
+              'Storage',
+            ];
+            return DropDownBuilder(
+              searchHint: hints[index],
+              optionsList: getDynamicOptions(index),
+            );
+          },
         );
       },
     );

@@ -5,4 +5,7 @@ class ApiEndPoints {
   static const String getProducts = 'product/get-products/';
   static const String getquestionsForcategory =
       'api/category/fetch-category-name/';
+
+  static const String baseUrlImagePath =
+      'https://bechdu-main-backend.onrender.com/uploads/';
 }
