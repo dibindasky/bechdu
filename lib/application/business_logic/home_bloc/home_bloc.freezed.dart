@@ -19,32 +19,38 @@ mixin _$HomeEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getAllCategory,
+    required TResult Function(String category) selectedactegory,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getAllCategory,
+    TResult? Function(String category)? selectedactegory,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getAllCategory,
+    TResult Function(String category)? selectedactegory,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(GetAllCategory value) getAllCategory,
+    required TResult Function(Selectedactegory value) selectedactegory,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(GetAllCategory value)? getAllCategory,
+    TResult? Function(Selectedactegory value)? selectedactegory,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GetAllCategory value)? getAllCategory,
+    TResult Function(Selectedactegory value)? selectedactegory,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -106,6 +112,7 @@ class _$GetAllCategoryImpl implements GetAllCategory {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getAllCategory,
+    required TResult Function(String category) selectedactegory,
   }) {
     return getAllCategory();
   }
@@ -114,6 +121,7 @@ class _$GetAllCategoryImpl implements GetAllCategory {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getAllCategory,
+    TResult? Function(String category)? selectedactegory,
   }) {
     return getAllCategory?.call();
   }
@@ -122,6 +130,7 @@ class _$GetAllCategoryImpl implements GetAllCategory {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getAllCategory,
+    TResult Function(String category)? selectedactegory,
     required TResult orElse(),
   }) {
     if (getAllCategory != null) {
@@ -134,6 +143,7 @@ class _$GetAllCategoryImpl implements GetAllCategory {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(GetAllCategory value) getAllCategory,
+    required TResult Function(Selectedactegory value) selectedactegory,
   }) {
     return getAllCategory(this);
   }
@@ -142,6 +152,7 @@ class _$GetAllCategoryImpl implements GetAllCategory {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(GetAllCategory value)? getAllCategory,
+    TResult? Function(Selectedactegory value)? selectedactegory,
   }) {
     return getAllCategory?.call(this);
   }
@@ -150,6 +161,7 @@ class _$GetAllCategoryImpl implements GetAllCategory {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GetAllCategory value)? getAllCategory,
+    TResult Function(Selectedactegory value)? selectedactegory,
     required TResult orElse(),
   }) {
     if (getAllCategory != null) {
@@ -164,10 +176,147 @@ abstract class GetAllCategory implements HomeEvent {
 }
 
 /// @nodoc
+abstract class _$$SelectedactegoryImplCopyWith<$Res> {
+  factory _$$SelectedactegoryImplCopyWith(_$SelectedactegoryImpl value,
+          $Res Function(_$SelectedactegoryImpl) then) =
+      __$$SelectedactegoryImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String category});
+}
+
+/// @nodoc
+class __$$SelectedactegoryImplCopyWithImpl<$Res>
+    extends _$HomeEventCopyWithImpl<$Res, _$SelectedactegoryImpl>
+    implements _$$SelectedactegoryImplCopyWith<$Res> {
+  __$$SelectedactegoryImplCopyWithImpl(_$SelectedactegoryImpl _value,
+      $Res Function(_$SelectedactegoryImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? category = null,
+  }) {
+    return _then(_$SelectedactegoryImpl(
+      category: null == category
+          ? _value.category
+          : category // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SelectedactegoryImpl implements Selectedactegory {
+  const _$SelectedactegoryImpl({required this.category});
+
+  @override
+  final String category;
+
+  @override
+  String toString() {
+    return 'HomeEvent.selectedactegory(category: $category)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SelectedactegoryImpl &&
+            (identical(other.category, category) ||
+                other.category == category));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, category);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SelectedactegoryImplCopyWith<_$SelectedactegoryImpl> get copyWith =>
+      __$$SelectedactegoryImplCopyWithImpl<_$SelectedactegoryImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getAllCategory,
+    required TResult Function(String category) selectedactegory,
+  }) {
+    return selectedactegory(category);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getAllCategory,
+    TResult? Function(String category)? selectedactegory,
+  }) {
+    return selectedactegory?.call(category);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getAllCategory,
+    TResult Function(String category)? selectedactegory,
+    required TResult orElse(),
+  }) {
+    if (selectedactegory != null) {
+      return selectedactegory(category);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GetAllCategory value) getAllCategory,
+    required TResult Function(Selectedactegory value) selectedactegory,
+  }) {
+    return selectedactegory(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetAllCategory value)? getAllCategory,
+    TResult? Function(Selectedactegory value)? selectedactegory,
+  }) {
+    return selectedactegory?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetAllCategory value)? getAllCategory,
+    TResult Function(Selectedactegory value)? selectedactegory,
+    required TResult orElse(),
+  }) {
+    if (selectedactegory != null) {
+      return selectedactegory(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Selectedactegory implements HomeEvent {
+  const factory Selectedactegory({required final String category}) =
+      _$SelectedactegoryImpl;
+
+  String get category;
+  @JsonKey(ignore: true)
+  _$$SelectedactegoryImplCopyWith<_$SelectedactegoryImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$HomeState {
   bool get isLoading => throw _privateConstructorUsedError;
   bool get hasError => throw _privateConstructorUsedError;
   String? get message => throw _privateConstructorUsedError;
+  String? get selectedCategory => throw _privateConstructorUsedError;
   GetCategoryResponceModel? get getCategoryResponceModel =>
       throw _privateConstructorUsedError;
 
@@ -185,6 +334,7 @@ abstract class $HomeStateCopyWith<$Res> {
       {bool isLoading,
       bool hasError,
       String? message,
+      String? selectedCategory,
       GetCategoryResponceModel? getCategoryResponceModel});
 }
 
@@ -204,6 +354,7 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
     Object? isLoading = null,
     Object? hasError = null,
     Object? message = freezed,
+    Object? selectedCategory = freezed,
     Object? getCategoryResponceModel = freezed,
   }) {
     return _then(_value.copyWith(
@@ -218,6 +369,10 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
       message: freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
+              as String?,
+      selectedCategory: freezed == selectedCategory
+          ? _value.selectedCategory
+          : selectedCategory // ignore: cast_nullable_to_non_nullable
               as String?,
       getCategoryResponceModel: freezed == getCategoryResponceModel
           ? _value.getCategoryResponceModel
@@ -239,6 +394,7 @@ abstract class _$$InitialImplCopyWith<$Res>
       {bool isLoading,
       bool hasError,
       String? message,
+      String? selectedCategory,
       GetCategoryResponceModel? getCategoryResponceModel});
 }
 
@@ -256,6 +412,7 @@ class __$$InitialImplCopyWithImpl<$Res>
     Object? isLoading = null,
     Object? hasError = null,
     Object? message = freezed,
+    Object? selectedCategory = freezed,
     Object? getCategoryResponceModel = freezed,
   }) {
     return _then(_$InitialImpl(
@@ -270,6 +427,10 @@ class __$$InitialImplCopyWithImpl<$Res>
       message: freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
+              as String?,
+      selectedCategory: freezed == selectedCategory
+          ? _value.selectedCategory
+          : selectedCategory // ignore: cast_nullable_to_non_nullable
               as String?,
       getCategoryResponceModel: freezed == getCategoryResponceModel
           ? _value.getCategoryResponceModel
@@ -286,6 +447,7 @@ class _$InitialImpl implements _Initial {
       {required this.isLoading,
       required this.hasError,
       this.message,
+      this.selectedCategory,
       this.getCategoryResponceModel});
 
   @override
@@ -295,11 +457,13 @@ class _$InitialImpl implements _Initial {
   @override
   final String? message;
   @override
+  final String? selectedCategory;
+  @override
   final GetCategoryResponceModel? getCategoryResponceModel;
 
   @override
   String toString() {
-    return 'HomeState(isLoading: $isLoading, hasError: $hasError, message: $message, getCategoryResponceModel: $getCategoryResponceModel)';
+    return 'HomeState(isLoading: $isLoading, hasError: $hasError, message: $message, selectedCategory: $selectedCategory, getCategoryResponceModel: $getCategoryResponceModel)';
   }
 
   @override
@@ -312,14 +476,16 @@ class _$InitialImpl implements _Initial {
             (identical(other.hasError, hasError) ||
                 other.hasError == hasError) &&
             (identical(other.message, message) || other.message == message) &&
+            (identical(other.selectedCategory, selectedCategory) ||
+                other.selectedCategory == selectedCategory) &&
             (identical(
                     other.getCategoryResponceModel, getCategoryResponceModel) ||
                 other.getCategoryResponceModel == getCategoryResponceModel));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, isLoading, hasError, message, getCategoryResponceModel);
+  int get hashCode => Object.hash(runtimeType, isLoading, hasError, message,
+      selectedCategory, getCategoryResponceModel);
 
   @JsonKey(ignore: true)
   @override
@@ -333,6 +499,7 @@ abstract class _Initial implements HomeState {
           {required final bool isLoading,
           required final bool hasError,
           final String? message,
+          final String? selectedCategory,
           final GetCategoryResponceModel? getCategoryResponceModel}) =
       _$InitialImpl;
 
@@ -342,6 +509,8 @@ abstract class _Initial implements HomeState {
   bool get hasError;
   @override
   String? get message;
+  @override
+  String? get selectedCategory;
   @override
   GetCategoryResponceModel? get getCategoryResponceModel;
   @override

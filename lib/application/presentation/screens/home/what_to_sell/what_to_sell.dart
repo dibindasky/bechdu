@@ -56,7 +56,6 @@ class WhatToSellWidget extends StatelessWidget {
                   );
                 } else {
                   final data = state.getCategoryResponceModel!.category!;
-
                   return GridView.builder(
                     padding: const EdgeInsets.all(0),
                     physics: const NeverScrollableScrollPhysics(),
@@ -74,16 +73,19 @@ class WhatToSellWidget extends StatelessWidget {
                               context
                                   .read<CategoryBlocBloc>()
                                   .add(GetSingleCategoryBrands(
-                                    categoryType: data[index].categoryType!,
+                                    categoryType:
+                                        data[index].categoryType ?? 'mobile',
                                   ));
                               context.read<CategoryBlocBloc>().categoryType =
                                   data[index].categoryType!;
-                              log('UI  data[index].categoryType ===>>> : ${data[index].categoryType}');
+                              log('UI data[index].categoryType ===>>> : ${data[index].categoryType}');
                               context
                                   .read<NavbarCubit>()
                                   .changeNavigationIndex(1);
                               brandandProductValueNotifier.value = 0;
                               brandandProductValueNotifier.notifyListeners();
+                              secondtabScreensNotifier.value = 0;
+                              secondtabScreensNotifier.notifyListeners();
                             },
                             child: Column(
                               children: [

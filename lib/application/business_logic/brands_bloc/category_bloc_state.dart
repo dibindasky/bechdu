@@ -6,13 +6,18 @@ class CategoryBlocState with _$CategoryBlocState {
     required bool isLoading,
     required bool hasError,
     String? message,
+    bool? isPro,
+    String? selectedProduct,
     SingleCategoryBrandsResponceModel? getSingleCategoryResponce,
     GetProductsResponceModel? getProductsResponceModel,
-    required List<Brands> brands,
+    required List<List<String>> allItems,
+    GetSeriesResponceModel? getSeriesResponceModel,
+    GetModelsResponceModel? getModelsResponceModel,
+    GetVarientResponceModel? getVarientResponceModel,
   }) = _Initial;
   factory CategoryBlocState.intial() => const CategoryBlocState(
         isLoading: false,
         hasError: false,
-        brands: [],
+        allItems: [],
       );
 }

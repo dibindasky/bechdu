@@ -13,6 +13,11 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   final HomeRepository homeRepository;
   HomeBloc(this.homeRepository) : super(HomeState.initial()) {
     on<GetAllCategory>(getAllcategory);
+    on<Selectedactegory>(selectedCategory);
+  }
+
+  FutureOr<void> selectedCategory(Selectedactegory event, emit) {
+    emit(state.copyWith(selectedCategory: event.category));
   }
 
   FutureOr<void> getAllcategory(

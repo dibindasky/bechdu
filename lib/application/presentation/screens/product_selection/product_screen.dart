@@ -56,6 +56,10 @@ class ScreenProductSelection extends StatelessWidget {
       },
       child: WillPopScope(
         onWillPop: () async {
+          if (brandandProductValueNotifier.value == 1) {
+            brandandProductValueNotifier.value = 0;
+            brandandProductValueNotifier.notifyListeners();
+          }
           bool shouldPop = await showConfirmationDialog(context);
           return shouldPop;
         },
@@ -68,24 +72,12 @@ class ScreenProductSelection extends StatelessWidget {
                   kHeight20,
                   ProductScreenSearchField(),
                   kHeight10,
-                  const ScreenProductSelectionProductFindDropdownGridView(),
-                  kHeight10,
                   ValueListenableBuilder(
                     valueListenable: brandandProductValueNotifier,
-                    builder: (context, value, child) {
-                      return brandAndPoductList[value];
+                    builder: (context, index, child) {
+                      return brandAndPoductList[index];
                     },
                   ),
-                  kHeight20,
-                  brandandProductValueNotifier.value == 0
-                      ? kEmpty
-                      : ElevatedButtonLong(
-                          onPressed: () {
-                            secondtabScreensNotifier.value = 1;
-                            secondtabScreensNotifier.notifyListeners();
-                          },
-                          text: 'Get exact value',
-                        ),
                   kHeight20,
                 ],
               ),

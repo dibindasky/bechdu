@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:beachdu/application/business_logic/brands_bloc/category_bloc_bloc.dart';
 import 'package:beachdu/application/presentation/screens/product_selection/product_choose_drop_downs/drop_down_custom.dart';
 import 'package:flutter/material.dart';
@@ -13,10 +15,11 @@ class ScreenProductSelectionProductFindDropdownGridView
   Widget build(BuildContext context) {
     return BlocBuilder<CategoryBlocBloc, CategoryBlocState>(
       builder: (context, state) {
+        log('UI state All item list ${state.allItems}');
         return GridView.builder(
           physics: const NeverScrollableScrollPhysics(),
           shrinkWrap: true,
-          itemCount: 4,
+          itemCount: state.allItems.length,
           scrollDirection: Axis.vertical,
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
@@ -26,14 +29,14 @@ class ScreenProductSelectionProductFindDropdownGridView
           ),
           itemBuilder: (context, index) {
             List<String> hints = [
-              'Brand',
               'Series',
               'Model',
               'Storage',
             ];
             return DropDownBuilder(
+              index: index,
               searchHint: hints[index],
-              optionsList: getDynamicOptions(index),
+              optionsList: getDynamicOptions(state.allItems[index]),
             );
           },
         );
@@ -41,26 +44,7 @@ class ScreenProductSelectionProductFindDropdownGridView
     );
   }
 
-  List<List<String>> getDynamicOptions(int index) {
-    switch (index) {
-      case 0:
-        return ['Brand1', 'Samsung', 'Oppo', 'Apple', 'Motorola']
-            .map((option) => [option])
-            .toList();
-      case 1:
-        return ['Series1', 'A21s', '312X', 'Series3']
-            .map((option) => [option])
-            .toList();
-      case 2:
-        return ['Model1', 'Pro', 'Max', 'Ultra']
-            .map((option) => [option])
-            .toList();
-      case 3:
-        return ['Storage1', '32GB', '6GB', '128GB']
-            .map((option) => [option])
-            .toList();
-      default:
-        return [];
-    }
+  List<List<String>> getDynamicOptions(List<String> dummy) {
+    return dummy.map((option) => [option]).toList();
   }
 }

@@ -1,13 +1,11 @@
 import 'dart:convert';
 import 'dart:developer';
-
 import 'package:beachdu/application/business_logic/brands_bloc/category_bloc_bloc.dart';
 import 'package:beachdu/application/business_logic/home_bloc/home_bloc.dart';
 import 'package:beachdu/application/presentation/screens/product_selection/product_screen.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/application/presentation/utils/skeltons/skelton.dart';
-import 'package:beachdu/domain/core/api_endpoints/api_endpoints.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
@@ -28,7 +26,7 @@ class BrandListviewBuilder extends StatelessWidget {
         } else if (state.hasError) {
           return Center(child: Text(state.message!));
         } else {
-          if (state.getSingleCategoryResponce?.brands == null) {
+          if (state.getSingleCategoryResponce == null) {
             return Center(child: LottieBuilder.asset(emptyLottie));
           } else {
             final data = state.getSingleCategoryResponce;
@@ -57,13 +55,16 @@ class BrandListviewBuilder extends StatelessWidget {
                         return InkWell(
                           onTap: () {
                             if (homeBloc.getCategoryResponceModel != null) {
-                              final categoryType =
-                                  context.read<CategoryBlocBloc>().categoryType;
+                              final categoryType = context
+                                      .read<CategoryBlocBloc>()
+                                      .categoryType ??
+                                  'mobile';
                               log('BrandListviewBuilder ===>> : $categoryType');
                               context.read<CategoryBlocBloc>().add(GetProducts(
-                                    categoryType: categoryType!,
+                                    categoryType: categoryType,
                                     brandName: data.brands![index].brandName!,
                                   ));
+                              log('BrandListviewBuilder data.brands![index].brandName! ===>> : ${data.brands![index].brandName!}');
                               brandandProductValueNotifier.value = 1;
                               brandandProductValueNotifier.notifyListeners();
                             }

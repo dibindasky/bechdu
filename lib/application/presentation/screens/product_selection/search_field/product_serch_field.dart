@@ -1,72 +1,81 @@
+import 'package:beachdu/application/business_logic/home_bloc/home_bloc.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
+import 'package:beachdu/domain/model/category_model/get_category_responce_model/category.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class ProductScreenSearchField extends StatelessWidget {
-  ProductScreenSearchField({super.key});
-
-  String? selectedCategory;
+class ProductScreenSearchField extends StatefulWidget {
+  const ProductScreenSearchField({Key? key}) : super(key: key);
 
   @override
+  State<ProductScreenSearchField> createState() =>
+      _ProductScreenSearchFieldState();
+}
+
+class _ProductScreenSearchFieldState extends State<ProductScreenSearchField> {
+  @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      onChanged: (value) {},
-      style: textHeadBold1.copyWith(fontSize: sWidth * .044),
-      decoration: InputDecoration(
-        contentPadding: const EdgeInsets.symmetric(
-          vertical: .0,
-        ),
-        prefixIcon: DropdownButtonHideUnderline(
-          child: DropdownButton(
-            onChanged: (newValue) {
-              // setState(() {
-              //   selectedCategory = newValue;
-              // });
-            },
-            items: const [
-              DropdownMenuItem(
-                value: 'All',
-                child: Text('All '),
-              ),
-              DropdownMenuItem(
-                value: 'Mobile',
-                child: Text('Mobile '),
-              ),
-              DropdownMenuItem(
-                value: 'Earbuds',
-                child: Text('Earbuds'),
-              ),
-              DropdownMenuItem(
-                value: 'Lapatops',
-                child: Text('Lapatops'),
-              ),
-              DropdownMenuItem(
-                value: 'Watch',
-                child: Text('Watch'),
-              ),
-            ],
-            hint: Text('  ${selectedCategory ?? " All"}'),
-          ),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(7),
-          borderSide: const BorderSide(
-            color: kBlueLight,
-          ),
-        ),
-        hintText: 'Search for Brands...',
-        hintStyle: textHeadBold1.copyWith(
-          fontSize: sWidth * .043,
-          color: kBlueLight,
-        ),
-        border: OutlineInputBorder(
-          borderSide: const BorderSide(
-            color: kBlueLight,
-            width: .2,
-          ),
-          borderRadius: BorderRadius.circular(6),
-        ),
-      ),
+    return BlocBuilder<HomeBloc, HomeState>(
+      builder: (context, homeState) {
+        if (homeState.isLoading) {
+          return const CircularProgressIndicator();
+        } else if (homeState.hasError) {
+          return Text(homeState.message ?? 'An error occurred');
+        } else {
+          return buildDropdown(homeState.getCategoryResponceModel!.category!);
+        }
+      },
     );
+  }
+
+  Widget buildDropdown(List<Category> categories) {
+    return BlocBuilder<HomeBloc, HomeState>(
+      builder: (context, homeState) {
+        final selectedCategory = homeState.selectedCategory;
+        return TextFormField(
+          onChanged: (value) {},
+          style: textHeadBold1.copyWith(fontSize: sWidth * .044),
+          decoration: InputDecoration(
+            contentPadding: const EdgeInsets.symmetric(vertical: .0),
+            prefixIcon: DropdownButtonHideUnderline(
+              child: DropdownButton<String>(
+                onChanged: (newValue) {
+                  context
+                      .read<HomeBloc>()
+                      .add(Selectedactegory(category: newValue!));
+                },
+                value: selectedCategory,
+                items: buildDropdownItems(categories),
+                hint: Text(selectedCategory ?? "Category"),
+              ),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(7),
+              borderSide: const BorderSide(color: kBlueLight),
+            ),
+            hintText: 'Search for Brands...',
+            hintStyle: textHeadBold1.copyWith(
+              fontSize: sWidth * .04,
+              color: kBlueLight,
+            ),
+            border: OutlineInputBorder(
+              borderSide: const BorderSide(color: kBlueLight, width: .2),
+              borderRadius: BorderRadius.circular(6),
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  List<DropdownMenuItem<String>> buildDropdownItems(List<Category> categories) {
+    return categories.map((category) {
+      return DropdownMenuItem<String>(
+        onTap: () {},
+        value: category.categoryType,
+        child: Text(category.categoryType!),
+      );
+    }).toList();
   }
 }

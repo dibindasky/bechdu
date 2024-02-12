@@ -6,6 +6,7 @@ class HomeState with _$HomeState {
     required bool isLoading,
     required bool hasError,
     String? message,
+    String? selectedCategory,
     GetCategoryResponceModel? getCategoryResponceModel,
   }) = _Initial;
 

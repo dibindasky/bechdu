@@ -1,17 +1,23 @@
+import 'dart:developer';
+
+import 'package:beachdu/application/business_logic/brands_bloc/category_bloc_bloc.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class DropDownBuilder extends StatefulWidget {
   const DropDownBuilder({
     super.key,
     required this.searchHint,
     required this.optionsList,
+    required this.index,
   });
 
   final String searchHint;
   final List<List<String>> optionsList;
+  final int index;
 
   @override
   State<DropDownBuilder> createState() => _DropDownBuilderState();
@@ -28,11 +34,12 @@ class _DropDownBuilderState extends State<DropDownBuilder> {
   }
 
   final textEditingController = TextEditingController();
-
+  String? selected;
   @override
   Widget build(BuildContext context) {
     return DropdownButtonHideUnderline(
       child: DropdownButton2<String>(
+        hint: Text(widget.searchHint),
         isExpanded: true,
         items: widget.optionsList.asMap().entries.map(
           (entry) {
@@ -49,10 +56,34 @@ class _DropDownBuilderState extends State<DropDownBuilder> {
         onChanged: (value) {
           selectedIndex = selectedOption.indexOf(value!);
           setState(() {
-            selectedOption[selectedIndex] = value;
+            selected = value;
           });
+          log('selected Series $selected');
+          switch (widget.index) {
+            case 0:
+              context.read<CategoryBlocBloc>().add(
+                    GetModels(
+                      brandName: selected!,
+                      categoryType: 'mobile',
+                      seriesName: 'I Phone 7',
+                    ),
+                  );
+              break;
+            case 1:
+              context.read<CategoryBlocBloc>().add(
+                    const GetVarients(
+                      brandName: 'Apple',
+                      categoryType: 'mobile',
+                      seriesName: 'I Phone 7',
+                      model: 'i Phone 6S',
+                    ),
+                  );
+              break;
+            default:
+              null;
+          }
         },
-        value: selectedOption[selectedIndex],
+        value: selected,
         buttonStyleData: ButtonStyleData(
           decoration: BoxDecoration(
             border: Border.all(color: textFieldBorderColor),

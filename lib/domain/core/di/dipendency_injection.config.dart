@@ -12,7 +12,7 @@ import 'package:beachdu/application/business_logic/brands_bloc/category_bloc_blo
     as _i5;
 import 'package:beachdu/application/business_logic/home_bloc/home_bloc.dart'
     as _i8;
-import 'package:beachdu/data/service/category/brands_service.dart' as _i4;
+import 'package:beachdu/data/service/brands/brands_service.dart' as _i4;
 import 'package:beachdu/data/service/home/home_services.dart' as _i7;
 import 'package:beachdu/domain/repository/brands_repo.dart' as _i3;
 import 'package:beachdu/domain/repository/home_repo.dart' as _i6;
