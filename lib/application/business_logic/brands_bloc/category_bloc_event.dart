@@ -8,8 +8,6 @@ class CategoryBlocEvent with _$CategoryBlocEvent {
   const factory CategoryBlocEvent.getSingleCategoryBrands({
     String? categoryType,
   }) = GetSingleCategoryBrands;
-  const factory CategoryBlocEvent.search({required String searchQuery}) =
-      Search;
   const factory CategoryBlocEvent.getProducts({
     required String categoryType,
     required String brandName,
@@ -18,6 +16,9 @@ class CategoryBlocEvent with _$CategoryBlocEvent {
     required String brandName,
     required String categoryType,
   }) = GetSeries;
+  const factory CategoryBlocEvent.productUpdate({
+    required String seriesName,
+  }) = ProductUpdate;
   const factory CategoryBlocEvent.getModels({
     required String categoryType,
     required String brandName,

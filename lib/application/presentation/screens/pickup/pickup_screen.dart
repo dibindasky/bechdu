@@ -38,13 +38,16 @@ class ScreenPickUp extends StatelessWidget {
           return false;
         },
         child: Scaffold(
+          appBar: AppBar(
+            toolbarHeight: 40,
+            automaticallyImplyLeading: false,
+          ),
           body: SafeArea(
             child: SingleChildScrollView(
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Column(
                   children: [
-                    kHeight30,
                     const TopImage(
                       fromWhere: FromWhere.checkoutAndPickupScreen,
                     ),

@@ -78,7 +78,7 @@ class WhatToSellWidget extends StatelessWidget {
                                   ));
                               context.read<CategoryBlocBloc>().categoryType =
                                   data[index].categoryType!;
-                              log('UI data[index].categoryType ===>>> : ${data[index].categoryType}');
+                              // log('UI data[index].categoryType ===>>> : ${data[index].categoryType}');
                               context
                                   .read<NavbarCubit>()
                                   .changeNavigationIndex(1);

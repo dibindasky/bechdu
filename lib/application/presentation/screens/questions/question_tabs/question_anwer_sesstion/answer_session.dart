@@ -2,8 +2,7 @@ import 'package:beachdu/application/business_logic/question_tab/question_tab_blo
 import 'package:beachdu/application/presentation/screens/questions/question_tabs/grid/grid_selection.dart';
 import 'package:beachdu/application/presentation/screens/questions/question_tabs/image_selection/image_grid.dart';
 import 'package:beachdu/application/presentation/screens/questions/question_tabs/yes_or_no/yes_or_no_tab.dart';
-import 'package:beachdu/application/presentation/utils/constants.dart';
-import 'package:beachdu/application/presentation/utils/snackbar/snackbar.dart';
+import 'package:beachdu/application/presentation/utils/loading_indicators/loading_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -14,21 +13,42 @@ class QuestionTabAnswerSession extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<QuestionTabBloc, QuestionTabState>(
-      listener: (context, state) {
-        if (state.message != null) {
-          showSnack(context: context, message: state.message!);
-        }
-      },
+    return BlocBuilder<QuestionTabBloc, QuestionTabState>(
       builder: (context, state) {
-        if (testQuestionMap[state.selectedTabIndex]['sectionType'] ==
-            'yes/no') {
-          return YesOrNoListMaker(map: testQuestionMap[state.selectedTabIndex]);
-        } else if (testQuestionMap[state.selectedTabIndex]['sectionType'] ==
-            'image') {
-          return ImageGridMaker(map: testQuestionMap[state.selectedTabIndex]);
+        if (state.isLoading) {
+          return const LoadingAnimation(width: 100);
+        } else if (state.hasError) {
+          return const Center(
+            child: Text('Fetch error'),
+          );
         } else {
-          return GridOptionMaker(map: testQuestionMap[state.selectedTabIndex]);
+          if (state.getQuestionModel != null ||
+              state.getQuestionModel!.sections != null) {
+            if (state
+                    .getQuestionModel!.sections![state.selectedTabIndex].type ==
+                'yes/no') {
+              return YesOrNoListMaker(
+                section:
+                    state.getQuestionModel!.sections![state.selectedTabIndex],
+              );
+            } else if (state
+                    .getQuestionModel!.sections![state.selectedTabIndex].type ==
+                'image') {
+              return ImageGridMaker(
+                section:
+                    state.getQuestionModel!.sections![state.selectedTabIndex],
+              );
+            } else {
+              return GridOptionMaker(
+                section:
+                    state.getQuestionModel!.sections![state.selectedTabIndex],
+              );
+            }
+          } else {
+            return const Center(
+              child: Text("question tab error"),
+            );
+          }
         }
       },
     );

@@ -22,11 +22,12 @@ class ScreenProductPreview extends StatelessWidget {
       },
       child: Scaffold(
         appBar: AppBar(
+          toolbarHeight: 40,
           automaticallyImplyLeading: false,
         ),
         body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15.0),
-          child: ListView(
+          padding: const EdgeInsets.symmetric(horizontal: 20.0),
+          child: Column(
             children: [
               Container(
                 decoration: BoxDecoration(

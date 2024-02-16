@@ -1,11 +1,11 @@
+import 'dart:developer';
 import 'package:beachdu/application/business_logic/question_tab/question_tab_bloc.dart';
 import 'package:beachdu/application/presentation/screens/product_selection/product_screen.dart';
 import 'package:beachdu/application/presentation/screens/questions/question_tabs/question_anwer_sesstion/answer_session.dart';
-import 'package:beachdu/application/presentation/screens/questions/question_tabs/widget/question_top_image.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
-import 'package:beachdu/application/presentation/utils/custom_button.dart';
 import 'package:beachdu/application/presentation/utils/enums/type_display.dart';
+import 'package:beachdu/application/presentation/utils/loading_indicators/loading_indicator.dart';
 import 'package:beachdu/application/presentation/widgets/top_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -24,40 +24,18 @@ class QuestionTabs extends StatelessWidget {
       child: SafeArea(
         child: Scaffold(
           appBar: AppBar(
+            toolbarHeight: 40,
             automaticallyImplyLeading: false,
           ),
-          body: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
+          body: const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20),
             child: Column(
               children: [
-                const TopImage(fromWhere: FromWhere.questionScreen),
+                TopImage(fromWhere: FromWhere.questionScreen),
                 kHeight10,
-                const QuestionScreenTabs(),
+                QuestionScreenTabs(),
                 kHeight20,
-                const QuestionTabAnswerSession(),
-                BlocBuilder<QuestionTabBloc, QuestionTabState>(
-                  builder: (context, state) {
-                    return CustomButton(
-                      onPressed: () {
-                        if (state.selectedTabIndex >=
-                            state.tabItems.length - 1) {
-                          secondtabScreensNotifier.value = 2;
-                          secondtabScreensNotifier.notifyListeners();
-                          context
-                              .read<QuestionTabBloc>()
-                              .add(const QuestionTabEvent.resetTabSelection());
-                        } else {
-                          context
-                              .read<QuestionTabBloc>()
-                              .add(const QuestionTabEvent.tabChange());
-                        }
-                      },
-                      text: state.selectedTabIndex != state.tabItems.length - 1
-                          ? 'Continue'
-                          : 'Calculate price',
-                    );
-                  },
-                ),
+                QuestionTabAnswerSession(),
                 kHeight10
               ],
             ),
@@ -74,16 +52,26 @@ class QuestionScreenTabs extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<QuestionTabBloc, QuestionTabState>(
-      buildWhen: (previous, current) =>
-          previous.selectedTabIndex != current.selectedTabIndex,
       builder: (context, state) {
+        if (state.isLoading) {
+          return const LoadingAnimation(width: 30);
+        }
+        if (state.hasError) {
+          return const Center(
+            child: Text('Fetch  Error got'),
+          );
+        } else if (state.getQuestionModel != null ||
+            state.getQuestionModel!.sections != null) {
+          const Text('No question');
+          log('queston tab lngth ${state.getQuestionModel!.sections!.length}');
+        }
         return SizedBox(
           width: sWidth,
           child: FittedBox(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: List.generate(
-                state.tabItems.length,
+                state.getQuestionModel!.sections!.length,
                 (index) => ClipRRect(
                   borderRadius: kRadius15,
                   child: ColoredBox(
@@ -95,7 +83,7 @@ class QuestionScreenTabs extends StatelessWidget {
                         vertical: 3,
                       ),
                       child: Text(
-                        state.tabItems[index]['sectionHeading'] as String,
+                        state.getQuestionModel!.sections![index].heading!,
                         style: textHeadSemiBold1.copyWith(
                           color:
                               index == state.selectedTabIndex ? kWhite : kBlack,

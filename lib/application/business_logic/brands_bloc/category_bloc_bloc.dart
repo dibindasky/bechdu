@@ -1,10 +1,8 @@
 import 'dart:async';
 import 'dart:developer';
 import 'package:beachdu/domain/model/category_model/single_category_brands_responce_model/single_category_brands_responce_model.dart';
-import 'package:beachdu/domain/model/get_models_responce_model/get_models_responce_model.dart';
-import 'package:beachdu/domain/model/get_series_responce_model/get_series_responce_model.dart';
-import 'package:beachdu/domain/model/get_varient_responce_model/get_varient_responce_model.dart';
 import 'package:beachdu/domain/model/products_model/get_products_responce_model.dart';
+import 'package:beachdu/domain/model/products_model/product.dart';
 import 'package:beachdu/domain/repository/brands_repo.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/foundation.dart';
@@ -18,14 +16,16 @@ part 'category_bloc_bloc.freezed.dart';
 class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
   final BrandsRepository brandsRepository;
   String? categoryType;
-
+  String? barndName;
+  String? seriesName;
+  String? verient;
+  List<List<String>> dropDownItems = [[], [], []];
   CategoryBlocBloc(this.brandsRepository) : super(CategoryBlocState.intial()) {
     on<GetSingleCategoryBrands>(getSingleCategoryBrands);
     on<GetProducts>(getProducts);
     on<GetSeries>(getSeries);
     on<GetModels>(getModels);
     on<GetVarients>(getVarients);
-    on<Search>(search);
     on<SelectedProduct>(selectedProdct);
   }
 
@@ -40,6 +40,7 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
     emit(state.copyWith(isLoading: true, hasError: false));
     final data = await brandsRepository.getSingleCategoryBrands(
         categoryType: event.categoryType ?? 'mobile');
+    categoryType = event.categoryType;
     data.fold(
         (failure) => emit(
               state.copyWith(
@@ -48,19 +49,11 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
                 message: failure.message,
               ),
             ), (successSingleCagetgoryModel) {
-      // List<String> brandsList = [];
-      // for (var element in successSingleCagetgoryModel.brands!) {
-      //   if (element.brandName != null) {
-      //     brandsList.add(element.brandName!);
-      //   }
-      // }
-      //log('Bloc getSingleCategoryBrands brands list  ${brandsList.length}');
       emit(
         state.copyWith(
           isLoading: false,
           hasError: false,
           getSingleCategoryResponce: successSingleCagetgoryModel,
-          // allItems: [brandsList],
         ),
       );
     });
@@ -85,25 +78,21 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
         isLoading: false,
         hasError: true,
       ));
-    }, (getproducts) {
-      List<String> productList = [];
-      for (var element in getproducts.product!) {
-        if (element.seriesName != null) {
-          productList.add(element.seriesName!);
-        }
-        //log("getProducts productList items ${element.seriesName}");
+      try {
+        dropDownItems[0].clear();
+        dropDownItems[1].clear();
+        dropDownItems[2].clear();
+        print(dropDownItems);
+      } catch (e) {
+        print(e);
       }
-      //log('getProducts bloc productList.length ${productList.length}');
-      // var list = state.allItems;
-      // log(list.toString());
-      // list.add(productList);
-      // log(list.toString());
+    }, (getproducts) {
       emit(state.copyWith(
         isLoading: false,
         hasError: false,
         getProductsResponceModel: getproducts,
-        allItems: [productList],
       ));
+      //categoryType=getproducts.product;
     });
   }
 
@@ -112,7 +101,6 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
       isLoading: true,
       hasError: false,
       message: null,
-      getSeriesResponceModel: null,
     ));
     final data = await brandsRepository.getSeries(
       brandName: event.brandName,
@@ -126,22 +114,49 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
         hasError: true,
       ));
     }, (getSeriesSuccess) {
-      List<String> seriesList = [];
-      for (var element in getSeriesSuccess.series!) {
-        if (element.name != null) {
-          seriesList.add(element.name!);
-        }
+      try {
+        dropDownItems[0].clear();
+        dropDownItems[1].clear();
+        dropDownItems[2].clear();
+        //print(dropDownItems);
+      } catch (e) {
+        // print(e);
       }
-      log('getSeries bloc seriesList.length ${seriesList.length}');
-      state.allItems.add(seriesList);
+      dropDownItems[0].addAll(getSeriesSuccess);
+      log(getSeriesSuccess.toString());
+
       emit(state.copyWith(
         hasError: false,
         isLoading: false,
-        getSeriesResponceModel: getSeriesSuccess,
-        allItems: state.allItems,
+        allItems: dropDownItems,
       ));
-      log("getSeries state Allitems length ${state.allItems.length}");
+      log("getSeries bloc dropDownItems length $dropDownItems");
     });
+  }
+
+  FutureOr<void> productUpdate(GetModels event, emit) async {
+    List<Product> temp = [];
+    for (var element in state.getProductsResponceModel!.product!) {
+      if (element.seriesName == event.seriesName) {
+        temp.add(element);
+      }
+    }
+    emit(state.copyWith(
+      getProductsResponceModel: GetProductsResponceModel(product: temp),
+    ));
+    // final data = await brandsRepository.getModles(
+    //   categoryType: event.categoryType,
+    //   brandName: event.brandName,
+    //   seriesName: event.seriesName,
+    // );
+    // data.fold((failure) {
+    //   emit(state.copyWith(
+    //     hasError: true,
+    //     isLoading: false,
+    //   ));
+    // }, (getModelSucces) {
+    //   emit(state.copyWith());
+    // });
   }
 
   FutureOr<void> getModels(GetModels event, emit) async {
@@ -149,7 +164,6 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
       isLoading: true,
       hasError: false,
       message: null,
-      getSeriesResponceModel: null,
     ));
     final data = await brandsRepository.getModles(
       brandName: event.brandName,
@@ -165,19 +179,11 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
         hasError: true,
       ));
     }, (getModelSuccess) {
-      List<String> modelList = [];
-      for (var element in getModelSuccess.models!) {
-        if (element.name != null) {
-          modelList.add(element.name!);
-        }
-      }
-      log('getModles bloc modelList.length ${modelList.length}');
-      state.allItems.add(modelList);
+      dropDownItems[1].addAll(getModelSuccess);
       emit(state.copyWith(
         hasError: false,
         isLoading: false,
-        getModelsResponceModel: getModelSuccess,
-        allItems: state.allItems,
+        allItems: dropDownItems,
       ));
     });
   }
@@ -187,7 +193,6 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
       isLoading: true,
       hasError: false,
       message: null,
-      getSeriesResponceModel: null,
     ));
     final data = await brandsRepository.getVarients(
       brandName: event.brandName,
@@ -201,33 +206,12 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
         hasError: true,
       ));
     }, (getVarientsSuccess) {
-      List<String> vareintList = [];
-      for (var element in getVarientsSuccess.variant!) {
-        if (element.name != null) {
-          vareintList.add(element.name!);
-        }
-      }
-      log('getVarients bloc modelList.length ${vareintList.length}');
-      state.allItems.add(vareintList);
+      dropDownItems[2].addAll(getVarientsSuccess);
       emit(state.copyWith(
         hasError: false,
         isLoading: false,
-        getVarientResponceModel: getVarientsSuccess,
-        allItems: state.allItems,
+        allItems: dropDownItems,
       ));
     });
-  }
-
-  FutureOr<void> search(
-    Search event,
-    Emitter<CategoryBlocState> emit,
-  ) async {
-    emit(state.copyWith(
-      isLoading: true,
-      hasError: false,
-    ));
-    final data =
-        await brandsRepository.searchBrands(serachQuery: event.searchQuery);
-    data.fold((l) => null, (getSearchSuccess) {});
   }
 }

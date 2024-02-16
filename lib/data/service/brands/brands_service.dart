@@ -3,9 +3,6 @@ import 'package:beachdu/domain/core/api_endpoints/api_endpoints.dart';
 import 'package:beachdu/domain/core/failure/failure.dart';
 import 'package:beachdu/domain/model/category_model/single_category_brands_responce_model/brands.dart';
 import 'package:beachdu/domain/model/category_model/single_category_brands_responce_model/single_category_brands_responce_model.dart';
-import 'package:beachdu/domain/model/get_models_responce_model/get_models_responce_model.dart';
-import 'package:beachdu/domain/model/get_series_responce_model/get_series_responce_model.dart';
-import 'package:beachdu/domain/model/get_varient_responce_model/get_varient_responce_model.dart';
 import 'package:beachdu/domain/model/products_model/get_products_responce_model.dart';
 import 'package:beachdu/domain/repository/brands_repo.dart';
 import 'package:dartz/dartz.dart';
@@ -56,7 +53,7 @@ class BrandsService implements BrandsRepository {
       //log(' getproducts data ${responce.data}');
       return Right(GetProductsResponceModel.fromJson(responce.data));
     } on DioException catch (e) {
-      log('getProducts DioException $e');
+      //  log('getProducts DioException $e');
       return Left(Failure(message: e.message ?? errorMessage));
     } catch (e) {
       log('getProducts catch $e');
@@ -65,38 +62,20 @@ class BrandsService implements BrandsRepository {
   }
 
   @override
-  Future<Either<Failure, GetModelsResponceModel>> getModles({
-    required String categoryType,
-    required String brandName,
-    required String seriesName,
-  }) async {
-    log('${ApiEndPoints.getModels}$categoryType/$brandName/$seriesName');
-    try {
-      final responce = await _dio
-          .get('${ApiEndPoints.getModels}$categoryType/$brandName/$seriesName');
-      log('getModles data ${responce.data}');
-      return Right(GetModelsResponceModel.fromJson(responce.data));
-    } on DioException catch (e) {
-      log('getModles DioException $e');
-      return Left(Failure(message: e.message ?? errorMessage));
-    } catch (e) {
-      log('getModles error catch $e');
-      return Left(Failure(message: errorMessage));
-    }
-  }
-
-  @override
-  Future<Either<Failure, GetSeriesResponceModel>> getSeries({
+  Future<Either<Failure, List<String>>> getSeries({
     required String brandName,
     required String categoryType,
   }) async {
     try {
       final responce =
           await _dio.get('${ApiEndPoints.getSeries}$brandName/$categoryType');
-      log('getSeries data ${responce.data}');
-      return Right(GetSeriesResponceModel.fromJson(responce.data));
+      //  log('getSeries data ${responce.data}');
+      final data = responce.data as List<dynamic>;
+      final retVal = data.map((e) => e.toString()).toList();
+      //log('getSeries retVal $retVal');
+      return Right(retVal);
     } on DioException catch (e) {
-      log('getSeries DioException $e');
+      // log('getSeries DioException $e');
       return Left(Failure(message: e.message ?? errorMessage));
     } catch (e) {
       log('getSeries error catch $e');
@@ -105,7 +84,30 @@ class BrandsService implements BrandsRepository {
   }
 
   @override
-  Future<Either<Failure, GetVarientResponceModel>> getVarients({
+  Future<Either<Failure, List<String>>> getModles({
+    required String categoryType,
+    required String brandName,
+    required String seriesName,
+  }) async {
+    // log('${ApiEndPoints.getModels}$categoryType/$brandName/$seriesName');
+    try {
+      final responce = await _dio
+          .get('${ApiEndPoints.getModels}$categoryType/$brandName/$seriesName');
+      final data = responce.data as List<dynamic>;
+      final retVal = data.map((e) => e.toString()).toList();
+      // log('getModles retVal $retVal');
+      return Right(retVal);
+    } on DioException catch (e) {
+      //  log('getModles DioException $e');
+      return Left(Failure(message: e.message ?? errorMessage));
+    } catch (e) {
+      log('getModles error catch $e');
+      return Left(Failure(message: errorMessage));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<String>>> getVarients({
     required String categoryType,
     required String brandName,
     required String seriesName,
@@ -114,13 +116,15 @@ class BrandsService implements BrandsRepository {
     try {
       final responce = await _dio.get(
           '${ApiEndPoints.getVarients}$categoryType/$brandName/$seriesName/$model');
-      log('getVarients data ${responce.data}');
-      return Right(GetVarientResponceModel.fromJson(responce.data));
+      // log('getVarients data ${responce.data}');
+      final data = responce.data as List<dynamic>;
+      final retVal = data.map((e) => e.toString()).toList();
+      return Right(retVal);
     } on DioException catch (e) {
-      log('getVarients DioException $e');
+      //log('getVarients DioException $e');
       return Left(Failure(message: e.message ?? errorMessage));
     } catch (e) {
-      log('getVarients error catch $e');
+      //log('getVarients error catch $e');
       return Left(Failure(message: errorMessage));
     }
   }

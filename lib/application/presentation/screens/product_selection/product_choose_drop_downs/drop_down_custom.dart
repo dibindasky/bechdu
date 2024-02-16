@@ -25,7 +25,6 @@ class DropDownBuilder extends StatefulWidget {
 
 class _DropDownBuilderState extends State<DropDownBuilder> {
   late List<String> selectedOption;
-  int selectedIndex = 0;
 
   @override
   void initState() {
@@ -54,7 +53,6 @@ class _DropDownBuilderState extends State<DropDownBuilder> {
           },
         ).toList(),
         onChanged: (value) {
-          selectedIndex = selectedOption.indexOf(value!);
           setState(() {
             selected = value;
           });
@@ -63,19 +61,24 @@ class _DropDownBuilderState extends State<DropDownBuilder> {
             case 0:
               context.read<CategoryBlocBloc>().add(
                     GetModels(
-                      brandName: selected!,
-                      categoryType: 'mobile',
+                      brandName: context.read<CategoryBlocBloc>().barndName!,
+                      categoryType:
+                          context.read<CategoryBlocBloc>().categoryType!,
                       seriesName: 'I Phone 7',
                     ),
                   );
+              // context
+              //     .read<CategoryBlocBloc>()
+              //     .add(const ProductUpdate(seriesName: 'I Phone 7'));
               break;
             case 1:
               context.read<CategoryBlocBloc>().add(
-                    const GetVarients(
-                      brandName: 'Apple',
-                      categoryType: 'mobile',
+                    GetVarients(
+                      brandName: context.read<CategoryBlocBloc>().barndName!,
+                      categoryType:
+                          context.read<CategoryBlocBloc>().categoryType!,
                       seriesName: 'I Phone 7',
-                      model: 'i Phone 6S',
+                      model: 'I Phone 7 Plus',
                     ),
                   );
               break;

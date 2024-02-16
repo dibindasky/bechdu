@@ -14,9 +14,9 @@ class ScreenHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Future.delayed(const Duration(seconds: 5), () {
-      Navigator.of(context).pushNamed(Routes.location);
-    });
+    // Future.delayed(const Duration(seconds: 5), () {
+    //   Navigator.of(context).pushNamed(Routes.location);
+    // });
     return GestureDetector(
       onTap: () {
         FocusScopeNode focusScopeNode = FocusScope.of(context);

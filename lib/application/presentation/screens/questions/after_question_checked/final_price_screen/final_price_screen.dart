@@ -26,9 +26,13 @@ class FinalPriceScreen extends StatelessWidget {
           secondtabScreensNotifier.notifyListeners();
           return false;
         },
-        child: const Scaffold(
-          body: Padding(
-            padding: EdgeInsets.only(left: 15, right: 15, top: 60),
+        child: Scaffold(
+          appBar: AppBar(
+            toolbarHeight: 40,
+            automaticallyImplyLeading: false,
+          ),
+          body: const Padding(
+            padding: EdgeInsets.only(left: 20, right: 20),
             child: SingleChildScrollView(
               child: Column(
                 children: [

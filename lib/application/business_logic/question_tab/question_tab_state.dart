@@ -6,16 +6,18 @@ class QuestionTabState with _$QuestionTabState {
     required bool isLoading,
     required bool hasError,
     String? message,
+    Product? product,
+    int? answerCount,
+    required List<SelectedOption> selectedOption,
+    GetQuestionModel? getQuestionModel,
+    GetProductsResponceModel? getProductsResponceModel,
     required int selectedTabIndex,
-    required List<Map<String, dynamic>> tabItems,
-    required List<Map<String, dynamic>> bottomtabItems,
   }) = _Initial;
 
-  factory QuestionTabState.initial() => QuestionTabState(
+  factory QuestionTabState.initial() => const QuestionTabState(
         isLoading: false,
         hasError: false,
         selectedTabIndex: 0,
-        tabItems: testQuestionMap,
-        bottomtabItems: [],
+        selectedOption: [],
       );
 }

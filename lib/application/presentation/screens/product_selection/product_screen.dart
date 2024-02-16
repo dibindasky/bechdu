@@ -1,6 +1,5 @@
 import 'package:beachdu/application/presentation/screens/pickup/pickup_screen.dart';
 import 'package:beachdu/application/presentation/screens/product_selection/brand_lists/brand_list_builder.dart';
-import 'package:beachdu/application/presentation/screens/product_selection/product_choose_drop_downs/drop_down_grid_builder.dart.dart';
 import 'package:beachdu/application/presentation/screens/product_selection/product_lists/product_list_builder.dart';
 import 'package:beachdu/application/presentation/screens/product_selection/search_field/product_serch_field.dart';
 import 'package:beachdu/application/presentation/screens/questions/after_question_checked/final_price_screen/final_price_screen.dart';
@@ -9,7 +8,6 @@ import 'package:beachdu/application/presentation/screens/questions/after_questio
 import 'package:beachdu/application/presentation/screens/questions/questions_screen.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/application/presentation/utils/exit_app_daillogue/exit_app_dailogue.dart';
-import 'package:beachdu/application/presentation/widgets/custom_elevated_button.dart';
 import 'package:flutter/material.dart';
 
 ValueNotifier<int> secondtabScreensNotifier = ValueNotifier(0);
@@ -70,7 +68,7 @@ class ScreenProductSelection extends StatelessWidget {
               child: ListView(
                 children: [
                   kHeight20,
-                  ProductScreenSearchField(),
+                  const ProductScreenSearchField(),
                   kHeight10,
                   ValueListenableBuilder(
                     valueListenable: brandandProductValueNotifier,

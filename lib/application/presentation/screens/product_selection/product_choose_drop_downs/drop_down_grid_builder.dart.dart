@@ -15,11 +15,11 @@ class ScreenProductSelectionProductFindDropdownGridView
   Widget build(BuildContext context) {
     return BlocBuilder<CategoryBlocBloc, CategoryBlocState>(
       builder: (context, state) {
-        log('UI state All item list ${state.allItems}');
+        log('UI state dropDownItems ${context.read<CategoryBlocBloc>().dropDownItems}');
         return GridView.builder(
           physics: const NeverScrollableScrollPhysics(),
           shrinkWrap: true,
-          itemCount: state.allItems.length,
+          itemCount: context.read<CategoryBlocBloc>().dropDownItems.length,
           scrollDirection: Axis.vertical,
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
@@ -36,7 +36,9 @@ class ScreenProductSelectionProductFindDropdownGridView
             return DropDownBuilder(
               index: index,
               searchHint: hints[index],
-              optionsList: getDynamicOptions(state.allItems[index]),
+              optionsList: getDynamicOptions(
+                context.read<CategoryBlocBloc>().dropDownItems[index],
+              ),
             );
           },
         );

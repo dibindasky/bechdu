@@ -1,8 +1,5 @@
 import 'package:beachdu/domain/core/failure/failure.dart';
 import 'package:beachdu/domain/model/category_model/single_category_brands_responce_model/single_category_brands_responce_model.dart';
-import 'package:beachdu/domain/model/get_models_responce_model/get_models_responce_model.dart';
-import 'package:beachdu/domain/model/get_series_responce_model/get_series_responce_model.dart';
-import 'package:beachdu/domain/model/get_varient_responce_model/get_varient_responce_model.dart';
 import 'package:beachdu/domain/model/products_model/get_products_responce_model.dart';
 import 'package:dartz/dartz.dart';
 
@@ -18,16 +15,16 @@ abstract class BrandsRepository {
     required String categoryType,
     required String brandName,
   });
-  Future<Either<Failure, GetSeriesResponceModel>> getSeries({
+  Future<Either<Failure, List<String>>> getSeries({
     required String brandName,
     required String categoryType,
   });
-  Future<Either<Failure, GetModelsResponceModel>> getModles({
+  Future<Either<Failure, List<String>>> getModles({
     required String categoryType,
     required String brandName,
     required String seriesName,
   });
-  Future<Either<Failure, GetVarientResponceModel>> getVarients({
+  Future<Either<Failure, List<String>>> getVarients({
     required String categoryType,
     required String brandName,
     required String seriesName,
