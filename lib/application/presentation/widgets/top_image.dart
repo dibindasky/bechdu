@@ -60,7 +60,7 @@ class TopImage extends StatelessWidget {
                           kWidth10,
                           SizedBox(
                             height: sWidth * .3,
-                            width: sWidth * .2,
+                            width: sWidth * .16,
                             child: Image.network(url),
                           ),
                           kWidth10,
@@ -88,46 +88,56 @@ class TopImage extends StatelessWidget {
                                   ),
                                 ),
                               if (fromWhere == FromWhere.recalculateWithAmount)
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      '18,800',
-                                      style: textHeadBoldBig.copyWith(
-                                          color: kWhite),
-                                    ),
-                                    Row(
-                                      children: [
-                                        SizedBox(
-                                          width: sWidth * .36,
-                                          child: Text(
-                                            'Not Satisfied with our price ?',
-                                            maxLines: 2,
-                                            overflow: TextOverflow.ellipsis,
-                                            style: textHeadMedium1.copyWith(
-                                                color: kWhite),
-                                          ),
-                                        ),
-                                        TextButton(
-                                          onPressed: () {
-                                            secondtabScreensNotifier.value = 1;
-                                            secondtabScreensNotifier
-                                                .notifyListeners();
-                                          },
-                                          child: Text(
-                                            'Recalculate',
-                                            style: textHeadInter.copyWith(
+                                questiontabBloc.basePriceModelResponce != null
+                                    ? Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            '${questiontabBloc.basePriceModelResponce!.basePrice}',
+                                            style: textHeadBoldBig.copyWith(
                                               color: kWhite,
-                                              decoration:
-                                                  TextDecoration.underline,
-                                              decorationColor: kWhite,
                                             ),
                                           ),
-                                        )
-                                      ],
-                                    )
-                                  ],
-                                ),
+                                          Row(
+                                            children: [
+                                              SizedBox(
+                                                width: sWidth * .36,
+                                                child: Text(
+                                                  'Not Satisfied with our price ?',
+                                                  maxLines: 2,
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
+                                                  style: textHeadMedium1
+                                                      .copyWith(color: kWhite),
+                                                ),
+                                              ),
+                                              TextButton(
+                                                onPressed: () {
+                                                  secondtabScreensNotifier
+                                                      .value = 1;
+                                                  secondtabScreensNotifier
+                                                      .notifyListeners();
+                                                  context
+                                                      .read<QuestionTabBloc>()
+                                                      .add(
+                                                          const ResetTabSelection());
+                                                },
+                                                child: Text(
+                                                  'Recalculate',
+                                                  style: textHeadInter.copyWith(
+                                                    color: kWhite,
+                                                    decoration: TextDecoration
+                                                        .underline,
+                                                    decorationColor: kWhite,
+                                                  ),
+                                                ),
+                                              )
+                                            ],
+                                          )
+                                        ],
+                                      )
+                                    : const Text('Calculatin error'),
                               if (fromWhere ==
                                   FromWhere.checkoutAndPickupScreen)
                                 Text(

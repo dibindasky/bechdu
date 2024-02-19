@@ -64,12 +64,9 @@ class _DropDownBuilderState extends State<DropDownBuilder> {
                       brandName: context.read<CategoryBlocBloc>().barndName!,
                       categoryType:
                           context.read<CategoryBlocBloc>().categoryType!,
-                      seriesName: 'I Phone 7',
+                      seriesName: context.read<CategoryBlocBloc>().seriesName!,
                     ),
                   );
-              // context
-              //     .read<CategoryBlocBloc>()
-              //     .add(const ProductUpdate(seriesName: 'I Phone 7'));
               break;
             case 1:
               context.read<CategoryBlocBloc>().add(

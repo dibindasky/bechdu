@@ -1,3 +1,4 @@
+import 'package:beachdu/application/business_logic/question_tab/question_tab_bloc.dart';
 import 'package:beachdu/application/presentation/screens/product_selection/product_screen.dart';
 import 'package:beachdu/application/presentation/screens/questions/after_question_checked/preview_product_screen/expansion_tile.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
@@ -6,6 +7,7 @@ import 'package:beachdu/application/presentation/utils/custom_button.dart';
 import 'package:beachdu/application/presentation/utils/enums/type_display.dart';
 import 'package:beachdu/application/presentation/widgets/top_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ScreenProductPreview extends StatelessWidget {
   const ScreenProductPreview({
@@ -18,6 +20,7 @@ class ScreenProductPreview extends StatelessWidget {
       onWillPop: () async {
         secondtabScreensNotifier.value = 1;
         secondtabScreensNotifier.notifyListeners();
+        context.read<QuestionTabBloc>().add(const ResetTabSelection());
         return false;
       },
       child: Scaffold(

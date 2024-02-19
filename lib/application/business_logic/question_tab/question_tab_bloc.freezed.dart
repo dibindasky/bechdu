@@ -22,9 +22,11 @@ mixin _$QuestionTabEvent {
     required TResult Function() resetTabSelection,
     required TResult Function(String categoryType, Product product)
         getQuestions,
-    required TResult Function() getAnswerCount,
+    required TResult Function(int answerCount) getAnswerCount,
     required TResult Function(SelectedOption selectedOption) markedQuestions,
     required TResult Function(int countQuestionNumber) countQuestionNumber,
+    required TResult Function(PickeQuestionModel pickeQuestionModel)
+        getBasePrice,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -32,9 +34,10 @@ mixin _$QuestionTabEvent {
     TResult? Function()? tabChange,
     TResult? Function()? resetTabSelection,
     TResult? Function(String categoryType, Product product)? getQuestions,
-    TResult? Function()? getAnswerCount,
+    TResult? Function(int answerCount)? getAnswerCount,
     TResult? Function(SelectedOption selectedOption)? markedQuestions,
     TResult? Function(int countQuestionNumber)? countQuestionNumber,
+    TResult? Function(PickeQuestionModel pickeQuestionModel)? getBasePrice,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -42,9 +45,10 @@ mixin _$QuestionTabEvent {
     TResult Function()? tabChange,
     TResult Function()? resetTabSelection,
     TResult Function(String categoryType, Product product)? getQuestions,
-    TResult Function()? getAnswerCount,
+    TResult Function(int answerCount)? getAnswerCount,
     TResult Function(SelectedOption selectedOption)? markedQuestions,
     TResult Function(int countQuestionNumber)? countQuestionNumber,
+    TResult Function(PickeQuestionModel pickeQuestionModel)? getBasePrice,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -56,6 +60,7 @@ mixin _$QuestionTabEvent {
     required TResult Function(GetAnswerCount value) getAnswerCount,
     required TResult Function(MarkedQuestions value) markedQuestions,
     required TResult Function(CountQuestionNumber value) countQuestionNumber,
+    required TResult Function(GetBasePrice value) getBasePrice,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -66,6 +71,7 @@ mixin _$QuestionTabEvent {
     TResult? Function(GetAnswerCount value)? getAnswerCount,
     TResult? Function(MarkedQuestions value)? markedQuestions,
     TResult? Function(CountQuestionNumber value)? countQuestionNumber,
+    TResult? Function(GetBasePrice value)? getBasePrice,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -76,6 +82,7 @@ mixin _$QuestionTabEvent {
     TResult Function(GetAnswerCount value)? getAnswerCount,
     TResult Function(MarkedQuestions value)? markedQuestions,
     TResult Function(CountQuestionNumber value)? countQuestionNumber,
+    TResult Function(GetBasePrice value)? getBasePrice,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -117,18 +124,12 @@ class __$$TabChangeImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$TabChangeImpl with DiagnosticableTreeMixin implements TabChange {
+class _$TabChangeImpl implements TabChange {
   const _$TabChangeImpl();
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'QuestionTabEvent.tabChange()';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty('type', 'QuestionTabEvent.tabChange'));
   }
 
   @override
@@ -147,9 +148,11 @@ class _$TabChangeImpl with DiagnosticableTreeMixin implements TabChange {
     required TResult Function() resetTabSelection,
     required TResult Function(String categoryType, Product product)
         getQuestions,
-    required TResult Function() getAnswerCount,
+    required TResult Function(int answerCount) getAnswerCount,
     required TResult Function(SelectedOption selectedOption) markedQuestions,
     required TResult Function(int countQuestionNumber) countQuestionNumber,
+    required TResult Function(PickeQuestionModel pickeQuestionModel)
+        getBasePrice,
   }) {
     return tabChange();
   }
@@ -160,9 +163,10 @@ class _$TabChangeImpl with DiagnosticableTreeMixin implements TabChange {
     TResult? Function()? tabChange,
     TResult? Function()? resetTabSelection,
     TResult? Function(String categoryType, Product product)? getQuestions,
-    TResult? Function()? getAnswerCount,
+    TResult? Function(int answerCount)? getAnswerCount,
     TResult? Function(SelectedOption selectedOption)? markedQuestions,
     TResult? Function(int countQuestionNumber)? countQuestionNumber,
+    TResult? Function(PickeQuestionModel pickeQuestionModel)? getBasePrice,
   }) {
     return tabChange?.call();
   }
@@ -173,9 +177,10 @@ class _$TabChangeImpl with DiagnosticableTreeMixin implements TabChange {
     TResult Function()? tabChange,
     TResult Function()? resetTabSelection,
     TResult Function(String categoryType, Product product)? getQuestions,
-    TResult Function()? getAnswerCount,
+    TResult Function(int answerCount)? getAnswerCount,
     TResult Function(SelectedOption selectedOption)? markedQuestions,
     TResult Function(int countQuestionNumber)? countQuestionNumber,
+    TResult Function(PickeQuestionModel pickeQuestionModel)? getBasePrice,
     required TResult orElse(),
   }) {
     if (tabChange != null) {
@@ -193,6 +198,7 @@ class _$TabChangeImpl with DiagnosticableTreeMixin implements TabChange {
     required TResult Function(GetAnswerCount value) getAnswerCount,
     required TResult Function(MarkedQuestions value) markedQuestions,
     required TResult Function(CountQuestionNumber value) countQuestionNumber,
+    required TResult Function(GetBasePrice value) getBasePrice,
   }) {
     return tabChange(this);
   }
@@ -206,6 +212,7 @@ class _$TabChangeImpl with DiagnosticableTreeMixin implements TabChange {
     TResult? Function(GetAnswerCount value)? getAnswerCount,
     TResult? Function(MarkedQuestions value)? markedQuestions,
     TResult? Function(CountQuestionNumber value)? countQuestionNumber,
+    TResult? Function(GetBasePrice value)? getBasePrice,
   }) {
     return tabChange?.call(this);
   }
@@ -219,6 +226,7 @@ class _$TabChangeImpl with DiagnosticableTreeMixin implements TabChange {
     TResult Function(GetAnswerCount value)? getAnswerCount,
     TResult Function(MarkedQuestions value)? markedQuestions,
     TResult Function(CountQuestionNumber value)? countQuestionNumber,
+    TResult Function(GetBasePrice value)? getBasePrice,
     required TResult orElse(),
   }) {
     if (tabChange != null) {
@@ -250,21 +258,12 @@ class __$$ResetTabSelectionImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ResetTabSelectionImpl
-    with DiagnosticableTreeMixin
-    implements ResetTabSelection {
+class _$ResetTabSelectionImpl implements ResetTabSelection {
   const _$ResetTabSelectionImpl();
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'QuestionTabEvent.resetTabSelection()';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-        .add(DiagnosticsProperty('type', 'QuestionTabEvent.resetTabSelection'));
   }
 
   @override
@@ -283,9 +282,11 @@ class _$ResetTabSelectionImpl
     required TResult Function() resetTabSelection,
     required TResult Function(String categoryType, Product product)
         getQuestions,
-    required TResult Function() getAnswerCount,
+    required TResult Function(int answerCount) getAnswerCount,
     required TResult Function(SelectedOption selectedOption) markedQuestions,
     required TResult Function(int countQuestionNumber) countQuestionNumber,
+    required TResult Function(PickeQuestionModel pickeQuestionModel)
+        getBasePrice,
   }) {
     return resetTabSelection();
   }
@@ -296,9 +297,10 @@ class _$ResetTabSelectionImpl
     TResult? Function()? tabChange,
     TResult? Function()? resetTabSelection,
     TResult? Function(String categoryType, Product product)? getQuestions,
-    TResult? Function()? getAnswerCount,
+    TResult? Function(int answerCount)? getAnswerCount,
     TResult? Function(SelectedOption selectedOption)? markedQuestions,
     TResult? Function(int countQuestionNumber)? countQuestionNumber,
+    TResult? Function(PickeQuestionModel pickeQuestionModel)? getBasePrice,
   }) {
     return resetTabSelection?.call();
   }
@@ -309,9 +311,10 @@ class _$ResetTabSelectionImpl
     TResult Function()? tabChange,
     TResult Function()? resetTabSelection,
     TResult Function(String categoryType, Product product)? getQuestions,
-    TResult Function()? getAnswerCount,
+    TResult Function(int answerCount)? getAnswerCount,
     TResult Function(SelectedOption selectedOption)? markedQuestions,
     TResult Function(int countQuestionNumber)? countQuestionNumber,
+    TResult Function(PickeQuestionModel pickeQuestionModel)? getBasePrice,
     required TResult orElse(),
   }) {
     if (resetTabSelection != null) {
@@ -329,6 +332,7 @@ class _$ResetTabSelectionImpl
     required TResult Function(GetAnswerCount value) getAnswerCount,
     required TResult Function(MarkedQuestions value) markedQuestions,
     required TResult Function(CountQuestionNumber value) countQuestionNumber,
+    required TResult Function(GetBasePrice value) getBasePrice,
   }) {
     return resetTabSelection(this);
   }
@@ -342,6 +346,7 @@ class _$ResetTabSelectionImpl
     TResult? Function(GetAnswerCount value)? getAnswerCount,
     TResult? Function(MarkedQuestions value)? markedQuestions,
     TResult? Function(CountQuestionNumber value)? countQuestionNumber,
+    TResult? Function(GetBasePrice value)? getBasePrice,
   }) {
     return resetTabSelection?.call(this);
   }
@@ -355,6 +360,7 @@ class _$ResetTabSelectionImpl
     TResult Function(GetAnswerCount value)? getAnswerCount,
     TResult Function(MarkedQuestions value)? markedQuestions,
     TResult Function(CountQuestionNumber value)? countQuestionNumber,
+    TResult Function(GetBasePrice value)? getBasePrice,
     required TResult orElse(),
   }) {
     if (resetTabSelection != null) {
@@ -406,7 +412,7 @@ class __$$GetQuestionsImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$GetQuestionsImpl with DiagnosticableTreeMixin implements GetQuestions {
+class _$GetQuestionsImpl implements GetQuestions {
   const _$GetQuestionsImpl({required this.categoryType, required this.product});
 
   @override
@@ -415,17 +421,8 @@ class _$GetQuestionsImpl with DiagnosticableTreeMixin implements GetQuestions {
   final Product product;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'QuestionTabEvent.getQuestions(categoryType: $categoryType, product: $product)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'QuestionTabEvent.getQuestions'))
-      ..add(DiagnosticsProperty('categoryType', categoryType))
-      ..add(DiagnosticsProperty('product', product));
   }
 
   @override
@@ -454,9 +451,11 @@ class _$GetQuestionsImpl with DiagnosticableTreeMixin implements GetQuestions {
     required TResult Function() resetTabSelection,
     required TResult Function(String categoryType, Product product)
         getQuestions,
-    required TResult Function() getAnswerCount,
+    required TResult Function(int answerCount) getAnswerCount,
     required TResult Function(SelectedOption selectedOption) markedQuestions,
     required TResult Function(int countQuestionNumber) countQuestionNumber,
+    required TResult Function(PickeQuestionModel pickeQuestionModel)
+        getBasePrice,
   }) {
     return getQuestions(categoryType, product);
   }
@@ -467,9 +466,10 @@ class _$GetQuestionsImpl with DiagnosticableTreeMixin implements GetQuestions {
     TResult? Function()? tabChange,
     TResult? Function()? resetTabSelection,
     TResult? Function(String categoryType, Product product)? getQuestions,
-    TResult? Function()? getAnswerCount,
+    TResult? Function(int answerCount)? getAnswerCount,
     TResult? Function(SelectedOption selectedOption)? markedQuestions,
     TResult? Function(int countQuestionNumber)? countQuestionNumber,
+    TResult? Function(PickeQuestionModel pickeQuestionModel)? getBasePrice,
   }) {
     return getQuestions?.call(categoryType, product);
   }
@@ -480,9 +480,10 @@ class _$GetQuestionsImpl with DiagnosticableTreeMixin implements GetQuestions {
     TResult Function()? tabChange,
     TResult Function()? resetTabSelection,
     TResult Function(String categoryType, Product product)? getQuestions,
-    TResult Function()? getAnswerCount,
+    TResult Function(int answerCount)? getAnswerCount,
     TResult Function(SelectedOption selectedOption)? markedQuestions,
     TResult Function(int countQuestionNumber)? countQuestionNumber,
+    TResult Function(PickeQuestionModel pickeQuestionModel)? getBasePrice,
     required TResult orElse(),
   }) {
     if (getQuestions != null) {
@@ -500,6 +501,7 @@ class _$GetQuestionsImpl with DiagnosticableTreeMixin implements GetQuestions {
     required TResult Function(GetAnswerCount value) getAnswerCount,
     required TResult Function(MarkedQuestions value) markedQuestions,
     required TResult Function(CountQuestionNumber value) countQuestionNumber,
+    required TResult Function(GetBasePrice value) getBasePrice,
   }) {
     return getQuestions(this);
   }
@@ -513,6 +515,7 @@ class _$GetQuestionsImpl with DiagnosticableTreeMixin implements GetQuestions {
     TResult? Function(GetAnswerCount value)? getAnswerCount,
     TResult? Function(MarkedQuestions value)? markedQuestions,
     TResult? Function(CountQuestionNumber value)? countQuestionNumber,
+    TResult? Function(GetBasePrice value)? getBasePrice,
   }) {
     return getQuestions?.call(this);
   }
@@ -526,6 +529,7 @@ class _$GetQuestionsImpl with DiagnosticableTreeMixin implements GetQuestions {
     TResult Function(GetAnswerCount value)? getAnswerCount,
     TResult Function(MarkedQuestions value)? markedQuestions,
     TResult Function(CountQuestionNumber value)? countQuestionNumber,
+    TResult Function(GetBasePrice value)? getBasePrice,
     required TResult orElse(),
   }) {
     if (getQuestions != null) {
@@ -552,6 +556,8 @@ abstract class _$$GetAnswerCountImplCopyWith<$Res> {
   factory _$$GetAnswerCountImplCopyWith(_$GetAnswerCountImpl value,
           $Res Function(_$GetAnswerCountImpl) then) =
       __$$GetAnswerCountImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int answerCount});
 }
 
 /// @nodoc
@@ -561,35 +567,52 @@ class __$$GetAnswerCountImplCopyWithImpl<$Res>
   __$$GetAnswerCountImplCopyWithImpl(
       _$GetAnswerCountImpl _value, $Res Function(_$GetAnswerCountImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? answerCount = null,
+  }) {
+    return _then(_$GetAnswerCountImpl(
+      answerCount: null == answerCount
+          ? _value.answerCount
+          : answerCount // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
 }
 
 /// @nodoc
 
-class _$GetAnswerCountImpl
-    with DiagnosticableTreeMixin
-    implements GetAnswerCount {
-  const _$GetAnswerCountImpl();
+class _$GetAnswerCountImpl implements GetAnswerCount {
+  const _$GetAnswerCountImpl({required this.answerCount});
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'QuestionTabEvent.getAnswerCount()';
-  }
+  final int answerCount;
 
   @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-        .add(DiagnosticsProperty('type', 'QuestionTabEvent.getAnswerCount'));
+  String toString() {
+    return 'QuestionTabEvent.getAnswerCount(answerCount: $answerCount)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$GetAnswerCountImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$GetAnswerCountImpl &&
+            (identical(other.answerCount, answerCount) ||
+                other.answerCount == answerCount));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, answerCount);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetAnswerCountImplCopyWith<_$GetAnswerCountImpl> get copyWith =>
+      __$$GetAnswerCountImplCopyWithImpl<_$GetAnswerCountImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -598,11 +621,13 @@ class _$GetAnswerCountImpl
     required TResult Function() resetTabSelection,
     required TResult Function(String categoryType, Product product)
         getQuestions,
-    required TResult Function() getAnswerCount,
+    required TResult Function(int answerCount) getAnswerCount,
     required TResult Function(SelectedOption selectedOption) markedQuestions,
     required TResult Function(int countQuestionNumber) countQuestionNumber,
+    required TResult Function(PickeQuestionModel pickeQuestionModel)
+        getBasePrice,
   }) {
-    return getAnswerCount();
+    return getAnswerCount(answerCount);
   }
 
   @override
@@ -611,11 +636,12 @@ class _$GetAnswerCountImpl
     TResult? Function()? tabChange,
     TResult? Function()? resetTabSelection,
     TResult? Function(String categoryType, Product product)? getQuestions,
-    TResult? Function()? getAnswerCount,
+    TResult? Function(int answerCount)? getAnswerCount,
     TResult? Function(SelectedOption selectedOption)? markedQuestions,
     TResult? Function(int countQuestionNumber)? countQuestionNumber,
+    TResult? Function(PickeQuestionModel pickeQuestionModel)? getBasePrice,
   }) {
-    return getAnswerCount?.call();
+    return getAnswerCount?.call(answerCount);
   }
 
   @override
@@ -624,13 +650,14 @@ class _$GetAnswerCountImpl
     TResult Function()? tabChange,
     TResult Function()? resetTabSelection,
     TResult Function(String categoryType, Product product)? getQuestions,
-    TResult Function()? getAnswerCount,
+    TResult Function(int answerCount)? getAnswerCount,
     TResult Function(SelectedOption selectedOption)? markedQuestions,
     TResult Function(int countQuestionNumber)? countQuestionNumber,
+    TResult Function(PickeQuestionModel pickeQuestionModel)? getBasePrice,
     required TResult orElse(),
   }) {
     if (getAnswerCount != null) {
-      return getAnswerCount();
+      return getAnswerCount(answerCount);
     }
     return orElse();
   }
@@ -644,6 +671,7 @@ class _$GetAnswerCountImpl
     required TResult Function(GetAnswerCount value) getAnswerCount,
     required TResult Function(MarkedQuestions value) markedQuestions,
     required TResult Function(CountQuestionNumber value) countQuestionNumber,
+    required TResult Function(GetBasePrice value) getBasePrice,
   }) {
     return getAnswerCount(this);
   }
@@ -657,6 +685,7 @@ class _$GetAnswerCountImpl
     TResult? Function(GetAnswerCount value)? getAnswerCount,
     TResult? Function(MarkedQuestions value)? markedQuestions,
     TResult? Function(CountQuestionNumber value)? countQuestionNumber,
+    TResult? Function(GetBasePrice value)? getBasePrice,
   }) {
     return getAnswerCount?.call(this);
   }
@@ -670,6 +699,7 @@ class _$GetAnswerCountImpl
     TResult Function(GetAnswerCount value)? getAnswerCount,
     TResult Function(MarkedQuestions value)? markedQuestions,
     TResult Function(CountQuestionNumber value)? countQuestionNumber,
+    TResult Function(GetBasePrice value)? getBasePrice,
     required TResult orElse(),
   }) {
     if (getAnswerCount != null) {
@@ -680,7 +710,13 @@ class _$GetAnswerCountImpl
 }
 
 abstract class GetAnswerCount implements QuestionTabEvent {
-  const factory GetAnswerCount() = _$GetAnswerCountImpl;
+  const factory GetAnswerCount({required final int answerCount}) =
+      _$GetAnswerCountImpl;
+
+  int get answerCount;
+  @JsonKey(ignore: true)
+  _$$GetAnswerCountImplCopyWith<_$GetAnswerCountImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -716,25 +752,15 @@ class __$$MarkedQuestionsImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$MarkedQuestionsImpl
-    with DiagnosticableTreeMixin
-    implements MarkedQuestions {
+class _$MarkedQuestionsImpl implements MarkedQuestions {
   const _$MarkedQuestionsImpl({required this.selectedOption});
 
   @override
   final SelectedOption selectedOption;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'QuestionTabEvent.markedQuestions(selectedOption: $selectedOption)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'QuestionTabEvent.markedQuestions'))
-      ..add(DiagnosticsProperty('selectedOption', selectedOption));
   }
 
   @override
@@ -763,9 +789,11 @@ class _$MarkedQuestionsImpl
     required TResult Function() resetTabSelection,
     required TResult Function(String categoryType, Product product)
         getQuestions,
-    required TResult Function() getAnswerCount,
+    required TResult Function(int answerCount) getAnswerCount,
     required TResult Function(SelectedOption selectedOption) markedQuestions,
     required TResult Function(int countQuestionNumber) countQuestionNumber,
+    required TResult Function(PickeQuestionModel pickeQuestionModel)
+        getBasePrice,
   }) {
     return markedQuestions(selectedOption);
   }
@@ -776,9 +804,10 @@ class _$MarkedQuestionsImpl
     TResult? Function()? tabChange,
     TResult? Function()? resetTabSelection,
     TResult? Function(String categoryType, Product product)? getQuestions,
-    TResult? Function()? getAnswerCount,
+    TResult? Function(int answerCount)? getAnswerCount,
     TResult? Function(SelectedOption selectedOption)? markedQuestions,
     TResult? Function(int countQuestionNumber)? countQuestionNumber,
+    TResult? Function(PickeQuestionModel pickeQuestionModel)? getBasePrice,
   }) {
     return markedQuestions?.call(selectedOption);
   }
@@ -789,9 +818,10 @@ class _$MarkedQuestionsImpl
     TResult Function()? tabChange,
     TResult Function()? resetTabSelection,
     TResult Function(String categoryType, Product product)? getQuestions,
-    TResult Function()? getAnswerCount,
+    TResult Function(int answerCount)? getAnswerCount,
     TResult Function(SelectedOption selectedOption)? markedQuestions,
     TResult Function(int countQuestionNumber)? countQuestionNumber,
+    TResult Function(PickeQuestionModel pickeQuestionModel)? getBasePrice,
     required TResult orElse(),
   }) {
     if (markedQuestions != null) {
@@ -809,6 +839,7 @@ class _$MarkedQuestionsImpl
     required TResult Function(GetAnswerCount value) getAnswerCount,
     required TResult Function(MarkedQuestions value) markedQuestions,
     required TResult Function(CountQuestionNumber value) countQuestionNumber,
+    required TResult Function(GetBasePrice value) getBasePrice,
   }) {
     return markedQuestions(this);
   }
@@ -822,6 +853,7 @@ class _$MarkedQuestionsImpl
     TResult? Function(GetAnswerCount value)? getAnswerCount,
     TResult? Function(MarkedQuestions value)? markedQuestions,
     TResult? Function(CountQuestionNumber value)? countQuestionNumber,
+    TResult? Function(GetBasePrice value)? getBasePrice,
   }) {
     return markedQuestions?.call(this);
   }
@@ -835,6 +867,7 @@ class _$MarkedQuestionsImpl
     TResult Function(GetAnswerCount value)? getAnswerCount,
     TResult Function(MarkedQuestions value)? markedQuestions,
     TResult Function(CountQuestionNumber value)? countQuestionNumber,
+    TResult Function(GetBasePrice value)? getBasePrice,
     required TResult orElse(),
   }) {
     if (markedQuestions != null) {
@@ -887,25 +920,15 @@ class __$$CountQuestionNumberImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$CountQuestionNumberImpl
-    with DiagnosticableTreeMixin
-    implements CountQuestionNumber {
+class _$CountQuestionNumberImpl implements CountQuestionNumber {
   const _$CountQuestionNumberImpl({required this.countQuestionNumber});
 
   @override
   final int countQuestionNumber;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'QuestionTabEvent.countQuestionNumber(countQuestionNumber: $countQuestionNumber)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'QuestionTabEvent.countQuestionNumber'))
-      ..add(DiagnosticsProperty('countQuestionNumber', countQuestionNumber));
   }
 
   @override
@@ -934,9 +957,11 @@ class _$CountQuestionNumberImpl
     required TResult Function() resetTabSelection,
     required TResult Function(String categoryType, Product product)
         getQuestions,
-    required TResult Function() getAnswerCount,
+    required TResult Function(int answerCount) getAnswerCount,
     required TResult Function(SelectedOption selectedOption) markedQuestions,
     required TResult Function(int countQuestionNumber) countQuestionNumber,
+    required TResult Function(PickeQuestionModel pickeQuestionModel)
+        getBasePrice,
   }) {
     return countQuestionNumber(this.countQuestionNumber);
   }
@@ -947,9 +972,10 @@ class _$CountQuestionNumberImpl
     TResult? Function()? tabChange,
     TResult? Function()? resetTabSelection,
     TResult? Function(String categoryType, Product product)? getQuestions,
-    TResult? Function()? getAnswerCount,
+    TResult? Function(int answerCount)? getAnswerCount,
     TResult? Function(SelectedOption selectedOption)? markedQuestions,
     TResult? Function(int countQuestionNumber)? countQuestionNumber,
+    TResult? Function(PickeQuestionModel pickeQuestionModel)? getBasePrice,
   }) {
     return countQuestionNumber?.call(this.countQuestionNumber);
   }
@@ -960,9 +986,10 @@ class _$CountQuestionNumberImpl
     TResult Function()? tabChange,
     TResult Function()? resetTabSelection,
     TResult Function(String categoryType, Product product)? getQuestions,
-    TResult Function()? getAnswerCount,
+    TResult Function(int answerCount)? getAnswerCount,
     TResult Function(SelectedOption selectedOption)? markedQuestions,
     TResult Function(int countQuestionNumber)? countQuestionNumber,
+    TResult Function(PickeQuestionModel pickeQuestionModel)? getBasePrice,
     required TResult orElse(),
   }) {
     if (countQuestionNumber != null) {
@@ -980,6 +1007,7 @@ class _$CountQuestionNumberImpl
     required TResult Function(GetAnswerCount value) getAnswerCount,
     required TResult Function(MarkedQuestions value) markedQuestions,
     required TResult Function(CountQuestionNumber value) countQuestionNumber,
+    required TResult Function(GetBasePrice value) getBasePrice,
   }) {
     return countQuestionNumber(this);
   }
@@ -993,6 +1021,7 @@ class _$CountQuestionNumberImpl
     TResult? Function(GetAnswerCount value)? getAnswerCount,
     TResult? Function(MarkedQuestions value)? markedQuestions,
     TResult? Function(CountQuestionNumber value)? countQuestionNumber,
+    TResult? Function(GetBasePrice value)? getBasePrice,
   }) {
     return countQuestionNumber?.call(this);
   }
@@ -1006,6 +1035,7 @@ class _$CountQuestionNumberImpl
     TResult Function(GetAnswerCount value)? getAnswerCount,
     TResult Function(MarkedQuestions value)? markedQuestions,
     TResult Function(CountQuestionNumber value)? countQuestionNumber,
+    TResult Function(GetBasePrice value)? getBasePrice,
     required TResult orElse(),
   }) {
     if (countQuestionNumber != null) {
@@ -1026,15 +1056,185 @@ abstract class CountQuestionNumber implements QuestionTabEvent {
 }
 
 /// @nodoc
+abstract class _$$GetBasePriceImplCopyWith<$Res> {
+  factory _$$GetBasePriceImplCopyWith(
+          _$GetBasePriceImpl value, $Res Function(_$GetBasePriceImpl) then) =
+      __$$GetBasePriceImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({PickeQuestionModel pickeQuestionModel});
+}
+
+/// @nodoc
+class __$$GetBasePriceImplCopyWithImpl<$Res>
+    extends _$QuestionTabEventCopyWithImpl<$Res, _$GetBasePriceImpl>
+    implements _$$GetBasePriceImplCopyWith<$Res> {
+  __$$GetBasePriceImplCopyWithImpl(
+      _$GetBasePriceImpl _value, $Res Function(_$GetBasePriceImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? pickeQuestionModel = null,
+  }) {
+    return _then(_$GetBasePriceImpl(
+      pickeQuestionModel: null == pickeQuestionModel
+          ? _value.pickeQuestionModel
+          : pickeQuestionModel // ignore: cast_nullable_to_non_nullable
+              as PickeQuestionModel,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$GetBasePriceImpl implements GetBasePrice {
+  const _$GetBasePriceImpl({required this.pickeQuestionModel});
+
+  @override
+  final PickeQuestionModel pickeQuestionModel;
+
+  @override
+  String toString() {
+    return 'QuestionTabEvent.getBasePrice(pickeQuestionModel: $pickeQuestionModel)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetBasePriceImpl &&
+            (identical(other.pickeQuestionModel, pickeQuestionModel) ||
+                other.pickeQuestionModel == pickeQuestionModel));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, pickeQuestionModel);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetBasePriceImplCopyWith<_$GetBasePriceImpl> get copyWith =>
+      __$$GetBasePriceImplCopyWithImpl<_$GetBasePriceImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() tabChange,
+    required TResult Function() resetTabSelection,
+    required TResult Function(String categoryType, Product product)
+        getQuestions,
+    required TResult Function(int answerCount) getAnswerCount,
+    required TResult Function(SelectedOption selectedOption) markedQuestions,
+    required TResult Function(int countQuestionNumber) countQuestionNumber,
+    required TResult Function(PickeQuestionModel pickeQuestionModel)
+        getBasePrice,
+  }) {
+    return getBasePrice(pickeQuestionModel);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? tabChange,
+    TResult? Function()? resetTabSelection,
+    TResult? Function(String categoryType, Product product)? getQuestions,
+    TResult? Function(int answerCount)? getAnswerCount,
+    TResult? Function(SelectedOption selectedOption)? markedQuestions,
+    TResult? Function(int countQuestionNumber)? countQuestionNumber,
+    TResult? Function(PickeQuestionModel pickeQuestionModel)? getBasePrice,
+  }) {
+    return getBasePrice?.call(pickeQuestionModel);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? tabChange,
+    TResult Function()? resetTabSelection,
+    TResult Function(String categoryType, Product product)? getQuestions,
+    TResult Function(int answerCount)? getAnswerCount,
+    TResult Function(SelectedOption selectedOption)? markedQuestions,
+    TResult Function(int countQuestionNumber)? countQuestionNumber,
+    TResult Function(PickeQuestionModel pickeQuestionModel)? getBasePrice,
+    required TResult orElse(),
+  }) {
+    if (getBasePrice != null) {
+      return getBasePrice(pickeQuestionModel);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(TabChange value) tabChange,
+    required TResult Function(ResetTabSelection value) resetTabSelection,
+    required TResult Function(GetQuestions value) getQuestions,
+    required TResult Function(GetAnswerCount value) getAnswerCount,
+    required TResult Function(MarkedQuestions value) markedQuestions,
+    required TResult Function(CountQuestionNumber value) countQuestionNumber,
+    required TResult Function(GetBasePrice value) getBasePrice,
+  }) {
+    return getBasePrice(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(TabChange value)? tabChange,
+    TResult? Function(ResetTabSelection value)? resetTabSelection,
+    TResult? Function(GetQuestions value)? getQuestions,
+    TResult? Function(GetAnswerCount value)? getAnswerCount,
+    TResult? Function(MarkedQuestions value)? markedQuestions,
+    TResult? Function(CountQuestionNumber value)? countQuestionNumber,
+    TResult? Function(GetBasePrice value)? getBasePrice,
+  }) {
+    return getBasePrice?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(TabChange value)? tabChange,
+    TResult Function(ResetTabSelection value)? resetTabSelection,
+    TResult Function(GetQuestions value)? getQuestions,
+    TResult Function(GetAnswerCount value)? getAnswerCount,
+    TResult Function(MarkedQuestions value)? markedQuestions,
+    TResult Function(CountQuestionNumber value)? countQuestionNumber,
+    TResult Function(GetBasePrice value)? getBasePrice,
+    required TResult orElse(),
+  }) {
+    if (getBasePrice != null) {
+      return getBasePrice(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GetBasePrice implements QuestionTabEvent {
+  const factory GetBasePrice(
+          {required final PickeQuestionModel pickeQuestionModel}) =
+      _$GetBasePriceImpl;
+
+  PickeQuestionModel get pickeQuestionModel;
+  @JsonKey(ignore: true)
+  _$$GetBasePriceImplCopyWith<_$GetBasePriceImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$QuestionTabState {
   bool get isLoading => throw _privateConstructorUsedError;
   bool get hasError => throw _privateConstructorUsedError;
   String? get message => throw _privateConstructorUsedError;
   Product? get product => throw _privateConstructorUsedError;
-  int? get answerCount => throw _privateConstructorUsedError;
+  int get answerCount => throw _privateConstructorUsedError;
+  GetBasePriceModelResponce? get basePriceModelResponce =>
+      throw _privateConstructorUsedError;
   List<SelectedOption> get selectedOption => throw _privateConstructorUsedError;
   GetQuestionModel? get getQuestionModel => throw _privateConstructorUsedError;
-  GetProductsResponceModel? get getProductsResponceModel =>
+  GetProductsRespoceModel? get getProductsResponceModel =>
       throw _privateConstructorUsedError;
   int get selectedTabIndex => throw _privateConstructorUsedError;
 
@@ -1054,10 +1254,11 @@ abstract class $QuestionTabStateCopyWith<$Res> {
       bool hasError,
       String? message,
       Product? product,
-      int? answerCount,
+      int answerCount,
+      GetBasePriceModelResponce? basePriceModelResponce,
       List<SelectedOption> selectedOption,
       GetQuestionModel? getQuestionModel,
-      GetProductsResponceModel? getProductsResponceModel,
+      GetProductsRespoceModel? getProductsResponceModel,
       int selectedTabIndex});
 }
 
@@ -1078,7 +1279,8 @@ class _$QuestionTabStateCopyWithImpl<$Res, $Val extends QuestionTabState>
     Object? hasError = null,
     Object? message = freezed,
     Object? product = freezed,
-    Object? answerCount = freezed,
+    Object? answerCount = null,
+    Object? basePriceModelResponce = freezed,
     Object? selectedOption = null,
     Object? getQuestionModel = freezed,
     Object? getProductsResponceModel = freezed,
@@ -1101,10 +1303,14 @@ class _$QuestionTabStateCopyWithImpl<$Res, $Val extends QuestionTabState>
           ? _value.product
           : product // ignore: cast_nullable_to_non_nullable
               as Product?,
-      answerCount: freezed == answerCount
+      answerCount: null == answerCount
           ? _value.answerCount
           : answerCount // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as int,
+      basePriceModelResponce: freezed == basePriceModelResponce
+          ? _value.basePriceModelResponce
+          : basePriceModelResponce // ignore: cast_nullable_to_non_nullable
+              as GetBasePriceModelResponce?,
       selectedOption: null == selectedOption
           ? _value.selectedOption
           : selectedOption // ignore: cast_nullable_to_non_nullable
@@ -1116,7 +1322,7 @@ class _$QuestionTabStateCopyWithImpl<$Res, $Val extends QuestionTabState>
       getProductsResponceModel: freezed == getProductsResponceModel
           ? _value.getProductsResponceModel
           : getProductsResponceModel // ignore: cast_nullable_to_non_nullable
-              as GetProductsResponceModel?,
+              as GetProductsRespoceModel?,
       selectedTabIndex: null == selectedTabIndex
           ? _value.selectedTabIndex
           : selectedTabIndex // ignore: cast_nullable_to_non_nullable
@@ -1138,10 +1344,11 @@ abstract class _$$InitialImplCopyWith<$Res>
       bool hasError,
       String? message,
       Product? product,
-      int? answerCount,
+      int answerCount,
+      GetBasePriceModelResponce? basePriceModelResponce,
       List<SelectedOption> selectedOption,
       GetQuestionModel? getQuestionModel,
-      GetProductsResponceModel? getProductsResponceModel,
+      GetProductsRespoceModel? getProductsResponceModel,
       int selectedTabIndex});
 }
 
@@ -1160,7 +1367,8 @@ class __$$InitialImplCopyWithImpl<$Res>
     Object? hasError = null,
     Object? message = freezed,
     Object? product = freezed,
-    Object? answerCount = freezed,
+    Object? answerCount = null,
+    Object? basePriceModelResponce = freezed,
     Object? selectedOption = null,
     Object? getQuestionModel = freezed,
     Object? getProductsResponceModel = freezed,
@@ -1183,10 +1391,14 @@ class __$$InitialImplCopyWithImpl<$Res>
           ? _value.product
           : product // ignore: cast_nullable_to_non_nullable
               as Product?,
-      answerCount: freezed == answerCount
+      answerCount: null == answerCount
           ? _value.answerCount
           : answerCount // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as int,
+      basePriceModelResponce: freezed == basePriceModelResponce
+          ? _value.basePriceModelResponce
+          : basePriceModelResponce // ignore: cast_nullable_to_non_nullable
+              as GetBasePriceModelResponce?,
       selectedOption: null == selectedOption
           ? _value._selectedOption
           : selectedOption // ignore: cast_nullable_to_non_nullable
@@ -1198,7 +1410,7 @@ class __$$InitialImplCopyWithImpl<$Res>
       getProductsResponceModel: freezed == getProductsResponceModel
           ? _value.getProductsResponceModel
           : getProductsResponceModel // ignore: cast_nullable_to_non_nullable
-              as GetProductsResponceModel?,
+              as GetProductsRespoceModel?,
       selectedTabIndex: null == selectedTabIndex
           ? _value.selectedTabIndex
           : selectedTabIndex // ignore: cast_nullable_to_non_nullable
@@ -1209,13 +1421,14 @@ class __$$InitialImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
+class _$InitialImpl implements _Initial {
   const _$InitialImpl(
       {required this.isLoading,
       required this.hasError,
       this.message,
       this.product,
-      this.answerCount,
+      required this.answerCount,
+      this.basePriceModelResponce,
       required final List<SelectedOption> selectedOption,
       this.getQuestionModel,
       this.getProductsResponceModel,
@@ -1231,7 +1444,9 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
   @override
   final Product? product;
   @override
-  final int? answerCount;
+  final int answerCount;
+  @override
+  final GetBasePriceModelResponce? basePriceModelResponce;
   final List<SelectedOption> _selectedOption;
   @override
   List<SelectedOption> get selectedOption {
@@ -1243,30 +1458,13 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
   @override
   final GetQuestionModel? getQuestionModel;
   @override
-  final GetProductsResponceModel? getProductsResponceModel;
+  final GetProductsRespoceModel? getProductsResponceModel;
   @override
   final int selectedTabIndex;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'QuestionTabState(isLoading: $isLoading, hasError: $hasError, message: $message, product: $product, answerCount: $answerCount, selectedOption: $selectedOption, getQuestionModel: $getQuestionModel, getProductsResponceModel: $getProductsResponceModel, selectedTabIndex: $selectedTabIndex)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'QuestionTabState'))
-      ..add(DiagnosticsProperty('isLoading', isLoading))
-      ..add(DiagnosticsProperty('hasError', hasError))
-      ..add(DiagnosticsProperty('message', message))
-      ..add(DiagnosticsProperty('product', product))
-      ..add(DiagnosticsProperty('answerCount', answerCount))
-      ..add(DiagnosticsProperty('selectedOption', selectedOption))
-      ..add(DiagnosticsProperty('getQuestionModel', getQuestionModel))
-      ..add(DiagnosticsProperty(
-          'getProductsResponceModel', getProductsResponceModel))
-      ..add(DiagnosticsProperty('selectedTabIndex', selectedTabIndex));
+  String toString() {
+    return 'QuestionTabState(isLoading: $isLoading, hasError: $hasError, message: $message, product: $product, answerCount: $answerCount, basePriceModelResponce: $basePriceModelResponce, selectedOption: $selectedOption, getQuestionModel: $getQuestionModel, getProductsResponceModel: $getProductsResponceModel, selectedTabIndex: $selectedTabIndex)';
   }
 
   @override
@@ -1282,6 +1480,8 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
             (identical(other.product, product) || other.product == product) &&
             (identical(other.answerCount, answerCount) ||
                 other.answerCount == answerCount) &&
+            (identical(other.basePriceModelResponce, basePriceModelResponce) ||
+                other.basePriceModelResponce == basePriceModelResponce) &&
             const DeepCollectionEquality()
                 .equals(other._selectedOption, _selectedOption) &&
             (identical(other.getQuestionModel, getQuestionModel) ||
@@ -1301,6 +1501,7 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
       message,
       product,
       answerCount,
+      basePriceModelResponce,
       const DeepCollectionEquality().hash(_selectedOption),
       getQuestionModel,
       getProductsResponceModel,
@@ -1319,10 +1520,11 @@ abstract class _Initial implements QuestionTabState {
       required final bool hasError,
       final String? message,
       final Product? product,
-      final int? answerCount,
+      required final int answerCount,
+      final GetBasePriceModelResponce? basePriceModelResponce,
       required final List<SelectedOption> selectedOption,
       final GetQuestionModel? getQuestionModel,
-      final GetProductsResponceModel? getProductsResponceModel,
+      final GetProductsRespoceModel? getProductsResponceModel,
       required final int selectedTabIndex}) = _$InitialImpl;
 
   @override
@@ -1334,13 +1536,15 @@ abstract class _Initial implements QuestionTabState {
   @override
   Product? get product;
   @override
-  int? get answerCount;
+  int get answerCount;
+  @override
+  GetBasePriceModelResponce? get basePriceModelResponce;
   @override
   List<SelectedOption> get selectedOption;
   @override
   GetQuestionModel? get getQuestionModel;
   @override
-  GetProductsResponceModel? get getProductsResponceModel;
+  GetProductsRespoceModel? get getProductsResponceModel;
   @override
   int get selectedTabIndex;
   @override

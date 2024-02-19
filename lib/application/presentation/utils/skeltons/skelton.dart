@@ -33,7 +33,7 @@ class Skeleton extends StatelessWidget {
             highlightColor: Colors.grey[100]!,
             child: Container(
               width: 70,
-              height: height * .2,
+              height: height,
               decoration: BoxDecoration(
                 color: klightwhite,
                 borderRadius: kRadius5,

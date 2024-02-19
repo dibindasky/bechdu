@@ -1,7 +1,12 @@
+import 'dart:developer';
+
+import 'package:beachdu/application/business_logic/question_tab/question_tab_bloc.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/domain/model/get_question_model/question.dart';
+import 'package:beachdu/domain/model/picke_question_model/selected_option.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class GridTileQuestion extends StatefulWidget {
   const GridTileQuestion({super.key, required this.question});
@@ -19,6 +24,14 @@ class _GridTileQuestionState extends State<GridTileQuestion> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
+        SelectedOption selectedOption = SelectedOption(
+          description: widget.question.description,
+          type: widget.question.type,
+        );
+        context.read<QuestionTabBloc>().add(QuestionTabEvent.markedQuestions(
+              selectedOption: selectedOption,
+            ));
+        log('Image tile selectedOption$selectedOption');
         setState(() {
           // change it to block now auto selection bug
           selected = !selected;

@@ -28,9 +28,7 @@ class Beachdu extends StatelessWidget {
         BlocProvider(create: (context) => getIt<HomeBloc>()),
         BlocProvider(create: (context) => getIt<CategoryBlocBloc>()),
         BlocProvider(create: (context) => getIt<QuestionTabBloc>()),
-        BlocProvider(
-          create: (context) => NavbarCubit(),
-        ),
+        BlocProvider(create: (context) => NavbarCubit()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

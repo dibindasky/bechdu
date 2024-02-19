@@ -7,16 +7,18 @@ class QuestionTabState with _$QuestionTabState {
     required bool hasError,
     String? message,
     Product? product,
-    int? answerCount,
+    required int answerCount,
+    GetBasePriceModelResponce? basePriceModelResponce,
     required List<SelectedOption> selectedOption,
     GetQuestionModel? getQuestionModel,
-    GetProductsResponceModel? getProductsResponceModel,
+    GetProductsRespoceModel? getProductsResponceModel,
     required int selectedTabIndex,
   }) = _Initial;
 
   factory QuestionTabState.initial() => const QuestionTabState(
         isLoading: false,
         hasError: false,
+        answerCount: 0,
         selectedTabIndex: 0,
         selectedOption: [],
       );

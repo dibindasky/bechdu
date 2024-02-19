@@ -8,7 +8,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class YesOrNoTile extends StatefulWidget {
-  const YesOrNoTile({super.key, required this.question});
+  const YesOrNoTile({
+    super.key,
+    required this.question,
+  });
 
   final Question question;
 
@@ -40,9 +43,7 @@ class _YesOrNoTileState extends State<YesOrNoTile> {
                   kHeight10,
                   Row(
                     children: [
-                      yesOrNoButton(
-                        yesOrNo: true,
-                      ),
+                      yesOrNoButton(yesOrNo: true),
                       kWidth20,
                       yesOrNoButton(yesOrNo: false),
                     ],
@@ -61,19 +62,17 @@ class _YesOrNoTileState extends State<YesOrNoTile> {
       builder: (context, stat) {
         return GestureDetector(
           onTap: () {
+            SelectedOption selectedOption = SelectedOption(
+              description: widget.question.description,
+              value: yesOrNo,
+              type: widget.question.type,
+            );
             context
                 .read<QuestionTabBloc>()
                 .add(QuestionTabEvent.markedQuestions(
-                  selectedOption: SelectedOption(
-                    heading: stat.getQuestionModel!
-                        .sections![stat.selectedTabIndex].heading,
-                    description: stat.getQuestionModel!
-                        .sections![stat.selectedTabIndex].description,
-                    type: selected == yesOrNo ? 'add' : 'sub',
-                    value: selected,
-                  ),
+                  selectedOption: selectedOption,
                 ));
-            log('Ui selectedQuestions ${stat.selectedOption}');
+            log('yes or no tile selectedOption${selectedOption.description}');
             setState(() {
               selected = yesOrNo ? true : false;
             });

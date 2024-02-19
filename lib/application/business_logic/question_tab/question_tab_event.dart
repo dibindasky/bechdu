@@ -8,10 +8,15 @@ class QuestionTabEvent with _$QuestionTabEvent {
     required String categoryType,
     required Product product,
   }) = GetQuestions;
-  const factory QuestionTabEvent.getAnswerCount() = GetAnswerCount;
+  const factory QuestionTabEvent.getAnswerCount({required int answerCount}) =
+      GetAnswerCount;
   const factory QuestionTabEvent.markedQuestions({
     required SelectedOption selectedOption,
   }) = MarkedQuestions;
-  const factory QuestionTabEvent.countQuestionNumber(
-      {required int countQuestionNumber}) = CountQuestionNumber;
+  const factory QuestionTabEvent.countQuestionNumber({
+    required int countQuestionNumber,
+  }) = CountQuestionNumber;
+  const factory QuestionTabEvent.getBasePrice({
+    required PickeQuestionModel pickeQuestionModel,
+  }) = GetBasePrice;
 }

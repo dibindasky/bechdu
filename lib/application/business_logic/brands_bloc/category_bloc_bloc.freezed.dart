@@ -21,8 +21,10 @@ mixin _$CategoryBlocEvent {
     required TResult Function() getAllCategory,
     required TResult Function(String selectedProduct) selectedProduct,
     required TResult Function(String? categoryType) getSingleCategoryBrands,
+    required TResult Function(String searchQuery) brandSearch,
     required TResult Function(String categoryType, String brandName)
         getProducts,
+    required TResult Function(String searchQuery) productSearch,
     required TResult Function(String brandName, String categoryType) getSeries,
     required TResult Function(String seriesName) productUpdate,
     required TResult Function(
@@ -38,7 +40,9 @@ mixin _$CategoryBlocEvent {
     TResult? Function()? getAllCategory,
     TResult? Function(String selectedProduct)? selectedProduct,
     TResult? Function(String? categoryType)? getSingleCategoryBrands,
+    TResult? Function(String searchQuery)? brandSearch,
     TResult? Function(String categoryType, String brandName)? getProducts,
+    TResult? Function(String searchQuery)? productSearch,
     TResult? Function(String brandName, String categoryType)? getSeries,
     TResult? Function(String seriesName)? productUpdate,
     TResult? Function(String categoryType, String brandName, String seriesName)?
@@ -53,7 +57,9 @@ mixin _$CategoryBlocEvent {
     TResult Function()? getAllCategory,
     TResult Function(String selectedProduct)? selectedProduct,
     TResult Function(String? categoryType)? getSingleCategoryBrands,
+    TResult Function(String searchQuery)? brandSearch,
     TResult Function(String categoryType, String brandName)? getProducts,
+    TResult Function(String searchQuery)? productSearch,
     TResult Function(String brandName, String categoryType)? getSeries,
     TResult Function(String seriesName)? productUpdate,
     TResult Function(String categoryType, String brandName, String seriesName)?
@@ -70,7 +76,9 @@ mixin _$CategoryBlocEvent {
     required TResult Function(SelectedProduct value) selectedProduct,
     required TResult Function(GetSingleCategoryBrands value)
         getSingleCategoryBrands,
+    required TResult Function(BrandSearch value) brandSearch,
     required TResult Function(GetProducts value) getProducts,
+    required TResult Function(ProductSearch value) productSearch,
     required TResult Function(GetSeries value) getSeries,
     required TResult Function(ProductUpdate value) productUpdate,
     required TResult Function(GetModels value) getModels,
@@ -82,7 +90,9 @@ mixin _$CategoryBlocEvent {
     TResult? Function(GetAllCategory value)? getAllCategory,
     TResult? Function(SelectedProduct value)? selectedProduct,
     TResult? Function(GetSingleCategoryBrands value)? getSingleCategoryBrands,
+    TResult? Function(BrandSearch value)? brandSearch,
     TResult? Function(GetProducts value)? getProducts,
+    TResult? Function(ProductSearch value)? productSearch,
     TResult? Function(GetSeries value)? getSeries,
     TResult? Function(ProductUpdate value)? productUpdate,
     TResult? Function(GetModels value)? getModels,
@@ -94,7 +104,9 @@ mixin _$CategoryBlocEvent {
     TResult Function(GetAllCategory value)? getAllCategory,
     TResult Function(SelectedProduct value)? selectedProduct,
     TResult Function(GetSingleCategoryBrands value)? getSingleCategoryBrands,
+    TResult Function(BrandSearch value)? brandSearch,
     TResult Function(GetProducts value)? getProducts,
+    TResult Function(ProductSearch value)? productSearch,
     TResult Function(GetSeries value)? getSeries,
     TResult Function(ProductUpdate value)? productUpdate,
     TResult Function(GetModels value)? getModels,
@@ -172,8 +184,10 @@ class _$GetAllCategoryImpl
     required TResult Function() getAllCategory,
     required TResult Function(String selectedProduct) selectedProduct,
     required TResult Function(String? categoryType) getSingleCategoryBrands,
+    required TResult Function(String searchQuery) brandSearch,
     required TResult Function(String categoryType, String brandName)
         getProducts,
+    required TResult Function(String searchQuery) productSearch,
     required TResult Function(String brandName, String categoryType) getSeries,
     required TResult Function(String seriesName) productUpdate,
     required TResult Function(
@@ -192,7 +206,9 @@ class _$GetAllCategoryImpl
     TResult? Function()? getAllCategory,
     TResult? Function(String selectedProduct)? selectedProduct,
     TResult? Function(String? categoryType)? getSingleCategoryBrands,
+    TResult? Function(String searchQuery)? brandSearch,
     TResult? Function(String categoryType, String brandName)? getProducts,
+    TResult? Function(String searchQuery)? productSearch,
     TResult? Function(String brandName, String categoryType)? getSeries,
     TResult? Function(String seriesName)? productUpdate,
     TResult? Function(String categoryType, String brandName, String seriesName)?
@@ -210,7 +226,9 @@ class _$GetAllCategoryImpl
     TResult Function()? getAllCategory,
     TResult Function(String selectedProduct)? selectedProduct,
     TResult Function(String? categoryType)? getSingleCategoryBrands,
+    TResult Function(String searchQuery)? brandSearch,
     TResult Function(String categoryType, String brandName)? getProducts,
+    TResult Function(String searchQuery)? productSearch,
     TResult Function(String brandName, String categoryType)? getSeries,
     TResult Function(String seriesName)? productUpdate,
     TResult Function(String categoryType, String brandName, String seriesName)?
@@ -233,7 +251,9 @@ class _$GetAllCategoryImpl
     required TResult Function(SelectedProduct value) selectedProduct,
     required TResult Function(GetSingleCategoryBrands value)
         getSingleCategoryBrands,
+    required TResult Function(BrandSearch value) brandSearch,
     required TResult Function(GetProducts value) getProducts,
+    required TResult Function(ProductSearch value) productSearch,
     required TResult Function(GetSeries value) getSeries,
     required TResult Function(ProductUpdate value) productUpdate,
     required TResult Function(GetModels value) getModels,
@@ -248,7 +268,9 @@ class _$GetAllCategoryImpl
     TResult? Function(GetAllCategory value)? getAllCategory,
     TResult? Function(SelectedProduct value)? selectedProduct,
     TResult? Function(GetSingleCategoryBrands value)? getSingleCategoryBrands,
+    TResult? Function(BrandSearch value)? brandSearch,
     TResult? Function(GetProducts value)? getProducts,
+    TResult? Function(ProductSearch value)? productSearch,
     TResult? Function(GetSeries value)? getSeries,
     TResult? Function(ProductUpdate value)? productUpdate,
     TResult? Function(GetModels value)? getModels,
@@ -263,7 +285,9 @@ class _$GetAllCategoryImpl
     TResult Function(GetAllCategory value)? getAllCategory,
     TResult Function(SelectedProduct value)? selectedProduct,
     TResult Function(GetSingleCategoryBrands value)? getSingleCategoryBrands,
+    TResult Function(BrandSearch value)? brandSearch,
     TResult Function(GetProducts value)? getProducts,
+    TResult Function(ProductSearch value)? productSearch,
     TResult Function(GetSeries value)? getSeries,
     TResult Function(ProductUpdate value)? productUpdate,
     TResult Function(GetModels value)? getModels,
@@ -360,8 +384,10 @@ class _$SelectedProductImpl
     required TResult Function() getAllCategory,
     required TResult Function(String selectedProduct) selectedProduct,
     required TResult Function(String? categoryType) getSingleCategoryBrands,
+    required TResult Function(String searchQuery) brandSearch,
     required TResult Function(String categoryType, String brandName)
         getProducts,
+    required TResult Function(String searchQuery) productSearch,
     required TResult Function(String brandName, String categoryType) getSeries,
     required TResult Function(String seriesName) productUpdate,
     required TResult Function(
@@ -380,7 +406,9 @@ class _$SelectedProductImpl
     TResult? Function()? getAllCategory,
     TResult? Function(String selectedProduct)? selectedProduct,
     TResult? Function(String? categoryType)? getSingleCategoryBrands,
+    TResult? Function(String searchQuery)? brandSearch,
     TResult? Function(String categoryType, String brandName)? getProducts,
+    TResult? Function(String searchQuery)? productSearch,
     TResult? Function(String brandName, String categoryType)? getSeries,
     TResult? Function(String seriesName)? productUpdate,
     TResult? Function(String categoryType, String brandName, String seriesName)?
@@ -398,7 +426,9 @@ class _$SelectedProductImpl
     TResult Function()? getAllCategory,
     TResult Function(String selectedProduct)? selectedProduct,
     TResult Function(String? categoryType)? getSingleCategoryBrands,
+    TResult Function(String searchQuery)? brandSearch,
     TResult Function(String categoryType, String brandName)? getProducts,
+    TResult Function(String searchQuery)? productSearch,
     TResult Function(String brandName, String categoryType)? getSeries,
     TResult Function(String seriesName)? productUpdate,
     TResult Function(String categoryType, String brandName, String seriesName)?
@@ -421,7 +451,9 @@ class _$SelectedProductImpl
     required TResult Function(SelectedProduct value) selectedProduct,
     required TResult Function(GetSingleCategoryBrands value)
         getSingleCategoryBrands,
+    required TResult Function(BrandSearch value) brandSearch,
     required TResult Function(GetProducts value) getProducts,
+    required TResult Function(ProductSearch value) productSearch,
     required TResult Function(GetSeries value) getSeries,
     required TResult Function(ProductUpdate value) productUpdate,
     required TResult Function(GetModels value) getModels,
@@ -436,7 +468,9 @@ class _$SelectedProductImpl
     TResult? Function(GetAllCategory value)? getAllCategory,
     TResult? Function(SelectedProduct value)? selectedProduct,
     TResult? Function(GetSingleCategoryBrands value)? getSingleCategoryBrands,
+    TResult? Function(BrandSearch value)? brandSearch,
     TResult? Function(GetProducts value)? getProducts,
+    TResult? Function(ProductSearch value)? productSearch,
     TResult? Function(GetSeries value)? getSeries,
     TResult? Function(ProductUpdate value)? productUpdate,
     TResult? Function(GetModels value)? getModels,
@@ -451,7 +485,9 @@ class _$SelectedProductImpl
     TResult Function(GetAllCategory value)? getAllCategory,
     TResult Function(SelectedProduct value)? selectedProduct,
     TResult Function(GetSingleCategoryBrands value)? getSingleCategoryBrands,
+    TResult Function(BrandSearch value)? brandSearch,
     TResult Function(GetProducts value)? getProducts,
+    TResult Function(ProductSearch value)? productSearch,
     TResult Function(GetSeries value)? getSeries,
     TResult Function(ProductUpdate value)? productUpdate,
     TResult Function(GetModels value)? getModels,
@@ -557,8 +593,10 @@ class _$GetSingleCategoryBrandsImpl
     required TResult Function() getAllCategory,
     required TResult Function(String selectedProduct) selectedProduct,
     required TResult Function(String? categoryType) getSingleCategoryBrands,
+    required TResult Function(String searchQuery) brandSearch,
     required TResult Function(String categoryType, String brandName)
         getProducts,
+    required TResult Function(String searchQuery) productSearch,
     required TResult Function(String brandName, String categoryType) getSeries,
     required TResult Function(String seriesName) productUpdate,
     required TResult Function(
@@ -577,7 +615,9 @@ class _$GetSingleCategoryBrandsImpl
     TResult? Function()? getAllCategory,
     TResult? Function(String selectedProduct)? selectedProduct,
     TResult? Function(String? categoryType)? getSingleCategoryBrands,
+    TResult? Function(String searchQuery)? brandSearch,
     TResult? Function(String categoryType, String brandName)? getProducts,
+    TResult? Function(String searchQuery)? productSearch,
     TResult? Function(String brandName, String categoryType)? getSeries,
     TResult? Function(String seriesName)? productUpdate,
     TResult? Function(String categoryType, String brandName, String seriesName)?
@@ -595,7 +635,9 @@ class _$GetSingleCategoryBrandsImpl
     TResult Function()? getAllCategory,
     TResult Function(String selectedProduct)? selectedProduct,
     TResult Function(String? categoryType)? getSingleCategoryBrands,
+    TResult Function(String searchQuery)? brandSearch,
     TResult Function(String categoryType, String brandName)? getProducts,
+    TResult Function(String searchQuery)? productSearch,
     TResult Function(String brandName, String categoryType)? getSeries,
     TResult Function(String seriesName)? productUpdate,
     TResult Function(String categoryType, String brandName, String seriesName)?
@@ -618,7 +660,9 @@ class _$GetSingleCategoryBrandsImpl
     required TResult Function(SelectedProduct value) selectedProduct,
     required TResult Function(GetSingleCategoryBrands value)
         getSingleCategoryBrands,
+    required TResult Function(BrandSearch value) brandSearch,
     required TResult Function(GetProducts value) getProducts,
+    required TResult Function(ProductSearch value) productSearch,
     required TResult Function(GetSeries value) getSeries,
     required TResult Function(ProductUpdate value) productUpdate,
     required TResult Function(GetModels value) getModels,
@@ -633,7 +677,9 @@ class _$GetSingleCategoryBrandsImpl
     TResult? Function(GetAllCategory value)? getAllCategory,
     TResult? Function(SelectedProduct value)? selectedProduct,
     TResult? Function(GetSingleCategoryBrands value)? getSingleCategoryBrands,
+    TResult? Function(BrandSearch value)? brandSearch,
     TResult? Function(GetProducts value)? getProducts,
+    TResult? Function(ProductSearch value)? productSearch,
     TResult? Function(GetSeries value)? getSeries,
     TResult? Function(ProductUpdate value)? productUpdate,
     TResult? Function(GetModels value)? getModels,
@@ -648,7 +694,9 @@ class _$GetSingleCategoryBrandsImpl
     TResult Function(GetAllCategory value)? getAllCategory,
     TResult Function(SelectedProduct value)? selectedProduct,
     TResult Function(GetSingleCategoryBrands value)? getSingleCategoryBrands,
+    TResult Function(BrandSearch value)? brandSearch,
     TResult Function(GetProducts value)? getProducts,
+    TResult Function(ProductSearch value)? productSearch,
     TResult Function(GetSeries value)? getSeries,
     TResult Function(ProductUpdate value)? productUpdate,
     TResult Function(GetModels value)? getModels,
@@ -670,6 +718,209 @@ abstract class GetSingleCategoryBrands implements CategoryBlocEvent {
   @JsonKey(ignore: true)
   _$$GetSingleCategoryBrandsImplCopyWith<_$GetSingleCategoryBrandsImpl>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$BrandSearchImplCopyWith<$Res> {
+  factory _$$BrandSearchImplCopyWith(
+          _$BrandSearchImpl value, $Res Function(_$BrandSearchImpl) then) =
+      __$$BrandSearchImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String searchQuery});
+}
+
+/// @nodoc
+class __$$BrandSearchImplCopyWithImpl<$Res>
+    extends _$CategoryBlocEventCopyWithImpl<$Res, _$BrandSearchImpl>
+    implements _$$BrandSearchImplCopyWith<$Res> {
+  __$$BrandSearchImplCopyWithImpl(
+      _$BrandSearchImpl _value, $Res Function(_$BrandSearchImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? searchQuery = null,
+  }) {
+    return _then(_$BrandSearchImpl(
+      searchQuery: null == searchQuery
+          ? _value.searchQuery
+          : searchQuery // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$BrandSearchImpl with DiagnosticableTreeMixin implements BrandSearch {
+  const _$BrandSearchImpl({required this.searchQuery});
+
+  @override
+  final String searchQuery;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'CategoryBlocEvent.brandSearch(searchQuery: $searchQuery)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'CategoryBlocEvent.brandSearch'))
+      ..add(DiagnosticsProperty('searchQuery', searchQuery));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$BrandSearchImpl &&
+            (identical(other.searchQuery, searchQuery) ||
+                other.searchQuery == searchQuery));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, searchQuery);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$BrandSearchImplCopyWith<_$BrandSearchImpl> get copyWith =>
+      __$$BrandSearchImplCopyWithImpl<_$BrandSearchImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getAllCategory,
+    required TResult Function(String selectedProduct) selectedProduct,
+    required TResult Function(String? categoryType) getSingleCategoryBrands,
+    required TResult Function(String searchQuery) brandSearch,
+    required TResult Function(String categoryType, String brandName)
+        getProducts,
+    required TResult Function(String searchQuery) productSearch,
+    required TResult Function(String brandName, String categoryType) getSeries,
+    required TResult Function(String seriesName) productUpdate,
+    required TResult Function(
+            String categoryType, String brandName, String seriesName)
+        getModels,
+    required TResult Function(String categoryType, String brandName,
+            String seriesName, String model)
+        getVarients,
+  }) {
+    return brandSearch(searchQuery);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getAllCategory,
+    TResult? Function(String selectedProduct)? selectedProduct,
+    TResult? Function(String? categoryType)? getSingleCategoryBrands,
+    TResult? Function(String searchQuery)? brandSearch,
+    TResult? Function(String categoryType, String brandName)? getProducts,
+    TResult? Function(String searchQuery)? productSearch,
+    TResult? Function(String brandName, String categoryType)? getSeries,
+    TResult? Function(String seriesName)? productUpdate,
+    TResult? Function(String categoryType, String brandName, String seriesName)?
+        getModels,
+    TResult? Function(String categoryType, String brandName, String seriesName,
+            String model)?
+        getVarients,
+  }) {
+    return brandSearch?.call(searchQuery);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getAllCategory,
+    TResult Function(String selectedProduct)? selectedProduct,
+    TResult Function(String? categoryType)? getSingleCategoryBrands,
+    TResult Function(String searchQuery)? brandSearch,
+    TResult Function(String categoryType, String brandName)? getProducts,
+    TResult Function(String searchQuery)? productSearch,
+    TResult Function(String brandName, String categoryType)? getSeries,
+    TResult Function(String seriesName)? productUpdate,
+    TResult Function(String categoryType, String brandName, String seriesName)?
+        getModels,
+    TResult Function(String categoryType, String brandName, String seriesName,
+            String model)?
+        getVarients,
+    required TResult orElse(),
+  }) {
+    if (brandSearch != null) {
+      return brandSearch(searchQuery);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GetAllCategory value) getAllCategory,
+    required TResult Function(SelectedProduct value) selectedProduct,
+    required TResult Function(GetSingleCategoryBrands value)
+        getSingleCategoryBrands,
+    required TResult Function(BrandSearch value) brandSearch,
+    required TResult Function(GetProducts value) getProducts,
+    required TResult Function(ProductSearch value) productSearch,
+    required TResult Function(GetSeries value) getSeries,
+    required TResult Function(ProductUpdate value) productUpdate,
+    required TResult Function(GetModels value) getModels,
+    required TResult Function(GetVarients value) getVarients,
+  }) {
+    return brandSearch(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetAllCategory value)? getAllCategory,
+    TResult? Function(SelectedProduct value)? selectedProduct,
+    TResult? Function(GetSingleCategoryBrands value)? getSingleCategoryBrands,
+    TResult? Function(BrandSearch value)? brandSearch,
+    TResult? Function(GetProducts value)? getProducts,
+    TResult? Function(ProductSearch value)? productSearch,
+    TResult? Function(GetSeries value)? getSeries,
+    TResult? Function(ProductUpdate value)? productUpdate,
+    TResult? Function(GetModels value)? getModels,
+    TResult? Function(GetVarients value)? getVarients,
+  }) {
+    return brandSearch?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetAllCategory value)? getAllCategory,
+    TResult Function(SelectedProduct value)? selectedProduct,
+    TResult Function(GetSingleCategoryBrands value)? getSingleCategoryBrands,
+    TResult Function(BrandSearch value)? brandSearch,
+    TResult Function(GetProducts value)? getProducts,
+    TResult Function(ProductSearch value)? productSearch,
+    TResult Function(GetSeries value)? getSeries,
+    TResult Function(ProductUpdate value)? productUpdate,
+    TResult Function(GetModels value)? getModels,
+    TResult Function(GetVarients value)? getVarients,
+    required TResult orElse(),
+  }) {
+    if (brandSearch != null) {
+      return brandSearch(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class BrandSearch implements CategoryBlocEvent {
+  const factory BrandSearch({required final String searchQuery}) =
+      _$BrandSearchImpl;
+
+  String get searchQuery;
+  @JsonKey(ignore: true)
+  _$$BrandSearchImplCopyWith<_$BrandSearchImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -759,8 +1010,10 @@ class _$GetProductsImpl with DiagnosticableTreeMixin implements GetProducts {
     required TResult Function() getAllCategory,
     required TResult Function(String selectedProduct) selectedProduct,
     required TResult Function(String? categoryType) getSingleCategoryBrands,
+    required TResult Function(String searchQuery) brandSearch,
     required TResult Function(String categoryType, String brandName)
         getProducts,
+    required TResult Function(String searchQuery) productSearch,
     required TResult Function(String brandName, String categoryType) getSeries,
     required TResult Function(String seriesName) productUpdate,
     required TResult Function(
@@ -779,7 +1032,9 @@ class _$GetProductsImpl with DiagnosticableTreeMixin implements GetProducts {
     TResult? Function()? getAllCategory,
     TResult? Function(String selectedProduct)? selectedProduct,
     TResult? Function(String? categoryType)? getSingleCategoryBrands,
+    TResult? Function(String searchQuery)? brandSearch,
     TResult? Function(String categoryType, String brandName)? getProducts,
+    TResult? Function(String searchQuery)? productSearch,
     TResult? Function(String brandName, String categoryType)? getSeries,
     TResult? Function(String seriesName)? productUpdate,
     TResult? Function(String categoryType, String brandName, String seriesName)?
@@ -797,7 +1052,9 @@ class _$GetProductsImpl with DiagnosticableTreeMixin implements GetProducts {
     TResult Function()? getAllCategory,
     TResult Function(String selectedProduct)? selectedProduct,
     TResult Function(String? categoryType)? getSingleCategoryBrands,
+    TResult Function(String searchQuery)? brandSearch,
     TResult Function(String categoryType, String brandName)? getProducts,
+    TResult Function(String searchQuery)? productSearch,
     TResult Function(String brandName, String categoryType)? getSeries,
     TResult Function(String seriesName)? productUpdate,
     TResult Function(String categoryType, String brandName, String seriesName)?
@@ -820,7 +1077,9 @@ class _$GetProductsImpl with DiagnosticableTreeMixin implements GetProducts {
     required TResult Function(SelectedProduct value) selectedProduct,
     required TResult Function(GetSingleCategoryBrands value)
         getSingleCategoryBrands,
+    required TResult Function(BrandSearch value) brandSearch,
     required TResult Function(GetProducts value) getProducts,
+    required TResult Function(ProductSearch value) productSearch,
     required TResult Function(GetSeries value) getSeries,
     required TResult Function(ProductUpdate value) productUpdate,
     required TResult Function(GetModels value) getModels,
@@ -835,7 +1094,9 @@ class _$GetProductsImpl with DiagnosticableTreeMixin implements GetProducts {
     TResult? Function(GetAllCategory value)? getAllCategory,
     TResult? Function(SelectedProduct value)? selectedProduct,
     TResult? Function(GetSingleCategoryBrands value)? getSingleCategoryBrands,
+    TResult? Function(BrandSearch value)? brandSearch,
     TResult? Function(GetProducts value)? getProducts,
+    TResult? Function(ProductSearch value)? productSearch,
     TResult? Function(GetSeries value)? getSeries,
     TResult? Function(ProductUpdate value)? productUpdate,
     TResult? Function(GetModels value)? getModels,
@@ -850,7 +1111,9 @@ class _$GetProductsImpl with DiagnosticableTreeMixin implements GetProducts {
     TResult Function(GetAllCategory value)? getAllCategory,
     TResult Function(SelectedProduct value)? selectedProduct,
     TResult Function(GetSingleCategoryBrands value)? getSingleCategoryBrands,
+    TResult Function(BrandSearch value)? brandSearch,
     TResult Function(GetProducts value)? getProducts,
+    TResult Function(ProductSearch value)? productSearch,
     TResult Function(GetSeries value)? getSeries,
     TResult Function(ProductUpdate value)? productUpdate,
     TResult Function(GetModels value)? getModels,
@@ -873,6 +1136,211 @@ abstract class GetProducts implements CategoryBlocEvent {
   String get brandName;
   @JsonKey(ignore: true)
   _$$GetProductsImplCopyWith<_$GetProductsImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ProductSearchImplCopyWith<$Res> {
+  factory _$$ProductSearchImplCopyWith(
+          _$ProductSearchImpl value, $Res Function(_$ProductSearchImpl) then) =
+      __$$ProductSearchImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String searchQuery});
+}
+
+/// @nodoc
+class __$$ProductSearchImplCopyWithImpl<$Res>
+    extends _$CategoryBlocEventCopyWithImpl<$Res, _$ProductSearchImpl>
+    implements _$$ProductSearchImplCopyWith<$Res> {
+  __$$ProductSearchImplCopyWithImpl(
+      _$ProductSearchImpl _value, $Res Function(_$ProductSearchImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? searchQuery = null,
+  }) {
+    return _then(_$ProductSearchImpl(
+      searchQuery: null == searchQuery
+          ? _value.searchQuery
+          : searchQuery // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ProductSearchImpl
+    with DiagnosticableTreeMixin
+    implements ProductSearch {
+  const _$ProductSearchImpl({required this.searchQuery});
+
+  @override
+  final String searchQuery;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'CategoryBlocEvent.productSearch(searchQuery: $searchQuery)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'CategoryBlocEvent.productSearch'))
+      ..add(DiagnosticsProperty('searchQuery', searchQuery));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ProductSearchImpl &&
+            (identical(other.searchQuery, searchQuery) ||
+                other.searchQuery == searchQuery));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, searchQuery);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ProductSearchImplCopyWith<_$ProductSearchImpl> get copyWith =>
+      __$$ProductSearchImplCopyWithImpl<_$ProductSearchImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getAllCategory,
+    required TResult Function(String selectedProduct) selectedProduct,
+    required TResult Function(String? categoryType) getSingleCategoryBrands,
+    required TResult Function(String searchQuery) brandSearch,
+    required TResult Function(String categoryType, String brandName)
+        getProducts,
+    required TResult Function(String searchQuery) productSearch,
+    required TResult Function(String brandName, String categoryType) getSeries,
+    required TResult Function(String seriesName) productUpdate,
+    required TResult Function(
+            String categoryType, String brandName, String seriesName)
+        getModels,
+    required TResult Function(String categoryType, String brandName,
+            String seriesName, String model)
+        getVarients,
+  }) {
+    return productSearch(searchQuery);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getAllCategory,
+    TResult? Function(String selectedProduct)? selectedProduct,
+    TResult? Function(String? categoryType)? getSingleCategoryBrands,
+    TResult? Function(String searchQuery)? brandSearch,
+    TResult? Function(String categoryType, String brandName)? getProducts,
+    TResult? Function(String searchQuery)? productSearch,
+    TResult? Function(String brandName, String categoryType)? getSeries,
+    TResult? Function(String seriesName)? productUpdate,
+    TResult? Function(String categoryType, String brandName, String seriesName)?
+        getModels,
+    TResult? Function(String categoryType, String brandName, String seriesName,
+            String model)?
+        getVarients,
+  }) {
+    return productSearch?.call(searchQuery);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getAllCategory,
+    TResult Function(String selectedProduct)? selectedProduct,
+    TResult Function(String? categoryType)? getSingleCategoryBrands,
+    TResult Function(String searchQuery)? brandSearch,
+    TResult Function(String categoryType, String brandName)? getProducts,
+    TResult Function(String searchQuery)? productSearch,
+    TResult Function(String brandName, String categoryType)? getSeries,
+    TResult Function(String seriesName)? productUpdate,
+    TResult Function(String categoryType, String brandName, String seriesName)?
+        getModels,
+    TResult Function(String categoryType, String brandName, String seriesName,
+            String model)?
+        getVarients,
+    required TResult orElse(),
+  }) {
+    if (productSearch != null) {
+      return productSearch(searchQuery);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GetAllCategory value) getAllCategory,
+    required TResult Function(SelectedProduct value) selectedProduct,
+    required TResult Function(GetSingleCategoryBrands value)
+        getSingleCategoryBrands,
+    required TResult Function(BrandSearch value) brandSearch,
+    required TResult Function(GetProducts value) getProducts,
+    required TResult Function(ProductSearch value) productSearch,
+    required TResult Function(GetSeries value) getSeries,
+    required TResult Function(ProductUpdate value) productUpdate,
+    required TResult Function(GetModels value) getModels,
+    required TResult Function(GetVarients value) getVarients,
+  }) {
+    return productSearch(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetAllCategory value)? getAllCategory,
+    TResult? Function(SelectedProduct value)? selectedProduct,
+    TResult? Function(GetSingleCategoryBrands value)? getSingleCategoryBrands,
+    TResult? Function(BrandSearch value)? brandSearch,
+    TResult? Function(GetProducts value)? getProducts,
+    TResult? Function(ProductSearch value)? productSearch,
+    TResult? Function(GetSeries value)? getSeries,
+    TResult? Function(ProductUpdate value)? productUpdate,
+    TResult? Function(GetModels value)? getModels,
+    TResult? Function(GetVarients value)? getVarients,
+  }) {
+    return productSearch?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetAllCategory value)? getAllCategory,
+    TResult Function(SelectedProduct value)? selectedProduct,
+    TResult Function(GetSingleCategoryBrands value)? getSingleCategoryBrands,
+    TResult Function(BrandSearch value)? brandSearch,
+    TResult Function(GetProducts value)? getProducts,
+    TResult Function(ProductSearch value)? productSearch,
+    TResult Function(GetSeries value)? getSeries,
+    TResult Function(ProductUpdate value)? productUpdate,
+    TResult Function(GetModels value)? getModels,
+    TResult Function(GetVarients value)? getVarients,
+    required TResult orElse(),
+  }) {
+    if (productSearch != null) {
+      return productSearch(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ProductSearch implements CategoryBlocEvent {
+  const factory ProductSearch({required final String searchQuery}) =
+      _$ProductSearchImpl;
+
+  String get searchQuery;
+  @JsonKey(ignore: true)
+  _$$ProductSearchImplCopyWith<_$ProductSearchImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -962,8 +1430,10 @@ class _$GetSeriesImpl with DiagnosticableTreeMixin implements GetSeries {
     required TResult Function() getAllCategory,
     required TResult Function(String selectedProduct) selectedProduct,
     required TResult Function(String? categoryType) getSingleCategoryBrands,
+    required TResult Function(String searchQuery) brandSearch,
     required TResult Function(String categoryType, String brandName)
         getProducts,
+    required TResult Function(String searchQuery) productSearch,
     required TResult Function(String brandName, String categoryType) getSeries,
     required TResult Function(String seriesName) productUpdate,
     required TResult Function(
@@ -982,7 +1452,9 @@ class _$GetSeriesImpl with DiagnosticableTreeMixin implements GetSeries {
     TResult? Function()? getAllCategory,
     TResult? Function(String selectedProduct)? selectedProduct,
     TResult? Function(String? categoryType)? getSingleCategoryBrands,
+    TResult? Function(String searchQuery)? brandSearch,
     TResult? Function(String categoryType, String brandName)? getProducts,
+    TResult? Function(String searchQuery)? productSearch,
     TResult? Function(String brandName, String categoryType)? getSeries,
     TResult? Function(String seriesName)? productUpdate,
     TResult? Function(String categoryType, String brandName, String seriesName)?
@@ -1000,7 +1472,9 @@ class _$GetSeriesImpl with DiagnosticableTreeMixin implements GetSeries {
     TResult Function()? getAllCategory,
     TResult Function(String selectedProduct)? selectedProduct,
     TResult Function(String? categoryType)? getSingleCategoryBrands,
+    TResult Function(String searchQuery)? brandSearch,
     TResult Function(String categoryType, String brandName)? getProducts,
+    TResult Function(String searchQuery)? productSearch,
     TResult Function(String brandName, String categoryType)? getSeries,
     TResult Function(String seriesName)? productUpdate,
     TResult Function(String categoryType, String brandName, String seriesName)?
@@ -1023,7 +1497,9 @@ class _$GetSeriesImpl with DiagnosticableTreeMixin implements GetSeries {
     required TResult Function(SelectedProduct value) selectedProduct,
     required TResult Function(GetSingleCategoryBrands value)
         getSingleCategoryBrands,
+    required TResult Function(BrandSearch value) brandSearch,
     required TResult Function(GetProducts value) getProducts,
+    required TResult Function(ProductSearch value) productSearch,
     required TResult Function(GetSeries value) getSeries,
     required TResult Function(ProductUpdate value) productUpdate,
     required TResult Function(GetModels value) getModels,
@@ -1038,7 +1514,9 @@ class _$GetSeriesImpl with DiagnosticableTreeMixin implements GetSeries {
     TResult? Function(GetAllCategory value)? getAllCategory,
     TResult? Function(SelectedProduct value)? selectedProduct,
     TResult? Function(GetSingleCategoryBrands value)? getSingleCategoryBrands,
+    TResult? Function(BrandSearch value)? brandSearch,
     TResult? Function(GetProducts value)? getProducts,
+    TResult? Function(ProductSearch value)? productSearch,
     TResult? Function(GetSeries value)? getSeries,
     TResult? Function(ProductUpdate value)? productUpdate,
     TResult? Function(GetModels value)? getModels,
@@ -1053,7 +1531,9 @@ class _$GetSeriesImpl with DiagnosticableTreeMixin implements GetSeries {
     TResult Function(GetAllCategory value)? getAllCategory,
     TResult Function(SelectedProduct value)? selectedProduct,
     TResult Function(GetSingleCategoryBrands value)? getSingleCategoryBrands,
+    TResult Function(BrandSearch value)? brandSearch,
     TResult Function(GetProducts value)? getProducts,
+    TResult Function(ProductSearch value)? productSearch,
     TResult Function(GetSeries value)? getSeries,
     TResult Function(ProductUpdate value)? productUpdate,
     TResult Function(GetModels value)? getModels,
@@ -1157,8 +1637,10 @@ class _$ProductUpdateImpl
     required TResult Function() getAllCategory,
     required TResult Function(String selectedProduct) selectedProduct,
     required TResult Function(String? categoryType) getSingleCategoryBrands,
+    required TResult Function(String searchQuery) brandSearch,
     required TResult Function(String categoryType, String brandName)
         getProducts,
+    required TResult Function(String searchQuery) productSearch,
     required TResult Function(String brandName, String categoryType) getSeries,
     required TResult Function(String seriesName) productUpdate,
     required TResult Function(
@@ -1177,7 +1659,9 @@ class _$ProductUpdateImpl
     TResult? Function()? getAllCategory,
     TResult? Function(String selectedProduct)? selectedProduct,
     TResult? Function(String? categoryType)? getSingleCategoryBrands,
+    TResult? Function(String searchQuery)? brandSearch,
     TResult? Function(String categoryType, String brandName)? getProducts,
+    TResult? Function(String searchQuery)? productSearch,
     TResult? Function(String brandName, String categoryType)? getSeries,
     TResult? Function(String seriesName)? productUpdate,
     TResult? Function(String categoryType, String brandName, String seriesName)?
@@ -1195,7 +1679,9 @@ class _$ProductUpdateImpl
     TResult Function()? getAllCategory,
     TResult Function(String selectedProduct)? selectedProduct,
     TResult Function(String? categoryType)? getSingleCategoryBrands,
+    TResult Function(String searchQuery)? brandSearch,
     TResult Function(String categoryType, String brandName)? getProducts,
+    TResult Function(String searchQuery)? productSearch,
     TResult Function(String brandName, String categoryType)? getSeries,
     TResult Function(String seriesName)? productUpdate,
     TResult Function(String categoryType, String brandName, String seriesName)?
@@ -1218,7 +1704,9 @@ class _$ProductUpdateImpl
     required TResult Function(SelectedProduct value) selectedProduct,
     required TResult Function(GetSingleCategoryBrands value)
         getSingleCategoryBrands,
+    required TResult Function(BrandSearch value) brandSearch,
     required TResult Function(GetProducts value) getProducts,
+    required TResult Function(ProductSearch value) productSearch,
     required TResult Function(GetSeries value) getSeries,
     required TResult Function(ProductUpdate value) productUpdate,
     required TResult Function(GetModels value) getModels,
@@ -1233,7 +1721,9 @@ class _$ProductUpdateImpl
     TResult? Function(GetAllCategory value)? getAllCategory,
     TResult? Function(SelectedProduct value)? selectedProduct,
     TResult? Function(GetSingleCategoryBrands value)? getSingleCategoryBrands,
+    TResult? Function(BrandSearch value)? brandSearch,
     TResult? Function(GetProducts value)? getProducts,
+    TResult? Function(ProductSearch value)? productSearch,
     TResult? Function(GetSeries value)? getSeries,
     TResult? Function(ProductUpdate value)? productUpdate,
     TResult? Function(GetModels value)? getModels,
@@ -1248,7 +1738,9 @@ class _$ProductUpdateImpl
     TResult Function(GetAllCategory value)? getAllCategory,
     TResult Function(SelectedProduct value)? selectedProduct,
     TResult Function(GetSingleCategoryBrands value)? getSingleCategoryBrands,
+    TResult Function(BrandSearch value)? brandSearch,
     TResult Function(GetProducts value)? getProducts,
+    TResult Function(ProductSearch value)? productSearch,
     TResult Function(GetSeries value)? getSeries,
     TResult Function(ProductUpdate value)? productUpdate,
     TResult Function(GetModels value)? getModels,
@@ -1372,8 +1864,10 @@ class _$GetModelsImpl with DiagnosticableTreeMixin implements GetModels {
     required TResult Function() getAllCategory,
     required TResult Function(String selectedProduct) selectedProduct,
     required TResult Function(String? categoryType) getSingleCategoryBrands,
+    required TResult Function(String searchQuery) brandSearch,
     required TResult Function(String categoryType, String brandName)
         getProducts,
+    required TResult Function(String searchQuery) productSearch,
     required TResult Function(String brandName, String categoryType) getSeries,
     required TResult Function(String seriesName) productUpdate,
     required TResult Function(
@@ -1392,7 +1886,9 @@ class _$GetModelsImpl with DiagnosticableTreeMixin implements GetModels {
     TResult? Function()? getAllCategory,
     TResult? Function(String selectedProduct)? selectedProduct,
     TResult? Function(String? categoryType)? getSingleCategoryBrands,
+    TResult? Function(String searchQuery)? brandSearch,
     TResult? Function(String categoryType, String brandName)? getProducts,
+    TResult? Function(String searchQuery)? productSearch,
     TResult? Function(String brandName, String categoryType)? getSeries,
     TResult? Function(String seriesName)? productUpdate,
     TResult? Function(String categoryType, String brandName, String seriesName)?
@@ -1410,7 +1906,9 @@ class _$GetModelsImpl with DiagnosticableTreeMixin implements GetModels {
     TResult Function()? getAllCategory,
     TResult Function(String selectedProduct)? selectedProduct,
     TResult Function(String? categoryType)? getSingleCategoryBrands,
+    TResult Function(String searchQuery)? brandSearch,
     TResult Function(String categoryType, String brandName)? getProducts,
+    TResult Function(String searchQuery)? productSearch,
     TResult Function(String brandName, String categoryType)? getSeries,
     TResult Function(String seriesName)? productUpdate,
     TResult Function(String categoryType, String brandName, String seriesName)?
@@ -1433,7 +1931,9 @@ class _$GetModelsImpl with DiagnosticableTreeMixin implements GetModels {
     required TResult Function(SelectedProduct value) selectedProduct,
     required TResult Function(GetSingleCategoryBrands value)
         getSingleCategoryBrands,
+    required TResult Function(BrandSearch value) brandSearch,
     required TResult Function(GetProducts value) getProducts,
+    required TResult Function(ProductSearch value) productSearch,
     required TResult Function(GetSeries value) getSeries,
     required TResult Function(ProductUpdate value) productUpdate,
     required TResult Function(GetModels value) getModels,
@@ -1448,7 +1948,9 @@ class _$GetModelsImpl with DiagnosticableTreeMixin implements GetModels {
     TResult? Function(GetAllCategory value)? getAllCategory,
     TResult? Function(SelectedProduct value)? selectedProduct,
     TResult? Function(GetSingleCategoryBrands value)? getSingleCategoryBrands,
+    TResult? Function(BrandSearch value)? brandSearch,
     TResult? Function(GetProducts value)? getProducts,
+    TResult? Function(ProductSearch value)? productSearch,
     TResult? Function(GetSeries value)? getSeries,
     TResult? Function(ProductUpdate value)? productUpdate,
     TResult? Function(GetModels value)? getModels,
@@ -1463,7 +1965,9 @@ class _$GetModelsImpl with DiagnosticableTreeMixin implements GetModels {
     TResult Function(GetAllCategory value)? getAllCategory,
     TResult Function(SelectedProduct value)? selectedProduct,
     TResult Function(GetSingleCategoryBrands value)? getSingleCategoryBrands,
+    TResult Function(BrandSearch value)? brandSearch,
     TResult Function(GetProducts value)? getProducts,
+    TResult Function(ProductSearch value)? productSearch,
     TResult Function(GetSeries value)? getSeries,
     TResult Function(ProductUpdate value)? productUpdate,
     TResult Function(GetModels value)? getModels,
@@ -1602,8 +2106,10 @@ class _$GetVarientsImpl with DiagnosticableTreeMixin implements GetVarients {
     required TResult Function() getAllCategory,
     required TResult Function(String selectedProduct) selectedProduct,
     required TResult Function(String? categoryType) getSingleCategoryBrands,
+    required TResult Function(String searchQuery) brandSearch,
     required TResult Function(String categoryType, String brandName)
         getProducts,
+    required TResult Function(String searchQuery) productSearch,
     required TResult Function(String brandName, String categoryType) getSeries,
     required TResult Function(String seriesName) productUpdate,
     required TResult Function(
@@ -1622,7 +2128,9 @@ class _$GetVarientsImpl with DiagnosticableTreeMixin implements GetVarients {
     TResult? Function()? getAllCategory,
     TResult? Function(String selectedProduct)? selectedProduct,
     TResult? Function(String? categoryType)? getSingleCategoryBrands,
+    TResult? Function(String searchQuery)? brandSearch,
     TResult? Function(String categoryType, String brandName)? getProducts,
+    TResult? Function(String searchQuery)? productSearch,
     TResult? Function(String brandName, String categoryType)? getSeries,
     TResult? Function(String seriesName)? productUpdate,
     TResult? Function(String categoryType, String brandName, String seriesName)?
@@ -1640,7 +2148,9 @@ class _$GetVarientsImpl with DiagnosticableTreeMixin implements GetVarients {
     TResult Function()? getAllCategory,
     TResult Function(String selectedProduct)? selectedProduct,
     TResult Function(String? categoryType)? getSingleCategoryBrands,
+    TResult Function(String searchQuery)? brandSearch,
     TResult Function(String categoryType, String brandName)? getProducts,
+    TResult Function(String searchQuery)? productSearch,
     TResult Function(String brandName, String categoryType)? getSeries,
     TResult Function(String seriesName)? productUpdate,
     TResult Function(String categoryType, String brandName, String seriesName)?
@@ -1663,7 +2173,9 @@ class _$GetVarientsImpl with DiagnosticableTreeMixin implements GetVarients {
     required TResult Function(SelectedProduct value) selectedProduct,
     required TResult Function(GetSingleCategoryBrands value)
         getSingleCategoryBrands,
+    required TResult Function(BrandSearch value) brandSearch,
     required TResult Function(GetProducts value) getProducts,
+    required TResult Function(ProductSearch value) productSearch,
     required TResult Function(GetSeries value) getSeries,
     required TResult Function(ProductUpdate value) productUpdate,
     required TResult Function(GetModels value) getModels,
@@ -1678,7 +2190,9 @@ class _$GetVarientsImpl with DiagnosticableTreeMixin implements GetVarients {
     TResult? Function(GetAllCategory value)? getAllCategory,
     TResult? Function(SelectedProduct value)? selectedProduct,
     TResult? Function(GetSingleCategoryBrands value)? getSingleCategoryBrands,
+    TResult? Function(BrandSearch value)? brandSearch,
     TResult? Function(GetProducts value)? getProducts,
+    TResult? Function(ProductSearch value)? productSearch,
     TResult? Function(GetSeries value)? getSeries,
     TResult? Function(ProductUpdate value)? productUpdate,
     TResult? Function(GetModels value)? getModels,
@@ -1693,7 +2207,9 @@ class _$GetVarientsImpl with DiagnosticableTreeMixin implements GetVarients {
     TResult Function(GetAllCategory value)? getAllCategory,
     TResult Function(SelectedProduct value)? selectedProduct,
     TResult Function(GetSingleCategoryBrands value)? getSingleCategoryBrands,
+    TResult Function(BrandSearch value)? brandSearch,
     TResult Function(GetProducts value)? getProducts,
+    TResult Function(ProductSearch value)? productSearch,
     TResult Function(GetSeries value)? getSeries,
     TResult Function(ProductUpdate value)? productUpdate,
     TResult Function(GetModels value)? getModels,
@@ -1732,9 +2248,11 @@ mixin _$CategoryBlocState {
   String? get selectedProduct => throw _privateConstructorUsedError;
   SingleCategoryBrandsResponceModel? get getSingleCategoryResponce =>
       throw _privateConstructorUsedError;
-  GetProductsResponceModel? get getProductsResponceModel =>
+  GetProductsRespoceModel? get getProductsResponceModel =>
       throw _privateConstructorUsedError;
   List<List<String>> get allItems => throw _privateConstructorUsedError;
+  List<Brands>? get filteredBrands => throw _privateConstructorUsedError;
+  List<Product>? get filteredProducts => throw _privateConstructorUsedError;
   List<String>? get sortedPro => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -1755,8 +2273,10 @@ abstract class $CategoryBlocStateCopyWith<$Res> {
       bool? isPro,
       String? selectedProduct,
       SingleCategoryBrandsResponceModel? getSingleCategoryResponce,
-      GetProductsResponceModel? getProductsResponceModel,
+      GetProductsRespoceModel? getProductsResponceModel,
       List<List<String>> allItems,
+      List<Brands>? filteredBrands,
+      List<Product>? filteredProducts,
       List<String>? sortedPro});
 }
 
@@ -1781,6 +2301,8 @@ class _$CategoryBlocStateCopyWithImpl<$Res, $Val extends CategoryBlocState>
     Object? getSingleCategoryResponce = freezed,
     Object? getProductsResponceModel = freezed,
     Object? allItems = null,
+    Object? filteredBrands = freezed,
+    Object? filteredProducts = freezed,
     Object? sortedPro = freezed,
   }) {
     return _then(_value.copyWith(
@@ -1811,11 +2333,19 @@ class _$CategoryBlocStateCopyWithImpl<$Res, $Val extends CategoryBlocState>
       getProductsResponceModel: freezed == getProductsResponceModel
           ? _value.getProductsResponceModel
           : getProductsResponceModel // ignore: cast_nullable_to_non_nullable
-              as GetProductsResponceModel?,
+              as GetProductsRespoceModel?,
       allItems: null == allItems
           ? _value.allItems
           : allItems // ignore: cast_nullable_to_non_nullable
               as List<List<String>>,
+      filteredBrands: freezed == filteredBrands
+          ? _value.filteredBrands
+          : filteredBrands // ignore: cast_nullable_to_non_nullable
+              as List<Brands>?,
+      filteredProducts: freezed == filteredProducts
+          ? _value.filteredProducts
+          : filteredProducts // ignore: cast_nullable_to_non_nullable
+              as List<Product>?,
       sortedPro: freezed == sortedPro
           ? _value.sortedPro
           : sortedPro // ignore: cast_nullable_to_non_nullable
@@ -1839,8 +2369,10 @@ abstract class _$$InitialImplCopyWith<$Res>
       bool? isPro,
       String? selectedProduct,
       SingleCategoryBrandsResponceModel? getSingleCategoryResponce,
-      GetProductsResponceModel? getProductsResponceModel,
+      GetProductsRespoceModel? getProductsResponceModel,
       List<List<String>> allItems,
+      List<Brands>? filteredBrands,
+      List<Product>? filteredProducts,
       List<String>? sortedPro});
 }
 
@@ -1863,6 +2395,8 @@ class __$$InitialImplCopyWithImpl<$Res>
     Object? getSingleCategoryResponce = freezed,
     Object? getProductsResponceModel = freezed,
     Object? allItems = null,
+    Object? filteredBrands = freezed,
+    Object? filteredProducts = freezed,
     Object? sortedPro = freezed,
   }) {
     return _then(_$InitialImpl(
@@ -1893,11 +2427,19 @@ class __$$InitialImplCopyWithImpl<$Res>
       getProductsResponceModel: freezed == getProductsResponceModel
           ? _value.getProductsResponceModel
           : getProductsResponceModel // ignore: cast_nullable_to_non_nullable
-              as GetProductsResponceModel?,
+              as GetProductsRespoceModel?,
       allItems: null == allItems
           ? _value._allItems
           : allItems // ignore: cast_nullable_to_non_nullable
               as List<List<String>>,
+      filteredBrands: freezed == filteredBrands
+          ? _value._filteredBrands
+          : filteredBrands // ignore: cast_nullable_to_non_nullable
+              as List<Brands>?,
+      filteredProducts: freezed == filteredProducts
+          ? _value._filteredProducts
+          : filteredProducts // ignore: cast_nullable_to_non_nullable
+              as List<Product>?,
       sortedPro: freezed == sortedPro
           ? _value._sortedPro
           : sortedPro // ignore: cast_nullable_to_non_nullable
@@ -1918,8 +2460,12 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
       this.getSingleCategoryResponce,
       this.getProductsResponceModel,
       required final List<List<String>> allItems,
+      final List<Brands>? filteredBrands,
+      final List<Product>? filteredProducts,
       final List<String>? sortedPro})
       : _allItems = allItems,
+        _filteredBrands = filteredBrands,
+        _filteredProducts = filteredProducts,
         _sortedPro = sortedPro;
 
   @override
@@ -1935,13 +2481,34 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
   @override
   final SingleCategoryBrandsResponceModel? getSingleCategoryResponce;
   @override
-  final GetProductsResponceModel? getProductsResponceModel;
+  final GetProductsRespoceModel? getProductsResponceModel;
   final List<List<String>> _allItems;
   @override
   List<List<String>> get allItems {
     if (_allItems is EqualUnmodifiableListView) return _allItems;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_allItems);
+  }
+
+  final List<Brands>? _filteredBrands;
+  @override
+  List<Brands>? get filteredBrands {
+    final value = _filteredBrands;
+    if (value == null) return null;
+    if (_filteredBrands is EqualUnmodifiableListView) return _filteredBrands;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  final List<Product>? _filteredProducts;
+  @override
+  List<Product>? get filteredProducts {
+    final value = _filteredProducts;
+    if (value == null) return null;
+    if (_filteredProducts is EqualUnmodifiableListView)
+      return _filteredProducts;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
   }
 
   final List<String>? _sortedPro;
@@ -1956,7 +2523,7 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'CategoryBlocState(isLoading: $isLoading, hasError: $hasError, message: $message, isPro: $isPro, selectedProduct: $selectedProduct, getSingleCategoryResponce: $getSingleCategoryResponce, getProductsResponceModel: $getProductsResponceModel, allItems: $allItems, sortedPro: $sortedPro)';
+    return 'CategoryBlocState(isLoading: $isLoading, hasError: $hasError, message: $message, isPro: $isPro, selectedProduct: $selectedProduct, getSingleCategoryResponce: $getSingleCategoryResponce, getProductsResponceModel: $getProductsResponceModel, allItems: $allItems, filteredBrands: $filteredBrands, filteredProducts: $filteredProducts, sortedPro: $sortedPro)';
   }
 
   @override
@@ -1974,6 +2541,8 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
       ..add(DiagnosticsProperty(
           'getProductsResponceModel', getProductsResponceModel))
       ..add(DiagnosticsProperty('allItems', allItems))
+      ..add(DiagnosticsProperty('filteredBrands', filteredBrands))
+      ..add(DiagnosticsProperty('filteredProducts', filteredProducts))
       ..add(DiagnosticsProperty('sortedPro', sortedPro));
   }
 
@@ -1998,6 +2567,10 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
                 other.getProductsResponceModel == getProductsResponceModel) &&
             const DeepCollectionEquality().equals(other._allItems, _allItems) &&
             const DeepCollectionEquality()
+                .equals(other._filteredBrands, _filteredBrands) &&
+            const DeepCollectionEquality()
+                .equals(other._filteredProducts, _filteredProducts) &&
+            const DeepCollectionEquality()
                 .equals(other._sortedPro, _sortedPro));
   }
 
@@ -2012,6 +2585,8 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
       getSingleCategoryResponce,
       getProductsResponceModel,
       const DeepCollectionEquality().hash(_allItems),
+      const DeepCollectionEquality().hash(_filteredBrands),
+      const DeepCollectionEquality().hash(_filteredProducts),
       const DeepCollectionEquality().hash(_sortedPro));
 
   @JsonKey(ignore: true)
@@ -2029,8 +2604,10 @@ abstract class _Initial implements CategoryBlocState {
       final bool? isPro,
       final String? selectedProduct,
       final SingleCategoryBrandsResponceModel? getSingleCategoryResponce,
-      final GetProductsResponceModel? getProductsResponceModel,
+      final GetProductsRespoceModel? getProductsResponceModel,
       required final List<List<String>> allItems,
+      final List<Brands>? filteredBrands,
+      final List<Product>? filteredProducts,
       final List<String>? sortedPro}) = _$InitialImpl;
 
   @override
@@ -2046,9 +2623,13 @@ abstract class _Initial implements CategoryBlocState {
   @override
   SingleCategoryBrandsResponceModel? get getSingleCategoryResponce;
   @override
-  GetProductsResponceModel? get getProductsResponceModel;
+  GetProductsRespoceModel? get getProductsResponceModel;
   @override
   List<List<String>> get allItems;
+  @override
+  List<Brands>? get filteredBrands;
+  @override
+  List<Product>? get filteredProducts;
   @override
   List<String>? get sortedPro;
   @override

@@ -1,8 +1,10 @@
 import 'dart:async';
 import 'dart:developer';
+import 'package:beachdu/domain/model/category_model/single_category_brands_responce_model/brands.dart';
 import 'package:beachdu/domain/model/category_model/single_category_brands_responce_model/single_category_brands_responce_model.dart';
-import 'package:beachdu/domain/model/products_model/get_products_responce_model.dart';
-import 'package:beachdu/domain/model/products_model/product.dart';
+import 'package:beachdu/domain/model/get_products_respoce_model/get_products_respoce_model.dart';
+import 'package:beachdu/domain/model/get_products_respoce_model/product.dart';
+
 import 'package:beachdu/domain/repository/brands_repo.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/foundation.dart';
@@ -19,14 +21,51 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
   String? barndName;
   String? seriesName;
   String? verient;
-  List<List<String>> dropDownItems = [[], [], []];
+  String? slug;
+  List<Brands> brandsList = [];
+  List<Product> productList = [];
+  List<List<String>> dropDownItems = [];
   CategoryBlocBloc(this.brandsRepository) : super(CategoryBlocState.intial()) {
     on<GetSingleCategoryBrands>(getSingleCategoryBrands);
+    on<BrandSearch>(brandSearch);
     on<GetProducts>(getProducts);
+    on<ProductSearch>(productSearch);
     on<GetSeries>(getSeries);
     on<GetModels>(getModels);
     on<GetVarients>(getVarients);
     on<SelectedProduct>(selectedProdct);
+  }
+
+  FutureOr<void> productSearch(
+    ProductSearch event,
+    Emitter<CategoryBlocState> emit,
+  ) async {
+    final String searchQuery = event.searchQuery.toLowerCase();
+    final List<Product> filteredProducts = productList.where((product) {
+      final String model = product.model!.toLowerCase();
+      final String brand = product.brandName!.toLowerCase();
+      final String series = product.seriesName!.toLowerCase();
+      return model.contains(searchQuery) ||
+          brand.contains(searchQuery) ||
+          series.contains(searchQuery);
+    }).toList();
+    emit(state.copyWith(
+      filteredProducts: filteredProducts,
+    ));
+  }
+
+  FutureOr<void> brandSearch(
+    BrandSearch event,
+    Emitter<CategoryBlocState> emit,
+  ) async {
+    final String searchQuery = event.searchQuery.toLowerCase();
+    final List<Brands> filteredBrands = brandsList.where((brand) {
+      final String brandName = brand.brandName!.toLowerCase();
+      return brandName.contains(searchQuery);
+    }).toList();
+    emit(state.copyWith(
+      filteredBrands: filteredBrands,
+    ));
   }
 
   FutureOr<void> selectedProdct(SelectedProduct event, emit) {
@@ -49,11 +88,16 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
                 message: failure.message,
               ),
             ), (successSingleCagetgoryModel) {
+      brandsList.clear();
+      for (Brands element in successSingleCagetgoryModel.brands!) {
+        brandsList.add(element);
+      }
       emit(
         state.copyWith(
           isLoading: false,
           hasError: false,
           getSingleCategoryResponce: successSingleCagetgoryModel,
+          filteredBrands: brandsList,
         ),
       );
     });
@@ -71,28 +115,32 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
       categoryType: event.categoryType,
       brandName: event.brandName,
     );
-    // log('bloc categoryType >>>>=== : ${event.categoryType}');
-    // log('bloc brandName >>>>=== : ${event.brandName}');
+    barndName = event.brandName;
     data.fold((failure) {
       emit(state.copyWith(
         isLoading: false,
         hasError: true,
       ));
+      log('${failure.message}');
       try {
         dropDownItems[0].clear();
         dropDownItems[1].clear();
         dropDownItems[2].clear();
-        print(dropDownItems);
+        log('dropdwon items $dropDownItems');
       } catch (e) {
         print(e);
       }
     }, (getproducts) {
+      productList.clear();
+      for (Product element in getproducts.products!) {
+        productList.add(element);
+      }
       emit(state.copyWith(
         isLoading: false,
         hasError: false,
         getProductsResponceModel: getproducts,
+        filteredProducts: productList,
       ));
-      //categoryType=getproducts.product;
     });
   }
 
@@ -100,12 +148,12 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
     emit(state.copyWith(
       isLoading: true,
       hasError: false,
-      message: null,
     ));
     final data = await brandsRepository.getSeries(
       brandName: event.brandName,
       categoryType: event.categoryType,
     );
+
     log('getSeries bloc categoryType >>>>=== : ${event.categoryType}');
     log('getSeries bloc brandName >>>>=== : ${event.brandName}');
     data.fold((failure) {
@@ -136,13 +184,13 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
 
   FutureOr<void> productUpdate(GetModels event, emit) async {
     List<Product> temp = [];
-    for (var element in state.getProductsResponceModel!.product!) {
+    for (var element in state.getProductsResponceModel!.products!) {
       if (element.seriesName == event.seriesName) {
         temp.add(element);
       }
     }
     emit(state.copyWith(
-      getProductsResponceModel: GetProductsResponceModel(product: temp),
+      getProductsResponceModel: GetProductsRespoceModel(products: temp),
     ));
     // final data = await brandsRepository.getModles(
     //   categoryType: event.categoryType,
@@ -170,6 +218,7 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
       categoryType: event.categoryType,
       seriesName: event.seriesName,
     );
+    seriesName = event.seriesName;
     log('getModles bloc categoryType >>>>=== : ${event.categoryType}');
     log('getModles bloc brandName >>>>=== : ${event.brandName}');
     log('getModles bloc brandName >>>>=== : ${event.seriesName}');

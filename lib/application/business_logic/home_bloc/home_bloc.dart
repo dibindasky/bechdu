@@ -11,6 +11,7 @@ part 'home_bloc.freezed.dart';
 @injectable
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
   final HomeRepository homeRepository;
+  String? slug;
   HomeBloc(this.homeRepository) : super(HomeState.initial()) {
     on<GetAllCategory>(getAllcategory);
     on<Selectedactegory>(selectedCategory);

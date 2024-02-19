@@ -16,10 +16,13 @@ class OTPScreen extends StatelessWidget {
         }
       },
       child: Scaffold(
+        appBar: AppBar(
+          automaticallyImplyLeading: false,
+          toolbarHeight: 100,
+        ),
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+          child: ListView(
             children: [
               const LogoToCountDownSection(),
               PinEnterField(),

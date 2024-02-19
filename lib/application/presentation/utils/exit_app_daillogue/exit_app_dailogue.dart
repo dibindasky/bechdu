@@ -1,3 +1,5 @@
+import 'package:beachdu/application/presentation/utils/colors.dart';
+import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:flutter/material.dart';
 
 showConfirmationDialog(
@@ -8,13 +10,20 @@ showConfirmationDialog(
   return showDialog(
     context: context,
     builder: (context) => AlertDialog(
-      title: Text(heading ?? 'Do you really want to exit from Bechdu?'),
+      backgroundColor: klightGreen,
+      title: Text(
+        heading ?? 'Do you really want to exit from Bechdu?',
+        style: textHeadBold1,
+      ),
       actions: [
         TextButton(
           onPressed: () {
             Navigator.of(context).pop(true);
           },
-          child: Text(textButtonNo ? 'Sure' : 'Yes'),
+          child: Text(
+            textButtonNo ? 'Sure' : 'Yes',
+            style: textHeadBold1,
+          ),
         ),
         textButtonNo
             ? const SizedBox()
@@ -22,7 +31,10 @@ showConfirmationDialog(
                 onPressed: () {
                   Navigator.of(context).pop(false);
                 },
-                child: const Text('No'),
+                child: Text(
+                  'No',
+                  style: textHeadBold1,
+                ),
               ),
       ],
     ),

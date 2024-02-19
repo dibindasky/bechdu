@@ -3,7 +3,7 @@ import 'package:beachdu/domain/core/api_endpoints/api_endpoints.dart';
 import 'package:beachdu/domain/core/failure/failure.dart';
 import 'package:beachdu/domain/model/category_model/single_category_brands_responce_model/brands.dart';
 import 'package:beachdu/domain/model/category_model/single_category_brands_responce_model/single_category_brands_responce_model.dart';
-import 'package:beachdu/domain/model/products_model/get_products_responce_model.dart';
+import 'package:beachdu/domain/model/get_products_respoce_model/get_products_respoce_model.dart';
 import 'package:beachdu/domain/repository/brands_repo.dart';
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
@@ -43,20 +43,26 @@ class BrandsService implements BrandsRepository {
   }
 
   @override
-  Future<Either<Failure, GetProductsResponceModel>> getProducts({
+  Future<Either<Failure, GetProductsRespoceModel>> getProducts({
     required String categoryType,
     required String brandName,
   }) async {
     try {
       final responce =
           await _dio.get('${ApiEndPoints.getProducts}$categoryType/$brandName');
-      //log(' getproducts data ${responce.data}');
-      return Right(GetProductsResponceModel.fromJson(responce.data));
+
+      if (responce.statusCode == 200) {
+        // log('getproducts data ${responce.data}');
+        return Right(GetProductsRespoceModel.fromJson(responce.data));
+      } else {
+        // log('getProducts DioException ${responce.statusCode}');
+        return Left(Failure(message: 'errorMessage'));
+      }
     } on DioException catch (e) {
-      //  log('getProducts DioException $e');
+      //log('getProducts DioException ${e.response?.statusCode}');
       return Left(Failure(message: e.message ?? errorMessage));
     } catch (e) {
-      log('getProducts catch $e');
+      //log('getProducts catch $e');
       return Left(Failure(message: errorMessage));
     }
   }
@@ -72,7 +78,7 @@ class BrandsService implements BrandsRepository {
       //  log('getSeries data ${responce.data}');
       final data = responce.data as List<dynamic>;
       final retVal = data.map((e) => e.toString()).toList();
-      //log('getSeries retVal $retVal');
+      log('getSeries retVal $retVal');
       return Right(retVal);
     } on DioException catch (e) {
       // log('getSeries DioException $e');
@@ -89,16 +95,13 @@ class BrandsService implements BrandsRepository {
     required String brandName,
     required String seriesName,
   }) async {
-    // log('${ApiEndPoints.getModels}$categoryType/$brandName/$seriesName');
     try {
       final responce = await _dio
           .get('${ApiEndPoints.getModels}$categoryType/$brandName/$seriesName');
       final data = responce.data as List<dynamic>;
       final retVal = data.map((e) => e.toString()).toList();
-      // log('getModles retVal $retVal');
       return Right(retVal);
     } on DioException catch (e) {
-      //  log('getModles DioException $e');
       return Left(Failure(message: e.message ?? errorMessage));
     } catch (e) {
       log('getModles error catch $e');

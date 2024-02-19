@@ -9,8 +9,10 @@ class CategoryBlocState with _$CategoryBlocState {
     bool? isPro,
     String? selectedProduct,
     SingleCategoryBrandsResponceModel? getSingleCategoryResponce,
-    GetProductsResponceModel? getProductsResponceModel,
+    GetProductsRespoceModel? getProductsResponceModel,
     required List<List<String>> allItems,
+    List<Brands>? filteredBrands,
+    List<Product>? filteredProducts,
     List<String>? sortedPro,
   }) = _Initial;
   factory CategoryBlocState.intial() => const CategoryBlocState(

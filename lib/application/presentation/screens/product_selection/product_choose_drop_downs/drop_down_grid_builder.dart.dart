@@ -19,7 +19,7 @@ class ScreenProductSelectionProductFindDropdownGridView
         return GridView.builder(
           physics: const NeverScrollableScrollPhysics(),
           shrinkWrap: true,
-          itemCount: context.read<CategoryBlocBloc>().dropDownItems.length,
+          itemCount: context.read<CategoryBlocBloc>().state.allItems.length,
           scrollDirection: Axis.vertical,
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,

@@ -1,12 +1,15 @@
+import 'dart:developer';
+
 import 'package:beachdu/application/business_logic/brands_bloc/category_bloc_bloc.dart';
 import 'package:beachdu/application/business_logic/question_tab/question_tab_bloc.dart';
-import 'package:beachdu/application/presentation/screens/product_selection/product_choose_drop_downs/drop_down_grid_builder.dart.dart';
 import 'package:beachdu/application/presentation/screens/product_selection/product_screen.dart';
+import 'package:beachdu/application/presentation/screens/product_selection/search_field/product_serch_field.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/application/presentation/utils/skeltons/skelton.dart';
 import 'package:beachdu/domain/core/api_endpoints/api_endpoints.dart';
 import 'package:beachdu/domain/core/failure/failure.dart';
+import 'package:beachdu/domain/model/get_products_respoce_model/product.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
@@ -29,25 +32,25 @@ class ProductListViewBuilder extends StatelessWidget {
         } else if (categoryState.hasError) {
           return Center(child: Text(categoryState.message ?? errorMessage));
         } else {
-          if (categoryState.getProductsResponceModel == null) {
+          if (categoryState.filteredProducts == null ||
+              categoryState.getProductsResponceModel!.products == null) {
             return Center(child: Lottie.asset(emptyLottie));
           } else {
-            final products = categoryState.getProductsResponceModel!.product!;
+            final products = categoryState.getProductsResponceModel!.products!;
+            List<Product> product = categoryState.filteredProducts ?? products;
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                const ProductSearchFiel(),
                 kHeight10,
-                const ScreenProductSelectionProductFindDropdownGridView(),
+                // const ScreenProductSelectionProductFindDropdownGridView(),
                 kHeight10,
-                Text(
-                  'Showing All Products',
-                  style: textHeadBold1,
-                ),
+                Text('Showing All Products', style: textHeadBold1),
                 kHeight10,
                 GridView.builder(
                   physics: const NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
-                  itemCount: products.length,
+                  itemCount: product.length,
                   scrollDirection: Axis.vertical,
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
@@ -57,7 +60,7 @@ class ProductListViewBuilder extends StatelessWidget {
                   ),
                   itemBuilder: (context, index) {
                     String url =
-                        "${ApiEndPoints.baseUrlImagePath}${Uri.encodeComponent(products[index].productImage!)}";
+                        "${ApiEndPoints.baseUrlImagePath}${Uri.encodeComponent(product[index].productImage!)}";
                     return BlocBuilder<QuestionTabBloc, QuestionTabState>(
                       builder: (context, questionTabBloc) {
                         return GestureDetector(
@@ -67,10 +70,13 @@ class ProductListViewBuilder extends StatelessWidget {
                                 .add(QuestionTabEvent.getQuestions(
                                   categoryType: categoryState
                                       .getProductsResponceModel!
-                                      .product![index]
+                                      .products![index]
                                       .categoryType!,
-                                  product: products[index],
+                                  product: product[index],
                                 ));
+                            context.read<CategoryBlocBloc>().slug =
+                                product[index].slug!;
+                            log('UI slug assiging ${context.read<CategoryBlocBloc>().slug}');
                             secondtabScreensNotifier.value = 1;
                             secondtabScreensNotifier.notifyListeners();
                             brandandProductValueNotifier.value = 0;
@@ -119,16 +125,16 @@ class ProductListViewBuilder extends StatelessWidget {
                                 FittedBox(
                                   child: Row(
                                     children: [
-                                      Text(products[index].seriesName!,
+                                      Text(product[index].model!,
                                           style: textHeadBold1),
                                       kWidth10,
-                                      Text(products[index].variant!,
+                                      Text(product[index].variant!,
                                           style: textHeadBold1),
                                     ],
                                   ),
                                 ),
                                 Text(
-                                  'Upto ₹${products[index].basePrice}',
+                                  'Upto ₹${product[index].basePrice}',
                                   style: textHeadMedium1.copyWith(
                                       fontSize: sWidth * .034),
                                 ),

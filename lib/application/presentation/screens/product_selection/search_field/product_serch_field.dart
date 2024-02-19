@@ -1,68 +1,65 @@
-import 'dart:developer';
-
 import 'package:beachdu/application/business_logic/brands_bloc/category_bloc_bloc.dart';
-import 'package:beachdu/application/business_logic/home_bloc/home_bloc.dart';
-import 'package:beachdu/application/presentation/screens/product_selection/product_screen.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
-import 'package:beachdu/domain/model/category_model/get_category_responce_model/category.dart';
+import 'package:beachdu/domain/model/category_model/single_category_brands_responce_model/brands.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class ProductScreenSearchField extends StatefulWidget {
-  const ProductScreenSearchField({Key? key}) : super(key: key);
+class ProductSearchFiel extends StatelessWidget {
+  const ProductSearchFiel({Key? key}) : super(key: key);
 
-  @override
-  State<ProductScreenSearchField> createState() =>
-      _ProductScreenSearchFieldState();
-}
-
-class _ProductScreenSearchFieldState extends State<ProductScreenSearchField> {
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<HomeBloc, HomeState>(
-      builder: (context, homeState) {
-        if (homeState.isLoading) {
+    return BlocBuilder<CategoryBlocBloc, CategoryBlocState>(
+      builder: (context, categoryState) {
+        if (categoryState.isLoading) {
           return const CircularProgressIndicator();
-        } else if (homeState.hasError) {
-          return Text(homeState.message ?? 'An error occurred');
+        } else if (categoryState.hasError) {
+          return Text(categoryState.message ?? 'An error occurred');
         } else {
-          return buildDropdown(homeState.getCategoryResponceModel!.category!);
+          return buildDropdown(
+              categoryState.getSingleCategoryResponce!.brands!, context);
         }
       },
     );
   }
 
-  Widget buildDropdown(List<Category> categories) {
+  Widget buildDropdown(List<Brands> brands, BuildContext context) {
     return TextFormField(
-      onChanged: (value) {},
+      onChanged: (value) {
+        context.read<CategoryBlocBloc>().add(ProductSearch(searchQuery: value));
+      },
       style: textHeadBold1.copyWith(fontSize: sWidth * .044),
       decoration: InputDecoration(
         contentPadding: const EdgeInsets.symmetric(vertical: .0),
-        prefixIcon: DropdownButtonHideUnderline(
-          child: BlocBuilder<CategoryBlocBloc, CategoryBlocState>(
-            builder: (context, state) {
-              return DropdownButton<String>(
-                onChanged: (newValue) {
-                  context.read<CategoryBlocBloc>().add(GetSingleCategoryBrands(
-                        categoryType: newValue,
-                      ));
-                },
-                value: context.read<CategoryBlocBloc>().categoryType,
-                items: buildDropdownItems(categories),
-                hint: Text(
-                    context.read<CategoryBlocBloc>().categoryType ?? 'mobile'),
-              );
-            },
+        prefixIcon: Padding(
+          padding: const EdgeInsets.only(left: 10),
+          child: DropdownButtonHideUnderline(
+            child: BlocBuilder<CategoryBlocBloc, CategoryBlocState>(
+              builder: (context, state) {
+                return DropdownButton<String>(
+                  onChanged: (newValue) {
+                    context.read<CategoryBlocBloc>().add(GetProducts(
+                          categoryType:
+                              context.read<CategoryBlocBloc>().categoryType!,
+                          brandName: newValue!,
+                        ));
+                  },
+                  value: context.read<CategoryBlocBloc>().barndName,
+                  items: buildDropdownItems(brands),
+                  hint: Text(
+                    context.read<CategoryBlocBloc>().barndName!,
+                  ),
+                );
+              },
+            ),
           ),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(7),
           borderSide: const BorderSide(color: kBlueLight),
         ),
-        hintText: brandandProductValueNotifier.value == 0
-            ? 'Search for Brands...'
-            : 'Search for Products...',
+        hintText: 'Search for Products...',
         hintStyle: textHeadBold1.copyWith(
           fontSize: sWidth * .04,
           color: kBlueLight,
@@ -75,12 +72,12 @@ class _ProductScreenSearchFieldState extends State<ProductScreenSearchField> {
     );
   }
 
-  List<DropdownMenuItem<String>> buildDropdownItems(List<Category> categories) {
-    return categories.map((category) {
+  List<DropdownMenuItem<String>> buildDropdownItems(List<Brands> brands) {
+    return brands.map((brand) {
       return DropdownMenuItem<String>(
         onTap: () {},
-        value: category.categoryType,
-        child: Text(category.categoryType!),
+        value: brand.brandName,
+        child: Text(brand.brandName!),
       );
     }).toList();
   }

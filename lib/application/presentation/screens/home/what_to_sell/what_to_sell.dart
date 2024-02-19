@@ -78,7 +78,7 @@ class WhatToSellWidget extends StatelessWidget {
                                   ));
                               context.read<CategoryBlocBloc>().categoryType =
                                   data[index].categoryType!;
-                              // log('UI data[index].categoryType ===>>> : ${data[index].categoryType}');
+                              log('UI data[index].categoryType ===>>> : ${data[index].categoryType}');
                               context
                                   .read<NavbarCubit>()
                                   .changeNavigationIndex(1);
@@ -96,7 +96,7 @@ class WhatToSellWidget extends StatelessWidget {
                                     color: klightwhite,
                                     borderRadius: kRadius5,
                                   ),
-                                  child: Image.asset(gridData[index][1]),
+                                  child: Image.asset(gridData[index]),
                                 ),
                                 kHeight5,
                                 Text(
@@ -122,10 +122,9 @@ class WhatToSellWidget extends StatelessWidget {
   }
 }
 
-List<List> gridData = [
-  ['Mobile', 'assets/images/home category mobile.png'],
-  ['Laptop', 'assets/images/home category laptop.png'],
-  ['Watch', 'assets/images/home category  watch.png'],
-  ['Pods', 'assets/images/home category  headset.png'],
-  ['Repair', 'assets/images/home category repair.png'],
+List<String> gridData = [
+  'assets/images/home category mobile.png',
+  'assets/images/home category  watch.png',
+  'assets/images/home category  headset.png',
+  'assets/images/home category laptop.png',
 ];
