@@ -137,7 +137,7 @@ class TopImage extends StatelessWidget {
                                           )
                                         ],
                                       )
-                                    : const Text('Calculatin error'),
+                                    : const Icon(Icons.error),
                               if (fromWhere ==
                                   FromWhere.checkoutAndPickupScreen)
                                 Text(
@@ -147,21 +147,25 @@ class TopImage extends StatelessWidget {
                               kHeight5,
                               if (fromWhere ==
                                   FromWhere.checkoutAndPickupScreen)
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      '${questiontabBloc.product!.variant}',
-                                      style: textHeadMedium1.copyWith(
-                                          color: kWhite),
-                                    ),
-                                    Text(
-                                      '18,800',
-                                      style: textHeadBoldBig.copyWith(
-                                          color: kWhite),
-                                    )
-                                  ],
-                                ),
+                                questiontabBloc.basePriceModelResponce != null
+                                    ? Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            '${questiontabBloc.product!.variant}',
+                                            style: textHeadMedium1.copyWith(
+                                                color: kWhite),
+                                          ),
+                                          Text(
+                                            '${questiontabBloc.basePriceModelResponce!.basePrice}',
+                                            style: textHeadBoldBig.copyWith(
+                                              color: kWhite,
+                                            ),
+                                          ),
+                                        ],
+                                      )
+                                    : const Icon(Icons.error),
                               kHeight5,
                               if (fromWhere == FromWhere.questionScreen)
                                 Text(

@@ -62,20 +62,28 @@ class _YesOrNoTileState extends State<YesOrNoTile> {
       builder: (context, stat) {
         return GestureDetector(
           onTap: () {
-            SelectedOption selectedOption = SelectedOption(
-              description: widget.question.description,
-              value: yesOrNo,
-              type: widget.question.type,
-            );
-            context
-                .read<QuestionTabBloc>()
-                .add(QuestionTabEvent.markedQuestions(
-                  selectedOption: selectedOption,
-                ));
-            log('yes or no tile selectedOption${selectedOption.description}');
-            setState(() {
-              selected = yesOrNo ? true : false;
-            });
+            // If the button is already selected, deselect it
+            if (selected == yesOrNo) {
+              setState(() {
+                selected = null;
+              });
+            } else {
+              log('Yes or no ');
+              SelectedOption selectedOption = SelectedOption(
+                description: widget.question.description,
+                value: yesOrNo,
+                type: widget.question.type,
+              );
+              context
+                  .read<QuestionTabBloc>()
+                  .add(QuestionTabEvent.markedQuestions(
+                    selectedOption: selectedOption,
+                  ));
+              setState(() {
+                selected = yesOrNo;
+              });
+              log('yes or no tile selectedOption ${selectedOption.description}');
+            }
           },
           child: ClipRRect(
             borderRadius: kRadius15,

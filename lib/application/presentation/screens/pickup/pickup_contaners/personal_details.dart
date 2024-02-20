@@ -1,5 +1,9 @@
+import 'dart:ffi';
+
+import 'package:beachdu/application/presentation/screens/pickup/pickup_screen.dart';
 import 'package:beachdu/application/presentation/screens/pickup/widgets/textfeild_custom.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
+import 'package:beachdu/application/presentation/utils/custom_button.dart';
 import 'package:flutter/material.dart';
 
 class PersonalDetails extends StatelessWidget {
@@ -49,6 +53,16 @@ class PersonalDetails extends StatelessWidget {
           ),
           const TTextFormField(
             text: '@gmail.com',
+          ),
+          Align(
+            alignment: Alignment.center,
+            child: CustomButton(
+                onPressed: () {
+                  pickupDetailChangeNotifier.value =
+                      PickupDetailContainers.address;
+                  pickupDetailChangeNotifier.notifyListeners();
+                },
+                text: 'Continue'),
           ),
         ],
       ),

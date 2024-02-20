@@ -60,6 +60,7 @@ class ScreenPickUp extends StatelessWidget {
                     const RowIconsValueListanable(),
                     kHeight30,
                     const DataValueListanableContainers(),
+                    kHeight10,
                   ],
                 ),
               ),

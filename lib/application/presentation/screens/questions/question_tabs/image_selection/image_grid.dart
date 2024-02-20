@@ -1,4 +1,5 @@
 import 'package:beachdu/application/presentation/screens/questions/question_tabs/image_selection/image_selection_tile.dart';
+import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/domain/model/get_question_model/section.dart';
 import 'package:flutter/material.dart';
 
@@ -13,6 +14,10 @@ class ImageGridMaker extends StatelessWidget {
       child: SingleChildScrollView(
         child: Column(
           children: [
+            Text(
+              '${section.description}',
+              style: textHeadBoldBig,
+            ),
             GridView.builder(
               padding: const EdgeInsets.all(0),
               shrinkWrap: true,

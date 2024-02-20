@@ -19,6 +19,8 @@ class QuestionTabBloc extends Bloc<QuestionTabEvent, QuestionTabState> {
   final QuestionRepo questionRepo;
   int answerdCount = 0;
   int questionCount = 0;
+
+  List<SelectedOption> updatedList = [];
   QuestionTabBloc(this.questionRepo) : super(QuestionTabState.initial()) {
     on<TabChange>(tabChange);
     on<ResetTabSelection>(resetTabSelection);
@@ -28,24 +30,39 @@ class QuestionTabBloc extends Bloc<QuestionTabEvent, QuestionTabState> {
   }
 
   FutureOr<void> markedQuestions(MarkedQuestions event, emit) {
-    // questionCount = state
-    //     .getQuestionModel!.sections![state.selectedTabIndex].options!.length;
-    // log('QuestionCount $questionCount');
+    bool isUnSelect = false;
     event.selectedOption.heading =
         state.getQuestionModel!.sections![state.selectedTabIndex].heading;
-    List<SelectedOption> updatedList = List.from(state.selectedOption);
+    updatedList = List.from(state.selectedOption);
+    log('state.selectedOption type ${event.selectedOption.type}');
+    log('state.selectedOption value ${event.selectedOption.value}');
     for (var element in state.selectedOption) {
       if (element.description == event.selectedOption.description) {
         updatedList.remove(element);
         answerdCount -= 1;
+        log('Answer count $answerdCount');
+        log('updatedList count ${updatedList.length}');
+        isUnSelect = true;
         break;
       }
     }
-    answerdCount += 1;
-    updatedList.add(event.selectedOption);
-    log('answerdCount $answerdCount');
-    log('updatedList count ${updatedList.length}');
-    log('Selected Option list count bloc ${state.selectedOption.length}');
+    if (isUnSelect &&
+        event.selectedOption.type == 'yes/no' &&
+        event.selectedOption.value != null) {
+      updatedList.add(event.selectedOption);
+      answerdCount += 1;
+      isUnSelect = false;
+      log('Answer count $answerdCount');
+      log('updatedList count ${updatedList.length}');
+    } else if (!isUnSelect) {
+      updatedList.add(event.selectedOption);
+      answerdCount += 1;
+      isUnSelect = false;
+      log('Answer count $answerdCount');
+      log('updatedList count ${updatedList.length}');
+    }
+    log('updatedList count last ${updatedList.length}');
+    isUnSelect = false;
     emit(state.copyWith(
       selectedOption: updatedList,
       answerCount: answerdCount,
@@ -53,19 +70,22 @@ class QuestionTabBloc extends Bloc<QuestionTabEvent, QuestionTabState> {
   }
 
   FutureOr<void> resetTabSelection(ResetTabSelection event, emit) {
+    answerdCount = 0;
+    updatedList.clear();
+
+    log('answerdCount when resset tab $answerdCount');
+    log('updatedList count when resset tab ${updatedList.length}');
     emit(state.copyWith(selectedTabIndex: 0));
   }
 
   FutureOr<void> tabChange(TabChange event, emit) {
-    if (state.getQuestionModel != null ||
-        state.getQuestionModel!.sections != null) {
-      answerdCount = 0;
-      if (state.selectedTabIndex <
-          state.getQuestionModel!.sections!.length - 1) {
-        emit(state.copyWith(
-          selectedTabIndex: state.selectedTabIndex + 1,
-        ));
-      }
+    answerdCount = 0;
+    log('answerdCount when tab change $answerdCount');
+    if (state.selectedTabIndex < state.getQuestionModel!.sections!.length - 1) {
+      emit(state.copyWith(
+        answerCount: answerdCount,
+        selectedTabIndex: state.selectedTabIndex + 1,
+      ));
     }
   }
 
@@ -92,16 +112,16 @@ class QuestionTabBloc extends Bloc<QuestionTabEvent, QuestionTabState> {
 
   FutureOr<void> getBasePrice(GetBasePrice event, emit) async {
     emit(state.copyWith(isLoading: true, hasError: false));
+    log(' event.pickeQuestionModel ${event.pickeQuestionModel}');
     final data = await questionRepo.getBasePrice(
         pickeQuestionModel: event.pickeQuestionModel);
-    log('getBasePrice Bloc ${event.pickeQuestionModel}');
+
     data.fold((failure) {
       emit(state.copyWith(
         hasError: true,
         isLoading: false,
       ));
     }, (successResponce) {
-      log('successResponce $successResponce');
       emit(state.copyWith(
         hasError: false,
         isLoading: false,

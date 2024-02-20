@@ -39,16 +39,19 @@ class RowIconsValueListanable extends StatelessWidget {
 
   Widget circleAvatar(String image, PickupDetailContainers item) {
     bool isSelected = pickupDetailChangeNotifier.value == item;
-    return GestureDetector(
-      onTap: () {
-        pickupDetailChangeNotifier.value = item;
-      },
-      child: CircleAvatar(
-        backgroundColor: isSelected ? kGreenPrimary : kBlueLight,
+    return Tooltip(
+      message: 'Touch here',
+      child: GestureDetector(
+        onTap: () {
+          pickupDetailChangeNotifier.value = item;
+        },
         child: CircleAvatar(
-          radius: 12,
           backgroundColor: isSelected ? kGreenPrimary : kBlueLight,
-          backgroundImage: AssetImage(image),
+          child: CircleAvatar(
+            radius: 12,
+            backgroundColor: isSelected ? kGreenPrimary : kBlueLight,
+            backgroundImage: AssetImage(image),
+          ),
         ),
       ),
     );

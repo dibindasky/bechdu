@@ -19,6 +19,16 @@ class GridTileQuestion extends StatefulWidget {
 
 class _GridTileQuestionState extends State<GridTileQuestion> {
   bool selected = false;
+  @override
+  void didUpdateWidget(GridTileQuestion oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    // Reset the selection when a new question is provided
+    if (widget.question != oldWidget.question) {
+      setState(() {
+        selected = false;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +72,7 @@ class _GridTileQuestionState extends State<GridTileQuestion> {
                   ),
                   Text(
                     widget.question.description!,
-                    style: textHeadBold1,
+                    style: textHeadBold1.copyWith(fontSize: sWidth * .026),
                     textAlign: TextAlign.center,
                     maxLines: 2,
                   ),

@@ -54,6 +54,31 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
     ));
   }
 
+  FutureOr<void> search(
+    BrandSearch event,
+    Emitter<CategoryBlocState> emit,
+  ) async {
+    final String searchQuery = event.searchQuery.toLowerCase();
+    final List<Product> filteredProducts = productList.where((product) {
+      final String model = product.model!.toLowerCase();
+      final String brand = product.brandName!.toLowerCase();
+      final String series = product.seriesName!.toLowerCase();
+      return model.contains(searchQuery) ||
+          brand.contains(searchQuery) ||
+          series.contains(searchQuery);
+    }).toList();
+
+    final List<Brands> filteredBrands = brandsList.where((brand) {
+      final String brandName = brand.brandName!.toLowerCase();
+      return brandName.contains(searchQuery);
+    }).toList();
+
+    emit(state.copyWith(
+      filteredProducts: filteredProducts,
+      filteredBrands: filteredBrands,
+    ));
+  }
+
   FutureOr<void> brandSearch(
     BrandSearch event,
     Emitter<CategoryBlocState> emit,

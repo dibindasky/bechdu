@@ -28,7 +28,9 @@ class BrandListviewBuilder extends StatelessWidget {
         } else if (state.hasError) {
           return Center(child: Text(state.message ?? errorMessage));
         } else {
-          if (state.filteredBrands == null) {
+          if (state.filteredBrands == null ||
+              state.getSingleCategoryResponce == null ||
+              state.getSingleCategoryResponce!.brands == null) {
             return Align(
               alignment: Alignment.bottomCenter,
               child: LottieBuilder.asset(emptyLottie),
@@ -66,7 +68,6 @@ class BrandListviewBuilder extends StatelessWidget {
                                     'mobile';
                             context.read<CategoryBlocBloc>().barndName =
                                 brands[index].brandName!;
-
                             context.read<CategoryBlocBloc>().add(GetProducts(
                                   categoryType: categoryType,
                                   brandName: brands[index].brandName!,

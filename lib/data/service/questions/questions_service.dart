@@ -40,7 +40,7 @@ class QuestionService implements QuestionRepo {
       log('${pickeQuestionModel.toJson()}');
       final responce = await _dio.post(ApiEndPoints.getBasePrice,
           data: pickeQuestionModel.toJson());
-      // log('${pickeQuestionModel.toJson()}');
+      log('Base price json data ${pickeQuestionModel.toJson()}');
       for (var element in pickeQuestionModel.selectedOptions!) {
         log('getBasePrice pickeQuestionModel for in lopp ${element.toJson()}');
       }

@@ -1,5 +1,4 @@
 import 'package:beachdu/application/presentation/screens/questions/question_tabs/yes_or_no/yes_or_no_tile.dart';
-import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/domain/model/get_question_model/section.dart';
 import 'package:flutter/material.dart';
 

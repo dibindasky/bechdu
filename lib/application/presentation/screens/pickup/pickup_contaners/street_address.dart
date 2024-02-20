@@ -1,6 +1,8 @@
+import 'package:beachdu/application/presentation/screens/pickup/pickup_screen.dart';
 import 'package:beachdu/application/presentation/screens/pickup/widgets/textfeild_custom.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
+import 'package:beachdu/application/presentation/utils/custom_button.dart';
 import 'package:flutter/material.dart';
 
 class StreetAddress extends StatelessWidget {
@@ -52,6 +54,16 @@ class StreetAddress extends StatelessWidget {
           const TTextFormField(
             inputType: TextInputType.number,
             text: 'xxxxxx',
+          ),
+          Align(
+            alignment: Alignment.center,
+            child: CustomButton(
+                onPressed: () {
+                  pickupDetailChangeNotifier.value =
+                      PickupDetailContainers.cashOrUPI;
+                  pickupDetailChangeNotifier.notifyListeners();
+                },
+                text: 'Continue'),
           ),
         ],
       ),

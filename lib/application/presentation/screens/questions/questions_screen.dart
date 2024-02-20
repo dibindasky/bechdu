@@ -23,6 +23,9 @@ class QuestionTabs extends StatelessWidget {
       onWillPop: () async {
         secondtabScreensNotifier.value = 0;
         secondtabScreensNotifier.notifyListeners();
+        context
+            .read<QuestionTabBloc>()
+            .add(const QuestionTabEvent.resetTabSelection());
         return false;
       },
       child: SafeArea(
@@ -62,27 +65,7 @@ class QuestionTabs extends StatelessWidget {
                               if (criteria == 'all') {
                                 if (state.answerCount ==
                                     currentSection.options!.length) {
-                                  PickeQuestionModel pickeQuestionModel =
-                                      PickeQuestionModel(
-                                          categoryType: context
-                                              .read<CategoryBlocBloc>()
-                                              .categoryType,
-                                          productSlug: context
-                                              .read<CategoryBlocBloc>()
-                                              .slug,
-                                          selectedOptions: context
-                                              .read<QuestionTabBloc>()
-                                              .state
-                                              .selectedOption);
-                                  context.read<QuestionTabBloc>().add(
-                                      GetBasePrice(
-                                          pickeQuestionModel:
-                                              pickeQuestionModel));
-                                  context
-                                      .read<QuestionTabBloc>()
-                                      .add(const ResetTabSelection());
-                                  secondtabScreensNotifier.value = 2;
-                                  secondtabScreensNotifier.notifyListeners();
+                                  pickeQuestionModelEventDataPass(context);
                                 } else {
                                   showSnack(
                                     context: context,
@@ -91,51 +74,10 @@ class QuestionTabs extends StatelessWidget {
                                 }
                               } else if (criteria == 'some') {
                                 if (state.answerCount >= 1) {
-                                  PickeQuestionModel pickeQuestionModel =
-                                      PickeQuestionModel(
-                                          categoryType: context
-                                              .read<CategoryBlocBloc>()
-                                              .categoryType,
-                                          productSlug: context
-                                              .read<CategoryBlocBloc>()
-                                              .slug,
-                                          selectedOptions: context
-                                              .read<QuestionTabBloc>()
-                                              .state
-                                              .selectedOption);
-                                  context.read<QuestionTabBloc>().add(
-                                      GetBasePrice(
-                                          pickeQuestionModel:
-                                              pickeQuestionModel));
-                                  context
-                                      .read<QuestionTabBloc>()
-                                      .add(const ResetTabSelection());
-                                  secondtabScreensNotifier.value = 2;
-                                  secondtabScreensNotifier.notifyListeners();
+                                  pickeQuestionModelEventDataPass(context);
                                 } else if (criteria == 'one') {
                                   if (state.answerCount == 1) {
-                                    PickeQuestionModel pickeQuestionModel =
-                                        PickeQuestionModel(
-                                            categoryType: context
-                                                .read<CategoryBlocBloc>()
-                                                .categoryType,
-                                            productSlug: context
-                                                .read<CategoryBlocBloc>()
-                                                .slug,
-                                            selectedOptions: context
-                                                .read<QuestionTabBloc>()
-                                                .state
-                                                .selectedOption);
-
-                                    context.read<QuestionTabBloc>().add(
-                                        GetBasePrice(
-                                            pickeQuestionModel:
-                                                pickeQuestionModel));
-                                    context
-                                        .read<QuestionTabBloc>()
-                                        .add(const ResetTabSelection());
-                                    secondtabScreensNotifier.value = 2;
-                                    secondtabScreensNotifier.notifyListeners();
+                                    pickeQuestionModelEventDataPass(context);
                                   }
                                   showSnack(
                                     context: context,
@@ -143,31 +85,8 @@ class QuestionTabs extends StatelessWidget {
                                   );
                                 }
                               } else if (criteria == 'one') {
-                                log('one');
                                 if (state.answerCount == 1) {
-                                  log(' one slug UI ${context.read<CategoryBlocBloc>().slug}');
-                                  log(' one Category UI ${context.read<CategoryBlocBloc>().categoryType}');
-                                  PickeQuestionModel pickeQuestionModel =
-                                      PickeQuestionModel(
-                                          categoryType: context
-                                              .read<CategoryBlocBloc>()
-                                              .categoryType,
-                                          productSlug: context
-                                              .read<CategoryBlocBloc>()
-                                              .slug,
-                                          selectedOptions: context
-                                              .read<QuestionTabBloc>()
-                                              .state
-                                              .selectedOption);
-                                  context.read<QuestionTabBloc>().add(
-                                      GetBasePrice(
-                                          pickeQuestionModel:
-                                              pickeQuestionModel));
-                                  context
-                                      .read<QuestionTabBloc>()
-                                      .add(const ResetTabSelection());
-                                  secondtabScreensNotifier.value = 2;
-                                  secondtabScreensNotifier.notifyListeners();
+                                  pickeQuestionModelEventDataPass(context);
                                 } else {
                                   showSnack(
                                     context: context,
@@ -175,28 +94,7 @@ class QuestionTabs extends StatelessWidget {
                                   );
                                 }
                               } else {
-                                PickeQuestionModel pickeQuestionModel =
-                                    PickeQuestionModel(
-                                        categoryType: context
-                                            .read<CategoryBlocBloc>()
-                                            .categoryType,
-                                        productSlug: context
-                                            .read<CategoryBlocBloc>()
-                                            .slug,
-                                        selectedOptions: context
-                                            .read<QuestionTabBloc>()
-                                            .state
-                                            .selectedOption);
-
-                                context.read<QuestionTabBloc>().add(
-                                    GetBasePrice(
-                                        pickeQuestionModel:
-                                            pickeQuestionModel));
-                                context
-                                    .read<QuestionTabBloc>()
-                                    .add(const ResetTabSelection());
-                                secondtabScreensNotifier.value = 2;
-                                secondtabScreensNotifier.notifyListeners();
+                                pickeQuestionModelEventDataPass(context);
                               }
                             }
                             if (criteria == 'all') {
@@ -260,7 +158,97 @@ class QuestionTabs extends StatelessWidget {
       ),
     );
   }
+
+  void pickeQuestionModelEventDataPass(BuildContext context) {
+    PickeQuestionModel pickeQuestionModel = PickeQuestionModel(
+      categoryType: context.read<CategoryBlocBloc>().categoryType,
+      productSlug: context.read<CategoryBlocBloc>().slug,
+      selectedOptions: context.read<QuestionTabBloc>().state.selectedOption,
+    );
+    context
+        .read<QuestionTabBloc>()
+        .add(GetBasePrice(pickeQuestionModel: pickeQuestionModel));
+    context.read<QuestionTabBloc>().add(const ResetTabSelection());
+    secondtabScreensNotifier.value = 2;
+    secondtabScreensNotifier.notifyListeners();
+  }
 }
+
+// class QuestionScreenTabs extends StatelessWidget {
+//   const QuestionScreenTabs({super.key,});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return BlocBuilder<QuestionTabBloc, QuestionTabState>(
+//       builder: (context, state) {
+//         if (state.isLoading) {
+//           return const LoadingAnimation(width: 100);
+//         }
+//         if (state.hasError) {
+//           return const Center(
+//             child: Text('Fetch Error'),
+//           );
+//         } else if (state.getQuestionModel != null &&
+//             state.getQuestionModel!.sections != null) {
+//           final int latestVisitedTabIndex = state.latestVisitedTabIndex ?? 0;
+
+//           return SizedBox(
+//             width: sWidth,
+//             child: FittedBox(
+//               child: Row(
+//                 mainAxisAlignment: MainAxisAlignment.spaceAround,
+//                 children: List.generate(
+//                   state.getQuestionModel!.sections!.length,
+//                   (index) {
+//                     final bool isTabEnabled = index <= latestVisitedTabIndex;
+//                     return GestureDetector(
+//                       onTap: isTabEnabled
+//                           ? () {
+//                               context.read<QuestionTabBloc>().add(
+//                                     QuestionTabEvent.selectTab(index),
+//                                   );
+//                               // Add logic to handle tab selection
+//                             }
+//                           : null,
+//                       child: ClipRRect(
+//                         borderRadius: kRadius15,
+//                         child: ColoredBox(
+//                           color: index == state.selectedTabIndex
+//                               ? kGreenPrimary
+//                               : isTabEnabled
+//                                   ? knill
+//                                   : klightgrey.withOpacity(0.5),
+//                           child: Padding(
+//                             padding: const EdgeInsets.symmetric(
+//                               horizontal: 10,
+//                               vertical: 3,
+//                             ),
+//                             child: Text(
+//                               state.getQuestionModel!.sections![index].heading!,
+//                               style: textHeadSemiBold1.copyWith(
+//                                 color: index == state.selectedTabIndex
+//                                     ? kWhite
+//                                     : isTabEnabled
+//                                         ? kBlack
+//                                         : klightgrey,
+//                               ),
+//                             ),
+//                           ),
+//                         ),
+//                       ),
+//                     );
+//                   },
+//                 ),
+//               ),
+//             ),
+//           );
+//         } else {
+//           return const Text('No questions');
+//         }
+//       },
+//     );
+//   }
+// }
 
 class QuestionScreenTabs extends StatelessWidget {
   const QuestionScreenTabs({super.key});

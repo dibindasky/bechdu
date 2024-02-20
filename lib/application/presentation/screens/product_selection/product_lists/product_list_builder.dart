@@ -1,5 +1,4 @@
 import 'dart:developer';
-
 import 'package:beachdu/application/business_logic/brands_bloc/category_bloc_bloc.dart';
 import 'package:beachdu/application/business_logic/question_tab/question_tab_bloc.dart';
 import 'package:beachdu/application/presentation/screens/product_selection/product_screen.dart';
@@ -8,7 +7,6 @@ import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/application/presentation/utils/skeltons/skelton.dart';
 import 'package:beachdu/domain/core/api_endpoints/api_endpoints.dart';
-import 'package:beachdu/domain/core/failure/failure.dart';
 import 'package:beachdu/domain/model/get_products_respoce_model/product.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -16,8 +14,8 @@ import 'package:lottie/lottie.dart';
 
 class ProductListViewBuilder extends StatelessWidget {
   const ProductListViewBuilder({
-    super.key,
-  });
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +28,7 @@ class ProductListViewBuilder extends StatelessWidget {
             height: 200,
           );
         } else if (categoryState.hasError) {
-          return Center(child: Text(categoryState.message ?? errorMessage));
+          return Center(child: Text(categoryState.message ?? "errorMessage"));
         } else {
           if (categoryState.filteredProducts == null ||
               categoryState.getProductsResponceModel!.products == null) {
@@ -43,8 +41,6 @@ class ProductListViewBuilder extends StatelessWidget {
               children: [
                 const ProductSearchFiel(),
                 kHeight10,
-                // const ScreenProductSelectionProductFindDropdownGridView(),
-                kHeight10,
                 Text('Showing All Products', style: textHeadBold1),
                 kHeight10,
                 GridView.builder(
@@ -56,7 +52,7 @@ class ProductListViewBuilder extends StatelessWidget {
                     crossAxisCount: 2,
                     crossAxisSpacing: 10,
                     mainAxisSpacing: 10,
-                    childAspectRatio: 1 / 1.45,
+                    childAspectRatio: 1 / 1.2,
                   ),
                   itemBuilder: (context, index) {
                     String url =
@@ -93,7 +89,7 @@ class ProductListViewBuilder extends StatelessWidget {
                               children: [
                                 Center(
                                   child: SizedBox(
-                                    height: 80,
+                                    height: 100,
                                     child: Image.network(
                                       url,
                                       fit: BoxFit.cover,
@@ -107,43 +103,20 @@ class ProductListViewBuilder extends StatelessWidget {
                                   ),
                                 ),
                                 kHeight10,
-                                Container(
-                                  padding: const EdgeInsets.all(5),
-                                  decoration: BoxDecoration(
-                                    color: ksmalLight,
-                                    borderRadius: kRadius5,
-                                  ),
-                                  child: Text(
-                                    'New',
-                                    style: textHeadBold1.copyWith(
-                                      color: kYellowLight,
-                                      fontSize: sWidth * .034,
-                                    ),
-                                  ),
+                                Text(
+                                  product[index].model!,
+                                  style: textHeadBold1.copyWith(
+                                      overflow: TextOverflow.ellipsis),
                                 ),
-                                kHeight10,
-                                FittedBox(
-                                  child: Row(
-                                    children: [
-                                      Text(product[index].model!,
-                                          style: textHeadBold1),
-                                      kWidth10,
-                                      Text(product[index].variant!,
-                                          style: textHeadBold1),
-                                    ],
-                                  ),
-                                ),
+                                kWidth10,
+                                Text(product[index].variant!,
+                                    style: textHeadBold1),
                                 Text(
                                   'Upto ₹${product[index].basePrice}',
                                   style: textHeadMedium1.copyWith(
                                       fontSize: sWidth * .034),
                                 ),
                                 kHeight5,
-                                Text(
-                                  '12 mobiles sold in last 22 Hrs',
-                                  style: textHeadMedium1.copyWith(
-                                      fontSize: sWidth * .029),
-                                ),
                               ],
                             ),
                           ),
