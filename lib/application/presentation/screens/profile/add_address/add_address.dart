@@ -27,18 +27,20 @@ class AddAddressScreen extends StatelessWidget {
         },
         child: Scaffold(
           appBar: AppBar(
+            toolbarHeight: 120,
             leading: IconButton(
               onPressed: () {
                 profileScreensNotifier.value = 0;
                 profileScreensNotifier.notifyListeners();
               },
               icon: const Icon(
-                Icons.arrow_back,
+                Icons.arrow_back_ios,
+                size: 16,
               ),
             ),
             title: Text(
               'Create address',
-              style: textHeadBoldBig,
+              style: textHeadSemiBold1,
             ),
           ),
           body: Padding(

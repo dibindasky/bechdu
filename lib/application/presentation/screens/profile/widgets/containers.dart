@@ -38,7 +38,7 @@ class _ContainersState extends State<Containers> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        'Name',
+                        'Jack',
                         style: textHeadRegular1,
                       ),
                       TextButton(
@@ -49,7 +49,7 @@ class _ContainersState extends State<Containers> {
                         },
                         child: Text(
                           'Change',
-                          style: textHeadInter.copyWith(color: kGreenLight),
+                          style: textHeadInter.copyWith(color: kGreenPrimary),
                         ),
                       ),
                     ],

@@ -59,7 +59,7 @@ class TopImage extends StatelessWidget {
                         children: [
                           kWidth10,
                           SizedBox(
-                            height: sWidth * .3,
+                            height: sWidth * .4,
                             width: sWidth * .16,
                             child: Image.network(url),
                           ),

@@ -1,4 +1,5 @@
 import 'package:beachdu/application/business_logic/navbar/navbar_cubit.dart';
+import 'package:beachdu/application/business_logic/question_tab/question_tab_bloc.dart';
 import 'package:beachdu/application/presentation/screens/home/home_screen.dart';
 import 'package:beachdu/application/presentation/screens/order/my_orders_screen.dart';
 import 'package:beachdu/application/presentation/screens/product_selection/product_screen.dart';
@@ -38,6 +39,9 @@ class ScreenBottomNavigation extends StatelessWidget {
                   enableFeedback: false,
                   onTap: (value) {
                     context.read<NavbarCubit>().changeNavigationIndex(value);
+                    context
+                        .read<QuestionTabBloc>()
+                        .add(const ResetTabSelection());
                   },
                   unselectedItemColor: kWhite,
                   showUnselectedLabels: true,
