@@ -13,10 +13,13 @@ class QuestionTabEvent with _$QuestionTabEvent {
   const factory QuestionTabEvent.markedQuestions({
     required SelectedOption selectedOption,
   }) = MarkedQuestions;
+  const factory QuestionTabEvent.yesOrNo({
+    required SelectedOption selectedOption,
+  }) = YesOrNo;
   const factory QuestionTabEvent.countQuestionNumber({
     required int countQuestionNumber,
   }) = CountQuestionNumber;
   const factory QuestionTabEvent.getBasePrice({
-    required PickeQuestionModel pickeQuestionModel,
+    required PickupQuestionModel pickupQuestionModel,
   }) = GetBasePrice;
 }

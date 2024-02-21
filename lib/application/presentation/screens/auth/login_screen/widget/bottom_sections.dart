@@ -1,10 +1,15 @@
 import 'dart:async';
 
+import 'package:beachdu/application/business_logic/auth/auth_bloc.dart';
+import 'package:beachdu/application/business_logic/navbar/navbar_cubit.dart';
 import 'package:beachdu/application/presentation/routes/routes.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
+import 'package:beachdu/application/presentation/utils/snackbar/snackbar.dart';
 import 'package:beachdu/application/presentation/widgets/custom_elevated_button.dart';
+import 'package:beachdu/domain/model/login/login_model/login_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class BottomSections extends StatelessWidget {
   const BottomSections({super.key});
@@ -59,8 +64,7 @@ class BottomSections extends StatelessWidget {
         kHeight50,
         ElevatedButtonLong(
           onPressed: () {
-            loginOrSignup(context);
-            //  print(phoneController.text);
+            login(context);
           },
           text: 'Get OTP',
         ),
@@ -68,12 +72,42 @@ class BottomSections extends StatelessWidget {
     );
   }
 
-  loginOrSignup(BuildContext context) {
-    // String phoneNumber = phoneController.text;
-    // print(phoneNumber);
-    // _logoAnimationController.forward();
-    Timer(const Duration(microseconds: 500), () {
-      Navigator.pushReplacementNamed(context, Routes.otpVerification);
-    });
+  login(BuildContext context) {
+    if (context.read<AuthBloc>().phoneNumberController.text.trim().isEmpty) {
+      showSnack(context: context, message: 'Enter your number');
+    } else if (context
+            .read<AuthBloc>()
+            .phoneNumberController
+            .text
+            .trim()
+            .length <
+        10) {
+      showSnack(context: context, message: 'Number should be 10 digit');
+    } else if (context
+            .read<AuthBloc>()
+            .phoneNumberController
+            .text
+            .trim()
+            .length >
+        10) {
+      showSnack(
+          context: context, message: 'Mobile number should keep 10 digit only');
+    } else {
+      Timer(const Duration(microseconds: 500), () {
+        context.read<AuthBloc>().add(
+              Login(
+                  loginModel: LoginModel(
+                      phone: context
+                          .read<AuthBloc>()
+                          .phoneNumberController
+                          .text
+                          .trim())),
+            );
+        context.read<AuthBloc>().phoneNumberController.clear();
+        //For bottombar tab change
+        context.read<NavbarCubit>().changeNavigationIndex(0);
+        Navigator.pushReplacementNamed(context, Routes.bottomBar);
+      });
+    }
   }
 }

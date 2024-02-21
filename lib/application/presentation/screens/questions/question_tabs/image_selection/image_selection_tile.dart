@@ -4,7 +4,7 @@ import 'package:beachdu/application/business_logic/question_tab/question_tab_blo
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/domain/model/get_question_model/question.dart';
-import 'package:beachdu/domain/model/picke_question_model/selected_option.dart';
+import 'package:beachdu/domain/model/pickup_question_model/selected_option.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

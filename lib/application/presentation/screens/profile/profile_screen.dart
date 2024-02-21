@@ -1,15 +1,33 @@
+import 'dart:async';
+import 'package:beachdu/application/business_logic/auth/auth_bloc.dart';
+import 'package:beachdu/application/presentation/routes/routes.dart';
 import 'package:beachdu/application/presentation/screens/pickup/pickup_contaners/street_address.dart';
 import 'package:beachdu/application/presentation/screens/profile/add_address/add_address.dart';
 import 'package:beachdu/application/presentation/screens/profile/widgets/containers.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
-import 'package:beachdu/application/presentation/utils/exit_app_daillogue/exit_app_dailogue.dart';
-import 'package:beachdu/application/presentation/widgets/custom_elevated_button.dart';
+import 'package:beachdu/application/presentation/utils/custom_button.dart';
+import 'package:beachdu/application/presentation/utils/confirmation_daillogue/exit_app_dailogue.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 ValueNotifier<int> profileScreensNotifier = ValueNotifier(0);
 
-List<Widget> profilrSections = [
+class PrfileLastBuilder extends StatelessWidget {
+  const PrfileLastBuilder({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return ValueListenableBuilder(
+      valueListenable: profileScreensNotifier,
+      builder: (context, index, child) {
+        return profileSectionList[index];
+      },
+    );
+  }
+}
+
+List<Widget> profileSectionList = [
   const ScreenProfile(),
   AddAddressScreen(),
 ];
@@ -69,6 +87,7 @@ class ScreenProfile extends StatelessWidget {
                       GestureDetector(
                         onTap: () {
                           profileScreensNotifier.value = 1;
+                          profileScreensNotifier.notifyListeners();
                         },
                         child: const CircleAvatar(
                           backgroundColor: kBlack,
@@ -85,17 +104,38 @@ class ScreenProfile extends StatelessWidget {
                   const PickupScreenAddressListView(),
                   kHeight10,
                   const Divider(),
-                  kHeight30,
-                  ElevatedButtonLong(
-                    height: 48,
-                    borderRadius: BorderRadius.circular(23),
-                    color: kGreenPrimary,
-                    wdth: double.infinity,
-                    onPressed: () {},
-                    text: 'Save',
+                  kHeight10,
+                  GestureDetector(
+                    onTap: () {
+                      showConfirmationDialog(
+                        context,
+                        heading: 'Are you really want to log out from Bechdu',
+                        onPressed: () {
+                          logOut(context);
+                        },
+                      );
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.only(left: 10),
+                      height: 45,
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                        color: klightwhite,
+                        border: Border.all(color: klightgrey),
+                        borderRadius: kRadius10,
+                      ),
+                      child: Center(
+                        child: Text(
+                          'Log out',
+                          style: textHeadBold1,
+                        ),
+                      ),
+                    ),
                   ),
+                  kHeight30,
+                  CustomButton(onPressed: () {}, text: 'Save'),
                   kHeight20,
-                  if (profileScreensNotifier.value == 1) AddAddressScreen(),
+                  //if (profileScreensNotifier.value == 1) AddAddressScreen(),
                 ],
               ),
             ),
@@ -104,18 +144,9 @@ class ScreenProfile extends StatelessWidget {
       ),
     );
   }
-}
 
-class PrfileLastBuilder extends StatelessWidget {
-  const PrfileLastBuilder({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return ValueListenableBuilder(
-      valueListenable: profileScreensNotifier,
-      builder: (context, value, child) {
-        return profilrSections[value];
-      },
-    );
+  Future<void> logOut(BuildContext context) async {
+    context.read<AuthBloc>().add(const LogOut());
+    Navigator.pushReplacementNamed(context, Routes.signInOrLogin);
   }
 }

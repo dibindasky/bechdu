@@ -4,7 +4,7 @@ import 'package:beachdu/domain/core/api_endpoints/api_endpoints.dart';
 import 'package:beachdu/domain/core/failure/failure.dart';
 import 'package:beachdu/domain/model/get_base_price_model_responce/get_base_price_model_responce.dart';
 import 'package:beachdu/domain/model/get_question_model/get_question_model.dart';
-import 'package:beachdu/domain/model/picke_question_model/picke_question_model.dart';
+import 'package:beachdu/domain/model/pickup_question_model/pickup_question_model.dart';
 import 'package:beachdu/domain/repository/question_repo.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
@@ -34,19 +34,16 @@ class QuestionService implements QuestionRepo {
 
   @override
   Future<Either<Failure, GetBasePriceModelResponce>> getBasePrice({
-    required PickeQuestionModel pickeQuestionModel,
+    required PickupQuestionModel pickeQuestionModel,
   }) async {
     try {
-      log('${pickeQuestionModel.toJson()}');
-      final responce = await _dio.post(ApiEndPoints.getBasePrice,
+      //log('data ${pickeQuestionModel.toJson()}');
+      final response = await _dio.post(ApiEndPoints.getBasePrice,
           data: pickeQuestionModel.toJson());
-      log('Base price json data ${pickeQuestionModel.toJson()}');
-      for (var element in pickeQuestionModel.selectedOptions!) {
-        log('getBasePrice pickeQuestionModel for in lopp ${element.toJson()}');
-      }
-      return Right(GetBasePriceModelResponce.fromJson(responce.data));
+      // log('data after send ${pickeQuestionModel.toJson()}');
+      return Right(GetBasePriceModelResponce.fromJson(response.data));
     } on DioException catch (e) {
-      log('getBasePrice DioException $e');
+      log('getBasePrice DioError $e');
       return Left(Failure(message: e.message));
     } catch (e) {
       log('getBasePrice catch $e');

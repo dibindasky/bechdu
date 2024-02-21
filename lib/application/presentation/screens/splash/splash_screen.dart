@@ -1,6 +1,8 @@
 import 'dart:async';
+import 'dart:math';
 import 'package:beachdu/application/presentation/routes/routes.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
+import 'package:beachdu/data/secure_storage/secure_fire_store.dart';
 import 'package:flutter/material.dart';
 
 class ScreenSplash extends StatefulWidget {
@@ -14,10 +16,10 @@ class _ScreenSplashState extends State<ScreenSplash>
     with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
-    sizeFinder(context);
-    Timer(const Duration(seconds: 3), () {
-      Navigator.pushReplacementNamed(context, Routes.onBoardingScreen);
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      loginOrNot();
     });
+    sizeFinder(context);
     return Scaffold(
       body: Center(
         child: AnimatedSize(
@@ -34,5 +36,18 @@ class _ScreenSplashState extends State<ScreenSplash>
         ),
       ),
     );
+  }
+
+  Future<void> loginOrNot() async {
+    final logOrNot = await SecureSotrage.getlLogin();
+    if (!logOrNot) {
+      Timer(const Duration(seconds: 3), () {
+        Navigator.pushReplacementNamed(context, Routes.onBoardingScreen);
+      });
+    } else {
+      Timer(const Duration(seconds: 3), () {
+        Navigator.pushReplacementNamed(context, Routes.bottomBar);
+      });
+    }
   }
 }

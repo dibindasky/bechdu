@@ -4,8 +4,8 @@ import 'package:beachdu/domain/model/get_base_price_model_responce/get_base_pric
 import 'package:beachdu/domain/model/get_products_respoce_model/get_products_respoce_model.dart';
 import 'package:beachdu/domain/model/get_products_respoce_model/product.dart';
 import 'package:beachdu/domain/model/get_question_model/get_question_model.dart';
-import 'package:beachdu/domain/model/picke_question_model/picke_question_model.dart';
-import 'package:beachdu/domain/model/picke_question_model/selected_option.dart';
+import 'package:beachdu/domain/model/pickup_question_model/pickup_question_model.dart';
+import 'package:beachdu/domain/model/pickup_question_model/selected_option.dart';
 import 'package:beachdu/domain/repository/question_repo.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -18,8 +18,6 @@ part 'question_tab_bloc.freezed.dart';
 class QuestionTabBloc extends Bloc<QuestionTabEvent, QuestionTabState> {
   final QuestionRepo questionRepo;
   int answerdCount = 0;
-  int questionCount = 0;
-
   List<SelectedOption> updatedList = [];
   QuestionTabBloc(this.questionRepo) : super(QuestionTabState.initial()) {
     on<TabChange>(tabChange);
@@ -27,7 +25,19 @@ class QuestionTabBloc extends Bloc<QuestionTabEvent, QuestionTabState> {
     on<GetQuestions>(getQuestions);
     on<MarkedQuestions>(markedQuestions);
     on<GetBasePrice>(getBasePrice);
+    // on<YesOrNo>(yesOrNo);
   }
+
+  //  FutureOr<void> yesOrNo(YesOrNo event, emit) {
+  //   if (
+  //       event.selectedOption.type == 'yes/no' &&
+  //       event.selectedOption.value != null) {
+  //     updatedList.add(event.selectedOption);
+  //     answerdCount += 1;
+  //     log('Answer count $answerdCount');
+  //     log('updatedList count ${updatedList.length}');
+  //   }
+  // }
 
   FutureOr<void> markedQuestions(MarkedQuestions event, emit) {
     bool isUnSelect = false;
@@ -57,7 +67,6 @@ class QuestionTabBloc extends Bloc<QuestionTabEvent, QuestionTabState> {
     } else if (!isUnSelect) {
       updatedList.add(event.selectedOption);
       answerdCount += 1;
-      isUnSelect = false;
       log('Answer count $answerdCount');
       log('updatedList count ${updatedList.length}');
     }
@@ -72,7 +81,6 @@ class QuestionTabBloc extends Bloc<QuestionTabEvent, QuestionTabState> {
   FutureOr<void> resetTabSelection(ResetTabSelection event, emit) {
     answerdCount = 0;
     updatedList.clear();
-
     log('answerdCount when resset tab $answerdCount');
     log('updatedList count when resset tab ${updatedList.length}');
     emit(state.copyWith(selectedTabIndex: 0));
@@ -112,16 +120,16 @@ class QuestionTabBloc extends Bloc<QuestionTabEvent, QuestionTabState> {
 
   FutureOr<void> getBasePrice(GetBasePrice event, emit) async {
     emit(state.copyWith(isLoading: true, hasError: false));
-    log(' event.pickeQuestionModel ${event.pickeQuestionModel}');
+    log('event.pickeQuestionModel ${event.pickupQuestionModel}');
     final data = await questionRepo.getBasePrice(
-        pickeQuestionModel: event.pickeQuestionModel);
-
+        pickeQuestionModel: event.pickupQuestionModel);
     data.fold((failure) {
       emit(state.copyWith(
         hasError: true,
         isLoading: false,
       ));
     }, (successResponce) {
+      log('getBasePrice ${successResponce.basePrice}');
       emit(state.copyWith(
         hasError: false,
         isLoading: false,

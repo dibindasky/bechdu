@@ -54,6 +54,7 @@ dependencies:
   loading_indicator: ^3.1.1
   shimmer: ^3.0.0
   lottie: ^3.0.0
+  flutter_secure_storage: ^9.0.0
 
 
 dev_dependencies:

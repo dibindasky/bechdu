@@ -1,13 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'picke_question_model.dart';
+part of 'pickup_question_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-PickeQuestionModel _$PickeQuestionModelFromJson(Map<String, dynamic> json) =>
-    PickeQuestionModel(
+PickupQuestionModel _$PickupQuestionModelFromJson(Map<String, dynamic> json) =>
+    PickupQuestionModel(
       categoryType: json['categoryType'] as String?,
       productSlug: json['productSlug'] as String?,
       selectedOptions: (json['selectedOptions'] as List<dynamic>?)
@@ -15,7 +15,8 @@ PickeQuestionModel _$PickeQuestionModelFromJson(Map<String, dynamic> json) =>
           .toList(),
     );
 
-Map<String, dynamic> _$PickeQuestionModelToJson(PickeQuestionModel instance) =>
+Map<String, dynamic> _$PickupQuestionModelToJson(
+        PickupQuestionModel instance) =>
     <String, dynamic>{
       'categoryType': instance.categoryType,
       'productSlug': instance.productSlug,

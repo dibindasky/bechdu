@@ -6,6 +6,7 @@ showConfirmationDialog(
   BuildContext context, {
   bool textButtonNo = false,
   String? heading,
+  VoidCallback? onPressed,
 }) async {
   return showDialog(
     context: context,
@@ -17,9 +18,10 @@ showConfirmationDialog(
       ),
       actions: [
         TextButton(
-          onPressed: () {
-            Navigator.of(context).pop(true);
-          },
+          onPressed: onPressed ??
+              () {
+                Navigator.of(context).pop(true);
+              },
           child: Text(
             textButtonNo ? 'Sure' : 'Yes',
             style: textHeadBold1,

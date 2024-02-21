@@ -1,3 +1,4 @@
+import 'package:beachdu/application/business_logic/auth/auth_bloc.dart';
 import 'package:beachdu/application/business_logic/brands_bloc/category_bloc_bloc.dart';
 import 'package:beachdu/application/business_logic/home_bloc/home_bloc.dart';
 import 'package:beachdu/application/business_logic/navbar/navbar_cubit.dart';
@@ -25,6 +26,7 @@ class Beachdu extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
+        BlocProvider(create: (context) => getIt<AuthBloc>()),
         BlocProvider(create: (context) => getIt<HomeBloc>()),
         BlocProvider(create: (context) => getIt<CategoryBlocBloc>()),
         BlocProvider(create: (context) => getIt<QuestionTabBloc>()),

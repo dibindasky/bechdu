@@ -10,7 +10,7 @@ import 'package:beachdu/application/presentation/utils/enums/type_display.dart';
 import 'package:beachdu/application/presentation/utils/loading_indicators/loading_indicator.dart';
 import 'package:beachdu/application/presentation/utils/snackbar/snackbar.dart';
 import 'package:beachdu/application/presentation/widgets/top_image.dart';
-import 'package:beachdu/domain/model/picke_question_model/picke_question_model.dart';
+import 'package:beachdu/domain/model/pickup_question_model/pickup_question_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -128,7 +128,7 @@ class QuestionTabs extends StatelessWidget {
                               } else {
                                 showSnack(
                                   context: context,
-                                  message: 'Select only one option',
+                                  message: 'Select atleast one option',
                                 );
                               }
                             } else {
@@ -160,14 +160,15 @@ class QuestionTabs extends StatelessWidget {
   }
 
   void pickeQuestionModelEventDataPass(BuildContext context) {
-    PickeQuestionModel pickeQuestionModel = PickeQuestionModel(
+    PickupQuestionModel pickeQuestionModel = PickupQuestionModel(
       categoryType: context.read<CategoryBlocBloc>().categoryType,
       productSlug: context.read<CategoryBlocBloc>().slug,
       selectedOptions: context.read<QuestionTabBloc>().state.selectedOption,
     );
+    log('message');
     context
         .read<QuestionTabBloc>()
-        .add(GetBasePrice(pickeQuestionModel: pickeQuestionModel));
+        .add(GetBasePrice(pickupQuestionModel: pickeQuestionModel));
     context.read<QuestionTabBloc>().add(const ResetTabSelection());
     secondtabScreensNotifier.value = 2;
     secondtabScreensNotifier.notifyListeners();

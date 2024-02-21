@@ -3,10 +3,17 @@ import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/domain/model/get_question_model/section.dart';
 import 'package:flutter/material.dart';
 
-class GridOptionMaker extends StatelessWidget {
+class GridOptionMaker extends StatefulWidget {
   const GridOptionMaker({super.key, required this.section});
 
   final Section section;
+
+  @override
+  State<GridOptionMaker> createState() => _GridOptionMakerState();
+}
+
+class _GridOptionMakerState extends State<GridOptionMaker> {
+  int? selectedIndex;
 
   @override
   Widget build(BuildContext context) {
@@ -14,18 +21,15 @@ class GridOptionMaker extends StatelessWidget {
       child: SingleChildScrollView(
         child: Column(
           children: [
-            Text(
-              '${section.description}',
-              style: textHeadBoldBig,
-            ),
+            Text('${widget.section.description}', style: textHeadBoldBig),
             kHeight10,
             ListView.builder(
               padding: const EdgeInsets.all(0),
               physics: const NeverScrollableScrollPhysics(),
-              itemCount: section.options!.length,
+              itemCount: widget.section.options!.length,
               shrinkWrap: true,
               itemBuilder: (context, index) => GridOptionSelectorTile(
-                question: section.options![index],
+                question: widget.section.options![index],
               ),
             ),
           ],

@@ -6,7 +6,7 @@ import 'package:beachdu/application/presentation/screens/home/widgets/join_our_t
 import 'package:beachdu/application/presentation/screens/home/hot_deals/hot_deals.dart';
 import 'package:beachdu/application/presentation/screens/home/what_to_sell/what_to_sell.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
-import 'package:beachdu/application/presentation/utils/exit_app_daillogue/exit_app_dailogue.dart';
+import 'package:beachdu/application/presentation/utils/confirmation_daillogue/exit_app_dailogue.dart';
 import 'package:flutter/material.dart';
 
 class ScreenHome extends StatelessWidget {

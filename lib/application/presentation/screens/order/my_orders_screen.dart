@@ -1,6 +1,6 @@
 import 'package:beachdu/application/presentation/screens/order/widgets/my_order_container.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
-import 'package:beachdu/application/presentation/utils/exit_app_daillogue/exit_app_dailogue.dart';
+import 'package:beachdu/application/presentation/utils/confirmation_daillogue/exit_app_dailogue.dart';
 import 'package:flutter/material.dart';
 
 class ScreenMyOrders extends StatelessWidget {

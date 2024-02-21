@@ -1,3 +1,4 @@
+import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:flutter/material.dart';
 
 void showSnack({
@@ -11,7 +12,7 @@ void showSnack({
       dismissDirection: DismissDirection.horizontal,
       content: Text(message),
       duration: Duration(milliseconds: time),
-      backgroundColor: color,
+      backgroundColor: color ?? kGreenPrimary,
     ),
   );
 }

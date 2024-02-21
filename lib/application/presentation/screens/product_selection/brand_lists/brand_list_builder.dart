@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:beachdu/application/business_logic/brands_bloc/category_bloc_bloc.dart';
 import 'package:beachdu/application/business_logic/home_bloc/home_bloc.dart';
+import 'package:beachdu/application/business_logic/question_tab/question_tab_bloc.dart';
 import 'package:beachdu/application/presentation/screens/product_selection/product_screen.dart';
 import 'package:beachdu/application/presentation/screens/product_selection/search_field/brand_search_field.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
@@ -72,12 +73,20 @@ class BrandListviewBuilder extends StatelessWidget {
                                   categoryType: categoryType,
                                   brandName: brands[index].brandName!,
                                 ));
+
                             context.read<CategoryBlocBloc>().add(GetSeries(
                                 brandName:
                                     context.read<CategoryBlocBloc>().barndName!,
                                 categoryType: categoryType));
+
+                            //Getting product screen
                             brandandProductValueNotifier.value = 1;
                             brandandProductValueNotifier.notifyListeners();
+
+                            // Reset question tab
+                            context
+                                .read<QuestionTabBloc>()
+                                .add(const ResetTabSelection());
                           },
                           child: Material(
                             elevation: 1,
