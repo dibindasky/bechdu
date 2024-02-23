@@ -1,7 +1,9 @@
 import 'package:beachdu/application/business_logic/auth/auth_bloc.dart';
 import 'package:beachdu/application/business_logic/brands_bloc/category_bloc_bloc.dart';
 import 'package:beachdu/application/business_logic/home_bloc/home_bloc.dart';
+import 'package:beachdu/application/business_logic/location/location_bloc.dart';
 import 'package:beachdu/application/business_logic/navbar/navbar_cubit.dart';
+import 'package:beachdu/application/business_logic/place_order/place_order_bloc.dart';
 import 'package:beachdu/application/business_logic/question_tab/question_tab_bloc.dart';
 import 'package:beachdu/application/presentation/routes/route_generator.dart';
 import 'package:beachdu/application/presentation/routes/routes.dart';
@@ -27,10 +29,12 @@ class Beachdu extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => getIt<AuthBloc>()),
+        BlocProvider(create: (context) => getIt<LocationBloc>()),
         BlocProvider(create: (context) => getIt<HomeBloc>()),
         BlocProvider(create: (context) => getIt<CategoryBlocBloc>()),
         BlocProvider(create: (context) => getIt<QuestionTabBloc>()),
         BlocProvider(create: (context) => NavbarCubit()),
+        BlocProvider(create: (context) => getIt<PlaceOrderBloc>()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

@@ -17,4 +17,5 @@ class Routes {
   static const String pickUpDetailScreen = '/pickup_detail_screen';
   static const String addressAdd = '/address_add';
   static const String location = '/location_selection';
+  static const String pincode = '/pincode_selection';
 }

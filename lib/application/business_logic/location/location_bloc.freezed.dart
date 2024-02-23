@@ -20,18 +20,24 @@ mixin _$LocationEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() locationPick,
     required TResult Function(String cityName) pinCodePick,
+    required TResult Function(String searchQuery) locationSearch,
+    required TResult Function(String searchQuery) pincodeSearch,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? locationPick,
     TResult? Function(String cityName)? pinCodePick,
+    TResult? Function(String searchQuery)? locationSearch,
+    TResult? Function(String searchQuery)? pincodeSearch,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? locationPick,
     TResult Function(String cityName)? pinCodePick,
+    TResult Function(String searchQuery)? locationSearch,
+    TResult Function(String searchQuery)? pincodeSearch,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -39,18 +45,24 @@ mixin _$LocationEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(LocationPick value) locationPick,
     required TResult Function(PinCodePick value) pinCodePick,
+    required TResult Function(LocationSearch value) locationSearch,
+    required TResult Function(PincodeSearch value) pincodeSearch,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(LocationPick value)? locationPick,
     TResult? Function(PinCodePick value)? pinCodePick,
+    TResult? Function(LocationSearch value)? locationSearch,
+    TResult? Function(PincodeSearch value)? pincodeSearch,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(LocationPick value)? locationPick,
     TResult Function(PinCodePick value)? pinCodePick,
+    TResult Function(LocationSearch value)? locationSearch,
+    TResult Function(PincodeSearch value)? pincodeSearch,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -114,6 +126,8 @@ class _$LocationPickImpl implements LocationPick {
   TResult when<TResult extends Object?>({
     required TResult Function() locationPick,
     required TResult Function(String cityName) pinCodePick,
+    required TResult Function(String searchQuery) locationSearch,
+    required TResult Function(String searchQuery) pincodeSearch,
   }) {
     return locationPick();
   }
@@ -123,6 +137,8 @@ class _$LocationPickImpl implements LocationPick {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? locationPick,
     TResult? Function(String cityName)? pinCodePick,
+    TResult? Function(String searchQuery)? locationSearch,
+    TResult? Function(String searchQuery)? pincodeSearch,
   }) {
     return locationPick?.call();
   }
@@ -132,6 +148,8 @@ class _$LocationPickImpl implements LocationPick {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? locationPick,
     TResult Function(String cityName)? pinCodePick,
+    TResult Function(String searchQuery)? locationSearch,
+    TResult Function(String searchQuery)? pincodeSearch,
     required TResult orElse(),
   }) {
     if (locationPick != null) {
@@ -145,6 +163,8 @@ class _$LocationPickImpl implements LocationPick {
   TResult map<TResult extends Object?>({
     required TResult Function(LocationPick value) locationPick,
     required TResult Function(PinCodePick value) pinCodePick,
+    required TResult Function(LocationSearch value) locationSearch,
+    required TResult Function(PincodeSearch value) pincodeSearch,
   }) {
     return locationPick(this);
   }
@@ -154,6 +174,8 @@ class _$LocationPickImpl implements LocationPick {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(LocationPick value)? locationPick,
     TResult? Function(PinCodePick value)? pinCodePick,
+    TResult? Function(LocationSearch value)? locationSearch,
+    TResult? Function(PincodeSearch value)? pincodeSearch,
   }) {
     return locationPick?.call(this);
   }
@@ -163,6 +185,8 @@ class _$LocationPickImpl implements LocationPick {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(LocationPick value)? locationPick,
     TResult Function(PinCodePick value)? pinCodePick,
+    TResult Function(LocationSearch value)? locationSearch,
+    TResult Function(PincodeSearch value)? pincodeSearch,
     required TResult orElse(),
   }) {
     if (locationPick != null) {
@@ -243,6 +267,8 @@ class _$PinCodePickImpl implements PinCodePick {
   TResult when<TResult extends Object?>({
     required TResult Function() locationPick,
     required TResult Function(String cityName) pinCodePick,
+    required TResult Function(String searchQuery) locationSearch,
+    required TResult Function(String searchQuery) pincodeSearch,
   }) {
     return pinCodePick(cityName);
   }
@@ -252,6 +278,8 @@ class _$PinCodePickImpl implements PinCodePick {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? locationPick,
     TResult? Function(String cityName)? pinCodePick,
+    TResult? Function(String searchQuery)? locationSearch,
+    TResult? Function(String searchQuery)? pincodeSearch,
   }) {
     return pinCodePick?.call(cityName);
   }
@@ -261,6 +289,8 @@ class _$PinCodePickImpl implements PinCodePick {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? locationPick,
     TResult Function(String cityName)? pinCodePick,
+    TResult Function(String searchQuery)? locationSearch,
+    TResult Function(String searchQuery)? pincodeSearch,
     required TResult orElse(),
   }) {
     if (pinCodePick != null) {
@@ -274,6 +304,8 @@ class _$PinCodePickImpl implements PinCodePick {
   TResult map<TResult extends Object?>({
     required TResult Function(LocationPick value) locationPick,
     required TResult Function(PinCodePick value) pinCodePick,
+    required TResult Function(LocationSearch value) locationSearch,
+    required TResult Function(PincodeSearch value) pincodeSearch,
   }) {
     return pinCodePick(this);
   }
@@ -283,6 +315,8 @@ class _$PinCodePickImpl implements PinCodePick {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(LocationPick value)? locationPick,
     TResult? Function(PinCodePick value)? pinCodePick,
+    TResult? Function(LocationSearch value)? locationSearch,
+    TResult? Function(PincodeSearch value)? pincodeSearch,
   }) {
     return pinCodePick?.call(this);
   }
@@ -292,6 +326,8 @@ class _$PinCodePickImpl implements PinCodePick {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(LocationPick value)? locationPick,
     TResult Function(PinCodePick value)? pinCodePick,
+    TResult Function(LocationSearch value)? locationSearch,
+    TResult Function(PincodeSearch value)? pincodeSearch,
     required TResult orElse(),
   }) {
     if (pinCodePick != null) {
@@ -312,11 +348,309 @@ abstract class PinCodePick implements LocationEvent {
 }
 
 /// @nodoc
+abstract class _$$LocationSearchImplCopyWith<$Res> {
+  factory _$$LocationSearchImplCopyWith(_$LocationSearchImpl value,
+          $Res Function(_$LocationSearchImpl) then) =
+      __$$LocationSearchImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String searchQuery});
+}
+
+/// @nodoc
+class __$$LocationSearchImplCopyWithImpl<$Res>
+    extends _$LocationEventCopyWithImpl<$Res, _$LocationSearchImpl>
+    implements _$$LocationSearchImplCopyWith<$Res> {
+  __$$LocationSearchImplCopyWithImpl(
+      _$LocationSearchImpl _value, $Res Function(_$LocationSearchImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? searchQuery = null,
+  }) {
+    return _then(_$LocationSearchImpl(
+      searchQuery: null == searchQuery
+          ? _value.searchQuery
+          : searchQuery // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$LocationSearchImpl implements LocationSearch {
+  const _$LocationSearchImpl({required this.searchQuery});
+
+  @override
+  final String searchQuery;
+
+  @override
+  String toString() {
+    return 'LocationEvent.locationSearch(searchQuery: $searchQuery)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$LocationSearchImpl &&
+            (identical(other.searchQuery, searchQuery) ||
+                other.searchQuery == searchQuery));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, searchQuery);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$LocationSearchImplCopyWith<_$LocationSearchImpl> get copyWith =>
+      __$$LocationSearchImplCopyWithImpl<_$LocationSearchImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() locationPick,
+    required TResult Function(String cityName) pinCodePick,
+    required TResult Function(String searchQuery) locationSearch,
+    required TResult Function(String searchQuery) pincodeSearch,
+  }) {
+    return locationSearch(searchQuery);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? locationPick,
+    TResult? Function(String cityName)? pinCodePick,
+    TResult? Function(String searchQuery)? locationSearch,
+    TResult? Function(String searchQuery)? pincodeSearch,
+  }) {
+    return locationSearch?.call(searchQuery);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? locationPick,
+    TResult Function(String cityName)? pinCodePick,
+    TResult Function(String searchQuery)? locationSearch,
+    TResult Function(String searchQuery)? pincodeSearch,
+    required TResult orElse(),
+  }) {
+    if (locationSearch != null) {
+      return locationSearch(searchQuery);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(LocationPick value) locationPick,
+    required TResult Function(PinCodePick value) pinCodePick,
+    required TResult Function(LocationSearch value) locationSearch,
+    required TResult Function(PincodeSearch value) pincodeSearch,
+  }) {
+    return locationSearch(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(LocationPick value)? locationPick,
+    TResult? Function(PinCodePick value)? pinCodePick,
+    TResult? Function(LocationSearch value)? locationSearch,
+    TResult? Function(PincodeSearch value)? pincodeSearch,
+  }) {
+    return locationSearch?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(LocationPick value)? locationPick,
+    TResult Function(PinCodePick value)? pinCodePick,
+    TResult Function(LocationSearch value)? locationSearch,
+    TResult Function(PincodeSearch value)? pincodeSearch,
+    required TResult orElse(),
+  }) {
+    if (locationSearch != null) {
+      return locationSearch(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class LocationSearch implements LocationEvent {
+  const factory LocationSearch({required final String searchQuery}) =
+      _$LocationSearchImpl;
+
+  String get searchQuery;
+  @JsonKey(ignore: true)
+  _$$LocationSearchImplCopyWith<_$LocationSearchImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$PincodeSearchImplCopyWith<$Res> {
+  factory _$$PincodeSearchImplCopyWith(
+          _$PincodeSearchImpl value, $Res Function(_$PincodeSearchImpl) then) =
+      __$$PincodeSearchImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String searchQuery});
+}
+
+/// @nodoc
+class __$$PincodeSearchImplCopyWithImpl<$Res>
+    extends _$LocationEventCopyWithImpl<$Res, _$PincodeSearchImpl>
+    implements _$$PincodeSearchImplCopyWith<$Res> {
+  __$$PincodeSearchImplCopyWithImpl(
+      _$PincodeSearchImpl _value, $Res Function(_$PincodeSearchImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? searchQuery = null,
+  }) {
+    return _then(_$PincodeSearchImpl(
+      searchQuery: null == searchQuery
+          ? _value.searchQuery
+          : searchQuery // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$PincodeSearchImpl implements PincodeSearch {
+  const _$PincodeSearchImpl({required this.searchQuery});
+
+  @override
+  final String searchQuery;
+
+  @override
+  String toString() {
+    return 'LocationEvent.pincodeSearch(searchQuery: $searchQuery)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$PincodeSearchImpl &&
+            (identical(other.searchQuery, searchQuery) ||
+                other.searchQuery == searchQuery));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, searchQuery);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$PincodeSearchImplCopyWith<_$PincodeSearchImpl> get copyWith =>
+      __$$PincodeSearchImplCopyWithImpl<_$PincodeSearchImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() locationPick,
+    required TResult Function(String cityName) pinCodePick,
+    required TResult Function(String searchQuery) locationSearch,
+    required TResult Function(String searchQuery) pincodeSearch,
+  }) {
+    return pincodeSearch(searchQuery);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? locationPick,
+    TResult? Function(String cityName)? pinCodePick,
+    TResult? Function(String searchQuery)? locationSearch,
+    TResult? Function(String searchQuery)? pincodeSearch,
+  }) {
+    return pincodeSearch?.call(searchQuery);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? locationPick,
+    TResult Function(String cityName)? pinCodePick,
+    TResult Function(String searchQuery)? locationSearch,
+    TResult Function(String searchQuery)? pincodeSearch,
+    required TResult orElse(),
+  }) {
+    if (pincodeSearch != null) {
+      return pincodeSearch(searchQuery);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(LocationPick value) locationPick,
+    required TResult Function(PinCodePick value) pinCodePick,
+    required TResult Function(LocationSearch value) locationSearch,
+    required TResult Function(PincodeSearch value) pincodeSearch,
+  }) {
+    return pincodeSearch(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(LocationPick value)? locationPick,
+    TResult? Function(PinCodePick value)? pinCodePick,
+    TResult? Function(LocationSearch value)? locationSearch,
+    TResult? Function(PincodeSearch value)? pincodeSearch,
+  }) {
+    return pincodeSearch?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(LocationPick value)? locationPick,
+    TResult Function(PinCodePick value)? pinCodePick,
+    TResult Function(LocationSearch value)? locationSearch,
+    TResult Function(PincodeSearch value)? pincodeSearch,
+    required TResult orElse(),
+  }) {
+    if (pincodeSearch != null) {
+      return pincodeSearch(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class PincodeSearch implements LocationEvent {
+  const factory PincodeSearch({required final String searchQuery}) =
+      _$PincodeSearchImpl;
+
+  String get searchQuery;
+  @JsonKey(ignore: true)
+  _$$PincodeSearchImplCopyWith<_$PincodeSearchImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$LocationState {
   bool get isLoading => throw _privateConstructorUsedError;
   bool get hasError => throw _privateConstructorUsedError;
   String? get message => throw _privateConstructorUsedError;
   List<String>? get locations => throw _privateConstructorUsedError;
+  List<String>? get pincodes => throw _privateConstructorUsedError;
+  List<String>? get filteredLocations => throw _privateConstructorUsedError;
+  List<String>? get filteredPincodes => throw _privateConstructorUsedError;
   PincodeResponceModel? get pincodeResponceModel =>
       throw _privateConstructorUsedError;
 
@@ -336,6 +670,9 @@ abstract class $LocationStateCopyWith<$Res> {
       bool hasError,
       String? message,
       List<String>? locations,
+      List<String>? pincodes,
+      List<String>? filteredLocations,
+      List<String>? filteredPincodes,
       PincodeResponceModel? pincodeResponceModel});
 }
 
@@ -356,6 +693,9 @@ class _$LocationStateCopyWithImpl<$Res, $Val extends LocationState>
     Object? hasError = null,
     Object? message = freezed,
     Object? locations = freezed,
+    Object? pincodes = freezed,
+    Object? filteredLocations = freezed,
+    Object? filteredPincodes = freezed,
     Object? pincodeResponceModel = freezed,
   }) {
     return _then(_value.copyWith(
@@ -374,6 +714,18 @@ class _$LocationStateCopyWithImpl<$Res, $Val extends LocationState>
       locations: freezed == locations
           ? _value.locations
           : locations // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
+      pincodes: freezed == pincodes
+          ? _value.pincodes
+          : pincodes // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
+      filteredLocations: freezed == filteredLocations
+          ? _value.filteredLocations
+          : filteredLocations // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
+      filteredPincodes: freezed == filteredPincodes
+          ? _value.filteredPincodes
+          : filteredPincodes // ignore: cast_nullable_to_non_nullable
               as List<String>?,
       pincodeResponceModel: freezed == pincodeResponceModel
           ? _value.pincodeResponceModel
@@ -396,6 +748,9 @@ abstract class _$$InitialImplCopyWith<$Res>
       bool hasError,
       String? message,
       List<String>? locations,
+      List<String>? pincodes,
+      List<String>? filteredLocations,
+      List<String>? filteredPincodes,
       PincodeResponceModel? pincodeResponceModel});
 }
 
@@ -414,6 +769,9 @@ class __$$InitialImplCopyWithImpl<$Res>
     Object? hasError = null,
     Object? message = freezed,
     Object? locations = freezed,
+    Object? pincodes = freezed,
+    Object? filteredLocations = freezed,
+    Object? filteredPincodes = freezed,
     Object? pincodeResponceModel = freezed,
   }) {
     return _then(_$InitialImpl(
@@ -433,6 +791,18 @@ class __$$InitialImplCopyWithImpl<$Res>
           ? _value._locations
           : locations // ignore: cast_nullable_to_non_nullable
               as List<String>?,
+      pincodes: freezed == pincodes
+          ? _value._pincodes
+          : pincodes // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
+      filteredLocations: freezed == filteredLocations
+          ? _value._filteredLocations
+          : filteredLocations // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
+      filteredPincodes: freezed == filteredPincodes
+          ? _value._filteredPincodes
+          : filteredPincodes // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
       pincodeResponceModel: freezed == pincodeResponceModel
           ? _value.pincodeResponceModel
           : pincodeResponceModel // ignore: cast_nullable_to_non_nullable
@@ -449,8 +819,14 @@ class _$InitialImpl implements _Initial {
       required this.hasError,
       this.message,
       final List<String>? locations,
+      final List<String>? pincodes,
+      final List<String>? filteredLocations,
+      final List<String>? filteredPincodes,
       this.pincodeResponceModel})
-      : _locations = locations;
+      : _locations = locations,
+        _pincodes = pincodes,
+        _filteredLocations = filteredLocations,
+        _filteredPincodes = filteredPincodes;
 
   @override
   final bool isLoading;
@@ -468,12 +844,44 @@ class _$InitialImpl implements _Initial {
     return EqualUnmodifiableListView(value);
   }
 
+  final List<String>? _pincodes;
+  @override
+  List<String>? get pincodes {
+    final value = _pincodes;
+    if (value == null) return null;
+    if (_pincodes is EqualUnmodifiableListView) return _pincodes;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  final List<String>? _filteredLocations;
+  @override
+  List<String>? get filteredLocations {
+    final value = _filteredLocations;
+    if (value == null) return null;
+    if (_filteredLocations is EqualUnmodifiableListView)
+      return _filteredLocations;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  final List<String>? _filteredPincodes;
+  @override
+  List<String>? get filteredPincodes {
+    final value = _filteredPincodes;
+    if (value == null) return null;
+    if (_filteredPincodes is EqualUnmodifiableListView)
+      return _filteredPincodes;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
   @override
   final PincodeResponceModel? pincodeResponceModel;
 
   @override
   String toString() {
-    return 'LocationState(isLoading: $isLoading, hasError: $hasError, message: $message, locations: $locations, pincodeResponceModel: $pincodeResponceModel)';
+    return 'LocationState(isLoading: $isLoading, hasError: $hasError, message: $message, locations: $locations, pincodes: $pincodes, filteredLocations: $filteredLocations, filteredPincodes: $filteredPincodes, pincodeResponceModel: $pincodeResponceModel)';
   }
 
   @override
@@ -488,13 +896,26 @@ class _$InitialImpl implements _Initial {
             (identical(other.message, message) || other.message == message) &&
             const DeepCollectionEquality()
                 .equals(other._locations, _locations) &&
+            const DeepCollectionEquality().equals(other._pincodes, _pincodes) &&
+            const DeepCollectionEquality()
+                .equals(other._filteredLocations, _filteredLocations) &&
+            const DeepCollectionEquality()
+                .equals(other._filteredPincodes, _filteredPincodes) &&
             (identical(other.pincodeResponceModel, pincodeResponceModel) ||
                 other.pincodeResponceModel == pincodeResponceModel));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isLoading, hasError, message,
-      const DeepCollectionEquality().hash(_locations), pincodeResponceModel);
+  int get hashCode => Object.hash(
+      runtimeType,
+      isLoading,
+      hasError,
+      message,
+      const DeepCollectionEquality().hash(_locations),
+      const DeepCollectionEquality().hash(_pincodes),
+      const DeepCollectionEquality().hash(_filteredLocations),
+      const DeepCollectionEquality().hash(_filteredPincodes),
+      pincodeResponceModel);
 
   @JsonKey(ignore: true)
   @override
@@ -509,6 +930,9 @@ abstract class _Initial implements LocationState {
       required final bool hasError,
       final String? message,
       final List<String>? locations,
+      final List<String>? pincodes,
+      final List<String>? filteredLocations,
+      final List<String>? filteredPincodes,
       final PincodeResponceModel? pincodeResponceModel}) = _$InitialImpl;
 
   @override
@@ -519,6 +943,12 @@ abstract class _Initial implements LocationState {
   String? get message;
   @override
   List<String>? get locations;
+  @override
+  List<String>? get pincodes;
+  @override
+  List<String>? get filteredLocations;
+  @override
+  List<String>? get filteredPincodes;
   @override
   PincodeResponceModel? get pincodeResponceModel;
   @override

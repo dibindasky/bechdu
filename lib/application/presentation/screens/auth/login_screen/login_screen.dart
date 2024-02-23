@@ -15,7 +15,6 @@ class ScreenLogin extends StatelessWidget {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   String initialCountry = 'NG';
-  bool isPhoneNumberValid = false;
 
   PhoneNumber phoneNumber = PhoneNumber(isoCode: 'IN');
 

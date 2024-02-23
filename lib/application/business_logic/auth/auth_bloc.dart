@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 import 'package:beachdu/data/secure_storage/secure_fire_store.dart';
 import 'package:beachdu/domain/model/login/login_model/login_model.dart';
 import 'package:beachdu/domain/model/login/login_responce_model/login_responce_model.dart';
@@ -40,6 +41,12 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           loginResponceModel: successLogin,
         ),
       );
+      //if (successLogin.user != null || successLogin.user!.phone != null) {
+      await SecureSotrage.saveNumber(
+        phoneNumber: successLogin.user!.phone!,
+      );
+      log('Number auth bloc ${successLogin.user!.phone!}');
+      //}
       await SecureSotrage.saveToken(
           tokenModel: TokenModel(
         accessToken: successLogin.token,

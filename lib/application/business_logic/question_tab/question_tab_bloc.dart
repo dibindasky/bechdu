@@ -18,6 +18,7 @@ part 'question_tab_bloc.freezed.dart';
 class QuestionTabBloc extends Bloc<QuestionTabEvent, QuestionTabState> {
   final QuestionRepo questionRepo;
   int answerdCount = 0;
+  int basePrice = 0;
   List<SelectedOption> updatedList = [];
   QuestionTabBloc(this.questionRepo) : super(QuestionTabState.initial()) {
     on<TabChange>(tabChange);
@@ -129,7 +130,10 @@ class QuestionTabBloc extends Bloc<QuestionTabEvent, QuestionTabState> {
         isLoading: false,
       ));
     }, (successResponce) {
-      log('getBasePrice ${successResponce.basePrice}');
+      if (successResponce.basePrice != null) {
+        basePrice = successResponce.basePrice!;
+      }
+      log('basePrice bloc variable $basePrice');
       emit(state.copyWith(
         hasError: false,
         isLoading: false,

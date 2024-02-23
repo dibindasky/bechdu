@@ -1,5 +1,4 @@
 import 'dart:developer';
-
 import 'package:beachdu/domain/model/token_model/token_model.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
@@ -8,51 +7,98 @@ class SecureSotrage {
   static String refershKey = 'refresh_key';
   static String idKey = 'id_key';
   static String loginKey = 'login_key';
+  static String locationkey = 'location_key';
+  static String pincodekey = 'pincode_key';
+  static String phoneNumberKey = 'phone_number';
 
-  static const FlutterSecureStorage secureSotrage = FlutterSecureStorage();
+  static const FlutterSecureStorage secureStorage = FlutterSecureStorage();
+
   static Future<void> saveToken({
     required TokenModel tokenModel,
   }) async {
-    await secureSotrage.write(
+    await secureStorage.write(
       key: accessKey,
       value: tokenModel.accessToken ?? '',
     );
-    await secureSotrage.write(
+    await secureStorage.write(
       key: refershKey,
       value: tokenModel.refershToken ?? '',
     );
-    await secureSotrage.write(
+    await secureStorage.write(
       key: idKey,
       value: tokenModel.id != null ? tokenModel.id.toString() : '',
     );
   }
 
   static Future<TokenModel> getToken() async {
-    final accessToken = await secureSotrage.read(key: accessKey);
-    final refreshToken = await secureSotrage.read(key: refershKey);
+    final accessToken = await secureStorage.read(key: accessKey);
+    final refreshToken = await secureStorage.read(key: refershKey);
     log('AccessToken ===>> $accessToken');
     log('RefreshToken ===>> $refreshToken');
     return TokenModel(accessToken: accessToken, refershToken: refreshToken);
   }
 
   static Future<String?> getAccessToken() async {
-    final accessToken = await secureSotrage.read(key: accessKey);
+    final accessToken = await secureStorage.read(key: accessKey);
     log("getAccessToken ==>> $accessToken");
     return accessToken;
   }
 
   static Future<void> setLogin() async {
     log("setLogin ==>>");
-    await secureSotrage.write(key: loginKey, value: '1');
+    await secureStorage.write(key: loginKey, value: '1');
   }
 
   static Future<bool> getlLogin() async {
-    final isLogin = await secureSotrage.read(key: loginKey);
+    final isLogin = await secureStorage.read(key: loginKey);
     log("getlLogin ==>> ${isLogin == '1'}");
     return isLogin == '1';
   }
 
+  static Future<void> saveNumber({required String phoneNumber}) async {
+    await secureStorage.write(key: phoneNumberKey, value: phoneNumber);
+    log('saveNumber $phoneNumber');
+  }
+
+  static Future<String> getNumber() async {
+    final phoneNumber = await secureStorage.read(key: phoneNumberKey);
+    log('getNumber $phoneNumber');
+    return phoneNumber ?? '';
+  }
+
+  static Future<void> saveLocationAndPincode({
+    String? location,
+    String? pinCode,
+  }) async {
+    await secureStorage.write(
+      key: locationkey,
+      value: location ?? '',
+    );
+    await secureStorage.write(
+      key: pincodekey,
+      value: pinCode ?? '',
+    );
+  }
+
+  static Future<String> getLocation() async {
+    final isLocation = await secureStorage.read(key: locationkey);
+    log('getLocation $isLocation');
+    return isLocation ?? 'No location';
+  }
+
+  static Future<String> getSelectedLocation() async {
+    final location = await secureStorage.read(key: locationkey);
+    log('Selected location $location');
+    return location ?? '';
+  }
+
+  static Future<String> getSelectedPincode() async {
+    final isPincode = await secureStorage.read(key: pincodekey);
+    log('getSelectedPincode $isPincode');
+    return isPincode ?? '';
+  }
+
   static Future<void> clearLogin() async {
-    await secureSotrage.deleteAll();
+    await secureStorage.deleteAll();
   }
 }

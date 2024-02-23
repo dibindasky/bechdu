@@ -4,7 +4,7 @@ import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:flutter/material.dart';
 
 class BechDuUserOnBoardingScreens extends StatefulWidget {
-  const BechDuUserOnBoardingScreens({super.key});
+  const BechDuUserOnBoardingScreens({Key? key}) : super(key: key);
 
   @override
   State<BechDuUserOnBoardingScreens> createState() =>
@@ -14,43 +14,57 @@ class BechDuUserOnBoardingScreens extends StatefulWidget {
 class _BechDuUserOnBoardingScreensState
     extends State<BechDuUserOnBoardingScreens>
     with SingleTickerProviderStateMixin {
-  late AnimationController _controller;
-  late Animation<double> _animation;
-  @override
-  void initState() {
-    _controller = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 500),
-    );
-    // Create Tween for opacity
-    _animation = Tween<double>(begin: 0, end: 2.0).animate(
-      _controller,
-    );
-    super.initState();
-  }
-
-  void startAnimation() {
-    _controller.reset();
-    _controller.forward();
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
+  late PageController _pageController;
   int selectedIndex = 0;
   final int totalPages = 3;
 
   @override
+  void initState() {
+    _pageController = PageController();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
+
+  void _onPageChanged(int index) {
+    setState(() {
+      selectedIndex = index;
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
+    return Scaffold(
+      body: PageView(
+        controller: _pageController,
+        scrollDirection: Axis.horizontal,
+        onPageChanged: _onPageChanged,
+        children: [
+          buildOnboardingScreen(
+              selectedIndex: selectedIndex, totalPages: totalPages),
+          buildOnboardingScreen(
+              selectedIndex: selectedIndex, totalPages: totalPages),
+          buildOnboardingScreen(
+              selectedIndex: selectedIndex, totalPages: totalPages),
+        ],
+      ),
+    );
+  }
+
+  Widget buildOnboardingScreen({
+    required int selectedIndex,
+    required int totalPages,
+  }) {
     return GestureDetector(
       onTap: () {
         if (selectedIndex < totalPages - 1) {
-          setState(() {
-            selectedIndex += 1;
-          });
+          _pageController.nextPage(
+              duration: const Duration(milliseconds: 500),
+              curve: Curves.easeInOut);
         } else {
           Navigator.of(context).pushNamed(Routes.signInOrLogin);
         }

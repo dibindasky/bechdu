@@ -82,7 +82,7 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
   FutureOr<void> brandSearch(
     BrandSearch event,
     Emitter<CategoryBlocState> emit,
-  ) async {
+  ) {
     final String searchQuery = event.searchQuery.toLowerCase();
     final List<Brands> filteredBrands = brandsList.where((brand) {
       final String brandName = brand.brandName!.toLowerCase();

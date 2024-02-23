@@ -17,4 +17,5 @@ class ApiEndPoints {
   static const String baseUrlImagePath =
       'https://bechdu-main-backend.onrender.com/uploads/';
   static const String getBasePrice = 'product/calculate-price';
+  static const String getPromoCode = 'promo/check/promocode';
 }

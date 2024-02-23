@@ -1,6 +1,7 @@
 import 'dart:developer';
 import 'package:beachdu/application/business_logic/brands_bloc/category_bloc_bloc.dart';
 import 'package:beachdu/application/business_logic/question_tab/question_tab_bloc.dart';
+import 'package:beachdu/application/presentation/routes/routes.dart';
 import 'package:beachdu/application/presentation/screens/product_selection/product_screen.dart';
 import 'package:beachdu/application/presentation/screens/questions/question_tabs/question_anwer_sesstion/answer_session.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
@@ -14,6 +15,7 @@ import 'package:beachdu/data/secure_storage/secure_fire_store.dart';
 import 'package:beachdu/domain/model/pickup_question_model/pickup_question_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lottie/lottie.dart';
 
 class QuestionTabs extends StatelessWidget {
   const QuestionTabs({super.key});
@@ -37,127 +39,143 @@ class QuestionTabs extends StatelessWidget {
           ),
           body: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Column(
-              children: [
-                const TopImage(fromWhere: FromWhere.questionScreen),
-                kHeight10,
-                const QuestionScreenTabs(),
-                kHeight20,
-                const QuestionTabAnswerSession(),
-                kHeight10,
-                BlocBuilder<QuestionTabBloc, QuestionTabState>(
-                  builder: (context, state) {
-                    if (state.isLoading) {
-                      return const LoadingAnimation(width: 100);
-                    } else if (state.hasError) {
-                      return const Center(
-                        child: Text('Fetch error'),
-                      );
-                    } else {
-                      if (state.getQuestionModel != null ||
-                          state.getQuestionModel!.sections != null) {
-                        return CustomButton(
-                          onPressed: () {
-                            final currentSection = state.getQuestionModel!
-                                .sections![state.selectedTabIndex];
-                            final criteria = currentSection.criteria;
-                            if (state.selectedTabIndex ==
-                                state.getQuestionModel!.sections!.length - 1) {
-                              if (criteria == 'all') {
-                                if (state.answerCount ==
-                                    currentSection.options!.length) {
-                                  pickeQuestionModelEventDataPass(context);
-                                } else {
-                                  showSnack(
-                                    context: context,
-                                    message: 'Select all options',
-                                  );
+            child: BlocBuilder<QuestionTabBloc, QuestionTabState>(
+              builder: (context, state) {
+                if (state.isLoading) {
+                  return const LoadingAnimation(width: 100);
+                } else if (state.hasError) {
+                  return const Text('error');
+                } else {
+                  if (state.getQuestionModel == null ||
+                      state.getQuestionModel!.sections == null) {
+                    return Center(child: Lottie.asset(emptyLottie));
+                  } else {
+                    return Column(
+                      children: [
+                        const TopImage(fromWhere: FromWhere.questionScreen),
+                        kHeight10,
+                        const QuestionScreenTabs(),
+                        kHeight20,
+                        const QuestionTabAnswerSession(),
+                        kHeight10,
+                        BlocBuilder<QuestionTabBloc, QuestionTabState>(
+                          builder: (context, state) {
+                            return CustomButton(
+                              onPressed: () {
+                                final currentSection = state.getQuestionModel!
+                                    .sections![state.selectedTabIndex];
+                                final criteria = currentSection.criteria;
+                                if (state.selectedTabIndex ==
+                                    state.getQuestionModel!.sections!.length -
+                                        1) {
+                                  if (criteria == 'all') {
+                                    if (state.answerCount ==
+                                        currentSection.options!.length) {
+                                      loginOrNot(context);
+                                    } else {
+                                      showSnack(
+                                        context: context,
+                                        message: 'Select all options',
+                                      );
+                                    }
+                                  } else if (criteria == 'some') {
+                                    if (state.answerCount >= 1) {
+                                      loginOrNot(context);
+                                    } else if (criteria == 'one') {
+                                      if (state.answerCount == 1) {
+                                        pickeQuestionModelEventDataPass(
+                                            context);
+                                      }
+                                      showSnack(
+                                        context: context,
+                                        message: 'Select at least one option',
+                                      );
+                                    }
+                                  } else if (criteria == 'one') {
+                                    if (state.answerCount == 1) {
+                                      loginOrNot(context);
+                                      //pickeQuestionModelEventDataPass(context);
+                                    } else {
+                                      showSnack(
+                                        context: context,
+                                        message: 'Select only one option',
+                                      );
+                                    }
+                                  } else {
+                                    loginOrNot(context);
+                                    //pickeQuestionModelEventDataPass(context);
+                                  }
                                 }
-                              } else if (criteria == 'some') {
-                                if (state.answerCount >= 1) {
-                                  pickeQuestionModelEventDataPass(context);
+                                if (criteria == 'all') {
+                                  if (state.answerCount ==
+                                      currentSection.options!.length) {
+                                    context
+                                        .read<QuestionTabBloc>()
+                                        .add(const TabChange());
+                                  } else {
+                                    showSnack(
+                                      context: context,
+                                      message: 'Select all options',
+                                    );
+                                  }
+                                } else if (criteria == 'some') {
+                                  if (state.answerCount >= 1) {
+                                    context
+                                        .read<QuestionTabBloc>()
+                                        .add(const TabChange());
+                                  } else {
+                                    showSnack(
+                                      context: context,
+                                      message: 'Select at least one option',
+                                    );
+                                  }
                                 } else if (criteria == 'one') {
                                   if (state.answerCount == 1) {
-                                    pickeQuestionModelEventDataPass(context);
+                                    context
+                                        .read<QuestionTabBloc>()
+                                        .add(const TabChange());
+                                  } else {
+                                    showSnack(
+                                      context: context,
+                                      message: 'Select atleast one option',
+                                    );
                                   }
-                                  showSnack(
-                                    context: context,
-                                    message: 'Select at least one option',
-                                  );
-                                }
-                              } else if (criteria == 'one') {
-                                if (state.answerCount == 1) {
-                                  pickeQuestionModelEventDataPass(context);
                                 } else {
-                                  showSnack(
-                                    context: context,
-                                    message: 'Select only one option',
-                                  );
+                                  context
+                                      .read<QuestionTabBloc>()
+                                      .add(const TabChange());
                                 }
-                              } else {
-                                pickeQuestionModelEventDataPass(context);
-                              }
-                            }
-                            if (criteria == 'all') {
-                              if (state.answerCount ==
-                                  currentSection.options!.length) {
-                                context
-                                    .read<QuestionTabBloc>()
-                                    .add(const TabChange());
-                              } else {
-                                showSnack(
-                                  context: context,
-                                  message: 'Select all options',
-                                );
-                              }
-                            } else if (criteria == 'some') {
-                              if (state.answerCount >= 1) {
-                                context
-                                    .read<QuestionTabBloc>()
-                                    .add(const TabChange());
-                              } else {
-                                showSnack(
-                                  context: context,
-                                  message: 'Select at least one option',
-                                );
-                              }
-                            } else if (criteria == 'one') {
-                              if (state.answerCount == 1) {
-                                context
-                                    .read<QuestionTabBloc>()
-                                    .add(const TabChange());
-                              } else {
-                                showSnack(
-                                  context: context,
-                                  message: 'Select atleast one option',
-                                );
-                              }
-                            } else {
-                              context
-                                  .read<QuestionTabBloc>()
-                                  .add(const TabChange());
-                            }
+                              },
+                              text: state.selectedTabIndex !=
+                                      state.getQuestionModel!.sections!.length -
+                                          1
+                                  ? 'Continue'
+                                  : 'Calculate price',
+                            );
                           },
-                          text: state.selectedTabIndex !=
-                                  state.getQuestionModel!.sections!.length - 1
-                              ? 'Continue'
-                              : 'Calculate price',
-                        );
-                      } else {
-                        return const Center(
-                          child: Text('Empty'),
-                        );
-                      }
-                    }
-                  },
-                ),
-                kHeight10,
-              ],
+                        ),
+                        kHeight10,
+                      ],
+                    );
+                  }
+                }
+              },
             ),
           ),
         ),
       ),
     );
+  }
+
+  Future<void> loginOrNot(BuildContext context) async {
+    final login = await SecureSotrage.getlLogin();
+    if (login) {
+      // ignore: use_build_context_synchronously
+      pickeQuestionModelEventDataPass(context);
+    } else {
+      // ignore: use_build_context_synchronously
+      Navigator.of(context).pushNamed(Routes.signInOrLogin);
+    }
   }
 
   void pickeQuestionModelEventDataPass(BuildContext context) {
@@ -167,7 +185,6 @@ class QuestionTabs extends StatelessWidget {
       productSlug: context.read<CategoryBlocBloc>().slug,
       selectedOptions: context.read<QuestionTabBloc>().state.selectedOption,
     );
-    log('message');
     context
         .read<QuestionTabBloc>()
         .add(GetBasePrice(pickupQuestionModel: pickeQuestionModel));
@@ -177,82 +194,6 @@ class QuestionTabs extends StatelessWidget {
   }
 }
 
-// class QuestionScreenTabs extends StatelessWidget {
-//   const QuestionScreenTabs({super.key,});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return BlocBuilder<QuestionTabBloc, QuestionTabState>(
-//       builder: (context, state) {
-//         if (state.isLoading) {
-//           return const LoadingAnimation(width: 100);
-//         }
-//         if (state.hasError) {
-//           return const Center(
-//             child: Text('Fetch Error'),
-//           );
-//         } else if (state.getQuestionModel != null &&
-//             state.getQuestionModel!.sections != null) {
-//           final int latestVisitedTabIndex = state.latestVisitedTabIndex ?? 0;
-
-//           return SizedBox(
-//             width: sWidth,
-//             child: FittedBox(
-//               child: Row(
-//                 mainAxisAlignment: MainAxisAlignment.spaceAround,
-//                 children: List.generate(
-//                   state.getQuestionModel!.sections!.length,
-//                   (index) {
-//                     final bool isTabEnabled = index <= latestVisitedTabIndex;
-//                     return GestureDetector(
-//                       onTap: isTabEnabled
-//                           ? () {
-//                               context.read<QuestionTabBloc>().add(
-//                                     QuestionTabEvent.selectTab(index),
-//                                   );
-//                               // Add logic to handle tab selection
-//                             }
-//                           : null,
-//                       child: ClipRRect(
-//                         borderRadius: kRadius15,
-//                         child: ColoredBox(
-//                           color: index == state.selectedTabIndex
-//                               ? kGreenPrimary
-//                               : isTabEnabled
-//                                   ? knill
-//                                   : klightgrey.withOpacity(0.5),
-//                           child: Padding(
-//                             padding: const EdgeInsets.symmetric(
-//                               horizontal: 10,
-//                               vertical: 3,
-//                             ),
-//                             child: Text(
-//                               state.getQuestionModel!.sections![index].heading!,
-//                               style: textHeadSemiBold1.copyWith(
-//                                 color: index == state.selectedTabIndex
-//                                     ? kWhite
-//                                     : isTabEnabled
-//                                         ? kBlack
-//                                         : klightgrey,
-//                               ),
-//                             ),
-//                           ),
-//                         ),
-//                       ),
-//                     );
-//                   },
-//                 ),
-//               ),
-//             ),
-//           );
-//         } else {
-//           return const Text('No questions');
-//         }
-//       },
-//     );
-//   }
-// }
-
 class QuestionScreenTabs extends StatelessWidget {
   const QuestionScreenTabs({super.key});
 
@@ -260,18 +201,6 @@ class QuestionScreenTabs extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<QuestionTabBloc, QuestionTabState>(
       builder: (context, state) {
-        if (state.isLoading) {
-          return const LoadingAnimation(width: 100);
-        }
-        if (state.hasError) {
-          return const Center(
-            child: Text('Fetch  Error got'),
-          );
-        } else if (state.getQuestionModel != null ||
-            state.getQuestionModel!.sections != null) {
-          const Text('No question');
-          log('queston tab lngth ${state.getQuestionModel!.sections!.length}');
-        }
         return SizedBox(
           width: sWidth,
           child: FittedBox(

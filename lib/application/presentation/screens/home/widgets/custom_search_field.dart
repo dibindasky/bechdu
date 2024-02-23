@@ -1,7 +1,9 @@
+import 'package:beachdu/application/business_logic/location/location_bloc.dart';
 import 'package:beachdu/application/presentation/routes/routes.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
 
 class CustomSearchFieldHome extends StatelessWidget {
@@ -32,29 +34,6 @@ class CustomSearchFieldHome extends StatelessWidget {
                 border: InputBorder.none,
               ),
             ),
-            // Container(
-            //   height: 50,
-            //   decoration: BoxDecoration(
-            //     color: klightwhite,
-            //     borderRadius: kRadius10,
-            //   ),
-            //   child: Row(
-            //     children: [
-            //       kWidth10,
-            //       const Icon(
-            //         Icons.search,
-            //         color: kBlack,
-            //       ),
-            //       kWidth20,
-            //       Text(
-            //         'Search products',
-            //         style: textHeadRegular1.copyWith(
-            //           color: kBlack,
-            //         ),
-            //       ),
-            //     ],
-            //   ),
-            // ),
           ),
           Container(
             decoration: BoxDecoration(
@@ -67,6 +46,9 @@ class CustomSearchFieldHome extends StatelessWidget {
                 color: kBlack,
               ),
               onPressed: () {
+                context
+                    .read<LocationBloc>()
+                    .add(const LocationEvent.locationPick());
                 Navigator.of(context).pushNamed(Routes.location);
               },
             ),

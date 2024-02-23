@@ -1,3 +1,4 @@
+import 'package:beachdu/application/presentation/screens/home/location_ssetup/pincode_selection.dart';
 import 'package:beachdu/application/presentation/screens/onboarding_screens/onboarding_screens.dart';
 import 'package:beachdu/application/presentation/routes/animated_routes.dart';
 import 'package:beachdu/application/presentation/routes/routes.dart';
@@ -20,7 +21,7 @@ import 'package:flutter/material.dart';
 
 class RouteGenerator {
   Route onGenerateRoute(RouteSettings settings) {
-    // final arguments = settings.arguments;
+    final arguments = settings.arguments;
     switch (settings.name) {
       case Routes.initial:
         return MaterialPageRoute(
@@ -31,6 +32,13 @@ class RouteGenerator {
             builder: (context) => const BechDuUserOnBoardingScreens());
       case Routes.bottomBar:
         return fadePageRoute(screen: const ScreenBottomNavigation());
+      case Routes.pincode:
+        return arguments is String
+            ? fadePageRoute(
+                screen: ScreenPinCodes(
+                cityName: arguments,
+              ))
+            : _errorScreen();
       case Routes.signInOrLogin:
         return fadePageRoute(screen: ScreenLogin());
       case Routes.otpVerification:
@@ -38,7 +46,7 @@ class RouteGenerator {
       case Routes.homeScreen:
         return fadePageRoute(screen: const ScreenHome());
       case Routes.location:
-        return fadePageRoute(screen: const LocationCityChoosing());
+        return fadePageRoute(screen: const ScreenLocations());
       case Routes.pickUpDetailScreen:
         return fadePageRoute(screen: const ScreenPickUp());
       case Routes.questions:

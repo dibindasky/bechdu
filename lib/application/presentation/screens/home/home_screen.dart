@@ -1,4 +1,3 @@
-import 'package:beachdu/application/presentation/routes/routes.dart';
 import 'package:beachdu/application/presentation/screens/home/recomended/recomented_home.dart';
 import 'package:beachdu/application/presentation/screens/home/widgets/caurosal_offers_home.dart';
 import 'package:beachdu/application/presentation/screens/home/widgets/custom_search_field.dart';
