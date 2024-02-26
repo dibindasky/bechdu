@@ -1,14 +1,17 @@
+import 'package:beachdu/application/business_logic/location/location_bloc.dart';
+import 'package:beachdu/application/business_logic/profile/profile_bloc.dart';
 import 'package:beachdu/application/presentation/screens/pickup/pickup_screen.dart';
-import 'package:beachdu/application/presentation/screens/pickup/widgets/textfeild_custom.dart';
-import 'package:beachdu/application/presentation/utils/colors.dart';
+import 'package:beachdu/application/presentation/screens/profile/add_address/add_address.dart';
+import 'package:beachdu/application/presentation/screens/profile/address_listview.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/application/presentation/utils/custom_button.dart';
+import 'package:beachdu/application/presentation/utils/snackbar/snackbar.dart';
+import 'package:beachdu/domain/model/address_model/address_creation_request_model/address_creation_request_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class StreetAddress extends StatelessWidget {
-  const StreetAddress({
-    super.key,
-  });
+  const StreetAddress({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,130 +19,53 @@ class StreetAddress extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const PickupScreenAddressListView(),
+          const AddressListView(),
           kHeight20,
-          Text(
-            'STREET ADDRESS',
-            style: textHeadMedium1.copyWith(
-              fontSize: sWidth * .033,
-            ),
-          ),
-          const TTextFormField(
-            text: 'Aluva',
-          ),
-          Text(
-            'STATE',
-            style: textHeadMedium1.copyWith(
-              fontSize: sWidth * .033,
-            ),
-          ),
-          const TTextFormField(
-            text: 'Ernakulam',
-          ),
-          Text(
-            'CITY',
-            style: textHeadMedium1.copyWith(
-              fontSize: sWidth * .033,
-            ),
-          ),
-          const TTextFormField(
-            text: 'Aluva',
-          ),
-          Text(
-            'PINCODE',
-            style: textHeadMedium1.copyWith(
-              fontSize: sWidth * .033,
-            ),
-          ),
-          const TTextFormField(
-            inputType: TextInputType.number,
-            text: 'xxxxxx',
-          ),
+          const AddresCreationFields(),
           Align(
             alignment: Alignment.center,
             child: CustomButton(
-                onPressed: () {
+              onPressed: () {
+                if (context
+                        .read<ProfileBloc>()
+                        .addressController
+                        .text
+                        .isNotEmpty &&
+                    context.read<LocationBloc>().pincode != null &&
+                    context.read<LocationBloc>().location != null &&
+                    context.read<LocationBloc>().pincode!.isNotEmpty &&
+                    context.read<LocationBloc>().location!.isNotEmpty) {
+                  //Entered data concatination
+                  final address =
+                      '${context.read<ProfileBloc>().addressController.text.trim()} ${context.read<LocationBloc>().location} ${context.read<LocationBloc>().pincode}';
+                  //Oblect creation
+                  AddressCreationRequestModel addressCreationRequestModel =
+                      AddressCreationRequestModel(
+                    address: address,
+                  );
+                  //Bloc event call
+                  context.read<ProfileBloc>().add(
+                        ProfileEvent.addAddress(
+                          addressCreationRequestModel:
+                              addressCreationRequestModel,
+                        ),
+                      );
+                  //Change notifier to next builder
                   pickupDetailChangeNotifier.value =
                       PickupDetailContainers.cashOrUPI;
                   pickupDetailChangeNotifier.notifyListeners();
-                },
-                text: 'Continue'),
+                  // Clear selected fields after adding address
+                  context.read<ProfileBloc>().addressController.clear();
+                  context.read<LocationBloc>().add(const LocationEvent.clear());
+                } else {
+                  showSnack(context: context, message: "please fill feilds");
+                }
+              },
+              text: 'Continue',
+            ),
           ),
         ],
       ),
-    );
-  }
-}
-
-class PickupScreenAddressListView extends StatefulWidget {
-  const PickupScreenAddressListView({
-    super.key,
-  });
-
-  @override
-  State<PickupScreenAddressListView> createState() =>
-      _PickupScreenAddressListViewState();
-}
-
-class _PickupScreenAddressListViewState
-    extends State<PickupScreenAddressListView> {
-  int isSelected = 0;
-  @override
-  Widget build(BuildContext context) {
-    return ListView.separated(
-      separatorBuilder: (context, index) {
-        return kHeight20;
-      },
-      itemCount: 2,
-      shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
-      itemBuilder: (context, index) {
-        final listAddress = [
-          'Zikrabyte Solutions, jayanagar 9th block, bangalore',
-          'Zikrabyte Solutions,'
-        ];
-        return InkWell(
-          onTap: () {
-            setState(() {
-              isSelected = index;
-            });
-          },
-          child: Material(
-            elevation: 1,
-            child: ClipRRect(
-              borderRadius: kRadius10,
-              child: ColoredBox(
-                color: isSelected == index ? klightgrey : kWhite,
-                child: Padding(
-                  padding: const EdgeInsets.all(12),
-                  child: Align(
-                    alignment: Alignment.centerLeft,
-                    child: FittedBox(
-                      child: Row(
-                        children: [
-                          const CircleAvatar(
-                            radius: 17,
-                            child: Icon(
-                              Icons.location_pin,
-                              color: kGreenPrimary,
-                            ),
-                          ),
-                          kWidth10,
-                          Text(
-                            listAddress[index],
-                            style: textHeadMedium1,
-                            textAlign: TextAlign.center,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ),
-        );
-      },
     );
   }
 }

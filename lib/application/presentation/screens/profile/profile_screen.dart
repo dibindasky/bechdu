@@ -1,8 +1,11 @@
 import 'dart:async';
 import 'package:beachdu/application/business_logic/auth/auth_bloc.dart';
+import 'package:beachdu/application/business_logic/location/location_bloc.dart';
+import 'package:beachdu/application/business_logic/profile/profile_bloc.dart';
 import 'package:beachdu/application/presentation/routes/routes.dart';
 import 'package:beachdu/application/presentation/screens/pickup/pickup_contaners/street_address.dart';
 import 'package:beachdu/application/presentation/screens/profile/add_address/add_address.dart';
+import 'package:beachdu/application/presentation/screens/profile/address_listview.dart';
 import 'package:beachdu/application/presentation/screens/profile/widgets/containers.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
@@ -29,7 +32,7 @@ class PrfileLastBuilder extends StatelessWidget {
 
 List<Widget> profileSectionList = [
   const ScreenProfile(),
-  AddAddressScreen(),
+  const AddAddressScreen(),
 ];
 
 class ScreenProfile extends StatelessWidget {
@@ -37,6 +40,11 @@ class ScreenProfile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback(
+      (timeStamp) {
+        context.read<ProfileBloc>().add(const ProfileEvent.getUserInfo());
+      },
+    );
     return WillPopScope(
       onWillPop: () async {
         bool shouldPop = await showConfirmationDialog(context);
@@ -52,101 +60,101 @@ class ScreenProfile extends StatelessWidget {
           ),
         ),
         body: SafeArea(
-          child: SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 15,
-              ),
-              child: Column(
-                children: [
-                  CircleAvatar(
-                    backgroundColor: kGreenPrimary,
-                    radius: 58,
-                    child: CircleAvatar(
-                      backgroundColor: kBluePrimary,
-                      radius: 50,
-                      child: Text(
-                        'JG',
-                        style: textHeadBoldBig.copyWith(
-                          fontSize: sWidth * .1,
+            child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 15,
+            ),
+            child: Column(
+              children: [
+                CircleAvatar(
+                  backgroundColor: kGreenPrimary,
+                  radius: 58,
+                  child: CircleAvatar(
+                    backgroundColor: kBluePrimary,
+                    radius: 50,
+                    child: Text(
+                      'JG',
+                      style: textHeadBoldBig.copyWith(
+                        fontSize: sWidth * .1,
+                        color: kWhite,
+                      ),
+                    ),
+                  ),
+                ),
+                kHeight30,
+                const Containers(),
+                kHeight20,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Address',
+                      style: textHeadRegular1,
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        context
+                            .read<LocationBloc>()
+                            .add(const LocationEvent.locationPick());
+                        profileScreensNotifier.value = 1;
+                        profileScreensNotifier.notifyListeners();
+                      },
+                      child: const CircleAvatar(
+                        backgroundColor: kBlack,
+                        radius: 12,
+                        child: Icon(
+                          Icons.add,
                           color: kWhite,
                         ),
                       ),
                     ),
-                  ),
-                  kHeight30,
-                  const Containers(),
-                  kHeight20,
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'Address',
-                        style: textHeadRegular1,
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          profileScreensNotifier.value = 1;
-                          profileScreensNotifier.notifyListeners();
-                        },
-                        child: const CircleAvatar(
-                          backgroundColor: kBlack,
-                          radius: 12,
-                          child: Icon(
-                            Icons.add,
-                            color: kWhite,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  kHeight10,
-                  const PickupScreenAddressListView(),
-                  kHeight10,
-                  const Divider(),
-                  kHeight10,
-                  GestureDetector(
-                    onTap: () {
-                      showConfirmationDialog(
-                        context,
-                        heading: 'Are you really want to log out from Bechdu',
-                        onPressed: () {
-                          logOut(context);
-                        },
-                      );
-                    },
-                    child: Container(
-                      padding: const EdgeInsets.only(left: 10),
-                      height: 45,
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        color: klightwhite,
-                        border: Border.all(color: klightgrey),
-                        borderRadius: kRadius10,
-                      ),
-                      child: Center(
-                        child: Text(
-                          'Log out',
-                          style: textHeadBold1,
-                        ),
+                  ],
+                ),
+                kHeight20,
+                const AddressListView(),
+                kHeight30,
+                GestureDetector(
+                  onTap: () {
+                    showConfirmationDialog(
+                      context,
+                      heading: 'Are you really want to log out from Bechdu',
+                      onPressed: () {
+                        logOut(context);
+                      },
+                    );
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.only(left: 10),
+                    height: 45,
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      color: klightwhite,
+                      border: Border.all(color: klightgrey),
+                      borderRadius: kRadius10,
+                    ),
+                    child: Center(
+                      child: Text(
+                        'Log out',
+                        style: textHeadBold1,
                       ),
                     ),
                   ),
-                  kHeight30,
-                  CustomButton(onPressed: () {}, text: 'Save'),
-                  kHeight20,
-                  //if (profileScreensNotifier.value == 1) AddAddressScreen(),
-                ],
-              ),
+                ),
+                kHeight30,
+                CustomButton(onPressed: () {}, text: 'Save'),
+                kHeight20,
+              ],
             ),
           ),
-        ),
+        )),
       ),
     );
   }
 
   Future<void> logOut(BuildContext context) async {
     context.read<AuthBloc>().add(const LogOut());
-    Navigator.pushReplacementNamed(context, Routes.signInOrLogin);
+    Navigator.pushReplacementNamed(context, Routes.signInOrLogin,
+        arguments: true);
   }
 }

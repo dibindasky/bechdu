@@ -9,9 +9,9 @@ part of 'abandend_order_request_model.dart';
 AbandendOrderRequestModel _$AbandendOrderRequestModelFromJson(
         Map<String, dynamic> json) =>
     AbandendOrderRequestModel(
-      user: json['user'] == null
+      abendendOrderUser: json['user'] == null
           ? null
-          : User.fromJson(json['user'] as Map<String, dynamic>),
+          : AbendendOrderUser.fromJson(json['user'] as Map<String, dynamic>),
       productDetails: json['productDetails'] == null
           ? null
           : ProductDetails.fromJson(
@@ -21,6 +21,6 @@ AbandendOrderRequestModel _$AbandendOrderRequestModelFromJson(
 Map<String, dynamic> _$AbandendOrderRequestModelToJson(
         AbandendOrderRequestModel instance) =>
     <String, dynamic>{
-      'user': instance.user,
+      'user': instance.abendendOrderUser,
       'productDetails': instance.productDetails,
     };

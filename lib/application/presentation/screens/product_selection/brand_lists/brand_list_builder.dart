@@ -30,8 +30,7 @@ class BrandListviewBuilder extends StatelessWidget {
           return Center(child: Text(state.message ?? errorMessage));
         } else {
           if (state.filteredBrands == null ||
-              state.getSingleCategoryResponce == null ||
-              state.getSingleCategoryResponce!.brands == null) {
+              state.getSingleCategoryResponce == null) {
             return Align(
               alignment: Alignment.bottomCenter,
               child: LottieBuilder.asset(emptyLottie),
@@ -46,93 +45,113 @@ class BrandListviewBuilder extends StatelessWidget {
                 kHeight10,
                 Text('Showing All Brands', style: textHeadBold1),
                 kHeight10,
-                GridView.builder(
-                  physics: const NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  itemCount: brands.length,
-                  scrollDirection: Axis.vertical,
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    crossAxisSpacing: 10,
-                    mainAxisSpacing: 10,
-                  ),
-                  itemBuilder: (context, index) {
-                    String base64String = brands[index].brandImage!;
-                    base64String = base64String.replaceFirst(
-                        RegExp(r'data:image/[^;]+;base64,'), '');
-                    return BlocBuilder<HomeBloc, HomeState>(
-                      builder: (context, homeBloc) {
-                        return InkWell(
-                          onTap: () {
-                            final categoryType =
-                                context.read<CategoryBlocBloc>().categoryType ??
-                                    'mobile';
-                            context.read<CategoryBlocBloc>().barndName =
-                                brands[index].brandName!;
-                            context.read<CategoryBlocBloc>().add(GetProducts(
-                                  categoryType: categoryType,
-                                  brandName: brands[index].brandName!,
-                                ));
+                state.filteredBrands!.isEmpty
+                    ? LottieBuilder.asset(emptyLottie)
+                    : GridView.builder(
+                        physics: const NeverScrollableScrollPhysics(),
+                        shrinkWrap: true,
+                        itemCount: brands.length,
+                        scrollDirection: Axis.vertical,
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                          crossAxisSpacing: 10,
+                          mainAxisSpacing: 10,
+                        ),
+                        itemBuilder: (context, index) {
+                          String base64String = brands[index].brandImage!;
+                          base64String = base64String.replaceFirst(
+                              RegExp(r'data:image/[^;]+;base64,'), '');
+                          return BlocBuilder<HomeBloc, HomeState>(
+                            builder: (context, homeBloc) {
+                              return InkWell(
+                                onTap: () {
+                                  final categoryType = context
+                                          .read<CategoryBlocBloc>()
+                                          .categoryType ??
+                                      'mobile';
+                                  context
+                                      .read<CategoryBlocBloc>()
+                                      .categoryType = categoryType;
+                                  context.read<CategoryBlocBloc>().barndName =
+                                      brands[index].brandName!;
+                                  context
+                                      .read<CategoryBlocBloc>()
+                                      .add(GetProducts(
+                                        categoryType: categoryType,
+                                        brandName: brands[index].brandName!,
+                                      ));
 
-                            context.read<CategoryBlocBloc>().add(GetSeries(
-                                brandName:
-                                    context.read<CategoryBlocBloc>().barndName!,
-                                categoryType: categoryType));
+                                  //Series fetching for selected products
+                                  context
+                                      .read<CategoryBlocBloc>()
+                                      .add(GetSeries(
+                                        brandName: context
+                                            .read<CategoryBlocBloc>()
+                                            .barndName!,
+                                        categoryType: context
+                                            .read<CategoryBlocBloc>()
+                                            .categoryType!,
+                                      ));
 
-                            //Getting product screen
-                            brandandProductValueNotifier.value = 1;
-                            brandandProductValueNotifier.notifyListeners();
+                                  //Getting product screen
+                                  brandandProductValueNotifier.value = 1;
+                                  brandandProductValueNotifier
+                                      .notifyListeners();
 
-                            // Reset question tab
-                            context
-                                .read<QuestionTabBloc>()
-                                .add(const ResetTabSelection());
-                          },
-                          child: Material(
-                            elevation: 1,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Center(
-                                  child: SizedBox(
-                                    width: sWidth * .5,
-                                    height: 100,
-                                    child: ClipRRect(
-                                      borderRadius: kRadius10,
-                                      child: ColoredBox(
-                                        color: klightgrey.withOpacity(.1),
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: Image.memory(
-                                            base64.decode(base64String),
-                                            errorBuilder:
-                                                (context, error, stackTrace) {
-                                              return const Icon(Icons.error);
-                                            },
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.all(10),
+                                  // Reset question tab
+                                  context
+                                      .read<QuestionTabBloc>()
+                                      .add(const ResetTabSelection());
+                                },
+                                child: Material(
+                                  elevation: 1,
                                   child: Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      Text(brands[index].brandName!),
+                                      Center(
+                                        child: SizedBox(
+                                          width: sWidth * .5,
+                                          height: 100,
+                                          child: ClipRRect(
+                                            borderRadius: kRadius10,
+                                            child: ColoredBox(
+                                              color: klightgrey.withOpacity(.1),
+                                              child: Padding(
+                                                padding:
+                                                    const EdgeInsets.all(8.0),
+                                                child: Image.memory(
+                                                  base64.decode(base64String),
+                                                  errorBuilder: (context, error,
+                                                      stackTrace) {
+                                                    return const Icon(
+                                                        Icons.error);
+                                                  },
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.all(10),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(brands[index].brandName!),
+                                          ],
+                                        ),
+                                      ),
                                     ],
                                   ),
                                 ),
-                              ],
-                            ),
-                          ),
-                        );
-                      },
-                    );
-                  },
-                ),
+                              );
+                            },
+                          );
+                        },
+                      ),
               ],
             );
           }

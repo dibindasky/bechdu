@@ -5,8 +5,8 @@ import 'package:beachdu/domain/model/category_model/single_category_brands_respo
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class ProductSearchFiel extends StatelessWidget {
-  const ProductSearchFiel({Key? key}) : super(key: key);
+class ProductSearchField extends StatelessWidget {
+  const ProductSearchField({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +46,21 @@ class ProductSearchFiel extends StatelessWidget {
                         ));
                   },
                   value: context.read<CategoryBlocBloc>().barndName,
-                  items: buildDropdownItems(brands),
+                  items: brands.map((brand) {
+                    return DropdownMenuItem<String>(
+                      value: brand.brandName,
+                      child: Text(brand.brandName!),
+                      onTap: () {
+                        //Series fetching for selected products
+                        context.read<CategoryBlocBloc>().add(GetSeries(
+                              brandName: brand.brandName!,
+                              categoryType: context
+                                  .read<CategoryBlocBloc>()
+                                  .categoryType!,
+                            ));
+                      },
+                    );
+                  }).toList(),
                   hint: Text(
                     context.read<CategoryBlocBloc>().barndName!,
                   ),
@@ -70,15 +84,5 @@ class ProductSearchFiel extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  List<DropdownMenuItem<String>> buildDropdownItems(List<Brands> brands) {
-    return brands.map((brand) {
-      return DropdownMenuItem<String>(
-        onTap: () {},
-        value: brand.brandName,
-        child: Text(brand.brandName!),
-      );
-    }).toList();
   }
 }

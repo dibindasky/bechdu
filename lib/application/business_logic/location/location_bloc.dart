@@ -14,13 +14,22 @@ part 'location_bloc.freezed.dart';
 class LocationBloc extends Bloc<LocationEvent, LocationState> {
   final LocationRepo locationRepo;
   String? cityName;
+  String? location;
+  String? pincode;
   List<String> pinCodes = [];
   List<String> locations = [];
   LocationBloc(this.locationRepo) : super(LocationState.initial()) {
-    on<LocationPick>(locationPick);
-    on<PinCodePick>(pincodePick);
+    on<LocationPick>(locationLoad);
+    on<PinCodePick>(pincodeLoad);
     on<LocationSearch>(locationSearch);
     on<PincodeSearch>(pincodeSearch);
+    on<PincodeSave>(pincodeSave);
+    on<Clear>(clear);
+  }
+
+  FutureOr<void> clear(Clear event, emit) {
+    pincode = null;
+    location = null;
   }
 
   FutureOr<void> pincodeSearch(PincodeSearch event, emit) {
@@ -39,30 +48,31 @@ class LocationBloc extends Bloc<LocationEvent, LocationState> {
     emit(state.copyWith(filteredLocations: filteredLocations));
   }
 
-  FutureOr<void> locationPick(LocationPick event, emit) async {
+  FutureOr<void> locationLoad(LocationPick event, emit) async {
     emit(state.copyWith(isLoading: true, hasError: false));
     final data = await locationRepo.locationPick();
-    log(data.toString());
+    //log(data.toString());
     data.fold((falure) {
       emit(state.copyWith(
         hasError: true,
         isLoading: false,
       ));
-      log('falure $falure');
+      //log('falure $falure');
     }, (successLocation) async {
       locations = successLocation;
       emit(
         state.copyWith(
           hasError: false,
           isLoading: false,
-          locations: successLocation,
+          filteredLocations: successLocation,
         ),
       );
+
       log('successLocation $successLocation');
     });
   }
 
-  FutureOr<void> pincodePick(PinCodePick event, emit) async {
+  FutureOr<void> pincodeLoad(PinCodePick event, emit) async {
     emit(state.copyWith(isLoading: true, hasError: false));
     final data = await locationRepo.pincodePick(
       cityName: event.cityName,
@@ -81,11 +91,16 @@ class LocationBloc extends Bloc<LocationEvent, LocationState> {
         state.copyWith(
           hasError: false,
           isLoading: false,
-          pincodes: successPincodes,
+          filteredPincodes: successPincodes,
         ),
       );
-      await SecureSotrage.saveLocationAndPincode(location: cityName);
+
       log('successPincodes $successPincodes');
     });
+  }
+
+  FutureOr<void> pincodeSave(PincodeSave event, emit) async {
+    await SecureSotrage.setPincode(pincode: event.pinCode);
+    log('pincodeSave bloc ${event.pinCode}');
   }
 }

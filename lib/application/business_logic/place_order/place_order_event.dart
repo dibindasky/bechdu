@@ -5,4 +5,7 @@ class PlaceOrderEvent with _$PlaceOrderEvent {
   const factory PlaceOrderEvent.getPromoCode({
     required PromoCodeRequestModel promoCodeRequestModel,
   }) = GetPromoCode;
+  const factory PlaceOrderEvent.abandendOrder({
+    required AbandendOrderRequestModel abandendOrderRequestModel,
+  }) = AbandendOrder;
 }

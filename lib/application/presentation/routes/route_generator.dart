@@ -34,13 +34,12 @@ class RouteGenerator {
         return fadePageRoute(screen: const ScreenBottomNavigation());
       case Routes.pincode:
         return arguments is String
-            ? fadePageRoute(
-                screen: ScreenPinCodes(
-                cityName: arguments,
-              ))
+            ? fadePageRoute(screen: ScreenPinCodes(cityName: arguments))
             : _errorScreen();
       case Routes.signInOrLogin:
-        return fadePageRoute(screen: ScreenLogin());
+        return arguments is bool
+            ? fadePageRoute(screen: ScreenLogin(isFromInside: arguments))
+            : _errorScreen();
       case Routes.otpVerification:
         return fadePageRoute(screen: const OTPScreen());
       case Routes.homeScreen:
@@ -64,7 +63,7 @@ class RouteGenerator {
       case Routes.successOder:
         return fadePageRoute(screen: const SuuccessOrderPlaced());
       case Routes.addressAdd:
-        return fadePageRoute(screen: AddAddressScreen());
+        return fadePageRoute(screen: const AddAddressScreen());
       default:
         return _errorScreen();
     }

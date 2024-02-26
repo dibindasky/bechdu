@@ -26,8 +26,13 @@ mixin _$QuestionTabEvent {
     required TResult Function(SelectedOption selectedOption) markedQuestions,
     required TResult Function(SelectedOption selectedOption) yesOrNo,
     required TResult Function(int countQuestionNumber) countQuestionNumber,
-    required TResult Function(PickupQuestionModel pickupQuestionModel)
+    required TResult Function(
+            AbandendOrderRequestModel abandendOrderRequestModel,
+            PickupQuestionModel pickupQuestionModel)
         getBasePrice,
+    required TResult Function(
+            AbandendOrderRequestModel abandendOrderRequestModel)
+        abandentOrder,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -39,7 +44,11 @@ mixin _$QuestionTabEvent {
     TResult? Function(SelectedOption selectedOption)? markedQuestions,
     TResult? Function(SelectedOption selectedOption)? yesOrNo,
     TResult? Function(int countQuestionNumber)? countQuestionNumber,
-    TResult? Function(PickupQuestionModel pickupQuestionModel)? getBasePrice,
+    TResult? Function(AbandendOrderRequestModel abandendOrderRequestModel,
+            PickupQuestionModel pickupQuestionModel)?
+        getBasePrice,
+    TResult? Function(AbandendOrderRequestModel abandendOrderRequestModel)?
+        abandentOrder,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -51,7 +60,11 @@ mixin _$QuestionTabEvent {
     TResult Function(SelectedOption selectedOption)? markedQuestions,
     TResult Function(SelectedOption selectedOption)? yesOrNo,
     TResult Function(int countQuestionNumber)? countQuestionNumber,
-    TResult Function(PickupQuestionModel pickupQuestionModel)? getBasePrice,
+    TResult Function(AbandendOrderRequestModel abandendOrderRequestModel,
+            PickupQuestionModel pickupQuestionModel)?
+        getBasePrice,
+    TResult Function(AbandendOrderRequestModel abandendOrderRequestModel)?
+        abandentOrder,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -65,6 +78,7 @@ mixin _$QuestionTabEvent {
     required TResult Function(YesOrNo value) yesOrNo,
     required TResult Function(CountQuestionNumber value) countQuestionNumber,
     required TResult Function(GetBasePrice value) getBasePrice,
+    required TResult Function(AbandentOrder value) abandentOrder,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -77,6 +91,7 @@ mixin _$QuestionTabEvent {
     TResult? Function(YesOrNo value)? yesOrNo,
     TResult? Function(CountQuestionNumber value)? countQuestionNumber,
     TResult? Function(GetBasePrice value)? getBasePrice,
+    TResult? Function(AbandentOrder value)? abandentOrder,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -89,6 +104,7 @@ mixin _$QuestionTabEvent {
     TResult Function(YesOrNo value)? yesOrNo,
     TResult Function(CountQuestionNumber value)? countQuestionNumber,
     TResult Function(GetBasePrice value)? getBasePrice,
+    TResult Function(AbandentOrder value)? abandentOrder,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -158,8 +174,13 @@ class _$TabChangeImpl implements TabChange {
     required TResult Function(SelectedOption selectedOption) markedQuestions,
     required TResult Function(SelectedOption selectedOption) yesOrNo,
     required TResult Function(int countQuestionNumber) countQuestionNumber,
-    required TResult Function(PickupQuestionModel pickupQuestionModel)
+    required TResult Function(
+            AbandendOrderRequestModel abandendOrderRequestModel,
+            PickupQuestionModel pickupQuestionModel)
         getBasePrice,
+    required TResult Function(
+            AbandendOrderRequestModel abandendOrderRequestModel)
+        abandentOrder,
   }) {
     return tabChange();
   }
@@ -174,7 +195,11 @@ class _$TabChangeImpl implements TabChange {
     TResult? Function(SelectedOption selectedOption)? markedQuestions,
     TResult? Function(SelectedOption selectedOption)? yesOrNo,
     TResult? Function(int countQuestionNumber)? countQuestionNumber,
-    TResult? Function(PickupQuestionModel pickupQuestionModel)? getBasePrice,
+    TResult? Function(AbandendOrderRequestModel abandendOrderRequestModel,
+            PickupQuestionModel pickupQuestionModel)?
+        getBasePrice,
+    TResult? Function(AbandendOrderRequestModel abandendOrderRequestModel)?
+        abandentOrder,
   }) {
     return tabChange?.call();
   }
@@ -189,7 +214,11 @@ class _$TabChangeImpl implements TabChange {
     TResult Function(SelectedOption selectedOption)? markedQuestions,
     TResult Function(SelectedOption selectedOption)? yesOrNo,
     TResult Function(int countQuestionNumber)? countQuestionNumber,
-    TResult Function(PickupQuestionModel pickupQuestionModel)? getBasePrice,
+    TResult Function(AbandendOrderRequestModel abandendOrderRequestModel,
+            PickupQuestionModel pickupQuestionModel)?
+        getBasePrice,
+    TResult Function(AbandendOrderRequestModel abandendOrderRequestModel)?
+        abandentOrder,
     required TResult orElse(),
   }) {
     if (tabChange != null) {
@@ -209,6 +238,7 @@ class _$TabChangeImpl implements TabChange {
     required TResult Function(YesOrNo value) yesOrNo,
     required TResult Function(CountQuestionNumber value) countQuestionNumber,
     required TResult Function(GetBasePrice value) getBasePrice,
+    required TResult Function(AbandentOrder value) abandentOrder,
   }) {
     return tabChange(this);
   }
@@ -224,6 +254,7 @@ class _$TabChangeImpl implements TabChange {
     TResult? Function(YesOrNo value)? yesOrNo,
     TResult? Function(CountQuestionNumber value)? countQuestionNumber,
     TResult? Function(GetBasePrice value)? getBasePrice,
+    TResult? Function(AbandentOrder value)? abandentOrder,
   }) {
     return tabChange?.call(this);
   }
@@ -239,6 +270,7 @@ class _$TabChangeImpl implements TabChange {
     TResult Function(YesOrNo value)? yesOrNo,
     TResult Function(CountQuestionNumber value)? countQuestionNumber,
     TResult Function(GetBasePrice value)? getBasePrice,
+    TResult Function(AbandentOrder value)? abandentOrder,
     required TResult orElse(),
   }) {
     if (tabChange != null) {
@@ -298,8 +330,13 @@ class _$ResetTabSelectionImpl implements ResetTabSelection {
     required TResult Function(SelectedOption selectedOption) markedQuestions,
     required TResult Function(SelectedOption selectedOption) yesOrNo,
     required TResult Function(int countQuestionNumber) countQuestionNumber,
-    required TResult Function(PickupQuestionModel pickupQuestionModel)
+    required TResult Function(
+            AbandendOrderRequestModel abandendOrderRequestModel,
+            PickupQuestionModel pickupQuestionModel)
         getBasePrice,
+    required TResult Function(
+            AbandendOrderRequestModel abandendOrderRequestModel)
+        abandentOrder,
   }) {
     return resetTabSelection();
   }
@@ -314,7 +351,11 @@ class _$ResetTabSelectionImpl implements ResetTabSelection {
     TResult? Function(SelectedOption selectedOption)? markedQuestions,
     TResult? Function(SelectedOption selectedOption)? yesOrNo,
     TResult? Function(int countQuestionNumber)? countQuestionNumber,
-    TResult? Function(PickupQuestionModel pickupQuestionModel)? getBasePrice,
+    TResult? Function(AbandendOrderRequestModel abandendOrderRequestModel,
+            PickupQuestionModel pickupQuestionModel)?
+        getBasePrice,
+    TResult? Function(AbandendOrderRequestModel abandendOrderRequestModel)?
+        abandentOrder,
   }) {
     return resetTabSelection?.call();
   }
@@ -329,7 +370,11 @@ class _$ResetTabSelectionImpl implements ResetTabSelection {
     TResult Function(SelectedOption selectedOption)? markedQuestions,
     TResult Function(SelectedOption selectedOption)? yesOrNo,
     TResult Function(int countQuestionNumber)? countQuestionNumber,
-    TResult Function(PickupQuestionModel pickupQuestionModel)? getBasePrice,
+    TResult Function(AbandendOrderRequestModel abandendOrderRequestModel,
+            PickupQuestionModel pickupQuestionModel)?
+        getBasePrice,
+    TResult Function(AbandendOrderRequestModel abandendOrderRequestModel)?
+        abandentOrder,
     required TResult orElse(),
   }) {
     if (resetTabSelection != null) {
@@ -349,6 +394,7 @@ class _$ResetTabSelectionImpl implements ResetTabSelection {
     required TResult Function(YesOrNo value) yesOrNo,
     required TResult Function(CountQuestionNumber value) countQuestionNumber,
     required TResult Function(GetBasePrice value) getBasePrice,
+    required TResult Function(AbandentOrder value) abandentOrder,
   }) {
     return resetTabSelection(this);
   }
@@ -364,6 +410,7 @@ class _$ResetTabSelectionImpl implements ResetTabSelection {
     TResult? Function(YesOrNo value)? yesOrNo,
     TResult? Function(CountQuestionNumber value)? countQuestionNumber,
     TResult? Function(GetBasePrice value)? getBasePrice,
+    TResult? Function(AbandentOrder value)? abandentOrder,
   }) {
     return resetTabSelection?.call(this);
   }
@@ -379,6 +426,7 @@ class _$ResetTabSelectionImpl implements ResetTabSelection {
     TResult Function(YesOrNo value)? yesOrNo,
     TResult Function(CountQuestionNumber value)? countQuestionNumber,
     TResult Function(GetBasePrice value)? getBasePrice,
+    TResult Function(AbandentOrder value)? abandentOrder,
     required TResult orElse(),
   }) {
     if (resetTabSelection != null) {
@@ -473,8 +521,13 @@ class _$GetQuestionsImpl implements GetQuestions {
     required TResult Function(SelectedOption selectedOption) markedQuestions,
     required TResult Function(SelectedOption selectedOption) yesOrNo,
     required TResult Function(int countQuestionNumber) countQuestionNumber,
-    required TResult Function(PickupQuestionModel pickupQuestionModel)
+    required TResult Function(
+            AbandendOrderRequestModel abandendOrderRequestModel,
+            PickupQuestionModel pickupQuestionModel)
         getBasePrice,
+    required TResult Function(
+            AbandendOrderRequestModel abandendOrderRequestModel)
+        abandentOrder,
   }) {
     return getQuestions(categoryType, product);
   }
@@ -489,7 +542,11 @@ class _$GetQuestionsImpl implements GetQuestions {
     TResult? Function(SelectedOption selectedOption)? markedQuestions,
     TResult? Function(SelectedOption selectedOption)? yesOrNo,
     TResult? Function(int countQuestionNumber)? countQuestionNumber,
-    TResult? Function(PickupQuestionModel pickupQuestionModel)? getBasePrice,
+    TResult? Function(AbandendOrderRequestModel abandendOrderRequestModel,
+            PickupQuestionModel pickupQuestionModel)?
+        getBasePrice,
+    TResult? Function(AbandendOrderRequestModel abandendOrderRequestModel)?
+        abandentOrder,
   }) {
     return getQuestions?.call(categoryType, product);
   }
@@ -504,7 +561,11 @@ class _$GetQuestionsImpl implements GetQuestions {
     TResult Function(SelectedOption selectedOption)? markedQuestions,
     TResult Function(SelectedOption selectedOption)? yesOrNo,
     TResult Function(int countQuestionNumber)? countQuestionNumber,
-    TResult Function(PickupQuestionModel pickupQuestionModel)? getBasePrice,
+    TResult Function(AbandendOrderRequestModel abandendOrderRequestModel,
+            PickupQuestionModel pickupQuestionModel)?
+        getBasePrice,
+    TResult Function(AbandendOrderRequestModel abandendOrderRequestModel)?
+        abandentOrder,
     required TResult orElse(),
   }) {
     if (getQuestions != null) {
@@ -524,6 +585,7 @@ class _$GetQuestionsImpl implements GetQuestions {
     required TResult Function(YesOrNo value) yesOrNo,
     required TResult Function(CountQuestionNumber value) countQuestionNumber,
     required TResult Function(GetBasePrice value) getBasePrice,
+    required TResult Function(AbandentOrder value) abandentOrder,
   }) {
     return getQuestions(this);
   }
@@ -539,6 +601,7 @@ class _$GetQuestionsImpl implements GetQuestions {
     TResult? Function(YesOrNo value)? yesOrNo,
     TResult? Function(CountQuestionNumber value)? countQuestionNumber,
     TResult? Function(GetBasePrice value)? getBasePrice,
+    TResult? Function(AbandentOrder value)? abandentOrder,
   }) {
     return getQuestions?.call(this);
   }
@@ -554,6 +617,7 @@ class _$GetQuestionsImpl implements GetQuestions {
     TResult Function(YesOrNo value)? yesOrNo,
     TResult Function(CountQuestionNumber value)? countQuestionNumber,
     TResult Function(GetBasePrice value)? getBasePrice,
+    TResult Function(AbandentOrder value)? abandentOrder,
     required TResult orElse(),
   }) {
     if (getQuestions != null) {
@@ -649,8 +713,13 @@ class _$GetAnswerCountImpl implements GetAnswerCount {
     required TResult Function(SelectedOption selectedOption) markedQuestions,
     required TResult Function(SelectedOption selectedOption) yesOrNo,
     required TResult Function(int countQuestionNumber) countQuestionNumber,
-    required TResult Function(PickupQuestionModel pickupQuestionModel)
+    required TResult Function(
+            AbandendOrderRequestModel abandendOrderRequestModel,
+            PickupQuestionModel pickupQuestionModel)
         getBasePrice,
+    required TResult Function(
+            AbandendOrderRequestModel abandendOrderRequestModel)
+        abandentOrder,
   }) {
     return getAnswerCount(answerCount);
   }
@@ -665,7 +734,11 @@ class _$GetAnswerCountImpl implements GetAnswerCount {
     TResult? Function(SelectedOption selectedOption)? markedQuestions,
     TResult? Function(SelectedOption selectedOption)? yesOrNo,
     TResult? Function(int countQuestionNumber)? countQuestionNumber,
-    TResult? Function(PickupQuestionModel pickupQuestionModel)? getBasePrice,
+    TResult? Function(AbandendOrderRequestModel abandendOrderRequestModel,
+            PickupQuestionModel pickupQuestionModel)?
+        getBasePrice,
+    TResult? Function(AbandendOrderRequestModel abandendOrderRequestModel)?
+        abandentOrder,
   }) {
     return getAnswerCount?.call(answerCount);
   }
@@ -680,7 +753,11 @@ class _$GetAnswerCountImpl implements GetAnswerCount {
     TResult Function(SelectedOption selectedOption)? markedQuestions,
     TResult Function(SelectedOption selectedOption)? yesOrNo,
     TResult Function(int countQuestionNumber)? countQuestionNumber,
-    TResult Function(PickupQuestionModel pickupQuestionModel)? getBasePrice,
+    TResult Function(AbandendOrderRequestModel abandendOrderRequestModel,
+            PickupQuestionModel pickupQuestionModel)?
+        getBasePrice,
+    TResult Function(AbandendOrderRequestModel abandendOrderRequestModel)?
+        abandentOrder,
     required TResult orElse(),
   }) {
     if (getAnswerCount != null) {
@@ -700,6 +777,7 @@ class _$GetAnswerCountImpl implements GetAnswerCount {
     required TResult Function(YesOrNo value) yesOrNo,
     required TResult Function(CountQuestionNumber value) countQuestionNumber,
     required TResult Function(GetBasePrice value) getBasePrice,
+    required TResult Function(AbandentOrder value) abandentOrder,
   }) {
     return getAnswerCount(this);
   }
@@ -715,6 +793,7 @@ class _$GetAnswerCountImpl implements GetAnswerCount {
     TResult? Function(YesOrNo value)? yesOrNo,
     TResult? Function(CountQuestionNumber value)? countQuestionNumber,
     TResult? Function(GetBasePrice value)? getBasePrice,
+    TResult? Function(AbandentOrder value)? abandentOrder,
   }) {
     return getAnswerCount?.call(this);
   }
@@ -730,6 +809,7 @@ class _$GetAnswerCountImpl implements GetAnswerCount {
     TResult Function(YesOrNo value)? yesOrNo,
     TResult Function(CountQuestionNumber value)? countQuestionNumber,
     TResult Function(GetBasePrice value)? getBasePrice,
+    TResult Function(AbandentOrder value)? abandentOrder,
     required TResult orElse(),
   }) {
     if (getAnswerCount != null) {
@@ -823,8 +903,13 @@ class _$MarkedQuestionsImpl implements MarkedQuestions {
     required TResult Function(SelectedOption selectedOption) markedQuestions,
     required TResult Function(SelectedOption selectedOption) yesOrNo,
     required TResult Function(int countQuestionNumber) countQuestionNumber,
-    required TResult Function(PickupQuestionModel pickupQuestionModel)
+    required TResult Function(
+            AbandendOrderRequestModel abandendOrderRequestModel,
+            PickupQuestionModel pickupQuestionModel)
         getBasePrice,
+    required TResult Function(
+            AbandendOrderRequestModel abandendOrderRequestModel)
+        abandentOrder,
   }) {
     return markedQuestions(selectedOption);
   }
@@ -839,7 +924,11 @@ class _$MarkedQuestionsImpl implements MarkedQuestions {
     TResult? Function(SelectedOption selectedOption)? markedQuestions,
     TResult? Function(SelectedOption selectedOption)? yesOrNo,
     TResult? Function(int countQuestionNumber)? countQuestionNumber,
-    TResult? Function(PickupQuestionModel pickupQuestionModel)? getBasePrice,
+    TResult? Function(AbandendOrderRequestModel abandendOrderRequestModel,
+            PickupQuestionModel pickupQuestionModel)?
+        getBasePrice,
+    TResult? Function(AbandendOrderRequestModel abandendOrderRequestModel)?
+        abandentOrder,
   }) {
     return markedQuestions?.call(selectedOption);
   }
@@ -854,7 +943,11 @@ class _$MarkedQuestionsImpl implements MarkedQuestions {
     TResult Function(SelectedOption selectedOption)? markedQuestions,
     TResult Function(SelectedOption selectedOption)? yesOrNo,
     TResult Function(int countQuestionNumber)? countQuestionNumber,
-    TResult Function(PickupQuestionModel pickupQuestionModel)? getBasePrice,
+    TResult Function(AbandendOrderRequestModel abandendOrderRequestModel,
+            PickupQuestionModel pickupQuestionModel)?
+        getBasePrice,
+    TResult Function(AbandendOrderRequestModel abandendOrderRequestModel)?
+        abandentOrder,
     required TResult orElse(),
   }) {
     if (markedQuestions != null) {
@@ -874,6 +967,7 @@ class _$MarkedQuestionsImpl implements MarkedQuestions {
     required TResult Function(YesOrNo value) yesOrNo,
     required TResult Function(CountQuestionNumber value) countQuestionNumber,
     required TResult Function(GetBasePrice value) getBasePrice,
+    required TResult Function(AbandentOrder value) abandentOrder,
   }) {
     return markedQuestions(this);
   }
@@ -889,6 +983,7 @@ class _$MarkedQuestionsImpl implements MarkedQuestions {
     TResult? Function(YesOrNo value)? yesOrNo,
     TResult? Function(CountQuestionNumber value)? countQuestionNumber,
     TResult? Function(GetBasePrice value)? getBasePrice,
+    TResult? Function(AbandentOrder value)? abandentOrder,
   }) {
     return markedQuestions?.call(this);
   }
@@ -904,6 +999,7 @@ class _$MarkedQuestionsImpl implements MarkedQuestions {
     TResult Function(YesOrNo value)? yesOrNo,
     TResult Function(CountQuestionNumber value)? countQuestionNumber,
     TResult Function(GetBasePrice value)? getBasePrice,
+    TResult Function(AbandentOrder value)? abandentOrder,
     required TResult orElse(),
   }) {
     if (markedQuestions != null) {
@@ -996,8 +1092,13 @@ class _$YesOrNoImpl implements YesOrNo {
     required TResult Function(SelectedOption selectedOption) markedQuestions,
     required TResult Function(SelectedOption selectedOption) yesOrNo,
     required TResult Function(int countQuestionNumber) countQuestionNumber,
-    required TResult Function(PickupQuestionModel pickupQuestionModel)
+    required TResult Function(
+            AbandendOrderRequestModel abandendOrderRequestModel,
+            PickupQuestionModel pickupQuestionModel)
         getBasePrice,
+    required TResult Function(
+            AbandendOrderRequestModel abandendOrderRequestModel)
+        abandentOrder,
   }) {
     return yesOrNo(selectedOption);
   }
@@ -1012,7 +1113,11 @@ class _$YesOrNoImpl implements YesOrNo {
     TResult? Function(SelectedOption selectedOption)? markedQuestions,
     TResult? Function(SelectedOption selectedOption)? yesOrNo,
     TResult? Function(int countQuestionNumber)? countQuestionNumber,
-    TResult? Function(PickupQuestionModel pickupQuestionModel)? getBasePrice,
+    TResult? Function(AbandendOrderRequestModel abandendOrderRequestModel,
+            PickupQuestionModel pickupQuestionModel)?
+        getBasePrice,
+    TResult? Function(AbandendOrderRequestModel abandendOrderRequestModel)?
+        abandentOrder,
   }) {
     return yesOrNo?.call(selectedOption);
   }
@@ -1027,7 +1132,11 @@ class _$YesOrNoImpl implements YesOrNo {
     TResult Function(SelectedOption selectedOption)? markedQuestions,
     TResult Function(SelectedOption selectedOption)? yesOrNo,
     TResult Function(int countQuestionNumber)? countQuestionNumber,
-    TResult Function(PickupQuestionModel pickupQuestionModel)? getBasePrice,
+    TResult Function(AbandendOrderRequestModel abandendOrderRequestModel,
+            PickupQuestionModel pickupQuestionModel)?
+        getBasePrice,
+    TResult Function(AbandendOrderRequestModel abandendOrderRequestModel)?
+        abandentOrder,
     required TResult orElse(),
   }) {
     if (yesOrNo != null) {
@@ -1047,6 +1156,7 @@ class _$YesOrNoImpl implements YesOrNo {
     required TResult Function(YesOrNo value) yesOrNo,
     required TResult Function(CountQuestionNumber value) countQuestionNumber,
     required TResult Function(GetBasePrice value) getBasePrice,
+    required TResult Function(AbandentOrder value) abandentOrder,
   }) {
     return yesOrNo(this);
   }
@@ -1062,6 +1172,7 @@ class _$YesOrNoImpl implements YesOrNo {
     TResult? Function(YesOrNo value)? yesOrNo,
     TResult? Function(CountQuestionNumber value)? countQuestionNumber,
     TResult? Function(GetBasePrice value)? getBasePrice,
+    TResult? Function(AbandentOrder value)? abandentOrder,
   }) {
     return yesOrNo?.call(this);
   }
@@ -1077,6 +1188,7 @@ class _$YesOrNoImpl implements YesOrNo {
     TResult Function(YesOrNo value)? yesOrNo,
     TResult Function(CountQuestionNumber value)? countQuestionNumber,
     TResult Function(GetBasePrice value)? getBasePrice,
+    TResult Function(AbandentOrder value)? abandentOrder,
     required TResult orElse(),
   }) {
     if (yesOrNo != null) {
@@ -1170,8 +1282,13 @@ class _$CountQuestionNumberImpl implements CountQuestionNumber {
     required TResult Function(SelectedOption selectedOption) markedQuestions,
     required TResult Function(SelectedOption selectedOption) yesOrNo,
     required TResult Function(int countQuestionNumber) countQuestionNumber,
-    required TResult Function(PickupQuestionModel pickupQuestionModel)
+    required TResult Function(
+            AbandendOrderRequestModel abandendOrderRequestModel,
+            PickupQuestionModel pickupQuestionModel)
         getBasePrice,
+    required TResult Function(
+            AbandendOrderRequestModel abandendOrderRequestModel)
+        abandentOrder,
   }) {
     return countQuestionNumber(this.countQuestionNumber);
   }
@@ -1186,7 +1303,11 @@ class _$CountQuestionNumberImpl implements CountQuestionNumber {
     TResult? Function(SelectedOption selectedOption)? markedQuestions,
     TResult? Function(SelectedOption selectedOption)? yesOrNo,
     TResult? Function(int countQuestionNumber)? countQuestionNumber,
-    TResult? Function(PickupQuestionModel pickupQuestionModel)? getBasePrice,
+    TResult? Function(AbandendOrderRequestModel abandendOrderRequestModel,
+            PickupQuestionModel pickupQuestionModel)?
+        getBasePrice,
+    TResult? Function(AbandendOrderRequestModel abandendOrderRequestModel)?
+        abandentOrder,
   }) {
     return countQuestionNumber?.call(this.countQuestionNumber);
   }
@@ -1201,7 +1322,11 @@ class _$CountQuestionNumberImpl implements CountQuestionNumber {
     TResult Function(SelectedOption selectedOption)? markedQuestions,
     TResult Function(SelectedOption selectedOption)? yesOrNo,
     TResult Function(int countQuestionNumber)? countQuestionNumber,
-    TResult Function(PickupQuestionModel pickupQuestionModel)? getBasePrice,
+    TResult Function(AbandendOrderRequestModel abandendOrderRequestModel,
+            PickupQuestionModel pickupQuestionModel)?
+        getBasePrice,
+    TResult Function(AbandendOrderRequestModel abandendOrderRequestModel)?
+        abandentOrder,
     required TResult orElse(),
   }) {
     if (countQuestionNumber != null) {
@@ -1221,6 +1346,7 @@ class _$CountQuestionNumberImpl implements CountQuestionNumber {
     required TResult Function(YesOrNo value) yesOrNo,
     required TResult Function(CountQuestionNumber value) countQuestionNumber,
     required TResult Function(GetBasePrice value) getBasePrice,
+    required TResult Function(AbandentOrder value) abandentOrder,
   }) {
     return countQuestionNumber(this);
   }
@@ -1236,6 +1362,7 @@ class _$CountQuestionNumberImpl implements CountQuestionNumber {
     TResult? Function(YesOrNo value)? yesOrNo,
     TResult? Function(CountQuestionNumber value)? countQuestionNumber,
     TResult? Function(GetBasePrice value)? getBasePrice,
+    TResult? Function(AbandentOrder value)? abandentOrder,
   }) {
     return countQuestionNumber?.call(this);
   }
@@ -1251,6 +1378,7 @@ class _$CountQuestionNumberImpl implements CountQuestionNumber {
     TResult Function(YesOrNo value)? yesOrNo,
     TResult Function(CountQuestionNumber value)? countQuestionNumber,
     TResult Function(GetBasePrice value)? getBasePrice,
+    TResult Function(AbandentOrder value)? abandentOrder,
     required TResult orElse(),
   }) {
     if (countQuestionNumber != null) {
@@ -1276,7 +1404,9 @@ abstract class _$$GetBasePriceImplCopyWith<$Res> {
           _$GetBasePriceImpl value, $Res Function(_$GetBasePriceImpl) then) =
       __$$GetBasePriceImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({PickupQuestionModel pickupQuestionModel});
+  $Res call(
+      {AbandendOrderRequestModel abandendOrderRequestModel,
+      PickupQuestionModel pickupQuestionModel});
 }
 
 /// @nodoc
@@ -1290,9 +1420,14 @@ class __$$GetBasePriceImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? abandendOrderRequestModel = null,
     Object? pickupQuestionModel = null,
   }) {
     return _then(_$GetBasePriceImpl(
+      abandendOrderRequestModel: null == abandendOrderRequestModel
+          ? _value.abandendOrderRequestModel
+          : abandendOrderRequestModel // ignore: cast_nullable_to_non_nullable
+              as AbandendOrderRequestModel,
       pickupQuestionModel: null == pickupQuestionModel
           ? _value.pickupQuestionModel
           : pickupQuestionModel // ignore: cast_nullable_to_non_nullable
@@ -1304,14 +1439,18 @@ class __$$GetBasePriceImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$GetBasePriceImpl implements GetBasePrice {
-  const _$GetBasePriceImpl({required this.pickupQuestionModel});
+  const _$GetBasePriceImpl(
+      {required this.abandendOrderRequestModel,
+      required this.pickupQuestionModel});
 
+  @override
+  final AbandendOrderRequestModel abandendOrderRequestModel;
   @override
   final PickupQuestionModel pickupQuestionModel;
 
   @override
   String toString() {
-    return 'QuestionTabEvent.getBasePrice(pickupQuestionModel: $pickupQuestionModel)';
+    return 'QuestionTabEvent.getBasePrice(abandendOrderRequestModel: $abandendOrderRequestModel, pickupQuestionModel: $pickupQuestionModel)';
   }
 
   @override
@@ -1319,12 +1458,16 @@ class _$GetBasePriceImpl implements GetBasePrice {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetBasePriceImpl &&
+            (identical(other.abandendOrderRequestModel,
+                    abandendOrderRequestModel) ||
+                other.abandendOrderRequestModel == abandendOrderRequestModel) &&
             (identical(other.pickupQuestionModel, pickupQuestionModel) ||
                 other.pickupQuestionModel == pickupQuestionModel));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, pickupQuestionModel);
+  int get hashCode =>
+      Object.hash(runtimeType, abandendOrderRequestModel, pickupQuestionModel);
 
   @JsonKey(ignore: true)
   @override
@@ -1343,10 +1486,15 @@ class _$GetBasePriceImpl implements GetBasePrice {
     required TResult Function(SelectedOption selectedOption) markedQuestions,
     required TResult Function(SelectedOption selectedOption) yesOrNo,
     required TResult Function(int countQuestionNumber) countQuestionNumber,
-    required TResult Function(PickupQuestionModel pickupQuestionModel)
+    required TResult Function(
+            AbandendOrderRequestModel abandendOrderRequestModel,
+            PickupQuestionModel pickupQuestionModel)
         getBasePrice,
+    required TResult Function(
+            AbandendOrderRequestModel abandendOrderRequestModel)
+        abandentOrder,
   }) {
-    return getBasePrice(pickupQuestionModel);
+    return getBasePrice(abandendOrderRequestModel, pickupQuestionModel);
   }
 
   @override
@@ -1359,9 +1507,13 @@ class _$GetBasePriceImpl implements GetBasePrice {
     TResult? Function(SelectedOption selectedOption)? markedQuestions,
     TResult? Function(SelectedOption selectedOption)? yesOrNo,
     TResult? Function(int countQuestionNumber)? countQuestionNumber,
-    TResult? Function(PickupQuestionModel pickupQuestionModel)? getBasePrice,
+    TResult? Function(AbandendOrderRequestModel abandendOrderRequestModel,
+            PickupQuestionModel pickupQuestionModel)?
+        getBasePrice,
+    TResult? Function(AbandendOrderRequestModel abandendOrderRequestModel)?
+        abandentOrder,
   }) {
-    return getBasePrice?.call(pickupQuestionModel);
+    return getBasePrice?.call(abandendOrderRequestModel, pickupQuestionModel);
   }
 
   @override
@@ -1374,11 +1526,15 @@ class _$GetBasePriceImpl implements GetBasePrice {
     TResult Function(SelectedOption selectedOption)? markedQuestions,
     TResult Function(SelectedOption selectedOption)? yesOrNo,
     TResult Function(int countQuestionNumber)? countQuestionNumber,
-    TResult Function(PickupQuestionModel pickupQuestionModel)? getBasePrice,
+    TResult Function(AbandendOrderRequestModel abandendOrderRequestModel,
+            PickupQuestionModel pickupQuestionModel)?
+        getBasePrice,
+    TResult Function(AbandendOrderRequestModel abandendOrderRequestModel)?
+        abandentOrder,
     required TResult orElse(),
   }) {
     if (getBasePrice != null) {
-      return getBasePrice(pickupQuestionModel);
+      return getBasePrice(abandendOrderRequestModel, pickupQuestionModel);
     }
     return orElse();
   }
@@ -1394,6 +1550,7 @@ class _$GetBasePriceImpl implements GetBasePrice {
     required TResult Function(YesOrNo value) yesOrNo,
     required TResult Function(CountQuestionNumber value) countQuestionNumber,
     required TResult Function(GetBasePrice value) getBasePrice,
+    required TResult Function(AbandentOrder value) abandentOrder,
   }) {
     return getBasePrice(this);
   }
@@ -1409,6 +1566,7 @@ class _$GetBasePriceImpl implements GetBasePrice {
     TResult? Function(YesOrNo value)? yesOrNo,
     TResult? Function(CountQuestionNumber value)? countQuestionNumber,
     TResult? Function(GetBasePrice value)? getBasePrice,
+    TResult? Function(AbandentOrder value)? abandentOrder,
   }) {
     return getBasePrice?.call(this);
   }
@@ -1424,6 +1582,7 @@ class _$GetBasePriceImpl implements GetBasePrice {
     TResult Function(YesOrNo value)? yesOrNo,
     TResult Function(CountQuestionNumber value)? countQuestionNumber,
     TResult Function(GetBasePrice value)? getBasePrice,
+    TResult Function(AbandentOrder value)? abandentOrder,
     required TResult orElse(),
   }) {
     if (getBasePrice != null) {
@@ -1435,12 +1594,205 @@ class _$GetBasePriceImpl implements GetBasePrice {
 
 abstract class GetBasePrice implements QuestionTabEvent {
   const factory GetBasePrice(
-          {required final PickupQuestionModel pickupQuestionModel}) =
+          {required final AbandendOrderRequestModel abandendOrderRequestModel,
+          required final PickupQuestionModel pickupQuestionModel}) =
       _$GetBasePriceImpl;
 
+  AbandendOrderRequestModel get abandendOrderRequestModel;
   PickupQuestionModel get pickupQuestionModel;
   @JsonKey(ignore: true)
   _$$GetBasePriceImplCopyWith<_$GetBasePriceImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$AbandentOrderImplCopyWith<$Res> {
+  factory _$$AbandentOrderImplCopyWith(
+          _$AbandentOrderImpl value, $Res Function(_$AbandentOrderImpl) then) =
+      __$$AbandentOrderImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({AbandendOrderRequestModel abandendOrderRequestModel});
+}
+
+/// @nodoc
+class __$$AbandentOrderImplCopyWithImpl<$Res>
+    extends _$QuestionTabEventCopyWithImpl<$Res, _$AbandentOrderImpl>
+    implements _$$AbandentOrderImplCopyWith<$Res> {
+  __$$AbandentOrderImplCopyWithImpl(
+      _$AbandentOrderImpl _value, $Res Function(_$AbandentOrderImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? abandendOrderRequestModel = null,
+  }) {
+    return _then(_$AbandentOrderImpl(
+      abandendOrderRequestModel: null == abandendOrderRequestModel
+          ? _value.abandendOrderRequestModel
+          : abandendOrderRequestModel // ignore: cast_nullable_to_non_nullable
+              as AbandendOrderRequestModel,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$AbandentOrderImpl implements AbandentOrder {
+  const _$AbandentOrderImpl({required this.abandendOrderRequestModel});
+
+  @override
+  final AbandendOrderRequestModel abandendOrderRequestModel;
+
+  @override
+  String toString() {
+    return 'QuestionTabEvent.abandentOrder(abandendOrderRequestModel: $abandendOrderRequestModel)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AbandentOrderImpl &&
+            (identical(other.abandendOrderRequestModel,
+                    abandendOrderRequestModel) ||
+                other.abandendOrderRequestModel == abandendOrderRequestModel));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, abandendOrderRequestModel);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AbandentOrderImplCopyWith<_$AbandentOrderImpl> get copyWith =>
+      __$$AbandentOrderImplCopyWithImpl<_$AbandentOrderImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() tabChange,
+    required TResult Function() resetTabSelection,
+    required TResult Function(String categoryType, Product product)
+        getQuestions,
+    required TResult Function(int answerCount) getAnswerCount,
+    required TResult Function(SelectedOption selectedOption) markedQuestions,
+    required TResult Function(SelectedOption selectedOption) yesOrNo,
+    required TResult Function(int countQuestionNumber) countQuestionNumber,
+    required TResult Function(
+            AbandendOrderRequestModel abandendOrderRequestModel,
+            PickupQuestionModel pickupQuestionModel)
+        getBasePrice,
+    required TResult Function(
+            AbandendOrderRequestModel abandendOrderRequestModel)
+        abandentOrder,
+  }) {
+    return abandentOrder(abandendOrderRequestModel);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? tabChange,
+    TResult? Function()? resetTabSelection,
+    TResult? Function(String categoryType, Product product)? getQuestions,
+    TResult? Function(int answerCount)? getAnswerCount,
+    TResult? Function(SelectedOption selectedOption)? markedQuestions,
+    TResult? Function(SelectedOption selectedOption)? yesOrNo,
+    TResult? Function(int countQuestionNumber)? countQuestionNumber,
+    TResult? Function(AbandendOrderRequestModel abandendOrderRequestModel,
+            PickupQuestionModel pickupQuestionModel)?
+        getBasePrice,
+    TResult? Function(AbandendOrderRequestModel abandendOrderRequestModel)?
+        abandentOrder,
+  }) {
+    return abandentOrder?.call(abandendOrderRequestModel);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? tabChange,
+    TResult Function()? resetTabSelection,
+    TResult Function(String categoryType, Product product)? getQuestions,
+    TResult Function(int answerCount)? getAnswerCount,
+    TResult Function(SelectedOption selectedOption)? markedQuestions,
+    TResult Function(SelectedOption selectedOption)? yesOrNo,
+    TResult Function(int countQuestionNumber)? countQuestionNumber,
+    TResult Function(AbandendOrderRequestModel abandendOrderRequestModel,
+            PickupQuestionModel pickupQuestionModel)?
+        getBasePrice,
+    TResult Function(AbandendOrderRequestModel abandendOrderRequestModel)?
+        abandentOrder,
+    required TResult orElse(),
+  }) {
+    if (abandentOrder != null) {
+      return abandentOrder(abandendOrderRequestModel);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(TabChange value) tabChange,
+    required TResult Function(ResetTabSelection value) resetTabSelection,
+    required TResult Function(GetQuestions value) getQuestions,
+    required TResult Function(GetAnswerCount value) getAnswerCount,
+    required TResult Function(MarkedQuestions value) markedQuestions,
+    required TResult Function(YesOrNo value) yesOrNo,
+    required TResult Function(CountQuestionNumber value) countQuestionNumber,
+    required TResult Function(GetBasePrice value) getBasePrice,
+    required TResult Function(AbandentOrder value) abandentOrder,
+  }) {
+    return abandentOrder(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(TabChange value)? tabChange,
+    TResult? Function(ResetTabSelection value)? resetTabSelection,
+    TResult? Function(GetQuestions value)? getQuestions,
+    TResult? Function(GetAnswerCount value)? getAnswerCount,
+    TResult? Function(MarkedQuestions value)? markedQuestions,
+    TResult? Function(YesOrNo value)? yesOrNo,
+    TResult? Function(CountQuestionNumber value)? countQuestionNumber,
+    TResult? Function(GetBasePrice value)? getBasePrice,
+    TResult? Function(AbandentOrder value)? abandentOrder,
+  }) {
+    return abandentOrder?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(TabChange value)? tabChange,
+    TResult Function(ResetTabSelection value)? resetTabSelection,
+    TResult Function(GetQuestions value)? getQuestions,
+    TResult Function(GetAnswerCount value)? getAnswerCount,
+    TResult Function(MarkedQuestions value)? markedQuestions,
+    TResult Function(YesOrNo value)? yesOrNo,
+    TResult Function(CountQuestionNumber value)? countQuestionNumber,
+    TResult Function(GetBasePrice value)? getBasePrice,
+    TResult Function(AbandentOrder value)? abandentOrder,
+    required TResult orElse(),
+  }) {
+    if (abandentOrder != null) {
+      return abandentOrder(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class AbandentOrder implements QuestionTabEvent {
+  const factory AbandentOrder(
+      {required final AbandendOrderRequestModel
+          abandendOrderRequestModel}) = _$AbandentOrderImpl;
+
+  AbandendOrderRequestModel get abandendOrderRequestModel;
+  @JsonKey(ignore: true)
+  _$$AbandentOrderImplCopyWith<_$AbandentOrderImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1458,6 +1810,8 @@ mixin _$QuestionTabState {
   GetProductsRespoceModel? get getProductsResponceModel =>
       throw _privateConstructorUsedError;
   int get selectedTabIndex => throw _privateConstructorUsedError;
+  AbandendOrderResponceModel? get abandendOrderResponceModel =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $QuestionTabStateCopyWith<QuestionTabState> get copyWith =>
@@ -1480,7 +1834,8 @@ abstract class $QuestionTabStateCopyWith<$Res> {
       List<SelectedOption> selectedOption,
       GetQuestionModel? getQuestionModel,
       GetProductsRespoceModel? getProductsResponceModel,
-      int selectedTabIndex});
+      int selectedTabIndex,
+      AbandendOrderResponceModel? abandendOrderResponceModel});
 }
 
 /// @nodoc
@@ -1506,6 +1861,7 @@ class _$QuestionTabStateCopyWithImpl<$Res, $Val extends QuestionTabState>
     Object? getQuestionModel = freezed,
     Object? getProductsResponceModel = freezed,
     Object? selectedTabIndex = null,
+    Object? abandendOrderResponceModel = freezed,
   }) {
     return _then(_value.copyWith(
       isLoading: null == isLoading
@@ -1548,6 +1904,10 @@ class _$QuestionTabStateCopyWithImpl<$Res, $Val extends QuestionTabState>
           ? _value.selectedTabIndex
           : selectedTabIndex // ignore: cast_nullable_to_non_nullable
               as int,
+      abandendOrderResponceModel: freezed == abandendOrderResponceModel
+          ? _value.abandendOrderResponceModel
+          : abandendOrderResponceModel // ignore: cast_nullable_to_non_nullable
+              as AbandendOrderResponceModel?,
     ) as $Val);
   }
 }
@@ -1570,7 +1930,8 @@ abstract class _$$InitialImplCopyWith<$Res>
       List<SelectedOption> selectedOption,
       GetQuestionModel? getQuestionModel,
       GetProductsRespoceModel? getProductsResponceModel,
-      int selectedTabIndex});
+      int selectedTabIndex,
+      AbandendOrderResponceModel? abandendOrderResponceModel});
 }
 
 /// @nodoc
@@ -1594,6 +1955,7 @@ class __$$InitialImplCopyWithImpl<$Res>
     Object? getQuestionModel = freezed,
     Object? getProductsResponceModel = freezed,
     Object? selectedTabIndex = null,
+    Object? abandendOrderResponceModel = freezed,
   }) {
     return _then(_$InitialImpl(
       isLoading: null == isLoading
@@ -1636,6 +1998,10 @@ class __$$InitialImplCopyWithImpl<$Res>
           ? _value.selectedTabIndex
           : selectedTabIndex // ignore: cast_nullable_to_non_nullable
               as int,
+      abandendOrderResponceModel: freezed == abandendOrderResponceModel
+          ? _value.abandendOrderResponceModel
+          : abandendOrderResponceModel // ignore: cast_nullable_to_non_nullable
+              as AbandendOrderResponceModel?,
     ));
   }
 }
@@ -1653,7 +2019,8 @@ class _$InitialImpl implements _Initial {
       required final List<SelectedOption> selectedOption,
       this.getQuestionModel,
       this.getProductsResponceModel,
-      required this.selectedTabIndex})
+      required this.selectedTabIndex,
+      this.abandendOrderResponceModel})
       : _selectedOption = selectedOption;
 
   @override
@@ -1682,10 +2049,12 @@ class _$InitialImpl implements _Initial {
   final GetProductsRespoceModel? getProductsResponceModel;
   @override
   final int selectedTabIndex;
+  @override
+  final AbandendOrderResponceModel? abandendOrderResponceModel;
 
   @override
   String toString() {
-    return 'QuestionTabState(isLoading: $isLoading, hasError: $hasError, message: $message, product: $product, answerCount: $answerCount, basePriceModelResponce: $basePriceModelResponce, selectedOption: $selectedOption, getQuestionModel: $getQuestionModel, getProductsResponceModel: $getProductsResponceModel, selectedTabIndex: $selectedTabIndex)';
+    return 'QuestionTabState(isLoading: $isLoading, hasError: $hasError, message: $message, product: $product, answerCount: $answerCount, basePriceModelResponce: $basePriceModelResponce, selectedOption: $selectedOption, getQuestionModel: $getQuestionModel, getProductsResponceModel: $getProductsResponceModel, selectedTabIndex: $selectedTabIndex, abandendOrderResponceModel: $abandendOrderResponceModel)';
   }
 
   @override
@@ -1711,7 +2080,11 @@ class _$InitialImpl implements _Initial {
                     other.getProductsResponceModel, getProductsResponceModel) ||
                 other.getProductsResponceModel == getProductsResponceModel) &&
             (identical(other.selectedTabIndex, selectedTabIndex) ||
-                other.selectedTabIndex == selectedTabIndex));
+                other.selectedTabIndex == selectedTabIndex) &&
+            (identical(other.abandendOrderResponceModel,
+                    abandendOrderResponceModel) ||
+                other.abandendOrderResponceModel ==
+                    abandendOrderResponceModel));
   }
 
   @override
@@ -1726,7 +2099,8 @@ class _$InitialImpl implements _Initial {
       const DeepCollectionEquality().hash(_selectedOption),
       getQuestionModel,
       getProductsResponceModel,
-      selectedTabIndex);
+      selectedTabIndex,
+      abandendOrderResponceModel);
 
   @JsonKey(ignore: true)
   @override
@@ -1737,16 +2111,18 @@ class _$InitialImpl implements _Initial {
 
 abstract class _Initial implements QuestionTabState {
   const factory _Initial(
-      {required final bool isLoading,
-      required final bool hasError,
-      final String? message,
-      final Product? product,
-      required final int answerCount,
-      final GetBasePriceModelResponce? basePriceModelResponce,
-      required final List<SelectedOption> selectedOption,
-      final GetQuestionModel? getQuestionModel,
-      final GetProductsRespoceModel? getProductsResponceModel,
-      required final int selectedTabIndex}) = _$InitialImpl;
+          {required final bool isLoading,
+          required final bool hasError,
+          final String? message,
+          final Product? product,
+          required final int answerCount,
+          final GetBasePriceModelResponce? basePriceModelResponce,
+          required final List<SelectedOption> selectedOption,
+          final GetQuestionModel? getQuestionModel,
+          final GetProductsRespoceModel? getProductsResponceModel,
+          required final int selectedTabIndex,
+          final AbandendOrderResponceModel? abandendOrderResponceModel}) =
+      _$InitialImpl;
 
   @override
   bool get isLoading;
@@ -1768,6 +2144,8 @@ abstract class _Initial implements QuestionTabState {
   GetProductsRespoceModel? get getProductsResponceModel;
   @override
   int get selectedTabIndex;
+  @override
+  AbandendOrderResponceModel? get abandendOrderResponceModel;
   @override
   @JsonKey(ignore: true)
   _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>

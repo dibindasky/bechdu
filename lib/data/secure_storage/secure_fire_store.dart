@@ -66,24 +66,8 @@ class SecureSotrage {
     return phoneNumber ?? '';
   }
 
-  static Future<void> saveLocationAndPincode({
-    String? location,
-    String? pinCode,
-  }) async {
-    await secureStorage.write(
-      key: locationkey,
-      value: location ?? '',
-    );
-    await secureStorage.write(
-      key: pincodekey,
-      value: pinCode ?? '',
-    );
-  }
-
-  static Future<String> getLocation() async {
-    final isLocation = await secureStorage.read(key: locationkey);
-    log('getLocation $isLocation');
-    return isLocation ?? 'No location';
+  static Future<void> setLocation({required String location}) async {
+    await secureStorage.write(key: locationkey, value: location);
   }
 
   static Future<String> getSelectedLocation() async {
@@ -92,10 +76,25 @@ class SecureSotrage {
     return location ?? '';
   }
 
+  static Future<void> setPincode({required String pincode}) async {
+    await secureStorage.write(key: pincodekey, value: pincode);
+  }
+
   static Future<String> getSelectedPincode() async {
     final isPincode = await secureStorage.read(key: pincodekey);
     log('getSelectedPincode $isPincode');
     return isPincode ?? '';
+  }
+
+  static Future<void> setPicodeBool() async {
+    log("setPicodeBool ==>>");
+    await secureStorage.write(key: pincodekey, value: '1');
+  }
+
+  static Future<bool> getPicodeBool() async {
+    final isPincode = await secureStorage.read(key: pincodekey);
+    log("getPicodeBool ==>> ${isPincode == '1'}");
+    return isPincode == '1';
   }
 
   static Future<void> clearLogin() async {

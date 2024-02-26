@@ -4,7 +4,7 @@ import 'package:beachdu/application/business_logic/question_tab/question_tab_blo
 import 'package:beachdu/application/presentation/routes/routes.dart';
 import 'package:beachdu/application/presentation/screens/product_selection/product_screen.dart';
 import 'package:beachdu/application/presentation/screens/questions/question_tabs/question_anwer_sesstion/answer_session.dart';
-import 'package:beachdu/application/presentation/utils/colors.dart';
+import 'package:beachdu/application/presentation/screens/questions/question_tabs/question_tab_row/question_tab_row.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/application/presentation/utils/custom_button.dart';
 import 'package:beachdu/application/presentation/utils/enums/type_display.dart';
@@ -12,6 +12,8 @@ import 'package:beachdu/application/presentation/utils/loading_indicators/loadin
 import 'package:beachdu/application/presentation/utils/snackbar/snackbar.dart';
 import 'package:beachdu/application/presentation/widgets/top_image.dart';
 import 'package:beachdu/data/secure_storage/secure_fire_store.dart';
+import 'package:beachdu/domain/model/abandend_order/abandend_order_request_model/abandend_order_request_model.dart';
+import 'package:beachdu/domain/model/abandend_order/abandend_order_request_model/product_details.dart';
 import 'package:beachdu/domain/model/pickup_question_model/pickup_question_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -58,99 +60,102 @@ class QuestionTabs extends StatelessWidget {
                         kHeight20,
                         const QuestionTabAnswerSession(),
                         kHeight10,
-                        BlocBuilder<QuestionTabBloc, QuestionTabState>(
-                          builder: (context, state) {
-                            return CustomButton(
-                              onPressed: () {
-                                final currentSection = state.getQuestionModel!
-                                    .sections![state.selectedTabIndex];
-                                final criteria = currentSection.criteria;
-                                if (state.selectedTabIndex ==
-                                    state.getQuestionModel!.sections!.length -
-                                        1) {
-                                  if (criteria == 'all') {
-                                    if (state.answerCount ==
-                                        currentSection.options!.length) {
-                                      loginOrNot(context);
-                                    } else {
-                                      showSnack(
-                                        context: context,
-                                        message: 'Select all options',
-                                      );
-                                    }
-                                  } else if (criteria == 'some') {
-                                    if (state.answerCount >= 1) {
-                                      loginOrNot(context);
-                                    } else if (criteria == 'one') {
-                                      if (state.answerCount == 1) {
-                                        pickeQuestionModelEventDataPass(
-                                            context);
+                        BlocBuilder<CategoryBlocBloc, CategoryBlocState>(
+                          builder: (context, categorybloc) {
+                            return BlocBuilder<QuestionTabBloc,
+                                QuestionTabState>(
+                              builder: (context, questionTabBloc) {
+                                return CustomButton(
+                                  onPressed: () {
+                                    final currentSection = questionTabBloc
+                                            .getQuestionModel!.sections![
+                                        questionTabBloc.selectedTabIndex];
+                                    final criteria = currentSection.criteria;
+                                    if (questionTabBloc.selectedTabIndex ==
+                                        questionTabBloc.getQuestionModel!
+                                                .sections!.length -
+                                            1) {
+                                      if (criteria == 'all') {
+                                        if (questionTabBloc.answerCount ==
+                                            currentSection.options!.length) {
+                                          loginOrNot(context, questionTabBloc);
+                                        } else {
+                                          showSnack(
+                                            context: context,
+                                            message: 'Select all options',
+                                          );
+                                        }
+                                      } else if (criteria == 'some') {
+                                        if (questionTabBloc.answerCount >= 1) {
+                                          loginOrNot(context, questionTabBloc);
+                                        } else {
+                                          showSnack(
+                                            context: context,
+                                            message:
+                                                'Select at least one option',
+                                          );
+                                        }
+                                      } else if (criteria == 'one') {
+                                        if (questionTabBloc.answerCount == 1) {
+                                          loginOrNot(context, questionTabBloc);
+                                        } else {
+                                          showSnack(
+                                            context: context,
+                                            message: 'Select only one option',
+                                          );
+                                        }
+                                      } else {
+                                        loginOrNot(context, questionTabBloc);
                                       }
-                                      showSnack(
-                                        context: context,
-                                        message: 'Select at least one option',
-                                      );
                                     }
-                                  } else if (criteria == 'one') {
-                                    if (state.answerCount == 1) {
-                                      loginOrNot(context);
-                                      //pickeQuestionModelEventDataPass(context);
+                                    if (criteria == 'all') {
+                                      if (questionTabBloc.answerCount ==
+                                          currentSection.options!.length) {
+                                        context
+                                            .read<QuestionTabBloc>()
+                                            .add(const TabChange());
+                                      } else {
+                                        showSnack(
+                                          context: context,
+                                          message: 'Select all options',
+                                        );
+                                      }
+                                    } else if (criteria == 'some') {
+                                      if (questionTabBloc.answerCount >= 1) {
+                                        context
+                                            .read<QuestionTabBloc>()
+                                            .add(const TabChange());
+                                      } else {
+                                        showSnack(
+                                          context: context,
+                                          message: 'Select at least one option',
+                                        );
+                                      }
+                                    } else if (criteria == 'one') {
+                                      if (questionTabBloc.answerCount == 1) {
+                                        context
+                                            .read<QuestionTabBloc>()
+                                            .add(const TabChange());
+                                      } else {
+                                        showSnack(
+                                          context: context,
+                                          message: 'Select atleast one option',
+                                        );
+                                      }
                                     } else {
-                                      showSnack(
-                                        context: context,
-                                        message: 'Select only one option',
-                                      );
+                                      context
+                                          .read<QuestionTabBloc>()
+                                          .add(const TabChange());
                                     }
-                                  } else {
-                                    loginOrNot(context);
-                                    //pickeQuestionModelEventDataPass(context);
-                                  }
-                                }
-                                if (criteria == 'all') {
-                                  if (state.answerCount ==
-                                      currentSection.options!.length) {
-                                    context
-                                        .read<QuestionTabBloc>()
-                                        .add(const TabChange());
-                                  } else {
-                                    showSnack(
-                                      context: context,
-                                      message: 'Select all options',
-                                    );
-                                  }
-                                } else if (criteria == 'some') {
-                                  if (state.answerCount >= 1) {
-                                    context
-                                        .read<QuestionTabBloc>()
-                                        .add(const TabChange());
-                                  } else {
-                                    showSnack(
-                                      context: context,
-                                      message: 'Select at least one option',
-                                    );
-                                  }
-                                } else if (criteria == 'one') {
-                                  if (state.answerCount == 1) {
-                                    context
-                                        .read<QuestionTabBloc>()
-                                        .add(const TabChange());
-                                  } else {
-                                    showSnack(
-                                      context: context,
-                                      message: 'Select atleast one option',
-                                    );
-                                  }
-                                } else {
-                                  context
-                                      .read<QuestionTabBloc>()
-                                      .add(const TabChange());
-                                }
+                                  },
+                                  text: questionTabBloc.selectedTabIndex !=
+                                          questionTabBloc.getQuestionModel!
+                                                  .sections!.length -
+                                              1
+                                      ? 'Continue'
+                                      : 'Calculate price',
+                                );
                               },
-                              text: state.selectedTabIndex !=
-                                      state.getQuestionModel!.sections!.length -
-                                          1
-                                  ? 'Continue'
-                                  : 'Calculate price',
                             );
                           },
                         ),
@@ -167,72 +172,51 @@ class QuestionTabs extends StatelessWidget {
     );
   }
 
-  Future<void> loginOrNot(BuildContext context) async {
+  Future<void> loginOrNot(
+    BuildContext context,
+    QuestionTabState questionTabBloc,
+  ) async {
     final login = await SecureSotrage.getlLogin();
     if (login) {
       // ignore: use_build_context_synchronously
-      pickeQuestionModelEventDataPass(context);
+      pickeQuestionModelEventDataPass(context, questionTabBloc);
     } else {
       // ignore: use_build_context_synchronously
-      Navigator.of(context).pushNamed(Routes.signInOrLogin);
+      Navigator.of(context).pushNamed(Routes.signInOrLogin, arguments: true);
     }
   }
 
-  void pickeQuestionModelEventDataPass(BuildContext context) {
-    // final isLogin= SecureSotrage.getlLogin();
-    PickupQuestionModel pickeQuestionModel = PickupQuestionModel(
+  void pickeQuestionModelEventDataPass(
+    BuildContext context,
+    QuestionTabState categoryBlocState,
+  ) {
+    secondtabScreensNotifier.value = 2;
+    secondtabScreensNotifier.notifyListeners();
+
+    PickupQuestionModel pickepQuestionModel = PickupQuestionModel(
       categoryType: context.read<CategoryBlocBloc>().categoryType,
       productSlug: context.read<CategoryBlocBloc>().slug,
       selectedOptions: context.read<QuestionTabBloc>().state.selectedOption,
     );
-    context
-        .read<QuestionTabBloc>()
-        .add(GetBasePrice(pickupQuestionModel: pickeQuestionModel));
-    context.read<QuestionTabBloc>().add(const ResetTabSelection());
-    secondtabScreensNotifier.value = 2;
-    secondtabScreensNotifier.notifyListeners();
-  }
-}
+    final verient = context.read<CategoryBlocBloc>().verient;
+    final model = context.read<CategoryBlocBloc>().model;
+    final name = '$verient $model';
 
-class QuestionScreenTabs extends StatelessWidget {
-  const QuestionScreenTabs({super.key});
+    ProductDetails productDetails = ProductDetails(
+      slug: context.read<CategoryBlocBloc>().slug,
+      name: name,
+      options: categoryBlocState.selectedOption,
+    );
 
-  @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<QuestionTabBloc, QuestionTabState>(
-      builder: (context, state) {
-        return SizedBox(
-          width: sWidth,
-          child: FittedBox(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: List.generate(
-                state.getQuestionModel!.sections!.length,
-                (index) => ClipRRect(
-                  borderRadius: kRadius15,
-                  child: ColoredBox(
-                    color:
-                        index == state.selectedTabIndex ? kGreenPrimary : knill,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 10,
-                        vertical: 3,
-                      ),
-                      child: Text(
-                        state.getQuestionModel!.sections![index].heading!,
-                        style: textHeadSemiBold1.copyWith(
-                          color:
-                              index == state.selectedTabIndex ? kWhite : kBlack,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
+    AbandendOrderRequestModel abandendOrderRequestModel =
+        AbandendOrderRequestModel(productDetails: productDetails);
+
+    context.read<QuestionTabBloc>().add(
+          GetBasePrice(
+            pickupQuestionModel: pickepQuestionModel,
+            abandendOrderRequestModel: abandendOrderRequestModel,
           ),
         );
-      },
-    );
+    context.read<QuestionTabBloc>().add(const ResetTabSelection());
   }
 }

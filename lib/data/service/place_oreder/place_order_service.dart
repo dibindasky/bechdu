@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:beachdu/data/secure_storage/secure_fire_store.dart';
 import 'package:beachdu/domain/core/api_endpoints/api_endpoints.dart';
 import 'package:beachdu/domain/core/failure/failure.dart';
@@ -26,21 +24,17 @@ class PlaceOrderService implements PlaceOrderRepo {
           'authorization': "Bearer $accessToken",
         },
       );
-      log('accessToken $accessToken');
-      log('promoCodeRequestModel ${promoCodeRequestModel.toJson()}');
       final responce = await _dio.post(
         ApiEndPoints.getPromoCode,
         data: promoCodeRequestModel.toJson(),
       );
-
-      log('getPomoCode data ${responce.data}');
       return Right(PromoCodeResponceModel.fromJson(responce.data));
     } on DioException catch (e) {
-      log('getPomoCode DioException $e');
-      return Left(Failure(message: e.message ?? errorMessage));
+      //log('getPomoCode DioException $e');
+      return Left(Failure(message: e.response?.data['error'] ?? errorMessage));
     } catch (e) {
-      log('getPomoCode catch $e');
-      return Left(Failure(message: e.toString()));
+      // log('getPomoCode catch $e');
+      return Left(Failure(message: errorMessage));
     }
   }
 }

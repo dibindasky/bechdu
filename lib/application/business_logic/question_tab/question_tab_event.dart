@@ -20,6 +20,10 @@ class QuestionTabEvent with _$QuestionTabEvent {
     required int countQuestionNumber,
   }) = CountQuestionNumber;
   const factory QuestionTabEvent.getBasePrice({
+    required AbandendOrderRequestModel abandendOrderRequestModel,
     required PickupQuestionModel pickupQuestionModel,
   }) = GetBasePrice;
+  const factory QuestionTabEvent.abandentOrder({
+    required AbandendOrderRequestModel abandendOrderRequestModel,
+  }) = AbandentOrder;
 }

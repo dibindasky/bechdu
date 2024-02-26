@@ -1,5 +1,9 @@
 import 'dart:async';
 import 'dart:developer';
+import 'package:beachdu/data/secure_storage/secure_fire_store.dart';
+import 'package:beachdu/domain/model/abandend_order/abandend_order_request_model/abandend_order_request_model.dart';
+import 'package:beachdu/domain/model/abandend_order/abandend_order_request_model/abendend_order_user.dart';
+import 'package:beachdu/domain/model/abandend_order/abandend_order_responce_model/abandend_order_responce_model.dart';
 import 'package:beachdu/domain/model/get_base_price_model_responce/get_base_price_model_responce.dart';
 import 'package:beachdu/domain/model/get_products_respoce_model/get_products_respoce_model.dart';
 import 'package:beachdu/domain/model/get_products_respoce_model/product.dart';
@@ -26,6 +30,7 @@ class QuestionTabBloc extends Bloc<QuestionTabEvent, QuestionTabState> {
     on<GetQuestions>(getQuestions);
     on<MarkedQuestions>(markedQuestions);
     on<GetBasePrice>(getBasePrice);
+    on<AbandentOrder>(abandentOrder);
     // on<YesOrNo>(yesOrNo);
   }
 
@@ -129,16 +134,54 @@ class QuestionTabBloc extends Bloc<QuestionTabEvent, QuestionTabState> {
         hasError: true,
         isLoading: false,
       ));
-    }, (successResponce) {
-      if (successResponce.basePrice != null) {
-        basePrice = successResponce.basePrice!;
-      }
-      log('basePrice bloc variable $basePrice');
+    }, (successResponce) async {
       emit(state.copyWith(
         hasError: false,
         isLoading: false,
         basePriceModelResponce: successResponce,
       ));
+      if (successResponce.basePrice != null) {
+        basePrice = successResponce.basePrice!;
+        final phone = await SecureSotrage.getNumber();
+        final city = await SecureSotrage.getSelectedLocation();
+        final pincode = await SecureSotrage.getSelectedPincode();
+
+        AbendendOrderUser abendendOrderUser = AbendendOrderUser(
+          phone: phone,
+          city: city,
+          pincode: pincode,
+        );
+        log('User datas bloc $phone $city $pincode');
+        event.abandendOrderRequestModel.abendendOrderUser = abendendOrderUser;
+        event.abandendOrderRequestModel.productDetails!.price = '$basePrice';
+        add(QuestionTabEvent.abandentOrder(
+          abandendOrderRequestModel: event.abandendOrderRequestModel,
+        ));
+      }
+    });
+  }
+
+  FutureOr<void> abandentOrder(AbandentOrder event, emit) async {
+    emit(state.copyWith(isLoading: true, hasError: false));
+
+    final data = await questionRepo.abandendOrder(
+      abandendOrderRequestModel: event.abandendOrderRequestModel,
+    );
+    data.fold((falure) {
+      emit(state.copyWith(
+        hasError: true,
+        isLoading: false,
+      ));
+      log('falure $falure');
+    }, (abandendOrderResponceModel) async {
+      emit(
+        state.copyWith(
+          hasError: false,
+          isLoading: false,
+          abandendOrderResponceModel: abandendOrderResponceModel,
+        ),
+      );
+      log('abandendOrderResponceModel $abandendOrderResponceModel');
     });
   }
 }

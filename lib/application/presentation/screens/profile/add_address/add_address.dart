@@ -1,14 +1,18 @@
-import 'package:beachdu/application/presentation/screens/navbar/bottombar.dart';
+import 'dart:developer';
+import 'package:beachdu/application/business_logic/location/location_bloc.dart';
+import 'package:beachdu/application/business_logic/profile/profile_bloc.dart';
 import 'package:beachdu/application/presentation/screens/pickup/widgets/textfeild_custom.dart';
 import 'package:beachdu/application/presentation/screens/profile/profile_screen.dart';
+import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
+import 'package:beachdu/application/presentation/utils/snackbar/snackbar.dart';
 import 'package:beachdu/application/presentation/widgets/custom_elevated_button.dart';
+import 'package:beachdu/domain/model/address_model/address_creation_request_model/address_creation_request_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AddAddressScreen extends StatelessWidget {
-  AddAddressScreen({super.key});
-
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  const AddAddressScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -45,67 +49,191 @@ class AddAddressScreen extends StatelessWidget {
           ),
           body: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15),
-            child: ListView(
+            child: SingleChildScrollView(
+                child: Column(
               children: [
-                Form(
-                  key: _formKey,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'STATE',
-                        style: textHeadMedium1.copyWith(
-                          fontSize: sWidth * .033,
-                        ),
-                      ),
-                      const TTextFormField(
-                        text: 'Kerala',
-                      ),
-                      Text(
-                        'DISTRICT',
-                        style: textHeadMedium1.copyWith(
-                          fontSize: sWidth * .033,
-                        ),
-                      ),
-                      const TTextFormField(
-                        text: 'Wayanad',
-                      ),
-                      Text(
-                        'LANDMARK',
-                        style: textHeadMedium1.copyWith(
-                          fontSize: sWidth * .033,
-                        ),
-                      ),
-                      const TTextFormField(
-                        text: 'School',
-                      ),
-                      Text(
-                        'PINCODE',
-                        style: textHeadMedium1.copyWith(
-                          fontSize: sWidth * .033,
-                        ),
-                      ),
-                      const TTextFormField(
-                        text: 'xxxxxx',
-                      ),
-                    ],
-                  ),
-                ),
-                kHeight30,
+                const AddresCreationFields(),
                 ElevatedButtonLong(
                   onPressed: () {
-                    if (_formKey.currentState?.validate() ?? false) {
-                      _formKey.currentState!.save();
+                    if (context
+                            .read<ProfileBloc>()
+                            .addressController
+                            .text
+                            .isNotEmpty &&
+                        context.read<LocationBloc>().pincode != null &&
+                        context.read<LocationBloc>().location != null &&
+                        context.read<LocationBloc>().pincode!.isNotEmpty &&
+                        context.read<LocationBloc>().location!.isNotEmpty) {
+                      //Entered data concatination
+                      final address =
+                          '${context.read<ProfileBloc>().addressController.text.trim()} ${context.read<LocationBloc>().location} ${context.read<LocationBloc>().pincode}';
+                      //Oblect creation
+                      AddressCreationRequestModel addressCreationRequestModel =
+                          AddressCreationRequestModel(
+                        address: address,
+                      );
+                      log('address $address');
+                      //Bloc event call
+                      context.read<ProfileBloc>().add(
+                            ProfileEvent.addAddress(
+                              addressCreationRequestModel:
+                                  addressCreationRequestModel,
+                            ),
+                          );
+
+                      // Clear selected fields after adding address
+                      context.read<ProfileBloc>().addressController.clear();
+                      context
+                          .read<LocationBloc>()
+                          .add(const LocationEvent.clear());
+
+                      //Screen notifier changing
+                      profileScreensNotifier.value = 0;
+                      profileScreensNotifier.notifyListeners();
+                    } else {
+                      showSnack(
+                          context: context, message: "please fill feilds");
                     }
                   },
-                  text: 'Save',
+                  text: 'Add address',
                 ),
-                kHeight40
               ],
-            ),
+            )),
           ),
         ),
       ),
+    );
+  }
+}
+
+class AddresCreationFields extends StatelessWidget {
+  const AddresCreationFields({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Form(
+          key: context.read<ProfileBloc>().formKey,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'ADDRESS',
+                style: textHeadMedium1.copyWith(
+                  fontSize: sWidth * .033,
+                ),
+              ),
+              TTextFormField(
+                controller: context.read<ProfileBloc>().addressController,
+                text: 'Address',
+              ),
+              Text(
+                'LOCATION',
+                style: textHeadMedium1.copyWith(
+                  fontSize: sWidth * .033,
+                ),
+              ),
+              kHeight10,
+              BlocBuilder<LocationBloc, LocationState>(
+                builder: (context, state) {
+                  return Container(
+                    padding: const EdgeInsets.only(left: 10, right: 12),
+                    height: 60,
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      border: Border.all(color: textFieldBorderColor),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: DropdownButtonHideUnderline(
+                      child: DropdownButton<String>(
+                        hint: Text(context.read<LocationBloc>().location ??
+                            'Location'),
+                        value: context.read<LocationBloc>().location,
+                        onChanged: (String? newValue) {
+                          context.read<LocationBloc>().location =
+                              newValue ?? 'me';
+                          log(context.read<LocationBloc>().location ?? '');
+                          context.read<LocationBloc>().add(
+                              LocationEvent.pinCodePick(
+                                  cityName: newValue ?? ''));
+                        },
+                        items: context
+                            .read<LocationBloc>()
+                            .locations
+                            .map<DropdownMenuItem<String>>(
+                          (location) {
+                            return DropdownMenuItem<String>(
+                              value: location,
+                              child: Text(
+                                location,
+                                style: textHeadSemiBold1.copyWith(
+                                    fontSize: sWidth * 0.04),
+                              ),
+                            );
+                          },
+                        ).toList(),
+                      ),
+                    ),
+                  );
+                },
+              ),
+              kHeight10,
+              Text(
+                'PINCODE',
+                style: textHeadMedium1.copyWith(
+                  fontSize: sWidth * .033,
+                ),
+              ),
+              kHeight10,
+              BlocBuilder<LocationBloc, LocationState>(
+                builder: (context, state) {
+                  return Container(
+                    padding: const EdgeInsets.only(left: 10, right: 12),
+                    height: 60,
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      border: Border.all(color: textFieldBorderColor),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: DropdownButtonHideUnderline(
+                      child: DropdownButton<String>(
+                        hint: Text(
+                            context.read<LocationBloc>().pincode ?? 'Pincode'),
+                        value: context.read<LocationBloc>().pincode,
+                        onChanged: (String? newValue) {
+                          context.read<LocationBloc>().pincode = newValue;
+                          log(
+                            context.read<LocationBloc>().pincode ?? '',
+                          );
+                        },
+                        items: context
+                            .read<LocationBloc>()
+                            .pinCodes
+                            .map<DropdownMenuItem<String>>(
+                          (location) {
+                            return DropdownMenuItem<String>(
+                              value: location,
+                              child: Text(
+                                location,
+                                style: textHeadSemiBold1.copyWith(
+                                    fontSize: sWidth * 0.04),
+                              ),
+                            );
+                          },
+                        ).toList(),
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ],
+          ),
+        ),
+        kHeight50,
+      ],
     );
   }
 }

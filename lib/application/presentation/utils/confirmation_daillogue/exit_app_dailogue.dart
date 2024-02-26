@@ -18,10 +18,7 @@ showConfirmationDialog(
       ),
       actions: [
         TextButton(
-          onPressed: onPressed ??
-              () {
-                Navigator.of(context).pop(true);
-              },
+          onPressed: onPressed,
           child: Text(
             textButtonNo ? 'Sure' : 'Yes',
             style: textHeadBold1,
@@ -31,7 +28,7 @@ showConfirmationDialog(
             ? const SizedBox()
             : TextButton(
                 onPressed: () {
-                  Navigator.of(context).pop(false);
+                  Navigator.of(context).pop();
                 },
                 child: Text(
                   'No',

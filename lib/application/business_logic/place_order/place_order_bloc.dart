@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:developer';
 import 'package:beachdu/data/secure_storage/secure_fire_store.dart';
+import 'package:beachdu/domain/model/abandend_order/abandend_order_request_model/abandend_order_request_model.dart';
 import 'package:beachdu/domain/model/place_order/promo_code_request_model/promo_code_request_model.dart';
 import 'package:beachdu/domain/model/place_order/promo_code_responce_model/promo_code_responce_model.dart';
 import 'package:beachdu/domain/repository/place_order.dart';
@@ -28,11 +29,14 @@ class PlaceOrderBloc extends Bloc<PlaceOrderEvent, PlaceOrderState> {
     final data = await placeOrderRepo.getPomoCode(
       promoCodeRequestModel: event.promoCodeRequestModel,
     );
+
     data.fold((falure) {
       emit(state.copyWith(
         hasError: true,
         isLoading: false,
+        message: falure.message,
       ));
+
       log('falure $falure');
     }, (promoCodeResponceModel) async {
       if (promoCodeResponceModel.value != null) {

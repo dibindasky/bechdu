@@ -3,6 +3,7 @@ import 'package:beachdu/application/business_logic/question_tab/question_tab_blo
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/application/presentation/utils/snackbar/snackbar.dart';
+import 'package:beachdu/domain/core/failure/failure.dart';
 import 'package:beachdu/domain/model/place_order/promo_code_request_model/promo_code_request_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -45,7 +46,22 @@ class FinalProductPriceDetaails extends StatelessWidget {
           ),
         ),
         kHeight10,
-        BlocBuilder<PlaceOrderBloc, PlaceOrderState>(
+        BlocConsumer<PlaceOrderBloc, PlaceOrderState>(
+          listener: (context, state) {
+            if (state.hasError) {
+              showSnack(
+                context: context,
+                message: state.message ?? errorMessage,
+              );
+            }
+            if (state.promoCodeResponceModel != null ||
+                state.promoCodeResponceModel!.message != null) {
+              showSnack(
+                context: context,
+                message: state.promoCodeResponceModel!.message!,
+              );
+            }
+          },
           builder: (context, state) {
             return TextFormField(
               controller: context.read<PlaceOrderBloc>().promocodeController,
@@ -57,23 +73,54 @@ class FinalProductPriceDetaails extends StatelessWidget {
               decoration: InputDecoration(
                 suffixIcon: TextButton(
                   onPressed: () {
-                    PromoCodeRequestModel promoCodeRequestModel =
-                        PromoCodeRequestModel(
-                            enteredCode: context
-                                .read<PlaceOrderBloc>()
-                                .promocodeController
-                                .text
-                                .trim());
-                    context.read<PlaceOrderBloc>().add(
-                          PlaceOrderEvent.getPromoCode(
-                              promoCodeRequestModel: promoCodeRequestModel),
+                    if (state.promoCodeResponceModel != null) {
+                      if (context
+                          .read<PlaceOrderBloc>()
+                          .promocodeController
+                          .text
+                          .isEmpty) {
+                        showSnack(
+                          context: context,
+                          message: 'Please enter your promo code',
                         );
-                    if (state.promoCodeResponceModel != null &&
-                        state.promoCodeResponceModel!.message != null) {
-                      showSnack(
-                        context: context,
-                        message: state.promoCodeResponceModel!.message!,
-                      );
+                      } else {
+                        PromoCodeRequestModel promoCodeRequestModel =
+                            PromoCodeRequestModel(
+                                enteredCode: context
+                                    .read<PlaceOrderBloc>()
+                                    .promocodeController
+                                    .text
+                                    .trim());
+                        context.read<PlaceOrderBloc>().add(
+                              PlaceOrderEvent.getPromoCode(
+                                promoCodeRequestModel: promoCodeRequestModel,
+                              ),
+                            );
+                      }
+                    } else if (state.promoCodeResponceModel == null) {
+                      if (context
+                          .read<PlaceOrderBloc>()
+                          .promocodeController
+                          .text
+                          .isEmpty) {
+                        showSnack(
+                          context: context,
+                          message: 'Please enter your promo code',
+                        );
+                      } else {
+                        PromoCodeRequestModel promoCodeRequestModel =
+                            PromoCodeRequestModel(
+                                enteredCode: context
+                                    .read<PlaceOrderBloc>()
+                                    .promocodeController
+                                    .text
+                                    .trim());
+                        context.read<PlaceOrderBloc>().add(
+                              PlaceOrderEvent.getPromoCode(
+                                promoCodeRequestModel: promoCodeRequestModel,
+                              ),
+                            );
+                      }
                     }
                   },
                   child: Text(

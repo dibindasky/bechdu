@@ -24,14 +24,6 @@ class DropDownBuilder extends StatefulWidget {
 }
 
 class _DropDownBuilderState extends State<DropDownBuilder> {
-  late List<String> selectedOption;
-
-  @override
-  void initState() {
-    super.initState();
-    selectedOption = widget.optionsList.map((option) => option.first).toList();
-  }
-
   final textEditingController = TextEditingController();
   String? selected;
   @override
@@ -61,7 +53,8 @@ class _DropDownBuilderState extends State<DropDownBuilder> {
             case 0:
               context.read<CategoryBlocBloc>().add(
                     GetModels(
-                      brandName: context.read<CategoryBlocBloc>().barndName!,
+                      brandName: context.read<CategoryBlocBloc>().barndName ??
+                          'mobile',
                       categoryType:
                           context.read<CategoryBlocBloc>().categoryType!,
                       seriesName: context.read<CategoryBlocBloc>().seriesName!,

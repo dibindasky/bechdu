@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:beachdu/application/business_logic/auth/auth_bloc.dart';
 import 'package:beachdu/application/business_logic/navbar/navbar_cubit.dart';
 import 'package:beachdu/application/presentation/routes/routes.dart';
@@ -12,8 +11,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class BottomSections extends StatelessWidget {
-  const BottomSections({super.key});
-
+  const BottomSections({super.key, this.isFromInside});
+  final bool? isFromInside;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -40,27 +39,29 @@ class BottomSections extends StatelessWidget {
           ),
         ),
         kHeight50,
-        Align(
-          alignment: Alignment.center,
-          child: TextButton(
-            onPressed: () {
-              Navigator.of(context).pushReplacementNamed(
-                Routes.bottomBar,
-              );
-            },
-            child: Text(
-              'Skip for now',
-              style: textHeadInter.copyWith(
-                fontSize: sWidth * .045,
-                color: klightGreen,
-                decoration: TextDecoration.underline,
-                decorationColor:
-                    klightGreen, // You can set the color of the underline
-                decorationThickness: 1.4,
+        isFromInside == true
+            ? kEmpty
+            : Align(
+                alignment: Alignment.center,
+                child: TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pushReplacementNamed(
+                      Routes.bottomBar,
+                    );
+                  },
+                  child: Text(
+                    'Skip for now',
+                    style: textHeadInter.copyWith(
+                      fontSize: sWidth * .045,
+                      color: klightGreen,
+                      decoration: TextDecoration.underline,
+                      decorationColor:
+                          klightGreen, // You can set the color of the underline
+                      decorationThickness: 1.4,
+                    ),
+                  ),
+                ),
               ),
-            ),
-          ),
-        ),
         kHeight50,
         ElevatedButtonLong(
           onPressed: () {
@@ -91,7 +92,9 @@ class BottomSections extends StatelessWidget {
             .length >
         10) {
       showSnack(
-          context: context, message: 'Mobile number should keep 10 digit only');
+        context: context,
+        message: 'Mobile number should keep 10 digit only',
+      );
     } else {
       Timer(const Duration(microseconds: 500), () {
         context.read<AuthBloc>().add(
@@ -107,6 +110,7 @@ class BottomSections extends StatelessWidget {
         //For bottombar tab change
         context.read<NavbarCubit>().changeNavigationIndex(0);
         Navigator.pushReplacementNamed(context, Routes.bottomBar);
+        isFromInside == true ? Navigator.of(context).pop() : null;
       });
     }
   }

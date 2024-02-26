@@ -13,6 +13,7 @@ class QuestionTabState with _$QuestionTabState {
     GetQuestionModel? getQuestionModel,
     GetProductsRespoceModel? getProductsResponceModel,
     required int selectedTabIndex,
+    AbandendOrderResponceModel? abandendOrderResponceModel,
   }) = _Initial;
 
   factory QuestionTabState.initial() => const QuestionTabState(

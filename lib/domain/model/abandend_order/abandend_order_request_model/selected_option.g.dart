@@ -1,19 +1,21 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'option.dart';
+part of 'selected_option.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-Option _$OptionFromJson(Map<String, dynamic> json) => Option(
+SelectedOption _$SelectedOptionFromJson(Map<String, dynamic> json) =>
+    SelectedOption(
       heading: json['heading'] as String?,
       description: json['description'] as String?,
       value: json['value'] as bool?,
       type: json['type'] as String?,
     );
 
-Map<String, dynamic> _$OptionToJson(Option instance) => <String, dynamic>{
+Map<String, dynamic> _$SelectedOptionToJson(SelectedOption instance) =>
+    <String, dynamic>{
       'heading': instance.heading,
       'description': instance.description,
       'value': instance.value,

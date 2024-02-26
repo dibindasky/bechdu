@@ -46,9 +46,6 @@ class CustomSearchFieldHome extends StatelessWidget {
                 color: kBlack,
               ),
               onPressed: () {
-                context
-                    .read<LocationBloc>()
-                    .add(const LocationEvent.locationPick());
                 Navigator.of(context).pushNamed(Routes.location);
               },
             ),

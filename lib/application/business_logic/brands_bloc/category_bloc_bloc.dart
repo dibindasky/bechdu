@@ -22,9 +22,10 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
   String? seriesName;
   String? verient;
   String? slug;
+  String? model;
   List<Brands> brandsList = [];
   List<Product> productList = [];
-  List<List<String>> dropDownItems = [];
+  List<List<String>> dropDownItems = List.generate(3, (_) => []);
   CategoryBlocBloc(this.brandsRepository) : super(CategoryBlocState.intial()) {
     on<GetSingleCategoryBrands>(getSingleCategoryBrands);
     on<BrandSearch>(brandSearch);
@@ -43,11 +44,12 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
     final String searchQuery = event.searchQuery.toLowerCase();
     final List<Product> filteredProducts = productList.where((product) {
       final String model = product.model!.toLowerCase();
+      final String varient = product.variant!.toLowerCase();
       final String brand = product.brandName!.toLowerCase();
-      final String series = product.seriesName!.toLowerCase();
+
       return model.contains(searchQuery) ||
-          brand.contains(searchQuery) ||
-          series.contains(searchQuery);
+          varient.contains(searchQuery) ||
+          brand.contains(searchQuery);
     }).toList();
     emit(state.copyWith(
       filteredProducts: filteredProducts,
@@ -72,7 +74,6 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
       final String brandName = brand.brandName!.toLowerCase();
       return brandName.contains(searchQuery);
     }).toList();
-
     emit(state.copyWith(
       filteredProducts: filteredProducts,
       filteredBrands: filteredBrands,
@@ -196,7 +197,7 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
         // print(e);
       }
       dropDownItems[0].addAll(getSeriesSuccess);
-      log(getSeriesSuccess.toString());
+      log('getSeriesSuccess bloc list $dropDownItems');
 
       emit(state.copyWith(
         hasError: false,

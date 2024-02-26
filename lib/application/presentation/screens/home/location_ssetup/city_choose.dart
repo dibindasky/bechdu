@@ -4,6 +4,7 @@ import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/application/presentation/utils/custom_button.dart';
 import 'package:beachdu/application/presentation/utils/loading_indicators/loading_indicator.dart';
+import 'package:beachdu/data/secure_storage/secure_fire_store.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -115,17 +116,22 @@ class ScreenLocations extends StatelessWidget {
                                   ),
                                   itemBuilder: (context, index) {
                                     return GestureDetector(
-                                      onTap: () {
+                                      onTap: () async {
                                         context.read<LocationBloc>().add(
                                             LocationEvent.pinCodePick(
                                                 cityName:
                                                     state.filteredLocations![
                                                         index]));
-
-                                        Navigator.of(context).pushNamed(
-                                            Routes.pincode,
-                                            arguments: state
-                                                .filteredLocations![index]);
+                                        await SecureSotrage.setLocation(
+                                          location:
+                                              state.filteredLocations![index],
+                                        );
+                                        // ignore: use_build_context_synchronously
+                                        Navigator.of(context)
+                                            .pushReplacementNamed(
+                                                Routes.pincode,
+                                                arguments: state
+                                                    .filteredLocations![index]);
                                       },
                                       child: ClipRRect(
                                         borderRadius: kRadius5,

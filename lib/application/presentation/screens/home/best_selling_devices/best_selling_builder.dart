@@ -1,4 +1,3 @@
-import 'package:beachdu/application/presentation/screens/home/recomended/circle_count_images/circle_count_images.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +13,7 @@ class RecommendedMobile extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          '   Recommended',
+          '   Best Selling Devices',
           style: textHeadBoldBig,
         ),
         kHeight10,
@@ -64,7 +63,7 @@ class RecommendedMobile extends StatelessWidget {
                                         'Upto \$19,999',
                                         style: textHeadBold1,
                                       ),
-                                      const UsersProfileStackRecomended()
+                                      // const UsersProfileStackRecomended()
                                     ],
                                   ),
                                 ],

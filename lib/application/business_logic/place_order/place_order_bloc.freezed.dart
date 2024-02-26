@@ -16,45 +16,49 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$PlaceOrderEvent {
-  PromoCodeRequestModel get promoCodeRequestModel =>
-      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(PromoCodeRequestModel promoCodeRequestModel)
         getPromoCode,
+    required TResult Function(
+            AbandendOrderRequestModel abandendOrderRequestModel)
+        abandendOrder,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(PromoCodeRequestModel promoCodeRequestModel)?
         getPromoCode,
+    TResult? Function(AbandendOrderRequestModel abandendOrderRequestModel)?
+        abandendOrder,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(PromoCodeRequestModel promoCodeRequestModel)? getPromoCode,
+    TResult Function(AbandendOrderRequestModel abandendOrderRequestModel)?
+        abandendOrder,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(GetPromoCode value) getPromoCode,
+    required TResult Function(AbandendOrder value) abandendOrder,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(GetPromoCode value)? getPromoCode,
+    TResult? Function(AbandendOrder value)? abandendOrder,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GetPromoCode value)? getPromoCode,
+    TResult Function(AbandendOrder value)? abandendOrder,
     required TResult orElse(),
   }) =>
-      throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $PlaceOrderEventCopyWith<PlaceOrderEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -63,8 +67,6 @@ abstract class $PlaceOrderEventCopyWith<$Res> {
   factory $PlaceOrderEventCopyWith(
           PlaceOrderEvent value, $Res Function(PlaceOrderEvent) then) =
       _$PlaceOrderEventCopyWithImpl<$Res, PlaceOrderEvent>;
-  @useResult
-  $Res call({PromoCodeRequestModel promoCodeRequestModel});
 }
 
 /// @nodoc
@@ -76,28 +78,13 @@ class _$PlaceOrderEventCopyWithImpl<$Res, $Val extends PlaceOrderEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? promoCodeRequestModel = null,
-  }) {
-    return _then(_value.copyWith(
-      promoCodeRequestModel: null == promoCodeRequestModel
-          ? _value.promoCodeRequestModel
-          : promoCodeRequestModel // ignore: cast_nullable_to_non_nullable
-              as PromoCodeRequestModel,
-    ) as $Val);
-  }
 }
 
 /// @nodoc
-abstract class _$$GetPromoCodeImplCopyWith<$Res>
-    implements $PlaceOrderEventCopyWith<$Res> {
+abstract class _$$GetPromoCodeImplCopyWith<$Res> {
   factory _$$GetPromoCodeImplCopyWith(
           _$GetPromoCodeImpl value, $Res Function(_$GetPromoCodeImpl) then) =
       __$$GetPromoCodeImplCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call({PromoCodeRequestModel promoCodeRequestModel});
 }
@@ -160,6 +147,9 @@ class _$GetPromoCodeImpl implements GetPromoCode {
   TResult when<TResult extends Object?>({
     required TResult Function(PromoCodeRequestModel promoCodeRequestModel)
         getPromoCode,
+    required TResult Function(
+            AbandendOrderRequestModel abandendOrderRequestModel)
+        abandendOrder,
   }) {
     return getPromoCode(promoCodeRequestModel);
   }
@@ -169,6 +159,8 @@ class _$GetPromoCodeImpl implements GetPromoCode {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(PromoCodeRequestModel promoCodeRequestModel)?
         getPromoCode,
+    TResult? Function(AbandendOrderRequestModel abandendOrderRequestModel)?
+        abandendOrder,
   }) {
     return getPromoCode?.call(promoCodeRequestModel);
   }
@@ -177,6 +169,8 @@ class _$GetPromoCodeImpl implements GetPromoCode {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(PromoCodeRequestModel promoCodeRequestModel)? getPromoCode,
+    TResult Function(AbandendOrderRequestModel abandendOrderRequestModel)?
+        abandendOrder,
     required TResult orElse(),
   }) {
     if (getPromoCode != null) {
@@ -189,6 +183,7 @@ class _$GetPromoCodeImpl implements GetPromoCode {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(GetPromoCode value) getPromoCode,
+    required TResult Function(AbandendOrder value) abandendOrder,
   }) {
     return getPromoCode(this);
   }
@@ -197,6 +192,7 @@ class _$GetPromoCodeImpl implements GetPromoCode {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(GetPromoCode value)? getPromoCode,
+    TResult? Function(AbandendOrder value)? abandendOrder,
   }) {
     return getPromoCode?.call(this);
   }
@@ -205,6 +201,7 @@ class _$GetPromoCodeImpl implements GetPromoCode {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GetPromoCode value)? getPromoCode,
+    TResult Function(AbandendOrder value)? abandendOrder,
     required TResult orElse(),
   }) {
     if (getPromoCode != null) {
@@ -219,11 +216,152 @@ abstract class GetPromoCode implements PlaceOrderEvent {
           {required final PromoCodeRequestModel promoCodeRequestModel}) =
       _$GetPromoCodeImpl;
 
-  @override
   PromoCodeRequestModel get promoCodeRequestModel;
-  @override
   @JsonKey(ignore: true)
   _$$GetPromoCodeImplCopyWith<_$GetPromoCodeImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$AbandendOrderImplCopyWith<$Res> {
+  factory _$$AbandendOrderImplCopyWith(
+          _$AbandendOrderImpl value, $Res Function(_$AbandendOrderImpl) then) =
+      __$$AbandendOrderImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({AbandendOrderRequestModel abandendOrderRequestModel});
+}
+
+/// @nodoc
+class __$$AbandendOrderImplCopyWithImpl<$Res>
+    extends _$PlaceOrderEventCopyWithImpl<$Res, _$AbandendOrderImpl>
+    implements _$$AbandendOrderImplCopyWith<$Res> {
+  __$$AbandendOrderImplCopyWithImpl(
+      _$AbandendOrderImpl _value, $Res Function(_$AbandendOrderImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? abandendOrderRequestModel = null,
+  }) {
+    return _then(_$AbandendOrderImpl(
+      abandendOrderRequestModel: null == abandendOrderRequestModel
+          ? _value.abandendOrderRequestModel
+          : abandendOrderRequestModel // ignore: cast_nullable_to_non_nullable
+              as AbandendOrderRequestModel,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$AbandendOrderImpl implements AbandendOrder {
+  const _$AbandendOrderImpl({required this.abandendOrderRequestModel});
+
+  @override
+  final AbandendOrderRequestModel abandendOrderRequestModel;
+
+  @override
+  String toString() {
+    return 'PlaceOrderEvent.abandendOrder(abandendOrderRequestModel: $abandendOrderRequestModel)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AbandendOrderImpl &&
+            (identical(other.abandendOrderRequestModel,
+                    abandendOrderRequestModel) ||
+                other.abandendOrderRequestModel == abandendOrderRequestModel));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, abandendOrderRequestModel);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AbandendOrderImplCopyWith<_$AbandendOrderImpl> get copyWith =>
+      __$$AbandendOrderImplCopyWithImpl<_$AbandendOrderImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(PromoCodeRequestModel promoCodeRequestModel)
+        getPromoCode,
+    required TResult Function(
+            AbandendOrderRequestModel abandendOrderRequestModel)
+        abandendOrder,
+  }) {
+    return abandendOrder(abandendOrderRequestModel);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(PromoCodeRequestModel promoCodeRequestModel)?
+        getPromoCode,
+    TResult? Function(AbandendOrderRequestModel abandendOrderRequestModel)?
+        abandendOrder,
+  }) {
+    return abandendOrder?.call(abandendOrderRequestModel);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(PromoCodeRequestModel promoCodeRequestModel)? getPromoCode,
+    TResult Function(AbandendOrderRequestModel abandendOrderRequestModel)?
+        abandendOrder,
+    required TResult orElse(),
+  }) {
+    if (abandendOrder != null) {
+      return abandendOrder(abandendOrderRequestModel);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GetPromoCode value) getPromoCode,
+    required TResult Function(AbandendOrder value) abandendOrder,
+  }) {
+    return abandendOrder(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetPromoCode value)? getPromoCode,
+    TResult? Function(AbandendOrder value)? abandendOrder,
+  }) {
+    return abandendOrder?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetPromoCode value)? getPromoCode,
+    TResult Function(AbandendOrder value)? abandendOrder,
+    required TResult orElse(),
+  }) {
+    if (abandendOrder != null) {
+      return abandendOrder(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class AbandendOrder implements PlaceOrderEvent {
+  const factory AbandendOrder(
+      {required final AbandendOrderRequestModel
+          abandendOrderRequestModel}) = _$AbandendOrderImpl;
+
+  AbandendOrderRequestModel get abandendOrderRequestModel;
+  @JsonKey(ignore: true)
+  _$$AbandendOrderImplCopyWith<_$AbandendOrderImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

@@ -11,7 +11,7 @@ ProductDetails _$ProductDetailsFromJson(Map<String, dynamic> json) =>
       name: json['name'] as String?,
       slug: json['slug'] as String?,
       options: (json['options'] as List<dynamic>?)
-          ?.map((e) => Option.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => SelectedOption.fromJson(e as Map<String, dynamic>))
           .toList(),
       price: json['price'] as String?,
     );

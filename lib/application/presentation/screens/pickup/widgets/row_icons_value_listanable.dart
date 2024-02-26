@@ -1,6 +1,8 @@
+import 'package:beachdu/application/business_logic/location/location_bloc.dart';
 import 'package:beachdu/application/presentation/screens/pickup/pickup_screen.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class RowIconsValueListanable extends StatelessWidget {
   const RowIconsValueListanable({
@@ -15,34 +17,35 @@ class RowIconsValueListanable extends StatelessWidget {
         return Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            circleAvatar(
-              'assets/images/person_icon.png',
-              PickupDetailContainers.personalDetails,
-            ),
-            circleAvatar(
-              'assets/images/address_icon.png',
-              PickupDetailContainers.address,
-            ),
-            circleAvatar(
-              'assets/images/payment_icon.png',
-              PickupDetailContainers.cashOrUPI,
-            ),
-            circleAvatar(
-              'assets/images/date_icon.png',
-              PickupDetailContainers.dateSelect,
-            ),
+            circleAvatar('assets/images/person_icon.png',
+                PickupDetailContainers.personalDetails, context),
+            circleAvatar('assets/images/address_icon.png',
+                PickupDetailContainers.address, context),
+            circleAvatar('assets/images/payment_icon.png',
+                PickupDetailContainers.cashOrUPI, context),
+            circleAvatar('assets/images/date_icon.png',
+                PickupDetailContainers.dateSelect, context),
           ],
         );
       },
     );
   }
 
-  Widget circleAvatar(String image, PickupDetailContainers item) {
+  Widget circleAvatar(
+    String image,
+    PickupDetailContainers item,
+    BuildContext context,
+  ) {
     bool isSelected = pickupDetailChangeNotifier.value == item;
     return Tooltip(
       message: 'Touch here',
       child: GestureDetector(
         onTap: () {
+          if (item == PickupDetailContainers.address) {
+            context
+                .read<LocationBloc>()
+                .add(const LocationEvent.locationPick());
+          }
           pickupDetailChangeNotifier.value = item;
         },
         child: CircleAvatar(

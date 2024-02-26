@@ -9,4 +9,7 @@ class LocationEvent with _$LocationEvent {
       LocationSearch;
   const factory LocationEvent.pincodeSearch({required String searchQuery}) =
       PincodeSearch;
+  const factory LocationEvent.pincodeSave({required String pinCode}) =
+      PincodeSave;
+  const factory LocationEvent.clear() = Clear;
 }

@@ -1,3 +1,4 @@
+import 'package:beachdu/application/business_logic/profile/profile_bloc.dart';
 import 'package:beachdu/application/presentation/screens/pickup/widgets/data_value_listenable.dart';
 import 'package:beachdu/application/presentation/screens/pickup/widgets/row_icons_value_listanable.dart';
 import 'package:beachdu/application/presentation/screens/product_selection/product_screen.dart';
@@ -5,6 +6,7 @@ import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/application/presentation/utils/enums/type_display.dart';
 import 'package:beachdu/application/presentation/widgets/top_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 enum PickupDetailContainers {
   personalDetails,
@@ -21,9 +23,10 @@ class ScreenPickUp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    WidgetsBinding.instance.addPostFrameCallback(
-      (_) => PickupDetailContainers.personalDetails,
-    );
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      PickupDetailContainers.personalDetails;
+      context.read<ProfileBloc>().add(const ProfileEvent.getUserInfo());
+    });
     return GestureDetector(
       onTap: () {
         FocusScopeNode focusScopeNode = FocusScope.of(context);
@@ -49,8 +52,7 @@ class ScreenPickUp extends StatelessWidget {
                 child: Column(
                   children: [
                     const TopImage(
-                      fromWhere: FromWhere.checkoutAndPickupScreen,
-                    ),
+                        fromWhere: FromWhere.checkoutAndPickupScreen),
                     kHeight10,
                     Text(
                       'Pickup Details',

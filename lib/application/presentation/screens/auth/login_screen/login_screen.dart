@@ -10,12 +10,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 
 class ScreenLogin extends StatelessWidget {
-  ScreenLogin({super.key});
+  ScreenLogin({super.key, this.isFromInside});
 
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-
   String initialCountry = 'NG';
-
+  bool? isFromInside = false;
   PhoneNumber phoneNumber = PhoneNumber(isoCode: 'IN');
 
   @override
@@ -76,7 +75,7 @@ class ScreenLogin extends StatelessWidget {
                       log('On Saved: $number');
                     },
                   ),
-                  const BottomSections()
+                  BottomSections(isFromInside: isFromInside)
                 ],
               ),
             ),

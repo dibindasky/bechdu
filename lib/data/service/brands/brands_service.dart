@@ -48,21 +48,20 @@ class BrandsService implements BrandsRepository {
     required String brandName,
   }) async {
     try {
-      final responce =
-          await _dio.get('${ApiEndPoints.getProducts}$categoryType/$brandName');
-
+      final responce = await _dio.get(
+        '${ApiEndPoints.getProducts}$categoryType/$brandName',
+      );
       if (responce.statusCode == 200) {
-        // log('getproducts data ${responce.data}');
         return Right(GetProductsRespoceModel.fromJson(responce.data));
       } else {
-        // log('getProducts DioException ${responce.statusCode}');
+        log('getProducts DioException ${responce.statusCode}');
         return Left(Failure(message: 'errorMessage'));
       }
     } on DioException catch (e) {
-      //log('getProducts DioException ${e.response?.statusCode}');
+      log('getProducts DioException ${e.response?.statusCode}');
       return Left(Failure(message: e.message ?? errorMessage));
     } catch (e) {
-      //log('getProducts catch $e');
+      log('getProducts catch $e');
       return Left(Failure(message: errorMessage));
     }
   }
@@ -75,13 +74,11 @@ class BrandsService implements BrandsRepository {
     try {
       final responce =
           await _dio.get('${ApiEndPoints.getSeries}$brandName/$categoryType');
-      //  log('getSeries data ${responce.data}');
       final data = responce.data as List<dynamic>;
       final retVal = data.map((e) => e.toString()).toList();
-      log('getSeries retVal $retVal');
       return Right(retVal);
     } on DioException catch (e) {
-      // log('getSeries DioException $e');
+      log('getSeries DioException $e');
       return Left(Failure(message: e.message ?? errorMessage));
     } catch (e) {
       log('getSeries error catch $e');

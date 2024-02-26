@@ -40,7 +40,7 @@ class TopImage extends StatelessWidget {
               String url =
                   "${ApiEndPoints.baseUrlImagePath}${Uri.encodeComponent(image)}";
               return SizedBox(
-                height: sWidth * .37,
+                height: sWidth * .40,
                 width: double.infinity,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(10),
@@ -67,12 +67,16 @@ class TopImage extends StatelessWidget {
                               FittedBox(
                                 child: Row(
                                   children: [
-                                    Text(
-                                      '${questiontabBloc.product!.model}',
-                                      style: textHeadBold1.copyWith(
-                                        fontSize: sWidth * .043,
-                                        color: kWhite,
-                                        overflow: TextOverflow.ellipsis,
+                                    SizedBox(
+                                      width: sWidth * .4,
+                                      child: Text(
+                                        '${questiontabBloc.product!.model}',
+                                        style: textHeadBold1.copyWith(
+                                          fontSize: sWidth * .043,
+                                          color: kWhite,
+                                          overflow: TextOverflow.ellipsis,
+                                        ),
+                                        maxLines: 2,
                                       ),
                                     ),
                                     kWidth10,
@@ -104,12 +108,21 @@ class TopImage extends StatelessWidget {
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: [
-                                        Text(
-                                          '${questiontabBloc.basePriceModelResponce!.basePrice}',
-                                          style: textHeadBoldBig.copyWith(
-                                            color: kWhite,
-                                          ),
-                                        ),
+                                        questiontabBloc
+                                                    .basePriceModelResponce !=
+                                                null
+                                            ? Text(
+                                                '${questiontabBloc.basePriceModelResponce!.basePrice}',
+                                                style: textHeadBoldBig.copyWith(
+                                                  color: kWhite,
+                                                ),
+                                              )
+                                            : Text(
+                                                '0',
+                                                style: textHeadBoldBig.copyWith(
+                                                  color: kWhite,
+                                                ),
+                                              ),
                                         Row(
                                           children: [
                                             SizedBox(

@@ -54,7 +54,12 @@ class BrandSearchField extends StatelessWidget {
                         newValue ?? 'mobile';
                   },
                   value: context.read<CategoryBlocBloc>().categoryType,
-                  items: buildDropdownItems(categories),
+                  items: categories.map((category) {
+                    return DropdownMenuItem<String>(
+                      value: category.categoryType,
+                      child: Text(category.categoryType!),
+                    );
+                  }).toList(),
                   hint: Text(
                     context.read<CategoryBlocBloc>().categoryType ?? 'mobile',
                   ),
@@ -78,15 +83,5 @@ class BrandSearchField extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  List<DropdownMenuItem<String>> buildDropdownItems(List<Category> categories) {
-    return categories.map((category) {
-      return DropdownMenuItem<String>(
-        onTap: () {},
-        value: category.categoryType,
-        child: Text(category.categoryType!),
-      );
-    }).toList();
   }
 }

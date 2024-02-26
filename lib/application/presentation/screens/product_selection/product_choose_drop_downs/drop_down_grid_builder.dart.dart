@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:beachdu/application/business_logic/brands_bloc/category_bloc_bloc.dart';
 import 'package:beachdu/application/presentation/screens/product_selection/product_choose_drop_downs/drop_down_custom.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +13,6 @@ class ScreenProductSelectionProductFindDropdownGridView
   Widget build(BuildContext context) {
     return BlocBuilder<CategoryBlocBloc, CategoryBlocState>(
       builder: (context, state) {
-        log('UI state dropDownItems ${context.read<CategoryBlocBloc>().dropDownItems}');
         return GridView.builder(
           physics: const NeverScrollableScrollPhysics(),
           shrinkWrap: true,

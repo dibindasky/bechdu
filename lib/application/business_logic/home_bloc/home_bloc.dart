@@ -22,7 +22,9 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   }
 
   FutureOr<void> getAllcategory(
-      GetAllCategory event, Emitter<HomeState> emit) async {
+    GetAllCategory event,
+    Emitter<HomeState> emit,
+  ) async {
     if (state.getCategoryResponceModel != null) return;
     emit(state.copyWith(isLoading: true, hasError: false));
     final data = await homeRepository.getAllCategory();

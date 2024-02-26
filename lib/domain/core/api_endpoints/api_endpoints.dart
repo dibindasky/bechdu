@@ -18,4 +18,9 @@ class ApiEndPoints {
       'https://bechdu-main-backend.onrender.com/uploads/';
   static const String getBasePrice = 'product/calculate-price';
   static const String getPromoCode = 'promo/check/promocode';
+  static const String abandendOrder = 'abundant/create-order';
+  static const String addAddress = 'user/users/add-address';
+  static const String deleteAddress =
+      'user/users/delete-address/{number}/{index}';
+  static const String getUserInfo = 'user/get-user-info/{number}';
 }

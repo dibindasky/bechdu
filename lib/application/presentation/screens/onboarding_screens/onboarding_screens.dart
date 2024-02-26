@@ -66,7 +66,8 @@ class _BechDuUserOnBoardingScreensState
               duration: const Duration(milliseconds: 500),
               curve: Curves.easeInOut);
         } else {
-          Navigator.of(context).pushNamed(Routes.signInOrLogin);
+          Navigator.of(context)
+              .pushNamed(Routes.signInOrLogin, arguments: false);
         }
       },
       child: Scaffold(
