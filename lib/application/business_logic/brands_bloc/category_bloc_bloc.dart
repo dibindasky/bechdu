@@ -23,6 +23,7 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
   String? verient;
   String? slug;
   String? model;
+  String? productImage;
   List<Brands> brandsList = [];
   List<Product> productList = [];
   List<List<String>> dropDownItems = List.generate(3, (_) => []);
@@ -46,7 +47,6 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
       final String model = product.model!.toLowerCase();
       final String varient = product.variant!.toLowerCase();
       final String brand = product.brandName!.toLowerCase();
-
       return model.contains(searchQuery) ||
           varient.contains(searchQuery) ||
           brand.contains(searchQuery);

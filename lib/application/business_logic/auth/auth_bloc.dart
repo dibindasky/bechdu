@@ -20,8 +20,15 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   String phoneNumber = '';
   bool isPhoneNumberValid = false;
   AuthBloc(this.authRepo) : super(AuthState.initail()) {
+    on<LogOrNot>(logOrNot);
     on<Login>(login);
     on<LogOut>(logOut);
+  }
+
+  FutureOr<void> logOrNot(LogOrNot event, emit) async {
+    final logOrNot = await SecureSotrage.getlLogin();
+    log('$logOrNot', name: 'Auth bloc');
+    emit(state.copyWith(logOrNot: logOrNot));
   }
 
   FutureOr<void> login(Login event, emit) async {
@@ -39,14 +46,13 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           isLoading: false,
           hasError: false,
           loginResponceModel: successLogin,
+          logOrNot: true,
         ),
       );
-      //if (successLogin.user != null || successLogin.user!.phone != null) {
       await SecureSotrage.saveNumber(
         phoneNumber: successLogin.user!.phone!,
       );
-      log('Number auth bloc ${successLogin.user!.phone!}');
-      //}
+
       await SecureSotrage.saveToken(
           tokenModel: TokenModel(
         accessToken: successLogin.token,
@@ -57,5 +63,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
   FutureOr<void> logOut(LogOut event, emit) async {
     await SecureSotrage.clearLogin();
+
+    emit(AuthState.initail());
   }
 }

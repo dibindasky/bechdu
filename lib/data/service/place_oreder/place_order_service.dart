@@ -1,8 +1,12 @@
+import 'dart:developer';
+
 import 'package:beachdu/data/secure_storage/secure_fire_store.dart';
 import 'package:beachdu/domain/core/api_endpoints/api_endpoints.dart';
 import 'package:beachdu/domain/core/failure/failure.dart';
-import 'package:beachdu/domain/model/place_order/promo_code_request_model/promo_code_request_model.dart';
-import 'package:beachdu/domain/model/place_order/promo_code_responce_model/promo_code_responce_model.dart';
+import 'package:beachdu/domain/model/order_model/order_placed_request_model/order_placed_request_model.dart';
+import 'package:beachdu/domain/model/order_model/order_placed_responce_model/order_placed_responce_model.dart';
+import 'package:beachdu/domain/model/promo_code_model/promo_code_request_model/promo_code_request_model.dart';
+import 'package:beachdu/domain/model/promo_code_model/promo_code_responce_model/promo_code_responce_model.dart';
 import 'package:beachdu/domain/repository/place_order.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
@@ -34,6 +38,35 @@ class PlaceOrderService implements PlaceOrderRepo {
       return Left(Failure(message: e.response?.data['error'] ?? errorMessage));
     } catch (e) {
       // log('getPomoCode catch $e');
+      return Left(Failure(message: errorMessage));
+    }
+  }
+
+  @override
+  Future<Either<Failure, OrderPlacedResponceModel>> orderPlacing({
+    required OrderPlacedRequestModel orderPlacedRequestModel,
+  }) async {
+    try {
+      final accessToken =
+          await SecureSotrage.getToken().then((token) => token.accessToken);
+      _dio.options.headers.addAll(
+        {
+          'authorization': "Bearer $accessToken",
+        },
+      );
+      log('Order placing service before ${orderPlacedRequestModel.toJson()}');
+      final responce = await _dio.post(
+        ApiEndPoints.orderPlacing,
+        data: orderPlacedRequestModel.toJson(),
+      );
+      log('Order placing service after ${orderPlacedRequestModel.toJson()}');
+      log('orderPlacing data ${responce.data}');
+      return Right(OrderPlacedResponceModel.fromJson(responce.data));
+    } on DioException catch (e) {
+      log('orderPlacing DioException $e');
+      return Left(Failure(message: e.response?.data['error'] ?? errorMessage));
+    } catch (e) {
+      log('orderPlacing catch $e');
       return Left(Failure(message: errorMessage));
     }
   }

@@ -69,6 +69,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
       emit(state.copyWith(
         isLoading: false,
         hasError: false,
+        message: succsess.message,
         address: addressList,
         addressCreationResponceModel: succsess,
       ));
@@ -90,6 +91,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
       emit(state.copyWith(
         isLoading: false,
         hasError: false,
+        message: succsess.message,
         address: addressList,
       ));
     });

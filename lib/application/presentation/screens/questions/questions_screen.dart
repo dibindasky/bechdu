@@ -12,8 +12,8 @@ import 'package:beachdu/application/presentation/utils/loading_indicators/loadin
 import 'package:beachdu/application/presentation/utils/snackbar/snackbar.dart';
 import 'package:beachdu/application/presentation/widgets/top_image.dart';
 import 'package:beachdu/data/secure_storage/secure_fire_store.dart';
-import 'package:beachdu/domain/model/abandend_order/abandend_order_request_model/abandend_order_request_model.dart';
-import 'package:beachdu/domain/model/abandend_order/abandend_order_request_model/product_details.dart';
+import 'package:beachdu/domain/model/order_model/abandend_order_request_model/abandend_order_request_model.dart';
+import 'package:beachdu/domain/model/order_model/abandend_order_request_model/product_details.dart';
 import 'package:beachdu/domain/model/pickup_question_model/pickup_question_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -188,7 +188,7 @@ class QuestionTabs extends StatelessWidget {
 
   void pickeQuestionModelEventDataPass(
     BuildContext context,
-    QuestionTabState categoryBlocState,
+    QuestionTabState questionBlocState,
   ) {
     secondtabScreensNotifier.value = 2;
     secondtabScreensNotifier.notifyListeners();
@@ -198,6 +198,8 @@ class QuestionTabs extends StatelessWidget {
       productSlug: context.read<CategoryBlocBloc>().slug,
       selectedOptions: context.read<QuestionTabBloc>().state.selectedOption,
     );
+
+    //Product name Concatination
     final verient = context.read<CategoryBlocBloc>().verient;
     final model = context.read<CategoryBlocBloc>().model;
     final name = '$verient $model';
@@ -205,7 +207,7 @@ class QuestionTabs extends StatelessWidget {
     ProductDetails productDetails = ProductDetails(
       slug: context.read<CategoryBlocBloc>().slug,
       name: name,
-      options: categoryBlocState.selectedOption,
+      options: questionBlocState.selectedOption,
     );
 
     AbandendOrderRequestModel abandendOrderRequestModel =
@@ -217,6 +219,6 @@ class QuestionTabs extends StatelessWidget {
             abandendOrderRequestModel: abandendOrderRequestModel,
           ),
         );
-    context.read<QuestionTabBloc>().add(const ResetTabSelection());
+    //context.read<QuestionTabBloc>().add(const ResetTabSelection());
   }
 }

@@ -20,18 +20,21 @@ mixin _$AuthEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(LoginModel loginModel) login,
     required TResult Function() logOut,
+    required TResult Function() logOrNot,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(LoginModel loginModel)? login,
     TResult? Function()? logOut,
+    TResult? Function()? logOrNot,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(LoginModel loginModel)? login,
     TResult Function()? logOut,
+    TResult Function()? logOrNot,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -39,18 +42,21 @@ mixin _$AuthEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(Login value) login,
     required TResult Function(LogOut value) logOut,
+    required TResult Function(LogOrNot value) logOrNot,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Login value)? login,
     TResult? Function(LogOut value)? logOut,
+    TResult? Function(LogOrNot value)? logOrNot,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Login value)? login,
     TResult Function(LogOut value)? logOut,
+    TResult Function(LogOrNot value)? logOrNot,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -140,6 +146,7 @@ class _$LoginImpl implements Login {
   TResult when<TResult extends Object?>({
     required TResult Function(LoginModel loginModel) login,
     required TResult Function() logOut,
+    required TResult Function() logOrNot,
   }) {
     return login(loginModel);
   }
@@ -149,6 +156,7 @@ class _$LoginImpl implements Login {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(LoginModel loginModel)? login,
     TResult? Function()? logOut,
+    TResult? Function()? logOrNot,
   }) {
     return login?.call(loginModel);
   }
@@ -158,6 +166,7 @@ class _$LoginImpl implements Login {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(LoginModel loginModel)? login,
     TResult Function()? logOut,
+    TResult Function()? logOrNot,
     required TResult orElse(),
   }) {
     if (login != null) {
@@ -171,6 +180,7 @@ class _$LoginImpl implements Login {
   TResult map<TResult extends Object?>({
     required TResult Function(Login value) login,
     required TResult Function(LogOut value) logOut,
+    required TResult Function(LogOrNot value) logOrNot,
   }) {
     return login(this);
   }
@@ -180,6 +190,7 @@ class _$LoginImpl implements Login {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Login value)? login,
     TResult? Function(LogOut value)? logOut,
+    TResult? Function(LogOrNot value)? logOrNot,
   }) {
     return login?.call(this);
   }
@@ -189,6 +200,7 @@ class _$LoginImpl implements Login {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Login value)? login,
     TResult Function(LogOut value)? logOut,
+    TResult Function(LogOrNot value)? logOrNot,
     required TResult orElse(),
   }) {
     if (login != null) {
@@ -247,6 +259,7 @@ class _$LogOutImpl implements LogOut {
   TResult when<TResult extends Object?>({
     required TResult Function(LoginModel loginModel) login,
     required TResult Function() logOut,
+    required TResult Function() logOrNot,
   }) {
     return logOut();
   }
@@ -256,6 +269,7 @@ class _$LogOutImpl implements LogOut {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(LoginModel loginModel)? login,
     TResult? Function()? logOut,
+    TResult? Function()? logOrNot,
   }) {
     return logOut?.call();
   }
@@ -265,6 +279,7 @@ class _$LogOutImpl implements LogOut {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(LoginModel loginModel)? login,
     TResult Function()? logOut,
+    TResult Function()? logOrNot,
     required TResult orElse(),
   }) {
     if (logOut != null) {
@@ -278,6 +293,7 @@ class _$LogOutImpl implements LogOut {
   TResult map<TResult extends Object?>({
     required TResult Function(Login value) login,
     required TResult Function(LogOut value) logOut,
+    required TResult Function(LogOrNot value) logOrNot,
   }) {
     return logOut(this);
   }
@@ -287,6 +303,7 @@ class _$LogOutImpl implements LogOut {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Login value)? login,
     TResult? Function(LogOut value)? logOut,
+    TResult? Function(LogOrNot value)? logOrNot,
   }) {
     return logOut?.call(this);
   }
@@ -296,6 +313,7 @@ class _$LogOutImpl implements LogOut {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Login value)? login,
     TResult Function(LogOut value)? logOut,
+    TResult Function(LogOrNot value)? logOrNot,
     required TResult orElse(),
   }) {
     if (logOut != null) {
@@ -310,12 +328,121 @@ abstract class LogOut implements AuthEvent {
 }
 
 /// @nodoc
+abstract class _$$LogOrNotImplCopyWith<$Res> {
+  factory _$$LogOrNotImplCopyWith(
+          _$LogOrNotImpl value, $Res Function(_$LogOrNotImpl) then) =
+      __$$LogOrNotImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$LogOrNotImplCopyWithImpl<$Res>
+    extends _$AuthEventCopyWithImpl<$Res, _$LogOrNotImpl>
+    implements _$$LogOrNotImplCopyWith<$Res> {
+  __$$LogOrNotImplCopyWithImpl(
+      _$LogOrNotImpl _value, $Res Function(_$LogOrNotImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$LogOrNotImpl implements LogOrNot {
+  const _$LogOrNotImpl();
+
+  @override
+  String toString() {
+    return 'AuthEvent.logOrNot()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$LogOrNotImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(LoginModel loginModel) login,
+    required TResult Function() logOut,
+    required TResult Function() logOrNot,
+  }) {
+    return logOrNot();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(LoginModel loginModel)? login,
+    TResult? Function()? logOut,
+    TResult? Function()? logOrNot,
+  }) {
+    return logOrNot?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(LoginModel loginModel)? login,
+    TResult Function()? logOut,
+    TResult Function()? logOrNot,
+    required TResult orElse(),
+  }) {
+    if (logOrNot != null) {
+      return logOrNot();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Login value) login,
+    required TResult Function(LogOut value) logOut,
+    required TResult Function(LogOrNot value) logOrNot,
+  }) {
+    return logOrNot(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Login value)? login,
+    TResult? Function(LogOut value)? logOut,
+    TResult? Function(LogOrNot value)? logOrNot,
+  }) {
+    return logOrNot?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Login value)? login,
+    TResult Function(LogOut value)? logOut,
+    TResult Function(LogOrNot value)? logOrNot,
+    required TResult orElse(),
+  }) {
+    if (logOrNot != null) {
+      return logOrNot(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class LogOrNot implements AuthEvent {
+  const factory LogOrNot() = _$LogOrNotImpl;
+}
+
+/// @nodoc
 mixin _$AuthState {
   bool get isLoading => throw _privateConstructorUsedError;
   bool get hasError => throw _privateConstructorUsedError;
   String? get message => throw _privateConstructorUsedError;
   LoginResponceModel? get loginResponceModel =>
       throw _privateConstructorUsedError;
+  bool get logOrNot => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AuthStateCopyWith<AuthState> get copyWith =>
@@ -331,7 +458,8 @@ abstract class $AuthStateCopyWith<$Res> {
       {bool isLoading,
       bool hasError,
       String? message,
-      LoginResponceModel? loginResponceModel});
+      LoginResponceModel? loginResponceModel,
+      bool logOrNot});
 }
 
 /// @nodoc
@@ -351,6 +479,7 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
     Object? hasError = null,
     Object? message = freezed,
     Object? loginResponceModel = freezed,
+    Object? logOrNot = null,
   }) {
     return _then(_value.copyWith(
       isLoading: null == isLoading
@@ -369,6 +498,10 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
           ? _value.loginResponceModel
           : loginResponceModel // ignore: cast_nullable_to_non_nullable
               as LoginResponceModel?,
+      logOrNot: null == logOrNot
+          ? _value.logOrNot
+          : logOrNot // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -385,7 +518,8 @@ abstract class _$$InitialImplCopyWith<$Res>
       {bool isLoading,
       bool hasError,
       String? message,
-      LoginResponceModel? loginResponceModel});
+      LoginResponceModel? loginResponceModel,
+      bool logOrNot});
 }
 
 /// @nodoc
@@ -403,6 +537,7 @@ class __$$InitialImplCopyWithImpl<$Res>
     Object? hasError = null,
     Object? message = freezed,
     Object? loginResponceModel = freezed,
+    Object? logOrNot = null,
   }) {
     return _then(_$InitialImpl(
       isLoading: null == isLoading
@@ -421,6 +556,10 @@ class __$$InitialImplCopyWithImpl<$Res>
           ? _value.loginResponceModel
           : loginResponceModel // ignore: cast_nullable_to_non_nullable
               as LoginResponceModel?,
+      logOrNot: null == logOrNot
+          ? _value.logOrNot
+          : logOrNot // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -432,7 +571,8 @@ class _$InitialImpl implements _Initial {
       {required this.isLoading,
       required this.hasError,
       this.message,
-      this.loginResponceModel});
+      this.loginResponceModel,
+      required this.logOrNot});
 
   @override
   final bool isLoading;
@@ -442,10 +582,12 @@ class _$InitialImpl implements _Initial {
   final String? message;
   @override
   final LoginResponceModel? loginResponceModel;
+  @override
+  final bool logOrNot;
 
   @override
   String toString() {
-    return 'AuthState(isLoading: $isLoading, hasError: $hasError, message: $message, loginResponceModel: $loginResponceModel)';
+    return 'AuthState(isLoading: $isLoading, hasError: $hasError, message: $message, loginResponceModel: $loginResponceModel, logOrNot: $logOrNot)';
   }
 
   @override
@@ -459,12 +601,14 @@ class _$InitialImpl implements _Initial {
                 other.hasError == hasError) &&
             (identical(other.message, message) || other.message == message) &&
             (identical(other.loginResponceModel, loginResponceModel) ||
-                other.loginResponceModel == loginResponceModel));
+                other.loginResponceModel == loginResponceModel) &&
+            (identical(other.logOrNot, logOrNot) ||
+                other.logOrNot == logOrNot));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, isLoading, hasError, message, loginResponceModel);
+      runtimeType, isLoading, hasError, message, loginResponceModel, logOrNot);
 
   @JsonKey(ignore: true)
   @override
@@ -478,7 +622,8 @@ abstract class _Initial implements AuthState {
       {required final bool isLoading,
       required final bool hasError,
       final String? message,
-      final LoginResponceModel? loginResponceModel}) = _$InitialImpl;
+      final LoginResponceModel? loginResponceModel,
+      required final bool logOrNot}) = _$InitialImpl;
 
   @override
   bool get isLoading;
@@ -488,6 +633,8 @@ abstract class _Initial implements AuthState {
   String? get message;
   @override
   LoginResponceModel? get loginResponceModel;
+  @override
+  bool get logOrNot;
   @override
   @JsonKey(ignore: true)
   _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>

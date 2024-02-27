@@ -1,9 +1,10 @@
 import 'dart:async';
-import 'dart:math';
+import 'package:beachdu/application/business_logic/auth/auth_bloc.dart';
 import 'package:beachdu/application/presentation/routes/routes.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/data/secure_storage/secure_fire_store.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ScreenSplash extends StatefulWidget {
   const ScreenSplash({super.key});
@@ -39,6 +40,8 @@ class _ScreenSplashState extends State<ScreenSplash>
   }
 
   Future<void> loginOrNot() async {
+    context.read<AuthBloc>().add(const AuthEvent.logOrNot());
+
     final logOrNot = await SecureSotrage.getlLogin();
     if (!logOrNot) {
       Timer(const Duration(seconds: 3), () {

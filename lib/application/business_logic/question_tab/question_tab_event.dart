@@ -8,8 +8,9 @@ class QuestionTabEvent with _$QuestionTabEvent {
     required String categoryType,
     required Product product,
   }) = GetQuestions;
-  const factory QuestionTabEvent.getAnswerCount({required int answerCount}) =
-      GetAnswerCount;
+  const factory QuestionTabEvent.getAnswerCount({
+    required int answerCount,
+  }) = GetAnswerCount;
   const factory QuestionTabEvent.markedQuestions({
     required SelectedOption selectedOption,
   }) = MarkedQuestions;

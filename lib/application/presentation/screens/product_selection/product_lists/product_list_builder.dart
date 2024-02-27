@@ -92,7 +92,11 @@ class ProductListViewBuilder extends StatelessWidget {
                               //Selected product varient assigning
                               context.read<CategoryBlocBloc>().verient =
                                   product[index].variant;
+                              //Selected product image assinging
+                              context.read<CategoryBlocBloc>().productImage =
+                                  product[index].productImage;
 
+                              //Builder cahnges
                               secondtabScreensNotifier.value = 1;
                               secondtabScreensNotifier.notifyListeners();
                               brandandProductValueNotifier.value = 0;

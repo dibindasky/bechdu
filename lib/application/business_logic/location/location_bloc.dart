@@ -102,5 +102,6 @@ class LocationBloc extends Bloc<LocationEvent, LocationState> {
   FutureOr<void> pincodeSave(PincodeSave event, emit) async {
     await SecureSotrage.setPincode(pincode: event.pinCode);
     log('pincodeSave bloc ${event.pinCode}');
+    await SecureSotrage.setPicodeBool();
   }
 }

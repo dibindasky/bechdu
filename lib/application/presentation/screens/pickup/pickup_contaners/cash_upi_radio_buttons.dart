@@ -1,9 +1,14 @@
+import 'package:beachdu/application/business_logic/place_order/place_order_bloc.dart';
 import 'package:beachdu/application/presentation/screens/pickup/pickup_screen.dart';
 import 'package:beachdu/application/presentation/screens/pickup/widgets/textfeild_custom.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/application/presentation/utils/custom_button.dart';
+import 'package:beachdu/application/presentation/utils/snackbar/snackbar.dart';
+import 'package:beachdu/domain/model/order_model/order_placed_request_model/order_placed_request_model.dart';
+import 'package:beachdu/domain/model/order_model/order_placed_request_model/payment.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CashOrUPI extends StatefulWidget {
   const CashOrUPI({
@@ -45,12 +50,13 @@ class _CashOrUPIState extends State<CashOrUPI> {
                 children: [
                   Expanded(child: customRadioButton('Cash', 'cash')),
                   kWidth10,
-                  Expanded(child: customRadioButton('UPI', 'UPI')),
+                  Expanded(child: customRadioButton('UPI', 'upi')),
                 ],
               ),
-              if (selectedRadio == 'UPI') ...[
+              if (selectedRadio == 'upi') ...[
                 kHeight10,
-                const TTextFormField(
+                TTextFormField(
+                  controller: context.read<PlaceOrderBloc>().upiIdController,
                   text: 'UPI Id',
                 ),
               ],
@@ -61,9 +67,41 @@ class _CashOrUPIState extends State<CashOrUPI> {
           alignment: Alignment.center,
           child: CustomButton(
             onPressed: () {
-              pickupDetailChangeNotifier.value =
-                  PickupDetailContainers.dateSelect;
-              pickupDetailChangeNotifier.notifyListeners();
+              if (selectedRadio == 'upi') {
+                if (context
+                    .read<PlaceOrderBloc>()
+                    .upiIdController
+                    .text
+                    .isNotEmpty) {
+                  Payment payment = Payment(
+                    type: selectedRadio,
+                    id: context.read<PlaceOrderBloc>().upiIdController.text,
+                  );
+
+                  // event call
+                  context
+                      .read<PlaceOrderBloc>()
+                      .add(PlaceOrderEvent.paymentOption(payment: payment));
+                }
+                pickupDetailChangeNotifier.value =
+                    PickupDetailContainers.dateSelect;
+                pickupDetailChangeNotifier.notifyListeners();
+              } else if (selectedRadio == 'cash') {
+                Payment payment = Payment(
+                  type: selectedRadio,
+                  id: '',
+                );
+                pickupDetailChangeNotifier.value =
+                    PickupDetailContainers.dateSelect;
+                pickupDetailChangeNotifier.notifyListeners();
+
+                // event call
+                context
+                    .read<PlaceOrderBloc>()
+                    .add(PlaceOrderEvent.paymentOption(payment: payment));
+              } else {
+                showSnack(context: context, message: 'Please fill Upi Details');
+              }
             },
             text: 'Continue',
           ),

@@ -1,16 +1,16 @@
 import 'dart:async';
 import 'package:beachdu/application/business_logic/auth/auth_bloc.dart';
 import 'package:beachdu/application/business_logic/location/location_bloc.dart';
+import 'package:beachdu/application/business_logic/navbar/navbar_cubit.dart';
 import 'package:beachdu/application/business_logic/profile/profile_bloc.dart';
 import 'package:beachdu/application/presentation/routes/routes.dart';
-import 'package:beachdu/application/presentation/screens/pickup/pickup_contaners/street_address.dart';
 import 'package:beachdu/application/presentation/screens/profile/add_address/add_address.dart';
 import 'package:beachdu/application/presentation/screens/profile/address_listview.dart';
 import 'package:beachdu/application/presentation/screens/profile/widgets/containers.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
-import 'package:beachdu/application/presentation/utils/custom_button.dart';
 import 'package:beachdu/application/presentation/utils/confirmation_daillogue/exit_app_dailogue.dart';
+import 'package:beachdu/data/secure_storage/secure_fire_store.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -41,8 +41,12 @@ class ScreenProfile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     WidgetsBinding.instance.addPostFrameCallback(
-      (timeStamp) {
-        context.read<ProfileBloc>().add(const ProfileEvent.getUserInfo());
+      (timeStamp) async {
+        final islogin = await SecureSotrage.getlLogin();
+        if (islogin) {
+          // ignore: use_build_context_synchronously
+          context.read<ProfileBloc>().add(const ProfileEvent.getUserInfo());
+        }
       },
     );
     return WillPopScope(
@@ -59,102 +63,137 @@ class ScreenProfile extends StatelessWidget {
             style: textHeadBoldBig,
           ),
         ),
-        body: SafeArea(
-            child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 15,
-            ),
-            child: Column(
-              children: [
-                CircleAvatar(
-                  backgroundColor: kGreenPrimary,
-                  radius: 58,
-                  child: CircleAvatar(
-                    backgroundColor: kBluePrimary,
-                    radius: 50,
+        body: BlocBuilder<AuthBloc, AuthState>(
+          builder: (context, state) {
+            if (!state.logOrNot) {
+              return AlertDialog(
+                backgroundColor: klightGreen,
+                title: Text(
+                  'You are not logged in',
+                  style: textHeadBoldBig,
+                ),
+                content: Text(
+                  'You need to login to edit your profile.',
+                  style: textHeadMedium1,
+                ),
+                actions: [
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pushNamed(
+                        context,
+                        Routes.signInOrLogin,
+                        arguments: true,
+                      );
+                    },
                     child: Text(
-                      'JG',
-                      style: textHeadBoldBig.copyWith(
-                        fontSize: sWidth * .1,
-                        color: kWhite,
-                      ),
+                      'Log in now',
+                      style: textHeadMedium1,
                     ),
                   ),
+                ],
+              );
+            }
+            return SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 15,
                 ),
-                kHeight30,
-                const Containers(),
-                kHeight20,
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                child: Column(
                   children: [
-                    Text(
-                      'Address',
-                      style: textHeadRegular1,
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        context
-                            .read<LocationBloc>()
-                            .add(const LocationEvent.locationPick());
-                        profileScreensNotifier.value = 1;
-                        profileScreensNotifier.notifyListeners();
-                      },
-                      child: const CircleAvatar(
-                        backgroundColor: kBlack,
-                        radius: 12,
-                        child: Icon(
-                          Icons.add,
-                          color: kWhite,
+                    CircleAvatar(
+                      backgroundColor: kGreenPrimary,
+                      radius: 58,
+                      child: CircleAvatar(
+                        backgroundColor: kBluePrimary,
+                        radius: 50,
+                        child: Text(
+                          'JG',
+                          style: textHeadBoldBig.copyWith(
+                            fontSize: sWidth * .1,
+                            color: kWhite,
+                          ),
                         ),
                       ),
                     ),
-                  ],
-                ),
-                kHeight20,
-                const AddressListView(),
-                kHeight30,
-                GestureDetector(
-                  onTap: () {
-                    showConfirmationDialog(
-                      context,
-                      heading: 'Are you really want to log out from Bechdu',
-                      onPressed: () {
-                        logOut(context);
-                      },
-                    );
-                  },
-                  child: Container(
-                    padding: const EdgeInsets.only(left: 10),
-                    height: 45,
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      color: klightwhite,
-                      border: Border.all(color: klightgrey),
-                      borderRadius: kRadius10,
+                    kHeight30,
+                    const Containers(),
+                    kHeight20,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'Address',
+                          style: textHeadRegular1,
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            context
+                                .read<LocationBloc>()
+                                .add(const LocationEvent.locationPick());
+                            profileScreensNotifier.value = 1;
+                            profileScreensNotifier.notifyListeners();
+                          },
+                          child: const CircleAvatar(
+                            backgroundColor: kBlack,
+                            radius: 12,
+                            child: Icon(
+                              Icons.add,
+                              color: kWhite,
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
-                    child: Center(
-                      child: Text(
-                        'Log out',
-                        style: textHeadBold1,
+                    kHeight20,
+                    const AddressListView(),
+                    kHeight30,
+                    GestureDetector(
+                      onTap: () {
+                        showConfirmationDialog(
+                          context,
+                          heading: 'Are you really want to log out from Bechdu',
+                          onPressed: () {
+                            logOut(context);
+                          },
+                        );
+                      },
+                      child: Container(
+                        padding: const EdgeInsets.only(left: 10),
+                        height: 45,
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          color: klightwhite,
+                          border: Border.all(color: klightgrey),
+                          borderRadius: kRadius10,
+                        ),
+                        child: Center(
+                          child: Text(
+                            'Log out',
+                            style: textHeadBold1,
+                          ),
+                        ),
                       ),
                     ),
-                  ),
+                    kHeight20,
+                  ],
                 ),
-                kHeight30,
-                CustomButton(onPressed: () {}, text: 'Save'),
-                kHeight20,
-              ],
-            ),
-          ),
-        )),
+              ),
+            );
+          },
+        ),
       ),
     );
   }
 
   Future<void> logOut(BuildContext context) async {
+    context.read<NavbarCubit>().changeNavigationIndex(0);
     context.read<AuthBloc>().add(const LogOut());
-    Navigator.pushReplacementNamed(context, Routes.signInOrLogin,
-        arguments: true);
+    Future.delayed(Duration.zero, () {
+      Navigator.pushNamed(
+        context,
+        Routes.signInOrLogin,
+        arguments: false,
+      );
+    });
   }
 }

@@ -1,10 +1,19 @@
+import 'dart:developer';
+
+import 'package:beachdu/application/business_logic/brands_bloc/category_bloc_bloc.dart';
+import 'package:beachdu/application/business_logic/place_order/place_order_bloc.dart';
+import 'package:beachdu/application/business_logic/question_tab/question_tab_bloc.dart';
 import 'package:beachdu/application/presentation/screens/pickup/pickup_contaners/date_selection/date_picking_bottom_sheet.dart';
 import 'package:beachdu/application/presentation/screens/pickup/pickup_screen.dart';
 import 'package:beachdu/application/presentation/screens/product_selection/product_screen.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/application/presentation/utils/custom_button.dart';
+import 'package:beachdu/application/presentation/utils/snackbar/snackbar.dart';
+import 'package:beachdu/domain/model/order_model/order_placed_request_model/pick_up_details.dart';
+import 'package:beachdu/domain/model/order_model/order_placed_request_model/product_details.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class DateOrTime extends StatefulWidget {
   const DateOrTime({super.key});
@@ -135,16 +144,61 @@ class _DateOrTimeState extends State<DateOrTime> {
             ],
           ),
         ),
-        CustomButton(
-          onPressed: () {
-            secondtabScreensNotifier.value = 5;
-            secondtabScreensNotifier.notifyListeners();
-            pickupDetailChangeNotifier.value =
-                PickupDetailContainers.personalDetails;
-            pickupDetailChangeNotifier.notifyListeners();
+        BlocBuilder<QuestionTabBloc, QuestionTabState>(
+          builder: (context, questiontabBlocState) {
+            return CustomButton(
+              onPressed: () {
+                if (selectedTime != 'Time' && dateController.text.isNotEmpty) {
+                  //PickeDate and time assinning
+                  PickUpDetails pickUpDetails = PickUpDetails(
+                      time: dateController.text, date: selectedTime);
+                  context.read<PlaceOrderBloc>().add(
+                        PlaceOrderEvent.pickupDetailsPick(
+                            pickUpDetails: pickUpDetails),
+                      );
+
+                  //Product name concatination
+                  final verient = context.read<CategoryBlocBloc>().verient;
+                  final model = context.read<CategoryBlocBloc>().model;
+                  final name = '$verient $model';
+
+                  //ProductDetails object creation and value assigining
+                  ProductDetails productDetails = ProductDetails(
+                    slug: context.read<CategoryBlocBloc>().slug,
+                    image: context.read<CategoryBlocBloc>().productImage,
+                    name: name,
+                    price: context.read<QuestionTabBloc>().basePrice.toString(),
+                    options:
+                        context.read<QuestionTabBloc>().state.selectedOption,
+                  );
+                  log('Question picked options length ${context.read<QuestionTabBloc>().state.selectedOption.length}');
+                  //Product details event call
+                  context
+                      .read<PlaceOrderBloc>()
+                      .add(PlaceOrderEvent.productDetailsPick(
+                        productDetails: productDetails,
+                      ));
+
+                  //OrderPlacing event
+                  context
+                      .read<PlaceOrderBloc>()
+                      .add(const PlaceOrderEvent.orderPlacing());
+                  secondtabScreensNotifier.value = 5;
+                  secondtabScreensNotifier.notifyListeners();
+                  pickupDetailChangeNotifier.value =
+                      PickupDetailContainers.personalDetails;
+                  pickupDetailChangeNotifier.notifyListeners();
+                } else {
+                  showSnack(
+                    context: context,
+                    message: 'Please select Date and Time',
+                  );
+                }
+              },
+              text: 'Place Order',
+              backgroundColor: kBluePrimary,
+            );
           },
-          text: 'Place Order',
-          backgroundColor: kBluePrimary,
         ),
       ],
     );

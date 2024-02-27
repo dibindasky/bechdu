@@ -1,5 +1,6 @@
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
+import 'package:beachdu/application/presentation/utils/custom_button.dart';
 import 'package:flutter/material.dart';
 
 class Containers extends StatefulWidget {
@@ -79,6 +80,11 @@ class _ContainersState extends State<Containers> {
           style: textHeadRegular1,
         ),
         const Divider(),
+        kHeight30,
+        Align(
+          alignment: Alignment.center,
+          child: CustomButton(onPressed: () {}, text: 'Save'),
+        ),
       ],
     );
   }

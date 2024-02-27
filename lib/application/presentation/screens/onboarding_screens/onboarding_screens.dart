@@ -67,7 +67,7 @@ class _BechDuUserOnBoardingScreensState
               curve: Curves.easeInOut);
         } else {
           Navigator.of(context)
-              .pushNamed(Routes.signInOrLogin, arguments: false);
+              .pushReplacementNamed(Routes.signInOrLogin, arguments: false);
         }
       },
       child: Scaffold(

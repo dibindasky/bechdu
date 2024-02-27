@@ -52,7 +52,7 @@ class BottomSection extends StatelessWidget {
 
   loginOrSignup(BuildContext context) {
     Timer(const Duration(microseconds: 500), () {
-      Navigator.pushNamed(context, Routes.bottomBar);
+      Navigator.pushReplacementNamed(context, Routes.bottomBar);
     });
   }
 }

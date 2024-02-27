@@ -23,4 +23,5 @@ class ApiEndPoints {
   static const String deleteAddress =
       'user/users/delete-address/{number}/{index}';
   static const String getUserInfo = 'user/get-user-info/{number}';
+  static const String orderPlacing = 'order/create-order';
 }

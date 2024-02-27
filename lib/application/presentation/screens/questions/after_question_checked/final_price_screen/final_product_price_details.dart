@@ -4,7 +4,7 @@ import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/application/presentation/utils/snackbar/snackbar.dart';
 import 'package:beachdu/domain/core/failure/failure.dart';
-import 'package:beachdu/domain/model/place_order/promo_code_request_model/promo_code_request_model.dart';
+import 'package:beachdu/domain/model/promo_code_model/promo_code_request_model/promo_code_request_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -30,10 +30,8 @@ class FinalProductPriceDetaails extends StatelessWidget {
                   style: textHeadRegular1.copyWith(fontWeight: FontWeight.w600),
                 ),
               ),
-              Text(
-                'Free',
-                style: textHeadMedium1.copyWith(color: kGreenPrimary),
-              ),
+              Text('Free',
+                  style: textHeadMedium1.copyWith(color: kGreenPrimary)),
               Text(
                 '₹ 200',
                 style: textHeadMedium1.copyWith(
