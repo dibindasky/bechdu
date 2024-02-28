@@ -37,8 +37,13 @@ class QuestionTabBloc extends Bloc<QuestionTabEvent, QuestionTabState> {
   FutureOr<void> yesOrNo(YesOrNo event, emit) {
     if (event.selectedOption.type == 'yes/no' &&
         event.selectedOption.value != null) {
-      updatedList.add(event.selectedOption);
-      answerdCount += 1;
+      if (event.selectedOption.value == true) {
+        answerdCount += 1;
+        updatedList.add(event.selectedOption);
+      } else {
+        answerdCount -= 1;
+        updatedList.remove(event.selectedOption);
+      }
       log('Answer count $answerdCount');
       log('updatedList count ${updatedList.length}');
     }
@@ -61,8 +66,7 @@ class QuestionTabBloc extends Bloc<QuestionTabEvent, QuestionTabState> {
         break;
       }
     }
-    if (isUnSelect &&
-        event.selectedOption.type == 'yes/no' &&
+    if (event.selectedOption.type == 'yes/no' &&
         event.selectedOption.value != null) {
       updatedList.add(event.selectedOption);
       answerdCount += 1;

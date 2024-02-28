@@ -46,7 +46,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         state.copyWith(
           isLoading: false,
           hasError: false,
-          number: successLogin.user!.phone!,
           loginResponceModel: successLogin,
           logOrNot: true,
         ),

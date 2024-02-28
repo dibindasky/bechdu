@@ -64,6 +64,16 @@ class _YesOrNoTileState extends State<YesOrNoTile> {
           onTap: () {
             // If the button is already selected, deselect it
             if (selected == yesOrNo) {
+              SelectedOption selectedOption = SelectedOption(
+                description: widget.question.description,
+                value: yesOrNo,
+                type: widget.question.type,
+              );
+              context
+                  .read<QuestionTabBloc>()
+                  .add(QuestionTabEvent.markedQuestions(
+                    selectedOption: selectedOption,
+                  ));
               setState(() {
                 selected = null;
               });

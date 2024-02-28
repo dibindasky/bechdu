@@ -24,6 +24,7 @@ part 'place_order_bloc.freezed.dart';
 class PlaceOrderBloc extends Bloc<PlaceOrderEvent, PlaceOrderState> {
   final PlaceOrderRepo placeOrderRepo;
   int value = 0;
+  String? number;
   TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController numberController = TextEditingController();
