@@ -38,28 +38,10 @@ class PlaceOrderBloc extends Bloc<PlaceOrderEvent, PlaceOrderState> {
     on<AddressPick>(addressPick);
     on<PaymentOption>(paymentOption);
     on<PickupDetailsPick>(pickupDetailsPick);
-    on<PromoCodeSuccess>(promocodeSuccess);
   }
 
-  FutureOr<void> productDetailsPick(ProductDetailsPick event, emit) {
+  FutureOr<void> productDetailsPick(ProductDetailsPick event, emit) async {
     state.orderPlacedRequestModel.productDetails = event.productDetails;
-    emit(state.copyWith(
-      orderPlacedRequestModel: state.orderPlacedRequestModel,
-    ));
-  }
-
-  FutureOr<void> promocodeSuccess(PromoCodeSuccess event, emit) {
-    log('in promocodeSuccess bloc');
-    if (state.promoCodeResponceModel != null ||
-        state.promoCodeResponceModel!.value != null) {
-      log('in promocodeSuccess bloc responce != null condition');
-      log('Inner promocodeSuccess bloc');
-      state.orderPlacedRequestModel.promo!.price =
-          state.promoCodeResponceModel?.value.toString();
-      state.orderPlacedRequestModel.promo!.code =
-          promocodeController.text.trim();
-    }
-    log('promocode price promocodeSuccess event ${state.promoCodeResponceModel?.value.toString()}');
     emit(state.copyWith(
       orderPlacedRequestModel: state.orderPlacedRequestModel,
     ));
@@ -67,7 +49,6 @@ class PlaceOrderBloc extends Bloc<PlaceOrderEvent, PlaceOrderState> {
 
   FutureOr<void> pickupDetailsPick(PickupDetailsPick event, emit) {
     state.orderPlacedRequestModel.pickUpDetails = event.pickUpDetails;
-    log('pickUpDetails date pickupDetailsPick event ${event.pickUpDetails.date}');
     emit(state.copyWith(
       orderPlacedRequestModel: state.orderPlacedRequestModel,
     ));
@@ -75,7 +56,6 @@ class PlaceOrderBloc extends Bloc<PlaceOrderEvent, PlaceOrderState> {
 
   FutureOr<void> paymentOption(PaymentOption event, emit) {
     state.orderPlacedRequestModel.payment = event.payment;
-    log('payment type paymentOption event ${event.payment.type}');
     emit(state.copyWith(
       orderPlacedRequestModel: state.orderPlacedRequestModel,
     ));
@@ -83,7 +63,6 @@ class PlaceOrderBloc extends Bloc<PlaceOrderEvent, PlaceOrderState> {
 
   FutureOr<void> addressPick(AddressPick event, emit) {
     state.orderPlacedRequestModel.user!.address = event.user.address;
-    log('user address addressPick event ${event.user.address}');
     emit(state.copyWith(
       orderPlacedRequestModel: state.orderPlacedRequestModel,
     ));
@@ -98,6 +77,8 @@ class PlaceOrderBloc extends Bloc<PlaceOrderEvent, PlaceOrderState> {
   }
 
   FutureOr<void> orderPlacing(OrderPlacing event, emit) async {
+    final number = await SecureSotrage.getNumber();
+    state.orderPlacedRequestModel.user!.phone = number;
     emit(state.copyWith(isLoading: true, hasError: false));
     final data = await placeOrderRepo.orderPlacing(
       orderPlacedRequestModel: state.orderPlacedRequestModel,
@@ -109,8 +90,6 @@ class PlaceOrderBloc extends Bloc<PlaceOrderEvent, PlaceOrderState> {
         isLoading: false,
         message: falure.message,
       ));
-
-      log('falure $falure');
     }, (orderPlacingSuccess) async {
       emit(
         state.copyWith(
@@ -120,7 +99,6 @@ class PlaceOrderBloc extends Bloc<PlaceOrderEvent, PlaceOrderState> {
           orderPlacedResponceModel: orderPlacingSuccess,
         ),
       );
-      log('orderPlacingSuccess $orderPlacingSuccess');
     });
   }
 
@@ -155,20 +133,6 @@ class PlaceOrderBloc extends Bloc<PlaceOrderEvent, PlaceOrderState> {
       Promo promo = Promo(code: code, price: price);
       OrderPlacedRequestModel orderPlacedRequestModel =
           OrderPlacedRequestModel(promo: promo);
-      // if (promoCodeResponceModel.value != null) {
-      //   value = promoCodeResponceModel.value!;
-      // }
-      // var code = promocodeController.text;
-      // if (code == '') {
-      //   code = '';
-      // }
-      // code = promocodeController.text;
-      // var price = promoCodeResponceModel.value ?? '';
-      // log('promo code in bloc $code');
-      // log('promo price in bloc $price');
-      // Promo promo = Promo(code: code.toString(), price: price.toString());
-      // OrderPlacedRequestModel orderPlacedRequestModel =
-      //     OrderPlacedRequestModel(promo: promo);
       emit(
         state.copyWith(
           hasError: false,

@@ -20,13 +20,10 @@ class AuthService implements AuthRepo {
     try {
       final responce =
           await _dio.post(ApiEndPoints.login, data: loginModel.toJson());
-      log('login Respoce data ${responce.data}');
       return Right(LoginResponceModel.fromJson(responce.data));
     } on DioException catch (e) {
-      log('login DioException $e');
       return Left(Failure(message: e.message ?? errorMessage));
     } catch (e) {
-      log('login catch $e');
       return Left(Failure(message: e.toString()));
     }
   }

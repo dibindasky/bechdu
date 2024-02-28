@@ -443,6 +443,7 @@ mixin _$AuthState {
   LoginResponceModel? get loginResponceModel =>
       throw _privateConstructorUsedError;
   bool get logOrNot => throw _privateConstructorUsedError;
+  String? get number => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AuthStateCopyWith<AuthState> get copyWith =>
@@ -459,7 +460,8 @@ abstract class $AuthStateCopyWith<$Res> {
       bool hasError,
       String? message,
       LoginResponceModel? loginResponceModel,
-      bool logOrNot});
+      bool logOrNot,
+      String? number});
 }
 
 /// @nodoc
@@ -480,6 +482,7 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
     Object? message = freezed,
     Object? loginResponceModel = freezed,
     Object? logOrNot = null,
+    Object? number = freezed,
   }) {
     return _then(_value.copyWith(
       isLoading: null == isLoading
@@ -502,6 +505,10 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
           ? _value.logOrNot
           : logOrNot // ignore: cast_nullable_to_non_nullable
               as bool,
+      number: freezed == number
+          ? _value.number
+          : number // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -519,7 +526,8 @@ abstract class _$$InitialImplCopyWith<$Res>
       bool hasError,
       String? message,
       LoginResponceModel? loginResponceModel,
-      bool logOrNot});
+      bool logOrNot,
+      String? number});
 }
 
 /// @nodoc
@@ -538,6 +546,7 @@ class __$$InitialImplCopyWithImpl<$Res>
     Object? message = freezed,
     Object? loginResponceModel = freezed,
     Object? logOrNot = null,
+    Object? number = freezed,
   }) {
     return _then(_$InitialImpl(
       isLoading: null == isLoading
@@ -560,6 +569,10 @@ class __$$InitialImplCopyWithImpl<$Res>
           ? _value.logOrNot
           : logOrNot // ignore: cast_nullable_to_non_nullable
               as bool,
+      number: freezed == number
+          ? _value.number
+          : number // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -572,7 +585,8 @@ class _$InitialImpl implements _Initial {
       required this.hasError,
       this.message,
       this.loginResponceModel,
-      required this.logOrNot});
+      required this.logOrNot,
+      this.number});
 
   @override
   final bool isLoading;
@@ -584,10 +598,12 @@ class _$InitialImpl implements _Initial {
   final LoginResponceModel? loginResponceModel;
   @override
   final bool logOrNot;
+  @override
+  final String? number;
 
   @override
   String toString() {
-    return 'AuthState(isLoading: $isLoading, hasError: $hasError, message: $message, loginResponceModel: $loginResponceModel, logOrNot: $logOrNot)';
+    return 'AuthState(isLoading: $isLoading, hasError: $hasError, message: $message, loginResponceModel: $loginResponceModel, logOrNot: $logOrNot, number: $number)';
   }
 
   @override
@@ -603,12 +619,13 @@ class _$InitialImpl implements _Initial {
             (identical(other.loginResponceModel, loginResponceModel) ||
                 other.loginResponceModel == loginResponceModel) &&
             (identical(other.logOrNot, logOrNot) ||
-                other.logOrNot == logOrNot));
+                other.logOrNot == logOrNot) &&
+            (identical(other.number, number) || other.number == number));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, isLoading, hasError, message, loginResponceModel, logOrNot);
+  int get hashCode => Object.hash(runtimeType, isLoading, hasError, message,
+      loginResponceModel, logOrNot, number);
 
   @JsonKey(ignore: true)
   @override
@@ -623,7 +640,8 @@ abstract class _Initial implements AuthState {
       required final bool hasError,
       final String? message,
       final LoginResponceModel? loginResponceModel,
-      required final bool logOrNot}) = _$InitialImpl;
+      required final bool logOrNot,
+      final String? number}) = _$InitialImpl;
 
   @override
   bool get isLoading;
@@ -635,6 +653,8 @@ abstract class _Initial implements AuthState {
   LoginResponceModel? get loginResponceModel;
   @override
   bool get logOrNot;
+  @override
+  String? get number;
   @override
   @JsonKey(ignore: true)
   _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>

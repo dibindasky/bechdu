@@ -186,14 +186,12 @@ class ScreenProfile extends StatelessWidget {
   }
 
   Future<void> logOut(BuildContext context) async {
+    Navigator.pushReplacementNamed(
+      context,
+      Routes.signInOrLogin,
+      arguments: false,
+    );
     context.read<NavbarCubit>().changeNavigationIndex(0);
     context.read<AuthBloc>().add(const LogOut());
-    Future.delayed(Duration.zero, () {
-      Navigator.pushNamed(
-        context,
-        Routes.signInOrLogin,
-        arguments: false,
-      );
-    });
   }
 }

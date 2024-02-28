@@ -9,6 +9,7 @@ class SecureSotrage {
   static String loginKey = 'login_key';
   static String locationkey = 'location_key';
   static String pincodekey = 'pincode_key';
+  static String pincodeBool = 'pincode_bool';
   static String phoneNumberKey = 'phone_number';
 
   static const FlutterSecureStorage secureStorage = FlutterSecureStorage();
@@ -88,11 +89,11 @@ class SecureSotrage {
 
   static Future<void> setPicodeBool() async {
     log("setPicodeBool ==>>");
-    await secureStorage.write(key: pincodekey, value: '1');
+    await secureStorage.write(key: pincodeBool, value: '1');
   }
 
   static Future<bool> getPicodeBool() async {
-    final isPincode = await secureStorage.read(key: pincodekey);
+    final isPincode = await secureStorage.read(key: pincodeBool);
     log("getPicodeBool ==>> ${isPincode == '1'}");
     return isPincode == '1';
   }

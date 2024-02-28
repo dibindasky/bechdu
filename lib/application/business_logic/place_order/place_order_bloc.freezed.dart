@@ -1723,6 +1723,7 @@ mixin _$PlaceOrderState {
   ProductDetails get productDetails => throw _privateConstructorUsedError;
   String get address => throw _privateConstructorUsedError;
   Promo get promo => throw _privateConstructorUsedError;
+  String? get number => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $PlaceOrderStateCopyWith<PlaceOrderState> get copyWith =>
@@ -1747,7 +1748,8 @@ abstract class $PlaceOrderStateCopyWith<$Res> {
       PickUpDetails pickUpDetails,
       ProductDetails productDetails,
       String address,
-      Promo promo});
+      Promo promo,
+      String? number});
 }
 
 /// @nodoc
@@ -1775,6 +1777,7 @@ class _$PlaceOrderStateCopyWithImpl<$Res, $Val extends PlaceOrderState>
     Object? productDetails = null,
     Object? address = null,
     Object? promo = null,
+    Object? number = freezed,
   }) {
     return _then(_value.copyWith(
       isLoading: null == isLoading
@@ -1825,6 +1828,10 @@ class _$PlaceOrderStateCopyWithImpl<$Res, $Val extends PlaceOrderState>
           ? _value.promo
           : promo // ignore: cast_nullable_to_non_nullable
               as Promo,
+      number: freezed == number
+          ? _value.number
+          : number // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -1849,7 +1856,8 @@ abstract class _$$InitialImplCopyWith<$Res>
       PickUpDetails pickUpDetails,
       ProductDetails productDetails,
       String address,
-      Promo promo});
+      Promo promo,
+      String? number});
 }
 
 /// @nodoc
@@ -1875,6 +1883,7 @@ class __$$InitialImplCopyWithImpl<$Res>
     Object? productDetails = null,
     Object? address = null,
     Object? promo = null,
+    Object? number = freezed,
   }) {
     return _then(_$InitialImpl(
       isLoading: null == isLoading
@@ -1925,6 +1934,10 @@ class __$$InitialImplCopyWithImpl<$Res>
           ? _value.promo
           : promo // ignore: cast_nullable_to_non_nullable
               as Promo,
+      number: freezed == number
+          ? _value.number
+          : number // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -1944,7 +1957,8 @@ class _$InitialImpl implements _Initial {
       required this.pickUpDetails,
       required this.productDetails,
       required this.address,
-      required this.promo});
+      required this.promo,
+      this.number});
 
   @override
   final bool isLoading;
@@ -1970,10 +1984,12 @@ class _$InitialImpl implements _Initial {
   final String address;
   @override
   final Promo promo;
+  @override
+  final String? number;
 
   @override
   String toString() {
-    return 'PlaceOrderState(isLoading: $isLoading, hasError: $hasError, message: $message, promoCodeResponceModel: $promoCodeResponceModel, orderPlacedResponceModel: $orderPlacedResponceModel, orderPlacedRequestModel: $orderPlacedRequestModel, user: $user, payment: $payment, pickUpDetails: $pickUpDetails, productDetails: $productDetails, address: $address, promo: $promo)';
+    return 'PlaceOrderState(isLoading: $isLoading, hasError: $hasError, message: $message, promoCodeResponceModel: $promoCodeResponceModel, orderPlacedResponceModel: $orderPlacedResponceModel, orderPlacedRequestModel: $orderPlacedRequestModel, user: $user, payment: $payment, pickUpDetails: $pickUpDetails, productDetails: $productDetails, address: $address, promo: $promo, number: $number)';
   }
 
   @override
@@ -2001,7 +2017,8 @@ class _$InitialImpl implements _Initial {
             (identical(other.productDetails, productDetails) ||
                 other.productDetails == productDetails) &&
             (identical(other.address, address) || other.address == address) &&
-            (identical(other.promo, promo) || other.promo == promo));
+            (identical(other.promo, promo) || other.promo == promo) &&
+            (identical(other.number, number) || other.number == number));
   }
 
   @override
@@ -2018,7 +2035,8 @@ class _$InitialImpl implements _Initial {
       pickUpDetails,
       productDetails,
       address,
-      promo);
+      promo,
+      number);
 
   @JsonKey(ignore: true)
   @override
@@ -2040,7 +2058,8 @@ abstract class _Initial implements PlaceOrderState {
       required final PickUpDetails pickUpDetails,
       required final ProductDetails productDetails,
       required final String address,
-      required final Promo promo}) = _$InitialImpl;
+      required final Promo promo,
+      final String? number}) = _$InitialImpl;
 
   @override
   bool get isLoading;
@@ -2066,6 +2085,8 @@ abstract class _Initial implements PlaceOrderState {
   String get address;
   @override
   Promo get promo;
+  @override
+  String? get number;
   @override
   @JsonKey(ignore: true)
   _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>

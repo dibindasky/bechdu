@@ -1,22 +1,17 @@
-import 'dart:ffi';
-
 import 'package:beachdu/application/business_logic/auth/auth_bloc.dart';
-import 'package:beachdu/application/business_logic/location/location_bloc.dart';
 import 'package:beachdu/application/business_logic/place_order/place_order_bloc.dart';
 import 'package:beachdu/application/presentation/screens/pickup/pickup_screen.dart';
 import 'package:beachdu/application/presentation/screens/pickup/widgets/textfeild_custom.dart';
+import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/application/presentation/utils/custom_button.dart';
 import 'package:beachdu/application/presentation/utils/snackbar/snackbar.dart';
-import 'package:beachdu/domain/model/order_model/order_placed_request_model/order_placed_request_model.dart';
 import 'package:beachdu/domain/model/order_model/order_placed_request_model/user.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class PersonalDetails extends StatelessWidget {
-  const PersonalDetails({
-    super.key,
-  });
+  const PersonalDetails({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +37,8 @@ class PersonalDetails extends StatelessWidget {
           ),
           TTextFormField(
             controller: context.read<PlaceOrderBloc>().emailController,
-            text: '@gmail.com',
+            text: 'Email',
+            inputType: TextInputType.emailAddress,
           ),
           Text(
             'PHONE NUMBER',
@@ -50,11 +46,25 @@ class PersonalDetails extends StatelessWidget {
               fontSize: sWidth * .033,
             ),
           ),
-          TTextFormField(
-            controller: context.read<PlaceOrderBloc>().numberController,
-            text: 'Number',
-            inputType: TextInputType.number,
+          Container(
+            padding: const EdgeInsets.only(left: 10),
+            height: 60,
+            width: double.infinity,
+            decoration: BoxDecoration(
+              border: Border.all(color: textFieldBorderColor),
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: Align(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                'number',
+                style: textHeadSemiBold1.copyWith(
+                  fontSize: sWidth * 0.04,
+                ),
+              ),
+            ),
           ),
+          kHeight5,
           Text(
             'ADDITIONAL PHONE NUMBER',
             style: textHeadMedium1.copyWith(
@@ -79,32 +89,29 @@ class PersonalDetails extends StatelessWidget {
                         .read<PlaceOrderBloc>()
                         .nameController
                         .text
-                        .isEmpty &&
-                    context
-                        .read<PlaceOrderBloc>()
-                        .additionalNumberController
-                        .text
-                        .isEmpty &&
-                    context
-                        .read<PlaceOrderBloc>()
-                        .emailController
-                        .text
                         .isEmpty) {
                   showSnack(
-                      context: context, message: 'Please fill requered fields');
+                    context: context,
+                    message: 'Please fill required fields',
+                  );
                 }
                 //User data object creation
                 User user = User(
-                  phone: context.read<PlaceOrderBloc>().numberController.text,
                   email: context.read<PlaceOrderBloc>().emailController.text,
                   name: context.read<PlaceOrderBloc>().nameController.text,
                   addPhone: context
-                      .read<PlaceOrderBloc>()
-                      .additionalNumberController
-                      .text,
+                          .read<PlaceOrderBloc>()
+                          .additionalNumberController
+                          .text
+                          .isEmpty
+                      ? ''
+                      : context
+                          .read<PlaceOrderBloc>()
+                          .additionalNumberController
+                          .text,
                 );
 
-                //User details pick event
+                //User details pick event for order placing
                 context
                     .read<PlaceOrderBloc>()
                     .add(PlaceOrderEvent.userDetailsPick(user: user));
@@ -112,9 +119,6 @@ class PersonalDetails extends StatelessWidget {
                 pickupDetailChangeNotifier.value =
                     PickupDetailContainers.address;
                 pickupDetailChangeNotifier.notifyListeners();
-                context
-                    .read<LocationBloc>()
-                    .add(const LocationEvent.locationPick());
               },
               text: 'Continue',
             ),

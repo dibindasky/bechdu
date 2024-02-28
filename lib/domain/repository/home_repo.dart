@@ -4,4 +4,5 @@ import 'package:dartz/dartz.dart';
 
 abstract class HomeRepository {
   Future<Either<Failure, GetCategoryResponceModel>> getAllCategory();
+  Future<Either<Failure, dynamic>> getbanners();
 }

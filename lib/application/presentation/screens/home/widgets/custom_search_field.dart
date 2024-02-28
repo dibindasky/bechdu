@@ -13,6 +13,11 @@ class CustomSearchFieldHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback(
+      (timeStamp) {
+        context.read<LocationBloc>().add(const LocationEvent.locationPick());
+      },
+    );
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 5),
       child: Row(

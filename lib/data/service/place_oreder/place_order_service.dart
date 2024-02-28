@@ -54,6 +54,7 @@ class PlaceOrderService implements PlaceOrderRepo {
           'authorization': "Bearer $accessToken",
         },
       );
+      log('dio.options.headers ${_dio.options.headers}');
       log('Order placing service before ${orderPlacedRequestModel.toJson()}');
       final responce = await _dio.post(
         ApiEndPoints.orderPlacing,

@@ -25,4 +25,10 @@ class HomeServices implements HomeRepository {
       return Left(Failure(message: '$errorMessage getAllCategory'));
     }
   }
+
+  @override
+  Future<Either<Failure, dynamic>> getbanners() {
+    // TODO: implement getbanners
+    throw UnimplementedError();
+  }
 }

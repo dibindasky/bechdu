@@ -39,12 +39,14 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
               state.copyWith(
                 hasError: true,
                 isLoading: false,
+                logOrNot: false,
               ),
             ), (successLogin) async {
       emit(
         state.copyWith(
           isLoading: false,
           hasError: false,
+          number: successLogin.user!.phone!,
           loginResponceModel: successLogin,
           logOrNot: true,
         ),
@@ -52,7 +54,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       await SecureSotrage.saveNumber(
         phoneNumber: successLogin.user!.phone!,
       );
-
       await SecureSotrage.saveToken(
           tokenModel: TokenModel(
         accessToken: successLogin.token,

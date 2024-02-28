@@ -1,4 +1,4 @@
-import 'package:beachdu/application/presentation/screens/home/best_selling_devices/best_selling_builder.dart';
+import 'package:beachdu/application/presentation/screens/home/best_selling_devices/recomented_home.dart';
 import 'package:beachdu/application/presentation/screens/home/widgets/caurosal_offers_home.dart';
 import 'package:beachdu/application/presentation/screens/home/widgets/custom_search_field.dart';
 import 'package:beachdu/application/presentation/screens/home/widgets/join_our_team.dart';

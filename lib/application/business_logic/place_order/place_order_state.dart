@@ -15,6 +15,7 @@ class PlaceOrderState with _$PlaceOrderState {
     required ProductDetails productDetails,
     required String address,
     required Promo promo,
+    String? number,
   }) = _Initial;
 
   factory PlaceOrderState.initial() => PlaceOrderState(

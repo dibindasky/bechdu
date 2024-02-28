@@ -1,11 +1,11 @@
-import 'package:beachdu/application/presentation/screens/home/location_ssetup/pincode_selection.dart';
+import 'package:beachdu/application/presentation/screens/home/location/city_choose.dart';
+import 'package:beachdu/application/presentation/screens/home/location/pincode_selection.dart';
 import 'package:beachdu/application/presentation/screens/onboarding_screens/onboarding_screens.dart';
 import 'package:beachdu/application/presentation/routes/animated_routes.dart';
 import 'package:beachdu/application/presentation/routes/routes.dart';
 import 'package:beachdu/application/presentation/screens/auth/login_screen/login_screen.dart';
 import 'package:beachdu/application/presentation/screens/auth/otp_screen/otp_screen.dart';
 import 'package:beachdu/application/presentation/screens/home/home_screen.dart';
-import 'package:beachdu/application/presentation/screens/home/location_ssetup/city_choose.dart';
 import 'package:beachdu/application/presentation/screens/navbar/bottombar.dart';
 import 'package:beachdu/application/presentation/screens/order/my_orders_screen.dart';
 import 'package:beachdu/application/presentation/screens/pickup/pickup_screen.dart';

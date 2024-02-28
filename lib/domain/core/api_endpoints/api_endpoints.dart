@@ -24,4 +24,5 @@ class ApiEndPoints {
       'user/users/delete-address/{number}/{index}';
   static const String getUserInfo = 'user/get-user-info/{number}';
   static const String orderPlacing = 'order/create-order';
+  static const String homePageBanners = 'dynamic/getHomePage';
 }

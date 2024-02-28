@@ -18,6 +18,11 @@ class StreetAddress extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback(
+      (timeStamp) {
+        context.read<LocationBloc>().add(const LocationEvent.locationPick());
+      },
+    );
     return SizedBox(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -59,11 +64,12 @@ class StreetAddress extends StatelessWidget {
                       pickupDetailChangeNotifier.value =
                           PickupDetailContainers.cashOrUPI;
                       pickupDetailChangeNotifier.notifyListeners();
+
                       // Clear selected feilds after adding address
-                      context.read<ProfileBloc>().addressController.clear();
-                      context
-                          .read<LocationBloc>()
-                          .add(const LocationEvent.clear());
+                      // context.read<ProfileBloc>().addressController.clear();
+                      // context
+                      //     .read<LocationBloc>()
+                      //     .add(const LocationEvent.clear());
 
                       //Order placing request user object creation
                       User user = User(address: address);

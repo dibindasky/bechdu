@@ -78,7 +78,7 @@ class _CashOrUPIState extends State<CashOrUPI> {
                     id: context.read<PlaceOrderBloc>().upiIdController.text,
                   );
 
-                  // event call
+                  // event call for placing order
                   context
                       .read<PlaceOrderBloc>()
                       .add(PlaceOrderEvent.paymentOption(payment: payment));
@@ -95,7 +95,7 @@ class _CashOrUPIState extends State<CashOrUPI> {
                     PickupDetailContainers.dateSelect;
                 pickupDetailChangeNotifier.notifyListeners();
 
-                // event call
+                // event call for place order
                 context
                     .read<PlaceOrderBloc>()
                     .add(PlaceOrderEvent.paymentOption(payment: payment));

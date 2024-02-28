@@ -8,6 +8,7 @@ class AuthState with _$AuthState {
     String? message,
     LoginResponceModel? loginResponceModel,
     required bool logOrNot,
+    String? number,
   }) = _Initial;
   factory AuthState.initail() => const AuthState(
         isLoading: false,

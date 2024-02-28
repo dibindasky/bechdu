@@ -99,8 +99,8 @@ class BottomSections extends StatelessWidget {
 
           context.read<AuthBloc>().phoneNumberController.clear();
 
-          //for getting users addresss
-          context.read<ProfileBloc>().add(const ProfileEvent.getUserInfo());
+          // //for getting users addresss
+          // context.read<ProfileBloc>().add(const ProfileEvent.getUserInfo());
 
           isFromInside == true
               ? Navigator.of(context).pop()

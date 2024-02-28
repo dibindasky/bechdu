@@ -31,19 +31,18 @@ class QuestionTabBloc extends Bloc<QuestionTabEvent, QuestionTabState> {
     on<MarkedQuestions>(markedQuestions);
     on<GetBasePrice>(getBasePrice);
     on<AbandentOrder>(abandentOrder);
-    // on<YesOrNo>(yesOrNo);
+    on<YesOrNo>(yesOrNo);
   }
 
-  //  FutureOr<void> yesOrNo(YesOrNo event, emit) {
-  //   if (
-  //       event.selectedOption.type == 'yes/no' &&
-  //       event.selectedOption.value != null) {
-  //     updatedList.add(event.selectedOption);
-  //     answerdCount += 1;
-  //     log('Answer count $answerdCount');
-  //     log('updatedList count ${updatedList.length}');
-  //   }
-  // }
+  FutureOr<void> yesOrNo(YesOrNo event, emit) {
+    if (event.selectedOption.type == 'yes/no' &&
+        event.selectedOption.value != null) {
+      updatedList.add(event.selectedOption);
+      answerdCount += 1;
+      log('Answer count $answerdCount');
+      log('updatedList count ${updatedList.length}');
+    }
+  }
 
   FutureOr<void> markedQuestions(MarkedQuestions event, emit) {
     bool isUnSelect = false;
