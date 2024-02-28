@@ -171,11 +171,6 @@ class _DateOrTimeState extends State<DateOrTime> {
                             .read<PlaceOrderBloc>()
                             .nameController
                             .text
-                            .isNotEmpty &&
-                        context
-                            .read<PlaceOrderBloc>()
-                            .numberController
-                            .text
                             .isNotEmpty) {
                       //PickeDate and time assinning
                       PickUpDetails pickUpDetails = PickUpDetails(
