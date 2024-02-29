@@ -1,6 +1,10 @@
 import 'dart:async';
 import 'dart:developer';
 import 'package:beachdu/data/secure_storage/secure_fire_store.dart';
+import 'package:beachdu/domain/model/location/city_update_request_model/city_update_request_model.dart';
+import 'package:beachdu/domain/model/location/city_update_responce_model/city_update_responce_model.dart';
+import 'package:beachdu/domain/model/location/pincode_update_request_model/pincode_update_request_model.dart';
+import 'package:beachdu/domain/model/location/pincode_update_responce_model/pincode_update_responce_model.dart';
 import 'package:beachdu/domain/model/pincode_responce_model/pincode_responce_model.dart';
 import 'package:beachdu/domain/repository/location_repo.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -20,32 +24,12 @@ class LocationBloc extends Bloc<LocationEvent, LocationState> {
   List<String> locations = [];
   LocationBloc(this.locationRepo) : super(LocationState.initial()) {
     on<LocationPick>(locationLoad);
-    on<PinCodePick>(pincodeLoad);
     on<LocationSearch>(locationSearch);
+    on<LocationUpdate>(locationUpdate);
+    on<PinCodePick>(pincodeLoad);
     on<PincodeSearch>(pincodeSearch);
-    on<PincodeSave>(pincodeSave);
+    on<PincodeUpdate>(pincodeUpdate);
     on<Clear>(clear);
-  }
-
-  FutureOr<void> clear(Clear event, emit) {
-    pincode = null;
-    location = null;
-  }
-
-  FutureOr<void> pincodeSearch(PincodeSearch event, emit) {
-    final searchQuery = event.searchQuery.toLowerCase();
-    List<String> filteredPincodes = pinCodes.where((pinCode) {
-      return pinCode.toLowerCase().contains(searchQuery);
-    }).toList();
-    emit(state.copyWith(filteredPincodes: filteredPincodes));
-  }
-
-  FutureOr<void> locationSearch(LocationSearch event, emit) {
-    final searchQuery = event.searchQuery.toLowerCase();
-    List<String> filteredLocations = locations.where((location) {
-      return location.toLowerCase().contains(searchQuery);
-    }).toList();
-    emit(state.copyWith(filteredLocations: filteredLocations));
   }
 
   FutureOr<void> locationLoad(LocationPick event, emit) async {
@@ -67,8 +51,32 @@ class LocationBloc extends Bloc<LocationEvent, LocationState> {
           filteredLocations: successLocation,
         ),
       );
+    });
+  }
 
-      log('successLocation $successLocation');
+  FutureOr<void> locationSearch(LocationSearch event, emit) {
+    final searchQuery = event.searchQuery.toLowerCase();
+    List<String> filteredLocations = locations.where((location) {
+      return location.toLowerCase().contains(searchQuery);
+    }).toList();
+    emit(state.copyWith(filteredLocations: filteredLocations));
+  }
+  
+
+  FutureOr<void> locationUpdate(LocationUpdate event, emit) async {
+    final data = await locationRepo.locationUpdation(
+      cityUpdateRequestModel: event.cityUpdateRequestModel,
+    );
+    data.fold((falure) => null, (successupdation) async {
+      emit(
+        state.copyWith(
+          hasError: false,
+          isLoading: false,
+          message: successupdation.message,
+          cityUpdateResponceModel: successupdation,
+        ),
+      );
+      log('successupdation $successupdation');
     });
   }
 
@@ -94,14 +102,38 @@ class LocationBloc extends Bloc<LocationEvent, LocationState> {
           filteredPincodes: successPincodes,
         ),
       );
-
       log('successPincodes $successPincodes');
     });
   }
 
-  FutureOr<void> pincodeSave(PincodeSave event, emit) async {
-    await SecureSotrage.setPincode(pincode: event.pinCode);
-    log('pincodeSave bloc ${event.pinCode}');
+  FutureOr<void> pincodeSearch(PincodeSearch event, emit) {
+    final searchQuery = event.searchQuery.toLowerCase();
+    List<String> filteredPincodes = pinCodes.where((pinCode) {
+      return pinCode.toLowerCase().contains(searchQuery);
+    }).toList();
+    emit(state.copyWith(filteredPincodes: filteredPincodes));
+  }
+
+  FutureOr<void> pincodeUpdate(PincodeUpdate event, emit) async {
+    final data = await locationRepo.pincodeUpdation(
+      pincodeUpdateRequestModel: event.pincodeUpdateRequestModel,
+    );
+    data.fold((falure) => null, (successPincode) async {
+      emit(
+        state.copyWith(
+          message: successPincode.message,
+          pincodeUpdateResponceModel: successPincode,
+        ),
+      );
+    });
+    await SecureSotrage.setPincode(
+      pincode: event.pincodeUpdateRequestModel.pincode!,
+    );
     await SecureSotrage.setPicodeBool();
+  }
+
+  FutureOr<void> clear(Clear event, emit) {
+    pincode = '';
+    location = '';
   }
 }

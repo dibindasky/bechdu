@@ -2,8 +2,8 @@ import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:flutter/material.dart';
 
-class RecommendedMobile extends StatelessWidget {
-  const RecommendedMobile({
+class BestSellingDevices extends StatelessWidget {
+  const BestSellingDevices({
     super.key,
   });
 
@@ -51,19 +51,14 @@ class RecommendedMobile extends StatelessWidget {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(
-                                    'Samsung s23 ultra',
-                                    style: textHeadBold1,
-                                  ),
+                                  Text('Samsung s23 ultra',
+                                      style: textHeadBold1),
                                   Row(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
                                     children: [
-                                      Text(
-                                        'Upto \$19,999',
-                                        style: textHeadBold1,
-                                      ),
-                                      // const UsersProfileStackRecomended()
+                                      Text('Upto \$19,999',
+                                          style: textHeadBold1),
                                     ],
                                   ),
                                 ],

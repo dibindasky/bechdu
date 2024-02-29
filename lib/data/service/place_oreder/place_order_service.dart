@@ -54,20 +54,14 @@ class PlaceOrderService implements PlaceOrderRepo {
           'authorization': "Bearer $accessToken",
         },
       );
-      log('dio.options.headers ${_dio.options.headers}');
-      log('Order placing service before ${orderPlacedRequestModel.toJson()}');
       final responce = await _dio.post(
         ApiEndPoints.orderPlacing,
         data: orderPlacedRequestModel.toJson(),
       );
-      log('Order placing service after ${orderPlacedRequestModel.toJson()}');
-      log('orderPlacing data ${responce.data}');
       return Right(OrderPlacedResponceModel.fromJson(responce.data));
     } on DioException catch (e) {
-      log('orderPlacing DioException $e');
       return Left(Failure(message: e.response?.data['error'] ?? errorMessage));
     } catch (e) {
-      log('orderPlacing catch $e');
       return Left(Failure(message: errorMessage));
     }
   }

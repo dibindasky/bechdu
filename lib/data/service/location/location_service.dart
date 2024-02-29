@@ -1,6 +1,11 @@
 import 'dart:developer';
+import 'package:beachdu/data/secure_storage/secure_fire_store.dart';
 import 'package:beachdu/domain/core/api_endpoints/api_endpoints.dart';
 import 'package:beachdu/domain/core/failure/failure.dart';
+import 'package:beachdu/domain/model/location/city_update_request_model/city_update_request_model.dart';
+import 'package:beachdu/domain/model/location/city_update_responce_model/city_update_responce_model.dart';
+import 'package:beachdu/domain/model/location/pincode_update_request_model/pincode_update_request_model.dart';
+import 'package:beachdu/domain/model/location/pincode_update_responce_model/pincode_update_responce_model.dart';
 import 'package:beachdu/domain/repository/location_repo.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
@@ -13,16 +18,16 @@ class LocationService implements LocationRepo {
   @override
   Future<Either<Failure, List<String>>> locationPick() async {
     try {
-      final responce = await _dio.get(ApiEndPoints.cityNames);
+      final responce = await _dio.get(ApiEndPoints.getCityNames);
       final data = responce.data as List<dynamic>;
       final retVal = data.map((e) => e.toString()).toList();
       //log('locationPick retVal $retVal');
       return Right(retVal);
     } on DioException catch (e) {
-      //log('locationPick DioException $e');
+      log('locationPick DioException $e');
       return Left(Failure(message: e.message ?? errorMessage));
     } catch (e) {
-      // log('locationPick catch $e');
+      log('locationPick catch $e');
       return Left(Failure(message: e.toString()));
     }
   }
@@ -33,7 +38,7 @@ class LocationService implements LocationRepo {
   }) async {
     try {
       final response = await _dio
-          .get(ApiEndPoints.pinCodes.replaceFirst('{location}', cityName));
+          .get(ApiEndPoints.getPinCodes.replaceFirst('{location}', cityName));
       log('pincodePick retVal ${response.data}');
       final data = response.data[0]['pinCodes']; // Extracting the pinCodes list
       return Right(List<String>.from(data));
@@ -43,6 +48,62 @@ class LocationService implements LocationRepo {
       return Left(Failure(message: e.message ?? errorMessage));
     } catch (e) {
       log('pincodePick catch $e');
+      return Left(Failure(message: e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, CityUpdateResponceModel>> locationUpdation({
+    required CityUpdateRequestModel cityUpdateRequestModel,
+  }) async {
+    try {
+      final number = await SecureSotrage.getNumber();
+      final accessToken =
+          await SecureSotrage.getToken().then((token) => token.accessToken);
+      _dio.options.headers.addAll(
+        {
+          'authorization': "Bearer $accessToken",
+        },
+      );
+      final response = await _dio.put(
+        ApiEndPoints.cityUpdate.replaceFirst('{number}', number),
+        data: cityUpdateRequestModel.toJson(),
+      );
+      print('locationUpdation data ${response.data}');
+      return Right(CityUpdateResponceModel.fromJson(response.data));
+    } on DioException catch (e) {
+      log('locationUpdation DioException $e');
+      return Left(Failure(message: e.message ?? errorMessage));
+    } catch (e) {
+      log('locationUpdation catch $e');
+      return Left(Failure(message: e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, PincodeUpdateResponceModel>> pincodeUpdation({
+    required PincodeUpdateRequestModel pincodeUpdateRequestModel,
+  }) async {
+    try {
+      final number = await SecureSotrage.getNumber();
+      final accessToken =
+          await SecureSotrage.getToken().then((token) => token.accessToken);
+      _dio.options.headers.addAll(
+        {
+          'authorization': "Bearer $accessToken",
+        },
+      );
+      final response = await _dio.put(
+        ApiEndPoints.picodeUpdate.replaceFirst('{number}', number),
+        data: pincodeUpdateRequestModel.toJson(),
+      );
+      log('pincodeUpdation data ${response.data}');
+      return Right(PincodeUpdateResponceModel.fromJson(response.data));
+    } on DioException catch (e) {
+      log('pincodeUpdation DioException $e');
+      return Left(Failure(message: e.message ?? errorMessage));
+    } catch (e) {
+      log('pincodeUpdation catch $e');
       return Left(Failure(message: e.toString()));
     }
   }

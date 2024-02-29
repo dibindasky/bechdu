@@ -9,6 +9,8 @@ class LocationState with _$LocationState {
     List<String>? filteredLocations,
     List<String>? filteredPincodes,
     PincodeResponceModel? pincodeResponceModel,
+    CityUpdateResponceModel? cityUpdateResponceModel,
+    PincodeUpdateResponceModel? pincodeUpdateResponceModel,
   }) = _Initial;
   factory LocationState.initial() => const LocationState(
         isLoading: false,

@@ -2,11 +2,10 @@ class ApiEndPoints {
   static String number = '';
   static const String baseUrl = 'https://bechdu-main-backend.onrender.com/';
   static const String login = 'user/login';
-  static const String cityNames = 'pincode/cityNames';
-  static const String pinCodes = 'pincode/city/{location}/pincodes';
-  static const String cityNameChange = 'user/users/{number}/city';
-  static const String picodeChange = 'user/users/{number}/pincode';
-  static const String cityChange = 'user/users/8105823389/city';
+  static const String getCityNames = 'pincode/cityNames';
+  static const String getPinCodes = 'pincode/city/{location}/pincodes';
+  static const String cityUpdate = 'user/users/{number}/city';
+  static const String picodeUpdate = 'user/users/{number}/pincode';
   static const String getAllCategory = 'api/category/get-all-categories';
   static const String getsingleCategoryBrands = 'api/brand/brands-category/';
   static const String getProducts = 'product/get-products/';
@@ -24,5 +23,5 @@ class ApiEndPoints {
       'user/users/delete-address/{number}/{index}';
   static const String getUserInfo = 'user/get-user-info/{number}';
   static const String orderPlacing = 'order/create-order';
-  static const String homePageBanners = 'dynamic/getHomePage';
+  static const String homePageBanners = 'dynamic/mobile/getHomePage';
 }

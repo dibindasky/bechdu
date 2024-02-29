@@ -20,18 +20,21 @@ mixin _$HomeEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() getAllCategory,
     required TResult Function(String category) selectedactegory,
+    required TResult Function() homePageBanners,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getAllCategory,
     TResult? Function(String category)? selectedactegory,
+    TResult? Function()? homePageBanners,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getAllCategory,
     TResult Function(String category)? selectedactegory,
+    TResult Function()? homePageBanners,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -39,18 +42,21 @@ mixin _$HomeEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(GetAllCategory value) getAllCategory,
     required TResult Function(Selectedactegory value) selectedactegory,
+    required TResult Function(HomePageBanners value) homePageBanners,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(GetAllCategory value)? getAllCategory,
     TResult? Function(Selectedactegory value)? selectedactegory,
+    TResult? Function(HomePageBanners value)? homePageBanners,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GetAllCategory value)? getAllCategory,
     TResult Function(Selectedactegory value)? selectedactegory,
+    TResult Function(HomePageBanners value)? homePageBanners,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -113,6 +119,7 @@ class _$GetAllCategoryImpl implements GetAllCategory {
   TResult when<TResult extends Object?>({
     required TResult Function() getAllCategory,
     required TResult Function(String category) selectedactegory,
+    required TResult Function() homePageBanners,
   }) {
     return getAllCategory();
   }
@@ -122,6 +129,7 @@ class _$GetAllCategoryImpl implements GetAllCategory {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getAllCategory,
     TResult? Function(String category)? selectedactegory,
+    TResult? Function()? homePageBanners,
   }) {
     return getAllCategory?.call();
   }
@@ -131,6 +139,7 @@ class _$GetAllCategoryImpl implements GetAllCategory {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getAllCategory,
     TResult Function(String category)? selectedactegory,
+    TResult Function()? homePageBanners,
     required TResult orElse(),
   }) {
     if (getAllCategory != null) {
@@ -144,6 +153,7 @@ class _$GetAllCategoryImpl implements GetAllCategory {
   TResult map<TResult extends Object?>({
     required TResult Function(GetAllCategory value) getAllCategory,
     required TResult Function(Selectedactegory value) selectedactegory,
+    required TResult Function(HomePageBanners value) homePageBanners,
   }) {
     return getAllCategory(this);
   }
@@ -153,6 +163,7 @@ class _$GetAllCategoryImpl implements GetAllCategory {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(GetAllCategory value)? getAllCategory,
     TResult? Function(Selectedactegory value)? selectedactegory,
+    TResult? Function(HomePageBanners value)? homePageBanners,
   }) {
     return getAllCategory?.call(this);
   }
@@ -162,6 +173,7 @@ class _$GetAllCategoryImpl implements GetAllCategory {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GetAllCategory value)? getAllCategory,
     TResult Function(Selectedactegory value)? selectedactegory,
+    TResult Function(HomePageBanners value)? homePageBanners,
     required TResult orElse(),
   }) {
     if (getAllCategory != null) {
@@ -243,6 +255,7 @@ class _$SelectedactegoryImpl implements Selectedactegory {
   TResult when<TResult extends Object?>({
     required TResult Function() getAllCategory,
     required TResult Function(String category) selectedactegory,
+    required TResult Function() homePageBanners,
   }) {
     return selectedactegory(category);
   }
@@ -252,6 +265,7 @@ class _$SelectedactegoryImpl implements Selectedactegory {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getAllCategory,
     TResult? Function(String category)? selectedactegory,
+    TResult? Function()? homePageBanners,
   }) {
     return selectedactegory?.call(category);
   }
@@ -261,6 +275,7 @@ class _$SelectedactegoryImpl implements Selectedactegory {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getAllCategory,
     TResult Function(String category)? selectedactegory,
+    TResult Function()? homePageBanners,
     required TResult orElse(),
   }) {
     if (selectedactegory != null) {
@@ -274,6 +289,7 @@ class _$SelectedactegoryImpl implements Selectedactegory {
   TResult map<TResult extends Object?>({
     required TResult Function(GetAllCategory value) getAllCategory,
     required TResult Function(Selectedactegory value) selectedactegory,
+    required TResult Function(HomePageBanners value) homePageBanners,
   }) {
     return selectedactegory(this);
   }
@@ -283,6 +299,7 @@ class _$SelectedactegoryImpl implements Selectedactegory {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(GetAllCategory value)? getAllCategory,
     TResult? Function(Selectedactegory value)? selectedactegory,
+    TResult? Function(HomePageBanners value)? homePageBanners,
   }) {
     return selectedactegory?.call(this);
   }
@@ -292,6 +309,7 @@ class _$SelectedactegoryImpl implements Selectedactegory {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GetAllCategory value)? getAllCategory,
     TResult Function(Selectedactegory value)? selectedactegory,
+    TResult Function(HomePageBanners value)? homePageBanners,
     required TResult orElse(),
   }) {
     if (selectedactegory != null) {
@@ -312,12 +330,122 @@ abstract class Selectedactegory implements HomeEvent {
 }
 
 /// @nodoc
+abstract class _$$HomePageBannersImplCopyWith<$Res> {
+  factory _$$HomePageBannersImplCopyWith(_$HomePageBannersImpl value,
+          $Res Function(_$HomePageBannersImpl) then) =
+      __$$HomePageBannersImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$HomePageBannersImplCopyWithImpl<$Res>
+    extends _$HomeEventCopyWithImpl<$Res, _$HomePageBannersImpl>
+    implements _$$HomePageBannersImplCopyWith<$Res> {
+  __$$HomePageBannersImplCopyWithImpl(
+      _$HomePageBannersImpl _value, $Res Function(_$HomePageBannersImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$HomePageBannersImpl implements HomePageBanners {
+  const _$HomePageBannersImpl();
+
+  @override
+  String toString() {
+    return 'HomeEvent.homePageBanners()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$HomePageBannersImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getAllCategory,
+    required TResult Function(String category) selectedactegory,
+    required TResult Function() homePageBanners,
+  }) {
+    return homePageBanners();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getAllCategory,
+    TResult? Function(String category)? selectedactegory,
+    TResult? Function()? homePageBanners,
+  }) {
+    return homePageBanners?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getAllCategory,
+    TResult Function(String category)? selectedactegory,
+    TResult Function()? homePageBanners,
+    required TResult orElse(),
+  }) {
+    if (homePageBanners != null) {
+      return homePageBanners();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GetAllCategory value) getAllCategory,
+    required TResult Function(Selectedactegory value) selectedactegory,
+    required TResult Function(HomePageBanners value) homePageBanners,
+  }) {
+    return homePageBanners(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetAllCategory value)? getAllCategory,
+    TResult? Function(Selectedactegory value)? selectedactegory,
+    TResult? Function(HomePageBanners value)? homePageBanners,
+  }) {
+    return homePageBanners?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetAllCategory value)? getAllCategory,
+    TResult Function(Selectedactegory value)? selectedactegory,
+    TResult Function(HomePageBanners value)? homePageBanners,
+    required TResult orElse(),
+  }) {
+    if (homePageBanners != null) {
+      return homePageBanners(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class HomePageBanners implements HomeEvent {
+  const factory HomePageBanners() = _$HomePageBannersImpl;
+}
+
+/// @nodoc
 mixin _$HomeState {
   bool get isLoading => throw _privateConstructorUsedError;
   bool get hasError => throw _privateConstructorUsedError;
   String? get message => throw _privateConstructorUsedError;
   String? get selectedCategory => throw _privateConstructorUsedError;
   GetCategoryResponceModel? get getCategoryResponceModel =>
+      throw _privateConstructorUsedError;
+  HomeBannerResponceModel? get homeBannerResponceModel =>
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -335,7 +463,8 @@ abstract class $HomeStateCopyWith<$Res> {
       bool hasError,
       String? message,
       String? selectedCategory,
-      GetCategoryResponceModel? getCategoryResponceModel});
+      GetCategoryResponceModel? getCategoryResponceModel,
+      HomeBannerResponceModel? homeBannerResponceModel});
 }
 
 /// @nodoc
@@ -356,6 +485,7 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
     Object? message = freezed,
     Object? selectedCategory = freezed,
     Object? getCategoryResponceModel = freezed,
+    Object? homeBannerResponceModel = freezed,
   }) {
     return _then(_value.copyWith(
       isLoading: null == isLoading
@@ -378,6 +508,10 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
           ? _value.getCategoryResponceModel
           : getCategoryResponceModel // ignore: cast_nullable_to_non_nullable
               as GetCategoryResponceModel?,
+      homeBannerResponceModel: freezed == homeBannerResponceModel
+          ? _value.homeBannerResponceModel
+          : homeBannerResponceModel // ignore: cast_nullable_to_non_nullable
+              as HomeBannerResponceModel?,
     ) as $Val);
   }
 }
@@ -395,7 +529,8 @@ abstract class _$$InitialImplCopyWith<$Res>
       bool hasError,
       String? message,
       String? selectedCategory,
-      GetCategoryResponceModel? getCategoryResponceModel});
+      GetCategoryResponceModel? getCategoryResponceModel,
+      HomeBannerResponceModel? homeBannerResponceModel});
 }
 
 /// @nodoc
@@ -414,6 +549,7 @@ class __$$InitialImplCopyWithImpl<$Res>
     Object? message = freezed,
     Object? selectedCategory = freezed,
     Object? getCategoryResponceModel = freezed,
+    Object? homeBannerResponceModel = freezed,
   }) {
     return _then(_$InitialImpl(
       isLoading: null == isLoading
@@ -436,6 +572,10 @@ class __$$InitialImplCopyWithImpl<$Res>
           ? _value.getCategoryResponceModel
           : getCategoryResponceModel // ignore: cast_nullable_to_non_nullable
               as GetCategoryResponceModel?,
+      homeBannerResponceModel: freezed == homeBannerResponceModel
+          ? _value.homeBannerResponceModel
+          : homeBannerResponceModel // ignore: cast_nullable_to_non_nullable
+              as HomeBannerResponceModel?,
     ));
   }
 }
@@ -448,7 +588,8 @@ class _$InitialImpl implements _Initial {
       required this.hasError,
       this.message,
       this.selectedCategory,
-      this.getCategoryResponceModel});
+      this.getCategoryResponceModel,
+      this.homeBannerResponceModel});
 
   @override
   final bool isLoading;
@@ -460,10 +601,12 @@ class _$InitialImpl implements _Initial {
   final String? selectedCategory;
   @override
   final GetCategoryResponceModel? getCategoryResponceModel;
+  @override
+  final HomeBannerResponceModel? homeBannerResponceModel;
 
   @override
   String toString() {
-    return 'HomeState(isLoading: $isLoading, hasError: $hasError, message: $message, selectedCategory: $selectedCategory, getCategoryResponceModel: $getCategoryResponceModel)';
+    return 'HomeState(isLoading: $isLoading, hasError: $hasError, message: $message, selectedCategory: $selectedCategory, getCategoryResponceModel: $getCategoryResponceModel, homeBannerResponceModel: $homeBannerResponceModel)';
   }
 
   @override
@@ -480,12 +623,15 @@ class _$InitialImpl implements _Initial {
                 other.selectedCategory == selectedCategory) &&
             (identical(
                     other.getCategoryResponceModel, getCategoryResponceModel) ||
-                other.getCategoryResponceModel == getCategoryResponceModel));
+                other.getCategoryResponceModel == getCategoryResponceModel) &&
+            (identical(
+                    other.homeBannerResponceModel, homeBannerResponceModel) ||
+                other.homeBannerResponceModel == homeBannerResponceModel));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, isLoading, hasError, message,
-      selectedCategory, getCategoryResponceModel);
+      selectedCategory, getCategoryResponceModel, homeBannerResponceModel);
 
   @JsonKey(ignore: true)
   @override
@@ -496,12 +642,12 @@ class _$InitialImpl implements _Initial {
 
 abstract class _Initial implements HomeState {
   const factory _Initial(
-          {required final bool isLoading,
-          required final bool hasError,
-          final String? message,
-          final String? selectedCategory,
-          final GetCategoryResponceModel? getCategoryResponceModel}) =
-      _$InitialImpl;
+      {required final bool isLoading,
+      required final bool hasError,
+      final String? message,
+      final String? selectedCategory,
+      final GetCategoryResponceModel? getCategoryResponceModel,
+      final HomeBannerResponceModel? homeBannerResponceModel}) = _$InitialImpl;
 
   @override
   bool get isLoading;
@@ -513,6 +659,8 @@ abstract class _Initial implements HomeState {
   String? get selectedCategory;
   @override
   GetCategoryResponceModel? get getCategoryResponceModel;
+  @override
+  HomeBannerResponceModel? get homeBannerResponceModel;
   @override
   @JsonKey(ignore: true)
   _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>

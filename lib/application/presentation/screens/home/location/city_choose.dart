@@ -4,7 +4,8 @@ import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/application/presentation/utils/custom_button.dart';
 import 'package:beachdu/application/presentation/utils/loading_indicators/loading_indicator.dart';
-import 'package:beachdu/data/secure_storage/secure_fire_store.dart';
+import 'package:beachdu/application/presentation/utils/snackbar/snackbar.dart';
+import 'package:beachdu/domain/model/location/city_update_request_model/city_update_request_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -16,9 +17,11 @@ class ScreenLocations extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    context
-        .read<LocationBloc>()
-        .add(const LocationEvent.locationSearch(searchQuery: ''));
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      context
+          .read<LocationBloc>()
+          .add(const LocationEvent.locationSearch(searchQuery: ''));
+    });
     return GestureDetector(
       onTap: () {
         FocusScopeNode focusScopeNode = FocusScope.of(context);
@@ -90,7 +93,15 @@ class ScreenLocations extends StatelessWidget {
                       ),
                       kHeight20,
                       Expanded(
-                        child: BlocBuilder<LocationBloc, LocationState>(
+                        child: BlocConsumer<LocationBloc, LocationState>(
+                          listener: (context, state) {
+                            if (state.cityUpdateResponceModel != null) {
+                              showSnack(
+                                context: context,
+                                message: state.message!,
+                              );
+                            }
+                          },
                           builder: (context, state) {
                             if (state.hasError) {
                               return const Center(
@@ -117,16 +128,26 @@ class ScreenLocations extends StatelessWidget {
                                   itemBuilder: (context, index) {
                                     return GestureDetector(
                                       onTap: () async {
+                                        //Pincode load event
                                         context.read<LocationBloc>().add(
-                                            LocationEvent.pinCodePick(
-                                                cityName:
-                                                    state.filteredLocations![
-                                                        index]));
-                                        await SecureSotrage.setLocation(
-                                          location:
-                                              state.filteredLocations![index],
-                                        );
-                                        // ignore: use_build_context_synchronously
+                                              LocationEvent.pinCodePick(
+                                                cityName: state
+                                                    .filteredLocations![index],
+                                              ),
+                                            );
+
+                                        //picked loaction update event
+                                        CityUpdateRequestModel
+                                            cityUpdateRequestModel =
+                                            CityUpdateRequestModel(
+                                                city: state
+                                                    .filteredLocations![index]);
+                                        context.read<LocationBloc>().add(
+                                            LocationEvent.locationUpdate(
+                                                cityUpdateRequestModel:
+                                                    cityUpdateRequestModel));
+
+                                        //After navigating to pincode screen
                                         Navigator.of(context)
                                             .pushReplacementNamed(
                                                 Routes.pincode,

@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:developer';
 import 'package:beachdu/data/secure_storage/secure_fire_store.dart';
 import 'package:beachdu/domain/model/address_model/address_creation_request_model/address_creation_request_model.dart';
 import 'package:beachdu/domain/model/address_model/address_creation_responce_model/address_creation_responce_model.dart';
@@ -27,6 +26,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   }
 
   FutureOr<void> getUserInfo(GetUserInfo event, emit) async {
+    if (state.addressCreationResponceModel != null) return;
     emit(state.copyWith(isLoading: true, hasError: false));
     final data = await profileRepo.getUserInfo();
     data.fold((fail) {

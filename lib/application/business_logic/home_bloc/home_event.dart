@@ -5,4 +5,5 @@ class HomeEvent with _$HomeEvent {
   const factory HomeEvent.getAllCategory() = GetAllCategory;
   const factory HomeEvent.selectedactegory({required String category}) =
       Selectedactegory;
+  const factory HomeEvent.homePageBanners() = HomePageBanners;
 }

@@ -8,6 +8,7 @@ class HomeState with _$HomeState {
     String? message,
     String? selectedCategory,
     GetCategoryResponceModel? getCategoryResponceModel,
+    HomeBannerResponceModel? homeBannerResponceModel,
   }) = _Initial;
 
   factory HomeState.initial() => const HomeState(

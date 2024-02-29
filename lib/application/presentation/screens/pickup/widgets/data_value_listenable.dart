@@ -6,9 +6,7 @@ import 'package:beachdu/application/presentation/screens/pickup/pickup_screen.da
 import 'package:flutter/material.dart';
 
 class DataValueListanableContainers extends StatelessWidget {
-  const DataValueListanableContainers({
-    super.key,
-  });
+  const DataValueListanableContainers({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -1,10 +1,13 @@
 import 'dart:developer';
 
 import 'package:beachdu/application/business_logic/location/location_bloc.dart';
+import 'package:beachdu/application/business_logic/place_order/place_order_bloc.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/application/presentation/utils/loading_indicators/loading_indicator.dart';
+import 'package:beachdu/application/presentation/utils/snackbar/snackbar.dart';
 import 'package:beachdu/domain/core/failure/failure.dart';
+import 'package:beachdu/domain/model/location/pincode_update_request_model/pincode_update_request_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -67,7 +70,15 @@ class ScreenPinCodes extends StatelessWidget {
                       ),
                     ),
                     kHeight20,
-                    BlocBuilder<LocationBloc, LocationState>(
+                    BlocConsumer<LocationBloc, LocationState>(
+                      listener: (context, state) {
+                        if (state.pincodeResponceModel != null) {
+                          showSnack(
+                            context: context,
+                            message: state.message!,
+                          );
+                        }
+                      },
                       builder: (context, state) {
                         if (state.isLoading) {
                           return const Center(
@@ -100,9 +111,17 @@ class ScreenPinCodes extends StatelessWidget {
                           itemBuilder: (context, index) {
                             return GestureDetector(
                               onTap: () async {
+                                // Pincode selection event
+                                final selectedPincode =
+                                    state.filteredPincodes![index];
+                                PincodeUpdateRequestModel
+                                    pincodeUpdateRequestModel =
+                                    PincodeUpdateRequestModel(
+                                        pincode: selectedPincode);
                                 context.read<LocationBloc>().add(
-                                      LocationEvent.pincodeSave(
-                                        pinCode: state.filteredPincodes![index],
+                                      LocationEvent.pincodeUpdate(
+                                        pincodeUpdateRequestModel:
+                                            pincodeUpdateRequestModel,
                                       ),
                                     );
                                 log('Selected pincode UI stored storage ${state.filteredPincodes![index]}');
