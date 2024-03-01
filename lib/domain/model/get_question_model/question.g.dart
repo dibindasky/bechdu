@@ -9,11 +9,11 @@ part of 'question.dart';
 Question _$QuestionFromJson(Map<String, dynamic> json) => Question(
       description: json['description'] as String?,
       type: json['type'] as String?,
-      images: json['images'] as String?,
+      image: json['image'] as String?,
     );
 
 Map<String, dynamic> _$QuestionToJson(Question instance) => <String, dynamic>{
       'description': instance.description,
       'type': instance.type,
-      'images': instance.images,
+      'image': instance.image,
     };

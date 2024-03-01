@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:beachdu/application/business_logic/brands_bloc/category_bloc_bloc.dart';
@@ -12,9 +13,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class WhatToSellWidget extends StatelessWidget {
-  const WhatToSellWidget({
-    super.key,
-  });
+  const WhatToSellWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -66,49 +65,48 @@ class WhatToSellWidget extends StatelessWidget {
                     ),
                     shrinkWrap: true,
                     itemBuilder: (context, index) {
-                      return BlocBuilder<NavbarCubit, NavbarState>(
-                        builder: (context, navbar) {
-                          return InkWell(
-                            onTap: () {
-                              context
-                                  .read<CategoryBlocBloc>()
-                                  .add(GetSingleCategoryBrands(
-                                    categoryType:
-                                        data[index].categoryType ?? 'mobile',
-                                  ));
-                              context.read<CategoryBlocBloc>().categoryType =
-                                  data[index].categoryType!;
-                              log('UI data[index].categoryType ===>>> : ${data[index].categoryType}');
-                              context
-                                  .read<NavbarCubit>()
-                                  .changeNavigationIndex(1);
-                              brandandProductValueNotifier.value = 0;
-                              brandandProductValueNotifier.notifyListeners();
-                              secondtabScreensNotifier.value = 0;
-                              secondtabScreensNotifier.notifyListeners();
-                            },
-                            child: Column(
-                              children: [
-                                Container(
-                                  width: 70,
-                                  height: 65,
-                                  decoration: BoxDecoration(
-                                    color: klightwhite,
-                                    borderRadius: kRadius5,
-                                  ),
-                                  child: Image.asset(gridData[index]),
-                                ),
-                                kHeight5,
-                                Text(
-                                  data[index].categoryType!,
-                                  style: textHeadMedium1.copyWith(
-                                    fontSize: sWidth * .026,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          );
+                      String base64String = data[index].categoryImage!;
+                      base64String = base64String.replaceFirst(
+                          RegExp(r'data:image/[^;]+;base64,'), '');
+                      return InkWell(
+                        onTap: () {
+                          context
+                              .read<CategoryBlocBloc>()
+                              .add(GetSingleCategoryBrands(
+                                categoryType:
+                                    data[index].categoryType ?? 'mobile',
+                              ));
+                          context.read<CategoryBlocBloc>().categoryType =
+                              data[index].categoryType!;
+                          log('UI data[index].categoryType ===>>> : ${data[index].categoryType}');
+                          context.read<NavbarCubit>().changeNavigationIndex(1);
+                          brandandProductValueNotifier.value = 0;
+                          brandandProductValueNotifier.notifyListeners();
+                          secondtabScreensNotifier.value = 0;
+                          secondtabScreensNotifier.notifyListeners();
                         },
+                        child: Column(
+                          children: [
+                            Container(
+                              width: 70,
+                              height: 65,
+                              decoration: BoxDecoration(
+                                color: klightwhite,
+                                borderRadius: kRadius5,
+                              ),
+                              child: Image.memory(
+                                base64.decode(base64String),
+                              ),
+                            ),
+                            kHeight5,
+                            Text(
+                              data[index].categoryType!,
+                              style: textHeadMedium1.copyWith(
+                                fontSize: sWidth * .026,
+                              ),
+                            ),
+                          ],
+                        ),
                       );
                     },
                   );
@@ -121,10 +119,3 @@ class WhatToSellWidget extends StatelessWidget {
     );
   }
 }
-
-List<String> gridData = [
-  'assets/images/home category mobile.png',
-  'assets/images/home category  watch.png',
-  'assets/images/home category  headset.png',
-  'assets/images/home category laptop.png',
-];

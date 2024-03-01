@@ -2,11 +2,13 @@ import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:flutter/material.dart';
 
-showConfirmationDialog(BuildContext context,
-    {bool textButtonNo = false,
-    String? heading,
-    VoidCallback? onPressed,
-    String? operationButtonName}) async {
+showConfirmationDialog(
+  BuildContext context, {
+  bool noButton = false,
+  String? heading,
+  void Function()? onPressed,
+  String? operationButtonName,
+}) async {
   return showDialog(
     context: context,
     builder: (context) => AlertDialog(
@@ -19,11 +21,11 @@ showConfirmationDialog(BuildContext context,
         TextButton(
           onPressed: onPressed,
           child: Text(
-            !textButtonNo ? 'Yes' : operationButtonName ?? 'Sure',
+            !noButton ? 'Yes' : operationButtonName ?? 'Sure',
             style: textHeadBold1,
           ),
         ),
-        textButtonNo
+        noButton
             ? kEmpty
             : TextButton(
                 onPressed: () {

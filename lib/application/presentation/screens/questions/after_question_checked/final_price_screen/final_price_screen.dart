@@ -99,7 +99,7 @@ class _PrivacyPolicyCheckboxState extends State<PrivacyPolicyCheckbox> {
                 showConfirmationDialog(
                   context,
                   heading: 'Please accept Privacy Policy',
-                  textButtonNo: true,
+                  noButton: true,
                 );
               }
             },

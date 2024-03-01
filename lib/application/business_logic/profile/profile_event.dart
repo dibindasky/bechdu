@@ -9,4 +9,7 @@ class ProfileEvent with _$ProfileEvent {
     required int index,
   }) = DeleteAddress;
   const factory ProfileEvent.getUserInfo() = GetUserInfo;
+  const factory ProfileEvent.updateUser({
+    required UserInfoRequestModel userInfoRequestModel,
+  }) = UpdateUser;
 }

@@ -23,6 +23,8 @@ mixin _$ProfileEvent {
         addAddress,
     required TResult Function(int index) deleteAddress,
     required TResult Function() getUserInfo,
+    required TResult Function(UserInfoRequestModel userInfoRequestModel)
+        updateUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -31,6 +33,7 @@ mixin _$ProfileEvent {
         addAddress,
     TResult? Function(int index)? deleteAddress,
     TResult? Function()? getUserInfo,
+    TResult? Function(UserInfoRequestModel userInfoRequestModel)? updateUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -39,6 +42,7 @@ mixin _$ProfileEvent {
         addAddress,
     TResult Function(int index)? deleteAddress,
     TResult Function()? getUserInfo,
+    TResult Function(UserInfoRequestModel userInfoRequestModel)? updateUser,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -47,6 +51,7 @@ mixin _$ProfileEvent {
     required TResult Function(AddAddress value) addAddress,
     required TResult Function(DeleteAddress value) deleteAddress,
     required TResult Function(GetUserInfo value) getUserInfo,
+    required TResult Function(UpdateUser value) updateUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -54,6 +59,7 @@ mixin _$ProfileEvent {
     TResult? Function(AddAddress value)? addAddress,
     TResult? Function(DeleteAddress value)? deleteAddress,
     TResult? Function(GetUserInfo value)? getUserInfo,
+    TResult? Function(UpdateUser value)? updateUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -61,6 +67,7 @@ mixin _$ProfileEvent {
     TResult Function(AddAddress value)? addAddress,
     TResult Function(DeleteAddress value)? deleteAddress,
     TResult Function(GetUserInfo value)? getUserInfo,
+    TResult Function(UpdateUser value)? updateUser,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -156,6 +163,8 @@ class _$AddAddressImpl implements AddAddress {
         addAddress,
     required TResult Function(int index) deleteAddress,
     required TResult Function() getUserInfo,
+    required TResult Function(UserInfoRequestModel userInfoRequestModel)
+        updateUser,
   }) {
     return addAddress(addressCreationRequestModel);
   }
@@ -167,6 +176,7 @@ class _$AddAddressImpl implements AddAddress {
         addAddress,
     TResult? Function(int index)? deleteAddress,
     TResult? Function()? getUserInfo,
+    TResult? Function(UserInfoRequestModel userInfoRequestModel)? updateUser,
   }) {
     return addAddress?.call(addressCreationRequestModel);
   }
@@ -178,6 +188,7 @@ class _$AddAddressImpl implements AddAddress {
         addAddress,
     TResult Function(int index)? deleteAddress,
     TResult Function()? getUserInfo,
+    TResult Function(UserInfoRequestModel userInfoRequestModel)? updateUser,
     required TResult orElse(),
   }) {
     if (addAddress != null) {
@@ -192,6 +203,7 @@ class _$AddAddressImpl implements AddAddress {
     required TResult Function(AddAddress value) addAddress,
     required TResult Function(DeleteAddress value) deleteAddress,
     required TResult Function(GetUserInfo value) getUserInfo,
+    required TResult Function(UpdateUser value) updateUser,
   }) {
     return addAddress(this);
   }
@@ -202,6 +214,7 @@ class _$AddAddressImpl implements AddAddress {
     TResult? Function(AddAddress value)? addAddress,
     TResult? Function(DeleteAddress value)? deleteAddress,
     TResult? Function(GetUserInfo value)? getUserInfo,
+    TResult? Function(UpdateUser value)? updateUser,
   }) {
     return addAddress?.call(this);
   }
@@ -212,6 +225,7 @@ class _$AddAddressImpl implements AddAddress {
     TResult Function(AddAddress value)? addAddress,
     TResult Function(DeleteAddress value)? deleteAddress,
     TResult Function(GetUserInfo value)? getUserInfo,
+    TResult Function(UpdateUser value)? updateUser,
     required TResult orElse(),
   }) {
     if (addAddress != null) {
@@ -301,6 +315,8 @@ class _$DeleteAddressImpl implements DeleteAddress {
         addAddress,
     required TResult Function(int index) deleteAddress,
     required TResult Function() getUserInfo,
+    required TResult Function(UserInfoRequestModel userInfoRequestModel)
+        updateUser,
   }) {
     return deleteAddress(index);
   }
@@ -312,6 +328,7 @@ class _$DeleteAddressImpl implements DeleteAddress {
         addAddress,
     TResult? Function(int index)? deleteAddress,
     TResult? Function()? getUserInfo,
+    TResult? Function(UserInfoRequestModel userInfoRequestModel)? updateUser,
   }) {
     return deleteAddress?.call(index);
   }
@@ -323,6 +340,7 @@ class _$DeleteAddressImpl implements DeleteAddress {
         addAddress,
     TResult Function(int index)? deleteAddress,
     TResult Function()? getUserInfo,
+    TResult Function(UserInfoRequestModel userInfoRequestModel)? updateUser,
     required TResult orElse(),
   }) {
     if (deleteAddress != null) {
@@ -337,6 +355,7 @@ class _$DeleteAddressImpl implements DeleteAddress {
     required TResult Function(AddAddress value) addAddress,
     required TResult Function(DeleteAddress value) deleteAddress,
     required TResult Function(GetUserInfo value) getUserInfo,
+    required TResult Function(UpdateUser value) updateUser,
   }) {
     return deleteAddress(this);
   }
@@ -347,6 +366,7 @@ class _$DeleteAddressImpl implements DeleteAddress {
     TResult? Function(AddAddress value)? addAddress,
     TResult? Function(DeleteAddress value)? deleteAddress,
     TResult? Function(GetUserInfo value)? getUserInfo,
+    TResult? Function(UpdateUser value)? updateUser,
   }) {
     return deleteAddress?.call(this);
   }
@@ -357,6 +377,7 @@ class _$DeleteAddressImpl implements DeleteAddress {
     TResult Function(AddAddress value)? addAddress,
     TResult Function(DeleteAddress value)? deleteAddress,
     TResult Function(GetUserInfo value)? getUserInfo,
+    TResult Function(UpdateUser value)? updateUser,
     required TResult orElse(),
   }) {
     if (deleteAddress != null) {
@@ -418,6 +439,8 @@ class _$GetUserInfoImpl implements GetUserInfo {
         addAddress,
     required TResult Function(int index) deleteAddress,
     required TResult Function() getUserInfo,
+    required TResult Function(UserInfoRequestModel userInfoRequestModel)
+        updateUser,
   }) {
     return getUserInfo();
   }
@@ -429,6 +452,7 @@ class _$GetUserInfoImpl implements GetUserInfo {
         addAddress,
     TResult? Function(int index)? deleteAddress,
     TResult? Function()? getUserInfo,
+    TResult? Function(UserInfoRequestModel userInfoRequestModel)? updateUser,
   }) {
     return getUserInfo?.call();
   }
@@ -440,6 +464,7 @@ class _$GetUserInfoImpl implements GetUserInfo {
         addAddress,
     TResult Function(int index)? deleteAddress,
     TResult Function()? getUserInfo,
+    TResult Function(UserInfoRequestModel userInfoRequestModel)? updateUser,
     required TResult orElse(),
   }) {
     if (getUserInfo != null) {
@@ -454,6 +479,7 @@ class _$GetUserInfoImpl implements GetUserInfo {
     required TResult Function(AddAddress value) addAddress,
     required TResult Function(DeleteAddress value) deleteAddress,
     required TResult Function(GetUserInfo value) getUserInfo,
+    required TResult Function(UpdateUser value) updateUser,
   }) {
     return getUserInfo(this);
   }
@@ -464,6 +490,7 @@ class _$GetUserInfoImpl implements GetUserInfo {
     TResult? Function(AddAddress value)? addAddress,
     TResult? Function(DeleteAddress value)? deleteAddress,
     TResult? Function(GetUserInfo value)? getUserInfo,
+    TResult? Function(UpdateUser value)? updateUser,
   }) {
     return getUserInfo?.call(this);
   }
@@ -474,6 +501,7 @@ class _$GetUserInfoImpl implements GetUserInfo {
     TResult Function(AddAddress value)? addAddress,
     TResult Function(DeleteAddress value)? deleteAddress,
     TResult Function(GetUserInfo value)? getUserInfo,
+    TResult Function(UpdateUser value)? updateUser,
     required TResult orElse(),
   }) {
     if (getUserInfo != null) {
@@ -488,6 +516,159 @@ abstract class GetUserInfo implements ProfileEvent {
 }
 
 /// @nodoc
+abstract class _$$UpdateUserImplCopyWith<$Res> {
+  factory _$$UpdateUserImplCopyWith(
+          _$UpdateUserImpl value, $Res Function(_$UpdateUserImpl) then) =
+      __$$UpdateUserImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({UserInfoRequestModel userInfoRequestModel});
+}
+
+/// @nodoc
+class __$$UpdateUserImplCopyWithImpl<$Res>
+    extends _$ProfileEventCopyWithImpl<$Res, _$UpdateUserImpl>
+    implements _$$UpdateUserImplCopyWith<$Res> {
+  __$$UpdateUserImplCopyWithImpl(
+      _$UpdateUserImpl _value, $Res Function(_$UpdateUserImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? userInfoRequestModel = null,
+  }) {
+    return _then(_$UpdateUserImpl(
+      userInfoRequestModel: null == userInfoRequestModel
+          ? _value.userInfoRequestModel
+          : userInfoRequestModel // ignore: cast_nullable_to_non_nullable
+              as UserInfoRequestModel,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$UpdateUserImpl implements UpdateUser {
+  const _$UpdateUserImpl({required this.userInfoRequestModel});
+
+  @override
+  final UserInfoRequestModel userInfoRequestModel;
+
+  @override
+  String toString() {
+    return 'ProfileEvent.updateUser(userInfoRequestModel: $userInfoRequestModel)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UpdateUserImpl &&
+            (identical(other.userInfoRequestModel, userInfoRequestModel) ||
+                other.userInfoRequestModel == userInfoRequestModel));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, userInfoRequestModel);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UpdateUserImplCopyWith<_$UpdateUserImpl> get copyWith =>
+      __$$UpdateUserImplCopyWithImpl<_$UpdateUserImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            AddressCreationRequestModel addressCreationRequestModel)
+        addAddress,
+    required TResult Function(int index) deleteAddress,
+    required TResult Function() getUserInfo,
+    required TResult Function(UserInfoRequestModel userInfoRequestModel)
+        updateUser,
+  }) {
+    return updateUser(userInfoRequestModel);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(AddressCreationRequestModel addressCreationRequestModel)?
+        addAddress,
+    TResult? Function(int index)? deleteAddress,
+    TResult? Function()? getUserInfo,
+    TResult? Function(UserInfoRequestModel userInfoRequestModel)? updateUser,
+  }) {
+    return updateUser?.call(userInfoRequestModel);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(AddressCreationRequestModel addressCreationRequestModel)?
+        addAddress,
+    TResult Function(int index)? deleteAddress,
+    TResult Function()? getUserInfo,
+    TResult Function(UserInfoRequestModel userInfoRequestModel)? updateUser,
+    required TResult orElse(),
+  }) {
+    if (updateUser != null) {
+      return updateUser(userInfoRequestModel);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(AddAddress value) addAddress,
+    required TResult Function(DeleteAddress value) deleteAddress,
+    required TResult Function(GetUserInfo value) getUserInfo,
+    required TResult Function(UpdateUser value) updateUser,
+  }) {
+    return updateUser(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(AddAddress value)? addAddress,
+    TResult? Function(DeleteAddress value)? deleteAddress,
+    TResult? Function(GetUserInfo value)? getUserInfo,
+    TResult? Function(UpdateUser value)? updateUser,
+  }) {
+    return updateUser?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AddAddress value)? addAddress,
+    TResult Function(DeleteAddress value)? deleteAddress,
+    TResult Function(GetUserInfo value)? getUserInfo,
+    TResult Function(UpdateUser value)? updateUser,
+    required TResult orElse(),
+  }) {
+    if (updateUser != null) {
+      return updateUser(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class UpdateUser implements ProfileEvent {
+  const factory UpdateUser(
+          {required final UserInfoRequestModel userInfoRequestModel}) =
+      _$UpdateUserImpl;
+
+  UserInfoRequestModel get userInfoRequestModel;
+  @JsonKey(ignore: true)
+  _$$UpdateUserImplCopyWith<_$UpdateUserImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$ProfileState {
   bool get isLoading => throw _privateConstructorUsedError;
   bool get hasError => throw _privateConstructorUsedError;
@@ -496,6 +677,8 @@ mixin _$ProfileState {
   AddressCreationResponceModel? get addressCreationResponceModel =>
       throw _privateConstructorUsedError;
   UserInfo? get user => throw _privateConstructorUsedError;
+  UserInfoResponceModel? get userInfoResponceModel =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ProfileStateCopyWith<ProfileState> get copyWith =>
@@ -514,7 +697,8 @@ abstract class $ProfileStateCopyWith<$Res> {
       String? message,
       List<String> address,
       AddressCreationResponceModel? addressCreationResponceModel,
-      UserInfo? user});
+      UserInfo? user,
+      UserInfoResponceModel? userInfoResponceModel});
 }
 
 /// @nodoc
@@ -536,6 +720,7 @@ class _$ProfileStateCopyWithImpl<$Res, $Val extends ProfileState>
     Object? address = null,
     Object? addressCreationResponceModel = freezed,
     Object? user = freezed,
+    Object? userInfoResponceModel = freezed,
   }) {
     return _then(_value.copyWith(
       isLoading: null == isLoading
@@ -562,6 +747,10 @@ class _$ProfileStateCopyWithImpl<$Res, $Val extends ProfileState>
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
               as UserInfo?,
+      userInfoResponceModel: freezed == userInfoResponceModel
+          ? _value.userInfoResponceModel
+          : userInfoResponceModel // ignore: cast_nullable_to_non_nullable
+              as UserInfoResponceModel?,
     ) as $Val);
   }
 }
@@ -580,7 +769,8 @@ abstract class _$$InitialImplCopyWith<$Res>
       String? message,
       List<String> address,
       AddressCreationResponceModel? addressCreationResponceModel,
-      UserInfo? user});
+      UserInfo? user,
+      UserInfoResponceModel? userInfoResponceModel});
 }
 
 /// @nodoc
@@ -600,6 +790,7 @@ class __$$InitialImplCopyWithImpl<$Res>
     Object? address = null,
     Object? addressCreationResponceModel = freezed,
     Object? user = freezed,
+    Object? userInfoResponceModel = freezed,
   }) {
     return _then(_$InitialImpl(
       isLoading: null == isLoading
@@ -626,6 +817,10 @@ class __$$InitialImplCopyWithImpl<$Res>
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
               as UserInfo?,
+      userInfoResponceModel: freezed == userInfoResponceModel
+          ? _value.userInfoResponceModel
+          : userInfoResponceModel // ignore: cast_nullable_to_non_nullable
+              as UserInfoResponceModel?,
     ));
   }
 }
@@ -639,7 +834,8 @@ class _$InitialImpl implements _Initial {
       this.message,
       required final List<String> address,
       this.addressCreationResponceModel,
-      this.user})
+      this.user,
+      this.userInfoResponceModel})
       : _address = address;
 
   @override
@@ -660,10 +856,12 @@ class _$InitialImpl implements _Initial {
   final AddressCreationResponceModel? addressCreationResponceModel;
   @override
   final UserInfo? user;
+  @override
+  final UserInfoResponceModel? userInfoResponceModel;
 
   @override
   String toString() {
-    return 'ProfileState(isLoading: $isLoading, hasError: $hasError, message: $message, address: $address, addressCreationResponceModel: $addressCreationResponceModel, user: $user)';
+    return 'ProfileState(isLoading: $isLoading, hasError: $hasError, message: $message, address: $address, addressCreationResponceModel: $addressCreationResponceModel, user: $user, userInfoResponceModel: $userInfoResponceModel)';
   }
 
   @override
@@ -681,7 +879,9 @@ class _$InitialImpl implements _Initial {
                     addressCreationResponceModel) ||
                 other.addressCreationResponceModel ==
                     addressCreationResponceModel) &&
-            (identical(other.user, user) || other.user == user));
+            (identical(other.user, user) || other.user == user) &&
+            (identical(other.userInfoResponceModel, userInfoResponceModel) ||
+                other.userInfoResponceModel == userInfoResponceModel));
   }
 
   @override
@@ -692,7 +892,8 @@ class _$InitialImpl implements _Initial {
       message,
       const DeepCollectionEquality().hash(_address),
       addressCreationResponceModel,
-      user);
+      user,
+      userInfoResponceModel);
 
   @JsonKey(ignore: true)
   @override
@@ -708,7 +909,8 @@ abstract class _Initial implements ProfileState {
       final String? message,
       required final List<String> address,
       final AddressCreationResponceModel? addressCreationResponceModel,
-      final UserInfo? user}) = _$InitialImpl;
+      final UserInfo? user,
+      final UserInfoResponceModel? userInfoResponceModel}) = _$InitialImpl;
 
   @override
   bool get isLoading;
@@ -722,6 +924,8 @@ abstract class _Initial implements ProfileState {
   AddressCreationResponceModel? get addressCreationResponceModel;
   @override
   UserInfo? get user;
+  @override
+  UserInfoResponceModel? get userInfoResponceModel;
   @override
   @JsonKey(ignore: true)
   _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>

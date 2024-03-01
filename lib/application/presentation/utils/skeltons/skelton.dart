@@ -32,8 +32,6 @@ class Skeleton extends StatelessWidget {
             baseColor: Colors.grey[300]!,
             highlightColor: Colors.grey[100]!,
             child: Container(
-              width: 70,
-              height: height,
               decoration: BoxDecoration(
                 color: klightwhite,
                 borderRadius: kRadius5,

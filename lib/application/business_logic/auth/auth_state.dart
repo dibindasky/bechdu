@@ -6,7 +6,8 @@ class AuthState with _$AuthState {
     required bool isLoading,
     required bool hasError,
     String? message,
-    LoginResponceModel? loginResponceModel,
+    OtpSendResponceModel? otpSendResponceModel,
+    OtpVerifyResponceModel? otpVerifyResponceModel,
     required bool logOrNot,
     String? number,
   }) = _Initial;

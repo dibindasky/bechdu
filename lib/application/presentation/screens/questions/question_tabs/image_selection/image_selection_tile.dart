@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:beachdu/application/business_logic/question_tab/question_tab_bloc.dart';
@@ -32,18 +33,24 @@ class _GridTileQuestionState extends State<GridTileQuestion> {
 
   @override
   Widget build(BuildContext context) {
+    final data = widget.question.image;
+
+    String base64String = data ?? dummyImage;
+    base64String =
+        base64String.replaceFirst(RegExp(r'data:image/[^;]+;base64,'), '');
     return GestureDetector(
       onTap: () {
         SelectedOption selectedOption = SelectedOption(
           description: widget.question.description,
           type: widget.question.type,
         );
-        context.read<QuestionTabBloc>().add(QuestionTabEvent.markedQuestions(
-              selectedOption: selectedOption,
-            ));
+        context.read<QuestionTabBloc>().add(
+              QuestionTabEvent.markedQuestions(
+                selectedOption: selectedOption,
+              ),
+            );
         log('Image tile selectedOption$selectedOption');
         setState(() {
-          // change it to block now auto selection bug
           selected = !selected;
         });
       },
@@ -67,7 +74,7 @@ class _GridTileQuestionState extends State<GridTileQuestion> {
                   AspectRatio(
                     aspectRatio: 1,
                     child: FittedBox(
-                      child: Image.asset(imageDiffectedPhone),
+                      child: Image.memory(base64.decode(base64String)),
                     ),
                   ),
                   Text(

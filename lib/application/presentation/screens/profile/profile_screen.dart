@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:async';
 import 'package:beachdu/application/business_logic/auth/auth_bloc.dart';
 import 'package:beachdu/application/business_logic/location/location_bloc.dart';
@@ -31,21 +33,25 @@ class PrfileLastBuilder extends StatelessWidget {
 }
 
 List<Widget> profileSectionList = [
-  const ScreenProfile(),
+  ScreenProfile(),
   const AddAddressScreen(),
 ];
 
 class ScreenProfile extends StatelessWidget {
-  const ScreenProfile({super.key});
-
+  ScreenProfile({super.key});
+  String firstTwoLetters = '';
   @override
   Widget build(BuildContext context) {
     WidgetsBinding.instance.addPostFrameCallback(
       (timeStamp) async {
         final islogin = await SecureSotrage.getlLogin();
         if (islogin) {
-          // ignore: use_build_context_synchronously
           context.read<ProfileBloc>().add(const ProfileEvent.getUserInfo());
+          // firstTwoLetters = context
+          //     .read<ProfileBloc>()
+          //     .profileNameController
+          //     .text
+          //     .substring(0, 2);
         }
       },
     );
@@ -54,134 +60,145 @@ class ScreenProfile extends StatelessWidget {
         bool shouldPop = await showConfirmationDialog(context);
         return shouldPop;
       },
-      child: Scaffold(
-        appBar: AppBar(
-          leading: kEmpty,
-          centerTitle: true,
-          title: Text(
-            "Account",
-            style: textHeadBoldBig,
-          ),
-        ),
-        body: BlocBuilder<AuthBloc, AuthState>(
-          builder: (context, state) {
-            if (!state.logOrNot) {
-              return AlertDialog(
-                backgroundColor: klightGreen,
-                title: Text(
-                  'You are not logged in',
-                  style: textHeadBoldBig,
-                ),
-                content: Text(
-                  'You need to login to edit your profile.',
-                  style: textHeadMedium1,
-                ),
-                actions: [
-                  TextButton(
-                    onPressed: () {
-                      Navigator.pushNamed(
-                        context,
-                        Routes.signInOrLogin,
-                        arguments: true,
-                      );
-                    },
-                    child: Text(
-                      'Log in now',
+      child: Builder(builder: (context) {
+        return GestureDetector(
+          onTap: () {
+            FocusScopeNode focusScopeNode = FocusScope.of(context);
+            if (!focusScopeNode.hasPrimaryFocus) {
+              focusScopeNode.unfocus();
+            }
+          },
+          child: Scaffold(
+            appBar: AppBar(
+              leading: kEmpty,
+              centerTitle: true,
+              title: Text(
+                "Account",
+                style: textHeadBoldBig,
+              ),
+            ),
+            body: BlocBuilder<AuthBloc, AuthState>(
+              builder: (context, state) {
+                if (!state.logOrNot) {
+                  return AlertDialog(
+                    backgroundColor: klightGreen,
+                    title: Text(
+                      'You are not logged in',
+                      style: textHeadBoldBig,
+                    ),
+                    content: Text(
+                      'You need to login to edit your profile.',
                       style: textHeadMedium1,
                     ),
-                  ),
-                ],
-              );
-            }
-            return SingleChildScrollView(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 15,
-                ),
-                child: Column(
-                  children: [
-                    CircleAvatar(
-                      backgroundColor: kGreenPrimary,
-                      radius: 58,
-                      child: CircleAvatar(
-                        backgroundColor: kBluePrimary,
-                        radius: 50,
+                    actions: [
+                      TextButton(
+                        onPressed: () {
+                          Navigator.pushNamed(
+                            context,
+                            Routes.signInOrLogin,
+                            arguments: true,
+                          );
+                        },
                         child: Text(
-                          'JG',
-                          style: textHeadBoldBig.copyWith(
-                            fontSize: sWidth * .1,
-                            color: kWhite,
-                          ),
+                          'Log in now',
+                          style: textHeadMedium1,
                         ),
                       ),
+                    ],
+                  );
+                }
+                return SingleChildScrollView(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 15,
                     ),
-                    kHeight30,
-                    const Containers(),
-                    kHeight20,
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    child: Column(
                       children: [
-                        Text(
-                          'Address',
-                          style: textHeadRegular1,
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            context
-                                .read<LocationBloc>()
-                                .add(const LocationEvent.locationPick());
-                            profileScreensNotifier.value = 1;
-                            profileScreensNotifier.notifyListeners();
-                          },
-                          child: const CircleAvatar(
-                            backgroundColor: kBlack,
-                            radius: 12,
-                            child: Icon(
-                              Icons.add,
-                              color: kWhite,
+                        CircleAvatar(
+                          backgroundColor: kGreenPrimary,
+                          radius: 58,
+                          child: CircleAvatar(
+                            backgroundColor: kBluePrimary,
+                            radius: 50,
+                            child: Text(
+                              '${firstTwoLetters.toUpperCase()}',
+                              style: textHeadBoldBig.copyWith(
+                                fontSize: sWidth * .1,
+                                color: kWhite,
+                              ),
                             ),
                           ),
                         ),
-                      ],
-                    ),
-                    kHeight20,
-                    const AddressListView(),
-                    kHeight30,
-                    GestureDetector(
-                      onTap: () {
-                        showConfirmationDialog(
-                          context,
-                          heading: 'Are you really want to log out from Bechdu',
-                          onPressed: () {
-                            logOut(context);
-                          },
-                        );
-                      },
-                      child: Container(
-                        padding: const EdgeInsets.only(left: 10),
-                        height: 45,
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                          color: klightwhite,
-                          border: Border.all(color: klightgrey),
-                          borderRadius: kRadius10,
+                        kHeight30,
+                        const UserInfoFields(),
+                        kHeight20,
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              'Address',
+                              style: textHeadRegular1,
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                context
+                                    .read<LocationBloc>()
+                                    .add(const LocationEvent.locationPick());
+                                profileScreensNotifier.value = 1;
+                                profileScreensNotifier.notifyListeners();
+                              },
+                              child: const CircleAvatar(
+                                backgroundColor: kBlack,
+                                radius: 12,
+                                child: Icon(
+                                  Icons.add,
+                                  color: kWhite,
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
-                        child: Center(
-                          child: Text(
-                            'Log out',
-                            style: textHeadBold1,
+                        kHeight20,
+                        const AddressListView(),
+                        kHeight30,
+                        GestureDetector(
+                          onTap: () {
+                            showConfirmationDialog(
+                              context,
+                              heading:
+                                  'Are you really want to log out from Bechdu',
+                              onPressed: () {
+                                logOut(context);
+                              },
+                            );
+                          },
+                          child: Container(
+                            padding: const EdgeInsets.only(left: 10),
+                            height: 45,
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                              color: klightwhite,
+                              border: Border.all(color: klightgrey),
+                              borderRadius: kRadius10,
+                            ),
+                            child: Center(
+                              child: Text(
+                                'Log out',
+                                style: textHeadBold1,
+                              ),
+                            ),
                           ),
                         ),
-                      ),
+                        kHeight20,
+                      ],
                     ),
-                    kHeight20,
-                  ],
-                ),
-              ),
-            );
-          },
-        ),
-      ),
+                  ),
+                );
+              },
+            ),
+          ),
+        );
+      }),
     );
   }
 

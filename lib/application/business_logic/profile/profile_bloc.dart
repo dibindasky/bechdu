@@ -3,6 +3,8 @@ import 'package:beachdu/data/secure_storage/secure_fire_store.dart';
 import 'package:beachdu/domain/model/address_model/address_creation_request_model/address_creation_request_model.dart';
 import 'package:beachdu/domain/model/address_model/address_creation_responce_model/address_creation_responce_model.dart';
 import 'package:beachdu/domain/model/profile/user_info/user_info.dart';
+import 'package:beachdu/domain/model/profile/user_info_request_model/user_info_request_model.dart';
+import 'package:beachdu/domain/model/profile/user_info_responce_model/user_info_responce_model.dart';
 import 'package:beachdu/domain/repository/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -16,6 +18,9 @@ part 'profile_bloc.freezed.dart';
 class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   final ProfileRepo profileRepo;
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  TextEditingController profileNameController = TextEditingController();
+  TextEditingController profileEmailController = TextEditingController();
+  TextEditingController profileAddPhoneController = TextEditingController();
   List<String> addressList = [];
   TextEditingController addressController = TextEditingController();
 
@@ -23,10 +28,31 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     on<AddAddress>(addAddress);
     on<DeleteAddress>(deleteAddress);
     on<GetUserInfo>(getUserInfo);
+    on<UpdateUser>(updateuser);
+  }
+
+  FutureOr<void> updateuser(UpdateUser event, emit) async {
+    emit(state.copyWith(isLoading: true, hasError: false));
+    final data = await profileRepo.updateUser(
+      userInfoRequestModel: event.userInfoRequestModel,
+    );
+    data.fold((fail) {
+      emit(state.copyWith(
+        isLoading: false,
+        hasError: true,
+      ));
+    }, (succsessUserData) {
+      emit(state.copyWith(
+        isLoading: false,
+        hasError: false,
+        address: addressList,
+        userInfoResponceModel: succsessUserData,
+      ));
+    });
   }
 
   FutureOr<void> getUserInfo(GetUserInfo event, emit) async {
-    if (state.addressCreationResponceModel != null) return;
+    if (state.user != null) return;
     emit(state.copyWith(isLoading: true, hasError: false));
     final data = await profileRepo.getUserInfo();
     data.fold((fail) {
@@ -35,10 +61,12 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
         hasError: true,
       ));
     }, (succsessUserData) {
-      //addressList = List.from(state.address);
       if (succsessUserData.user != null ||
           succsessUserData.user!.address != null) {
         addressList = succsessUserData.user!.address!;
+        profileNameController.text = succsessUserData.user!.name ?? '';
+        profileEmailController.text = succsessUserData.user!.email ?? '';
+        profileAddPhoneController.text = succsessUserData.user!.addPhone ?? '';
       }
       emit(state.copyWith(
         isLoading: false,

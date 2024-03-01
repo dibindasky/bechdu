@@ -65,7 +65,10 @@ class ScreenProductSelection extends StatelessWidget {
                   brandandProductValueNotifier.value = 0;
                   brandandProductValueNotifier.notifyListeners();
                 } else {
-                  bool shouldPop = await showConfirmationDialog(context);
+                  bool shouldPop = await showConfirmationDialog(
+                    context,
+                    onPressed: () => Navigator.pop(context),
+                  );
                   return shouldPop;
                 }
               }

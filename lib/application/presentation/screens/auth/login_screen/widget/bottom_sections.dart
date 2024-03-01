@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'package:beachdu/application/business_logic/auth/auth_bloc.dart';
-import 'package:beachdu/application/business_logic/profile/profile_bloc.dart';
 import 'package:beachdu/application/presentation/routes/routes.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
@@ -90,21 +89,12 @@ class BottomSections extends StatelessWidget {
       } else {
         Timer(const Duration(microseconds: 500), () {
           //Login event calling
-          context.read<AuthBloc>().add(
-                Login(
-                    loginModel: LoginModel(
-                  phone: phoneNumber,
-                )),
-              );
+          LoginModel loginModel = LoginModel(mobileNumber: phoneNumber);
+          context
+              .read<AuthBloc>()
+              .add(AuthEvent.otpSend(loginModel: loginModel));
 
-          context.read<AuthBloc>().phoneNumberController.clear();
-
-          // //for getting users addresss
-          // context.read<ProfileBloc>().add(const ProfileEvent.getUserInfo());
-
-          isFromInside == true
-              ? Navigator.of(context).pop()
-              : Navigator.pushReplacementNamed(context, Routes.bottomBar);
+          Navigator.pushReplacementNamed(context, Routes.otpVerification);
         });
       }
     } else {

@@ -5,12 +5,12 @@ part 'question.g.dart';
 class Question {
   String? description;
   String? type;
-  String? images;
+  String? image;
 
   Question({
     this.description,
     this.type,
-    this.images,
+    this.image,
   });
 
   factory Question.fromJson(Map<String, dynamic> json) {

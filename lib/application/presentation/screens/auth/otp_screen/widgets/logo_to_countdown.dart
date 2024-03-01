@@ -1,7 +1,9 @@
+import 'package:beachdu/application/business_logic/auth/auth_bloc.dart';
 import 'package:beachdu/application/presentation/screens/auth/otp_screen/widgets/count_down_widget.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class LogoToCountDownSection extends StatefulWidget {
   const LogoToCountDownSection({super.key});
@@ -68,14 +70,14 @@ class _LogoToCountDownSectionState extends State<LogoToCountDownSection>
           ),
         ),
         Text(
-          '+91 798597245',
+          context.read<AuthBloc>().phoneNumberController.text,
           style: textHeadMedium1.copyWith(
             color: kBlack,
             fontSize: sWidth * .037,
           ),
         ),
         const CountdownTimer(
-          duration: Duration(minutes: 2),
+          duration: Duration(minutes: 10),
         ),
         kHeight20,
       ],

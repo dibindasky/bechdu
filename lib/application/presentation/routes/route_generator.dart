@@ -57,7 +57,7 @@ class RouteGenerator {
       case Routes.finalPriceScreen:
         return fadePageRoute(screen: const FinalPriceScreen());
       case Routes.profile:
-        return fadePageRoute(screen: const ScreenProfile());
+        return fadePageRoute(screen: ScreenProfile());
       case Routes.myOrders:
         return fadePageRoute(screen: const ScreenMyOrders());
       case Routes.successOder:

@@ -178,10 +178,8 @@ class QuestionTabs extends StatelessWidget {
   ) async {
     final login = await SecureSotrage.getlLogin();
     if (login) {
-      // ignore: use_build_context_synchronously
       pickeQuestionModelEventDataPass(context, questionTabBloc);
     } else {
-      // ignore: use_build_context_synchronously
       Navigator.of(context).pushNamed(Routes.signInOrLogin, arguments: true);
     }
   }

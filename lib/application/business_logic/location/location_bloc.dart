@@ -61,7 +61,6 @@ class LocationBloc extends Bloc<LocationEvent, LocationState> {
     }).toList();
     emit(state.copyWith(filteredLocations: filteredLocations));
   }
-  
 
   FutureOr<void> locationUpdate(LocationUpdate event, emit) async {
     final data = await locationRepo.locationUpdation(

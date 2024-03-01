@@ -1,8 +1,9 @@
 import 'dart:async';
-import 'dart:developer';
 import 'package:beachdu/data/secure_storage/secure_fire_store.dart';
 import 'package:beachdu/domain/model/login/login_model/login_model.dart';
-import 'package:beachdu/domain/model/login/login_responce_model/login_responce_model.dart';
+import 'package:beachdu/domain/model/login/otp_send_responce_model/otp_send_responce_model.dart';
+import 'package:beachdu/domain/model/login/otp_verify_request_model/otp_verify_request_model.dart';
+import 'package:beachdu/domain/model/login/otp_verify_responce_model/otp_verify_responce_model.dart';
 import 'package:beachdu/domain/model/token_model/token_model.dart';
 import 'package:beachdu/domain/repository/auth_repo.dart';
 import 'package:flutter/material.dart';
@@ -17,23 +18,24 @@ part 'auth_bloc.freezed.dart';
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final AuthRepo authRepo;
   final TextEditingController phoneNumberController = TextEditingController();
+  final TextEditingController otpController = TextEditingController();
   String phoneNumber = '';
   bool isPhoneNumberValid = false;
   AuthBloc(this.authRepo) : super(AuthState.initail()) {
     on<LogOrNot>(logOrNot);
-    on<Login>(login);
+    on<OtpSend>(otpSend);
+    on<OtpVeriying>(otpVerifying);
     on<LogOut>(logOut);
   }
 
   FutureOr<void> logOrNot(LogOrNot event, emit) async {
     final logOrNot = await SecureSotrage.getlLogin();
-    log('$logOrNot', name: 'Auth bloc');
     emit(state.copyWith(logOrNot: logOrNot));
   }
 
-  FutureOr<void> login(Login event, emit) async {
+  FutureOr<void> otpSend(OtpSend event, emit) async {
     emit(state.copyWith(hasError: false, isLoading: true));
-    final data = await authRepo.login(loginModel: event.loginModel);
+    final data = await authRepo.otpSend(loginModel: event.loginModel);
     data.fold(
         (failure) => emit(
               state.copyWith(
@@ -41,29 +43,54 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
                 isLoading: false,
                 logOrNot: false,
               ),
-            ), (successLogin) async {
+            ), (successOtpSend) async {
       emit(
         state.copyWith(
           isLoading: false,
           hasError: false,
-          loginResponceModel: successLogin,
-          logOrNot: true,
+          message: successOtpSend.message,
+          otpSendResponceModel: successOtpSend,
+          //logOrNot: true,
         ),
       );
+    });
+  }
+
+  FutureOr<void> otpVerifying(OtpVeriying event, emit) async {
+    emit(state.copyWith(hasError: false, isLoading: true));
+    final data = await authRepo.otpVerifying(
+      otpVerifyRequestModel: event.otpVerifyRequestModel,
+    );
+    data.fold(
+        (failure) => emit(
+              state.copyWith(
+                hasError: true,
+                isLoading: false,
+              ),
+            ), (successNumberVerifying) async {
+      emit(
+        state.copyWith(
+          isLoading: false,
+          hasError: false,
+          otpVerifyResponceModel: successNumberVerifying,
+          //logOrNot: true,
+        ),
+      );
+      // if (successNumberVerifying.user != null) {
       await SecureSotrage.saveNumber(
-        phoneNumber: successLogin.user!.phone!,
+        phoneNumber: successNumberVerifying.user!.phone!,
       );
       await SecureSotrage.saveToken(
           tokenModel: TokenModel(
-        accessToken: successLogin.token,
+        accessToken: successNumberVerifying.token,
       ));
       await SecureSotrage.setLogin();
+      // }
     });
   }
 
   FutureOr<void> logOut(LogOut event, emit) async {
     await SecureSotrage.clearLogin();
-
     emit(AuthState.initail());
   }
 }

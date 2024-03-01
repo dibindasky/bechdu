@@ -7,10 +7,10 @@ part of 'login_model.dart';
 // **************************************************************************
 
 LoginModel _$LoginModelFromJson(Map<String, dynamic> json) => LoginModel(
-      phone: json['phone'] as String?,
+      mobileNumber: json['mobileNumber'] as String?,
     );
 
 Map<String, dynamic> _$LoginModelToJson(LoginModel instance) =>
     <String, dynamic>{
-      'phone': instance.phone,
+      'mobileNumber': instance.mobileNumber,
     };

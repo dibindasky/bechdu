@@ -50,54 +50,66 @@ class AddAddressScreen extends StatelessWidget {
           body: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15),
             child: SingleChildScrollView(
-                child: Column(
-              children: [
-                const AddresCreationFields(),
-                ElevatedButtonLong(
-                  onPressed: () {
-                    if (context
-                            .read<ProfileBloc>()
-                            .addressController
-                            .text
-                            .isNotEmpty &&
-                        context.read<LocationBloc>().pincode != null &&
-                        context.read<LocationBloc>().location != null &&
-                        context.read<LocationBloc>().pincode!.isNotEmpty &&
-                        context.read<LocationBloc>().location!.isNotEmpty) {
-                      //Entered data concatination
-                      final address =
-                          '${context.read<ProfileBloc>().addressController.text.trim()} ${context.read<LocationBloc>().location} ${context.read<LocationBloc>().pincode}';
-                      //Oblect creation
-                      AddressCreationRequestModel addressCreationRequestModel =
-                          AddressCreationRequestModel(
-                        address: address,
-                      );
-                      log('address $address');
-                      //Bloc event call
-                      context.read<ProfileBloc>().add(
-                            ProfileEvent.addAddress(
-                              addressCreationRequestModel:
-                                  addressCreationRequestModel,
-                            ),
-                          );
+                child: BlocListener<ProfileBloc, ProfileState>(
+              listener: (context, state) {
+                if (state.addressCreationResponceModel != null ||
+                    state.addressCreationResponceModel!.message != null) {
+                  showSnack(
+                    context: context,
+                    message: state.addressCreationResponceModel!.message!,
+                  );
+                }
+              },
+              child: Column(
+                children: [
+                  const AddresCreationFields(),
+                  ElevatedButtonLong(
+                    onPressed: () {
+                      if (context
+                              .read<ProfileBloc>()
+                              .addressController
+                              .text
+                              .isNotEmpty &&
+                          context.read<LocationBloc>().pincode != null &&
+                          context.read<LocationBloc>().location != null &&
+                          context.read<LocationBloc>().pincode!.isNotEmpty &&
+                          context.read<LocationBloc>().location!.isNotEmpty) {
+                        //Entered data concatination
+                        final address =
+                            '${context.read<ProfileBloc>().addressController.text.trim()} ${context.read<LocationBloc>().location} ${context.read<LocationBloc>().pincode}';
+                        //Oblect creation
+                        AddressCreationRequestModel
+                            addressCreationRequestModel =
+                            AddressCreationRequestModel(
+                          address: address,
+                        );
+                        log('address $address');
+                        //Bloc event call
+                        context.read<ProfileBloc>().add(
+                              ProfileEvent.addAddress(
+                                addressCreationRequestModel:
+                                    addressCreationRequestModel,
+                              ),
+                            );
 
-                      // Clear selected fields after adding address
-                      context.read<ProfileBloc>().addressController.clear();
-                      context
-                          .read<LocationBloc>()
-                          .add(const LocationEvent.clear());
+                        // Clear selected fields after adding address
+                        context.read<ProfileBloc>().addressController.clear();
+                        context
+                            .read<LocationBloc>()
+                            .add(const LocationEvent.clear());
 
-                      //Screen notifier changing
-                      profileScreensNotifier.value = 0;
-                      profileScreensNotifier.notifyListeners();
-                    } else {
-                      showSnack(
-                          context: context, message: "please fill feilds");
-                    }
-                  },
-                  text: 'Add address',
-                ),
-              ],
+                        //Screen notifier changing
+                        profileScreensNotifier.value = 0;
+                        profileScreensNotifier.notifyListeners();
+                      } else {
+                        showSnack(
+                            context: context, message: "please fill feilds");
+                      }
+                    },
+                    text: 'Add address',
+                  ),
+                ],
+              ),
             )),
           ),
         ),

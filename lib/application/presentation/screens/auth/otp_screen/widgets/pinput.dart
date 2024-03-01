@@ -1,19 +1,19 @@
+import 'package:beachdu/application/business_logic/auth/auth_bloc.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pinput/pinput.dart';
 
 class PinEnterField extends StatelessWidget {
   PinEnterField({super.key});
 
-  final TextEditingController otpController = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     return Pinput(
-      controller: otpController,
+      controller: context.read<AuthBloc>().otpController,
       onChanged: (value) {
-        print(otpController.text);
+        print(context.read<AuthBloc>().otpController.text);
       },
       onLongPress: () {
         print('onLongPress');
@@ -21,7 +21,7 @@ class PinEnterField extends StatelessWidget {
       onCompleted: (value) {
         print('Combleted');
       },
-      length: 6,
+      length: 4,
       defaultPinTheme: PinTheme(
         width: 55,
         height: 55,

@@ -42,9 +42,9 @@ class _CaurosalViewHomePageOffersState
           builder: (context, state) {
             if (state.isLoading) {
               return const Skeleton(
-                crossAxisCount: 1,
-                itemCount: 1,
-                height: 50,
+                crossAxisCount: 2,
+                itemCount: 2,
+                height: 0,
               );
             }
             if (state.hasError) {

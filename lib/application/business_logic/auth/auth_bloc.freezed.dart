@@ -18,21 +18,25 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$AuthEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(LoginModel loginModel) login,
+    required TResult Function(LoginModel loginModel) otpSend,
+    required TResult Function(OtpVerifyRequestModel otpVerifyRequestModel)
+        otpVeriying,
     required TResult Function() logOut,
     required TResult Function() logOrNot,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(LoginModel loginModel)? login,
+    TResult? Function(LoginModel loginModel)? otpSend,
+    TResult? Function(OtpVerifyRequestModel otpVerifyRequestModel)? otpVeriying,
     TResult? Function()? logOut,
     TResult? Function()? logOrNot,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(LoginModel loginModel)? login,
+    TResult Function(LoginModel loginModel)? otpSend,
+    TResult Function(OtpVerifyRequestModel otpVerifyRequestModel)? otpVeriying,
     TResult Function()? logOut,
     TResult Function()? logOrNot,
     required TResult orElse(),
@@ -40,21 +44,24 @@ mixin _$AuthEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(Login value) login,
+    required TResult Function(OtpSend value) otpSend,
+    required TResult Function(OtpVeriying value) otpVeriying,
     required TResult Function(LogOut value) logOut,
     required TResult Function(LogOrNot value) logOrNot,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(Login value)? login,
+    TResult? Function(OtpSend value)? otpSend,
+    TResult? Function(OtpVeriying value)? otpVeriying,
     TResult? Function(LogOut value)? logOut,
     TResult? Function(LogOrNot value)? logOrNot,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(Login value)? login,
+    TResult Function(OtpSend value)? otpSend,
+    TResult Function(OtpVeriying value)? otpVeriying,
     TResult Function(LogOut value)? logOut,
     TResult Function(LogOrNot value)? logOrNot,
     required TResult orElse(),
@@ -80,20 +87,20 @@ class _$AuthEventCopyWithImpl<$Res, $Val extends AuthEvent>
 }
 
 /// @nodoc
-abstract class _$$LoginImplCopyWith<$Res> {
-  factory _$$LoginImplCopyWith(
-          _$LoginImpl value, $Res Function(_$LoginImpl) then) =
-      __$$LoginImplCopyWithImpl<$Res>;
+abstract class _$$OtpSendImplCopyWith<$Res> {
+  factory _$$OtpSendImplCopyWith(
+          _$OtpSendImpl value, $Res Function(_$OtpSendImpl) then) =
+      __$$OtpSendImplCopyWithImpl<$Res>;
   @useResult
   $Res call({LoginModel loginModel});
 }
 
 /// @nodoc
-class __$$LoginImplCopyWithImpl<$Res>
-    extends _$AuthEventCopyWithImpl<$Res, _$LoginImpl>
-    implements _$$LoginImplCopyWith<$Res> {
-  __$$LoginImplCopyWithImpl(
-      _$LoginImpl _value, $Res Function(_$LoginImpl) _then)
+class __$$OtpSendImplCopyWithImpl<$Res>
+    extends _$AuthEventCopyWithImpl<$Res, _$OtpSendImpl>
+    implements _$$OtpSendImplCopyWith<$Res> {
+  __$$OtpSendImplCopyWithImpl(
+      _$OtpSendImpl _value, $Res Function(_$OtpSendImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -101,7 +108,7 @@ class __$$LoginImplCopyWithImpl<$Res>
   $Res call({
     Object? loginModel = null,
   }) {
-    return _then(_$LoginImpl(
+    return _then(_$OtpSendImpl(
       loginModel: null == loginModel
           ? _value.loginModel
           : loginModel // ignore: cast_nullable_to_non_nullable
@@ -112,22 +119,22 @@ class __$$LoginImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$LoginImpl implements Login {
-  const _$LoginImpl({required this.loginModel});
+class _$OtpSendImpl implements OtpSend {
+  const _$OtpSendImpl({required this.loginModel});
 
   @override
   final LoginModel loginModel;
 
   @override
   String toString() {
-    return 'AuthEvent.login(loginModel: $loginModel)';
+    return 'AuthEvent.otpSend(loginModel: $loginModel)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$LoginImpl &&
+            other is _$OtpSendImpl &&
             (identical(other.loginModel, loginModel) ||
                 other.loginModel == loginModel));
   }
@@ -138,39 +145,43 @@ class _$LoginImpl implements Login {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$LoginImplCopyWith<_$LoginImpl> get copyWith =>
-      __$$LoginImplCopyWithImpl<_$LoginImpl>(this, _$identity);
+  _$$OtpSendImplCopyWith<_$OtpSendImpl> get copyWith =>
+      __$$OtpSendImplCopyWithImpl<_$OtpSendImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(LoginModel loginModel) login,
+    required TResult Function(LoginModel loginModel) otpSend,
+    required TResult Function(OtpVerifyRequestModel otpVerifyRequestModel)
+        otpVeriying,
     required TResult Function() logOut,
     required TResult Function() logOrNot,
   }) {
-    return login(loginModel);
+    return otpSend(loginModel);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(LoginModel loginModel)? login,
+    TResult? Function(LoginModel loginModel)? otpSend,
+    TResult? Function(OtpVerifyRequestModel otpVerifyRequestModel)? otpVeriying,
     TResult? Function()? logOut,
     TResult? Function()? logOrNot,
   }) {
-    return login?.call(loginModel);
+    return otpSend?.call(loginModel);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(LoginModel loginModel)? login,
+    TResult Function(LoginModel loginModel)? otpSend,
+    TResult Function(OtpVerifyRequestModel otpVerifyRequestModel)? otpVeriying,
     TResult Function()? logOut,
     TResult Function()? logOrNot,
     required TResult orElse(),
   }) {
-    if (login != null) {
-      return login(loginModel);
+    if (otpSend != null) {
+      return otpSend(loginModel);
     }
     return orElse();
   }
@@ -178,44 +189,196 @@ class _$LoginImpl implements Login {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(Login value) login,
+    required TResult Function(OtpSend value) otpSend,
+    required TResult Function(OtpVeriying value) otpVeriying,
     required TResult Function(LogOut value) logOut,
     required TResult Function(LogOrNot value) logOrNot,
   }) {
-    return login(this);
+    return otpSend(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(Login value)? login,
+    TResult? Function(OtpSend value)? otpSend,
+    TResult? Function(OtpVeriying value)? otpVeriying,
     TResult? Function(LogOut value)? logOut,
     TResult? Function(LogOrNot value)? logOrNot,
   }) {
-    return login?.call(this);
+    return otpSend?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(Login value)? login,
+    TResult Function(OtpSend value)? otpSend,
+    TResult Function(OtpVeriying value)? otpVeriying,
     TResult Function(LogOut value)? logOut,
     TResult Function(LogOrNot value)? logOrNot,
     required TResult orElse(),
   }) {
-    if (login != null) {
-      return login(this);
+    if (otpSend != null) {
+      return otpSend(this);
     }
     return orElse();
   }
 }
 
-abstract class Login implements AuthEvent {
-  const factory Login({required final LoginModel loginModel}) = _$LoginImpl;
+abstract class OtpSend implements AuthEvent {
+  const factory OtpSend({required final LoginModel loginModel}) = _$OtpSendImpl;
 
   LoginModel get loginModel;
   @JsonKey(ignore: true)
-  _$$LoginImplCopyWith<_$LoginImpl> get copyWith =>
+  _$$OtpSendImplCopyWith<_$OtpSendImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$OtpVeriyingImplCopyWith<$Res> {
+  factory _$$OtpVeriyingImplCopyWith(
+          _$OtpVeriyingImpl value, $Res Function(_$OtpVeriyingImpl) then) =
+      __$$OtpVeriyingImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({OtpVerifyRequestModel otpVerifyRequestModel});
+}
+
+/// @nodoc
+class __$$OtpVeriyingImplCopyWithImpl<$Res>
+    extends _$AuthEventCopyWithImpl<$Res, _$OtpVeriyingImpl>
+    implements _$$OtpVeriyingImplCopyWith<$Res> {
+  __$$OtpVeriyingImplCopyWithImpl(
+      _$OtpVeriyingImpl _value, $Res Function(_$OtpVeriyingImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? otpVerifyRequestModel = null,
+  }) {
+    return _then(_$OtpVeriyingImpl(
+      otpVerifyRequestModel: null == otpVerifyRequestModel
+          ? _value.otpVerifyRequestModel
+          : otpVerifyRequestModel // ignore: cast_nullable_to_non_nullable
+              as OtpVerifyRequestModel,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$OtpVeriyingImpl implements OtpVeriying {
+  const _$OtpVeriyingImpl({required this.otpVerifyRequestModel});
+
+  @override
+  final OtpVerifyRequestModel otpVerifyRequestModel;
+
+  @override
+  String toString() {
+    return 'AuthEvent.otpVeriying(otpVerifyRequestModel: $otpVerifyRequestModel)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$OtpVeriyingImpl &&
+            (identical(other.otpVerifyRequestModel, otpVerifyRequestModel) ||
+                other.otpVerifyRequestModel == otpVerifyRequestModel));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, otpVerifyRequestModel);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$OtpVeriyingImplCopyWith<_$OtpVeriyingImpl> get copyWith =>
+      __$$OtpVeriyingImplCopyWithImpl<_$OtpVeriyingImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(LoginModel loginModel) otpSend,
+    required TResult Function(OtpVerifyRequestModel otpVerifyRequestModel)
+        otpVeriying,
+    required TResult Function() logOut,
+    required TResult Function() logOrNot,
+  }) {
+    return otpVeriying(otpVerifyRequestModel);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(LoginModel loginModel)? otpSend,
+    TResult? Function(OtpVerifyRequestModel otpVerifyRequestModel)? otpVeriying,
+    TResult? Function()? logOut,
+    TResult? Function()? logOrNot,
+  }) {
+    return otpVeriying?.call(otpVerifyRequestModel);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(LoginModel loginModel)? otpSend,
+    TResult Function(OtpVerifyRequestModel otpVerifyRequestModel)? otpVeriying,
+    TResult Function()? logOut,
+    TResult Function()? logOrNot,
+    required TResult orElse(),
+  }) {
+    if (otpVeriying != null) {
+      return otpVeriying(otpVerifyRequestModel);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(OtpSend value) otpSend,
+    required TResult Function(OtpVeriying value) otpVeriying,
+    required TResult Function(LogOut value) logOut,
+    required TResult Function(LogOrNot value) logOrNot,
+  }) {
+    return otpVeriying(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(OtpSend value)? otpSend,
+    TResult? Function(OtpVeriying value)? otpVeriying,
+    TResult? Function(LogOut value)? logOut,
+    TResult? Function(LogOrNot value)? logOrNot,
+  }) {
+    return otpVeriying?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(OtpSend value)? otpSend,
+    TResult Function(OtpVeriying value)? otpVeriying,
+    TResult Function(LogOut value)? logOut,
+    TResult Function(LogOrNot value)? logOrNot,
+    required TResult orElse(),
+  }) {
+    if (otpVeriying != null) {
+      return otpVeriying(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class OtpVeriying implements AuthEvent {
+  const factory OtpVeriying(
+          {required final OtpVerifyRequestModel otpVerifyRequestModel}) =
+      _$OtpVeriyingImpl;
+
+  OtpVerifyRequestModel get otpVerifyRequestModel;
+  @JsonKey(ignore: true)
+  _$$OtpVeriyingImplCopyWith<_$OtpVeriyingImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -257,7 +420,9 @@ class _$LogOutImpl implements LogOut {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(LoginModel loginModel) login,
+    required TResult Function(LoginModel loginModel) otpSend,
+    required TResult Function(OtpVerifyRequestModel otpVerifyRequestModel)
+        otpVeriying,
     required TResult Function() logOut,
     required TResult Function() logOrNot,
   }) {
@@ -267,7 +432,8 @@ class _$LogOutImpl implements LogOut {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(LoginModel loginModel)? login,
+    TResult? Function(LoginModel loginModel)? otpSend,
+    TResult? Function(OtpVerifyRequestModel otpVerifyRequestModel)? otpVeriying,
     TResult? Function()? logOut,
     TResult? Function()? logOrNot,
   }) {
@@ -277,7 +443,8 @@ class _$LogOutImpl implements LogOut {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(LoginModel loginModel)? login,
+    TResult Function(LoginModel loginModel)? otpSend,
+    TResult Function(OtpVerifyRequestModel otpVerifyRequestModel)? otpVeriying,
     TResult Function()? logOut,
     TResult Function()? logOrNot,
     required TResult orElse(),
@@ -291,7 +458,8 @@ class _$LogOutImpl implements LogOut {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(Login value) login,
+    required TResult Function(OtpSend value) otpSend,
+    required TResult Function(OtpVeriying value) otpVeriying,
     required TResult Function(LogOut value) logOut,
     required TResult Function(LogOrNot value) logOrNot,
   }) {
@@ -301,7 +469,8 @@ class _$LogOutImpl implements LogOut {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(Login value)? login,
+    TResult? Function(OtpSend value)? otpSend,
+    TResult? Function(OtpVeriying value)? otpVeriying,
     TResult? Function(LogOut value)? logOut,
     TResult? Function(LogOrNot value)? logOrNot,
   }) {
@@ -311,7 +480,8 @@ class _$LogOutImpl implements LogOut {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(Login value)? login,
+    TResult Function(OtpSend value)? otpSend,
+    TResult Function(OtpVeriying value)? otpVeriying,
     TResult Function(LogOut value)? logOut,
     TResult Function(LogOrNot value)? logOrNot,
     required TResult orElse(),
@@ -365,7 +535,9 @@ class _$LogOrNotImpl implements LogOrNot {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(LoginModel loginModel) login,
+    required TResult Function(LoginModel loginModel) otpSend,
+    required TResult Function(OtpVerifyRequestModel otpVerifyRequestModel)
+        otpVeriying,
     required TResult Function() logOut,
     required TResult Function() logOrNot,
   }) {
@@ -375,7 +547,8 @@ class _$LogOrNotImpl implements LogOrNot {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(LoginModel loginModel)? login,
+    TResult? Function(LoginModel loginModel)? otpSend,
+    TResult? Function(OtpVerifyRequestModel otpVerifyRequestModel)? otpVeriying,
     TResult? Function()? logOut,
     TResult? Function()? logOrNot,
   }) {
@@ -385,7 +558,8 @@ class _$LogOrNotImpl implements LogOrNot {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(LoginModel loginModel)? login,
+    TResult Function(LoginModel loginModel)? otpSend,
+    TResult Function(OtpVerifyRequestModel otpVerifyRequestModel)? otpVeriying,
     TResult Function()? logOut,
     TResult Function()? logOrNot,
     required TResult orElse(),
@@ -399,7 +573,8 @@ class _$LogOrNotImpl implements LogOrNot {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(Login value) login,
+    required TResult Function(OtpSend value) otpSend,
+    required TResult Function(OtpVeriying value) otpVeriying,
     required TResult Function(LogOut value) logOut,
     required TResult Function(LogOrNot value) logOrNot,
   }) {
@@ -409,7 +584,8 @@ class _$LogOrNotImpl implements LogOrNot {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(Login value)? login,
+    TResult? Function(OtpSend value)? otpSend,
+    TResult? Function(OtpVeriying value)? otpVeriying,
     TResult? Function(LogOut value)? logOut,
     TResult? Function(LogOrNot value)? logOrNot,
   }) {
@@ -419,7 +595,8 @@ class _$LogOrNotImpl implements LogOrNot {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(Login value)? login,
+    TResult Function(OtpSend value)? otpSend,
+    TResult Function(OtpVeriying value)? otpVeriying,
     TResult Function(LogOut value)? logOut,
     TResult Function(LogOrNot value)? logOrNot,
     required TResult orElse(),
@@ -440,7 +617,9 @@ mixin _$AuthState {
   bool get isLoading => throw _privateConstructorUsedError;
   bool get hasError => throw _privateConstructorUsedError;
   String? get message => throw _privateConstructorUsedError;
-  LoginResponceModel? get loginResponceModel =>
+  OtpSendResponceModel? get otpSendResponceModel =>
+      throw _privateConstructorUsedError;
+  OtpVerifyResponceModel? get otpVerifyResponceModel =>
       throw _privateConstructorUsedError;
   bool get logOrNot => throw _privateConstructorUsedError;
   String? get number => throw _privateConstructorUsedError;
@@ -459,7 +638,8 @@ abstract class $AuthStateCopyWith<$Res> {
       {bool isLoading,
       bool hasError,
       String? message,
-      LoginResponceModel? loginResponceModel,
+      OtpSendResponceModel? otpSendResponceModel,
+      OtpVerifyResponceModel? otpVerifyResponceModel,
       bool logOrNot,
       String? number});
 }
@@ -480,7 +660,8 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
     Object? isLoading = null,
     Object? hasError = null,
     Object? message = freezed,
-    Object? loginResponceModel = freezed,
+    Object? otpSendResponceModel = freezed,
+    Object? otpVerifyResponceModel = freezed,
     Object? logOrNot = null,
     Object? number = freezed,
   }) {
@@ -497,10 +678,14 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String?,
-      loginResponceModel: freezed == loginResponceModel
-          ? _value.loginResponceModel
-          : loginResponceModel // ignore: cast_nullable_to_non_nullable
-              as LoginResponceModel?,
+      otpSendResponceModel: freezed == otpSendResponceModel
+          ? _value.otpSendResponceModel
+          : otpSendResponceModel // ignore: cast_nullable_to_non_nullable
+              as OtpSendResponceModel?,
+      otpVerifyResponceModel: freezed == otpVerifyResponceModel
+          ? _value.otpVerifyResponceModel
+          : otpVerifyResponceModel // ignore: cast_nullable_to_non_nullable
+              as OtpVerifyResponceModel?,
       logOrNot: null == logOrNot
           ? _value.logOrNot
           : logOrNot // ignore: cast_nullable_to_non_nullable
@@ -525,7 +710,8 @@ abstract class _$$InitialImplCopyWith<$Res>
       {bool isLoading,
       bool hasError,
       String? message,
-      LoginResponceModel? loginResponceModel,
+      OtpSendResponceModel? otpSendResponceModel,
+      OtpVerifyResponceModel? otpVerifyResponceModel,
       bool logOrNot,
       String? number});
 }
@@ -544,7 +730,8 @@ class __$$InitialImplCopyWithImpl<$Res>
     Object? isLoading = null,
     Object? hasError = null,
     Object? message = freezed,
-    Object? loginResponceModel = freezed,
+    Object? otpSendResponceModel = freezed,
+    Object? otpVerifyResponceModel = freezed,
     Object? logOrNot = null,
     Object? number = freezed,
   }) {
@@ -561,10 +748,14 @@ class __$$InitialImplCopyWithImpl<$Res>
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String?,
-      loginResponceModel: freezed == loginResponceModel
-          ? _value.loginResponceModel
-          : loginResponceModel // ignore: cast_nullable_to_non_nullable
-              as LoginResponceModel?,
+      otpSendResponceModel: freezed == otpSendResponceModel
+          ? _value.otpSendResponceModel
+          : otpSendResponceModel // ignore: cast_nullable_to_non_nullable
+              as OtpSendResponceModel?,
+      otpVerifyResponceModel: freezed == otpVerifyResponceModel
+          ? _value.otpVerifyResponceModel
+          : otpVerifyResponceModel // ignore: cast_nullable_to_non_nullable
+              as OtpVerifyResponceModel?,
       logOrNot: null == logOrNot
           ? _value.logOrNot
           : logOrNot // ignore: cast_nullable_to_non_nullable
@@ -584,7 +775,8 @@ class _$InitialImpl implements _Initial {
       {required this.isLoading,
       required this.hasError,
       this.message,
-      this.loginResponceModel,
+      this.otpSendResponceModel,
+      this.otpVerifyResponceModel,
       required this.logOrNot,
       this.number});
 
@@ -595,7 +787,9 @@ class _$InitialImpl implements _Initial {
   @override
   final String? message;
   @override
-  final LoginResponceModel? loginResponceModel;
+  final OtpSendResponceModel? otpSendResponceModel;
+  @override
+  final OtpVerifyResponceModel? otpVerifyResponceModel;
   @override
   final bool logOrNot;
   @override
@@ -603,7 +797,7 @@ class _$InitialImpl implements _Initial {
 
   @override
   String toString() {
-    return 'AuthState(isLoading: $isLoading, hasError: $hasError, message: $message, loginResponceModel: $loginResponceModel, logOrNot: $logOrNot, number: $number)';
+    return 'AuthState(isLoading: $isLoading, hasError: $hasError, message: $message, otpSendResponceModel: $otpSendResponceModel, otpVerifyResponceModel: $otpVerifyResponceModel, logOrNot: $logOrNot, number: $number)';
   }
 
   @override
@@ -616,8 +810,10 @@ class _$InitialImpl implements _Initial {
             (identical(other.hasError, hasError) ||
                 other.hasError == hasError) &&
             (identical(other.message, message) || other.message == message) &&
-            (identical(other.loginResponceModel, loginResponceModel) ||
-                other.loginResponceModel == loginResponceModel) &&
+            (identical(other.otpSendResponceModel, otpSendResponceModel) ||
+                other.otpSendResponceModel == otpSendResponceModel) &&
+            (identical(other.otpVerifyResponceModel, otpVerifyResponceModel) ||
+                other.otpVerifyResponceModel == otpVerifyResponceModel) &&
             (identical(other.logOrNot, logOrNot) ||
                 other.logOrNot == logOrNot) &&
             (identical(other.number, number) || other.number == number));
@@ -625,7 +821,7 @@ class _$InitialImpl implements _Initial {
 
   @override
   int get hashCode => Object.hash(runtimeType, isLoading, hasError, message,
-      loginResponceModel, logOrNot, number);
+      otpSendResponceModel, otpVerifyResponceModel, logOrNot, number);
 
   @JsonKey(ignore: true)
   @override
@@ -639,7 +835,8 @@ abstract class _Initial implements AuthState {
       {required final bool isLoading,
       required final bool hasError,
       final String? message,
-      final LoginResponceModel? loginResponceModel,
+      final OtpSendResponceModel? otpSendResponceModel,
+      final OtpVerifyResponceModel? otpVerifyResponceModel,
       required final bool logOrNot,
       final String? number}) = _$InitialImpl;
 
@@ -650,7 +847,9 @@ abstract class _Initial implements AuthState {
   @override
   String? get message;
   @override
-  LoginResponceModel? get loginResponceModel;
+  OtpSendResponceModel? get otpSendResponceModel;
+  @override
+  OtpVerifyResponceModel? get otpVerifyResponceModel;
   @override
   bool get logOrNot;
   @override

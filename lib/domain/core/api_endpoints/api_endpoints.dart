@@ -1,7 +1,7 @@
 class ApiEndPoints {
-  static String number = '';
   static const String baseUrl = 'https://bechdu-main-backend.onrender.com/';
-  static const String login = 'user/login';
+  static const String sendOTP = 'user/send-sms';
+  static const String verifyOTP = 'user/sms-login';
   static const String getCityNames = 'pincode/cityNames';
   static const String getPinCodes = 'pincode/city/{location}/pincodes';
   static const String cityUpdate = 'user/users/{number}/city';
@@ -22,6 +22,7 @@ class ApiEndPoints {
   static const String deleteAddress =
       'user/users/delete-address/{number}/{index}';
   static const String getUserInfo = 'user/get-user-info/{number}';
+  static const String updateUserInfo = 'user/save-user/{number}';
   static const String orderPlacing = 'order/create-order';
   static const String homePageBanners = 'dynamic/mobile/getHomePage';
 }

@@ -11,14 +11,16 @@ class User {
   String? phone;
   String? addPhone;
   List<String>? address;
-  String? pincode;
-  String? city;
   String? promoStatus;
-  List<dynamic>? promoCodes;
+  List<String>? promoCodes;
   DateTime? createdAt;
   DateTime? updatedAt;
   @JsonKey(name: '__v')
   int? v;
+  String? city;
+  String? pincode;
+  String? otp;
+  dynamic otpExpiry;
 
   User({
     this.id,
@@ -27,13 +29,15 @@ class User {
     this.phone,
     this.addPhone,
     this.address,
-    this.pincode,
-    this.city,
     this.promoStatus,
     this.promoCodes,
     this.createdAt,
     this.updatedAt,
     this.v,
+    this.city,
+    this.pincode,
+    this.otp,
+    this.otpExpiry,
   });
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);

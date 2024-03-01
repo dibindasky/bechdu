@@ -25,7 +25,7 @@ class _AddressListViewState extends State<AddressListView> {
           return const LoadingAnimation(width: 30);
         }
         if (state.hasError) {
-          return const Text('Error');
+          return const Text('Error fetch');
         } else {
           return ListView.separated(
             separatorBuilder: (context, index) {

@@ -1,91 +1,190 @@
+import 'package:beachdu/application/business_logic/profile/profile_bloc.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/application/presentation/utils/custom_button.dart';
+import 'package:beachdu/domain/model/profile/user_info_request_model/user_info_request_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class Containers extends StatefulWidget {
-  const Containers({super.key});
+class UserInfoFields extends StatefulWidget {
+  const UserInfoFields({super.key});
 
   @override
-  State<Containers> createState() => _ContainersState();
+  State<UserInfoFields> createState() => _UserInfoFieldsState();
 }
 
-class _ContainersState extends State<Containers> {
+class _UserInfoFieldsState extends State<UserInfoFields> {
   bool isTExtFieldUsername = false;
   bool isTExtFieldEmail = false;
   bool isTExtFieldNumber = false;
-  final usernameController = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          'Username',
-          style: textHeadRegular1.copyWith(color: klightgrey),
-        ),
-        kHeight10,
-        isTExtFieldUsername
-            ? TextField(
-                controller: usernameController,
-                decoration: const InputDecoration(
-                  hintText: 'Enter username',
-                ),
-              )
-            : Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return BlocBuilder<ProfileBloc, ProfileState>(
+      builder: (context, profile) {
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // Username field
+            isTExtFieldUsername
+                ? TextField(
+                    controller:
+                        context.read<ProfileBloc>().profileNameController,
+                    decoration: const InputDecoration(
+                        hintText: 'Enter username',
+                        hintStyle: TextStyle(color: klightgrey)),
+                  )
+                : Column(
                     children: [
-                      Text(
-                        'Jack',
-                        style: textHeadRegular1,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            '${profile.user != null || profile.user!.user != null ? profile.user!.user!.name : 'Nill'}',
+                            style: textHeadMedium1,
+                          ),
+                          TextButton(
+                            onPressed: () {
+                              setState(() {
+                                isTExtFieldUsername = true;
+                              });
+                            },
+                            child: Text(
+                              'Change',
+                              style:
+                                  textHeadInter.copyWith(color: kGreenPrimary),
+                            ),
+                          ),
+                        ],
                       ),
-                      TextButton(
-                        onPressed: () {
-                          setState(() {
-                            isTExtFieldUsername = !isTExtFieldUsername;
-                          });
-                        },
-                        child: Text(
-                          'Change',
-                          style: textHeadInter.copyWith(color: kGreenPrimary),
-                        ),
+                      const Divider(
+                        thickness: 2,
                       ),
                     ],
                   ),
-                  const Divider(),
-                ],
+            // Email field
+            isTExtFieldEmail
+                ? TextField(
+                    controller:
+                        context.read<ProfileBloc>().profileEmailController,
+                    decoration: const InputDecoration(
+                        hintText: 'Enter email',
+                        hintStyle: TextStyle(color: klightgrey)),
+                  )
+                : Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            '${profile.user != null || profile.user!.user != null ? profile.user!.user!.email : 'Nill'}',
+                            style: textHeadMedium1,
+                          ),
+                          TextButton(
+                            onPressed: () {
+                              setState(() {
+                                isTExtFieldEmail = true;
+                              });
+                            },
+                            child: Text(
+                              'Change',
+                              style:
+                                  textHeadInter.copyWith(color: kGreenPrimary),
+                            ),
+                          ),
+                        ],
+                      ),
+                      const Divider(
+                        thickness: 3,
+                      ),
+                    ],
+                  ),
+            // Additional Mobile Number field
+            isTExtFieldNumber
+                ? TextField(
+                    controller:
+                        context.read<ProfileBloc>().profileAddPhoneController,
+                    decoration: const InputDecoration(
+                        hintText: 'Enter additional number',
+                        hintStyle: TextStyle(color: klightgrey)),
+                  )
+                : Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            '${profile.user != null || profile.user!.user != null ? profile.user!.user!.addPhone : 'Nill'}',
+                            style: textHeadMedium1,
+                          ),
+                          TextButton(
+                            onPressed: () {
+                              setState(() {
+                                isTExtFieldNumber = true;
+                              });
+                            },
+                            child: Text(
+                              'Change',
+                              style:
+                                  textHeadInter.copyWith(color: kGreenPrimary),
+                            ),
+                          ),
+                        ],
+                      ),
+                      const Divider(
+                        thickness: 2,
+                      ),
+                    ],
+                  ),
+            // Save button
+            if (isTExtFieldUsername || isTExtFieldEmail || isTExtFieldNumber)
+              Align(
+                alignment: Alignment.center,
+                child: CustomButton(
+                  onPressed: () {
+                    // Check which fields are changed and send the request
+                    if (isTExtFieldUsername ||
+                        isTExtFieldEmail ||
+                        isTExtFieldNumber) {
+                      // Prepare request model
+                      UserInfoRequestModel userInfoRequestModel =
+                          UserInfoRequestModel(
+                        name: isTExtFieldUsername
+                            ? context
+                                .read<ProfileBloc>()
+                                .profileNameController
+                                .text
+                            : '',
+                        email: context
+                            .read<ProfileBloc>()
+                            .profileEmailController
+                            .text,
+                        addPhone: context
+                            .read<ProfileBloc>()
+                            .profileAddPhoneController
+                            .text,
+                      );
+
+                      // Send request to update user information
+                      context.read<ProfileBloc>().add(
+                            ProfileEvent.updateUser(
+                              userInfoRequestModel: userInfoRequestModel,
+                            ),
+                          );
+                    }
+
+                    // Reset flags
+                    setState(() {
+                      isTExtFieldEmail = false;
+                      isTExtFieldNumber = false;
+                      isTExtFieldNumber = false;
+                    });
+                  },
+                  text: 'Save',
+                ),
               ),
-        kHeight20,
-        Text(
-          'Email',
-          style: textHeadRegular1.copyWith(color: klightgrey),
-        ),
-        kHeight10,
-        Text(
-          'JJaisai@gmail.com',
-          style: textHeadRegular1,
-        ),
-        const Divider(),
-        kHeight20,
-        Text(
-          'Mobile Number',
-          style: textHeadRegular1.copyWith(color: klightgrey),
-        ),
-        kHeight10,
-        Text(
-          '0000 000 000',
-          style: textHeadRegular1,
-        ),
-        const Divider(),
-        kHeight30,
-        Align(
-          alignment: Alignment.center,
-          child: CustomButton(onPressed: () {}, text: 'Save'),
-        ),
-      ],
+          ],
+        );
+      },
     );
   }
 }

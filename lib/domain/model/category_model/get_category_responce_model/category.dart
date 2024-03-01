@@ -9,8 +9,14 @@ class Category {
   String? categoryType;
   String? slug;
   int? sectionCount;
+  String? categoryImage;
 
-  Category({this.id, this.categoryType, this.slug, this.sectionCount});
+  Category(
+      {this.id,
+      this.categoryType,
+      this.slug,
+      this.sectionCount,
+      this.categoryImage});
 
   factory Category.fromJson(Map<String, dynamic> json) =>
       _$CategoryFromJson(json);

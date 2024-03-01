@@ -14,9 +14,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
 
 class HotDealsSession extends StatelessWidget {
-  const HotDealsSession({
-    super.key,
-  });
+  const HotDealsSession({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -26,16 +24,13 @@ class HotDealsSession extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Text(
-            'Hot Deals',
-            style: textHeadBoldBig,
-          ),
+          Text('Hot Deals', style: textHeadBoldBig),
           BlocBuilder<HomeBloc, HomeState>(
             builder: (context, state) {
               if (state.isLoading) {
                 return const Skeleton(
                   crossAxisCount: 1,
-                  itemCount: 1,
+                  itemCount: 2,
                   height: 50,
                 );
               }

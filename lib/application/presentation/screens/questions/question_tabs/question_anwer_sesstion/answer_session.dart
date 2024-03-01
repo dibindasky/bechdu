@@ -21,16 +21,14 @@ class QuestionTabAnswerSession extends StatelessWidget {
         } else {
           if (state.getQuestionModel != null ||
               state.getQuestionModel!.sections != null) {
-            if (state
-                    .getQuestionModel!.sections![state.selectedTabIndex].type ==
-                'yes/no') {
+            final type =
+                state.getQuestionModel!.sections![state.selectedTabIndex].type;
+            if (type == 'yes/no') {
               return YesOrNoListMaker(
                 section:
                     state.getQuestionModel!.sections![state.selectedTabIndex],
               );
-            } else if (state
-                    .getQuestionModel!.sections![state.selectedTabIndex].type ==
-                'image') {
+            } else if (type == 'image') {
               return ImageGridMaker(
                 section:
                     state.getQuestionModel!.sections![state.selectedTabIndex],
