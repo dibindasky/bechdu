@@ -62,6 +62,8 @@ class _CaurosalViewHomePageOffersState
                         String base64String = data[index].image!;
                         base64String = base64String.replaceFirst(
                             RegExp(r'data:image/[^;]+;base64,'), '');
+                        final heading =
+                            data[index].heading!.replaceAll(':<br/>', '');
                         return InkWell(
                           onTap: () {
                             context
@@ -103,9 +105,10 @@ class _CaurosalViewHomePageOffersState
                                           MainAxisAlignment.start,
                                       children: [
                                         Text(
-                                          '${data[index].heading}',
-                                          style: textHeadInter.copyWith(
-                                              color: kWhite),
+                                          heading,
+                                          style: textHeadMedium1.copyWith(
+                                            color: kWhite,
+                                          ),
                                         ),
                                         kHeight5,
                                         ClipRRect(

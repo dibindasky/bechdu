@@ -1,6 +1,7 @@
 import 'package:beachdu/application/business_logic/auth/auth_bloc.dart';
 import 'package:beachdu/application/business_logic/brands_bloc/category_bloc_bloc.dart';
 import 'package:beachdu/application/business_logic/home_bloc/home_bloc.dart';
+import 'package:beachdu/application/business_logic/internet_connection_check/internet_connection_check_cubit.dart';
 import 'package:beachdu/application/business_logic/location/location_bloc.dart';
 import 'package:beachdu/application/business_logic/navbar/navbar_cubit.dart';
 import 'package:beachdu/application/business_logic/place_order/place_order_bloc.dart';
@@ -12,6 +13,7 @@ import 'package:beachdu/domain/core/di/dipendency_injection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,16 +21,20 @@ Future<void> main() async {
     [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown],
   );
   await configureInjection();
-  runApp(const Beachdu());
+  runApp(Beachdu(connectivity: Connectivity()));
 }
 
 class Beachdu extends StatelessWidget {
-  const Beachdu({super.key});
+  const Beachdu({super.key, required this.connectivity});
+  final Connectivity connectivity;
 
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
+        BlocProvider(
+            create: (context) =>
+                InternetConnectionCheckCubit(connectivity: connectivity)),
         BlocProvider(create: (context) => getIt<ProfileBloc>()),
         BlocProvider(create: (context) => getIt<AuthBloc>()),
         BlocProvider(create: (context) => getIt<LocationBloc>()),

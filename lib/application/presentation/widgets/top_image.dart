@@ -16,22 +16,24 @@ class TopImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Positioned(
-          top: -30,
-          right: 59,
-          child: CircleAvatar(
-            radius: 50,
-            backgroundColor: kBlueLight.withOpacity(.16),
+        if (fromWhere == FromWhere.pickupScreen)
+          Positioned(
+            top: -30,
+            right: 59,
+            child: CircleAvatar(
+              radius: 50,
+              backgroundColor: kBlueLight.withOpacity(.16),
+            ),
           ),
-        ),
-        Positioned(
-          left: 150,
-          bottom: -20,
-          child: CircleAvatar(
-            radius: 40,
-            backgroundColor: kBlueLight.withOpacity(.15),
+        if (fromWhere == FromWhere.pickupScreen)
+          Positioned(
+            left: 150,
+            bottom: -20,
+            child: CircleAvatar(
+              radius: 40,
+              backgroundColor: kBlueLight.withOpacity(.15),
+            ),
           ),
-        ),
         BlocBuilder<QuestionTabBloc, QuestionTabState>(
           builder: (context, questiontabBloc) {
             if (questiontabBloc.getQuestionModel != null ||
@@ -45,7 +47,7 @@ class TopImage extends StatelessWidget {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(10),
                   child: ColoredBox(
-                    color: kGreenPrimary.withOpacity(.73),
+                    color: kGreenPrimary,
                     child: Row(
                       children: [
                         kWidth10,
@@ -163,13 +165,17 @@ class TopImage extends StatelessWidget {
                                   }
                                 },
                               ),
-                            if (fromWhere == FromWhere.checkoutAndPickupScreen)
+                            if (fromWhere ==
+                                    FromWhere.checkoutAndPickupScreen ||
+                                fromWhere == FromWhere.pickupScreen)
                               Text(
                                 '${questiontabBloc.product!.model}',
                                 style: textHeadBold1.copyWith(color: kWhite),
                               ),
                             kHeight5,
-                            if (fromWhere == FromWhere.checkoutAndPickupScreen)
+                            if (fromWhere ==
+                                    FromWhere.checkoutAndPickupScreen ||
+                                fromWhere == FromWhere.pickupScreen)
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
@@ -204,9 +210,20 @@ class TopImage extends StatelessWidget {
                               ),
                             kHeight5,
                             if (fromWhere == FromWhere.questionScreen)
-                              Text(
-                                'Divice Diagnosis',
-                                style: textHeadBoldBig.copyWith(color: kWhite),
+                              Row(
+                                children: [
+                                  Text(
+                                    'Divice Diagnosis',
+                                    style:
+                                        textHeadBoldBig.copyWith(color: kWhite),
+                                  ),
+                                  kWidth30,
+                                  const Icon(
+                                    Icons.arrow_downward_sharp,
+                                    size: 18,
+                                    color: kWhite,
+                                  )
+                                ],
                               )
                           ],
                         ),

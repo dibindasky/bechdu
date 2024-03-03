@@ -8,6 +8,8 @@ import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/application/presentation/utils/snackbar/snackbar.dart';
 import 'package:beachdu/application/presentation/widgets/custom_elevated_button.dart';
 import 'package:beachdu/domain/model/address_model/address_creation_request_model/address_creation_request_model.dart';
+import 'package:beachdu/domain/model/location/city_update_request_model/city_update_request_model.dart';
+import 'package:beachdu/domain/model/location/pincode_update_request_model/pincode_update_request_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -83,7 +85,6 @@ class AddAddressScreen extends StatelessWidget {
                             AddressCreationRequestModel(
                           address: address,
                         );
-                        log('address $address');
                         //Bloc event call
                         context.read<ProfileBloc>().add(
                               ProfileEvent.addAddress(
@@ -171,6 +172,16 @@ class AddresCreationFields extends StatelessWidget {
                           context.read<LocationBloc>().add(
                               LocationEvent.pinCodePick(
                                   cityName: newValue ?? ''));
+                          //picked loaction update event
+                          CityUpdateRequestModel cityUpdateRequestModel =
+                              CityUpdateRequestModel(
+                            city: newValue,
+                          );
+                          context.read<LocationBloc>().add(
+                                LocationEvent.locationUpdate(
+                                    cityUpdateRequestModel:
+                                        cityUpdateRequestModel),
+                              );
                         },
                         items: context
                             .read<LocationBloc>()
@@ -217,9 +228,16 @@ class AddresCreationFields extends StatelessWidget {
                         value: context.read<LocationBloc>().pincode,
                         onChanged: (String? newValue) {
                           context.read<LocationBloc>().pincode = newValue;
-                          log(
-                            context.read<LocationBloc>().pincode ?? '',
+                          PincodeUpdateRequestModel pincodeUpdateRequestModel =
+                              PincodeUpdateRequestModel(
+                            pincode: newValue,
                           );
+                          context.read<LocationBloc>().add(
+                                LocationEvent.pincodeUpdate(
+                                  pincodeUpdateRequestModel:
+                                      pincodeUpdateRequestModel,
+                                ),
+                              );
                         },
                         items: context
                             .read<LocationBloc>()

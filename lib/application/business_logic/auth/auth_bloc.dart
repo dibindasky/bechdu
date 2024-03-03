@@ -66,6 +66,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
               state.copyWith(
                 hasError: true,
                 isLoading: false,
+                message: failure.message,
               ),
             ), (successNumberVerifying) async {
       emit(
@@ -73,10 +74,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           isLoading: false,
           hasError: false,
           otpVerifyResponceModel: successNumberVerifying,
-          //logOrNot: true,
         ),
       );
-      // if (successNumberVerifying.user != null) {
       await SecureSotrage.saveNumber(
         phoneNumber: successNumberVerifying.user!.phone!,
       );
@@ -85,7 +84,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         accessToken: successNumberVerifying.token,
       ));
       await SecureSotrage.setLogin();
-      // }
     });
   }
 

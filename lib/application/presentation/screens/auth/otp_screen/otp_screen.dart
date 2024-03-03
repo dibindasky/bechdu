@@ -6,6 +6,8 @@ import 'package:beachdu/application/presentation/screens/auth/otp_screen/widgets
 import 'package:beachdu/application/presentation/screens/auth/otp_screen/widgets/logo_to_countdown.dart';
 import 'package:beachdu/application/presentation/screens/auth/otp_screen/widgets/pinput.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
+import 'package:beachdu/application/presentation/utils/snackbar/snackbar.dart';
+import 'package:beachdu/domain/core/failure/failure.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -32,6 +34,12 @@ class OTPScreen extends StatelessWidget {
               loginOrSignup(context);
               context.read<AuthBloc>().phoneNumberController.clear();
               context.read<AuthBloc>().otpController.clear();
+            }
+            if (state.hasError) {
+              return showSnack(
+                context: context,
+                message: state.message ?? errorMessage,
+              );
             }
           },
           child: Padding(

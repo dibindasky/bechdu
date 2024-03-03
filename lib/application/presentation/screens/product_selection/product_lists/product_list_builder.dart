@@ -28,16 +28,16 @@ class ProductListViewBuilder extends StatelessWidget {
           );
         } else if (categoryState.hasError) {
           // Show error message if there is an error
-          return Center(child: Text(categoryState.message ?? "errorMessage"));
+          return const Center(child: Icon(Icons.refresh_outlined));
         } else {
-          // Check if products are available
           if (categoryState.filteredProducts == null) {
             // Show empty state if no products are available
-            return const Skeleton(
-              crossAxisCount: 2,
-              itemCount: 15,
-              height: 200,
-            );
+            // return const Skeleton(
+            //   crossAxisCount: 2,
+            //   itemCount: 15,
+            //   height: 200,
+            // );
+            return Center(child: Lottie.asset(emptyLottie));
           } else {
             // Products are available, display them
             final products = categoryState.getProductsResponceModel!.products!;
@@ -92,6 +92,7 @@ class ProductListViewBuilder extends StatelessWidget {
                               //Selected product varient assigning
                               context.read<CategoryBlocBloc>().verient =
                                   product[index].variant;
+
                               //Selected product image assinging
                               context.read<CategoryBlocBloc>().productImage =
                                   product[index].productImage;
@@ -145,7 +146,8 @@ class ProductListViewBuilder extends StatelessWidget {
                               ),
                             ),
                           );
-                        })
+                        },
+                      )
               ],
             );
           }

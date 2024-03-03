@@ -21,6 +21,9 @@ mixin _$HomeEvent {
     required TResult Function() getAllCategory,
     required TResult Function(String category) selectedactegory,
     required TResult Function() homePageBanners,
+    required TResult Function() getBestSellingProducts,
+    required TResult Function(SearchParamModel searchParamModel)
+        globalPrductSearch,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -28,6 +31,8 @@ mixin _$HomeEvent {
     TResult? Function()? getAllCategory,
     TResult? Function(String category)? selectedactegory,
     TResult? Function()? homePageBanners,
+    TResult? Function()? getBestSellingProducts,
+    TResult? Function(SearchParamModel searchParamModel)? globalPrductSearch,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -35,6 +40,8 @@ mixin _$HomeEvent {
     TResult Function()? getAllCategory,
     TResult Function(String category)? selectedactegory,
     TResult Function()? homePageBanners,
+    TResult Function()? getBestSellingProducts,
+    TResult Function(SearchParamModel searchParamModel)? globalPrductSearch,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -43,6 +50,9 @@ mixin _$HomeEvent {
     required TResult Function(GetAllCategory value) getAllCategory,
     required TResult Function(Selectedactegory value) selectedactegory,
     required TResult Function(HomePageBanners value) homePageBanners,
+    required TResult Function(GetBestSellingProducts value)
+        getBestSellingProducts,
+    required TResult Function(GlobalPrductSearch value) globalPrductSearch,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -50,6 +60,8 @@ mixin _$HomeEvent {
     TResult? Function(GetAllCategory value)? getAllCategory,
     TResult? Function(Selectedactegory value)? selectedactegory,
     TResult? Function(HomePageBanners value)? homePageBanners,
+    TResult? Function(GetBestSellingProducts value)? getBestSellingProducts,
+    TResult? Function(GlobalPrductSearch value)? globalPrductSearch,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -57,6 +69,8 @@ mixin _$HomeEvent {
     TResult Function(GetAllCategory value)? getAllCategory,
     TResult Function(Selectedactegory value)? selectedactegory,
     TResult Function(HomePageBanners value)? homePageBanners,
+    TResult Function(GetBestSellingProducts value)? getBestSellingProducts,
+    TResult Function(GlobalPrductSearch value)? globalPrductSearch,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -120,6 +134,9 @@ class _$GetAllCategoryImpl implements GetAllCategory {
     required TResult Function() getAllCategory,
     required TResult Function(String category) selectedactegory,
     required TResult Function() homePageBanners,
+    required TResult Function() getBestSellingProducts,
+    required TResult Function(SearchParamModel searchParamModel)
+        globalPrductSearch,
   }) {
     return getAllCategory();
   }
@@ -130,6 +147,8 @@ class _$GetAllCategoryImpl implements GetAllCategory {
     TResult? Function()? getAllCategory,
     TResult? Function(String category)? selectedactegory,
     TResult? Function()? homePageBanners,
+    TResult? Function()? getBestSellingProducts,
+    TResult? Function(SearchParamModel searchParamModel)? globalPrductSearch,
   }) {
     return getAllCategory?.call();
   }
@@ -140,6 +159,8 @@ class _$GetAllCategoryImpl implements GetAllCategory {
     TResult Function()? getAllCategory,
     TResult Function(String category)? selectedactegory,
     TResult Function()? homePageBanners,
+    TResult Function()? getBestSellingProducts,
+    TResult Function(SearchParamModel searchParamModel)? globalPrductSearch,
     required TResult orElse(),
   }) {
     if (getAllCategory != null) {
@@ -154,6 +175,9 @@ class _$GetAllCategoryImpl implements GetAllCategory {
     required TResult Function(GetAllCategory value) getAllCategory,
     required TResult Function(Selectedactegory value) selectedactegory,
     required TResult Function(HomePageBanners value) homePageBanners,
+    required TResult Function(GetBestSellingProducts value)
+        getBestSellingProducts,
+    required TResult Function(GlobalPrductSearch value) globalPrductSearch,
   }) {
     return getAllCategory(this);
   }
@@ -164,6 +188,8 @@ class _$GetAllCategoryImpl implements GetAllCategory {
     TResult? Function(GetAllCategory value)? getAllCategory,
     TResult? Function(Selectedactegory value)? selectedactegory,
     TResult? Function(HomePageBanners value)? homePageBanners,
+    TResult? Function(GetBestSellingProducts value)? getBestSellingProducts,
+    TResult? Function(GlobalPrductSearch value)? globalPrductSearch,
   }) {
     return getAllCategory?.call(this);
   }
@@ -174,6 +200,8 @@ class _$GetAllCategoryImpl implements GetAllCategory {
     TResult Function(GetAllCategory value)? getAllCategory,
     TResult Function(Selectedactegory value)? selectedactegory,
     TResult Function(HomePageBanners value)? homePageBanners,
+    TResult Function(GetBestSellingProducts value)? getBestSellingProducts,
+    TResult Function(GlobalPrductSearch value)? globalPrductSearch,
     required TResult orElse(),
   }) {
     if (getAllCategory != null) {
@@ -256,6 +284,9 @@ class _$SelectedactegoryImpl implements Selectedactegory {
     required TResult Function() getAllCategory,
     required TResult Function(String category) selectedactegory,
     required TResult Function() homePageBanners,
+    required TResult Function() getBestSellingProducts,
+    required TResult Function(SearchParamModel searchParamModel)
+        globalPrductSearch,
   }) {
     return selectedactegory(category);
   }
@@ -266,6 +297,8 @@ class _$SelectedactegoryImpl implements Selectedactegory {
     TResult? Function()? getAllCategory,
     TResult? Function(String category)? selectedactegory,
     TResult? Function()? homePageBanners,
+    TResult? Function()? getBestSellingProducts,
+    TResult? Function(SearchParamModel searchParamModel)? globalPrductSearch,
   }) {
     return selectedactegory?.call(category);
   }
@@ -276,6 +309,8 @@ class _$SelectedactegoryImpl implements Selectedactegory {
     TResult Function()? getAllCategory,
     TResult Function(String category)? selectedactegory,
     TResult Function()? homePageBanners,
+    TResult Function()? getBestSellingProducts,
+    TResult Function(SearchParamModel searchParamModel)? globalPrductSearch,
     required TResult orElse(),
   }) {
     if (selectedactegory != null) {
@@ -290,6 +325,9 @@ class _$SelectedactegoryImpl implements Selectedactegory {
     required TResult Function(GetAllCategory value) getAllCategory,
     required TResult Function(Selectedactegory value) selectedactegory,
     required TResult Function(HomePageBanners value) homePageBanners,
+    required TResult Function(GetBestSellingProducts value)
+        getBestSellingProducts,
+    required TResult Function(GlobalPrductSearch value) globalPrductSearch,
   }) {
     return selectedactegory(this);
   }
@@ -300,6 +338,8 @@ class _$SelectedactegoryImpl implements Selectedactegory {
     TResult? Function(GetAllCategory value)? getAllCategory,
     TResult? Function(Selectedactegory value)? selectedactegory,
     TResult? Function(HomePageBanners value)? homePageBanners,
+    TResult? Function(GetBestSellingProducts value)? getBestSellingProducts,
+    TResult? Function(GlobalPrductSearch value)? globalPrductSearch,
   }) {
     return selectedactegory?.call(this);
   }
@@ -310,6 +350,8 @@ class _$SelectedactegoryImpl implements Selectedactegory {
     TResult Function(GetAllCategory value)? getAllCategory,
     TResult Function(Selectedactegory value)? selectedactegory,
     TResult Function(HomePageBanners value)? homePageBanners,
+    TResult Function(GetBestSellingProducts value)? getBestSellingProducts,
+    TResult Function(GlobalPrductSearch value)? globalPrductSearch,
     required TResult orElse(),
   }) {
     if (selectedactegory != null) {
@@ -370,6 +412,9 @@ class _$HomePageBannersImpl implements HomePageBanners {
     required TResult Function() getAllCategory,
     required TResult Function(String category) selectedactegory,
     required TResult Function() homePageBanners,
+    required TResult Function() getBestSellingProducts,
+    required TResult Function(SearchParamModel searchParamModel)
+        globalPrductSearch,
   }) {
     return homePageBanners();
   }
@@ -380,6 +425,8 @@ class _$HomePageBannersImpl implements HomePageBanners {
     TResult? Function()? getAllCategory,
     TResult? Function(String category)? selectedactegory,
     TResult? Function()? homePageBanners,
+    TResult? Function()? getBestSellingProducts,
+    TResult? Function(SearchParamModel searchParamModel)? globalPrductSearch,
   }) {
     return homePageBanners?.call();
   }
@@ -390,6 +437,8 @@ class _$HomePageBannersImpl implements HomePageBanners {
     TResult Function()? getAllCategory,
     TResult Function(String category)? selectedactegory,
     TResult Function()? homePageBanners,
+    TResult Function()? getBestSellingProducts,
+    TResult Function(SearchParamModel searchParamModel)? globalPrductSearch,
     required TResult orElse(),
   }) {
     if (homePageBanners != null) {
@@ -404,6 +453,9 @@ class _$HomePageBannersImpl implements HomePageBanners {
     required TResult Function(GetAllCategory value) getAllCategory,
     required TResult Function(Selectedactegory value) selectedactegory,
     required TResult Function(HomePageBanners value) homePageBanners,
+    required TResult Function(GetBestSellingProducts value)
+        getBestSellingProducts,
+    required TResult Function(GlobalPrductSearch value) globalPrductSearch,
   }) {
     return homePageBanners(this);
   }
@@ -414,6 +466,8 @@ class _$HomePageBannersImpl implements HomePageBanners {
     TResult? Function(GetAllCategory value)? getAllCategory,
     TResult? Function(Selectedactegory value)? selectedactegory,
     TResult? Function(HomePageBanners value)? homePageBanners,
+    TResult? Function(GetBestSellingProducts value)? getBestSellingProducts,
+    TResult? Function(GlobalPrductSearch value)? globalPrductSearch,
   }) {
     return homePageBanners?.call(this);
   }
@@ -424,6 +478,8 @@ class _$HomePageBannersImpl implements HomePageBanners {
     TResult Function(GetAllCategory value)? getAllCategory,
     TResult Function(Selectedactegory value)? selectedactegory,
     TResult Function(HomePageBanners value)? homePageBanners,
+    TResult Function(GetBestSellingProducts value)? getBestSellingProducts,
+    TResult Function(GlobalPrductSearch value)? globalPrductSearch,
     required TResult orElse(),
   }) {
     if (homePageBanners != null) {
@@ -438,6 +494,288 @@ abstract class HomePageBanners implements HomeEvent {
 }
 
 /// @nodoc
+abstract class _$$GetBestSellingProductsImplCopyWith<$Res> {
+  factory _$$GetBestSellingProductsImplCopyWith(
+          _$GetBestSellingProductsImpl value,
+          $Res Function(_$GetBestSellingProductsImpl) then) =
+      __$$GetBestSellingProductsImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$GetBestSellingProductsImplCopyWithImpl<$Res>
+    extends _$HomeEventCopyWithImpl<$Res, _$GetBestSellingProductsImpl>
+    implements _$$GetBestSellingProductsImplCopyWith<$Res> {
+  __$$GetBestSellingProductsImplCopyWithImpl(
+      _$GetBestSellingProductsImpl _value,
+      $Res Function(_$GetBestSellingProductsImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$GetBestSellingProductsImpl implements GetBestSellingProducts {
+  const _$GetBestSellingProductsImpl();
+
+  @override
+  String toString() {
+    return 'HomeEvent.getBestSellingProducts()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetBestSellingProductsImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getAllCategory,
+    required TResult Function(String category) selectedactegory,
+    required TResult Function() homePageBanners,
+    required TResult Function() getBestSellingProducts,
+    required TResult Function(SearchParamModel searchParamModel)
+        globalPrductSearch,
+  }) {
+    return getBestSellingProducts();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getAllCategory,
+    TResult? Function(String category)? selectedactegory,
+    TResult? Function()? homePageBanners,
+    TResult? Function()? getBestSellingProducts,
+    TResult? Function(SearchParamModel searchParamModel)? globalPrductSearch,
+  }) {
+    return getBestSellingProducts?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getAllCategory,
+    TResult Function(String category)? selectedactegory,
+    TResult Function()? homePageBanners,
+    TResult Function()? getBestSellingProducts,
+    TResult Function(SearchParamModel searchParamModel)? globalPrductSearch,
+    required TResult orElse(),
+  }) {
+    if (getBestSellingProducts != null) {
+      return getBestSellingProducts();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GetAllCategory value) getAllCategory,
+    required TResult Function(Selectedactegory value) selectedactegory,
+    required TResult Function(HomePageBanners value) homePageBanners,
+    required TResult Function(GetBestSellingProducts value)
+        getBestSellingProducts,
+    required TResult Function(GlobalPrductSearch value) globalPrductSearch,
+  }) {
+    return getBestSellingProducts(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetAllCategory value)? getAllCategory,
+    TResult? Function(Selectedactegory value)? selectedactegory,
+    TResult? Function(HomePageBanners value)? homePageBanners,
+    TResult? Function(GetBestSellingProducts value)? getBestSellingProducts,
+    TResult? Function(GlobalPrductSearch value)? globalPrductSearch,
+  }) {
+    return getBestSellingProducts?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetAllCategory value)? getAllCategory,
+    TResult Function(Selectedactegory value)? selectedactegory,
+    TResult Function(HomePageBanners value)? homePageBanners,
+    TResult Function(GetBestSellingProducts value)? getBestSellingProducts,
+    TResult Function(GlobalPrductSearch value)? globalPrductSearch,
+    required TResult orElse(),
+  }) {
+    if (getBestSellingProducts != null) {
+      return getBestSellingProducts(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GetBestSellingProducts implements HomeEvent {
+  const factory GetBestSellingProducts() = _$GetBestSellingProductsImpl;
+}
+
+/// @nodoc
+abstract class _$$GlobalPrductSearchImplCopyWith<$Res> {
+  factory _$$GlobalPrductSearchImplCopyWith(_$GlobalPrductSearchImpl value,
+          $Res Function(_$GlobalPrductSearchImpl) then) =
+      __$$GlobalPrductSearchImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({SearchParamModel searchParamModel});
+}
+
+/// @nodoc
+class __$$GlobalPrductSearchImplCopyWithImpl<$Res>
+    extends _$HomeEventCopyWithImpl<$Res, _$GlobalPrductSearchImpl>
+    implements _$$GlobalPrductSearchImplCopyWith<$Res> {
+  __$$GlobalPrductSearchImplCopyWithImpl(_$GlobalPrductSearchImpl _value,
+      $Res Function(_$GlobalPrductSearchImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? searchParamModel = null,
+  }) {
+    return _then(_$GlobalPrductSearchImpl(
+      searchParamModel: null == searchParamModel
+          ? _value.searchParamModel
+          : searchParamModel // ignore: cast_nullable_to_non_nullable
+              as SearchParamModel,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$GlobalPrductSearchImpl implements GlobalPrductSearch {
+  const _$GlobalPrductSearchImpl({required this.searchParamModel});
+
+  @override
+  final SearchParamModel searchParamModel;
+
+  @override
+  String toString() {
+    return 'HomeEvent.globalPrductSearch(searchParamModel: $searchParamModel)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GlobalPrductSearchImpl &&
+            (identical(other.searchParamModel, searchParamModel) ||
+                other.searchParamModel == searchParamModel));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, searchParamModel);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GlobalPrductSearchImplCopyWith<_$GlobalPrductSearchImpl> get copyWith =>
+      __$$GlobalPrductSearchImplCopyWithImpl<_$GlobalPrductSearchImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getAllCategory,
+    required TResult Function(String category) selectedactegory,
+    required TResult Function() homePageBanners,
+    required TResult Function() getBestSellingProducts,
+    required TResult Function(SearchParamModel searchParamModel)
+        globalPrductSearch,
+  }) {
+    return globalPrductSearch(searchParamModel);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getAllCategory,
+    TResult? Function(String category)? selectedactegory,
+    TResult? Function()? homePageBanners,
+    TResult? Function()? getBestSellingProducts,
+    TResult? Function(SearchParamModel searchParamModel)? globalPrductSearch,
+  }) {
+    return globalPrductSearch?.call(searchParamModel);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getAllCategory,
+    TResult Function(String category)? selectedactegory,
+    TResult Function()? homePageBanners,
+    TResult Function()? getBestSellingProducts,
+    TResult Function(SearchParamModel searchParamModel)? globalPrductSearch,
+    required TResult orElse(),
+  }) {
+    if (globalPrductSearch != null) {
+      return globalPrductSearch(searchParamModel);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GetAllCategory value) getAllCategory,
+    required TResult Function(Selectedactegory value) selectedactegory,
+    required TResult Function(HomePageBanners value) homePageBanners,
+    required TResult Function(GetBestSellingProducts value)
+        getBestSellingProducts,
+    required TResult Function(GlobalPrductSearch value) globalPrductSearch,
+  }) {
+    return globalPrductSearch(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetAllCategory value)? getAllCategory,
+    TResult? Function(Selectedactegory value)? selectedactegory,
+    TResult? Function(HomePageBanners value)? homePageBanners,
+    TResult? Function(GetBestSellingProducts value)? getBestSellingProducts,
+    TResult? Function(GlobalPrductSearch value)? globalPrductSearch,
+  }) {
+    return globalPrductSearch?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetAllCategory value)? getAllCategory,
+    TResult Function(Selectedactegory value)? selectedactegory,
+    TResult Function(HomePageBanners value)? homePageBanners,
+    TResult Function(GetBestSellingProducts value)? getBestSellingProducts,
+    TResult Function(GlobalPrductSearch value)? globalPrductSearch,
+    required TResult orElse(),
+  }) {
+    if (globalPrductSearch != null) {
+      return globalPrductSearch(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GlobalPrductSearch implements HomeEvent {
+  const factory GlobalPrductSearch(
+          {required final SearchParamModel searchParamModel}) =
+      _$GlobalPrductSearchImpl;
+
+  SearchParamModel get searchParamModel;
+  @JsonKey(ignore: true)
+  _$$GlobalPrductSearchImplCopyWith<_$GlobalPrductSearchImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$HomeState {
   bool get isLoading => throw _privateConstructorUsedError;
   bool get hasError => throw _privateConstructorUsedError;
@@ -447,6 +785,11 @@ mixin _$HomeState {
       throw _privateConstructorUsedError;
   HomeBannerResponceModel? get homeBannerResponceModel =>
       throw _privateConstructorUsedError;
+  BestSellingProductsResponceModel? get bestSellingProductsResponceModel =>
+      throw _privateConstructorUsedError;
+  SearchResponceModel? get searchResponceModel =>
+      throw _privateConstructorUsedError;
+  List<Product>? get filtteredProducts => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $HomeStateCopyWith<HomeState> get copyWith =>
@@ -464,7 +807,10 @@ abstract class $HomeStateCopyWith<$Res> {
       String? message,
       String? selectedCategory,
       GetCategoryResponceModel? getCategoryResponceModel,
-      HomeBannerResponceModel? homeBannerResponceModel});
+      HomeBannerResponceModel? homeBannerResponceModel,
+      BestSellingProductsResponceModel? bestSellingProductsResponceModel,
+      SearchResponceModel? searchResponceModel,
+      List<Product>? filtteredProducts});
 }
 
 /// @nodoc
@@ -486,6 +832,9 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
     Object? selectedCategory = freezed,
     Object? getCategoryResponceModel = freezed,
     Object? homeBannerResponceModel = freezed,
+    Object? bestSellingProductsResponceModel = freezed,
+    Object? searchResponceModel = freezed,
+    Object? filtteredProducts = freezed,
   }) {
     return _then(_value.copyWith(
       isLoading: null == isLoading
@@ -512,6 +861,19 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
           ? _value.homeBannerResponceModel
           : homeBannerResponceModel // ignore: cast_nullable_to_non_nullable
               as HomeBannerResponceModel?,
+      bestSellingProductsResponceModel: freezed ==
+              bestSellingProductsResponceModel
+          ? _value.bestSellingProductsResponceModel
+          : bestSellingProductsResponceModel // ignore: cast_nullable_to_non_nullable
+              as BestSellingProductsResponceModel?,
+      searchResponceModel: freezed == searchResponceModel
+          ? _value.searchResponceModel
+          : searchResponceModel // ignore: cast_nullable_to_non_nullable
+              as SearchResponceModel?,
+      filtteredProducts: freezed == filtteredProducts
+          ? _value.filtteredProducts
+          : filtteredProducts // ignore: cast_nullable_to_non_nullable
+              as List<Product>?,
     ) as $Val);
   }
 }
@@ -530,7 +892,10 @@ abstract class _$$InitialImplCopyWith<$Res>
       String? message,
       String? selectedCategory,
       GetCategoryResponceModel? getCategoryResponceModel,
-      HomeBannerResponceModel? homeBannerResponceModel});
+      HomeBannerResponceModel? homeBannerResponceModel,
+      BestSellingProductsResponceModel? bestSellingProductsResponceModel,
+      SearchResponceModel? searchResponceModel,
+      List<Product>? filtteredProducts});
 }
 
 /// @nodoc
@@ -550,6 +915,9 @@ class __$$InitialImplCopyWithImpl<$Res>
     Object? selectedCategory = freezed,
     Object? getCategoryResponceModel = freezed,
     Object? homeBannerResponceModel = freezed,
+    Object? bestSellingProductsResponceModel = freezed,
+    Object? searchResponceModel = freezed,
+    Object? filtteredProducts = freezed,
   }) {
     return _then(_$InitialImpl(
       isLoading: null == isLoading
@@ -576,6 +944,19 @@ class __$$InitialImplCopyWithImpl<$Res>
           ? _value.homeBannerResponceModel
           : homeBannerResponceModel // ignore: cast_nullable_to_non_nullable
               as HomeBannerResponceModel?,
+      bestSellingProductsResponceModel: freezed ==
+              bestSellingProductsResponceModel
+          ? _value.bestSellingProductsResponceModel
+          : bestSellingProductsResponceModel // ignore: cast_nullable_to_non_nullable
+              as BestSellingProductsResponceModel?,
+      searchResponceModel: freezed == searchResponceModel
+          ? _value.searchResponceModel
+          : searchResponceModel // ignore: cast_nullable_to_non_nullable
+              as SearchResponceModel?,
+      filtteredProducts: freezed == filtteredProducts
+          ? _value._filtteredProducts
+          : filtteredProducts // ignore: cast_nullable_to_non_nullable
+              as List<Product>?,
     ));
   }
 }
@@ -589,7 +970,11 @@ class _$InitialImpl implements _Initial {
       this.message,
       this.selectedCategory,
       this.getCategoryResponceModel,
-      this.homeBannerResponceModel});
+      this.homeBannerResponceModel,
+      this.bestSellingProductsResponceModel,
+      this.searchResponceModel,
+      final List<Product>? filtteredProducts})
+      : _filtteredProducts = filtteredProducts;
 
   @override
   final bool isLoading;
@@ -603,10 +988,24 @@ class _$InitialImpl implements _Initial {
   final GetCategoryResponceModel? getCategoryResponceModel;
   @override
   final HomeBannerResponceModel? homeBannerResponceModel;
+  @override
+  final BestSellingProductsResponceModel? bestSellingProductsResponceModel;
+  @override
+  final SearchResponceModel? searchResponceModel;
+  final List<Product>? _filtteredProducts;
+  @override
+  List<Product>? get filtteredProducts {
+    final value = _filtteredProducts;
+    if (value == null) return null;
+    if (_filtteredProducts is EqualUnmodifiableListView)
+      return _filtteredProducts;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
-    return 'HomeState(isLoading: $isLoading, hasError: $hasError, message: $message, selectedCategory: $selectedCategory, getCategoryResponceModel: $getCategoryResponceModel, homeBannerResponceModel: $homeBannerResponceModel)';
+    return 'HomeState(isLoading: $isLoading, hasError: $hasError, message: $message, selectedCategory: $selectedCategory, getCategoryResponceModel: $getCategoryResponceModel, homeBannerResponceModel: $homeBannerResponceModel, bestSellingProductsResponceModel: $bestSellingProductsResponceModel, searchResponceModel: $searchResponceModel, filtteredProducts: $filtteredProducts)';
   }
 
   @override
@@ -626,12 +1025,29 @@ class _$InitialImpl implements _Initial {
                 other.getCategoryResponceModel == getCategoryResponceModel) &&
             (identical(
                     other.homeBannerResponceModel, homeBannerResponceModel) ||
-                other.homeBannerResponceModel == homeBannerResponceModel));
+                other.homeBannerResponceModel == homeBannerResponceModel) &&
+            (identical(other.bestSellingProductsResponceModel,
+                    bestSellingProductsResponceModel) ||
+                other.bestSellingProductsResponceModel ==
+                    bestSellingProductsResponceModel) &&
+            (identical(other.searchResponceModel, searchResponceModel) ||
+                other.searchResponceModel == searchResponceModel) &&
+            const DeepCollectionEquality()
+                .equals(other._filtteredProducts, _filtteredProducts));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isLoading, hasError, message,
-      selectedCategory, getCategoryResponceModel, homeBannerResponceModel);
+  int get hashCode => Object.hash(
+      runtimeType,
+      isLoading,
+      hasError,
+      message,
+      selectedCategory,
+      getCategoryResponceModel,
+      homeBannerResponceModel,
+      bestSellingProductsResponceModel,
+      searchResponceModel,
+      const DeepCollectionEquality().hash(_filtteredProducts));
 
   @JsonKey(ignore: true)
   @override
@@ -647,7 +1063,10 @@ abstract class _Initial implements HomeState {
       final String? message,
       final String? selectedCategory,
       final GetCategoryResponceModel? getCategoryResponceModel,
-      final HomeBannerResponceModel? homeBannerResponceModel}) = _$InitialImpl;
+      final HomeBannerResponceModel? homeBannerResponceModel,
+      final BestSellingProductsResponceModel? bestSellingProductsResponceModel,
+      final SearchResponceModel? searchResponceModel,
+      final List<Product>? filtteredProducts}) = _$InitialImpl;
 
   @override
   bool get isLoading;
@@ -661,6 +1080,12 @@ abstract class _Initial implements HomeState {
   GetCategoryResponceModel? get getCategoryResponceModel;
   @override
   HomeBannerResponceModel? get homeBannerResponceModel;
+  @override
+  BestSellingProductsResponceModel? get bestSellingProductsResponceModel;
+  @override
+  SearchResponceModel? get searchResponceModel;
+  @override
+  List<Product>? get filtteredProducts;
   @override
   @JsonKey(ignore: true)
   _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>

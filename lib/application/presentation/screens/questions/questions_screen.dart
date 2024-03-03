@@ -153,7 +153,7 @@ class QuestionTabs extends StatelessWidget {
                                                   .sections!.length -
                                               1
                                       ? 'Continue'
-                                      : 'Calculate price',
+                                      : 'Proceed',
                                 );
                               },
                             );
@@ -217,6 +217,5 @@ class QuestionTabs extends StatelessWidget {
             abandendOrderRequestModel: abandendOrderRequestModel,
           ),
         );
-    //context.read<QuestionTabBloc>().add(const ResetTabSelection());
   }
 }

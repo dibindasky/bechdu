@@ -24,7 +24,6 @@ class _UserInfoFieldsState extends State<UserInfoFields> {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Username field
             isTExtFieldUsername
                 ? TextField(
                     controller:
@@ -39,7 +38,7 @@ class _UserInfoFieldsState extends State<UserInfoFields> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            '${profile.user != null || profile.user!.user != null ? profile.user!.user!.name : 'Nill'}',
+                            '${profile.user != null && profile.user!.user != null && profile.user!.user!.name != null ? profile.user!.user!.name : 'Nill'}',
                             style: textHeadMedium1,
                           ),
                           TextButton(
@@ -61,7 +60,7 @@ class _UserInfoFieldsState extends State<UserInfoFields> {
                       ),
                     ],
                   ),
-            // Email field
+            // // Email field
             isTExtFieldEmail
                 ? TextField(
                     controller:
@@ -76,7 +75,7 @@ class _UserInfoFieldsState extends State<UserInfoFields> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            '${profile.user != null || profile.user!.user != null ? profile.user!.user!.email : 'Nill'}',
+                            '${profile.user != null && profile.user!.user != null && profile.user!.user!.email != null ? profile.user!.user!.email : 'Nill'}',
                             style: textHeadMedium1,
                           ),
                           TextButton(
@@ -98,7 +97,7 @@ class _UserInfoFieldsState extends State<UserInfoFields> {
                       ),
                     ],
                   ),
-            // Additional Mobile Number field
+            //Additional Mobile Number field
             isTExtFieldNumber
                 ? TextField(
                     controller:
@@ -113,7 +112,7 @@ class _UserInfoFieldsState extends State<UserInfoFields> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            '${profile.user != null || profile.user!.user != null ? profile.user!.user!.addPhone : 'Nill'}',
+                            '${profile.user != null && profile.user!.user != null && profile.user!.user!.addPhone != null ? profile.user!.user!.addPhone : 'Nill'}',
                             style: textHeadMedium1,
                           ),
                           TextButton(

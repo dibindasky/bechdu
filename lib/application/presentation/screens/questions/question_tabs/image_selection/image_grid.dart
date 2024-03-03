@@ -18,6 +18,7 @@ class ImageGridMaker extends StatelessWidget {
               '${section.description}',
               style: textHeadBoldBig,
             ),
+            kHeight20,
             GridView.builder(
               padding: const EdgeInsets.all(0),
               shrinkWrap: true,

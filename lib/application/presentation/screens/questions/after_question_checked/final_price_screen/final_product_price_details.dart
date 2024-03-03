@@ -71,60 +71,85 @@ class FinalProductPriceDetaails extends StatelessWidget {
               decoration: InputDecoration(
                 suffixIcon: TextButton(
                   onPressed: () {
-                    if (state.promoCodeResponceModel != null) {
-                      if (context
-                          .read<PlaceOrderBloc>()
-                          .promocodeController
-                          .text
-                          .isEmpty) {
-                        showSnack(
-                          context: context,
-                          message: 'Please enter your promo code',
-                        );
-                      } else {
-                        PromoCodeRequestModel promoCodeRequestModel =
-                            PromoCodeRequestModel(
-                                enteredCode: context
-                                    .read<PlaceOrderBloc>()
-                                    .promocodeController
-                                    .text
-                                    .trim());
-                        context.read<PlaceOrderBloc>().add(
-                              PlaceOrderEvent.getPromoCode(
-                                promoCodeRequestModel: promoCodeRequestModel,
-                              ),
-                            );
-                      }
+                    if (context
+                        .read<PlaceOrderBloc>()
+                        .promocodeController
+                        .text
+                        .isEmpty) {
+                      showSnack(
+                        context: context,
+                        message: 'Please enter your promo code',
+                      );
                     } else if (state.promoCodeResponceModel == null) {
-                      if (context
-                          .read<PlaceOrderBloc>()
-                          .promocodeController
-                          .text
-                          .isEmpty) {
-                        showSnack(
-                          context: context,
-                          message: 'Please enter your promo code',
-                        );
-                      } else {
-                        PromoCodeRequestModel promoCodeRequestModel =
-                            PromoCodeRequestModel(
-                                enteredCode: context
-                                    .read<PlaceOrderBloc>()
-                                    .promocodeController
-                                    .text
-                                    .trim());
-                        context.read<PlaceOrderBloc>().add(
-                              PlaceOrderEvent.getPromoCode(
-                                promoCodeRequestModel: promoCodeRequestModel,
-                              ),
-                            );
-                      }
+                      PromoCodeRequestModel promoCodeRequestModel =
+                          PromoCodeRequestModel(
+                        enteredCode: context
+                            .read<PlaceOrderBloc>()
+                            .promocodeController
+                            .text
+                            .trim(),
+                      );
+                      context.read<PlaceOrderBloc>().add(
+                            PlaceOrderEvent.getPromoCode(
+                              promoCodeRequestModel: promoCodeRequestModel,
+                            ),
+                          );
+                    } else {
+                      PromoCodeRequestModel promoCodeRequestModel =
+                          PromoCodeRequestModel(
+                        enteredCode: context
+                            .read<PlaceOrderBloc>()
+                            .promocodeController
+                            .text
+                            .trim(),
+                      );
+                      context.read<PlaceOrderBloc>().add(
+                            PlaceOrderEvent.getPromoCode(
+                              promoCodeRequestModel: promoCodeRequestModel,
+                            ),
+                          );
                     }
                   },
-                  child: Text(
-                    'Apply',
-                    style: textHeadRegular1,
-                  ),
+                  child: context
+                          .read<PlaceOrderBloc>()
+                          .promocodeController
+                          .text
+                          .isEmpty
+                      ? Text(
+                          'Apply',
+                          style: textHeadRegular1,
+                        )
+                      : Container(
+                          height: 30,
+                          width: 110,
+                          decoration: BoxDecoration(
+                              borderRadius: kRadius5, color: kBluePrimary),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Text(
+                                'Applied',
+                                style: textHeadInter.copyWith(color: kWhite),
+                              ),
+                              IconButton(
+                                padding: EdgeInsets.zero,
+                                iconSize: 18,
+                                onPressed: () {
+                                  context
+                                      .read<PlaceOrderBloc>()
+                                      .promocodeController
+                                      .clear();
+                                },
+                                icon: const Icon(
+                                  Icons.cancel,
+                                  color: kRed,
+                                  size: 15,
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
                 ),
                 fillColor: kWhiteextra,
                 filled: true,

@@ -24,11 +24,19 @@ mixin _$PlaceOrderEvent {
             AbandendOrderRequestModel abandendOrderRequestModel)
         abandendOrder,
     required TResult Function() orderPlacing,
+    required TResult Function() getOrders,
+    required TResult Function(
+            OrderCancelationRequestModel orderCancelationRequestModel,
+            String orderId)
+        orderCancel,
     required TResult Function(User user) userDetailsPick,
     required TResult Function(ProductDetails productDetails) productDetailsPick,
+    required TResult Function(Promo promo) promoCodePick,
     required TResult Function(User user) addressPick,
     required TResult Function(Payment payment) paymentOption,
     required TResult Function(PickUpDetails pickUpDetails) pickupDetailsPick,
+    required TResult Function() userNumber,
+    required TResult Function() removeAllFieldData,
     required TResult Function() promoCodeSuccess,
   }) =>
       throw _privateConstructorUsedError;
@@ -39,11 +47,18 @@ mixin _$PlaceOrderEvent {
     TResult? Function(AbandendOrderRequestModel abandendOrderRequestModel)?
         abandendOrder,
     TResult? Function()? orderPlacing,
+    TResult? Function()? getOrders,
+    TResult? Function(OrderCancelationRequestModel orderCancelationRequestModel,
+            String orderId)?
+        orderCancel,
     TResult? Function(User user)? userDetailsPick,
     TResult? Function(ProductDetails productDetails)? productDetailsPick,
+    TResult? Function(Promo promo)? promoCodePick,
     TResult? Function(User user)? addressPick,
     TResult? Function(Payment payment)? paymentOption,
     TResult? Function(PickUpDetails pickUpDetails)? pickupDetailsPick,
+    TResult? Function()? userNumber,
+    TResult? Function()? removeAllFieldData,
     TResult? Function()? promoCodeSuccess,
   }) =>
       throw _privateConstructorUsedError;
@@ -53,11 +68,18 @@ mixin _$PlaceOrderEvent {
     TResult Function(AbandendOrderRequestModel abandendOrderRequestModel)?
         abandendOrder,
     TResult Function()? orderPlacing,
+    TResult Function()? getOrders,
+    TResult Function(OrderCancelationRequestModel orderCancelationRequestModel,
+            String orderId)?
+        orderCancel,
     TResult Function(User user)? userDetailsPick,
     TResult Function(ProductDetails productDetails)? productDetailsPick,
+    TResult Function(Promo promo)? promoCodePick,
     TResult Function(User user)? addressPick,
     TResult Function(Payment payment)? paymentOption,
     TResult Function(PickUpDetails pickUpDetails)? pickupDetailsPick,
+    TResult Function()? userNumber,
+    TResult Function()? removeAllFieldData,
     TResult Function()? promoCodeSuccess,
     required TResult orElse(),
   }) =>
@@ -67,11 +89,16 @@ mixin _$PlaceOrderEvent {
     required TResult Function(GetPromoCode value) getPromoCode,
     required TResult Function(AbandendOrder value) abandendOrder,
     required TResult Function(OrderPlacing value) orderPlacing,
+    required TResult Function(GetOrders value) getOrders,
+    required TResult Function(OrderCancel value) orderCancel,
     required TResult Function(UserDetailsPick value) userDetailsPick,
     required TResult Function(ProductDetailsPick value) productDetailsPick,
+    required TResult Function(PromoCodePick value) promoCodePick,
     required TResult Function(AddressPick value) addressPick,
     required TResult Function(PaymentOption value) paymentOption,
     required TResult Function(PickupDetailsPick value) pickupDetailsPick,
+    required TResult Function(UserNumber value) userNumber,
+    required TResult Function(RemoveAllFieldData value) removeAllFieldData,
     required TResult Function(PromoCodeSuccess value) promoCodeSuccess,
   }) =>
       throw _privateConstructorUsedError;
@@ -80,11 +107,16 @@ mixin _$PlaceOrderEvent {
     TResult? Function(GetPromoCode value)? getPromoCode,
     TResult? Function(AbandendOrder value)? abandendOrder,
     TResult? Function(OrderPlacing value)? orderPlacing,
+    TResult? Function(GetOrders value)? getOrders,
+    TResult? Function(OrderCancel value)? orderCancel,
     TResult? Function(UserDetailsPick value)? userDetailsPick,
     TResult? Function(ProductDetailsPick value)? productDetailsPick,
+    TResult? Function(PromoCodePick value)? promoCodePick,
     TResult? Function(AddressPick value)? addressPick,
     TResult? Function(PaymentOption value)? paymentOption,
     TResult? Function(PickupDetailsPick value)? pickupDetailsPick,
+    TResult? Function(UserNumber value)? userNumber,
+    TResult? Function(RemoveAllFieldData value)? removeAllFieldData,
     TResult? Function(PromoCodeSuccess value)? promoCodeSuccess,
   }) =>
       throw _privateConstructorUsedError;
@@ -93,11 +125,16 @@ mixin _$PlaceOrderEvent {
     TResult Function(GetPromoCode value)? getPromoCode,
     TResult Function(AbandendOrder value)? abandendOrder,
     TResult Function(OrderPlacing value)? orderPlacing,
+    TResult Function(GetOrders value)? getOrders,
+    TResult Function(OrderCancel value)? orderCancel,
     TResult Function(UserDetailsPick value)? userDetailsPick,
     TResult Function(ProductDetailsPick value)? productDetailsPick,
+    TResult Function(PromoCodePick value)? promoCodePick,
     TResult Function(AddressPick value)? addressPick,
     TResult Function(PaymentOption value)? paymentOption,
     TResult Function(PickupDetailsPick value)? pickupDetailsPick,
+    TResult Function(UserNumber value)? userNumber,
+    TResult Function(RemoveAllFieldData value)? removeAllFieldData,
     TResult Function(PromoCodeSuccess value)? promoCodeSuccess,
     required TResult orElse(),
   }) =>
@@ -193,11 +230,19 @@ class _$GetPromoCodeImpl implements GetPromoCode {
             AbandendOrderRequestModel abandendOrderRequestModel)
         abandendOrder,
     required TResult Function() orderPlacing,
+    required TResult Function() getOrders,
+    required TResult Function(
+            OrderCancelationRequestModel orderCancelationRequestModel,
+            String orderId)
+        orderCancel,
     required TResult Function(User user) userDetailsPick,
     required TResult Function(ProductDetails productDetails) productDetailsPick,
+    required TResult Function(Promo promo) promoCodePick,
     required TResult Function(User user) addressPick,
     required TResult Function(Payment payment) paymentOption,
     required TResult Function(PickUpDetails pickUpDetails) pickupDetailsPick,
+    required TResult Function() userNumber,
+    required TResult Function() removeAllFieldData,
     required TResult Function() promoCodeSuccess,
   }) {
     return getPromoCode(promoCodeRequestModel);
@@ -211,11 +256,18 @@ class _$GetPromoCodeImpl implements GetPromoCode {
     TResult? Function(AbandendOrderRequestModel abandendOrderRequestModel)?
         abandendOrder,
     TResult? Function()? orderPlacing,
+    TResult? Function()? getOrders,
+    TResult? Function(OrderCancelationRequestModel orderCancelationRequestModel,
+            String orderId)?
+        orderCancel,
     TResult? Function(User user)? userDetailsPick,
     TResult? Function(ProductDetails productDetails)? productDetailsPick,
+    TResult? Function(Promo promo)? promoCodePick,
     TResult? Function(User user)? addressPick,
     TResult? Function(Payment payment)? paymentOption,
     TResult? Function(PickUpDetails pickUpDetails)? pickupDetailsPick,
+    TResult? Function()? userNumber,
+    TResult? Function()? removeAllFieldData,
     TResult? Function()? promoCodeSuccess,
   }) {
     return getPromoCode?.call(promoCodeRequestModel);
@@ -228,11 +280,18 @@ class _$GetPromoCodeImpl implements GetPromoCode {
     TResult Function(AbandendOrderRequestModel abandendOrderRequestModel)?
         abandendOrder,
     TResult Function()? orderPlacing,
+    TResult Function()? getOrders,
+    TResult Function(OrderCancelationRequestModel orderCancelationRequestModel,
+            String orderId)?
+        orderCancel,
     TResult Function(User user)? userDetailsPick,
     TResult Function(ProductDetails productDetails)? productDetailsPick,
+    TResult Function(Promo promo)? promoCodePick,
     TResult Function(User user)? addressPick,
     TResult Function(Payment payment)? paymentOption,
     TResult Function(PickUpDetails pickUpDetails)? pickupDetailsPick,
+    TResult Function()? userNumber,
+    TResult Function()? removeAllFieldData,
     TResult Function()? promoCodeSuccess,
     required TResult orElse(),
   }) {
@@ -248,11 +307,16 @@ class _$GetPromoCodeImpl implements GetPromoCode {
     required TResult Function(GetPromoCode value) getPromoCode,
     required TResult Function(AbandendOrder value) abandendOrder,
     required TResult Function(OrderPlacing value) orderPlacing,
+    required TResult Function(GetOrders value) getOrders,
+    required TResult Function(OrderCancel value) orderCancel,
     required TResult Function(UserDetailsPick value) userDetailsPick,
     required TResult Function(ProductDetailsPick value) productDetailsPick,
+    required TResult Function(PromoCodePick value) promoCodePick,
     required TResult Function(AddressPick value) addressPick,
     required TResult Function(PaymentOption value) paymentOption,
     required TResult Function(PickupDetailsPick value) pickupDetailsPick,
+    required TResult Function(UserNumber value) userNumber,
+    required TResult Function(RemoveAllFieldData value) removeAllFieldData,
     required TResult Function(PromoCodeSuccess value) promoCodeSuccess,
   }) {
     return getPromoCode(this);
@@ -264,11 +328,16 @@ class _$GetPromoCodeImpl implements GetPromoCode {
     TResult? Function(GetPromoCode value)? getPromoCode,
     TResult? Function(AbandendOrder value)? abandendOrder,
     TResult? Function(OrderPlacing value)? orderPlacing,
+    TResult? Function(GetOrders value)? getOrders,
+    TResult? Function(OrderCancel value)? orderCancel,
     TResult? Function(UserDetailsPick value)? userDetailsPick,
     TResult? Function(ProductDetailsPick value)? productDetailsPick,
+    TResult? Function(PromoCodePick value)? promoCodePick,
     TResult? Function(AddressPick value)? addressPick,
     TResult? Function(PaymentOption value)? paymentOption,
     TResult? Function(PickupDetailsPick value)? pickupDetailsPick,
+    TResult? Function(UserNumber value)? userNumber,
+    TResult? Function(RemoveAllFieldData value)? removeAllFieldData,
     TResult? Function(PromoCodeSuccess value)? promoCodeSuccess,
   }) {
     return getPromoCode?.call(this);
@@ -280,11 +349,16 @@ class _$GetPromoCodeImpl implements GetPromoCode {
     TResult Function(GetPromoCode value)? getPromoCode,
     TResult Function(AbandendOrder value)? abandendOrder,
     TResult Function(OrderPlacing value)? orderPlacing,
+    TResult Function(GetOrders value)? getOrders,
+    TResult Function(OrderCancel value)? orderCancel,
     TResult Function(UserDetailsPick value)? userDetailsPick,
     TResult Function(ProductDetailsPick value)? productDetailsPick,
+    TResult Function(PromoCodePick value)? promoCodePick,
     TResult Function(AddressPick value)? addressPick,
     TResult Function(PaymentOption value)? paymentOption,
     TResult Function(PickupDetailsPick value)? pickupDetailsPick,
+    TResult Function(UserNumber value)? userNumber,
+    TResult Function(RemoveAllFieldData value)? removeAllFieldData,
     TResult Function(PromoCodeSuccess value)? promoCodeSuccess,
     required TResult orElse(),
   }) {
@@ -378,11 +452,19 @@ class _$AbandendOrderImpl implements AbandendOrder {
             AbandendOrderRequestModel abandendOrderRequestModel)
         abandendOrder,
     required TResult Function() orderPlacing,
+    required TResult Function() getOrders,
+    required TResult Function(
+            OrderCancelationRequestModel orderCancelationRequestModel,
+            String orderId)
+        orderCancel,
     required TResult Function(User user) userDetailsPick,
     required TResult Function(ProductDetails productDetails) productDetailsPick,
+    required TResult Function(Promo promo) promoCodePick,
     required TResult Function(User user) addressPick,
     required TResult Function(Payment payment) paymentOption,
     required TResult Function(PickUpDetails pickUpDetails) pickupDetailsPick,
+    required TResult Function() userNumber,
+    required TResult Function() removeAllFieldData,
     required TResult Function() promoCodeSuccess,
   }) {
     return abandendOrder(abandendOrderRequestModel);
@@ -396,11 +478,18 @@ class _$AbandendOrderImpl implements AbandendOrder {
     TResult? Function(AbandendOrderRequestModel abandendOrderRequestModel)?
         abandendOrder,
     TResult? Function()? orderPlacing,
+    TResult? Function()? getOrders,
+    TResult? Function(OrderCancelationRequestModel orderCancelationRequestModel,
+            String orderId)?
+        orderCancel,
     TResult? Function(User user)? userDetailsPick,
     TResult? Function(ProductDetails productDetails)? productDetailsPick,
+    TResult? Function(Promo promo)? promoCodePick,
     TResult? Function(User user)? addressPick,
     TResult? Function(Payment payment)? paymentOption,
     TResult? Function(PickUpDetails pickUpDetails)? pickupDetailsPick,
+    TResult? Function()? userNumber,
+    TResult? Function()? removeAllFieldData,
     TResult? Function()? promoCodeSuccess,
   }) {
     return abandendOrder?.call(abandendOrderRequestModel);
@@ -413,11 +502,18 @@ class _$AbandendOrderImpl implements AbandendOrder {
     TResult Function(AbandendOrderRequestModel abandendOrderRequestModel)?
         abandendOrder,
     TResult Function()? orderPlacing,
+    TResult Function()? getOrders,
+    TResult Function(OrderCancelationRequestModel orderCancelationRequestModel,
+            String orderId)?
+        orderCancel,
     TResult Function(User user)? userDetailsPick,
     TResult Function(ProductDetails productDetails)? productDetailsPick,
+    TResult Function(Promo promo)? promoCodePick,
     TResult Function(User user)? addressPick,
     TResult Function(Payment payment)? paymentOption,
     TResult Function(PickUpDetails pickUpDetails)? pickupDetailsPick,
+    TResult Function()? userNumber,
+    TResult Function()? removeAllFieldData,
     TResult Function()? promoCodeSuccess,
     required TResult orElse(),
   }) {
@@ -433,11 +529,16 @@ class _$AbandendOrderImpl implements AbandendOrder {
     required TResult Function(GetPromoCode value) getPromoCode,
     required TResult Function(AbandendOrder value) abandendOrder,
     required TResult Function(OrderPlacing value) orderPlacing,
+    required TResult Function(GetOrders value) getOrders,
+    required TResult Function(OrderCancel value) orderCancel,
     required TResult Function(UserDetailsPick value) userDetailsPick,
     required TResult Function(ProductDetailsPick value) productDetailsPick,
+    required TResult Function(PromoCodePick value) promoCodePick,
     required TResult Function(AddressPick value) addressPick,
     required TResult Function(PaymentOption value) paymentOption,
     required TResult Function(PickupDetailsPick value) pickupDetailsPick,
+    required TResult Function(UserNumber value) userNumber,
+    required TResult Function(RemoveAllFieldData value) removeAllFieldData,
     required TResult Function(PromoCodeSuccess value) promoCodeSuccess,
   }) {
     return abandendOrder(this);
@@ -449,11 +550,16 @@ class _$AbandendOrderImpl implements AbandendOrder {
     TResult? Function(GetPromoCode value)? getPromoCode,
     TResult? Function(AbandendOrder value)? abandendOrder,
     TResult? Function(OrderPlacing value)? orderPlacing,
+    TResult? Function(GetOrders value)? getOrders,
+    TResult? Function(OrderCancel value)? orderCancel,
     TResult? Function(UserDetailsPick value)? userDetailsPick,
     TResult? Function(ProductDetailsPick value)? productDetailsPick,
+    TResult? Function(PromoCodePick value)? promoCodePick,
     TResult? Function(AddressPick value)? addressPick,
     TResult? Function(PaymentOption value)? paymentOption,
     TResult? Function(PickupDetailsPick value)? pickupDetailsPick,
+    TResult? Function(UserNumber value)? userNumber,
+    TResult? Function(RemoveAllFieldData value)? removeAllFieldData,
     TResult? Function(PromoCodeSuccess value)? promoCodeSuccess,
   }) {
     return abandendOrder?.call(this);
@@ -465,11 +571,16 @@ class _$AbandendOrderImpl implements AbandendOrder {
     TResult Function(GetPromoCode value)? getPromoCode,
     TResult Function(AbandendOrder value)? abandendOrder,
     TResult Function(OrderPlacing value)? orderPlacing,
+    TResult Function(GetOrders value)? getOrders,
+    TResult Function(OrderCancel value)? orderCancel,
     TResult Function(UserDetailsPick value)? userDetailsPick,
     TResult Function(ProductDetailsPick value)? productDetailsPick,
+    TResult Function(PromoCodePick value)? promoCodePick,
     TResult Function(AddressPick value)? addressPick,
     TResult Function(PaymentOption value)? paymentOption,
     TResult Function(PickupDetailsPick value)? pickupDetailsPick,
+    TResult Function(UserNumber value)? userNumber,
+    TResult Function(RemoveAllFieldData value)? removeAllFieldData,
     TResult Function(PromoCodeSuccess value)? promoCodeSuccess,
     required TResult orElse(),
   }) {
@@ -535,11 +646,19 @@ class _$OrderPlacingImpl implements OrderPlacing {
             AbandendOrderRequestModel abandendOrderRequestModel)
         abandendOrder,
     required TResult Function() orderPlacing,
+    required TResult Function() getOrders,
+    required TResult Function(
+            OrderCancelationRequestModel orderCancelationRequestModel,
+            String orderId)
+        orderCancel,
     required TResult Function(User user) userDetailsPick,
     required TResult Function(ProductDetails productDetails) productDetailsPick,
+    required TResult Function(Promo promo) promoCodePick,
     required TResult Function(User user) addressPick,
     required TResult Function(Payment payment) paymentOption,
     required TResult Function(PickUpDetails pickUpDetails) pickupDetailsPick,
+    required TResult Function() userNumber,
+    required TResult Function() removeAllFieldData,
     required TResult Function() promoCodeSuccess,
   }) {
     return orderPlacing();
@@ -553,11 +672,18 @@ class _$OrderPlacingImpl implements OrderPlacing {
     TResult? Function(AbandendOrderRequestModel abandendOrderRequestModel)?
         abandendOrder,
     TResult? Function()? orderPlacing,
+    TResult? Function()? getOrders,
+    TResult? Function(OrderCancelationRequestModel orderCancelationRequestModel,
+            String orderId)?
+        orderCancel,
     TResult? Function(User user)? userDetailsPick,
     TResult? Function(ProductDetails productDetails)? productDetailsPick,
+    TResult? Function(Promo promo)? promoCodePick,
     TResult? Function(User user)? addressPick,
     TResult? Function(Payment payment)? paymentOption,
     TResult? Function(PickUpDetails pickUpDetails)? pickupDetailsPick,
+    TResult? Function()? userNumber,
+    TResult? Function()? removeAllFieldData,
     TResult? Function()? promoCodeSuccess,
   }) {
     return orderPlacing?.call();
@@ -570,11 +696,18 @@ class _$OrderPlacingImpl implements OrderPlacing {
     TResult Function(AbandendOrderRequestModel abandendOrderRequestModel)?
         abandendOrder,
     TResult Function()? orderPlacing,
+    TResult Function()? getOrders,
+    TResult Function(OrderCancelationRequestModel orderCancelationRequestModel,
+            String orderId)?
+        orderCancel,
     TResult Function(User user)? userDetailsPick,
     TResult Function(ProductDetails productDetails)? productDetailsPick,
+    TResult Function(Promo promo)? promoCodePick,
     TResult Function(User user)? addressPick,
     TResult Function(Payment payment)? paymentOption,
     TResult Function(PickUpDetails pickUpDetails)? pickupDetailsPick,
+    TResult Function()? userNumber,
+    TResult Function()? removeAllFieldData,
     TResult Function()? promoCodeSuccess,
     required TResult orElse(),
   }) {
@@ -590,11 +723,16 @@ class _$OrderPlacingImpl implements OrderPlacing {
     required TResult Function(GetPromoCode value) getPromoCode,
     required TResult Function(AbandendOrder value) abandendOrder,
     required TResult Function(OrderPlacing value) orderPlacing,
+    required TResult Function(GetOrders value) getOrders,
+    required TResult Function(OrderCancel value) orderCancel,
     required TResult Function(UserDetailsPick value) userDetailsPick,
     required TResult Function(ProductDetailsPick value) productDetailsPick,
+    required TResult Function(PromoCodePick value) promoCodePick,
     required TResult Function(AddressPick value) addressPick,
     required TResult Function(PaymentOption value) paymentOption,
     required TResult Function(PickupDetailsPick value) pickupDetailsPick,
+    required TResult Function(UserNumber value) userNumber,
+    required TResult Function(RemoveAllFieldData value) removeAllFieldData,
     required TResult Function(PromoCodeSuccess value) promoCodeSuccess,
   }) {
     return orderPlacing(this);
@@ -606,11 +744,16 @@ class _$OrderPlacingImpl implements OrderPlacing {
     TResult? Function(GetPromoCode value)? getPromoCode,
     TResult? Function(AbandendOrder value)? abandendOrder,
     TResult? Function(OrderPlacing value)? orderPlacing,
+    TResult? Function(GetOrders value)? getOrders,
+    TResult? Function(OrderCancel value)? orderCancel,
     TResult? Function(UserDetailsPick value)? userDetailsPick,
     TResult? Function(ProductDetailsPick value)? productDetailsPick,
+    TResult? Function(PromoCodePick value)? promoCodePick,
     TResult? Function(AddressPick value)? addressPick,
     TResult? Function(PaymentOption value)? paymentOption,
     TResult? Function(PickupDetailsPick value)? pickupDetailsPick,
+    TResult? Function(UserNumber value)? userNumber,
+    TResult? Function(RemoveAllFieldData value)? removeAllFieldData,
     TResult? Function(PromoCodeSuccess value)? promoCodeSuccess,
   }) {
     return orderPlacing?.call(this);
@@ -622,11 +765,16 @@ class _$OrderPlacingImpl implements OrderPlacing {
     TResult Function(GetPromoCode value)? getPromoCode,
     TResult Function(AbandendOrder value)? abandendOrder,
     TResult Function(OrderPlacing value)? orderPlacing,
+    TResult Function(GetOrders value)? getOrders,
+    TResult Function(OrderCancel value)? orderCancel,
     TResult Function(UserDetailsPick value)? userDetailsPick,
     TResult Function(ProductDetailsPick value)? productDetailsPick,
+    TResult Function(PromoCodePick value)? promoCodePick,
     TResult Function(AddressPick value)? addressPick,
     TResult Function(PaymentOption value)? paymentOption,
     TResult Function(PickupDetailsPick value)? pickupDetailsPick,
+    TResult Function(UserNumber value)? userNumber,
+    TResult Function(RemoveAllFieldData value)? removeAllFieldData,
     TResult Function(PromoCodeSuccess value)? promoCodeSuccess,
     required TResult orElse(),
   }) {
@@ -639,6 +787,429 @@ class _$OrderPlacingImpl implements OrderPlacing {
 
 abstract class OrderPlacing implements PlaceOrderEvent {
   const factory OrderPlacing() = _$OrderPlacingImpl;
+}
+
+/// @nodoc
+abstract class _$$GetOrdersImplCopyWith<$Res> {
+  factory _$$GetOrdersImplCopyWith(
+          _$GetOrdersImpl value, $Res Function(_$GetOrdersImpl) then) =
+      __$$GetOrdersImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$GetOrdersImplCopyWithImpl<$Res>
+    extends _$PlaceOrderEventCopyWithImpl<$Res, _$GetOrdersImpl>
+    implements _$$GetOrdersImplCopyWith<$Res> {
+  __$$GetOrdersImplCopyWithImpl(
+      _$GetOrdersImpl _value, $Res Function(_$GetOrdersImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$GetOrdersImpl implements GetOrders {
+  const _$GetOrdersImpl();
+
+  @override
+  String toString() {
+    return 'PlaceOrderEvent.getOrders()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$GetOrdersImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(PromoCodeRequestModel promoCodeRequestModel)
+        getPromoCode,
+    required TResult Function(
+            AbandendOrderRequestModel abandendOrderRequestModel)
+        abandendOrder,
+    required TResult Function() orderPlacing,
+    required TResult Function() getOrders,
+    required TResult Function(
+            OrderCancelationRequestModel orderCancelationRequestModel,
+            String orderId)
+        orderCancel,
+    required TResult Function(User user) userDetailsPick,
+    required TResult Function(ProductDetails productDetails) productDetailsPick,
+    required TResult Function(Promo promo) promoCodePick,
+    required TResult Function(User user) addressPick,
+    required TResult Function(Payment payment) paymentOption,
+    required TResult Function(PickUpDetails pickUpDetails) pickupDetailsPick,
+    required TResult Function() userNumber,
+    required TResult Function() removeAllFieldData,
+    required TResult Function() promoCodeSuccess,
+  }) {
+    return getOrders();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(PromoCodeRequestModel promoCodeRequestModel)?
+        getPromoCode,
+    TResult? Function(AbandendOrderRequestModel abandendOrderRequestModel)?
+        abandendOrder,
+    TResult? Function()? orderPlacing,
+    TResult? Function()? getOrders,
+    TResult? Function(OrderCancelationRequestModel orderCancelationRequestModel,
+            String orderId)?
+        orderCancel,
+    TResult? Function(User user)? userDetailsPick,
+    TResult? Function(ProductDetails productDetails)? productDetailsPick,
+    TResult? Function(Promo promo)? promoCodePick,
+    TResult? Function(User user)? addressPick,
+    TResult? Function(Payment payment)? paymentOption,
+    TResult? Function(PickUpDetails pickUpDetails)? pickupDetailsPick,
+    TResult? Function()? userNumber,
+    TResult? Function()? removeAllFieldData,
+    TResult? Function()? promoCodeSuccess,
+  }) {
+    return getOrders?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(PromoCodeRequestModel promoCodeRequestModel)? getPromoCode,
+    TResult Function(AbandendOrderRequestModel abandendOrderRequestModel)?
+        abandendOrder,
+    TResult Function()? orderPlacing,
+    TResult Function()? getOrders,
+    TResult Function(OrderCancelationRequestModel orderCancelationRequestModel,
+            String orderId)?
+        orderCancel,
+    TResult Function(User user)? userDetailsPick,
+    TResult Function(ProductDetails productDetails)? productDetailsPick,
+    TResult Function(Promo promo)? promoCodePick,
+    TResult Function(User user)? addressPick,
+    TResult Function(Payment payment)? paymentOption,
+    TResult Function(PickUpDetails pickUpDetails)? pickupDetailsPick,
+    TResult Function()? userNumber,
+    TResult Function()? removeAllFieldData,
+    TResult Function()? promoCodeSuccess,
+    required TResult orElse(),
+  }) {
+    if (getOrders != null) {
+      return getOrders();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GetPromoCode value) getPromoCode,
+    required TResult Function(AbandendOrder value) abandendOrder,
+    required TResult Function(OrderPlacing value) orderPlacing,
+    required TResult Function(GetOrders value) getOrders,
+    required TResult Function(OrderCancel value) orderCancel,
+    required TResult Function(UserDetailsPick value) userDetailsPick,
+    required TResult Function(ProductDetailsPick value) productDetailsPick,
+    required TResult Function(PromoCodePick value) promoCodePick,
+    required TResult Function(AddressPick value) addressPick,
+    required TResult Function(PaymentOption value) paymentOption,
+    required TResult Function(PickupDetailsPick value) pickupDetailsPick,
+    required TResult Function(UserNumber value) userNumber,
+    required TResult Function(RemoveAllFieldData value) removeAllFieldData,
+    required TResult Function(PromoCodeSuccess value) promoCodeSuccess,
+  }) {
+    return getOrders(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetPromoCode value)? getPromoCode,
+    TResult? Function(AbandendOrder value)? abandendOrder,
+    TResult? Function(OrderPlacing value)? orderPlacing,
+    TResult? Function(GetOrders value)? getOrders,
+    TResult? Function(OrderCancel value)? orderCancel,
+    TResult? Function(UserDetailsPick value)? userDetailsPick,
+    TResult? Function(ProductDetailsPick value)? productDetailsPick,
+    TResult? Function(PromoCodePick value)? promoCodePick,
+    TResult? Function(AddressPick value)? addressPick,
+    TResult? Function(PaymentOption value)? paymentOption,
+    TResult? Function(PickupDetailsPick value)? pickupDetailsPick,
+    TResult? Function(UserNumber value)? userNumber,
+    TResult? Function(RemoveAllFieldData value)? removeAllFieldData,
+    TResult? Function(PromoCodeSuccess value)? promoCodeSuccess,
+  }) {
+    return getOrders?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetPromoCode value)? getPromoCode,
+    TResult Function(AbandendOrder value)? abandendOrder,
+    TResult Function(OrderPlacing value)? orderPlacing,
+    TResult Function(GetOrders value)? getOrders,
+    TResult Function(OrderCancel value)? orderCancel,
+    TResult Function(UserDetailsPick value)? userDetailsPick,
+    TResult Function(ProductDetailsPick value)? productDetailsPick,
+    TResult Function(PromoCodePick value)? promoCodePick,
+    TResult Function(AddressPick value)? addressPick,
+    TResult Function(PaymentOption value)? paymentOption,
+    TResult Function(PickupDetailsPick value)? pickupDetailsPick,
+    TResult Function(UserNumber value)? userNumber,
+    TResult Function(RemoveAllFieldData value)? removeAllFieldData,
+    TResult Function(PromoCodeSuccess value)? promoCodeSuccess,
+    required TResult orElse(),
+  }) {
+    if (getOrders != null) {
+      return getOrders(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GetOrders implements PlaceOrderEvent {
+  const factory GetOrders() = _$GetOrdersImpl;
+}
+
+/// @nodoc
+abstract class _$$OrderCancelImplCopyWith<$Res> {
+  factory _$$OrderCancelImplCopyWith(
+          _$OrderCancelImpl value, $Res Function(_$OrderCancelImpl) then) =
+      __$$OrderCancelImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call(
+      {OrderCancelationRequestModel orderCancelationRequestModel,
+      String orderId});
+}
+
+/// @nodoc
+class __$$OrderCancelImplCopyWithImpl<$Res>
+    extends _$PlaceOrderEventCopyWithImpl<$Res, _$OrderCancelImpl>
+    implements _$$OrderCancelImplCopyWith<$Res> {
+  __$$OrderCancelImplCopyWithImpl(
+      _$OrderCancelImpl _value, $Res Function(_$OrderCancelImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? orderCancelationRequestModel = null,
+    Object? orderId = null,
+  }) {
+    return _then(_$OrderCancelImpl(
+      orderCancelationRequestModel: null == orderCancelationRequestModel
+          ? _value.orderCancelationRequestModel
+          : orderCancelationRequestModel // ignore: cast_nullable_to_non_nullable
+              as OrderCancelationRequestModel,
+      orderId: null == orderId
+          ? _value.orderId
+          : orderId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$OrderCancelImpl implements OrderCancel {
+  const _$OrderCancelImpl(
+      {required this.orderCancelationRequestModel, required this.orderId});
+
+  @override
+  final OrderCancelationRequestModel orderCancelationRequestModel;
+  @override
+  final String orderId;
+
+  @override
+  String toString() {
+    return 'PlaceOrderEvent.orderCancel(orderCancelationRequestModel: $orderCancelationRequestModel, orderId: $orderId)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$OrderCancelImpl &&
+            (identical(other.orderCancelationRequestModel,
+                    orderCancelationRequestModel) ||
+                other.orderCancelationRequestModel ==
+                    orderCancelationRequestModel) &&
+            (identical(other.orderId, orderId) || other.orderId == orderId));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, orderCancelationRequestModel, orderId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$OrderCancelImplCopyWith<_$OrderCancelImpl> get copyWith =>
+      __$$OrderCancelImplCopyWithImpl<_$OrderCancelImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(PromoCodeRequestModel promoCodeRequestModel)
+        getPromoCode,
+    required TResult Function(
+            AbandendOrderRequestModel abandendOrderRequestModel)
+        abandendOrder,
+    required TResult Function() orderPlacing,
+    required TResult Function() getOrders,
+    required TResult Function(
+            OrderCancelationRequestModel orderCancelationRequestModel,
+            String orderId)
+        orderCancel,
+    required TResult Function(User user) userDetailsPick,
+    required TResult Function(ProductDetails productDetails) productDetailsPick,
+    required TResult Function(Promo promo) promoCodePick,
+    required TResult Function(User user) addressPick,
+    required TResult Function(Payment payment) paymentOption,
+    required TResult Function(PickUpDetails pickUpDetails) pickupDetailsPick,
+    required TResult Function() userNumber,
+    required TResult Function() removeAllFieldData,
+    required TResult Function() promoCodeSuccess,
+  }) {
+    return orderCancel(orderCancelationRequestModel, orderId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(PromoCodeRequestModel promoCodeRequestModel)?
+        getPromoCode,
+    TResult? Function(AbandendOrderRequestModel abandendOrderRequestModel)?
+        abandendOrder,
+    TResult? Function()? orderPlacing,
+    TResult? Function()? getOrders,
+    TResult? Function(OrderCancelationRequestModel orderCancelationRequestModel,
+            String orderId)?
+        orderCancel,
+    TResult? Function(User user)? userDetailsPick,
+    TResult? Function(ProductDetails productDetails)? productDetailsPick,
+    TResult? Function(Promo promo)? promoCodePick,
+    TResult? Function(User user)? addressPick,
+    TResult? Function(Payment payment)? paymentOption,
+    TResult? Function(PickUpDetails pickUpDetails)? pickupDetailsPick,
+    TResult? Function()? userNumber,
+    TResult? Function()? removeAllFieldData,
+    TResult? Function()? promoCodeSuccess,
+  }) {
+    return orderCancel?.call(orderCancelationRequestModel, orderId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(PromoCodeRequestModel promoCodeRequestModel)? getPromoCode,
+    TResult Function(AbandendOrderRequestModel abandendOrderRequestModel)?
+        abandendOrder,
+    TResult Function()? orderPlacing,
+    TResult Function()? getOrders,
+    TResult Function(OrderCancelationRequestModel orderCancelationRequestModel,
+            String orderId)?
+        orderCancel,
+    TResult Function(User user)? userDetailsPick,
+    TResult Function(ProductDetails productDetails)? productDetailsPick,
+    TResult Function(Promo promo)? promoCodePick,
+    TResult Function(User user)? addressPick,
+    TResult Function(Payment payment)? paymentOption,
+    TResult Function(PickUpDetails pickUpDetails)? pickupDetailsPick,
+    TResult Function()? userNumber,
+    TResult Function()? removeAllFieldData,
+    TResult Function()? promoCodeSuccess,
+    required TResult orElse(),
+  }) {
+    if (orderCancel != null) {
+      return orderCancel(orderCancelationRequestModel, orderId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GetPromoCode value) getPromoCode,
+    required TResult Function(AbandendOrder value) abandendOrder,
+    required TResult Function(OrderPlacing value) orderPlacing,
+    required TResult Function(GetOrders value) getOrders,
+    required TResult Function(OrderCancel value) orderCancel,
+    required TResult Function(UserDetailsPick value) userDetailsPick,
+    required TResult Function(ProductDetailsPick value) productDetailsPick,
+    required TResult Function(PromoCodePick value) promoCodePick,
+    required TResult Function(AddressPick value) addressPick,
+    required TResult Function(PaymentOption value) paymentOption,
+    required TResult Function(PickupDetailsPick value) pickupDetailsPick,
+    required TResult Function(UserNumber value) userNumber,
+    required TResult Function(RemoveAllFieldData value) removeAllFieldData,
+    required TResult Function(PromoCodeSuccess value) promoCodeSuccess,
+  }) {
+    return orderCancel(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetPromoCode value)? getPromoCode,
+    TResult? Function(AbandendOrder value)? abandendOrder,
+    TResult? Function(OrderPlacing value)? orderPlacing,
+    TResult? Function(GetOrders value)? getOrders,
+    TResult? Function(OrderCancel value)? orderCancel,
+    TResult? Function(UserDetailsPick value)? userDetailsPick,
+    TResult? Function(ProductDetailsPick value)? productDetailsPick,
+    TResult? Function(PromoCodePick value)? promoCodePick,
+    TResult? Function(AddressPick value)? addressPick,
+    TResult? Function(PaymentOption value)? paymentOption,
+    TResult? Function(PickupDetailsPick value)? pickupDetailsPick,
+    TResult? Function(UserNumber value)? userNumber,
+    TResult? Function(RemoveAllFieldData value)? removeAllFieldData,
+    TResult? Function(PromoCodeSuccess value)? promoCodeSuccess,
+  }) {
+    return orderCancel?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetPromoCode value)? getPromoCode,
+    TResult Function(AbandendOrder value)? abandendOrder,
+    TResult Function(OrderPlacing value)? orderPlacing,
+    TResult Function(GetOrders value)? getOrders,
+    TResult Function(OrderCancel value)? orderCancel,
+    TResult Function(UserDetailsPick value)? userDetailsPick,
+    TResult Function(ProductDetailsPick value)? productDetailsPick,
+    TResult Function(PromoCodePick value)? promoCodePick,
+    TResult Function(AddressPick value)? addressPick,
+    TResult Function(PaymentOption value)? paymentOption,
+    TResult Function(PickupDetailsPick value)? pickupDetailsPick,
+    TResult Function(UserNumber value)? userNumber,
+    TResult Function(RemoveAllFieldData value)? removeAllFieldData,
+    TResult Function(PromoCodeSuccess value)? promoCodeSuccess,
+    required TResult orElse(),
+  }) {
+    if (orderCancel != null) {
+      return orderCancel(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class OrderCancel implements PlaceOrderEvent {
+  const factory OrderCancel(
+      {required final OrderCancelationRequestModel orderCancelationRequestModel,
+      required final String orderId}) = _$OrderCancelImpl;
+
+  OrderCancelationRequestModel get orderCancelationRequestModel;
+  String get orderId;
+  @JsonKey(ignore: true)
+  _$$OrderCancelImplCopyWith<_$OrderCancelImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -712,11 +1283,19 @@ class _$UserDetailsPickImpl implements UserDetailsPick {
             AbandendOrderRequestModel abandendOrderRequestModel)
         abandendOrder,
     required TResult Function() orderPlacing,
+    required TResult Function() getOrders,
+    required TResult Function(
+            OrderCancelationRequestModel orderCancelationRequestModel,
+            String orderId)
+        orderCancel,
     required TResult Function(User user) userDetailsPick,
     required TResult Function(ProductDetails productDetails) productDetailsPick,
+    required TResult Function(Promo promo) promoCodePick,
     required TResult Function(User user) addressPick,
     required TResult Function(Payment payment) paymentOption,
     required TResult Function(PickUpDetails pickUpDetails) pickupDetailsPick,
+    required TResult Function() userNumber,
+    required TResult Function() removeAllFieldData,
     required TResult Function() promoCodeSuccess,
   }) {
     return userDetailsPick(user);
@@ -730,11 +1309,18 @@ class _$UserDetailsPickImpl implements UserDetailsPick {
     TResult? Function(AbandendOrderRequestModel abandendOrderRequestModel)?
         abandendOrder,
     TResult? Function()? orderPlacing,
+    TResult? Function()? getOrders,
+    TResult? Function(OrderCancelationRequestModel orderCancelationRequestModel,
+            String orderId)?
+        orderCancel,
     TResult? Function(User user)? userDetailsPick,
     TResult? Function(ProductDetails productDetails)? productDetailsPick,
+    TResult? Function(Promo promo)? promoCodePick,
     TResult? Function(User user)? addressPick,
     TResult? Function(Payment payment)? paymentOption,
     TResult? Function(PickUpDetails pickUpDetails)? pickupDetailsPick,
+    TResult? Function()? userNumber,
+    TResult? Function()? removeAllFieldData,
     TResult? Function()? promoCodeSuccess,
   }) {
     return userDetailsPick?.call(user);
@@ -747,11 +1333,18 @@ class _$UserDetailsPickImpl implements UserDetailsPick {
     TResult Function(AbandendOrderRequestModel abandendOrderRequestModel)?
         abandendOrder,
     TResult Function()? orderPlacing,
+    TResult Function()? getOrders,
+    TResult Function(OrderCancelationRequestModel orderCancelationRequestModel,
+            String orderId)?
+        orderCancel,
     TResult Function(User user)? userDetailsPick,
     TResult Function(ProductDetails productDetails)? productDetailsPick,
+    TResult Function(Promo promo)? promoCodePick,
     TResult Function(User user)? addressPick,
     TResult Function(Payment payment)? paymentOption,
     TResult Function(PickUpDetails pickUpDetails)? pickupDetailsPick,
+    TResult Function()? userNumber,
+    TResult Function()? removeAllFieldData,
     TResult Function()? promoCodeSuccess,
     required TResult orElse(),
   }) {
@@ -767,11 +1360,16 @@ class _$UserDetailsPickImpl implements UserDetailsPick {
     required TResult Function(GetPromoCode value) getPromoCode,
     required TResult Function(AbandendOrder value) abandendOrder,
     required TResult Function(OrderPlacing value) orderPlacing,
+    required TResult Function(GetOrders value) getOrders,
+    required TResult Function(OrderCancel value) orderCancel,
     required TResult Function(UserDetailsPick value) userDetailsPick,
     required TResult Function(ProductDetailsPick value) productDetailsPick,
+    required TResult Function(PromoCodePick value) promoCodePick,
     required TResult Function(AddressPick value) addressPick,
     required TResult Function(PaymentOption value) paymentOption,
     required TResult Function(PickupDetailsPick value) pickupDetailsPick,
+    required TResult Function(UserNumber value) userNumber,
+    required TResult Function(RemoveAllFieldData value) removeAllFieldData,
     required TResult Function(PromoCodeSuccess value) promoCodeSuccess,
   }) {
     return userDetailsPick(this);
@@ -783,11 +1381,16 @@ class _$UserDetailsPickImpl implements UserDetailsPick {
     TResult? Function(GetPromoCode value)? getPromoCode,
     TResult? Function(AbandendOrder value)? abandendOrder,
     TResult? Function(OrderPlacing value)? orderPlacing,
+    TResult? Function(GetOrders value)? getOrders,
+    TResult? Function(OrderCancel value)? orderCancel,
     TResult? Function(UserDetailsPick value)? userDetailsPick,
     TResult? Function(ProductDetailsPick value)? productDetailsPick,
+    TResult? Function(PromoCodePick value)? promoCodePick,
     TResult? Function(AddressPick value)? addressPick,
     TResult? Function(PaymentOption value)? paymentOption,
     TResult? Function(PickupDetailsPick value)? pickupDetailsPick,
+    TResult? Function(UserNumber value)? userNumber,
+    TResult? Function(RemoveAllFieldData value)? removeAllFieldData,
     TResult? Function(PromoCodeSuccess value)? promoCodeSuccess,
   }) {
     return userDetailsPick?.call(this);
@@ -799,11 +1402,16 @@ class _$UserDetailsPickImpl implements UserDetailsPick {
     TResult Function(GetPromoCode value)? getPromoCode,
     TResult Function(AbandendOrder value)? abandendOrder,
     TResult Function(OrderPlacing value)? orderPlacing,
+    TResult Function(GetOrders value)? getOrders,
+    TResult Function(OrderCancel value)? orderCancel,
     TResult Function(UserDetailsPick value)? userDetailsPick,
     TResult Function(ProductDetailsPick value)? productDetailsPick,
+    TResult Function(PromoCodePick value)? promoCodePick,
     TResult Function(AddressPick value)? addressPick,
     TResult Function(PaymentOption value)? paymentOption,
     TResult Function(PickupDetailsPick value)? pickupDetailsPick,
+    TResult Function(UserNumber value)? userNumber,
+    TResult Function(RemoveAllFieldData value)? removeAllFieldData,
     TResult Function(PromoCodeSuccess value)? promoCodeSuccess,
     required TResult orElse(),
   }) {
@@ -896,11 +1504,19 @@ class _$ProductDetailsPickImpl implements ProductDetailsPick {
             AbandendOrderRequestModel abandendOrderRequestModel)
         abandendOrder,
     required TResult Function() orderPlacing,
+    required TResult Function() getOrders,
+    required TResult Function(
+            OrderCancelationRequestModel orderCancelationRequestModel,
+            String orderId)
+        orderCancel,
     required TResult Function(User user) userDetailsPick,
     required TResult Function(ProductDetails productDetails) productDetailsPick,
+    required TResult Function(Promo promo) promoCodePick,
     required TResult Function(User user) addressPick,
     required TResult Function(Payment payment) paymentOption,
     required TResult Function(PickUpDetails pickUpDetails) pickupDetailsPick,
+    required TResult Function() userNumber,
+    required TResult Function() removeAllFieldData,
     required TResult Function() promoCodeSuccess,
   }) {
     return productDetailsPick(productDetails);
@@ -914,11 +1530,18 @@ class _$ProductDetailsPickImpl implements ProductDetailsPick {
     TResult? Function(AbandendOrderRequestModel abandendOrderRequestModel)?
         abandendOrder,
     TResult? Function()? orderPlacing,
+    TResult? Function()? getOrders,
+    TResult? Function(OrderCancelationRequestModel orderCancelationRequestModel,
+            String orderId)?
+        orderCancel,
     TResult? Function(User user)? userDetailsPick,
     TResult? Function(ProductDetails productDetails)? productDetailsPick,
+    TResult? Function(Promo promo)? promoCodePick,
     TResult? Function(User user)? addressPick,
     TResult? Function(Payment payment)? paymentOption,
     TResult? Function(PickUpDetails pickUpDetails)? pickupDetailsPick,
+    TResult? Function()? userNumber,
+    TResult? Function()? removeAllFieldData,
     TResult? Function()? promoCodeSuccess,
   }) {
     return productDetailsPick?.call(productDetails);
@@ -931,11 +1554,18 @@ class _$ProductDetailsPickImpl implements ProductDetailsPick {
     TResult Function(AbandendOrderRequestModel abandendOrderRequestModel)?
         abandendOrder,
     TResult Function()? orderPlacing,
+    TResult Function()? getOrders,
+    TResult Function(OrderCancelationRequestModel orderCancelationRequestModel,
+            String orderId)?
+        orderCancel,
     TResult Function(User user)? userDetailsPick,
     TResult Function(ProductDetails productDetails)? productDetailsPick,
+    TResult Function(Promo promo)? promoCodePick,
     TResult Function(User user)? addressPick,
     TResult Function(Payment payment)? paymentOption,
     TResult Function(PickUpDetails pickUpDetails)? pickupDetailsPick,
+    TResult Function()? userNumber,
+    TResult Function()? removeAllFieldData,
     TResult Function()? promoCodeSuccess,
     required TResult orElse(),
   }) {
@@ -951,11 +1581,16 @@ class _$ProductDetailsPickImpl implements ProductDetailsPick {
     required TResult Function(GetPromoCode value) getPromoCode,
     required TResult Function(AbandendOrder value) abandendOrder,
     required TResult Function(OrderPlacing value) orderPlacing,
+    required TResult Function(GetOrders value) getOrders,
+    required TResult Function(OrderCancel value) orderCancel,
     required TResult Function(UserDetailsPick value) userDetailsPick,
     required TResult Function(ProductDetailsPick value) productDetailsPick,
+    required TResult Function(PromoCodePick value) promoCodePick,
     required TResult Function(AddressPick value) addressPick,
     required TResult Function(PaymentOption value) paymentOption,
     required TResult Function(PickupDetailsPick value) pickupDetailsPick,
+    required TResult Function(UserNumber value) userNumber,
+    required TResult Function(RemoveAllFieldData value) removeAllFieldData,
     required TResult Function(PromoCodeSuccess value) promoCodeSuccess,
   }) {
     return productDetailsPick(this);
@@ -967,11 +1602,16 @@ class _$ProductDetailsPickImpl implements ProductDetailsPick {
     TResult? Function(GetPromoCode value)? getPromoCode,
     TResult? Function(AbandendOrder value)? abandendOrder,
     TResult? Function(OrderPlacing value)? orderPlacing,
+    TResult? Function(GetOrders value)? getOrders,
+    TResult? Function(OrderCancel value)? orderCancel,
     TResult? Function(UserDetailsPick value)? userDetailsPick,
     TResult? Function(ProductDetailsPick value)? productDetailsPick,
+    TResult? Function(PromoCodePick value)? promoCodePick,
     TResult? Function(AddressPick value)? addressPick,
     TResult? Function(PaymentOption value)? paymentOption,
     TResult? Function(PickupDetailsPick value)? pickupDetailsPick,
+    TResult? Function(UserNumber value)? userNumber,
+    TResult? Function(RemoveAllFieldData value)? removeAllFieldData,
     TResult? Function(PromoCodeSuccess value)? promoCodeSuccess,
   }) {
     return productDetailsPick?.call(this);
@@ -983,11 +1623,16 @@ class _$ProductDetailsPickImpl implements ProductDetailsPick {
     TResult Function(GetPromoCode value)? getPromoCode,
     TResult Function(AbandendOrder value)? abandendOrder,
     TResult Function(OrderPlacing value)? orderPlacing,
+    TResult Function(GetOrders value)? getOrders,
+    TResult Function(OrderCancel value)? orderCancel,
     TResult Function(UserDetailsPick value)? userDetailsPick,
     TResult Function(ProductDetailsPick value)? productDetailsPick,
+    TResult Function(PromoCodePick value)? promoCodePick,
     TResult Function(AddressPick value)? addressPick,
     TResult Function(PaymentOption value)? paymentOption,
     TResult Function(PickupDetailsPick value)? pickupDetailsPick,
+    TResult Function(UserNumber value)? userNumber,
+    TResult Function(RemoveAllFieldData value)? removeAllFieldData,
     TResult Function(PromoCodeSuccess value)? promoCodeSuccess,
     required TResult orElse(),
   }) {
@@ -1006,6 +1651,225 @@ abstract class ProductDetailsPick implements PlaceOrderEvent {
   ProductDetails get productDetails;
   @JsonKey(ignore: true)
   _$$ProductDetailsPickImplCopyWith<_$ProductDetailsPickImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$PromoCodePickImplCopyWith<$Res> {
+  factory _$$PromoCodePickImplCopyWith(
+          _$PromoCodePickImpl value, $Res Function(_$PromoCodePickImpl) then) =
+      __$$PromoCodePickImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Promo promo});
+}
+
+/// @nodoc
+class __$$PromoCodePickImplCopyWithImpl<$Res>
+    extends _$PlaceOrderEventCopyWithImpl<$Res, _$PromoCodePickImpl>
+    implements _$$PromoCodePickImplCopyWith<$Res> {
+  __$$PromoCodePickImplCopyWithImpl(
+      _$PromoCodePickImpl _value, $Res Function(_$PromoCodePickImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? promo = null,
+  }) {
+    return _then(_$PromoCodePickImpl(
+      promo: null == promo
+          ? _value.promo
+          : promo // ignore: cast_nullable_to_non_nullable
+              as Promo,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$PromoCodePickImpl implements PromoCodePick {
+  const _$PromoCodePickImpl({required this.promo});
+
+  @override
+  final Promo promo;
+
+  @override
+  String toString() {
+    return 'PlaceOrderEvent.promoCodePick(promo: $promo)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$PromoCodePickImpl &&
+            (identical(other.promo, promo) || other.promo == promo));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, promo);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$PromoCodePickImplCopyWith<_$PromoCodePickImpl> get copyWith =>
+      __$$PromoCodePickImplCopyWithImpl<_$PromoCodePickImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(PromoCodeRequestModel promoCodeRequestModel)
+        getPromoCode,
+    required TResult Function(
+            AbandendOrderRequestModel abandendOrderRequestModel)
+        abandendOrder,
+    required TResult Function() orderPlacing,
+    required TResult Function() getOrders,
+    required TResult Function(
+            OrderCancelationRequestModel orderCancelationRequestModel,
+            String orderId)
+        orderCancel,
+    required TResult Function(User user) userDetailsPick,
+    required TResult Function(ProductDetails productDetails) productDetailsPick,
+    required TResult Function(Promo promo) promoCodePick,
+    required TResult Function(User user) addressPick,
+    required TResult Function(Payment payment) paymentOption,
+    required TResult Function(PickUpDetails pickUpDetails) pickupDetailsPick,
+    required TResult Function() userNumber,
+    required TResult Function() removeAllFieldData,
+    required TResult Function() promoCodeSuccess,
+  }) {
+    return promoCodePick(promo);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(PromoCodeRequestModel promoCodeRequestModel)?
+        getPromoCode,
+    TResult? Function(AbandendOrderRequestModel abandendOrderRequestModel)?
+        abandendOrder,
+    TResult? Function()? orderPlacing,
+    TResult? Function()? getOrders,
+    TResult? Function(OrderCancelationRequestModel orderCancelationRequestModel,
+            String orderId)?
+        orderCancel,
+    TResult? Function(User user)? userDetailsPick,
+    TResult? Function(ProductDetails productDetails)? productDetailsPick,
+    TResult? Function(Promo promo)? promoCodePick,
+    TResult? Function(User user)? addressPick,
+    TResult? Function(Payment payment)? paymentOption,
+    TResult? Function(PickUpDetails pickUpDetails)? pickupDetailsPick,
+    TResult? Function()? userNumber,
+    TResult? Function()? removeAllFieldData,
+    TResult? Function()? promoCodeSuccess,
+  }) {
+    return promoCodePick?.call(promo);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(PromoCodeRequestModel promoCodeRequestModel)? getPromoCode,
+    TResult Function(AbandendOrderRequestModel abandendOrderRequestModel)?
+        abandendOrder,
+    TResult Function()? orderPlacing,
+    TResult Function()? getOrders,
+    TResult Function(OrderCancelationRequestModel orderCancelationRequestModel,
+            String orderId)?
+        orderCancel,
+    TResult Function(User user)? userDetailsPick,
+    TResult Function(ProductDetails productDetails)? productDetailsPick,
+    TResult Function(Promo promo)? promoCodePick,
+    TResult Function(User user)? addressPick,
+    TResult Function(Payment payment)? paymentOption,
+    TResult Function(PickUpDetails pickUpDetails)? pickupDetailsPick,
+    TResult Function()? userNumber,
+    TResult Function()? removeAllFieldData,
+    TResult Function()? promoCodeSuccess,
+    required TResult orElse(),
+  }) {
+    if (promoCodePick != null) {
+      return promoCodePick(promo);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GetPromoCode value) getPromoCode,
+    required TResult Function(AbandendOrder value) abandendOrder,
+    required TResult Function(OrderPlacing value) orderPlacing,
+    required TResult Function(GetOrders value) getOrders,
+    required TResult Function(OrderCancel value) orderCancel,
+    required TResult Function(UserDetailsPick value) userDetailsPick,
+    required TResult Function(ProductDetailsPick value) productDetailsPick,
+    required TResult Function(PromoCodePick value) promoCodePick,
+    required TResult Function(AddressPick value) addressPick,
+    required TResult Function(PaymentOption value) paymentOption,
+    required TResult Function(PickupDetailsPick value) pickupDetailsPick,
+    required TResult Function(UserNumber value) userNumber,
+    required TResult Function(RemoveAllFieldData value) removeAllFieldData,
+    required TResult Function(PromoCodeSuccess value) promoCodeSuccess,
+  }) {
+    return promoCodePick(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetPromoCode value)? getPromoCode,
+    TResult? Function(AbandendOrder value)? abandendOrder,
+    TResult? Function(OrderPlacing value)? orderPlacing,
+    TResult? Function(GetOrders value)? getOrders,
+    TResult? Function(OrderCancel value)? orderCancel,
+    TResult? Function(UserDetailsPick value)? userDetailsPick,
+    TResult? Function(ProductDetailsPick value)? productDetailsPick,
+    TResult? Function(PromoCodePick value)? promoCodePick,
+    TResult? Function(AddressPick value)? addressPick,
+    TResult? Function(PaymentOption value)? paymentOption,
+    TResult? Function(PickupDetailsPick value)? pickupDetailsPick,
+    TResult? Function(UserNumber value)? userNumber,
+    TResult? Function(RemoveAllFieldData value)? removeAllFieldData,
+    TResult? Function(PromoCodeSuccess value)? promoCodeSuccess,
+  }) {
+    return promoCodePick?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetPromoCode value)? getPromoCode,
+    TResult Function(AbandendOrder value)? abandendOrder,
+    TResult Function(OrderPlacing value)? orderPlacing,
+    TResult Function(GetOrders value)? getOrders,
+    TResult Function(OrderCancel value)? orderCancel,
+    TResult Function(UserDetailsPick value)? userDetailsPick,
+    TResult Function(ProductDetailsPick value)? productDetailsPick,
+    TResult Function(PromoCodePick value)? promoCodePick,
+    TResult Function(AddressPick value)? addressPick,
+    TResult Function(PaymentOption value)? paymentOption,
+    TResult Function(PickupDetailsPick value)? pickupDetailsPick,
+    TResult Function(UserNumber value)? userNumber,
+    TResult Function(RemoveAllFieldData value)? removeAllFieldData,
+    TResult Function(PromoCodeSuccess value)? promoCodeSuccess,
+    required TResult orElse(),
+  }) {
+    if (promoCodePick != null) {
+      return promoCodePick(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class PromoCodePick implements PlaceOrderEvent {
+  const factory PromoCodePick({required final Promo promo}) =
+      _$PromoCodePickImpl;
+
+  Promo get promo;
+  @JsonKey(ignore: true)
+  _$$PromoCodePickImplCopyWith<_$PromoCodePickImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1079,11 +1943,19 @@ class _$AddressPickImpl implements AddressPick {
             AbandendOrderRequestModel abandendOrderRequestModel)
         abandendOrder,
     required TResult Function() orderPlacing,
+    required TResult Function() getOrders,
+    required TResult Function(
+            OrderCancelationRequestModel orderCancelationRequestModel,
+            String orderId)
+        orderCancel,
     required TResult Function(User user) userDetailsPick,
     required TResult Function(ProductDetails productDetails) productDetailsPick,
+    required TResult Function(Promo promo) promoCodePick,
     required TResult Function(User user) addressPick,
     required TResult Function(Payment payment) paymentOption,
     required TResult Function(PickUpDetails pickUpDetails) pickupDetailsPick,
+    required TResult Function() userNumber,
+    required TResult Function() removeAllFieldData,
     required TResult Function() promoCodeSuccess,
   }) {
     return addressPick(user);
@@ -1097,11 +1969,18 @@ class _$AddressPickImpl implements AddressPick {
     TResult? Function(AbandendOrderRequestModel abandendOrderRequestModel)?
         abandendOrder,
     TResult? Function()? orderPlacing,
+    TResult? Function()? getOrders,
+    TResult? Function(OrderCancelationRequestModel orderCancelationRequestModel,
+            String orderId)?
+        orderCancel,
     TResult? Function(User user)? userDetailsPick,
     TResult? Function(ProductDetails productDetails)? productDetailsPick,
+    TResult? Function(Promo promo)? promoCodePick,
     TResult? Function(User user)? addressPick,
     TResult? Function(Payment payment)? paymentOption,
     TResult? Function(PickUpDetails pickUpDetails)? pickupDetailsPick,
+    TResult? Function()? userNumber,
+    TResult? Function()? removeAllFieldData,
     TResult? Function()? promoCodeSuccess,
   }) {
     return addressPick?.call(user);
@@ -1114,11 +1993,18 @@ class _$AddressPickImpl implements AddressPick {
     TResult Function(AbandendOrderRequestModel abandendOrderRequestModel)?
         abandendOrder,
     TResult Function()? orderPlacing,
+    TResult Function()? getOrders,
+    TResult Function(OrderCancelationRequestModel orderCancelationRequestModel,
+            String orderId)?
+        orderCancel,
     TResult Function(User user)? userDetailsPick,
     TResult Function(ProductDetails productDetails)? productDetailsPick,
+    TResult Function(Promo promo)? promoCodePick,
     TResult Function(User user)? addressPick,
     TResult Function(Payment payment)? paymentOption,
     TResult Function(PickUpDetails pickUpDetails)? pickupDetailsPick,
+    TResult Function()? userNumber,
+    TResult Function()? removeAllFieldData,
     TResult Function()? promoCodeSuccess,
     required TResult orElse(),
   }) {
@@ -1134,11 +2020,16 @@ class _$AddressPickImpl implements AddressPick {
     required TResult Function(GetPromoCode value) getPromoCode,
     required TResult Function(AbandendOrder value) abandendOrder,
     required TResult Function(OrderPlacing value) orderPlacing,
+    required TResult Function(GetOrders value) getOrders,
+    required TResult Function(OrderCancel value) orderCancel,
     required TResult Function(UserDetailsPick value) userDetailsPick,
     required TResult Function(ProductDetailsPick value) productDetailsPick,
+    required TResult Function(PromoCodePick value) promoCodePick,
     required TResult Function(AddressPick value) addressPick,
     required TResult Function(PaymentOption value) paymentOption,
     required TResult Function(PickupDetailsPick value) pickupDetailsPick,
+    required TResult Function(UserNumber value) userNumber,
+    required TResult Function(RemoveAllFieldData value) removeAllFieldData,
     required TResult Function(PromoCodeSuccess value) promoCodeSuccess,
   }) {
     return addressPick(this);
@@ -1150,11 +2041,16 @@ class _$AddressPickImpl implements AddressPick {
     TResult? Function(GetPromoCode value)? getPromoCode,
     TResult? Function(AbandendOrder value)? abandendOrder,
     TResult? Function(OrderPlacing value)? orderPlacing,
+    TResult? Function(GetOrders value)? getOrders,
+    TResult? Function(OrderCancel value)? orderCancel,
     TResult? Function(UserDetailsPick value)? userDetailsPick,
     TResult? Function(ProductDetailsPick value)? productDetailsPick,
+    TResult? Function(PromoCodePick value)? promoCodePick,
     TResult? Function(AddressPick value)? addressPick,
     TResult? Function(PaymentOption value)? paymentOption,
     TResult? Function(PickupDetailsPick value)? pickupDetailsPick,
+    TResult? Function(UserNumber value)? userNumber,
+    TResult? Function(RemoveAllFieldData value)? removeAllFieldData,
     TResult? Function(PromoCodeSuccess value)? promoCodeSuccess,
   }) {
     return addressPick?.call(this);
@@ -1166,11 +2062,16 @@ class _$AddressPickImpl implements AddressPick {
     TResult Function(GetPromoCode value)? getPromoCode,
     TResult Function(AbandendOrder value)? abandendOrder,
     TResult Function(OrderPlacing value)? orderPlacing,
+    TResult Function(GetOrders value)? getOrders,
+    TResult Function(OrderCancel value)? orderCancel,
     TResult Function(UserDetailsPick value)? userDetailsPick,
     TResult Function(ProductDetailsPick value)? productDetailsPick,
+    TResult Function(PromoCodePick value)? promoCodePick,
     TResult Function(AddressPick value)? addressPick,
     TResult Function(PaymentOption value)? paymentOption,
     TResult Function(PickupDetailsPick value)? pickupDetailsPick,
+    TResult Function(UserNumber value)? userNumber,
+    TResult Function(RemoveAllFieldData value)? removeAllFieldData,
     TResult Function(PromoCodeSuccess value)? promoCodeSuccess,
     required TResult orElse(),
   }) {
@@ -1260,11 +2161,19 @@ class _$PaymentOptionImpl implements PaymentOption {
             AbandendOrderRequestModel abandendOrderRequestModel)
         abandendOrder,
     required TResult Function() orderPlacing,
+    required TResult Function() getOrders,
+    required TResult Function(
+            OrderCancelationRequestModel orderCancelationRequestModel,
+            String orderId)
+        orderCancel,
     required TResult Function(User user) userDetailsPick,
     required TResult Function(ProductDetails productDetails) productDetailsPick,
+    required TResult Function(Promo promo) promoCodePick,
     required TResult Function(User user) addressPick,
     required TResult Function(Payment payment) paymentOption,
     required TResult Function(PickUpDetails pickUpDetails) pickupDetailsPick,
+    required TResult Function() userNumber,
+    required TResult Function() removeAllFieldData,
     required TResult Function() promoCodeSuccess,
   }) {
     return paymentOption(payment);
@@ -1278,11 +2187,18 @@ class _$PaymentOptionImpl implements PaymentOption {
     TResult? Function(AbandendOrderRequestModel abandendOrderRequestModel)?
         abandendOrder,
     TResult? Function()? orderPlacing,
+    TResult? Function()? getOrders,
+    TResult? Function(OrderCancelationRequestModel orderCancelationRequestModel,
+            String orderId)?
+        orderCancel,
     TResult? Function(User user)? userDetailsPick,
     TResult? Function(ProductDetails productDetails)? productDetailsPick,
+    TResult? Function(Promo promo)? promoCodePick,
     TResult? Function(User user)? addressPick,
     TResult? Function(Payment payment)? paymentOption,
     TResult? Function(PickUpDetails pickUpDetails)? pickupDetailsPick,
+    TResult? Function()? userNumber,
+    TResult? Function()? removeAllFieldData,
     TResult? Function()? promoCodeSuccess,
   }) {
     return paymentOption?.call(payment);
@@ -1295,11 +2211,18 @@ class _$PaymentOptionImpl implements PaymentOption {
     TResult Function(AbandendOrderRequestModel abandendOrderRequestModel)?
         abandendOrder,
     TResult Function()? orderPlacing,
+    TResult Function()? getOrders,
+    TResult Function(OrderCancelationRequestModel orderCancelationRequestModel,
+            String orderId)?
+        orderCancel,
     TResult Function(User user)? userDetailsPick,
     TResult Function(ProductDetails productDetails)? productDetailsPick,
+    TResult Function(Promo promo)? promoCodePick,
     TResult Function(User user)? addressPick,
     TResult Function(Payment payment)? paymentOption,
     TResult Function(PickUpDetails pickUpDetails)? pickupDetailsPick,
+    TResult Function()? userNumber,
+    TResult Function()? removeAllFieldData,
     TResult Function()? promoCodeSuccess,
     required TResult orElse(),
   }) {
@@ -1315,11 +2238,16 @@ class _$PaymentOptionImpl implements PaymentOption {
     required TResult Function(GetPromoCode value) getPromoCode,
     required TResult Function(AbandendOrder value) abandendOrder,
     required TResult Function(OrderPlacing value) orderPlacing,
+    required TResult Function(GetOrders value) getOrders,
+    required TResult Function(OrderCancel value) orderCancel,
     required TResult Function(UserDetailsPick value) userDetailsPick,
     required TResult Function(ProductDetailsPick value) productDetailsPick,
+    required TResult Function(PromoCodePick value) promoCodePick,
     required TResult Function(AddressPick value) addressPick,
     required TResult Function(PaymentOption value) paymentOption,
     required TResult Function(PickupDetailsPick value) pickupDetailsPick,
+    required TResult Function(UserNumber value) userNumber,
+    required TResult Function(RemoveAllFieldData value) removeAllFieldData,
     required TResult Function(PromoCodeSuccess value) promoCodeSuccess,
   }) {
     return paymentOption(this);
@@ -1331,11 +2259,16 @@ class _$PaymentOptionImpl implements PaymentOption {
     TResult? Function(GetPromoCode value)? getPromoCode,
     TResult? Function(AbandendOrder value)? abandendOrder,
     TResult? Function(OrderPlacing value)? orderPlacing,
+    TResult? Function(GetOrders value)? getOrders,
+    TResult? Function(OrderCancel value)? orderCancel,
     TResult? Function(UserDetailsPick value)? userDetailsPick,
     TResult? Function(ProductDetailsPick value)? productDetailsPick,
+    TResult? Function(PromoCodePick value)? promoCodePick,
     TResult? Function(AddressPick value)? addressPick,
     TResult? Function(PaymentOption value)? paymentOption,
     TResult? Function(PickupDetailsPick value)? pickupDetailsPick,
+    TResult? Function(UserNumber value)? userNumber,
+    TResult? Function(RemoveAllFieldData value)? removeAllFieldData,
     TResult? Function(PromoCodeSuccess value)? promoCodeSuccess,
   }) {
     return paymentOption?.call(this);
@@ -1347,11 +2280,16 @@ class _$PaymentOptionImpl implements PaymentOption {
     TResult Function(GetPromoCode value)? getPromoCode,
     TResult Function(AbandendOrder value)? abandendOrder,
     TResult Function(OrderPlacing value)? orderPlacing,
+    TResult Function(GetOrders value)? getOrders,
+    TResult Function(OrderCancel value)? orderCancel,
     TResult Function(UserDetailsPick value)? userDetailsPick,
     TResult Function(ProductDetailsPick value)? productDetailsPick,
+    TResult Function(PromoCodePick value)? promoCodePick,
     TResult Function(AddressPick value)? addressPick,
     TResult Function(PaymentOption value)? paymentOption,
     TResult Function(PickupDetailsPick value)? pickupDetailsPick,
+    TResult Function(UserNumber value)? userNumber,
+    TResult Function(RemoveAllFieldData value)? removeAllFieldData,
     TResult Function(PromoCodeSuccess value)? promoCodeSuccess,
     required TResult orElse(),
   }) {
@@ -1444,11 +2382,19 @@ class _$PickupDetailsPickImpl implements PickupDetailsPick {
             AbandendOrderRequestModel abandendOrderRequestModel)
         abandendOrder,
     required TResult Function() orderPlacing,
+    required TResult Function() getOrders,
+    required TResult Function(
+            OrderCancelationRequestModel orderCancelationRequestModel,
+            String orderId)
+        orderCancel,
     required TResult Function(User user) userDetailsPick,
     required TResult Function(ProductDetails productDetails) productDetailsPick,
+    required TResult Function(Promo promo) promoCodePick,
     required TResult Function(User user) addressPick,
     required TResult Function(Payment payment) paymentOption,
     required TResult Function(PickUpDetails pickUpDetails) pickupDetailsPick,
+    required TResult Function() userNumber,
+    required TResult Function() removeAllFieldData,
     required TResult Function() promoCodeSuccess,
   }) {
     return pickupDetailsPick(pickUpDetails);
@@ -1462,11 +2408,18 @@ class _$PickupDetailsPickImpl implements PickupDetailsPick {
     TResult? Function(AbandendOrderRequestModel abandendOrderRequestModel)?
         abandendOrder,
     TResult? Function()? orderPlacing,
+    TResult? Function()? getOrders,
+    TResult? Function(OrderCancelationRequestModel orderCancelationRequestModel,
+            String orderId)?
+        orderCancel,
     TResult? Function(User user)? userDetailsPick,
     TResult? Function(ProductDetails productDetails)? productDetailsPick,
+    TResult? Function(Promo promo)? promoCodePick,
     TResult? Function(User user)? addressPick,
     TResult? Function(Payment payment)? paymentOption,
     TResult? Function(PickUpDetails pickUpDetails)? pickupDetailsPick,
+    TResult? Function()? userNumber,
+    TResult? Function()? removeAllFieldData,
     TResult? Function()? promoCodeSuccess,
   }) {
     return pickupDetailsPick?.call(pickUpDetails);
@@ -1479,11 +2432,18 @@ class _$PickupDetailsPickImpl implements PickupDetailsPick {
     TResult Function(AbandendOrderRequestModel abandendOrderRequestModel)?
         abandendOrder,
     TResult Function()? orderPlacing,
+    TResult Function()? getOrders,
+    TResult Function(OrderCancelationRequestModel orderCancelationRequestModel,
+            String orderId)?
+        orderCancel,
     TResult Function(User user)? userDetailsPick,
     TResult Function(ProductDetails productDetails)? productDetailsPick,
+    TResult Function(Promo promo)? promoCodePick,
     TResult Function(User user)? addressPick,
     TResult Function(Payment payment)? paymentOption,
     TResult Function(PickUpDetails pickUpDetails)? pickupDetailsPick,
+    TResult Function()? userNumber,
+    TResult Function()? removeAllFieldData,
     TResult Function()? promoCodeSuccess,
     required TResult orElse(),
   }) {
@@ -1499,11 +2459,16 @@ class _$PickupDetailsPickImpl implements PickupDetailsPick {
     required TResult Function(GetPromoCode value) getPromoCode,
     required TResult Function(AbandendOrder value) abandendOrder,
     required TResult Function(OrderPlacing value) orderPlacing,
+    required TResult Function(GetOrders value) getOrders,
+    required TResult Function(OrderCancel value) orderCancel,
     required TResult Function(UserDetailsPick value) userDetailsPick,
     required TResult Function(ProductDetailsPick value) productDetailsPick,
+    required TResult Function(PromoCodePick value) promoCodePick,
     required TResult Function(AddressPick value) addressPick,
     required TResult Function(PaymentOption value) paymentOption,
     required TResult Function(PickupDetailsPick value) pickupDetailsPick,
+    required TResult Function(UserNumber value) userNumber,
+    required TResult Function(RemoveAllFieldData value) removeAllFieldData,
     required TResult Function(PromoCodeSuccess value) promoCodeSuccess,
   }) {
     return pickupDetailsPick(this);
@@ -1515,11 +2480,16 @@ class _$PickupDetailsPickImpl implements PickupDetailsPick {
     TResult? Function(GetPromoCode value)? getPromoCode,
     TResult? Function(AbandendOrder value)? abandendOrder,
     TResult? Function(OrderPlacing value)? orderPlacing,
+    TResult? Function(GetOrders value)? getOrders,
+    TResult? Function(OrderCancel value)? orderCancel,
     TResult? Function(UserDetailsPick value)? userDetailsPick,
     TResult? Function(ProductDetailsPick value)? productDetailsPick,
+    TResult? Function(PromoCodePick value)? promoCodePick,
     TResult? Function(AddressPick value)? addressPick,
     TResult? Function(PaymentOption value)? paymentOption,
     TResult? Function(PickupDetailsPick value)? pickupDetailsPick,
+    TResult? Function(UserNumber value)? userNumber,
+    TResult? Function(RemoveAllFieldData value)? removeAllFieldData,
     TResult? Function(PromoCodeSuccess value)? promoCodeSuccess,
   }) {
     return pickupDetailsPick?.call(this);
@@ -1531,11 +2501,16 @@ class _$PickupDetailsPickImpl implements PickupDetailsPick {
     TResult Function(GetPromoCode value)? getPromoCode,
     TResult Function(AbandendOrder value)? abandendOrder,
     TResult Function(OrderPlacing value)? orderPlacing,
+    TResult Function(GetOrders value)? getOrders,
+    TResult Function(OrderCancel value)? orderCancel,
     TResult Function(UserDetailsPick value)? userDetailsPick,
     TResult Function(ProductDetailsPick value)? productDetailsPick,
+    TResult Function(PromoCodePick value)? promoCodePick,
     TResult Function(AddressPick value)? addressPick,
     TResult Function(PaymentOption value)? paymentOption,
     TResult Function(PickupDetailsPick value)? pickupDetailsPick,
+    TResult Function(UserNumber value)? userNumber,
+    TResult Function(RemoveAllFieldData value)? removeAllFieldData,
     TResult Function(PromoCodeSuccess value)? promoCodeSuccess,
     required TResult orElse(),
   }) {
@@ -1554,6 +2529,380 @@ abstract class PickupDetailsPick implements PlaceOrderEvent {
   @JsonKey(ignore: true)
   _$$PickupDetailsPickImplCopyWith<_$PickupDetailsPickImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$UserNumberImplCopyWith<$Res> {
+  factory _$$UserNumberImplCopyWith(
+          _$UserNumberImpl value, $Res Function(_$UserNumberImpl) then) =
+      __$$UserNumberImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$UserNumberImplCopyWithImpl<$Res>
+    extends _$PlaceOrderEventCopyWithImpl<$Res, _$UserNumberImpl>
+    implements _$$UserNumberImplCopyWith<$Res> {
+  __$$UserNumberImplCopyWithImpl(
+      _$UserNumberImpl _value, $Res Function(_$UserNumberImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$UserNumberImpl implements UserNumber {
+  const _$UserNumberImpl();
+
+  @override
+  String toString() {
+    return 'PlaceOrderEvent.userNumber()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$UserNumberImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(PromoCodeRequestModel promoCodeRequestModel)
+        getPromoCode,
+    required TResult Function(
+            AbandendOrderRequestModel abandendOrderRequestModel)
+        abandendOrder,
+    required TResult Function() orderPlacing,
+    required TResult Function() getOrders,
+    required TResult Function(
+            OrderCancelationRequestModel orderCancelationRequestModel,
+            String orderId)
+        orderCancel,
+    required TResult Function(User user) userDetailsPick,
+    required TResult Function(ProductDetails productDetails) productDetailsPick,
+    required TResult Function(Promo promo) promoCodePick,
+    required TResult Function(User user) addressPick,
+    required TResult Function(Payment payment) paymentOption,
+    required TResult Function(PickUpDetails pickUpDetails) pickupDetailsPick,
+    required TResult Function() userNumber,
+    required TResult Function() removeAllFieldData,
+    required TResult Function() promoCodeSuccess,
+  }) {
+    return userNumber();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(PromoCodeRequestModel promoCodeRequestModel)?
+        getPromoCode,
+    TResult? Function(AbandendOrderRequestModel abandendOrderRequestModel)?
+        abandendOrder,
+    TResult? Function()? orderPlacing,
+    TResult? Function()? getOrders,
+    TResult? Function(OrderCancelationRequestModel orderCancelationRequestModel,
+            String orderId)?
+        orderCancel,
+    TResult? Function(User user)? userDetailsPick,
+    TResult? Function(ProductDetails productDetails)? productDetailsPick,
+    TResult? Function(Promo promo)? promoCodePick,
+    TResult? Function(User user)? addressPick,
+    TResult? Function(Payment payment)? paymentOption,
+    TResult? Function(PickUpDetails pickUpDetails)? pickupDetailsPick,
+    TResult? Function()? userNumber,
+    TResult? Function()? removeAllFieldData,
+    TResult? Function()? promoCodeSuccess,
+  }) {
+    return userNumber?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(PromoCodeRequestModel promoCodeRequestModel)? getPromoCode,
+    TResult Function(AbandendOrderRequestModel abandendOrderRequestModel)?
+        abandendOrder,
+    TResult Function()? orderPlacing,
+    TResult Function()? getOrders,
+    TResult Function(OrderCancelationRequestModel orderCancelationRequestModel,
+            String orderId)?
+        orderCancel,
+    TResult Function(User user)? userDetailsPick,
+    TResult Function(ProductDetails productDetails)? productDetailsPick,
+    TResult Function(Promo promo)? promoCodePick,
+    TResult Function(User user)? addressPick,
+    TResult Function(Payment payment)? paymentOption,
+    TResult Function(PickUpDetails pickUpDetails)? pickupDetailsPick,
+    TResult Function()? userNumber,
+    TResult Function()? removeAllFieldData,
+    TResult Function()? promoCodeSuccess,
+    required TResult orElse(),
+  }) {
+    if (userNumber != null) {
+      return userNumber();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GetPromoCode value) getPromoCode,
+    required TResult Function(AbandendOrder value) abandendOrder,
+    required TResult Function(OrderPlacing value) orderPlacing,
+    required TResult Function(GetOrders value) getOrders,
+    required TResult Function(OrderCancel value) orderCancel,
+    required TResult Function(UserDetailsPick value) userDetailsPick,
+    required TResult Function(ProductDetailsPick value) productDetailsPick,
+    required TResult Function(PromoCodePick value) promoCodePick,
+    required TResult Function(AddressPick value) addressPick,
+    required TResult Function(PaymentOption value) paymentOption,
+    required TResult Function(PickupDetailsPick value) pickupDetailsPick,
+    required TResult Function(UserNumber value) userNumber,
+    required TResult Function(RemoveAllFieldData value) removeAllFieldData,
+    required TResult Function(PromoCodeSuccess value) promoCodeSuccess,
+  }) {
+    return userNumber(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetPromoCode value)? getPromoCode,
+    TResult? Function(AbandendOrder value)? abandendOrder,
+    TResult? Function(OrderPlacing value)? orderPlacing,
+    TResult? Function(GetOrders value)? getOrders,
+    TResult? Function(OrderCancel value)? orderCancel,
+    TResult? Function(UserDetailsPick value)? userDetailsPick,
+    TResult? Function(ProductDetailsPick value)? productDetailsPick,
+    TResult? Function(PromoCodePick value)? promoCodePick,
+    TResult? Function(AddressPick value)? addressPick,
+    TResult? Function(PaymentOption value)? paymentOption,
+    TResult? Function(PickupDetailsPick value)? pickupDetailsPick,
+    TResult? Function(UserNumber value)? userNumber,
+    TResult? Function(RemoveAllFieldData value)? removeAllFieldData,
+    TResult? Function(PromoCodeSuccess value)? promoCodeSuccess,
+  }) {
+    return userNumber?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetPromoCode value)? getPromoCode,
+    TResult Function(AbandendOrder value)? abandendOrder,
+    TResult Function(OrderPlacing value)? orderPlacing,
+    TResult Function(GetOrders value)? getOrders,
+    TResult Function(OrderCancel value)? orderCancel,
+    TResult Function(UserDetailsPick value)? userDetailsPick,
+    TResult Function(ProductDetailsPick value)? productDetailsPick,
+    TResult Function(PromoCodePick value)? promoCodePick,
+    TResult Function(AddressPick value)? addressPick,
+    TResult Function(PaymentOption value)? paymentOption,
+    TResult Function(PickupDetailsPick value)? pickupDetailsPick,
+    TResult Function(UserNumber value)? userNumber,
+    TResult Function(RemoveAllFieldData value)? removeAllFieldData,
+    TResult Function(PromoCodeSuccess value)? promoCodeSuccess,
+    required TResult orElse(),
+  }) {
+    if (userNumber != null) {
+      return userNumber(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class UserNumber implements PlaceOrderEvent {
+  const factory UserNumber() = _$UserNumberImpl;
+}
+
+/// @nodoc
+abstract class _$$RemoveAllFieldDataImplCopyWith<$Res> {
+  factory _$$RemoveAllFieldDataImplCopyWith(_$RemoveAllFieldDataImpl value,
+          $Res Function(_$RemoveAllFieldDataImpl) then) =
+      __$$RemoveAllFieldDataImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$RemoveAllFieldDataImplCopyWithImpl<$Res>
+    extends _$PlaceOrderEventCopyWithImpl<$Res, _$RemoveAllFieldDataImpl>
+    implements _$$RemoveAllFieldDataImplCopyWith<$Res> {
+  __$$RemoveAllFieldDataImplCopyWithImpl(_$RemoveAllFieldDataImpl _value,
+      $Res Function(_$RemoveAllFieldDataImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$RemoveAllFieldDataImpl implements RemoveAllFieldData {
+  const _$RemoveAllFieldDataImpl();
+
+  @override
+  String toString() {
+    return 'PlaceOrderEvent.removeAllFieldData()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$RemoveAllFieldDataImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(PromoCodeRequestModel promoCodeRequestModel)
+        getPromoCode,
+    required TResult Function(
+            AbandendOrderRequestModel abandendOrderRequestModel)
+        abandendOrder,
+    required TResult Function() orderPlacing,
+    required TResult Function() getOrders,
+    required TResult Function(
+            OrderCancelationRequestModel orderCancelationRequestModel,
+            String orderId)
+        orderCancel,
+    required TResult Function(User user) userDetailsPick,
+    required TResult Function(ProductDetails productDetails) productDetailsPick,
+    required TResult Function(Promo promo) promoCodePick,
+    required TResult Function(User user) addressPick,
+    required TResult Function(Payment payment) paymentOption,
+    required TResult Function(PickUpDetails pickUpDetails) pickupDetailsPick,
+    required TResult Function() userNumber,
+    required TResult Function() removeAllFieldData,
+    required TResult Function() promoCodeSuccess,
+  }) {
+    return removeAllFieldData();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(PromoCodeRequestModel promoCodeRequestModel)?
+        getPromoCode,
+    TResult? Function(AbandendOrderRequestModel abandendOrderRequestModel)?
+        abandendOrder,
+    TResult? Function()? orderPlacing,
+    TResult? Function()? getOrders,
+    TResult? Function(OrderCancelationRequestModel orderCancelationRequestModel,
+            String orderId)?
+        orderCancel,
+    TResult? Function(User user)? userDetailsPick,
+    TResult? Function(ProductDetails productDetails)? productDetailsPick,
+    TResult? Function(Promo promo)? promoCodePick,
+    TResult? Function(User user)? addressPick,
+    TResult? Function(Payment payment)? paymentOption,
+    TResult? Function(PickUpDetails pickUpDetails)? pickupDetailsPick,
+    TResult? Function()? userNumber,
+    TResult? Function()? removeAllFieldData,
+    TResult? Function()? promoCodeSuccess,
+  }) {
+    return removeAllFieldData?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(PromoCodeRequestModel promoCodeRequestModel)? getPromoCode,
+    TResult Function(AbandendOrderRequestModel abandendOrderRequestModel)?
+        abandendOrder,
+    TResult Function()? orderPlacing,
+    TResult Function()? getOrders,
+    TResult Function(OrderCancelationRequestModel orderCancelationRequestModel,
+            String orderId)?
+        orderCancel,
+    TResult Function(User user)? userDetailsPick,
+    TResult Function(ProductDetails productDetails)? productDetailsPick,
+    TResult Function(Promo promo)? promoCodePick,
+    TResult Function(User user)? addressPick,
+    TResult Function(Payment payment)? paymentOption,
+    TResult Function(PickUpDetails pickUpDetails)? pickupDetailsPick,
+    TResult Function()? userNumber,
+    TResult Function()? removeAllFieldData,
+    TResult Function()? promoCodeSuccess,
+    required TResult orElse(),
+  }) {
+    if (removeAllFieldData != null) {
+      return removeAllFieldData();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GetPromoCode value) getPromoCode,
+    required TResult Function(AbandendOrder value) abandendOrder,
+    required TResult Function(OrderPlacing value) orderPlacing,
+    required TResult Function(GetOrders value) getOrders,
+    required TResult Function(OrderCancel value) orderCancel,
+    required TResult Function(UserDetailsPick value) userDetailsPick,
+    required TResult Function(ProductDetailsPick value) productDetailsPick,
+    required TResult Function(PromoCodePick value) promoCodePick,
+    required TResult Function(AddressPick value) addressPick,
+    required TResult Function(PaymentOption value) paymentOption,
+    required TResult Function(PickupDetailsPick value) pickupDetailsPick,
+    required TResult Function(UserNumber value) userNumber,
+    required TResult Function(RemoveAllFieldData value) removeAllFieldData,
+    required TResult Function(PromoCodeSuccess value) promoCodeSuccess,
+  }) {
+    return removeAllFieldData(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetPromoCode value)? getPromoCode,
+    TResult? Function(AbandendOrder value)? abandendOrder,
+    TResult? Function(OrderPlacing value)? orderPlacing,
+    TResult? Function(GetOrders value)? getOrders,
+    TResult? Function(OrderCancel value)? orderCancel,
+    TResult? Function(UserDetailsPick value)? userDetailsPick,
+    TResult? Function(ProductDetailsPick value)? productDetailsPick,
+    TResult? Function(PromoCodePick value)? promoCodePick,
+    TResult? Function(AddressPick value)? addressPick,
+    TResult? Function(PaymentOption value)? paymentOption,
+    TResult? Function(PickupDetailsPick value)? pickupDetailsPick,
+    TResult? Function(UserNumber value)? userNumber,
+    TResult? Function(RemoveAllFieldData value)? removeAllFieldData,
+    TResult? Function(PromoCodeSuccess value)? promoCodeSuccess,
+  }) {
+    return removeAllFieldData?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetPromoCode value)? getPromoCode,
+    TResult Function(AbandendOrder value)? abandendOrder,
+    TResult Function(OrderPlacing value)? orderPlacing,
+    TResult Function(GetOrders value)? getOrders,
+    TResult Function(OrderCancel value)? orderCancel,
+    TResult Function(UserDetailsPick value)? userDetailsPick,
+    TResult Function(ProductDetailsPick value)? productDetailsPick,
+    TResult Function(PromoCodePick value)? promoCodePick,
+    TResult Function(AddressPick value)? addressPick,
+    TResult Function(PaymentOption value)? paymentOption,
+    TResult Function(PickupDetailsPick value)? pickupDetailsPick,
+    TResult Function(UserNumber value)? userNumber,
+    TResult Function(RemoveAllFieldData value)? removeAllFieldData,
+    TResult Function(PromoCodeSuccess value)? promoCodeSuccess,
+    required TResult orElse(),
+  }) {
+    if (removeAllFieldData != null) {
+      return removeAllFieldData(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class RemoveAllFieldData implements PlaceOrderEvent {
+  const factory RemoveAllFieldData() = _$RemoveAllFieldDataImpl;
 }
 
 /// @nodoc
@@ -1600,11 +2949,19 @@ class _$PromoCodeSuccessImpl implements PromoCodeSuccess {
             AbandendOrderRequestModel abandendOrderRequestModel)
         abandendOrder,
     required TResult Function() orderPlacing,
+    required TResult Function() getOrders,
+    required TResult Function(
+            OrderCancelationRequestModel orderCancelationRequestModel,
+            String orderId)
+        orderCancel,
     required TResult Function(User user) userDetailsPick,
     required TResult Function(ProductDetails productDetails) productDetailsPick,
+    required TResult Function(Promo promo) promoCodePick,
     required TResult Function(User user) addressPick,
     required TResult Function(Payment payment) paymentOption,
     required TResult Function(PickUpDetails pickUpDetails) pickupDetailsPick,
+    required TResult Function() userNumber,
+    required TResult Function() removeAllFieldData,
     required TResult Function() promoCodeSuccess,
   }) {
     return promoCodeSuccess();
@@ -1618,11 +2975,18 @@ class _$PromoCodeSuccessImpl implements PromoCodeSuccess {
     TResult? Function(AbandendOrderRequestModel abandendOrderRequestModel)?
         abandendOrder,
     TResult? Function()? orderPlacing,
+    TResult? Function()? getOrders,
+    TResult? Function(OrderCancelationRequestModel orderCancelationRequestModel,
+            String orderId)?
+        orderCancel,
     TResult? Function(User user)? userDetailsPick,
     TResult? Function(ProductDetails productDetails)? productDetailsPick,
+    TResult? Function(Promo promo)? promoCodePick,
     TResult? Function(User user)? addressPick,
     TResult? Function(Payment payment)? paymentOption,
     TResult? Function(PickUpDetails pickUpDetails)? pickupDetailsPick,
+    TResult? Function()? userNumber,
+    TResult? Function()? removeAllFieldData,
     TResult? Function()? promoCodeSuccess,
   }) {
     return promoCodeSuccess?.call();
@@ -1635,11 +2999,18 @@ class _$PromoCodeSuccessImpl implements PromoCodeSuccess {
     TResult Function(AbandendOrderRequestModel abandendOrderRequestModel)?
         abandendOrder,
     TResult Function()? orderPlacing,
+    TResult Function()? getOrders,
+    TResult Function(OrderCancelationRequestModel orderCancelationRequestModel,
+            String orderId)?
+        orderCancel,
     TResult Function(User user)? userDetailsPick,
     TResult Function(ProductDetails productDetails)? productDetailsPick,
+    TResult Function(Promo promo)? promoCodePick,
     TResult Function(User user)? addressPick,
     TResult Function(Payment payment)? paymentOption,
     TResult Function(PickUpDetails pickUpDetails)? pickupDetailsPick,
+    TResult Function()? userNumber,
+    TResult Function()? removeAllFieldData,
     TResult Function()? promoCodeSuccess,
     required TResult orElse(),
   }) {
@@ -1655,11 +3026,16 @@ class _$PromoCodeSuccessImpl implements PromoCodeSuccess {
     required TResult Function(GetPromoCode value) getPromoCode,
     required TResult Function(AbandendOrder value) abandendOrder,
     required TResult Function(OrderPlacing value) orderPlacing,
+    required TResult Function(GetOrders value) getOrders,
+    required TResult Function(OrderCancel value) orderCancel,
     required TResult Function(UserDetailsPick value) userDetailsPick,
     required TResult Function(ProductDetailsPick value) productDetailsPick,
+    required TResult Function(PromoCodePick value) promoCodePick,
     required TResult Function(AddressPick value) addressPick,
     required TResult Function(PaymentOption value) paymentOption,
     required TResult Function(PickupDetailsPick value) pickupDetailsPick,
+    required TResult Function(UserNumber value) userNumber,
+    required TResult Function(RemoveAllFieldData value) removeAllFieldData,
     required TResult Function(PromoCodeSuccess value) promoCodeSuccess,
   }) {
     return promoCodeSuccess(this);
@@ -1671,11 +3047,16 @@ class _$PromoCodeSuccessImpl implements PromoCodeSuccess {
     TResult? Function(GetPromoCode value)? getPromoCode,
     TResult? Function(AbandendOrder value)? abandendOrder,
     TResult? Function(OrderPlacing value)? orderPlacing,
+    TResult? Function(GetOrders value)? getOrders,
+    TResult? Function(OrderCancel value)? orderCancel,
     TResult? Function(UserDetailsPick value)? userDetailsPick,
     TResult? Function(ProductDetailsPick value)? productDetailsPick,
+    TResult? Function(PromoCodePick value)? promoCodePick,
     TResult? Function(AddressPick value)? addressPick,
     TResult? Function(PaymentOption value)? paymentOption,
     TResult? Function(PickupDetailsPick value)? pickupDetailsPick,
+    TResult? Function(UserNumber value)? userNumber,
+    TResult? Function(RemoveAllFieldData value)? removeAllFieldData,
     TResult? Function(PromoCodeSuccess value)? promoCodeSuccess,
   }) {
     return promoCodeSuccess?.call(this);
@@ -1687,11 +3068,16 @@ class _$PromoCodeSuccessImpl implements PromoCodeSuccess {
     TResult Function(GetPromoCode value)? getPromoCode,
     TResult Function(AbandendOrder value)? abandendOrder,
     TResult Function(OrderPlacing value)? orderPlacing,
+    TResult Function(GetOrders value)? getOrders,
+    TResult Function(OrderCancel value)? orderCancel,
     TResult Function(UserDetailsPick value)? userDetailsPick,
     TResult Function(ProductDetailsPick value)? productDetailsPick,
+    TResult Function(PromoCodePick value)? promoCodePick,
     TResult Function(AddressPick value)? addressPick,
     TResult Function(PaymentOption value)? paymentOption,
     TResult Function(PickupDetailsPick value)? pickupDetailsPick,
+    TResult Function(UserNumber value)? userNumber,
+    TResult Function(RemoveAllFieldData value)? removeAllFieldData,
     TResult Function(PromoCodeSuccess value)? promoCodeSuccess,
     required TResult orElse(),
   }) {
@@ -1710,6 +3096,7 @@ abstract class PromoCodeSuccess implements PlaceOrderEvent {
 mixin _$PlaceOrderState {
   bool get isLoading => throw _privateConstructorUsedError;
   bool get hasError => throw _privateConstructorUsedError;
+  bool get loginStatus => throw _privateConstructorUsedError;
   String? get message => throw _privateConstructorUsedError;
   PromoCodeResponceModel? get promoCodeResponceModel =>
       throw _privateConstructorUsedError;
@@ -1724,6 +3111,10 @@ mixin _$PlaceOrderState {
   String get address => throw _privateConstructorUsedError;
   Promo get promo => throw _privateConstructorUsedError;
   String? get number => throw _privateConstructorUsedError;
+  OrderCancelationResponceModel? get orderCancelationResponceModel =>
+      throw _privateConstructorUsedError;
+  GetAllOrderResponceModel? get getAllOrderResponceModel =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $PlaceOrderStateCopyWith<PlaceOrderState> get copyWith =>
@@ -1739,6 +3130,7 @@ abstract class $PlaceOrderStateCopyWith<$Res> {
   $Res call(
       {bool isLoading,
       bool hasError,
+      bool loginStatus,
       String? message,
       PromoCodeResponceModel? promoCodeResponceModel,
       OrderPlacedResponceModel? orderPlacedResponceModel,
@@ -1749,7 +3141,9 @@ abstract class $PlaceOrderStateCopyWith<$Res> {
       ProductDetails productDetails,
       String address,
       Promo promo,
-      String? number});
+      String? number,
+      OrderCancelationResponceModel? orderCancelationResponceModel,
+      GetAllOrderResponceModel? getAllOrderResponceModel});
 }
 
 /// @nodoc
@@ -1767,6 +3161,7 @@ class _$PlaceOrderStateCopyWithImpl<$Res, $Val extends PlaceOrderState>
   $Res call({
     Object? isLoading = null,
     Object? hasError = null,
+    Object? loginStatus = null,
     Object? message = freezed,
     Object? promoCodeResponceModel = freezed,
     Object? orderPlacedResponceModel = freezed,
@@ -1778,6 +3173,8 @@ class _$PlaceOrderStateCopyWithImpl<$Res, $Val extends PlaceOrderState>
     Object? address = null,
     Object? promo = null,
     Object? number = freezed,
+    Object? orderCancelationResponceModel = freezed,
+    Object? getAllOrderResponceModel = freezed,
   }) {
     return _then(_value.copyWith(
       isLoading: null == isLoading
@@ -1787,6 +3184,10 @@ class _$PlaceOrderStateCopyWithImpl<$Res, $Val extends PlaceOrderState>
       hasError: null == hasError
           ? _value.hasError
           : hasError // ignore: cast_nullable_to_non_nullable
+              as bool,
+      loginStatus: null == loginStatus
+          ? _value.loginStatus
+          : loginStatus // ignore: cast_nullable_to_non_nullable
               as bool,
       message: freezed == message
           ? _value.message
@@ -1832,6 +3233,14 @@ class _$PlaceOrderStateCopyWithImpl<$Res, $Val extends PlaceOrderState>
           ? _value.number
           : number // ignore: cast_nullable_to_non_nullable
               as String?,
+      orderCancelationResponceModel: freezed == orderCancelationResponceModel
+          ? _value.orderCancelationResponceModel
+          : orderCancelationResponceModel // ignore: cast_nullable_to_non_nullable
+              as OrderCancelationResponceModel?,
+      getAllOrderResponceModel: freezed == getAllOrderResponceModel
+          ? _value.getAllOrderResponceModel
+          : getAllOrderResponceModel // ignore: cast_nullable_to_non_nullable
+              as GetAllOrderResponceModel?,
     ) as $Val);
   }
 }
@@ -1847,6 +3256,7 @@ abstract class _$$InitialImplCopyWith<$Res>
   $Res call(
       {bool isLoading,
       bool hasError,
+      bool loginStatus,
       String? message,
       PromoCodeResponceModel? promoCodeResponceModel,
       OrderPlacedResponceModel? orderPlacedResponceModel,
@@ -1857,7 +3267,9 @@ abstract class _$$InitialImplCopyWith<$Res>
       ProductDetails productDetails,
       String address,
       Promo promo,
-      String? number});
+      String? number,
+      OrderCancelationResponceModel? orderCancelationResponceModel,
+      GetAllOrderResponceModel? getAllOrderResponceModel});
 }
 
 /// @nodoc
@@ -1873,6 +3285,7 @@ class __$$InitialImplCopyWithImpl<$Res>
   $Res call({
     Object? isLoading = null,
     Object? hasError = null,
+    Object? loginStatus = null,
     Object? message = freezed,
     Object? promoCodeResponceModel = freezed,
     Object? orderPlacedResponceModel = freezed,
@@ -1884,6 +3297,8 @@ class __$$InitialImplCopyWithImpl<$Res>
     Object? address = null,
     Object? promo = null,
     Object? number = freezed,
+    Object? orderCancelationResponceModel = freezed,
+    Object? getAllOrderResponceModel = freezed,
   }) {
     return _then(_$InitialImpl(
       isLoading: null == isLoading
@@ -1893,6 +3308,10 @@ class __$$InitialImplCopyWithImpl<$Res>
       hasError: null == hasError
           ? _value.hasError
           : hasError // ignore: cast_nullable_to_non_nullable
+              as bool,
+      loginStatus: null == loginStatus
+          ? _value.loginStatus
+          : loginStatus // ignore: cast_nullable_to_non_nullable
               as bool,
       message: freezed == message
           ? _value.message
@@ -1938,6 +3357,14 @@ class __$$InitialImplCopyWithImpl<$Res>
           ? _value.number
           : number // ignore: cast_nullable_to_non_nullable
               as String?,
+      orderCancelationResponceModel: freezed == orderCancelationResponceModel
+          ? _value.orderCancelationResponceModel
+          : orderCancelationResponceModel // ignore: cast_nullable_to_non_nullable
+              as OrderCancelationResponceModel?,
+      getAllOrderResponceModel: freezed == getAllOrderResponceModel
+          ? _value.getAllOrderResponceModel
+          : getAllOrderResponceModel // ignore: cast_nullable_to_non_nullable
+              as GetAllOrderResponceModel?,
     ));
   }
 }
@@ -1948,6 +3375,7 @@ class _$InitialImpl implements _Initial {
   const _$InitialImpl(
       {required this.isLoading,
       required this.hasError,
+      required this.loginStatus,
       this.message,
       this.promoCodeResponceModel,
       this.orderPlacedResponceModel,
@@ -1958,12 +3386,16 @@ class _$InitialImpl implements _Initial {
       required this.productDetails,
       required this.address,
       required this.promo,
-      this.number});
+      this.number,
+      this.orderCancelationResponceModel,
+      this.getAllOrderResponceModel});
 
   @override
   final bool isLoading;
   @override
   final bool hasError;
+  @override
+  final bool loginStatus;
   @override
   final String? message;
   @override
@@ -1986,10 +3418,14 @@ class _$InitialImpl implements _Initial {
   final Promo promo;
   @override
   final String? number;
+  @override
+  final OrderCancelationResponceModel? orderCancelationResponceModel;
+  @override
+  final GetAllOrderResponceModel? getAllOrderResponceModel;
 
   @override
   String toString() {
-    return 'PlaceOrderState(isLoading: $isLoading, hasError: $hasError, message: $message, promoCodeResponceModel: $promoCodeResponceModel, orderPlacedResponceModel: $orderPlacedResponceModel, orderPlacedRequestModel: $orderPlacedRequestModel, user: $user, payment: $payment, pickUpDetails: $pickUpDetails, productDetails: $productDetails, address: $address, promo: $promo, number: $number)';
+    return 'PlaceOrderState(isLoading: $isLoading, hasError: $hasError, loginStatus: $loginStatus, message: $message, promoCodeResponceModel: $promoCodeResponceModel, orderPlacedResponceModel: $orderPlacedResponceModel, orderPlacedRequestModel: $orderPlacedRequestModel, user: $user, payment: $payment, pickUpDetails: $pickUpDetails, productDetails: $productDetails, address: $address, promo: $promo, number: $number, orderCancelationResponceModel: $orderCancelationResponceModel, getAllOrderResponceModel: $getAllOrderResponceModel)';
   }
 
   @override
@@ -2001,6 +3437,8 @@ class _$InitialImpl implements _Initial {
                 other.isLoading == isLoading) &&
             (identical(other.hasError, hasError) ||
                 other.hasError == hasError) &&
+            (identical(other.loginStatus, loginStatus) ||
+                other.loginStatus == loginStatus) &&
             (identical(other.message, message) || other.message == message) &&
             (identical(other.promoCodeResponceModel, promoCodeResponceModel) ||
                 other.promoCodeResponceModel == promoCodeResponceModel) &&
@@ -2018,7 +3456,14 @@ class _$InitialImpl implements _Initial {
                 other.productDetails == productDetails) &&
             (identical(other.address, address) || other.address == address) &&
             (identical(other.promo, promo) || other.promo == promo) &&
-            (identical(other.number, number) || other.number == number));
+            (identical(other.number, number) || other.number == number) &&
+            (identical(other.orderCancelationResponceModel,
+                    orderCancelationResponceModel) ||
+                other.orderCancelationResponceModel ==
+                    orderCancelationResponceModel) &&
+            (identical(
+                    other.getAllOrderResponceModel, getAllOrderResponceModel) ||
+                other.getAllOrderResponceModel == getAllOrderResponceModel));
   }
 
   @override
@@ -2026,6 +3471,7 @@ class _$InitialImpl implements _Initial {
       runtimeType,
       isLoading,
       hasError,
+      loginStatus,
       message,
       promoCodeResponceModel,
       orderPlacedResponceModel,
@@ -2036,7 +3482,9 @@ class _$InitialImpl implements _Initial {
       productDetails,
       address,
       promo,
-      number);
+      number,
+      orderCancelationResponceModel,
+      getAllOrderResponceModel);
 
   @JsonKey(ignore: true)
   @override
@@ -2047,24 +3495,30 @@ class _$InitialImpl implements _Initial {
 
 abstract class _Initial implements PlaceOrderState {
   const factory _Initial(
-      {required final bool isLoading,
-      required final bool hasError,
-      final String? message,
-      final PromoCodeResponceModel? promoCodeResponceModel,
-      final OrderPlacedResponceModel? orderPlacedResponceModel,
-      required final OrderPlacedRequestModel orderPlacedRequestModel,
-      required final User user,
-      required final Payment payment,
-      required final PickUpDetails pickUpDetails,
-      required final ProductDetails productDetails,
-      required final String address,
-      required final Promo promo,
-      final String? number}) = _$InitialImpl;
+          {required final bool isLoading,
+          required final bool hasError,
+          required final bool loginStatus,
+          final String? message,
+          final PromoCodeResponceModel? promoCodeResponceModel,
+          final OrderPlacedResponceModel? orderPlacedResponceModel,
+          required final OrderPlacedRequestModel orderPlacedRequestModel,
+          required final User user,
+          required final Payment payment,
+          required final PickUpDetails pickUpDetails,
+          required final ProductDetails productDetails,
+          required final String address,
+          required final Promo promo,
+          final String? number,
+          final OrderCancelationResponceModel? orderCancelationResponceModel,
+          final GetAllOrderResponceModel? getAllOrderResponceModel}) =
+      _$InitialImpl;
 
   @override
   bool get isLoading;
   @override
   bool get hasError;
+  @override
+  bool get loginStatus;
   @override
   String? get message;
   @override
@@ -2087,6 +3541,10 @@ abstract class _Initial implements PlaceOrderState {
   Promo get promo;
   @override
   String? get number;
+  @override
+  OrderCancelationResponceModel? get orderCancelationResponceModel;
+  @override
+  GetAllOrderResponceModel? get getAllOrderResponceModel;
   @override
   @JsonKey(ignore: true)
   _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>

@@ -15,7 +15,7 @@ class JoinOurTeam extends StatelessWidget {
       },
       child: Container(
         margin: const EdgeInsets.symmetric(horizontal: 15),
-        padding: const EdgeInsets.symmetric(horizontal: 18),
+        padding: const EdgeInsets.symmetric(horizontal: 20),
         height: sWidth * 0.27,
         width: sWidth,
         decoration: BoxDecoration(

@@ -50,21 +50,22 @@ class ScreenProductPreview extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const TopImage(
-                          fromWhere: FromWhere.recalculateWithAmount),
-                      ListView.builder(
-                        scrollDirection: Axis.vertical,
-                        itemCount: testQuestionMap.length,
-                        shrinkWrap: true,
-                        physics: const NeverScrollableScrollPhysics(),
-                        itemBuilder: (context, index) {
-                          List<String> names = [
-                            'Divice',
-                            'Display',
-                            'Functionality',
-                            'Accesories',
-                            'Condition'
-                          ];
-                          return ExpansionTileCustom(name: names[index]);
+                        fromWhere: FromWhere.recalculateWithAmount,
+                      ),
+                      BlocBuilder<QuestionTabBloc, QuestionTabState>(
+                        builder: (context, state) {
+                          return ListView.builder(
+                            scrollDirection: Axis.vertical,
+                            itemCount: state.getQuestionModel!.sections!.length,
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                            itemBuilder: (context, index) {
+                              return ExpansionTileCustom(
+                                name: state.getQuestionModel!.sections![index]
+                                    .heading!,
+                              );
+                            },
+                          );
                         },
                       ),
                     ],

@@ -21,10 +21,12 @@ class HotDealsSession extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Text('Hot Deals', style: textHeadBoldBig),
+          kHeight5,
           BlocBuilder<HomeBloc, HomeState>(
             builder: (context, state) {
               if (state.isLoading) {

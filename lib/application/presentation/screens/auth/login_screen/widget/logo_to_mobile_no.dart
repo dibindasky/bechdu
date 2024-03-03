@@ -47,28 +47,36 @@ class _LogoToMobileNumberState extends State<LogoToMobileNumber>
         kHeight40,
         Text(
           'Login With your \nphone number',
-          style: textHeadBoldBig.copyWith(fontSize: sWidth * .06),
+          style: textHeadBoldBig.copyWith(
+            fontSize: sWidth * .06,
+            fontWeight: FontWeight.w600,
+          ),
         ),
         kHeight10,
-        Text(
-          'We will send you an One Time Password(OTP) on this mobile number.',
-          style: textHeadMedium1.copyWith(
-            fontSize: sWidth * .037,
+        Text.rich(
+          TextSpan(
+            text: 'We will send you an ',
+            style: textHeadMedium1.copyWith(
+              fontSize: sWidth * .037,
+            ),
+            children: [
+              TextSpan(
+                text: 'One Time Password(OTP)',
+                style: textHeadBold1,
+              ),
+              const TextSpan(
+                text: ' on this mobile number.',
+              ),
+            ],
           ),
         ),
         kHeight20,
         Text(
           'Enter mobile no.*',
-          style: textHeadBold1,
+          style: textHeadBold1.copyWith(fontWeight: FontWeight.w600),
         ),
         kHeight5,
       ],
     );
-  }
-
-  @override
-  void dispose() {
-    //phoneController.dispose();
-    super.dispose();
   }
 }

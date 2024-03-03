@@ -51,8 +51,7 @@ class ScreenPickUp extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Column(
                   children: [
-                    const TopImage(
-                        fromWhere: FromWhere.checkoutAndPickupScreen),
+                    const TopImage(fromWhere: FromWhere.pickupScreen),
                     kHeight10,
                     Text(
                       'Pickup Details',

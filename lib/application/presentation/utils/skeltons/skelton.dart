@@ -20,6 +20,7 @@ class Skeleton extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(10.0),
       child: GridView.builder(
+        physics: const NeverScrollableScrollPhysics(),
         shrinkWrap: true,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: crossAxisCount,

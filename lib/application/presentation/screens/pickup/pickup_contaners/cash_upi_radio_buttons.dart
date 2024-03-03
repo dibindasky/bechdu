@@ -77,16 +77,19 @@ class _CashOrUPIState extends State<CashOrUPI> {
                     type: selectedRadio,
                     id: context.read<PlaceOrderBloc>().upiIdController.text,
                   );
-
                   // event call for placing order
                   context
                       .read<PlaceOrderBloc>()
                       .add(PlaceOrderEvent.paymentOption(payment: payment));
+                  pickupDetailChangeNotifier.value =
+                      PickupDetailContainers.dateSelect;
+                  pickupDetailChangeNotifier.notifyListeners();
+                } else {
+                  showSnack(
+                      context: context, message: 'Please fill Upi Details');
                 }
-                pickupDetailChangeNotifier.value =
-                    PickupDetailContainers.dateSelect;
-                pickupDetailChangeNotifier.notifyListeners();
-              } else if (selectedRadio == 'cash') {
+              }
+              if (selectedRadio == 'cash') {
                 Payment payment = Payment(
                   type: selectedRadio,
                   id: '',
@@ -99,8 +102,6 @@ class _CashOrUPIState extends State<CashOrUPI> {
                 context
                     .read<PlaceOrderBloc>()
                     .add(PlaceOrderEvent.paymentOption(payment: payment));
-              } else {
-                showSnack(context: context, message: 'Please fill Upi Details');
               }
             },
             text: 'Continue',

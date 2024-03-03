@@ -9,4 +9,5 @@ enum FromWhere {
   questionScreen,
   recalculateWithAmount,
   checkoutAndPickupScreen,
+  pickupScreen
 }

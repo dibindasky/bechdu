@@ -1,7 +1,5 @@
 import 'dart:developer';
-
 import 'package:beachdu/application/business_logic/location/location_bloc.dart';
-import 'package:beachdu/application/business_logic/place_order/place_order_bloc.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/application/presentation/utils/loading_indicators/loading_indicator.dart';

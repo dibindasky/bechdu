@@ -2,6 +2,9 @@ import 'dart:async';
 import 'dart:developer';
 import 'package:beachdu/data/secure_storage/secure_fire_store.dart';
 import 'package:beachdu/domain/model/order_model/abandend_order_request_model/abandend_order_request_model.dart';
+import 'package:beachdu/domain/model/order_model/get_all_order_responce_model/get_all_order_responce_model.dart';
+import 'package:beachdu/domain/model/order_model/order_cancelation_request_model/order_cancelation_request_model.dart';
+import 'package:beachdu/domain/model/order_model/order_cancelation_responce_model/order_cancelation_responce_model.dart';
 import 'package:beachdu/domain/model/order_model/order_placed_request_model/order_placed_request_model.dart';
 import 'package:beachdu/domain/model/order_model/order_placed_request_model/payment.dart';
 import 'package:beachdu/domain/model/order_model/order_placed_request_model/pick_up_details.dart';
@@ -31,14 +34,82 @@ class PlaceOrderBloc extends Bloc<PlaceOrderEvent, PlaceOrderState> {
   TextEditingController additionalNumberController = TextEditingController();
   TextEditingController promocodeController = TextEditingController();
   TextEditingController upiIdController = TextEditingController();
+  TextEditingController cancelationReasonController = TextEditingController();
   PlaceOrderBloc(this.placeOrderRepo) : super(PlaceOrderState.initial()) {
     on<GetPromoCode>(getPromoCode);
     on<OrderPlacing>(orderPlacing);
+    on<GetOrders>(getOrders);
+    on<OrderCancel>(orderCancel);
     on<ProductDetailsPick>(productDetailsPick);
+    on<PromoCodePick>(promocodePick);
     on<UserDetailsPick>(userDetailsPick);
     on<AddressPick>(addressPick);
     on<PaymentOption>(paymentOption);
     on<PickupDetailsPick>(pickupDetailsPick);
+    on<UserNumber>(userNumber);
+    on<RemoveAllFieldData>(removeAllFeildData);
+  }
+
+  FutureOr<void> orderCancel(OrderCancel event, emit) async {
+    final number = await SecureSotrage.getNumber();
+    event.orderCancelationRequestModel.phone = number;
+    log('Bloc ${event.orderCancelationRequestModel.toJson()}');
+    emit(state.copyWith(isLoading: true, hasError: false));
+    final data = await placeOrderRepo.orderCancel(
+      orderCancelationRequestModel: event.orderCancelationRequestModel,
+      orderId: event.orderId,
+    );
+    data.fold((falure) {
+      emit(state.copyWith(
+        hasError: true,
+        isLoading: false,
+        message: falure.message,
+      ));
+    }, (orderCancelSuccess) async {
+      emit(
+        state.copyWith(
+          hasError: false,
+          isLoading: false,
+          orderCancelationResponceModel: orderCancelSuccess,
+        ),
+      );
+    });
+  }
+
+  FutureOr<void> userNumber(UserNumber event, emit) async {
+    final number = await SecureSotrage.getNumber();
+    emit(state.copyWith(number: number));
+  }
+
+  FutureOr<void> promocodePick(PromoCodePick event, emit) {
+    state.orderPlacedRequestModel.promo = event.promo;
+    emit(state.copyWith(
+      orderPlacedRequestModel: state.orderPlacedRequestModel,
+    ));
+    log('promoPick ${event.promo.code} ${event.promo.price}');
+  }
+
+  FutureOr<void> getOrders(GetOrders event, emit) async {
+    if (state.getAllOrderResponceModel != null) return;
+    emit(state.copyWith(isLoading: true, hasError: false));
+    final data = await placeOrderRepo.getOrders();
+    final login = await SecureSotrage.getlLogin();
+    data.fold((failure) {
+      emit(state.copyWith(
+        isLoading: false,
+        hasError: true,
+        message: failure.message,
+      ));
+    }, (success) {
+      emit(
+        state.copyWith(
+          hasError: false,
+          isLoading: false,
+          getAllOrderResponceModel: success,
+          loginStatus: login,
+        ),
+      );
+    });
   }
 
   FutureOr<void> productDetailsPick(ProductDetailsPick event, emit) async {
@@ -69,7 +140,7 @@ class PlaceOrderBloc extends Bloc<PlaceOrderEvent, PlaceOrderState> {
     ));
   }
 
-  FutureOr<void> userDetailsPick(UserDetailsPick event, emit) {
+  FutureOr<void> userDetailsPick(UserDetailsPick event, emit) async {
     state.orderPlacedRequestModel.user = event.user;
     log('user name userDetailsPick event ${event.user.name}');
     emit(state.copyWith(
@@ -81,8 +152,16 @@ class PlaceOrderBloc extends Bloc<PlaceOrderEvent, PlaceOrderState> {
     final number = await SecureSotrage.getNumber();
     state.orderPlacedRequestModel.user!.phone = number;
     emit(state.copyWith(isLoading: true, hasError: false));
+    var orderModel = state.orderPlacedRequestModel;
+
+    orderModel.promo = state.promoCodeResponceModel == null
+        ? Promo(code: '', price: '')
+        : Promo(
+            code: promocodeController.text,
+            price: state.promoCodeResponceModel!.value.toString(),
+          );
     final data = await placeOrderRepo.orderPlacing(
-      orderPlacedRequestModel: state.orderPlacedRequestModel,
+      orderPlacedRequestModel: orderModel,
     );
 
     data.fold((falure) {
@@ -120,30 +199,24 @@ class PlaceOrderBloc extends Bloc<PlaceOrderEvent, PlaceOrderState> {
 
       log('falure $falure');
     }, (promoCodeResponceModel) async {
-      String code;
-      String price;
-      if (promocodeController.text.isEmpty) {
-        code = '';
-        price = '';
-      } else {
-        code = promocodeController.text;
-        price = promoCodeResponceModel.value.toString();
-      }
-      log('promo code in bloc $code');
-      log('promo price in bloc $price');
-      Promo promo = Promo(code: code, price: price);
-      OrderPlacedRequestModel orderPlacedRequestModel =
-          OrderPlacedRequestModel(promo: promo);
+      value = promoCodeResponceModel.value!;
       emit(
         state.copyWith(
           hasError: false,
           isLoading: false,
           promoCodeResponceModel: promoCodeResponceModel,
-          orderPlacedRequestModel: orderPlacedRequestModel,
+          //orderPlacedRequestModel: orderPlacedRequestModel,
         ),
       );
-      //add(const PlaceOrderEvent.promoCodeSuccess());
-      log('promoCodeResponceModel $promoCodeResponceModel');
     });
+  }
+
+  FutureOr<void> removeAllFeildData(RemoveAllFieldData event, emit) {
+    nameController.clear();
+    emailController.clear();
+    numberController.clear();
+    additionalNumberController.clear();
+    promocodeController.clear();
+    upiIdController.clear();
   }
 }

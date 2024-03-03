@@ -8,8 +8,8 @@ class Product {
   String? id;
   String? slug;
   String? productImage;
-  int? basePrice;
-  int? estimatedPrice;
+  num? basePrice;
+  num? estimatedPrice;
   String? variant;
   String? model;
   String? brandName;

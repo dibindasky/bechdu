@@ -3,6 +3,9 @@ import 'dart:developer';
 import 'package:beachdu/data/secure_storage/secure_fire_store.dart';
 import 'package:beachdu/domain/core/api_endpoints/api_endpoints.dart';
 import 'package:beachdu/domain/core/failure/failure.dart';
+import 'package:beachdu/domain/model/order_model/get_all_order_responce_model/get_all_order_responce_model.dart';
+import 'package:beachdu/domain/model/order_model/order_cancelation_request_model/order_cancelation_request_model.dart';
+import 'package:beachdu/domain/model/order_model/order_cancelation_responce_model/order_cancelation_responce_model.dart';
 import 'package:beachdu/domain/model/order_model/order_placed_request_model/order_placed_request_model.dart';
 import 'package:beachdu/domain/model/order_model/order_placed_responce_model/order_placed_responce_model.dart';
 import 'package:beachdu/domain/model/promo_code_model/promo_code_request_model/promo_code_request_model.dart';
@@ -54,6 +57,7 @@ class PlaceOrderService implements PlaceOrderRepo {
           'authorization': "Bearer $accessToken",
         },
       );
+      log('orderPlacing ${orderPlacedRequestModel.toJson()}');
       final responce = await _dio.post(
         ApiEndPoints.orderPlacing,
         data: orderPlacedRequestModel.toJson(),
@@ -62,6 +66,64 @@ class PlaceOrderService implements PlaceOrderRepo {
     } on DioException catch (e) {
       return Left(Failure(message: e.response?.data['error'] ?? errorMessage));
     } catch (e) {
+      return Left(Failure(message: errorMessage));
+    }
+  }
+
+  @override
+  Future<Either<Failure, GetAllOrderResponceModel>> getOrders() async {
+    try {
+      final number = await SecureSotrage.getNumber();
+      final accessToken =
+          await SecureSotrage.getToken().then((token) => token.accessToken);
+      _dio.options.headers.addAll(
+        {
+          'authorization': "Bearer $accessToken",
+        },
+      );
+      log(_dio.options.headers.toString());
+      final responce =
+          await _dio.get(ApiEndPoints.getOrders.replaceAll('{number}', number));
+      log('getOrders data ${responce.data}');
+      return Right(GetAllOrderResponceModel.fromJson(responce.data));
+    } on DioException catch (e) {
+      log('getOrders DioException $e');
+      return Left(Failure(message: e.response?.data['error'] ?? errorMessage));
+    } catch (e) {
+      log('getOrders catch $e');
+      return Left(Failure(message: errorMessage));
+    }
+  }
+
+  @override
+  Future<Either<Failure, OrderCancelationResponceModel>> orderCancel({
+    required OrderCancelationRequestModel orderCancelationRequestModel,
+    required String orderId,
+  }) async {
+    try {
+      final accessToken =
+          await SecureSotrage.getToken().then((token) => token.accessToken);
+      _dio.options.headers.addAll(
+        {
+          'authorization': "Bearer $accessToken",
+        },
+      );
+      log('${orderCancelationRequestModel.toJson()}');
+      log(_dio.options.headers.toString());
+      final responce = await _dio.delete(
+        ApiEndPoints.orderCancel.replaceAll(
+          '{order_id}',
+          orderId,
+        ),
+        data: orderCancelationRequestModel.toJson(),
+      );
+      log('orderCancel data ${responce.data}');
+      return Right(OrderCancelationResponceModel.fromJson(responce.data));
+    } on DioException catch (e) {
+      log('orderCancel DioException $e');
+      return Left(Failure(message: e.response?.data['error'] ?? errorMessage));
+    } catch (e) {
+      log('orderCancel catch $e');
       return Left(Failure(message: errorMessage));
     }
   }

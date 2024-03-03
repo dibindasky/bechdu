@@ -30,7 +30,7 @@ class BottomSections extends StatelessWidget {
               TextSpan(
                 text: 'No Problem We Will Create One For You',
                 style: textHeadMedium1.copyWith(
-                  color: klightGreen,
+                  color: kGreenPrimary,
                   fontSize: sWidth * .037,
                 ),
               ),
@@ -51,9 +51,9 @@ class BottomSections extends StatelessWidget {
                     'Skip for now',
                     style: textHeadInter.copyWith(
                       fontSize: sWidth * .045,
-                      color: klightGreen,
+                      color: kGreenPrimary,
                       decoration: TextDecoration.underline,
-                      decorationColor: klightGreen,
+                      decorationColor: kGreenPrimary,
                       decorationThickness: 1.4,
                     ),
                   ),
@@ -61,6 +61,7 @@ class BottomSections extends StatelessWidget {
               ),
         kHeight50,
         ElevatedButtonLong(
+          wdth: sWidth * .7,
           onPressed: () {
             login(context);
           },

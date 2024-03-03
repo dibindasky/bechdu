@@ -1,23 +1,20 @@
-import 'package:beachdu/application/business_logic/location/location_bloc.dart';
+import 'package:beachdu/application/business_logic/home_bloc/home_bloc.dart';
 import 'package:beachdu/application/presentation/routes/routes.dart';
+import 'package:beachdu/application/presentation/screens/home/home_screen.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
+import 'package:beachdu/domain/model/search_model/search_param_model/search_param_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
 
 class CustomSearchFieldHome extends StatelessWidget {
-  const CustomSearchFieldHome({
-    super.key,
-  });
+  const CustomSearchFieldHome({super.key});
+
+  // final Debouncer<String> _debouncer = Debouncer<String>(const Duration(milliseconds: 500));
 
   @override
   Widget build(BuildContext context) {
-    WidgetsBinding.instance.addPostFrameCallback(
-      (timeStamp) {
-        context.read<LocationBloc>().add(const LocationEvent.locationPick());
-      },
-    );
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 5),
       child: Row(
@@ -26,6 +23,8 @@ class CustomSearchFieldHome extends StatelessWidget {
           SizedBox(
             width: sWidth * 0.7,
             child: TextField(
+              controller:
+                  context.read<HomeBloc>().globalProductSearchController,
               style: textHeadMedium1,
               decoration: InputDecoration(
                 filled: true,
@@ -38,6 +37,20 @@ class CustomSearchFieldHome extends StatelessWidget {
                 ),
                 border: InputBorder.none,
               ),
+              onChanged: (value) {
+                if (value.isNotEmpty) {
+                  homeScreens.value = 1;
+                  homeScreens.notifyListeners();
+                  context.read<HomeBloc>().add(
+                        HomeEvent.globalPrductSearch(
+                          searchParamModel: SearchParamModel(search: value),
+                        ),
+                      );
+                } else {
+                  homeScreens.value = 0;
+                  homeScreens.notifyListeners();
+                }
+              },
             ),
           ),
           Container(

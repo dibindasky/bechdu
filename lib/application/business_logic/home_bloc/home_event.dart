@@ -6,4 +6,8 @@ class HomeEvent with _$HomeEvent {
   const factory HomeEvent.selectedactegory({required String category}) =
       Selectedactegory;
   const factory HomeEvent.homePageBanners() = HomePageBanners;
+  const factory HomeEvent.getBestSellingProducts() = GetBestSellingProducts;
+  const factory HomeEvent.globalPrductSearch({
+    required SearchParamModel searchParamModel,
+  }) = GlobalPrductSearch;
 }

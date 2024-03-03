@@ -9,6 +9,9 @@ class HomeState with _$HomeState {
     String? selectedCategory,
     GetCategoryResponceModel? getCategoryResponceModel,
     HomeBannerResponceModel? homeBannerResponceModel,
+    BestSellingProductsResponceModel? bestSellingProductsResponceModel,
+    SearchResponceModel? searchResponceModel,
+    List<Product>? filtteredProducts,
   }) = _Initial;
 
   factory HomeState.initial() => const HomeState(

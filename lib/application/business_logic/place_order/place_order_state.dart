@@ -5,6 +5,7 @@ class PlaceOrderState with _$PlaceOrderState {
   const factory PlaceOrderState({
     required bool isLoading,
     required bool hasError,
+    required bool loginStatus,
     String? message,
     PromoCodeResponceModel? promoCodeResponceModel,
     OrderPlacedResponceModel? orderPlacedResponceModel,
@@ -16,11 +17,14 @@ class PlaceOrderState with _$PlaceOrderState {
     required String address,
     required Promo promo,
     String? number,
+    OrderCancelationResponceModel? orderCancelationResponceModel,
+    GetAllOrderResponceModel? getAllOrderResponceModel,
   }) = _Initial;
 
   factory PlaceOrderState.initial() => PlaceOrderState(
         isLoading: false,
         hasError: false,
+        loginStatus: false,
         orderPlacedRequestModel: OrderPlacedRequestModel(),
         user: User(),
         payment: Payment(),

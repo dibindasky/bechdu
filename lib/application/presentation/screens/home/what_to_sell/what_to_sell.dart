@@ -8,7 +8,6 @@ import 'package:beachdu/application/presentation/screens/product_selection/produ
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/application/presentation/utils/skeltons/skelton.dart';
-import 'package:beachdu/domain/core/failure/failure.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -17,12 +16,6 @@ class WhatToSellWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    WidgetsBinding.instance.addPostFrameCallback(
-      (timeStamp) {
-        context.read<CategoryBlocBloc>().add(const GetSingleCategoryBrands());
-        context.read<HomeBloc>().add(const HomeEvent.getAllCategory());
-      },
-    );
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15),
       child: Column(
@@ -46,12 +39,20 @@ class WhatToSellWidget extends StatelessWidget {
                 );
               } else if (state.hasError) {
                 return Center(
-                  child: Text(state.message ?? errorMessage),
+                  child: IconButton(
+                    onPressed: () {},
+                    icon: const Icon(
+                      Icons.refresh,
+                    ),
+                  ),
                 );
               } else {
                 if (state.getCategoryResponceModel == null) {
                   return Center(
-                    child: Text(state.message ?? 'Category is empty'),
+                    child: IconButton(
+                      onPressed: () {},
+                      icon: const Icon(Icons.refresh_sharp),
+                    ),
                   );
                 } else {
                   final data = state.getCategoryResponceModel!.category!;
@@ -85,27 +86,39 @@ class WhatToSellWidget extends StatelessWidget {
                           secondtabScreensNotifier.value = 0;
                           secondtabScreensNotifier.notifyListeners();
                         },
-                        child: Column(
-                          children: [
-                            Container(
-                              width: 70,
-                              height: 65,
-                              decoration: BoxDecoration(
-                                color: klightwhite,
-                                borderRadius: kRadius5,
-                              ),
-                              child: Image.memory(
-                                base64.decode(base64String),
-                              ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(
+                            //padding: EdgeInsets.all(2),
+                            width: 60,
+                            height: 55,
+                            decoration: BoxDecoration(
+                              color: klightwhite,
+                              borderRadius: kRadius5,
                             ),
-                            kHeight5,
-                            Text(
-                              data[index].categoryType!,
-                              style: textHeadMedium1.copyWith(
-                                fontSize: sWidth * .026,
-                              ),
+                            child: Column(
+                              children: [
+                                Container(
+                                  width: 60,
+                                  height: 50,
+                                  decoration: BoxDecoration(
+                                    color: klightwhite,
+                                    borderRadius: kRadius5,
+                                  ),
+                                  child: Image.memory(
+                                    base64.decode(base64String),
+                                  ),
+                                ),
+                                kHeight5,
+                                Text(
+                                  data[index].categoryType!,
+                                  style: textHeadMedium1.copyWith(
+                                    fontSize: sWidth * .029,
+                                  ),
+                                ),
+                              ],
                             ),
-                          ],
+                          ),
                         ),
                       );
                     },

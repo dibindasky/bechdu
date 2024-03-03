@@ -23,6 +23,7 @@ class DateOrTime extends StatefulWidget {
 
 class _DateOrTimeState extends State<DateOrTime> {
   final dateController = TextEditingController();
+  String selectedDate = 'Date';
   String selectedTime = 'Time';
 
   @override
@@ -49,49 +50,66 @@ class _DateOrTimeState extends State<DateOrTime> {
               children: [
                 const Text('TIME SLOT'),
                 kHeight10,
-                InkWell(
-                  onTap: () => showModalBottomSheet(
-                    context: context,
-                    isScrollControlled: true,
-                    builder: (BuildContext context) {
-                      return DatePickingBottomSheet(
-                        onPressed: (date) {
-                          setState(() {
-                            dateController.text = date;
-                          });
-                        },
-                        datePicker: dateController,
-                      );
-                    },
+                Container(
+                  padding: const EdgeInsets.only(left: 10, right: 12),
+                  height: 60,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    border: Border.all(color: textFieldBorderColor),
+                    borderRadius: BorderRadius.circular(12),
                   ),
-                  child: Container(
-                    padding: const EdgeInsets.only(left: 10, right: 12),
-                    height: 60,
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      border: Border.all(color: textFieldBorderColor),
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: Text(
-                            dateController.text.isEmpty
-                                ? 'Date'
-                                : dateController.text,
-                            style: dateController.text.isEmpty
-                                ? textHeadSemiBold1.copyWith(
-                                    color: textFieldBorderColor,
-                                  )
-                                : textHeadSemiBold1,
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: DropdownButtonHideUnderline(
+                          child: DropdownButton<String>(
+                            icon: const Icon(
+                              Icons.access_time,
+                              color: kBlueLight,
+                            ),
+                            value: selectedDate,
+                            onChanged: (String? newValue) {
+                              setState(() {
+                                selectedDate = newValue!;
+                              });
+                            },
+                            items: <String>[
+                              'Date',
+                              '12-03-2024',
+                              '12-02-2024',
+                              '10-03-2024',
+                              '07-03-2024'
+                            ].map<DropdownMenuItem<String>>(
+                              (String value) {
+                                if (value == 'Date') {
+                                  return DropdownMenuItem<String>(
+                                    value: value,
+                                    child: Text(
+                                      value,
+                                      style: textHeadSemiBold1.copyWith(
+                                          color: textFieldBorderColor),
+                                    ),
+                                  );
+                                }
+                                return DropdownMenuItem<String>(
+                                  value: value,
+                                  child: Text(
+                                    value,
+                                    style: textHeadSemiBold1.copyWith(
+                                      fontSize: sWidth * 0.04,
+                                    ),
+                                  ),
+                                );
+                              },
+                            ).toList(),
                           ),
                         ),
-                        const Icon(
-                          Icons.calendar_month,
-                          color: kBlueLight,
-                        ),
-                      ],
-                    ),
+                      ),
+                      const Icon(
+                        Icons.calendar_month,
+                        color: kBlueLight,
+                      ),
+                    ],
                   ),
                 ),
                 kHeight20,
@@ -160,8 +178,7 @@ class _DateOrTimeState extends State<DateOrTime> {
             builder: (context, questiontabBlocState) {
               return CustomButton(
                 onPressed: () {
-                  if (selectedTime != 'Time' &&
-                      dateController.text.isNotEmpty) {
+                  if (selectedTime != 'Time' && selectedDate != 'Date') {
                     if (context
                             .read<PlaceOrderBloc>()
                             .emailController
@@ -173,8 +190,8 @@ class _DateOrTimeState extends State<DateOrTime> {
                             .text
                             .isNotEmpty) {
                       //PickeDate and time assinning
-                      PickUpDetails pickUpDetails = PickUpDetails(
-                          time: dateController.text, date: selectedTime);
+                      PickUpDetails pickUpDetails =
+                          PickUpDetails(time: selectedTime, date: selectedDate);
                       context.read<PlaceOrderBloc>().add(
                             PlaceOrderEvent.pickupDetailsPick(
                                 pickUpDetails: pickUpDetails),

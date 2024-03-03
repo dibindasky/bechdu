@@ -84,63 +84,84 @@ class _BechDuUserOnBoardingScreensState
               ),
             ),
             kHeight40,
-            if (selectedIndex == 0)
-              Stack(
-                children: [
-                  const Center(
-                    child: CircleAvatar(
-                      backgroundColor: kGreenPrimary,
-                      radius: 90,
-                    ),
-                  ),
-                  Center(
-                    child: SizedBox(
-                      height: sWidth * 0.45,
-                      child: Image.asset(onBoardingpersonScreen),
-                    ),
-                  ),
-                ],
-              ),
-            if (selectedIndex == 1)
-              Stack(
-                children: [
-                  const Center(
-                    child: CircleAvatar(
-                      backgroundColor: kBluePrimary,
-                      radius: 87,
-                      child: CircleAvatar(
-                        backgroundColor: kWhite,
-                        radius: 85,
-                        child: CircleAvatar(
-                          backgroundColor: kBluePrimary,
-                          radius: 79,
+            SizedBox(
+              height: 174,
+              width: 174,
+              child: selectedIndex == 0
+                  ? Stack(
+                      children: [
+                        const Center(
                           child: CircleAvatar(
-                            backgroundColor: kWhite,
-                            radius: 77,
-                            child: CircleAvatar(
-                              backgroundColor: kBluePrimary,
-                              radius: 70,
-                            ),
+                            backgroundColor: kGreenPrimary,
+                            radius: 90,
                           ),
                         ),
-                      ),
-                    ),
-                  ),
-                  Center(
-                    child: SizedBox(
-                      height: sWidth * 0.45,
-                      child: Image.asset(onBoardingsecondScreen),
-                    ),
-                  ),
-                ],
-              ),
-            if (selectedIndex == 2)
-              Center(
-                child: SizedBox(
-                  height: sWidth * 0.45,
-                  child: Image.asset(onBoardingThirdScreen),
-                ),
-              ),
+                        Positioned(
+                          child: SizedBox(
+                            height: sWidth * 0.45,
+                            child: Image.asset(onBoardingpersonScreen),
+                          ),
+                        ),
+                      ],
+                    )
+                  : selectedIndex == 1
+                      ? Stack(
+                          children: [
+                            const Center(
+                              child: CircleAvatar(
+                                backgroundColor: kBluePrimary,
+                                radius: 87,
+                                child: CircleAvatar(
+                                  backgroundColor: kWhite,
+                                  radius: 85,
+                                  child: CircleAvatar(
+                                    backgroundColor: kBluePrimary,
+                                    radius: 79,
+                                    child: CircleAvatar(
+                                      backgroundColor: kWhite,
+                                      radius: 77,
+                                      child: CircleAvatar(
+                                        backgroundColor: kBluePrimary,
+                                        radius: 70,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Center(
+                              child: SizedBox(
+                                height: sWidth * 0.45,
+                                child: Image.asset(onBoardingsecondScreen),
+                              ),
+                            ),
+                          ],
+                        )
+                      : selectedIndex == 2
+                          ? Stack(
+                              children: [
+                                const Center(
+                                  child: CircleAvatar(
+                                    backgroundColor: kBluePrimary,
+                                    radius: 60,
+                                  ),
+                                ),
+                                Positioned(
+                                  top: 0,
+                                  bottom: 0,
+                                  left: 0,
+                                  right: 0,
+                                  child: Center(
+                                    child: SizedBox(
+                                      height: sWidth * 0.45,
+                                      child: Image.asset(onBoardingThirdScreen),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            )
+                          : const SizedBox(),
+            ),
             kHeight40,
             Text(
               textListFirst[selectedIndex],
@@ -173,12 +194,9 @@ class _BechDuUserOnBoardingScreensState
   Widget buildPageIndicator(int index) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 4),
-      child: SizedBox(
-        height: 10,
-        child: CircleAvatar(
-          radius: selectedIndex == index ? 5 : 3,
-          backgroundColor: selectedIndex == index ? kGreenPrimary : kBlack,
-        ),
+      child: CircleAvatar(
+        radius: selectedIndex == index ? 5 : 3,
+        backgroundColor: selectedIndex == index ? kGreenPrimary : kBlack,
       ),
     );
   }
