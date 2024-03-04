@@ -68,7 +68,6 @@ class QuestionTabBloc extends Bloc<QuestionTabEvent, QuestionTabState> {
     }
     if (event.selectedOption.type == 'yes/no' &&
         event.selectedOption.value != null) {
-      // if(event.selectedOption.type==)
       updatedList.add(event.selectedOption);
       answerdCount += 1;
       isUnSelect = false;

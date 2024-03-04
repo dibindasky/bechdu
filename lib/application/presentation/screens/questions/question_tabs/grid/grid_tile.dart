@@ -10,26 +10,23 @@ class GridOptionSelectorTile extends StatefulWidget {
   const GridOptionSelectorTile({
     super.key,
     required this.question,
+    required this.index,
+    required this.func,
   });
   final Question question;
+  final bool index;
+  final VoidCallback func;
 
   @override
   State<GridOptionSelectorTile> createState() => _GridOptionSelectorTileState();
 }
 
 class _GridOptionSelectorTileState extends State<GridOptionSelectorTile> {
-  bool isSelected = false;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        setState(() {
-          if (!isSelected) {
-            isSelected = true;
-          } else {
-            isSelected = false;
-          }
-        });
+        widget.func();
         SelectedOption selectedOption = SelectedOption(
           description: widget.question.description,
           type: widget.question.type,
@@ -42,7 +39,7 @@ class _GridOptionSelectorTileState extends State<GridOptionSelectorTile> {
         padding: const EdgeInsets.all(8.0),
         child: DecoratedBox(
           decoration: BoxDecoration(
-            color: isSelected ? kBluePrimary : knill,
+            color: widget.index ? kBluePrimary : knill,
             border: Border.all(color: kBluePrimary, width: 2),
           ),
           child: Padding(
@@ -51,7 +48,7 @@ class _GridOptionSelectorTileState extends State<GridOptionSelectorTile> {
               child: Text(
                 widget.question.description!,
                 style: textHeadBold1.copyWith(
-                  color: isSelected ? kWhite : kBluePrimary,
+                  color: widget.index ? kWhite : kBluePrimary,
                 ),
               ),
             ),

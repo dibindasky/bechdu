@@ -115,31 +115,35 @@ class PersonalDetails extends StatelessWidget {
                       .additionalNumberController
                       .text;
 
-                  if (!isValidEmail(email)) {
-                    showSnack(
-                      context: context,
-                      message: 'Not valid email',
-                      color: kRed,
-                    );
-                    return;
+                  bool isValidPhoneNumber(String phoneNumber) {
+                    final RegExp phoneRegex =
+                        RegExp(r'^[\+]?[(]?[0-9]{3}[)]?[-\s\./0-9]*$');
+                    return phoneRegex.hasMatch(phoneNumber) &&
+                        phoneNumber.length >= 10;
                   }
 
                   if (addPhone.isNotEmpty) {
-                    if (!isValidPhoneNumber(addPhone) && addPhone.length < 10) {
+                    if (!isValidPhoneNumber(addPhone)) {
                       showSnack(
                         context: context,
                         message: 'Not valid additional number',
                         color: kRed,
                       );
-                      return;
                     }
-                    return;
                   }
 
-                  if (!isValidName(name) && name.length < 3) {
+                  if (name.isEmpty || name.length < 3) {
                     showSnack(
                       context: context,
-                      message: 'Not valid name',
+                      message: 'Name cannot be empty or less than 3 characters',
+                      color: kRed,
+                    );
+                    return;
+                  }
+                  if (!isValidEmail(email)) {
+                    showSnack(
+                      context: context,
+                      message: 'Not valid email',
                       color: kRed,
                     );
                     return;

@@ -4,7 +4,10 @@ import 'package:beachdu/domain/model/get_question_model/section.dart';
 import 'package:flutter/material.dart';
 
 class GridOptionMaker extends StatefulWidget {
-  const GridOptionMaker({super.key, required this.section});
+  const GridOptionMaker({
+    super.key,
+    required this.section,
+  });
 
   final Section section;
 
@@ -13,8 +16,7 @@ class GridOptionMaker extends StatefulWidget {
 }
 
 class _GridOptionMakerState extends State<GridOptionMaker> {
-  int? selectedIndex;
-
+  int selectedIndex = -1;
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -29,6 +31,12 @@ class _GridOptionMakerState extends State<GridOptionMaker> {
               itemCount: widget.section.options!.length,
               shrinkWrap: true,
               itemBuilder: (context, index) => GridOptionSelectorTile(
+                func: () {
+                  setState(() {
+                    selectedIndex = index;
+                  });
+                },
+                index: selectedIndex == index,
                 question: widget.section.options![index],
               ),
             ),
