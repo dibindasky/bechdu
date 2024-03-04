@@ -5,6 +5,7 @@ import 'package:beachdu/application/presentation/routes/routes.dart';
 import 'package:beachdu/application/presentation/screens/product_selection/product_screen.dart';
 import 'package:beachdu/application/presentation/screens/questions/question_tabs/question_anwer_sesstion/answer_session.dart';
 import 'package:beachdu/application/presentation/screens/questions/question_tabs/question_tab_row/question_tab_row.dart';
+import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/application/presentation/utils/custom_button.dart';
 import 'package:beachdu/application/presentation/utils/enums/type_display.dart';
@@ -81,19 +82,19 @@ class QuestionTabs extends StatelessWidget {
                                           loginOrNot(context, questionTabBloc);
                                         } else {
                                           showSnack(
-                                            context: context,
-                                            message: 'Select all options',
-                                          );
+                                              context: context,
+                                              message: 'Select all options',
+                                              color: kRed);
                                         }
                                       } else if (criteria == 'some') {
                                         if (questionTabBloc.answerCount >= 1) {
                                           loginOrNot(context, questionTabBloc);
                                         } else {
                                           showSnack(
-                                            context: context,
-                                            message:
-                                                'Select at least one option',
-                                          );
+                                              context: context,
+                                              message:
+                                                  'Select at least one option',
+                                              color: kRed);
                                         }
                                       } else if (criteria == 'one') {
                                         if (questionTabBloc.answerCount == 1) {
@@ -102,6 +103,7 @@ class QuestionTabs extends StatelessWidget {
                                           showSnack(
                                             context: context,
                                             message: 'Select only one option',
+                                            color: kRed,
                                           );
                                         }
                                       } else {
@@ -116,9 +118,9 @@ class QuestionTabs extends StatelessWidget {
                                             .add(const TabChange());
                                       } else {
                                         showSnack(
-                                          context: context,
-                                          message: 'Select all options',
-                                        );
+                                            context: context,
+                                            message: 'Select all options',
+                                            color: kRed);
                                       }
                                     } else if (criteria == 'some') {
                                       if (questionTabBloc.answerCount >= 1) {
@@ -127,9 +129,10 @@ class QuestionTabs extends StatelessWidget {
                                             .add(const TabChange());
                                       } else {
                                         showSnack(
-                                          context: context,
-                                          message: 'Select at least one option',
-                                        );
+                                            context: context,
+                                            message:
+                                                'Select at least one option',
+                                            color: kRed);
                                       }
                                     } else if (criteria == 'one') {
                                       if (questionTabBloc.answerCount == 1) {
@@ -138,9 +141,10 @@ class QuestionTabs extends StatelessWidget {
                                             .add(const TabChange());
                                       } else {
                                         showSnack(
-                                          context: context,
-                                          message: 'Select atleast one option',
-                                        );
+                                            context: context,
+                                            message:
+                                                'Select atleast one option',
+                                            color: kRed);
                                       }
                                     } else {
                                       context

@@ -50,41 +50,73 @@ class QuestionTabBloc extends Bloc<QuestionTabEvent, QuestionTabState> {
   }
 
   FutureOr<void> markedQuestions(MarkedQuestions event, emit) {
-    bool isUnSelect = false;
-    event.selectedOption.heading =
-        state.getQuestionModel!.sections![state.selectedTabIndex].heading;
-    updatedList = List.from(state.selectedOption);
-    log('state.selectedOption type ${event.selectedOption.type}');
-    log('state.selectedOption value ${event.selectedOption.value}');
-    for (var element in state.selectedOption) {
-      if (element.description == event.selectedOption.description) {
-        updatedList.remove(element);
-        answerdCount -= 1;
-        log('Answer count $answerdCount');
-        log('updatedList count ${updatedList.length}');
-        isUnSelect = true;
+    bool isYesorNo = false;
+    bool other = false;
+    for (var i in state.selectedOption) {
+      if (i.description == event.selectedOption.description) {
+        log('find');
+        if (i.value != null && i.value == event.selectedOption.value) {
+          log('find 1');
+          isYesorNo = true;
+        }
+        updatedList.remove(i);
+        other = true;
+        answerdCount--;
         break;
       }
     }
-    if (event.selectedOption.type == 'yes/no' &&
-        event.selectedOption.value != null) {
+    if (event.selectedOption.value != null && !isYesorNo) {
+      log('find 3');
       updatedList.add(event.selectedOption);
-      answerdCount += 1;
-      isUnSelect = false;
-      log('Answer count $answerdCount');
-      log('updatedList count ${updatedList.length}');
-    } else if (!isUnSelect) {
+      answerdCount++;
+    } else if (!isYesorNo && event.selectedOption.value == null && !other) {
+      log('find 4');
       updatedList.add(event.selectedOption);
-      answerdCount += 1;
-      log('Answer count $answerdCount');
-      log('updatedList count ${updatedList.length}');
+      answerdCount++;
     }
-    log('updatedList count last ${updatedList.length}');
-    isUnSelect = false;
+    log('Answer count $answerdCount');
+    log('updatedList count ${updatedList.length}');
     emit(state.copyWith(
       selectedOption: updatedList,
       answerCount: answerdCount,
     ));
+
+    // bool isUnSelect = false;
+    // event.selectedOption.heading =
+    //     state.getQuestionModel!.sections![state.selectedTabIndex].heading;
+    // updatedList = List.from(state.selectedOption);
+    // log('state.selectedOption type ${event.selectedOption.type}');
+    // log('state.selectedOption value ${event.selectedOption.value}');
+    // for (var element in state.selectedOption) {
+    //   if (element.description == event.selectedOption.description) {
+    //     updatedList.remove(element);
+    //     answerdCount -= 1;
+    //     log('Answer count $answerdCount');
+    //     log('updatedList count ${updatedList.length}');
+    //     isUnSelect = true;
+    //     break;
+    //   }
+    // }
+    // if (event.selectedOption.type == 'yes/no' &&
+    //     event.selectedOption.value != null) {
+    //   updatedList.add(event.selectedOption);
+    //   answerdCount += 1;
+    //   isUnSelect = false;
+    //   log('Answer count $answerdCount');
+    //   log('updatedList count ${updatedList.length}');
+    // } else if (!isUnSelect) {
+    //   updatedList.add(event.selectedOption);
+    //   answerdCount += 1;
+    //   log('Answer count $answerdCount');
+    //   log('updatedList count ${updatedList.length}');
+    // }
+
+    // log('updatedList count last ${updatedList.length}');
+    // isUnSelect = false;
+    // emit(state.copyWith(
+    //   selectedOption: updatedList,
+    //   answerCount: answerdCount,
+    // ));
   }
 
   FutureOr<void> resetTabSelection(ResetTabSelection event, emit) {

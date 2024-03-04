@@ -169,6 +169,7 @@ class PlaceOrderBloc extends Bloc<PlaceOrderEvent, PlaceOrderState> {
             code: promocodeController.text,
             price: state.promoCodeResponceModel!.value.toString(),
           );
+
     final data = await placeOrderRepo.orderPlacing(
       orderPlacedRequestModel: orderModel,
     );

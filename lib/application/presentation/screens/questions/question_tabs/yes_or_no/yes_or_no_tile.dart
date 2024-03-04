@@ -65,6 +65,7 @@ class _YesOrNoTileState extends State<YesOrNoTile> {
             // If the button is already selected, deselect it
             if (selected == yesOrNo) {
               SelectedOption selectedOption = SelectedOption(
+                heading: 'yes/no',
                 description: widget.question.description,
                 value: yesOrNo,
                 type: widget.question.type,
@@ -74,6 +75,8 @@ class _YesOrNoTileState extends State<YesOrNoTile> {
                   .add(QuestionTabEvent.markedQuestions(
                     selectedOption: selectedOption,
                   ));
+              log('UI  yesOrNo ${yesOrNo}');
+              log('UI widget.question.type ${widget.question.type}');
               setState(() {
                 selected = null;
               });

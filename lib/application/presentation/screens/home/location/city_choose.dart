@@ -135,20 +135,19 @@ class ScreenLocations extends StatelessWidget {
                                                     .filteredLocations![index],
                                               ),
                                             );
-                                        if (state.isLogin) {
-                                          CityUpdateRequestModel
-                                              cityUpdateRequestModel =
-                                              CityUpdateRequestModel(
-                                            city:
-                                                state.filteredLocations![index],
-                                          );
-                                          context.read<LocationBloc>().add(
-                                                LocationEvent.locationUpdate(
-                                                  cityUpdateRequestModel:
-                                                      cityUpdateRequestModel,
-                                                ),
-                                              );
-                                        }
+                                        // if (state.isLogin) {
+                                        CityUpdateRequestModel
+                                            cityUpdateRequestModel =
+                                            CityUpdateRequestModel(
+                                          city: state.filteredLocations![index],
+                                        );
+                                        context.read<LocationBloc>().add(
+                                              LocationEvent.locationUpdate(
+                                                cityUpdateRequestModel:
+                                                    cityUpdateRequestModel,
+                                              ),
+                                            );
+                                        //}
                                         // //picked location update event
 
                                         //Navigating to pincode screen

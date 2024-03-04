@@ -60,7 +60,7 @@ class _CaurosalViewHomePageOffersState
                         base64String = base64String.replaceFirst(
                             RegExp(r'data:image/[^;]+;base64,'), '');
                         final heading =
-                            data[index].heading!.replaceAll(':<br/>', '');
+                            data[index].heading!.replaceAll('<br/>', '');
                         return InkWell(
                           onTap: () {
                             context
