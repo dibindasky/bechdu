@@ -42,7 +42,7 @@ class ScreenMyOrders extends StatelessWidget {
                 );
               }
               if (state.hasError) {
-                return const Text('error');
+                return Lottie.asset(emptyLottie);
               } else {
                 if (state.getAllOrderResponceModel == null) {
                   return Lottie.asset(emptyLottie);
