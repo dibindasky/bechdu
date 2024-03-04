@@ -29,19 +29,24 @@ class LocationBloc extends Bloc<LocationEvent, LocationState> {
     on<PinCodePick>(pincodeLoad);
     on<PincodeSearch>(pincodeSearch);
     on<PincodeUpdate>(pincodeUpdate);
+    on<SetPicondeSecure>(setPincodeSecure);
     on<Clear>(clear);
   }
 
+  FutureOr<void> setPincodeSecure(SetPicondeSecure event, emit) async {
+    await SecureSotrage.setPincode(pincode: event.pincode);
+    await SecureSotrage.setPicodeBool();
+  }
+
   FutureOr<void> locationLoad(LocationPick event, emit) async {
+    final loginStatus = await SecureSotrage.getlLogin();
     emit(state.copyWith(isLoading: true, hasError: false));
     final data = await locationRepo.locationPick();
-    //log(data.toString());
     data.fold((falure) {
       emit(state.copyWith(
         hasError: true,
         isLoading: false,
       ));
-      //log('falure $falure');
     }, (successLocation) async {
       locations = successLocation;
       emit(
@@ -49,6 +54,7 @@ class LocationBloc extends Bloc<LocationEvent, LocationState> {
           hasError: false,
           isLoading: false,
           filteredLocations: successLocation,
+          isLogin: loginStatus,
         ),
       );
     });
@@ -63,6 +69,7 @@ class LocationBloc extends Bloc<LocationEvent, LocationState> {
   }
 
   FutureOr<void> locationUpdate(LocationUpdate event, emit) async {
+    final loginStatus = await SecureSotrage.getlLogin();
     final data = await locationRepo.locationUpdation(
       cityUpdateRequestModel: event.cityUpdateRequestModel,
     );
@@ -73,25 +80,24 @@ class LocationBloc extends Bloc<LocationEvent, LocationState> {
           isLoading: false,
           message: successupdation.message,
           cityUpdateResponceModel: successupdation,
+          isLogin: loginStatus,
         ),
       );
-      log('successupdation $successupdation');
     });
   }
 
   FutureOr<void> pincodeLoad(PinCodePick event, emit) async {
+    final loginStatus = await SecureSotrage.getlLogin();
     emit(state.copyWith(isLoading: true, hasError: false));
     final data = await locationRepo.pincodePick(
       cityName: event.cityName,
     );
     cityName = event.cityName;
-    log('$cityName');
     data.fold((falure) {
       emit(state.copyWith(
         hasError: true,
         isLoading: false,
       ));
-      log('falure $falure');
     }, (successPincodes) async {
       pinCodes = successPincodes;
       emit(
@@ -99,9 +105,9 @@ class LocationBloc extends Bloc<LocationEvent, LocationState> {
           hasError: false,
           isLoading: false,
           filteredPincodes: successPincodes,
+          isLogin: loginStatus,
         ),
       );
-      log('successPincodes $successPincodes');
     });
   }
 
@@ -114,6 +120,7 @@ class LocationBloc extends Bloc<LocationEvent, LocationState> {
   }
 
   FutureOr<void> pincodeUpdate(PincodeUpdate event, emit) async {
+    final loginStatus = await SecureSotrage.getlLogin();
     final data = await locationRepo.pincodeUpdation(
       pincodeUpdateRequestModel: event.pincodeUpdateRequestModel,
     );
@@ -122,6 +129,7 @@ class LocationBloc extends Bloc<LocationEvent, LocationState> {
         state.copyWith(
           message: successPincode.message,
           pincodeUpdateResponceModel: successPincode,
+          isLogin: loginStatus,
         ),
       );
     });

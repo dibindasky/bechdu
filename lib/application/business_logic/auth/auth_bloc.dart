@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 import 'package:beachdu/data/secure_storage/secure_fire_store.dart';
 import 'package:beachdu/domain/model/login/login_model/login_model.dart';
 import 'package:beachdu/domain/model/login/otp_send_responce_model/otp_send_responce_model.dart';
@@ -30,11 +31,12 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
   FutureOr<void> logOrNot(LogOrNot event, emit) async {
     final logOrNot = await SecureSotrage.getlLogin();
+    log('logOrNot bloc $logOrNot');
     emit(state.copyWith(logOrNot: logOrNot));
   }
 
   FutureOr<void> otpSend(OtpSend event, emit) async {
-    emit(state.copyWith(hasError: false, isLoading: true));
+    emit(state.copyWith(hasError: false, isLoading: true, load: true));
     final data = await authRepo.otpSend(loginModel: event.loginModel);
     data.fold(
         (failure) => emit(
@@ -42,6 +44,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
                 hasError: true,
                 isLoading: false,
                 logOrNot: false,
+                load: false,
               ),
             ), (successOtpSend) async {
       emit(
@@ -50,14 +53,13 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           hasError: false,
           message: successOtpSend.message,
           otpSendResponceModel: successOtpSend,
-          //logOrNot: true,
         ),
       );
     });
   }
 
   FutureOr<void> otpVerifying(OtpVeriying event, emit) async {
-    emit(state.copyWith(hasError: false, isLoading: true));
+    emit(state.copyWith(hasError: false, isLoading: true, load: false));
     final data = await authRepo.otpVerifying(
       otpVerifyRequestModel: event.otpVerifyRequestModel,
     );
@@ -74,6 +76,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           isLoading: false,
           hasError: false,
           otpVerifyResponceModel: successNumberVerifying,
+          logOrNot: true,
         ),
       );
       await SecureSotrage.saveNumber(

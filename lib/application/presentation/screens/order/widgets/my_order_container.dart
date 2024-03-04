@@ -1,5 +1,7 @@
 import 'package:beachdu/application/business_logic/place_order/place_order_bloc.dart';
 import 'package:beachdu/application/presentation/screens/order/widgets/cancel_order_dailog.dart';
+import 'package:beachdu/application/presentation/screens/order/widgets/row_data.dart';
+import 'package:beachdu/application/presentation/screens/product_selection/widgets/custom_button.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/application/presentation/utils/snackbar/snackbar.dart';
@@ -9,15 +11,28 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pinput/pinput.dart';
 
 class MyOrderContainer extends StatelessWidget {
-  const MyOrderContainer({super.key, required this.index});
+  const MyOrderContainer({
+    super.key,
+    required this.index,
+  });
 
   final int index;
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<PlaceOrderBloc, PlaceOrderState>(
+    return BlocConsumer<PlaceOrderBloc, PlaceOrderState>(
+      listener: (context, state) {
+        if (state.orderCancelationResponceModel != null) {
+          showSnack(
+            context: context,
+            message: '${state.message}',
+          );
+        }
+      },
       builder: (context, state) {
         final data = state.getAllOrderResponceModel!.orders![index];
+        final type = data.payment!.type!;
+
         return Container(
           decoration: BoxDecoration(
             color: kWhite,
@@ -43,9 +58,11 @@ class MyOrderContainer extends StatelessWidget {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        '${data.productDetails!.name}',
-                        style: textHeadMedium1,
+                      FittedBox(
+                        child: Text(
+                          '${data.productDetails!.name}',
+                          style: textHeadMedium1,
+                        ),
                       ),
                       Text(
                         "₹ ${data.productDetails!.price}",
@@ -77,45 +94,51 @@ class MyOrderContainer extends StatelessWidget {
                               ),
                             ),
                             kWidth10,
-                            IconButton(
-                              onPressed: () => cancelOrder(
-                                context,
-                                onPressed: () {
-                                  if (context
+                            CustomButton(
+                              fontSize: 11,
+                              height: 30,
+                              width: 60,
+                              text: 'Cancel',
+                              onPressed: () {
+                                cancelOrder(
+                                  context,
+                                  onPressed: () {
+                                    if (context
+                                            .read<PlaceOrderBloc>()
+                                            .cancelationReasonController
+                                            .length >
+                                        10) {
+                                      //Order cancelation event
+                                      OrderCancelationRequestModel
+                                          orderCancelationRequestModel =
+                                          OrderCancelationRequestModel(
+                                        cancellationReason: context
+                                            .read<PlaceOrderBloc>()
+                                            .cancelationReasonController
+                                            .text,
+                                      );
+                                      context.read<PlaceOrderBloc>().add(
+                                            PlaceOrderEvent.orderCancel(
+                                              orderCancelationRequestModel:
+                                                  orderCancelationRequestModel,
+                                              orderId: data.id!,
+                                            ),
+                                          );
+                                      context
                                           .read<PlaceOrderBloc>()
                                           .cancelationReasonController
-                                          .length >
-                                      10) {
-                                    //Order cancelation event
-                                    OrderCancelationRequestModel
-                                        orderCancelationRequestModel =
-                                        OrderCancelationRequestModel(
-                                      cancellationReason: context
-                                          .read<PlaceOrderBloc>()
-                                          .cancelationReasonController
-                                          .text,
-                                    );
-                                    context.read<PlaceOrderBloc>().add(
-                                          PlaceOrderEvent.orderCancel(
-                                            orderCancelationRequestModel:
-                                                orderCancelationRequestModel,
-                                            orderId: data.orderId!,
-                                          ),
-                                        );
-                                    Navigator.of(context).pop();
-                                  } else {
-                                    showSnack(
-                                      context: context,
-                                      message:
-                                          'Cancellation reason must have atleast 10 charectors',
-                                    );
-                                  }
-                                },
-                              ),
-                              icon: const Icon(
-                                Icons.cancel,
-                                color: kRed,
-                              ),
+                                          .clear();
+                                      Navigator.of(context).pop();
+                                    } else {
+                                      showSnack(
+                                        context: context,
+                                        message:
+                                            'Cancellation reason must have atleast 10 charectors',
+                                      );
+                                    }
+                                  },
+                                );
+                              },
                             )
                           ],
                         )
@@ -144,10 +167,9 @@ class MyOrderContainer extends StatelessWidget {
               kHeight10,
               RowDatas(
                 isRow: false,
-                lastImage: '',
                 heading: 'Pickup Partner',
                 imageFirst: 'assets/images/order_hand.png',
-                subHead: '${data.user!.address}',
+                subHead: 'Mukesh Sharma',
                 date: '${data.pickUpDetails!.date}',
               ),
               kHeight10,
@@ -164,95 +186,22 @@ class MyOrderContainer extends StatelessWidget {
                 isRow: true,
                 heading: 'Pickup Date',
                 subHead: '${data.pickUpDetails!.time}',
-                imageFirst: 'assets/images/order_clock.png',
+                imageFirst: pickupclock,
                 date: '${data.pickUpDetails!.date}',
               ),
               kHeight20,
               RowDatas(
                 isRow: true,
                 heading: 'Payment Method',
-                subHead: '${data.payment!.type}',
-                imageFirst: 'assets/images/order_clock.png',
+                subHead: type,
+                imageFirst: paymentMethodIcon,
+                date: '',
               ),
               kHeight10,
             ],
           ),
         );
       },
-    );
-  }
-}
-
-class RowDatas extends StatelessWidget {
-  const RowDatas({
-    super.key,
-    this.heading,
-    this.imageFirst,
-    this.lastImage,
-    this.subHead,
-    this.isRow,
-    this.date,
-  });
-  final String? heading;
-  final String? imageFirst;
-  final String? lastImage;
-  final String? subHead;
-  final bool? isRow;
-  final String? date;
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        kWidth10,
-        CircleAvatar(
-          radius: 14,
-          child: CircleAvatar(
-            radius: 10,
-            backgroundImage: AssetImage('$imageFirst'),
-          ),
-        ),
-        kWidth10,
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(heading!),
-            isRow == true
-                ? Row(
-                    children: [
-                      Text(
-                        '$subHead',
-                        maxLines: 3,
-                        style: textHeadBold1,
-                      ),
-                      kWidth10,
-                      Text(
-                        '$date',
-                        maxLines: 3,
-                        style: textHeadBold1,
-                      ),
-                    ],
-                  )
-                : SizedBox(
-                    width: sWidth * .7,
-                    child: Text(
-                      subHead!,
-                      maxLines: 3,
-                      style: textHeadBold1,
-                    ),
-                  ),
-          ],
-        ),
-        isRow == false
-            ? CircleAvatar(
-                radius: 14,
-                child: CircleAvatar(
-                  radius: 10,
-                  backgroundImage: AssetImage(lastImage!),
-                ),
-              )
-            : kEmpty
-      ],
     );
   }
 }

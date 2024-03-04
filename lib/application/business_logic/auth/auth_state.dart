@@ -5,6 +5,7 @@ class AuthState with _$AuthState {
   const factory AuthState({
     required bool isLoading,
     required bool hasError,
+    required bool load,
     String? message,
     OtpSendResponceModel? otpSendResponceModel,
     OtpVerifyResponceModel? otpVerifyResponceModel,
@@ -15,5 +16,6 @@ class AuthState with _$AuthState {
         isLoading: false,
         hasError: false,
         logOrNot: false,
+        load: false,
       );
 }

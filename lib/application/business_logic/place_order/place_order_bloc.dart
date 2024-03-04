@@ -66,13 +66,22 @@ class PlaceOrderBloc extends Bloc<PlaceOrderEvent, PlaceOrderState> {
         message: falure.message,
       ));
     }, (orderCancelSuccess) async {
-      emit(
-        state.copyWith(
-          hasError: false,
-          isLoading: false,
-          orderCancelationResponceModel: orderCancelSuccess,
-        ),
+      // for find cancelled button index
+      var orderModel = state.getAllOrderResponceModel!.orders!.firstWhere(
+        (element) => element.id == event.orderId,
       );
+      orderModel.status = 'cancelled';
+      var orderList = state.getAllOrderResponceModel;
+      int orderIndex = orderList!.orders!
+          .indexWhere((element) => element.id == orderModel.id);
+      orderList.orders![orderIndex] = orderModel;
+      emit(state.copyWith(
+        hasError: false,
+        isLoading: false,
+        message: orderCancelSuccess.message,
+        orderCancelationResponceModel: orderCancelSuccess,
+        getAllOrderResponceModel: orderList,
+      ));
     });
   }
 
@@ -90,7 +99,7 @@ class PlaceOrderBloc extends Bloc<PlaceOrderEvent, PlaceOrderState> {
   }
 
   FutureOr<void> getOrders(GetOrders event, emit) async {
-    if (state.getAllOrderResponceModel != null) return;
+    // if (state.getAllOrderResponceModel != null) return;
     emit(state.copyWith(isLoading: true, hasError: false));
     final data = await placeOrderRepo.getOrders();
     final login = await SecureSotrage.getlLogin();
@@ -171,6 +180,7 @@ class PlaceOrderBloc extends Bloc<PlaceOrderEvent, PlaceOrderState> {
         message: falure.message,
       ));
     }, (orderPlacingSuccess) async {
+      log('orderPlacing bloc before emit');
       emit(
         state.copyWith(
           hasError: false,
@@ -179,6 +189,9 @@ class PlaceOrderBloc extends Bloc<PlaceOrderEvent, PlaceOrderState> {
           orderPlacedResponceModel: orderPlacingSuccess,
         ),
       );
+      log('orderPlacing bloc before after emit');
+      add(const PlaceOrderEvent.getOrders());
+      log('orderPlacing bloc before after getOrders event call');
     });
   }
 

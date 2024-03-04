@@ -15,12 +15,12 @@ const joinOurTeam = 'assets/images/join_our_team.png';
 const homeOfferImage = 'assets/images/home_offer.png';
 const homeHotDealmage = 'assets/images/hotDeals2.png';
 
-const pickupPartenerIcon = '';
+const pickupPartenerIcon = 'assets/images/order_preson.png';
 const pickupLocationhand = 'assets/images/order_hand.png';
-const pickupLocationIcon = 'assets/images/order_hand.png';
+const pickupLocationIcon = 'assets/images/order_location.png';
 const pickupTimeIcon = 'assets/images/order_clock.png';
-const paymentMethodIcon = '';
-
+const paymentMethodIcon = 'assets/images/payment_icon.png';
+const pickupclock = 'assets/images/order_clock.png';
 const mobileTransperantassetImage = 'assets/images/phone pic.png';
 const imageDiffectedPhone = 'assets/images/diffectImage.png';
 

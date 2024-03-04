@@ -5,7 +5,6 @@ import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/application/presentation/utils/loading_indicators/loading_indicator.dart';
 import 'package:beachdu/application/presentation/utils/snackbar/snackbar.dart';
 import 'package:beachdu/domain/core/failure/failure.dart';
-import 'package:beachdu/domain/model/location/pincode_update_request_model/pincode_update_request_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -85,7 +84,7 @@ class ScreenPinCodes extends StatelessWidget {
                         }
                         if (state.hasError) {
                           return const Center(
-                            child: Text(errorMessage),
+                            child: Icon(Icons.refresh_outlined),
                           );
                         } else {
                           if (state.filteredPincodes == null ||
@@ -95,55 +94,42 @@ class ScreenPinCodes extends StatelessWidget {
                             );
                           }
                         }
-                        return GridView.builder(
+                        return ListView.builder(
                           itemCount: state.filteredPincodes!.length,
                           physics: const NeverScrollableScrollPhysics(),
                           shrinkWrap: true,
-                          gridDelegate:
-                              const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 3,
-                            mainAxisSpacing: 10,
-                            crossAxisSpacing: 10,
-                            childAspectRatio: 1 / .4,
-                          ),
                           itemBuilder: (context, index) {
                             return GestureDetector(
                               onTap: () async {
                                 // Pincode selection event
                                 final selectedPincode =
                                     state.filteredPincodes![index];
-                                PincodeUpdateRequestModel
-                                    pincodeUpdateRequestModel =
-                                    PincodeUpdateRequestModel(
-                                        pincode: selectedPincode);
-                                context.read<LocationBloc>().add(
-                                      LocationEvent.pincodeUpdate(
-                                        pincodeUpdateRequestModel:
-                                            pincodeUpdateRequestModel,
-                                      ),
-                                    );
-                                log('Selected pincode UI stored storage ${state.filteredPincodes![index]}');
+                                context
+                                    .read<LocationBloc>()
+                                    .add(LocationEvent.setPicondeSecure(
+                                      pincode: selectedPincode,
+                                    ));
                                 Navigator.of(context).pop();
                               },
-                              child: ClipRRect(
-                                borderRadius: kRadius15,
-                                child: ColoredBox(
-                                  color: kWhiteextra,
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceEvenly,
-                                    children: [
-                                      CircleAvatar(
-                                        backgroundColor: Colors.green[50],
-                                        radius: 7,
-                                        child: const CircleAvatar(
-                                          backgroundColor: Colors.lightGreen,
-                                          radius: 3,
-                                        ),
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 2),
+                                child: SizedBox(
+                                  height: 60,
+                                  child: ClipRRect(
+                                    borderRadius: kRadius5,
+                                    child: ColoredBox(
+                                      color: kWhiteextra,
+                                      child: Row(
+                                        children: [
+                                          kWidth20,
+                                          Text(
+                                            state.filteredPincodes![index],
+                                            style: textHeadBold1,
+                                          ),
+                                        ],
                                       ),
-                                      kWidth10,
-                                      Text(state.filteredPincodes![index]),
-                                    ],
+                                    ),
                                   ),
                                 ),
                               ),

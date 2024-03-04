@@ -22,7 +22,7 @@ part 'question_tab_bloc.freezed.dart';
 class QuestionTabBloc extends Bloc<QuestionTabEvent, QuestionTabState> {
   final QuestionRepo questionRepo;
   int answerdCount = 0;
-  int basePrice = 0;
+  num basePrice = 0;
   List<SelectedOption> updatedList = [];
   QuestionTabBloc(this.questionRepo) : super(QuestionTabState.initial()) {
     on<TabChange>(tabChange);
@@ -166,7 +166,6 @@ class QuestionTabBloc extends Bloc<QuestionTabEvent, QuestionTabState> {
 
   FutureOr<void> abandentOrder(AbandentOrder event, emit) async {
     emit(state.copyWith(isLoading: true, hasError: false));
-
     final data = await questionRepo.abandendOrder(
       abandendOrderRequestModel: event.abandendOrderRequestModel,
     );
@@ -175,7 +174,6 @@ class QuestionTabBloc extends Bloc<QuestionTabEvent, QuestionTabState> {
         hasError: true,
         isLoading: false,
       ));
-      log('falure $falure');
     }, (abandendOrderResponceModel) async {
       emit(
         state.copyWith(
@@ -184,7 +182,6 @@ class QuestionTabBloc extends Bloc<QuestionTabEvent, QuestionTabState> {
           abandendOrderResponceModel: abandendOrderResponceModel,
         ),
       );
-      log('abandendOrderResponceModel $abandendOrderResponceModel');
     });
   }
 }

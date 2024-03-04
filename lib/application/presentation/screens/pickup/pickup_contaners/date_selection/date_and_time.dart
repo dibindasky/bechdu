@@ -30,15 +30,13 @@ class _DateOrTimeState extends State<DateOrTime> {
   Widget build(BuildContext context) {
     return BlocListener<PlaceOrderBloc, PlaceOrderState>(
       listener: (context, state) {
-        if (state.orderPlacedResponceModel != null &&
-            state.orderPlacedResponceModel!.order != null) {
-          secondtabScreensNotifier.value = 5;
-          secondtabScreensNotifier.notifyListeners();
-        } else {
+        if (state.orderPlacedResponceModel != null) {
           showSnack(
             context: context,
             message: state.orderPlacedResponceModel!.message!,
           );
+          secondtabScreensNotifier.value = 5;
+          secondtabScreensNotifier.notifyListeners();
         }
       },
       child: Column(
@@ -64,7 +62,7 @@ class _DateOrTimeState extends State<DateOrTime> {
                         child: DropdownButtonHideUnderline(
                           child: DropdownButton<String>(
                             icon: const Icon(
-                              Icons.access_time,
+                              Icons.calendar_month,
                               color: kBlueLight,
                             ),
                             value: selectedDate,
@@ -104,10 +102,6 @@ class _DateOrTimeState extends State<DateOrTime> {
                             ).toList(),
                           ),
                         ),
-                      ),
-                      const Icon(
-                        Icons.calendar_month,
-                        color: kBlueLight,
                       ),
                     ],
                   ),
@@ -194,7 +188,8 @@ class _DateOrTimeState extends State<DateOrTime> {
                           PickUpDetails(time: selectedTime, date: selectedDate);
                       context.read<PlaceOrderBloc>().add(
                             PlaceOrderEvent.pickupDetailsPick(
-                                pickUpDetails: pickUpDetails),
+                              pickUpDetails: pickUpDetails,
+                            ),
                           );
 
                       //Product name concatination
@@ -216,7 +211,7 @@ class _DateOrTimeState extends State<DateOrTime> {
                             .state
                             .selectedOption,
                       );
-                      log('Question picked options length ${context.read<QuestionTabBloc>().state.selectedOption.length}');
+                      log('Question picked options length order placing ontap ${context.read<QuestionTabBloc>().state.selectedOption.length}');
                       //Product details event call
                       context
                           .read<PlaceOrderBloc>()
@@ -228,10 +223,9 @@ class _DateOrTimeState extends State<DateOrTime> {
                       context
                           .read<PlaceOrderBloc>()
                           .add(const PlaceOrderEvent.orderPlacing());
-
-                      // pickupDetailChangeNotifier.value =
-                      //     PickupDetailContainers.personalDetails;
-                      // pickupDetailChangeNotifier.notifyListeners();
+                      context
+                          .read<PlaceOrderBloc>()
+                          .add(const PlaceOrderEvent.removeAllFieldData());
                     } else {
                       showSnack(
                         context: context,

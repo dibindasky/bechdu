@@ -36,6 +36,7 @@ class QuestionService implements QuestionRepo {
     required PickupQuestionModel pickeQuestionModel,
   }) async {
     try {
+      log('getBasePrice pickeQuestionModel service ${pickeQuestionModel.toJson()}');
       final response = await _dio.post(ApiEndPoints.getBasePrice,
           data: pickeQuestionModel.toJson());
       // log('getBasePrice ${response.data}');

@@ -6,10 +6,12 @@ class CustomButton extends StatelessWidget {
   const CustomButton({
     super.key,
     this.width,
+    this.fontSize,
     this.height,
     this.onPressed,
     required this.text,
   });
+  final double? fontSize;
   final String text;
   final double? width;
   final double? height;
@@ -31,7 +33,7 @@ class CustomButton extends StatelessWidget {
             text,
             style: textHeadMedium1.copyWith(
               color: kWhite,
-              fontSize: sWidth * .035,
+              fontSize: fontSize ?? sWidth * .035,
             ),
           ),
         ),

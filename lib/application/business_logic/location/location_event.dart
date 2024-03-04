@@ -15,5 +15,8 @@ class LocationEvent with _$LocationEvent {
   const factory LocationEvent.pincodeUpdate({
     required PincodeUpdateRequestModel pincodeUpdateRequestModel,
   }) = PincodeUpdate;
+  const factory LocationEvent.setPicondeSecure({
+    required String pincode,
+  }) = SetPicondeSecure;
   const factory LocationEvent.clear() = Clear;
 }

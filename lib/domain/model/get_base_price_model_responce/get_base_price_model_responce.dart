@@ -4,7 +4,7 @@ part 'get_base_price_model_responce.g.dart';
 
 @JsonSerializable()
 class GetBasePriceModelResponce {
-  int? basePrice;
+  num? basePrice;
 
   GetBasePriceModelResponce({this.basePrice});
 

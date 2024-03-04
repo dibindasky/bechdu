@@ -44,7 +44,7 @@ class QuestionTabs extends StatelessWidget {
             child: BlocBuilder<QuestionTabBloc, QuestionTabState>(
               builder: (context, state) {
                 if (state.isLoading) {
-                  return const LoadingAnimation(width: 100);
+                  return const LoadingAnimation(width: 50);
                 } else if (state.hasError) {
                   return const Text('error');
                 } else {

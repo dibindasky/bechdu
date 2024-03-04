@@ -1,6 +1,4 @@
-import 'dart:convert';
 import 'dart:developer';
-
 import 'package:beachdu/application/business_logic/brands_bloc/category_bloc_bloc.dart';
 import 'package:beachdu/application/business_logic/home_bloc/home_bloc.dart';
 import 'package:beachdu/application/business_logic/navbar/navbar_cubit.dart';
@@ -13,12 +11,9 @@ import 'package:beachdu/application/presentation/utils/skeltons/skelton.dart';
 import 'package:beachdu/domain/core/api_endpoints/api_endpoints.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:lottie/lottie.dart';
 
 class BestSellingDevices extends StatelessWidget {
-  const BestSellingDevices({
-    super.key,
-  });
+  const BestSellingDevices({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -73,6 +68,29 @@ class BestSellingDevices extends StatelessWidget {
                                           .categoryType!,
                                       product: data.products![index],
                                     ));
+
+                                //Category Assign
+                                final categoryType = context
+                                        .read<CategoryBlocBloc>()
+                                        .categoryType ??
+                                    'mobile';
+                                context.read<CategoryBlocBloc>().categoryType =
+                                    categoryType;
+                                //Slug assingn
+                                context.read<CategoryBlocBloc>().slug =
+                                    data.products![index].slug!;
+
+                                // Selected product Model assigning
+                                context.read<CategoryBlocBloc>().model =
+                                    data.products![index].model;
+
+                                //Selected product varient assigning
+                                context.read<CategoryBlocBloc>().verient =
+                                    data.products![index].variant;
+
+                                //Selected product image assinging
+                                context.read<CategoryBlocBloc>().productImage =
+                                    data.products![index].productImage;
                                 context
                                     .read<NavbarCubit>()
                                     .changeNavigationIndex(1);
@@ -182,7 +200,8 @@ class BestSellingDevices extends StatelessWidget {
                       },
                     );
                   } else {
-                    return Lottie.asset(emptyLottie);
+                    return const Skeleton(
+                        crossAxisCount: 2, itemCount: 1, height: 0);
                   }
                 }
               },

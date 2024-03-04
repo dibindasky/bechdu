@@ -1,3 +1,4 @@
+import 'package:beachdu/application/business_logic/place_order/place_order_bloc.dart';
 import 'package:beachdu/application/business_logic/profile/profile_bloc.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
@@ -97,6 +98,28 @@ class _UserInfoFieldsState extends State<UserInfoFields> {
                       ),
                     ],
                   ),
+            kHeight20,
+
+            BlocBuilder<PlaceOrderBloc, PlaceOrderState>(
+              builder: (context, state) {
+                return Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          '${state.number}',
+                          style: textHeadMedium1,
+                        ),
+                      ],
+                    ),
+                    const Divider(
+                      thickness: 2,
+                    ),
+                  ],
+                );
+              },
+            ),
             //Additional Mobile Number field
             isTExtFieldNumber
                 ? TextField(
@@ -134,6 +157,8 @@ class _UserInfoFieldsState extends State<UserInfoFields> {
                       ),
                     ],
                   ),
+
+            kHeight20,
             // Save button
             if (isTExtFieldUsername || isTExtFieldEmail || isTExtFieldNumber)
               Align(

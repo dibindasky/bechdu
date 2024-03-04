@@ -135,24 +135,29 @@ class ScreenLocations extends StatelessWidget {
                                                     .filteredLocations![index],
                                               ),
                                             );
+                                        if (state.isLogin) {
+                                          CityUpdateRequestModel
+                                              cityUpdateRequestModel =
+                                              CityUpdateRequestModel(
+                                            city:
+                                                state.filteredLocations![index],
+                                          );
+                                          context.read<LocationBloc>().add(
+                                                LocationEvent.locationUpdate(
+                                                  cityUpdateRequestModel:
+                                                      cityUpdateRequestModel,
+                                                ),
+                                              );
+                                        }
+                                        // //picked location update event
 
-                                        //picked loaction update event
-                                        CityUpdateRequestModel
-                                            cityUpdateRequestModel =
-                                            CityUpdateRequestModel(
-                                                city: state
-                                                    .filteredLocations![index]);
-                                        context.read<LocationBloc>().add(
-                                            LocationEvent.locationUpdate(
-                                                cityUpdateRequestModel:
-                                                    cityUpdateRequestModel));
-
-                                        //After navigating to pincode screen
+                                        //Navigating to pincode screen
                                         Navigator.of(context)
                                             .pushReplacementNamed(
-                                                Routes.pincode,
-                                                arguments: state
-                                                    .filteredLocations![index]);
+                                          Routes.pincode,
+                                          arguments:
+                                              state.filteredLocations![index],
+                                        );
                                       },
                                       child: ClipRRect(
                                         borderRadius: kRadius5,

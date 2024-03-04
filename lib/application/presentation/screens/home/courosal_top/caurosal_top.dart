@@ -8,11 +8,9 @@ import 'package:beachdu/application/presentation/screens/product_selection/produ
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/application/presentation/utils/skeltons/skelton.dart';
-import 'package:beachdu/domain/core/failure/failure.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:lottie/lottie.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class CaurosalViewHomePageOffers extends StatefulWidget {
@@ -48,10 +46,9 @@ class _CaurosalViewHomePageOffersState
               );
             }
             if (state.hasError) {
-              return Text(state.message ?? errorMessage);
+              return const Icon(Icons.refresh);
             } else {
-              if (state.homeBannerResponceModel != null &&
-                  state.homeBannerResponceModel!.sectionOne != null) {
+              if (state.homeBannerResponceModel != null) {
                 return Column(
                   children: [
                     CarouselSlider.builder(
@@ -170,7 +167,7 @@ class _CaurosalViewHomePageOffersState
                   ],
                 );
               } else {
-                return Lottie.asset(emptyLottie);
+                return Skeleton(crossAxisCount: 2, itemCount: 2, height: 0);
               }
             }
           },

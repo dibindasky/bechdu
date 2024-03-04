@@ -18,6 +18,11 @@ class AddAddressScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback(
+      (timeStamp) {
+        context.read<LocationBloc>().add(const LocationEvent.locationPick());
+      },
+    );
     return GestureDetector(
       onTap: () {
         FocusScopeNode focusScopeNode = FocusScope.of(context);
@@ -54,8 +59,7 @@ class AddAddressScreen extends StatelessWidget {
             child: SingleChildScrollView(
                 child: BlocListener<ProfileBloc, ProfileState>(
               listener: (context, state) {
-                if (state.addressCreationResponceModel != null ||
-                    state.addressCreationResponceModel!.message != null) {
+                if (state.addressCreationResponceModel!.message != null) {
                   showSnack(
                     context: context,
                     message: state.addressCreationResponceModel!.message!,
@@ -166,9 +170,12 @@ class AddresCreationFields extends StatelessWidget {
                             'Location'),
                         value: context.read<LocationBloc>().location,
                         onChanged: (String? newValue) {
-                          context.read<LocationBloc>().location =
-                              newValue ?? 'me';
-                          log(context.read<LocationBloc>().location ?? '');
+                          if (context.read<LocationBloc>().location !=
+                              newValue) {
+                            context.read<LocationBloc>().pincode = null;
+                          }
+                          context.read<LocationBloc>().location = newValue;
+                          log('location selection selectd loc UI  ${context.read<LocationBloc>().location ?? ''}');
                           context.read<LocationBloc>().add(
                               LocationEvent.pinCodePick(
                                   cityName: newValue ?? ''));
@@ -243,11 +250,11 @@ class AddresCreationFields extends StatelessWidget {
                             .read<LocationBloc>()
                             .pinCodes
                             .map<DropdownMenuItem<String>>(
-                          (location) {
+                          (pincode) {
                             return DropdownMenuItem<String>(
-                              value: location,
+                              value: pincode,
                               child: Text(
-                                location,
+                                pincode,
                                 style: textHeadSemiBold1.copyWith(
                                     fontSize: sWidth * 0.04),
                               ),

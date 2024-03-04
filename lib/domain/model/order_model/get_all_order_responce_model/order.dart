@@ -24,8 +24,6 @@ class Order {
   String? cancellationReason;
   DateTime? createdAt;
   DateTime? updatedAt;
-  @JsonKey(name: '__v')
-  int? v;
 
   Order({
     this.user,
@@ -40,7 +38,6 @@ class Order {
     this.cancellationReason,
     this.createdAt,
     this.updatedAt,
-    this.v,
   });
 
   factory Order.fromJson(Map<String, dynamic> json) => _$OrderFromJson(json);

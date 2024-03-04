@@ -60,12 +60,24 @@ class BottomSections extends StatelessWidget {
                 ),
               ),
         kHeight50,
-        ElevatedButtonLong(
-          wdth: sWidth * .7,
-          onPressed: () {
-            login(context);
+        BlocConsumer<AuthBloc, AuthState>(
+          listener: (context, state) {
+            if (state.otpSendResponceModel!.message != null) {
+              showSnack(
+                context: context,
+                message: state.otpSendResponceModel!.message!,
+              );
+            }
           },
-          text: 'Get OTP',
+          builder: (context, state) {
+            return ElevatedButtonLong(
+              wdth: sWidth * .7,
+              onPressed: () {
+                login(context);
+              },
+              text: state.load ? 'Redirecting' : 'Get OTP',
+            );
+          },
         ),
       ],
     );

@@ -88,7 +88,7 @@ class PlaceOrderService implements PlaceOrderRepo {
       return Right(GetAllOrderResponceModel.fromJson(responce.data));
     } on DioException catch (e) {
       log('getOrders DioException $e');
-      return Left(Failure(message: e.response?.data['error'] ?? errorMessage));
+      return Left(Failure(message: errorMessage));
     } catch (e) {
       log('getOrders catch $e');
       return Left(Failure(message: errorMessage));
@@ -110,13 +110,20 @@ class PlaceOrderService implements PlaceOrderRepo {
       );
       log('${orderCancelationRequestModel.toJson()}');
       log(_dio.options.headers.toString());
-      final responce = await _dio.delete(
+      log('respnce '
+          '${ApiEndPoints.orderCancel.replaceAll(
+        '{order_id}',
+        orderId,
+      )}'
+          '');
+      final responce = await _dio.put(
         ApiEndPoints.orderCancel.replaceAll(
           '{order_id}',
           orderId,
         ),
         data: orderCancelationRequestModel.toJson(),
       );
+      log(_dio.options.headers.toString());
       log('orderCancel data ${responce.data}');
       return Right(OrderCancelationResponceModel.fromJson(responce.data));
     } on DioException catch (e) {

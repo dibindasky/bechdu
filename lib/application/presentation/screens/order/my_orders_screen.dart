@@ -37,7 +37,7 @@ class ScreenMyOrders extends StatelessWidget {
               if (state.isLoading) {
                 return const Skeleton(
                   crossAxisCount: 1,
-                  itemCount: 2,
+                  itemCount: 5,
                   height: 50,
                 );
               }

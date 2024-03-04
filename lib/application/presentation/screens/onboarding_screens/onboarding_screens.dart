@@ -45,11 +45,17 @@ class _BechDuUserOnBoardingScreensState
         onPageChanged: _onPageChanged,
         children: [
           buildOnboardingScreen(
-              selectedIndex: selectedIndex, totalPages: totalPages),
+            selectedIndex: selectedIndex,
+            totalPages: totalPages,
+          ),
           buildOnboardingScreen(
-              selectedIndex: selectedIndex, totalPages: totalPages),
+            selectedIndex: selectedIndex,
+            totalPages: totalPages,
+          ),
           buildOnboardingScreen(
-              selectedIndex: selectedIndex, totalPages: totalPages),
+            selectedIndex: selectedIndex,
+            totalPages: totalPages,
+          ),
         ],
       ),
     );
@@ -72,112 +78,120 @@ class _BechDuUserOnBoardingScreensState
       },
       child: Scaffold(
         body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Center(
-              child: SizedBox(
-                height: sWidth * .19,
-                child: Hero(
-                  tag: 'logo',
-                  child: Image.asset(bechduMainlogo),
-                ),
-              ),
-            ),
-            kHeight40,
             SizedBox(
-              height: 174,
-              width: 174,
-              child: selectedIndex == 0
-                  ? Stack(
-                      children: [
-                        const Center(
-                          child: CircleAvatar(
-                            backgroundColor: kGreenPrimary,
-                            radius: 90,
-                          ),
-                        ),
-                        Positioned(
-                          child: SizedBox(
-                            height: sWidth * 0.45,
-                            child: Image.asset(onBoardingpersonScreen),
-                          ),
-                        ),
-                      ],
-                    )
-                  : selectedIndex == 1
-                      ? Stack(
-                          children: [
-                            const Center(
-                              child: CircleAvatar(
-                                backgroundColor: kBluePrimary,
-                                radius: 87,
+              height: sHeight * .9,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Center(
+                    child: SizedBox(
+                      height: sWidth * .19,
+                      child: Hero(
+                        tag: 'logo',
+                        child: Image.asset(bechduMainlogo),
+                      ),
+                    ),
+                  ),
+                  kHeight40,
+                  SizedBox(
+                    height: 174,
+                    width: 174,
+                    child: selectedIndex == 0
+                        ? Stack(
+                            children: [
+                              const Center(
                                 child: CircleAvatar(
-                                  backgroundColor: kWhite,
-                                  radius: 85,
-                                  child: CircleAvatar(
-                                    backgroundColor: kBluePrimary,
-                                    radius: 79,
+                                  backgroundColor: kGreenPrimary,
+                                  radius: 90,
+                                ),
+                              ),
+                              Positioned(
+                                child: SizedBox(
+                                  height: sWidth * 0.45,
+                                  child: Image.asset(onBoardingpersonScreen),
+                                ),
+                              ),
+                            ],
+                          )
+                        : selectedIndex == 1
+                            ? Stack(
+                                children: [
+                                  const Center(
                                     child: CircleAvatar(
-                                      backgroundColor: kWhite,
-                                      radius: 77,
+                                      backgroundColor: kBluePrimary,
+                                      radius: 87,
                                       child: CircleAvatar(
-                                        backgroundColor: kBluePrimary,
-                                        radius: 70,
+                                        backgroundColor: kWhite,
+                                        radius: 85,
+                                        child: CircleAvatar(
+                                          backgroundColor: kBluePrimary,
+                                          radius: 79,
+                                          child: CircleAvatar(
+                                            backgroundColor: kWhite,
+                                            radius: 77,
+                                            child: CircleAvatar(
+                                              backgroundColor: kBluePrimary,
+                                              radius: 70,
+                                            ),
+                                          ),
+                                        ),
                                       ),
                                     ),
                                   ),
-                                ),
-                              ),
-                            ),
-                            Center(
-                              child: SizedBox(
-                                height: sWidth * 0.45,
-                                child: Image.asset(onBoardingsecondScreen),
-                              ),
-                            ),
-                          ],
-                        )
-                      : selectedIndex == 2
-                          ? Stack(
-                              children: [
-                                const Center(
-                                  child: CircleAvatar(
-                                    backgroundColor: kBluePrimary,
-                                    radius: 60,
-                                  ),
-                                ),
-                                Positioned(
-                                  top: 0,
-                                  bottom: 0,
-                                  left: 0,
-                                  right: 0,
-                                  child: Center(
+                                  Center(
                                     child: SizedBox(
                                       height: sWidth * 0.45,
-                                      child: Image.asset(onBoardingThirdScreen),
+                                      child:
+                                          Image.asset(onBoardingsecondScreen),
                                     ),
                                   ),
-                                ),
-                              ],
-                            )
-                          : const SizedBox(),
-            ),
-            kHeight40,
-            Text(
-              textListFirst[selectedIndex],
-              style: textHeadBoldBig.copyWith(color: kBlack),
-            ),
-            Text(
-              textListSecond[selectedIndex],
-              style: textHeadBoldBig.copyWith(color: kBlack),
-            ),
-            Text(
-              'Lorem ipsum dolor sit amet,\n consectetur adipiscing elit.',
-              style: textHeadInter.copyWith(
-                color: klightgrey,
+                                ],
+                              )
+                            : selectedIndex == 2
+                                ? Stack(
+                                    children: [
+                                      const Center(
+                                        child: CircleAvatar(
+                                          backgroundColor: kBluePrimary,
+                                          radius: 60,
+                                        ),
+                                      ),
+                                      Positioned(
+                                        top: 0,
+                                        bottom: 0,
+                                        left: 0,
+                                        right: 0,
+                                        child: Center(
+                                          child: SizedBox(
+                                            height: sWidth * 0.45,
+                                            child: Image.asset(
+                                                onBoardingThirdScreen),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  )
+                                : const SizedBox(),
+                  ),
+                  kHeight40,
+                  Text(
+                    textListFirst[selectedIndex],
+                    style: textHeadBoldBig.copyWith(color: kBlack),
+                  ),
+                  Text(
+                    textListSecond[selectedIndex],
+                    style: textHeadBoldBig.copyWith(color: kBlack),
+                  ),
+                  Text(
+                    'Lorem ipsum dolor sit amet,\n consectetur adipiscing elit.',
+                    style: textHeadInter.copyWith(
+                      color: klightgrey,
+                    ),
+                  ),
+                ],
               ),
             ),
-            kHeight30,
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: List.generate(
@@ -195,7 +209,7 @@ class _BechDuUserOnBoardingScreensState
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 4),
       child: CircleAvatar(
-        radius: selectedIndex == index ? 5 : 3,
+        radius: selectedIndex == index ? 7 : 3,
         backgroundColor: selectedIndex == index ? kGreenPrimary : kBlack,
       ),
     );

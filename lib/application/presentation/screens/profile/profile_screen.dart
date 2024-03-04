@@ -1,11 +1,11 @@
-// ignore_for_file: use_build_context_synchronously
-
 import 'dart:async';
 import 'package:beachdu/application/business_logic/auth/auth_bloc.dart';
 import 'package:beachdu/application/business_logic/location/location_bloc.dart';
 import 'package:beachdu/application/business_logic/navbar/navbar_cubit.dart';
+import 'package:beachdu/application/business_logic/place_order/place_order_bloc.dart';
 import 'package:beachdu/application/business_logic/profile/profile_bloc.dart';
 import 'package:beachdu/application/presentation/routes/routes.dart';
+import 'package:beachdu/application/presentation/screens/product_selection/product_screen.dart';
 import 'package:beachdu/application/presentation/screens/profile/add_address/add_address.dart';
 import 'package:beachdu/application/presentation/screens/profile/address_listview.dart';
 import 'package:beachdu/application/presentation/screens/profile/widgets/containers.dart';
@@ -46,12 +46,11 @@ class ScreenProfile extends StatelessWidget {
       (timeStamp) async {
         final islogin = await SecureSotrage.getlLogin();
         if (islogin) {
+          context
+              .read<PlaceOrderBloc>()
+              .add(const PlaceOrderEvent.userNumber());
+          // ignore: use_build_context_synchronously
           context.read<ProfileBloc>().add(const ProfileEvent.getUserInfo());
-          // firstTwoLetters = context
-          //     .read<ProfileBloc>()
-          //     .profileNameController
-          //     .text
-          //     .substring(0, 2);
         }
       },
     );
@@ -121,7 +120,7 @@ class ScreenProfile extends StatelessWidget {
                             backgroundColor: kBluePrimary,
                             radius: 50,
                             child: Text(
-                              '${firstTwoLetters.toUpperCase()}',
+                              'SR',
                               style: textHeadBoldBig.copyWith(
                                 fontSize: sWidth * .1,
                                 color: kWhite,
@@ -141,9 +140,6 @@ class ScreenProfile extends StatelessWidget {
                             ),
                             GestureDetector(
                               onTap: () {
-                                context
-                                    .read<LocationBloc>()
-                                    .add(const LocationEvent.locationPick());
                                 profileScreensNotifier.value = 1;
                                 profileScreensNotifier.notifyListeners();
                               },
@@ -210,5 +206,9 @@ class ScreenProfile extends StatelessWidget {
     );
     context.read<NavbarCubit>().changeNavigationIndex(0);
     context.read<AuthBloc>().add(const LogOut());
+    secondtabScreensNotifier.value = 0;
+    secondtabScreensNotifier.notifyListeners();
+    brandandProductValueNotifier.value = 0;
+    brandandProductValueNotifier.notifyListeners();
   }
 }

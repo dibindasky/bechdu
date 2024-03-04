@@ -37,7 +37,6 @@ Order _$OrderFromJson(Map<String, dynamic> json) => Order(
       updatedAt: json['updatedAt'] == null
           ? null
           : DateTime.parse(json['updatedAt'] as String),
-      v: json['__v'] as int?,
     );
 
 Map<String, dynamic> _$OrderToJson(Order instance) => <String, dynamic>{
@@ -53,5 +52,4 @@ Map<String, dynamic> _$OrderToJson(Order instance) => <String, dynamic>{
       'cancellationReason': instance.cancellationReason,
       'createdAt': instance.createdAt?.toIso8601String(),
       'updatedAt': instance.updatedAt?.toIso8601String(),
-      '__v': instance.v,
     };

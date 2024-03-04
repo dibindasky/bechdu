@@ -25,7 +25,14 @@ class _AddressListViewState extends State<AddressListView> {
           return const LoadingAnimation(width: 30);
         }
         if (state.hasError) {
-          return const Text('Error fetch');
+          return IconButton(
+            onPressed: () {
+              context.read<ProfileBloc>().add(const ProfileEvent.getUserInfo());
+            },
+            icon: const Icon(
+              Icons.refresh,
+            ),
+          );
         } else {
           return ListView.separated(
             separatorBuilder: (context, index) {
@@ -80,8 +87,10 @@ class _AddressListViewState extends State<AddressListView> {
                                   onPressed: () {
                                     Navigator.of(context).pop();
                                     context.read<ProfileBloc>().add(
-                                        ProfileEvent.deleteAddress(
-                                            index: index));
+                                          ProfileEvent.deleteAddress(
+                                            index: index,
+                                          ),
+                                        );
                                   },
                                 );
                               },

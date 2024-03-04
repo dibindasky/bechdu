@@ -26,11 +26,16 @@ class DropDownBuilder extends StatefulWidget {
 class _DropDownBuilderState extends State<DropDownBuilder> {
   final textEditingController = TextEditingController();
   String? selected;
+  Color contsinerColor = kWhite;
+  Color textColor = kWhite;
   @override
   Widget build(BuildContext context) {
     return DropdownButtonHideUnderline(
       child: DropdownButton2<String>(
-        hint: Text(widget.searchHint),
+        hint: Text(
+          widget.searchHint,
+          style: textHeadInter.copyWith(color: klightgrey),
+        ),
         isExpanded: true,
         items: widget.optionsList.asMap().entries.map(
           (entry) {
@@ -39,7 +44,7 @@ class _DropDownBuilderState extends State<DropDownBuilder> {
               value: options.first,
               child: Text(
                 options.first,
-                style: const TextStyle(color: kBlack),
+                style: TextStyle(color: textColor),
               ),
             );
           },
@@ -79,7 +84,10 @@ class _DropDownBuilderState extends State<DropDownBuilder> {
         value: selected,
         buttonStyleData: ButtonStyleData(
           decoration: BoxDecoration(
-            border: Border.all(color: textFieldBorderColor),
+            color: contsinerColor,
+            border: Border.all(
+              color: textFieldBorderColor,
+            ),
             borderRadius: kRadius5,
           ),
           elevation: 0,
@@ -88,9 +96,12 @@ class _DropDownBuilderState extends State<DropDownBuilder> {
           width: 0,
         ),
         dropdownStyleData: DropdownStyleData(
-          decoration: BoxDecoration(borderRadius: kRadius10),
+          decoration: BoxDecoration(
+            borderRadius: kRadius5,
+            color: kBluePrimary,
+          ),
           offset: const Offset(0, -5),
-          maxHeight: 200,
+          maxHeight: 250,
         ),
         menuItemStyleData: const MenuItemStyleData(
           height: 40,
@@ -98,11 +109,16 @@ class _DropDownBuilderState extends State<DropDownBuilder> {
         dropdownSearchData: DropdownSearchData(
           searchController: textEditingController,
           searchInnerWidgetHeight: 50,
-          searchInnerWidget: SizedBox(
+          searchInnerWidget: Container(
+            decoration: BoxDecoration(
+                border: Border.all(
+              color: kWhite,
+            )),
             height: 50,
             child: Padding(
               padding: const EdgeInsets.only(right: 10, top: 5),
               child: TextFormField(
+                style: const TextStyle(color: kWhite),
                 expands: true,
                 maxLines: null,
                 controller: textEditingController,
@@ -112,6 +128,7 @@ class _DropDownBuilderState extends State<DropDownBuilder> {
                     padding: EdgeInsets.only(left: 8.0, top: 5),
                     child: Icon(
                       Icons.search,
+                      color: kWhite,
                     ),
                   ),
                   isDense: true,
@@ -120,9 +137,9 @@ class _DropDownBuilderState extends State<DropDownBuilder> {
                     vertical: 8,
                   ),
                   hintText: 'Search ${widget.searchHint.toLowerCase()}',
-                  hintStyle: textHeadMedium1,
+                  hintStyle: textHeadMedium1.copyWith(color: kWhite),
                   border: OutlineInputBorder(
-                    borderSide: const BorderSide(color: kWhite),
+                    borderSide: const BorderSide(color: kBlack),
                     borderRadius: kRadius10,
                   ),
                 ),
@@ -130,15 +147,23 @@ class _DropDownBuilderState extends State<DropDownBuilder> {
             ),
           ),
           searchMatchFn: (item, searchValue) {
-            return item.value
-                .toString()
-                .toLowerCase()
-                .contains(searchValue.toLowerCase());
+            return item.value.toString().toLowerCase().contains(
+                  searchValue.toLowerCase(),
+                );
           },
         ),
         onMenuStateChange: (isOpen) {
           if (!isOpen) {
             textEditingController.clear();
+            setState(() {
+              textColor = kBlack;
+              contsinerColor = kWhite;
+            });
+          } else {
+            setState(() {
+              contsinerColor = kBluePrimary;
+              textColor = kWhite;
+            });
           }
         },
       ),

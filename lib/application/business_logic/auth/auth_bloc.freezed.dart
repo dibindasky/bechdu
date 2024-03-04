@@ -616,6 +616,7 @@ abstract class LogOrNot implements AuthEvent {
 mixin _$AuthState {
   bool get isLoading => throw _privateConstructorUsedError;
   bool get hasError => throw _privateConstructorUsedError;
+  bool get load => throw _privateConstructorUsedError;
   String? get message => throw _privateConstructorUsedError;
   OtpSendResponceModel? get otpSendResponceModel =>
       throw _privateConstructorUsedError;
@@ -637,6 +638,7 @@ abstract class $AuthStateCopyWith<$Res> {
   $Res call(
       {bool isLoading,
       bool hasError,
+      bool load,
       String? message,
       OtpSendResponceModel? otpSendResponceModel,
       OtpVerifyResponceModel? otpVerifyResponceModel,
@@ -659,6 +661,7 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
   $Res call({
     Object? isLoading = null,
     Object? hasError = null,
+    Object? load = null,
     Object? message = freezed,
     Object? otpSendResponceModel = freezed,
     Object? otpVerifyResponceModel = freezed,
@@ -673,6 +676,10 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
       hasError: null == hasError
           ? _value.hasError
           : hasError // ignore: cast_nullable_to_non_nullable
+              as bool,
+      load: null == load
+          ? _value.load
+          : load // ignore: cast_nullable_to_non_nullable
               as bool,
       message: freezed == message
           ? _value.message
@@ -709,6 +716,7 @@ abstract class _$$InitialImplCopyWith<$Res>
   $Res call(
       {bool isLoading,
       bool hasError,
+      bool load,
       String? message,
       OtpSendResponceModel? otpSendResponceModel,
       OtpVerifyResponceModel? otpVerifyResponceModel,
@@ -729,6 +737,7 @@ class __$$InitialImplCopyWithImpl<$Res>
   $Res call({
     Object? isLoading = null,
     Object? hasError = null,
+    Object? load = null,
     Object? message = freezed,
     Object? otpSendResponceModel = freezed,
     Object? otpVerifyResponceModel = freezed,
@@ -743,6 +752,10 @@ class __$$InitialImplCopyWithImpl<$Res>
       hasError: null == hasError
           ? _value.hasError
           : hasError // ignore: cast_nullable_to_non_nullable
+              as bool,
+      load: null == load
+          ? _value.load
+          : load // ignore: cast_nullable_to_non_nullable
               as bool,
       message: freezed == message
           ? _value.message
@@ -774,6 +787,7 @@ class _$InitialImpl implements _Initial {
   const _$InitialImpl(
       {required this.isLoading,
       required this.hasError,
+      required this.load,
       this.message,
       this.otpSendResponceModel,
       this.otpVerifyResponceModel,
@@ -784,6 +798,8 @@ class _$InitialImpl implements _Initial {
   final bool isLoading;
   @override
   final bool hasError;
+  @override
+  final bool load;
   @override
   final String? message;
   @override
@@ -797,7 +813,7 @@ class _$InitialImpl implements _Initial {
 
   @override
   String toString() {
-    return 'AuthState(isLoading: $isLoading, hasError: $hasError, message: $message, otpSendResponceModel: $otpSendResponceModel, otpVerifyResponceModel: $otpVerifyResponceModel, logOrNot: $logOrNot, number: $number)';
+    return 'AuthState(isLoading: $isLoading, hasError: $hasError, load: $load, message: $message, otpSendResponceModel: $otpSendResponceModel, otpVerifyResponceModel: $otpVerifyResponceModel, logOrNot: $logOrNot, number: $number)';
   }
 
   @override
@@ -809,6 +825,7 @@ class _$InitialImpl implements _Initial {
                 other.isLoading == isLoading) &&
             (identical(other.hasError, hasError) ||
                 other.hasError == hasError) &&
+            (identical(other.load, load) || other.load == load) &&
             (identical(other.message, message) || other.message == message) &&
             (identical(other.otpSendResponceModel, otpSendResponceModel) ||
                 other.otpSendResponceModel == otpSendResponceModel) &&
@@ -820,8 +837,8 @@ class _$InitialImpl implements _Initial {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isLoading, hasError, message,
-      otpSendResponceModel, otpVerifyResponceModel, logOrNot, number);
+  int get hashCode => Object.hash(runtimeType, isLoading, hasError, load,
+      message, otpSendResponceModel, otpVerifyResponceModel, logOrNot, number);
 
   @JsonKey(ignore: true)
   @override
@@ -834,6 +851,7 @@ abstract class _Initial implements AuthState {
   const factory _Initial(
       {required final bool isLoading,
       required final bool hasError,
+      required final bool load,
       final String? message,
       final OtpSendResponceModel? otpSendResponceModel,
       final OtpVerifyResponceModel? otpVerifyResponceModel,
@@ -844,6 +862,8 @@ abstract class _Initial implements AuthState {
   bool get isLoading;
   @override
   bool get hasError;
+  @override
+  bool get load;
   @override
   String? get message;
   @override

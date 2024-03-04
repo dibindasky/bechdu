@@ -26,6 +26,7 @@ class BottomSection extends StatelessWidget {
           child: TextButton(
             onPressed: () {
               Navigator.of(context).pushReplacementNamed(Routes.bottomBar);
+              context.read<AuthBloc>().phoneNumberController.clear();
             },
             child: Text(
               'Skip for now',
@@ -75,6 +76,7 @@ class BottomSection extends StatelessWidget {
                             otpVerifyRequestModel: otpVerifyRequestModel,
                           ),
                         );
+                    context.read<AuthBloc>().phoneNumberController.clear();
                   }
                 } else {
                   showSnack(

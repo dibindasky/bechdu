@@ -27,6 +27,7 @@ mixin _$LocationEvent {
     required TResult Function(
             PincodeUpdateRequestModel pincodeUpdateRequestModel)
         pincodeUpdate,
+    required TResult Function(String pincode) setPicondeSecure,
     required TResult Function() clear,
   }) =>
       throw _privateConstructorUsedError;
@@ -40,6 +41,7 @@ mixin _$LocationEvent {
     TResult? Function(String searchQuery)? pincodeSearch,
     TResult? Function(PincodeUpdateRequestModel pincodeUpdateRequestModel)?
         pincodeUpdate,
+    TResult? Function(String pincode)? setPicondeSecure,
     TResult? Function()? clear,
   }) =>
       throw _privateConstructorUsedError;
@@ -53,6 +55,7 @@ mixin _$LocationEvent {
     TResult Function(String searchQuery)? pincodeSearch,
     TResult Function(PincodeUpdateRequestModel pincodeUpdateRequestModel)?
         pincodeUpdate,
+    TResult Function(String pincode)? setPicondeSecure,
     TResult Function()? clear,
     required TResult orElse(),
   }) =>
@@ -65,6 +68,7 @@ mixin _$LocationEvent {
     required TResult Function(PinCodePick value) pinCodePick,
     required TResult Function(PincodeSearch value) pincodeSearch,
     required TResult Function(PincodeUpdate value) pincodeUpdate,
+    required TResult Function(SetPicondeSecure value) setPicondeSecure,
     required TResult Function(Clear value) clear,
   }) =>
       throw _privateConstructorUsedError;
@@ -76,6 +80,7 @@ mixin _$LocationEvent {
     TResult? Function(PinCodePick value)? pinCodePick,
     TResult? Function(PincodeSearch value)? pincodeSearch,
     TResult? Function(PincodeUpdate value)? pincodeUpdate,
+    TResult? Function(SetPicondeSecure value)? setPicondeSecure,
     TResult? Function(Clear value)? clear,
   }) =>
       throw _privateConstructorUsedError;
@@ -87,6 +92,7 @@ mixin _$LocationEvent {
     TResult Function(PinCodePick value)? pinCodePick,
     TResult Function(PincodeSearch value)? pincodeSearch,
     TResult Function(PincodeUpdate value)? pincodeUpdate,
+    TResult Function(SetPicondeSecure value)? setPicondeSecure,
     TResult Function(Clear value)? clear,
     required TResult orElse(),
   }) =>
@@ -158,6 +164,7 @@ class _$LocationPickImpl implements LocationPick {
     required TResult Function(
             PincodeUpdateRequestModel pincodeUpdateRequestModel)
         pincodeUpdate,
+    required TResult Function(String pincode) setPicondeSecure,
     required TResult Function() clear,
   }) {
     return locationPick();
@@ -174,6 +181,7 @@ class _$LocationPickImpl implements LocationPick {
     TResult? Function(String searchQuery)? pincodeSearch,
     TResult? Function(PincodeUpdateRequestModel pincodeUpdateRequestModel)?
         pincodeUpdate,
+    TResult? Function(String pincode)? setPicondeSecure,
     TResult? Function()? clear,
   }) {
     return locationPick?.call();
@@ -190,6 +198,7 @@ class _$LocationPickImpl implements LocationPick {
     TResult Function(String searchQuery)? pincodeSearch,
     TResult Function(PincodeUpdateRequestModel pincodeUpdateRequestModel)?
         pincodeUpdate,
+    TResult Function(String pincode)? setPicondeSecure,
     TResult Function()? clear,
     required TResult orElse(),
   }) {
@@ -208,6 +217,7 @@ class _$LocationPickImpl implements LocationPick {
     required TResult Function(PinCodePick value) pinCodePick,
     required TResult Function(PincodeSearch value) pincodeSearch,
     required TResult Function(PincodeUpdate value) pincodeUpdate,
+    required TResult Function(SetPicondeSecure value) setPicondeSecure,
     required TResult Function(Clear value) clear,
   }) {
     return locationPick(this);
@@ -222,6 +232,7 @@ class _$LocationPickImpl implements LocationPick {
     TResult? Function(PinCodePick value)? pinCodePick,
     TResult? Function(PincodeSearch value)? pincodeSearch,
     TResult? Function(PincodeUpdate value)? pincodeUpdate,
+    TResult? Function(SetPicondeSecure value)? setPicondeSecure,
     TResult? Function(Clear value)? clear,
   }) {
     return locationPick?.call(this);
@@ -236,6 +247,7 @@ class _$LocationPickImpl implements LocationPick {
     TResult Function(PinCodePick value)? pinCodePick,
     TResult Function(PincodeSearch value)? pincodeSearch,
     TResult Function(PincodeUpdate value)? pincodeUpdate,
+    TResult Function(SetPicondeSecure value)? setPicondeSecure,
     TResult Function(Clear value)? clear,
     required TResult orElse(),
   }) {
@@ -325,6 +337,7 @@ class _$LocationSearchImpl implements LocationSearch {
     required TResult Function(
             PincodeUpdateRequestModel pincodeUpdateRequestModel)
         pincodeUpdate,
+    required TResult Function(String pincode) setPicondeSecure,
     required TResult Function() clear,
   }) {
     return locationSearch(searchQuery);
@@ -341,6 +354,7 @@ class _$LocationSearchImpl implements LocationSearch {
     TResult? Function(String searchQuery)? pincodeSearch,
     TResult? Function(PincodeUpdateRequestModel pincodeUpdateRequestModel)?
         pincodeUpdate,
+    TResult? Function(String pincode)? setPicondeSecure,
     TResult? Function()? clear,
   }) {
     return locationSearch?.call(searchQuery);
@@ -357,6 +371,7 @@ class _$LocationSearchImpl implements LocationSearch {
     TResult Function(String searchQuery)? pincodeSearch,
     TResult Function(PincodeUpdateRequestModel pincodeUpdateRequestModel)?
         pincodeUpdate,
+    TResult Function(String pincode)? setPicondeSecure,
     TResult Function()? clear,
     required TResult orElse(),
   }) {
@@ -375,6 +390,7 @@ class _$LocationSearchImpl implements LocationSearch {
     required TResult Function(PinCodePick value) pinCodePick,
     required TResult Function(PincodeSearch value) pincodeSearch,
     required TResult Function(PincodeUpdate value) pincodeUpdate,
+    required TResult Function(SetPicondeSecure value) setPicondeSecure,
     required TResult Function(Clear value) clear,
   }) {
     return locationSearch(this);
@@ -389,6 +405,7 @@ class _$LocationSearchImpl implements LocationSearch {
     TResult? Function(PinCodePick value)? pinCodePick,
     TResult? Function(PincodeSearch value)? pincodeSearch,
     TResult? Function(PincodeUpdate value)? pincodeUpdate,
+    TResult? Function(SetPicondeSecure value)? setPicondeSecure,
     TResult? Function(Clear value)? clear,
   }) {
     return locationSearch?.call(this);
@@ -403,6 +420,7 @@ class _$LocationSearchImpl implements LocationSearch {
     TResult Function(PinCodePick value)? pinCodePick,
     TResult Function(PincodeSearch value)? pincodeSearch,
     TResult Function(PincodeUpdate value)? pincodeUpdate,
+    TResult Function(SetPicondeSecure value)? setPicondeSecure,
     TResult Function(Clear value)? clear,
     required TResult orElse(),
   }) {
@@ -498,6 +516,7 @@ class _$LocationUpdateImpl implements LocationUpdate {
     required TResult Function(
             PincodeUpdateRequestModel pincodeUpdateRequestModel)
         pincodeUpdate,
+    required TResult Function(String pincode) setPicondeSecure,
     required TResult Function() clear,
   }) {
     return locationUpdate(cityUpdateRequestModel);
@@ -514,6 +533,7 @@ class _$LocationUpdateImpl implements LocationUpdate {
     TResult? Function(String searchQuery)? pincodeSearch,
     TResult? Function(PincodeUpdateRequestModel pincodeUpdateRequestModel)?
         pincodeUpdate,
+    TResult? Function(String pincode)? setPicondeSecure,
     TResult? Function()? clear,
   }) {
     return locationUpdate?.call(cityUpdateRequestModel);
@@ -530,6 +550,7 @@ class _$LocationUpdateImpl implements LocationUpdate {
     TResult Function(String searchQuery)? pincodeSearch,
     TResult Function(PincodeUpdateRequestModel pincodeUpdateRequestModel)?
         pincodeUpdate,
+    TResult Function(String pincode)? setPicondeSecure,
     TResult Function()? clear,
     required TResult orElse(),
   }) {
@@ -548,6 +569,7 @@ class _$LocationUpdateImpl implements LocationUpdate {
     required TResult Function(PinCodePick value) pinCodePick,
     required TResult Function(PincodeSearch value) pincodeSearch,
     required TResult Function(PincodeUpdate value) pincodeUpdate,
+    required TResult Function(SetPicondeSecure value) setPicondeSecure,
     required TResult Function(Clear value) clear,
   }) {
     return locationUpdate(this);
@@ -562,6 +584,7 @@ class _$LocationUpdateImpl implements LocationUpdate {
     TResult? Function(PinCodePick value)? pinCodePick,
     TResult? Function(PincodeSearch value)? pincodeSearch,
     TResult? Function(PincodeUpdate value)? pincodeUpdate,
+    TResult? Function(SetPicondeSecure value)? setPicondeSecure,
     TResult? Function(Clear value)? clear,
   }) {
     return locationUpdate?.call(this);
@@ -576,6 +599,7 @@ class _$LocationUpdateImpl implements LocationUpdate {
     TResult Function(PinCodePick value)? pinCodePick,
     TResult Function(PincodeSearch value)? pincodeSearch,
     TResult Function(PincodeUpdate value)? pincodeUpdate,
+    TResult Function(SetPicondeSecure value)? setPicondeSecure,
     TResult Function(Clear value)? clear,
     required TResult orElse(),
   }) {
@@ -671,6 +695,7 @@ class _$PinCodePickImpl implements PinCodePick {
     required TResult Function(
             PincodeUpdateRequestModel pincodeUpdateRequestModel)
         pincodeUpdate,
+    required TResult Function(String pincode) setPicondeSecure,
     required TResult Function() clear,
   }) {
     return pinCodePick(cityName);
@@ -687,6 +712,7 @@ class _$PinCodePickImpl implements PinCodePick {
     TResult? Function(String searchQuery)? pincodeSearch,
     TResult? Function(PincodeUpdateRequestModel pincodeUpdateRequestModel)?
         pincodeUpdate,
+    TResult? Function(String pincode)? setPicondeSecure,
     TResult? Function()? clear,
   }) {
     return pinCodePick?.call(cityName);
@@ -703,6 +729,7 @@ class _$PinCodePickImpl implements PinCodePick {
     TResult Function(String searchQuery)? pincodeSearch,
     TResult Function(PincodeUpdateRequestModel pincodeUpdateRequestModel)?
         pincodeUpdate,
+    TResult Function(String pincode)? setPicondeSecure,
     TResult Function()? clear,
     required TResult orElse(),
   }) {
@@ -721,6 +748,7 @@ class _$PinCodePickImpl implements PinCodePick {
     required TResult Function(PinCodePick value) pinCodePick,
     required TResult Function(PincodeSearch value) pincodeSearch,
     required TResult Function(PincodeUpdate value) pincodeUpdate,
+    required TResult Function(SetPicondeSecure value) setPicondeSecure,
     required TResult Function(Clear value) clear,
   }) {
     return pinCodePick(this);
@@ -735,6 +763,7 @@ class _$PinCodePickImpl implements PinCodePick {
     TResult? Function(PinCodePick value)? pinCodePick,
     TResult? Function(PincodeSearch value)? pincodeSearch,
     TResult? Function(PincodeUpdate value)? pincodeUpdate,
+    TResult? Function(SetPicondeSecure value)? setPicondeSecure,
     TResult? Function(Clear value)? clear,
   }) {
     return pinCodePick?.call(this);
@@ -749,6 +778,7 @@ class _$PinCodePickImpl implements PinCodePick {
     TResult Function(PinCodePick value)? pinCodePick,
     TResult Function(PincodeSearch value)? pincodeSearch,
     TResult Function(PincodeUpdate value)? pincodeUpdate,
+    TResult Function(SetPicondeSecure value)? setPicondeSecure,
     TResult Function(Clear value)? clear,
     required TResult orElse(),
   }) {
@@ -843,6 +873,7 @@ class _$PincodeSearchImpl implements PincodeSearch {
     required TResult Function(
             PincodeUpdateRequestModel pincodeUpdateRequestModel)
         pincodeUpdate,
+    required TResult Function(String pincode) setPicondeSecure,
     required TResult Function() clear,
   }) {
     return pincodeSearch(searchQuery);
@@ -859,6 +890,7 @@ class _$PincodeSearchImpl implements PincodeSearch {
     TResult? Function(String searchQuery)? pincodeSearch,
     TResult? Function(PincodeUpdateRequestModel pincodeUpdateRequestModel)?
         pincodeUpdate,
+    TResult? Function(String pincode)? setPicondeSecure,
     TResult? Function()? clear,
   }) {
     return pincodeSearch?.call(searchQuery);
@@ -875,6 +907,7 @@ class _$PincodeSearchImpl implements PincodeSearch {
     TResult Function(String searchQuery)? pincodeSearch,
     TResult Function(PincodeUpdateRequestModel pincodeUpdateRequestModel)?
         pincodeUpdate,
+    TResult Function(String pincode)? setPicondeSecure,
     TResult Function()? clear,
     required TResult orElse(),
   }) {
@@ -893,6 +926,7 @@ class _$PincodeSearchImpl implements PincodeSearch {
     required TResult Function(PinCodePick value) pinCodePick,
     required TResult Function(PincodeSearch value) pincodeSearch,
     required TResult Function(PincodeUpdate value) pincodeUpdate,
+    required TResult Function(SetPicondeSecure value) setPicondeSecure,
     required TResult Function(Clear value) clear,
   }) {
     return pincodeSearch(this);
@@ -907,6 +941,7 @@ class _$PincodeSearchImpl implements PincodeSearch {
     TResult? Function(PinCodePick value)? pinCodePick,
     TResult? Function(PincodeSearch value)? pincodeSearch,
     TResult? Function(PincodeUpdate value)? pincodeUpdate,
+    TResult? Function(SetPicondeSecure value)? setPicondeSecure,
     TResult? Function(Clear value)? clear,
   }) {
     return pincodeSearch?.call(this);
@@ -921,6 +956,7 @@ class _$PincodeSearchImpl implements PincodeSearch {
     TResult Function(PinCodePick value)? pinCodePick,
     TResult Function(PincodeSearch value)? pincodeSearch,
     TResult Function(PincodeUpdate value)? pincodeUpdate,
+    TResult Function(SetPicondeSecure value)? setPicondeSecure,
     TResult Function(Clear value)? clear,
     required TResult orElse(),
   }) {
@@ -1016,6 +1052,7 @@ class _$PincodeUpdateImpl implements PincodeUpdate {
     required TResult Function(
             PincodeUpdateRequestModel pincodeUpdateRequestModel)
         pincodeUpdate,
+    required TResult Function(String pincode) setPicondeSecure,
     required TResult Function() clear,
   }) {
     return pincodeUpdate(pincodeUpdateRequestModel);
@@ -1032,6 +1069,7 @@ class _$PincodeUpdateImpl implements PincodeUpdate {
     TResult? Function(String searchQuery)? pincodeSearch,
     TResult? Function(PincodeUpdateRequestModel pincodeUpdateRequestModel)?
         pincodeUpdate,
+    TResult? Function(String pincode)? setPicondeSecure,
     TResult? Function()? clear,
   }) {
     return pincodeUpdate?.call(pincodeUpdateRequestModel);
@@ -1048,6 +1086,7 @@ class _$PincodeUpdateImpl implements PincodeUpdate {
     TResult Function(String searchQuery)? pincodeSearch,
     TResult Function(PincodeUpdateRequestModel pincodeUpdateRequestModel)?
         pincodeUpdate,
+    TResult Function(String pincode)? setPicondeSecure,
     TResult Function()? clear,
     required TResult orElse(),
   }) {
@@ -1066,6 +1105,7 @@ class _$PincodeUpdateImpl implements PincodeUpdate {
     required TResult Function(PinCodePick value) pinCodePick,
     required TResult Function(PincodeSearch value) pincodeSearch,
     required TResult Function(PincodeUpdate value) pincodeUpdate,
+    required TResult Function(SetPicondeSecure value) setPicondeSecure,
     required TResult Function(Clear value) clear,
   }) {
     return pincodeUpdate(this);
@@ -1080,6 +1120,7 @@ class _$PincodeUpdateImpl implements PincodeUpdate {
     TResult? Function(PinCodePick value)? pinCodePick,
     TResult? Function(PincodeSearch value)? pincodeSearch,
     TResult? Function(PincodeUpdate value)? pincodeUpdate,
+    TResult? Function(SetPicondeSecure value)? setPicondeSecure,
     TResult? Function(Clear value)? clear,
   }) {
     return pincodeUpdate?.call(this);
@@ -1094,6 +1135,7 @@ class _$PincodeUpdateImpl implements PincodeUpdate {
     TResult Function(PinCodePick value)? pinCodePick,
     TResult Function(PincodeSearch value)? pincodeSearch,
     TResult Function(PincodeUpdate value)? pincodeUpdate,
+    TResult Function(SetPicondeSecure value)? setPicondeSecure,
     TResult Function(Clear value)? clear,
     required TResult orElse(),
   }) {
@@ -1112,6 +1154,184 @@ abstract class PincodeUpdate implements LocationEvent {
   PincodeUpdateRequestModel get pincodeUpdateRequestModel;
   @JsonKey(ignore: true)
   _$$PincodeUpdateImplCopyWith<_$PincodeUpdateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SetPicondeSecureImplCopyWith<$Res> {
+  factory _$$SetPicondeSecureImplCopyWith(_$SetPicondeSecureImpl value,
+          $Res Function(_$SetPicondeSecureImpl) then) =
+      __$$SetPicondeSecureImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String pincode});
+}
+
+/// @nodoc
+class __$$SetPicondeSecureImplCopyWithImpl<$Res>
+    extends _$LocationEventCopyWithImpl<$Res, _$SetPicondeSecureImpl>
+    implements _$$SetPicondeSecureImplCopyWith<$Res> {
+  __$$SetPicondeSecureImplCopyWithImpl(_$SetPicondeSecureImpl _value,
+      $Res Function(_$SetPicondeSecureImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? pincode = null,
+  }) {
+    return _then(_$SetPicondeSecureImpl(
+      pincode: null == pincode
+          ? _value.pincode
+          : pincode // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SetPicondeSecureImpl implements SetPicondeSecure {
+  const _$SetPicondeSecureImpl({required this.pincode});
+
+  @override
+  final String pincode;
+
+  @override
+  String toString() {
+    return 'LocationEvent.setPicondeSecure(pincode: $pincode)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SetPicondeSecureImpl &&
+            (identical(other.pincode, pincode) || other.pincode == pincode));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, pincode);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SetPicondeSecureImplCopyWith<_$SetPicondeSecureImpl> get copyWith =>
+      __$$SetPicondeSecureImplCopyWithImpl<_$SetPicondeSecureImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() locationPick,
+    required TResult Function(String searchQuery) locationSearch,
+    required TResult Function(CityUpdateRequestModel cityUpdateRequestModel)
+        locationUpdate,
+    required TResult Function(String cityName) pinCodePick,
+    required TResult Function(String searchQuery) pincodeSearch,
+    required TResult Function(
+            PincodeUpdateRequestModel pincodeUpdateRequestModel)
+        pincodeUpdate,
+    required TResult Function(String pincode) setPicondeSecure,
+    required TResult Function() clear,
+  }) {
+    return setPicondeSecure(pincode);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? locationPick,
+    TResult? Function(String searchQuery)? locationSearch,
+    TResult? Function(CityUpdateRequestModel cityUpdateRequestModel)?
+        locationUpdate,
+    TResult? Function(String cityName)? pinCodePick,
+    TResult? Function(String searchQuery)? pincodeSearch,
+    TResult? Function(PincodeUpdateRequestModel pincodeUpdateRequestModel)?
+        pincodeUpdate,
+    TResult? Function(String pincode)? setPicondeSecure,
+    TResult? Function()? clear,
+  }) {
+    return setPicondeSecure?.call(pincode);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? locationPick,
+    TResult Function(String searchQuery)? locationSearch,
+    TResult Function(CityUpdateRequestModel cityUpdateRequestModel)?
+        locationUpdate,
+    TResult Function(String cityName)? pinCodePick,
+    TResult Function(String searchQuery)? pincodeSearch,
+    TResult Function(PincodeUpdateRequestModel pincodeUpdateRequestModel)?
+        pincodeUpdate,
+    TResult Function(String pincode)? setPicondeSecure,
+    TResult Function()? clear,
+    required TResult orElse(),
+  }) {
+    if (setPicondeSecure != null) {
+      return setPicondeSecure(pincode);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(LocationPick value) locationPick,
+    required TResult Function(LocationSearch value) locationSearch,
+    required TResult Function(LocationUpdate value) locationUpdate,
+    required TResult Function(PinCodePick value) pinCodePick,
+    required TResult Function(PincodeSearch value) pincodeSearch,
+    required TResult Function(PincodeUpdate value) pincodeUpdate,
+    required TResult Function(SetPicondeSecure value) setPicondeSecure,
+    required TResult Function(Clear value) clear,
+  }) {
+    return setPicondeSecure(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(LocationPick value)? locationPick,
+    TResult? Function(LocationSearch value)? locationSearch,
+    TResult? Function(LocationUpdate value)? locationUpdate,
+    TResult? Function(PinCodePick value)? pinCodePick,
+    TResult? Function(PincodeSearch value)? pincodeSearch,
+    TResult? Function(PincodeUpdate value)? pincodeUpdate,
+    TResult? Function(SetPicondeSecure value)? setPicondeSecure,
+    TResult? Function(Clear value)? clear,
+  }) {
+    return setPicondeSecure?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(LocationPick value)? locationPick,
+    TResult Function(LocationSearch value)? locationSearch,
+    TResult Function(LocationUpdate value)? locationUpdate,
+    TResult Function(PinCodePick value)? pinCodePick,
+    TResult Function(PincodeSearch value)? pincodeSearch,
+    TResult Function(PincodeUpdate value)? pincodeUpdate,
+    TResult Function(SetPicondeSecure value)? setPicondeSecure,
+    TResult Function(Clear value)? clear,
+    required TResult orElse(),
+  }) {
+    if (setPicondeSecure != null) {
+      return setPicondeSecure(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SetPicondeSecure implements LocationEvent {
+  const factory SetPicondeSecure({required final String pincode}) =
+      _$SetPicondeSecureImpl;
+
+  String get pincode;
+  @JsonKey(ignore: true)
+  _$$SetPicondeSecureImplCopyWith<_$SetPicondeSecureImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1162,6 +1382,7 @@ class _$ClearImpl implements Clear {
     required TResult Function(
             PincodeUpdateRequestModel pincodeUpdateRequestModel)
         pincodeUpdate,
+    required TResult Function(String pincode) setPicondeSecure,
     required TResult Function() clear,
   }) {
     return clear();
@@ -1178,6 +1399,7 @@ class _$ClearImpl implements Clear {
     TResult? Function(String searchQuery)? pincodeSearch,
     TResult? Function(PincodeUpdateRequestModel pincodeUpdateRequestModel)?
         pincodeUpdate,
+    TResult? Function(String pincode)? setPicondeSecure,
     TResult? Function()? clear,
   }) {
     return clear?.call();
@@ -1194,6 +1416,7 @@ class _$ClearImpl implements Clear {
     TResult Function(String searchQuery)? pincodeSearch,
     TResult Function(PincodeUpdateRequestModel pincodeUpdateRequestModel)?
         pincodeUpdate,
+    TResult Function(String pincode)? setPicondeSecure,
     TResult Function()? clear,
     required TResult orElse(),
   }) {
@@ -1212,6 +1435,7 @@ class _$ClearImpl implements Clear {
     required TResult Function(PinCodePick value) pinCodePick,
     required TResult Function(PincodeSearch value) pincodeSearch,
     required TResult Function(PincodeUpdate value) pincodeUpdate,
+    required TResult Function(SetPicondeSecure value) setPicondeSecure,
     required TResult Function(Clear value) clear,
   }) {
     return clear(this);
@@ -1226,6 +1450,7 @@ class _$ClearImpl implements Clear {
     TResult? Function(PinCodePick value)? pinCodePick,
     TResult? Function(PincodeSearch value)? pincodeSearch,
     TResult? Function(PincodeUpdate value)? pincodeUpdate,
+    TResult? Function(SetPicondeSecure value)? setPicondeSecure,
     TResult? Function(Clear value)? clear,
   }) {
     return clear?.call(this);
@@ -1240,6 +1465,7 @@ class _$ClearImpl implements Clear {
     TResult Function(PinCodePick value)? pinCodePick,
     TResult Function(PincodeSearch value)? pincodeSearch,
     TResult Function(PincodeUpdate value)? pincodeUpdate,
+    TResult Function(SetPicondeSecure value)? setPicondeSecure,
     TResult Function(Clear value)? clear,
     required TResult orElse(),
   }) {
@@ -1258,6 +1484,7 @@ abstract class Clear implements LocationEvent {
 mixin _$LocationState {
   bool get isLoading => throw _privateConstructorUsedError;
   bool get hasError => throw _privateConstructorUsedError;
+  bool get isLogin => throw _privateConstructorUsedError;
   String? get message => throw _privateConstructorUsedError;
   List<String>? get filteredLocations => throw _privateConstructorUsedError;
   List<String>? get filteredPincodes => throw _privateConstructorUsedError;
@@ -1282,6 +1509,7 @@ abstract class $LocationStateCopyWith<$Res> {
   $Res call(
       {bool isLoading,
       bool hasError,
+      bool isLogin,
       String? message,
       List<String>? filteredLocations,
       List<String>? filteredPincodes,
@@ -1305,6 +1533,7 @@ class _$LocationStateCopyWithImpl<$Res, $Val extends LocationState>
   $Res call({
     Object? isLoading = null,
     Object? hasError = null,
+    Object? isLogin = null,
     Object? message = freezed,
     Object? filteredLocations = freezed,
     Object? filteredPincodes = freezed,
@@ -1320,6 +1549,10 @@ class _$LocationStateCopyWithImpl<$Res, $Val extends LocationState>
       hasError: null == hasError
           ? _value.hasError
           : hasError // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isLogin: null == isLogin
+          ? _value.isLogin
+          : isLogin // ignore: cast_nullable_to_non_nullable
               as bool,
       message: freezed == message
           ? _value.message
@@ -1360,6 +1593,7 @@ abstract class _$$InitialImplCopyWith<$Res>
   $Res call(
       {bool isLoading,
       bool hasError,
+      bool isLogin,
       String? message,
       List<String>? filteredLocations,
       List<String>? filteredPincodes,
@@ -1381,6 +1615,7 @@ class __$$InitialImplCopyWithImpl<$Res>
   $Res call({
     Object? isLoading = null,
     Object? hasError = null,
+    Object? isLogin = null,
     Object? message = freezed,
     Object? filteredLocations = freezed,
     Object? filteredPincodes = freezed,
@@ -1396,6 +1631,10 @@ class __$$InitialImplCopyWithImpl<$Res>
       hasError: null == hasError
           ? _value.hasError
           : hasError // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isLogin: null == isLogin
+          ? _value.isLogin
+          : isLogin // ignore: cast_nullable_to_non_nullable
               as bool,
       message: freezed == message
           ? _value.message
@@ -1431,6 +1670,7 @@ class _$InitialImpl implements _Initial {
   const _$InitialImpl(
       {required this.isLoading,
       required this.hasError,
+      required this.isLogin,
       this.message,
       final List<String>? filteredLocations,
       final List<String>? filteredPincodes,
@@ -1444,6 +1684,8 @@ class _$InitialImpl implements _Initial {
   final bool isLoading;
   @override
   final bool hasError;
+  @override
+  final bool isLogin;
   @override
   final String? message;
   final List<String>? _filteredLocations;
@@ -1477,7 +1719,7 @@ class _$InitialImpl implements _Initial {
 
   @override
   String toString() {
-    return 'LocationState(isLoading: $isLoading, hasError: $hasError, message: $message, filteredLocations: $filteredLocations, filteredPincodes: $filteredPincodes, pincodeResponceModel: $pincodeResponceModel, cityUpdateResponceModel: $cityUpdateResponceModel, pincodeUpdateResponceModel: $pincodeUpdateResponceModel)';
+    return 'LocationState(isLoading: $isLoading, hasError: $hasError, isLogin: $isLogin, message: $message, filteredLocations: $filteredLocations, filteredPincodes: $filteredPincodes, pincodeResponceModel: $pincodeResponceModel, cityUpdateResponceModel: $cityUpdateResponceModel, pincodeUpdateResponceModel: $pincodeUpdateResponceModel)';
   }
 
   @override
@@ -1489,6 +1731,7 @@ class _$InitialImpl implements _Initial {
                 other.isLoading == isLoading) &&
             (identical(other.hasError, hasError) ||
                 other.hasError == hasError) &&
+            (identical(other.isLogin, isLogin) || other.isLogin == isLogin) &&
             (identical(other.message, message) || other.message == message) &&
             const DeepCollectionEquality()
                 .equals(other._filteredLocations, _filteredLocations) &&
@@ -1510,6 +1753,7 @@ class _$InitialImpl implements _Initial {
       runtimeType,
       isLoading,
       hasError,
+      isLogin,
       message,
       const DeepCollectionEquality().hash(_filteredLocations),
       const DeepCollectionEquality().hash(_filteredPincodes),
@@ -1528,6 +1772,7 @@ abstract class _Initial implements LocationState {
   const factory _Initial(
           {required final bool isLoading,
           required final bool hasError,
+          required final bool isLogin,
           final String? message,
           final List<String>? filteredLocations,
           final List<String>? filteredPincodes,
@@ -1540,6 +1785,8 @@ abstract class _Initial implements LocationState {
   bool get isLoading;
   @override
   bool get hasError;
+  @override
+  bool get isLogin;
   @override
   String? get message;
   @override

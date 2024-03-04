@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 PageRouteBuilder fadePageRoute(
-    {required Widget screen, int milliseconds = 600}) {
+    {required Widget screen, int milliseconds = 300}) {
   return PageRouteBuilder(
     pageBuilder: (context, animation, secondaryAnimation) => Container(),
     transitionsBuilder: (context, animation, secondaryAnimation, child) {

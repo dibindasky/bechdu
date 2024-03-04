@@ -84,7 +84,7 @@ class PersonalDetails extends StatelessWidget {
           TTextFormField(
             controller: context.read<AuthBloc>().phoneNumberController,
             inputType: TextInputType.number,
-            text: 'xxxxxxxxx',
+            text: '00000 00000',
           ),
           Align(
             alignment: Alignment.center,
@@ -103,29 +103,51 @@ class PersonalDetails extends StatelessWidget {
                   showSnack(
                     context: context,
                     message: 'Please fill required fields',
+                    color: kRed,
                   );
                 } else {
                   String email =
                       context.read<PlaceOrderBloc>().emailController.text;
                   String name =
                       context.read<PlaceOrderBloc>().nameController.text;
-
-                  String additionalNumber = context
+                  String addPhone = context
                       .read<PlaceOrderBloc>()
                       .additionalNumberController
                       .text;
+
                   if (!isValidEmail(email)) {
+                    showSnack(
+                      context: context,
+                      message: 'Not valid email',
+                      color: kRed,
+                    );
                     return;
                   }
 
-                  if (!isValidName(name)) {
-                    showSnackk(context: context, message: 'Not valid email');
+                  if (addPhone.isNotEmpty) {
+                    if (!isValidPhoneNumber(addPhone) && addPhone.length < 10) {
+                      showSnack(
+                        context: context,
+                        message: 'Not valid additional number',
+                        color: kRed,
+                      );
+                      return;
+                    }
+                    return;
+                  }
+
+                  if (!isValidName(name) && name.length < 3) {
+                    showSnack(
+                      context: context,
+                      message: 'Not valid name',
+                      color: kRed,
+                    );
                     return;
                   }
                   User user = User(
                     email: email,
                     name: name,
-                    addPhone: additionalNumber.isEmpty ? '' : additionalNumber,
+                    addPhone: addPhone.isEmpty ? '' : addPhone,
                   );
 
                   // Dispatch the userDetailsPick event
@@ -146,13 +168,4 @@ class PersonalDetails extends StatelessWidget {
       ),
     );
   }
-}
-
-void showSnackk({required BuildContext context, required String message}) {
-  ScaffoldMessenger.of(context).showSnackBar(
-    SnackBar(
-      content: Text(message),
-      backgroundColor: Colors.red, // Or customize as needed
-    ),
-  );
 }

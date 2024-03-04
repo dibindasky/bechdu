@@ -1,5 +1,4 @@
 import 'dart:developer';
-
 import 'package:beachdu/application/business_logic/brands_bloc/category_bloc_bloc.dart';
 import 'package:beachdu/application/business_logic/home_bloc/home_bloc.dart';
 import 'package:beachdu/application/business_logic/internet_connection_check/internet_connection_check_cubit.dart';
@@ -29,8 +28,38 @@ List<Widget> homeScreenList = [
   const GlobalProductSearch(),
 ];
 
-class ScreenHome extends StatelessWidget {
+class ScreenHome extends StatefulWidget {
   const ScreenHome({super.key});
+
+  @override
+  State<ScreenHome> createState() => _ScreenHomeState();
+}
+
+class _ScreenHomeState extends State<ScreenHome> {
+  // late Timer _locationCheckTimer;
+
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   _locationCheckTimer = Timer.periodic(
+  //       const Duration(seconds: 10), _checkLocationAndShowScreen);
+  // }
+
+  // @override
+  // void dispose() {
+  //   _locationCheckTimer.cancel(); // Cancel timer when widget is disposed
+  //   super.dispose();
+  // }
+
+  // void _checkLocationAndShowScreen(Timer timer) async {
+  //   bool isLocationSelected = await SecureSotrage.getPicodeBool();
+  //   if (!isLocationSelected) {
+  //     _locationCheckTimer.cancel();
+  //     Navigator.of(context).push(MaterialPageRoute(
+  //       builder: (context) => const ScreenLocations(),
+  //     ));
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -75,7 +104,7 @@ class ScreenHome extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         kHeight30,
-                        const CustomSearchFieldHome(),
+                        CustomSearchFieldHome(),
                         kHeight30,
                         ValueListenableBuilder(
                           valueListenable: homeScreens,
@@ -126,9 +155,9 @@ class GlobalProductSearch extends StatelessWidget {
       builder: (context, state) {
         if (state.isLoading) {
           return const Skeleton(
-            crossAxisCount: 20,
+            crossAxisCount: 2,
             itemCount: 12,
-            height: 2,
+            height: 0,
           );
         }
 
@@ -153,7 +182,6 @@ class GlobalProductSearch extends StatelessWidget {
                     "${ApiEndPoints.baseUrlImagePath}${Uri.encodeComponent(products[index].productImage!)}";
                 return GestureDetector(
                   onTap: () {
-                    log('message');
                     context
                         .read<QuestionTabBloc>()
                         .add(QuestionTabEvent.getQuestions(
@@ -161,6 +189,28 @@ class GlobalProductSearch extends StatelessWidget {
                               .product![index].categoryType!,
                           product: products[index],
                         ));
+
+                    final categoryType =
+                        context.read<CategoryBlocBloc>().categoryType ??
+                            'mobile';
+                    context.read<CategoryBlocBloc>().categoryType =
+                        categoryType;
+                    //Selected product Slug assigning
+                    context.read<CategoryBlocBloc>().slug =
+                        products[index].slug!;
+
+                    // Selected product Model assigning
+                    context.read<CategoryBlocBloc>().model =
+                        products[index].model;
+
+                    //Selected product varient assigning
+                    context.read<CategoryBlocBloc>().verient =
+                        products[index].variant;
+
+                    //Selected product image assinging
+                    context.read<CategoryBlocBloc>().productImage =
+                        products[index].productImage;
+
                     context.read<NavbarCubit>().changeNavigationIndex(1);
                     secondtabScreensNotifier.value = 1;
                     secondtabScreensNotifier.notifyListeners();

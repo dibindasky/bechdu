@@ -29,7 +29,7 @@ class ProductSearchField extends StatelessWidget {
       onChanged: (value) {
         context.read<CategoryBlocBloc>().add(ProductSearch(searchQuery: value));
       },
-      style: textHeadBold1.copyWith(fontSize: sWidth * .044),
+      style: textHeadBold1.copyWith(fontSize: sWidth * .04),
       decoration: InputDecoration(
         contentPadding: const EdgeInsets.symmetric(vertical: .0),
         prefixIcon: Padding(
@@ -75,7 +75,7 @@ class ProductSearchField extends StatelessWidget {
         ),
         hintText: 'Search for Products...',
         hintStyle: textHeadBold1.copyWith(
-          fontSize: sWidth * .04,
+          fontSize: sWidth * .035,
           color: kBlueLight,
         ),
         border: OutlineInputBorder(

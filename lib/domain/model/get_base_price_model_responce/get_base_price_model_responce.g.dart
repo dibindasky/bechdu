@@ -9,7 +9,7 @@ part of 'get_base_price_model_responce.dart';
 GetBasePriceModelResponce _$GetBasePriceModelResponceFromJson(
         Map<String, dynamic> json) =>
     GetBasePriceModelResponce(
-      basePrice: json['basePrice'] as int?,
+      basePrice: json['basePrice'] as num?,
     );
 
 Map<String, dynamic> _$GetBasePriceModelResponceToJson(

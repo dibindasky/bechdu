@@ -30,13 +30,20 @@ cancelOrder(
             TextField(
               controller:
                   context.read<PlaceOrderBloc>().cancelationReasonController,
-              decoration: const InputDecoration(hintText: 'Reason'),
+              decoration: InputDecoration(
+                hintText: 'Reason',
+                hintStyle: textHeadInter,
+              ),
             ),
           ],
         ),
         actions: [
           TextButton(
             onPressed: () {
+              context
+                  .read<PlaceOrderBloc>()
+                  .cancelationReasonController
+                  .clear();
               Navigator.of(context).pop();
             },
             child: Text(

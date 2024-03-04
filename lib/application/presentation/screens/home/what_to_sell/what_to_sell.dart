@@ -4,6 +4,7 @@ import 'dart:developer';
 import 'package:beachdu/application/business_logic/brands_bloc/category_bloc_bloc.dart';
 import 'package:beachdu/application/business_logic/home_bloc/home_bloc.dart';
 import 'package:beachdu/application/business_logic/navbar/navbar_cubit.dart';
+import 'package:beachdu/application/business_logic/place_order/place_order_bloc.dart';
 import 'package:beachdu/application/presentation/screens/product_selection/product_screen.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
@@ -40,7 +41,11 @@ class WhatToSellWidget extends StatelessWidget {
               } else if (state.hasError) {
                 return Center(
                   child: IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      context.read<HomeBloc>().add(
+                            const HomeEvent.getAllCategory(),
+                          );
+                    },
                     icon: const Icon(
                       Icons.refresh,
                     ),
@@ -48,21 +53,20 @@ class WhatToSellWidget extends StatelessWidget {
                 );
               } else {
                 if (state.getCategoryResponceModel == null) {
-                  return Center(
-                    child: IconButton(
-                      onPressed: () {},
-                      icon: const Icon(Icons.refresh_sharp),
-                    ),
+                  return const Skeleton(
+                    crossAxisCount: 5,
+                    itemCount: 5,
+                    height: 100,
                   );
                 } else {
                   final data = state.getCategoryResponceModel!.category!;
                   return GridView.builder(
                     padding: const EdgeInsets.all(0),
-                    physics: const NeverScrollableScrollPhysics(),
+                    // physics: const NeverScrollableScrollPhysics(),
                     itemCount: state.getCategoryResponceModel!.category!.length,
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       childAspectRatio: 1 / 1,
-                      crossAxisCount: data.length < 5 ? 4 : 5,
+                      crossAxisCount: data.length,
                     ),
                     shrinkWrap: true,
                     itemBuilder: (context, index) {
@@ -85,6 +89,9 @@ class WhatToSellWidget extends StatelessWidget {
                           brandandProductValueNotifier.notifyListeners();
                           secondtabScreensNotifier.value = 0;
                           secondtabScreensNotifier.notifyListeners();
+                          context
+                              .read<PlaceOrderBloc>()
+                              .add(const PlaceOrderEvent.removeAllFieldData());
                         },
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),

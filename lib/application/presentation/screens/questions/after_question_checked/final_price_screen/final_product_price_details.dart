@@ -203,10 +203,20 @@ class FinalProductPriceDetaails extends StatelessWidget {
                   if (state.promoCodeResponceModel != null) {
                     final basePrice = context.read<QuestionTabBloc>().basePrice;
                     final value = context.read<PlaceOrderBloc>().value;
-                    return Text(
-                      '₹ ${basePrice + value}',
-                      style:
-                          textHeadSemiBold1.copyWith(fontSize: sWidth * .039),
+                    return Row(
+                      children: [
+                        Text(
+                          '₹ $basePrice',
+                          style: textHeadSemiBold1.copyWith(
+                              fontSize: sWidth * .039),
+                        ),
+                        kWidth10,
+                        Text(
+                          '₹ $value',
+                          style: textHeadSemiBold1.copyWith(
+                              fontSize: sWidth * .039),
+                        ),
+                      ],
                     );
                   }
                   final basePrice = context.read<QuestionTabBloc>().basePrice;

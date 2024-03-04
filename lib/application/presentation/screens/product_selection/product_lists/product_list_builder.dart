@@ -20,26 +20,21 @@ class ProductListViewBuilder extends StatelessWidget {
     return BlocBuilder<CategoryBlocBloc, CategoryBlocState>(
       builder: (context, categoryState) {
         if (categoryState.isLoading) {
-          // Show skeleton while loading
           return const Skeleton(
             crossAxisCount: 2,
             itemCount: 15,
             height: 200,
           );
         } else if (categoryState.hasError) {
-          // Show error message if there is an error
           return const Center(child: Icon(Icons.refresh_outlined));
         } else {
           if (categoryState.filteredProducts == null) {
-            // Show empty state if no products are available
-            // return const Skeleton(
-            //   crossAxisCount: 2,
-            //   itemCount: 15,
-            //   height: 200,
-            // );
-            return Center(child: Lottie.asset(emptyLottie));
+            return const Skeleton(
+              crossAxisCount: 2,
+              itemCount: 15,
+              height: 200,
+            );
           } else {
-            // Products are available, display them
             final products = categoryState.getProductsResponceModel!.products!;
             List<Product> product = categoryState.filteredProducts ?? products;
             return Column(

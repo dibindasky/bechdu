@@ -1,3 +1,6 @@
+import 'dart:async';
+import 'dart:developer';
+
 import 'package:beachdu/application/business_logic/home_bloc/home_bloc.dart';
 import 'package:beachdu/application/presentation/routes/routes.dart';
 import 'package:beachdu/application/presentation/screens/home/home_screen.dart';
@@ -10,8 +13,6 @@ import 'package:iconsax/iconsax.dart';
 
 class CustomSearchFieldHome extends StatelessWidget {
   const CustomSearchFieldHome({super.key});
-
-  // final Debouncer<String> _debouncer = Debouncer<String>(const Duration(milliseconds: 500));
 
   @override
   Widget build(BuildContext context) {
@@ -41,11 +42,14 @@ class CustomSearchFieldHome extends StatelessWidget {
                 if (value.isNotEmpty) {
                   homeScreens.value = 1;
                   homeScreens.notifyListeners();
-                  context.read<HomeBloc>().add(
-                        HomeEvent.globalPrductSearch(
-                          searchParamModel: SearchParamModel(search: value),
-                        ),
-                      );
+                  Timer(const Duration(microseconds: 400), () {
+                    context.read<HomeBloc>().add(
+                          HomeEvent.globalPrductSearch(
+                            searchParamModel: SearchParamModel(search: value),
+                          ),
+                        );
+                    log('event call UI $value');
+                  });
                 } else {
                   homeScreens.value = 0;
                   homeScreens.notifyListeners();
