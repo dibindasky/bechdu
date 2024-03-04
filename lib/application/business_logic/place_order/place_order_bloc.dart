@@ -37,6 +37,7 @@ class PlaceOrderBloc extends Bloc<PlaceOrderEvent, PlaceOrderState> {
   TextEditingController cancelationReasonController = TextEditingController();
   PlaceOrderBloc(this.placeOrderRepo) : super(PlaceOrderState.initial()) {
     on<GetPromoCode>(getPromoCode);
+    on<RemoveAppliedPromo>(removeAppliedPromo);
     on<OrderPlacing>(orderPlacing);
     on<GetOrders>(getOrders);
     on<OrderCancel>(orderCancel);
@@ -48,6 +49,11 @@ class PlaceOrderBloc extends Bloc<PlaceOrderEvent, PlaceOrderState> {
     on<PickupDetailsPick>(pickupDetailsPick);
     on<UserNumber>(userNumber);
     on<RemoveAllFieldData>(removeAllFeildData);
+  }
+
+  FutureOr<void> removeAppliedPromo(RemoveAppliedPromo event, emit) {
+    promocodeController.clear();
+    emit(state.copyWith(promoCodeResponceModel: null));
   }
 
   FutureOr<void> orderCancel(OrderCancel event, emit) async {

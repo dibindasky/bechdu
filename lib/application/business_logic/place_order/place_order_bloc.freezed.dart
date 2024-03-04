@@ -34,6 +34,7 @@ mixin _$PlaceOrderEvent {
     required TResult Function(Promo promo) promoCodePick,
     required TResult Function(User user) addressPick,
     required TResult Function(Payment payment) paymentOption,
+    required TResult Function() removeAppliedPromo,
     required TResult Function(PickUpDetails pickUpDetails) pickupDetailsPick,
     required TResult Function() userNumber,
     required TResult Function() removeAllFieldData,
@@ -56,6 +57,7 @@ mixin _$PlaceOrderEvent {
     TResult? Function(Promo promo)? promoCodePick,
     TResult? Function(User user)? addressPick,
     TResult? Function(Payment payment)? paymentOption,
+    TResult? Function()? removeAppliedPromo,
     TResult? Function(PickUpDetails pickUpDetails)? pickupDetailsPick,
     TResult? Function()? userNumber,
     TResult? Function()? removeAllFieldData,
@@ -77,6 +79,7 @@ mixin _$PlaceOrderEvent {
     TResult Function(Promo promo)? promoCodePick,
     TResult Function(User user)? addressPick,
     TResult Function(Payment payment)? paymentOption,
+    TResult Function()? removeAppliedPromo,
     TResult Function(PickUpDetails pickUpDetails)? pickupDetailsPick,
     TResult Function()? userNumber,
     TResult Function()? removeAllFieldData,
@@ -96,6 +99,7 @@ mixin _$PlaceOrderEvent {
     required TResult Function(PromoCodePick value) promoCodePick,
     required TResult Function(AddressPick value) addressPick,
     required TResult Function(PaymentOption value) paymentOption,
+    required TResult Function(RemoveAppliedPromo value) removeAppliedPromo,
     required TResult Function(PickupDetailsPick value) pickupDetailsPick,
     required TResult Function(UserNumber value) userNumber,
     required TResult Function(RemoveAllFieldData value) removeAllFieldData,
@@ -114,6 +118,7 @@ mixin _$PlaceOrderEvent {
     TResult? Function(PromoCodePick value)? promoCodePick,
     TResult? Function(AddressPick value)? addressPick,
     TResult? Function(PaymentOption value)? paymentOption,
+    TResult? Function(RemoveAppliedPromo value)? removeAppliedPromo,
     TResult? Function(PickupDetailsPick value)? pickupDetailsPick,
     TResult? Function(UserNumber value)? userNumber,
     TResult? Function(RemoveAllFieldData value)? removeAllFieldData,
@@ -132,6 +137,7 @@ mixin _$PlaceOrderEvent {
     TResult Function(PromoCodePick value)? promoCodePick,
     TResult Function(AddressPick value)? addressPick,
     TResult Function(PaymentOption value)? paymentOption,
+    TResult Function(RemoveAppliedPromo value)? removeAppliedPromo,
     TResult Function(PickupDetailsPick value)? pickupDetailsPick,
     TResult Function(UserNumber value)? userNumber,
     TResult Function(RemoveAllFieldData value)? removeAllFieldData,
@@ -240,6 +246,7 @@ class _$GetPromoCodeImpl implements GetPromoCode {
     required TResult Function(Promo promo) promoCodePick,
     required TResult Function(User user) addressPick,
     required TResult Function(Payment payment) paymentOption,
+    required TResult Function() removeAppliedPromo,
     required TResult Function(PickUpDetails pickUpDetails) pickupDetailsPick,
     required TResult Function() userNumber,
     required TResult Function() removeAllFieldData,
@@ -265,6 +272,7 @@ class _$GetPromoCodeImpl implements GetPromoCode {
     TResult? Function(Promo promo)? promoCodePick,
     TResult? Function(User user)? addressPick,
     TResult? Function(Payment payment)? paymentOption,
+    TResult? Function()? removeAppliedPromo,
     TResult? Function(PickUpDetails pickUpDetails)? pickupDetailsPick,
     TResult? Function()? userNumber,
     TResult? Function()? removeAllFieldData,
@@ -289,6 +297,7 @@ class _$GetPromoCodeImpl implements GetPromoCode {
     TResult Function(Promo promo)? promoCodePick,
     TResult Function(User user)? addressPick,
     TResult Function(Payment payment)? paymentOption,
+    TResult Function()? removeAppliedPromo,
     TResult Function(PickUpDetails pickUpDetails)? pickupDetailsPick,
     TResult Function()? userNumber,
     TResult Function()? removeAllFieldData,
@@ -314,6 +323,7 @@ class _$GetPromoCodeImpl implements GetPromoCode {
     required TResult Function(PromoCodePick value) promoCodePick,
     required TResult Function(AddressPick value) addressPick,
     required TResult Function(PaymentOption value) paymentOption,
+    required TResult Function(RemoveAppliedPromo value) removeAppliedPromo,
     required TResult Function(PickupDetailsPick value) pickupDetailsPick,
     required TResult Function(UserNumber value) userNumber,
     required TResult Function(RemoveAllFieldData value) removeAllFieldData,
@@ -335,6 +345,7 @@ class _$GetPromoCodeImpl implements GetPromoCode {
     TResult? Function(PromoCodePick value)? promoCodePick,
     TResult? Function(AddressPick value)? addressPick,
     TResult? Function(PaymentOption value)? paymentOption,
+    TResult? Function(RemoveAppliedPromo value)? removeAppliedPromo,
     TResult? Function(PickupDetailsPick value)? pickupDetailsPick,
     TResult? Function(UserNumber value)? userNumber,
     TResult? Function(RemoveAllFieldData value)? removeAllFieldData,
@@ -356,6 +367,7 @@ class _$GetPromoCodeImpl implements GetPromoCode {
     TResult Function(PromoCodePick value)? promoCodePick,
     TResult Function(AddressPick value)? addressPick,
     TResult Function(PaymentOption value)? paymentOption,
+    TResult Function(RemoveAppliedPromo value)? removeAppliedPromo,
     TResult Function(PickupDetailsPick value)? pickupDetailsPick,
     TResult Function(UserNumber value)? userNumber,
     TResult Function(RemoveAllFieldData value)? removeAllFieldData,
@@ -462,6 +474,7 @@ class _$AbandendOrderImpl implements AbandendOrder {
     required TResult Function(Promo promo) promoCodePick,
     required TResult Function(User user) addressPick,
     required TResult Function(Payment payment) paymentOption,
+    required TResult Function() removeAppliedPromo,
     required TResult Function(PickUpDetails pickUpDetails) pickupDetailsPick,
     required TResult Function() userNumber,
     required TResult Function() removeAllFieldData,
@@ -487,6 +500,7 @@ class _$AbandendOrderImpl implements AbandendOrder {
     TResult? Function(Promo promo)? promoCodePick,
     TResult? Function(User user)? addressPick,
     TResult? Function(Payment payment)? paymentOption,
+    TResult? Function()? removeAppliedPromo,
     TResult? Function(PickUpDetails pickUpDetails)? pickupDetailsPick,
     TResult? Function()? userNumber,
     TResult? Function()? removeAllFieldData,
@@ -511,6 +525,7 @@ class _$AbandendOrderImpl implements AbandendOrder {
     TResult Function(Promo promo)? promoCodePick,
     TResult Function(User user)? addressPick,
     TResult Function(Payment payment)? paymentOption,
+    TResult Function()? removeAppliedPromo,
     TResult Function(PickUpDetails pickUpDetails)? pickupDetailsPick,
     TResult Function()? userNumber,
     TResult Function()? removeAllFieldData,
@@ -536,6 +551,7 @@ class _$AbandendOrderImpl implements AbandendOrder {
     required TResult Function(PromoCodePick value) promoCodePick,
     required TResult Function(AddressPick value) addressPick,
     required TResult Function(PaymentOption value) paymentOption,
+    required TResult Function(RemoveAppliedPromo value) removeAppliedPromo,
     required TResult Function(PickupDetailsPick value) pickupDetailsPick,
     required TResult Function(UserNumber value) userNumber,
     required TResult Function(RemoveAllFieldData value) removeAllFieldData,
@@ -557,6 +573,7 @@ class _$AbandendOrderImpl implements AbandendOrder {
     TResult? Function(PromoCodePick value)? promoCodePick,
     TResult? Function(AddressPick value)? addressPick,
     TResult? Function(PaymentOption value)? paymentOption,
+    TResult? Function(RemoveAppliedPromo value)? removeAppliedPromo,
     TResult? Function(PickupDetailsPick value)? pickupDetailsPick,
     TResult? Function(UserNumber value)? userNumber,
     TResult? Function(RemoveAllFieldData value)? removeAllFieldData,
@@ -578,6 +595,7 @@ class _$AbandendOrderImpl implements AbandendOrder {
     TResult Function(PromoCodePick value)? promoCodePick,
     TResult Function(AddressPick value)? addressPick,
     TResult Function(PaymentOption value)? paymentOption,
+    TResult Function(RemoveAppliedPromo value)? removeAppliedPromo,
     TResult Function(PickupDetailsPick value)? pickupDetailsPick,
     TResult Function(UserNumber value)? userNumber,
     TResult Function(RemoveAllFieldData value)? removeAllFieldData,
@@ -656,6 +674,7 @@ class _$OrderPlacingImpl implements OrderPlacing {
     required TResult Function(Promo promo) promoCodePick,
     required TResult Function(User user) addressPick,
     required TResult Function(Payment payment) paymentOption,
+    required TResult Function() removeAppliedPromo,
     required TResult Function(PickUpDetails pickUpDetails) pickupDetailsPick,
     required TResult Function() userNumber,
     required TResult Function() removeAllFieldData,
@@ -681,6 +700,7 @@ class _$OrderPlacingImpl implements OrderPlacing {
     TResult? Function(Promo promo)? promoCodePick,
     TResult? Function(User user)? addressPick,
     TResult? Function(Payment payment)? paymentOption,
+    TResult? Function()? removeAppliedPromo,
     TResult? Function(PickUpDetails pickUpDetails)? pickupDetailsPick,
     TResult? Function()? userNumber,
     TResult? Function()? removeAllFieldData,
@@ -705,6 +725,7 @@ class _$OrderPlacingImpl implements OrderPlacing {
     TResult Function(Promo promo)? promoCodePick,
     TResult Function(User user)? addressPick,
     TResult Function(Payment payment)? paymentOption,
+    TResult Function()? removeAppliedPromo,
     TResult Function(PickUpDetails pickUpDetails)? pickupDetailsPick,
     TResult Function()? userNumber,
     TResult Function()? removeAllFieldData,
@@ -730,6 +751,7 @@ class _$OrderPlacingImpl implements OrderPlacing {
     required TResult Function(PromoCodePick value) promoCodePick,
     required TResult Function(AddressPick value) addressPick,
     required TResult Function(PaymentOption value) paymentOption,
+    required TResult Function(RemoveAppliedPromo value) removeAppliedPromo,
     required TResult Function(PickupDetailsPick value) pickupDetailsPick,
     required TResult Function(UserNumber value) userNumber,
     required TResult Function(RemoveAllFieldData value) removeAllFieldData,
@@ -751,6 +773,7 @@ class _$OrderPlacingImpl implements OrderPlacing {
     TResult? Function(PromoCodePick value)? promoCodePick,
     TResult? Function(AddressPick value)? addressPick,
     TResult? Function(PaymentOption value)? paymentOption,
+    TResult? Function(RemoveAppliedPromo value)? removeAppliedPromo,
     TResult? Function(PickupDetailsPick value)? pickupDetailsPick,
     TResult? Function(UserNumber value)? userNumber,
     TResult? Function(RemoveAllFieldData value)? removeAllFieldData,
@@ -772,6 +795,7 @@ class _$OrderPlacingImpl implements OrderPlacing {
     TResult Function(PromoCodePick value)? promoCodePick,
     TResult Function(AddressPick value)? addressPick,
     TResult Function(PaymentOption value)? paymentOption,
+    TResult Function(RemoveAppliedPromo value)? removeAppliedPromo,
     TResult Function(PickupDetailsPick value)? pickupDetailsPick,
     TResult Function(UserNumber value)? userNumber,
     TResult Function(RemoveAllFieldData value)? removeAllFieldData,
@@ -843,6 +867,7 @@ class _$GetOrdersImpl implements GetOrders {
     required TResult Function(Promo promo) promoCodePick,
     required TResult Function(User user) addressPick,
     required TResult Function(Payment payment) paymentOption,
+    required TResult Function() removeAppliedPromo,
     required TResult Function(PickUpDetails pickUpDetails) pickupDetailsPick,
     required TResult Function() userNumber,
     required TResult Function() removeAllFieldData,
@@ -868,6 +893,7 @@ class _$GetOrdersImpl implements GetOrders {
     TResult? Function(Promo promo)? promoCodePick,
     TResult? Function(User user)? addressPick,
     TResult? Function(Payment payment)? paymentOption,
+    TResult? Function()? removeAppliedPromo,
     TResult? Function(PickUpDetails pickUpDetails)? pickupDetailsPick,
     TResult? Function()? userNumber,
     TResult? Function()? removeAllFieldData,
@@ -892,6 +918,7 @@ class _$GetOrdersImpl implements GetOrders {
     TResult Function(Promo promo)? promoCodePick,
     TResult Function(User user)? addressPick,
     TResult Function(Payment payment)? paymentOption,
+    TResult Function()? removeAppliedPromo,
     TResult Function(PickUpDetails pickUpDetails)? pickupDetailsPick,
     TResult Function()? userNumber,
     TResult Function()? removeAllFieldData,
@@ -917,6 +944,7 @@ class _$GetOrdersImpl implements GetOrders {
     required TResult Function(PromoCodePick value) promoCodePick,
     required TResult Function(AddressPick value) addressPick,
     required TResult Function(PaymentOption value) paymentOption,
+    required TResult Function(RemoveAppliedPromo value) removeAppliedPromo,
     required TResult Function(PickupDetailsPick value) pickupDetailsPick,
     required TResult Function(UserNumber value) userNumber,
     required TResult Function(RemoveAllFieldData value) removeAllFieldData,
@@ -938,6 +966,7 @@ class _$GetOrdersImpl implements GetOrders {
     TResult? Function(PromoCodePick value)? promoCodePick,
     TResult? Function(AddressPick value)? addressPick,
     TResult? Function(PaymentOption value)? paymentOption,
+    TResult? Function(RemoveAppliedPromo value)? removeAppliedPromo,
     TResult? Function(PickupDetailsPick value)? pickupDetailsPick,
     TResult? Function(UserNumber value)? userNumber,
     TResult? Function(RemoveAllFieldData value)? removeAllFieldData,
@@ -959,6 +988,7 @@ class _$GetOrdersImpl implements GetOrders {
     TResult Function(PromoCodePick value)? promoCodePick,
     TResult Function(AddressPick value)? addressPick,
     TResult Function(PaymentOption value)? paymentOption,
+    TResult Function(RemoveAppliedPromo value)? removeAppliedPromo,
     TResult Function(PickupDetailsPick value)? pickupDetailsPick,
     TResult Function(UserNumber value)? userNumber,
     TResult Function(RemoveAllFieldData value)? removeAllFieldData,
@@ -1071,6 +1101,7 @@ class _$OrderCancelImpl implements OrderCancel {
     required TResult Function(Promo promo) promoCodePick,
     required TResult Function(User user) addressPick,
     required TResult Function(Payment payment) paymentOption,
+    required TResult Function() removeAppliedPromo,
     required TResult Function(PickUpDetails pickUpDetails) pickupDetailsPick,
     required TResult Function() userNumber,
     required TResult Function() removeAllFieldData,
@@ -1096,6 +1127,7 @@ class _$OrderCancelImpl implements OrderCancel {
     TResult? Function(Promo promo)? promoCodePick,
     TResult? Function(User user)? addressPick,
     TResult? Function(Payment payment)? paymentOption,
+    TResult? Function()? removeAppliedPromo,
     TResult? Function(PickUpDetails pickUpDetails)? pickupDetailsPick,
     TResult? Function()? userNumber,
     TResult? Function()? removeAllFieldData,
@@ -1120,6 +1152,7 @@ class _$OrderCancelImpl implements OrderCancel {
     TResult Function(Promo promo)? promoCodePick,
     TResult Function(User user)? addressPick,
     TResult Function(Payment payment)? paymentOption,
+    TResult Function()? removeAppliedPromo,
     TResult Function(PickUpDetails pickUpDetails)? pickupDetailsPick,
     TResult Function()? userNumber,
     TResult Function()? removeAllFieldData,
@@ -1145,6 +1178,7 @@ class _$OrderCancelImpl implements OrderCancel {
     required TResult Function(PromoCodePick value) promoCodePick,
     required TResult Function(AddressPick value) addressPick,
     required TResult Function(PaymentOption value) paymentOption,
+    required TResult Function(RemoveAppliedPromo value) removeAppliedPromo,
     required TResult Function(PickupDetailsPick value) pickupDetailsPick,
     required TResult Function(UserNumber value) userNumber,
     required TResult Function(RemoveAllFieldData value) removeAllFieldData,
@@ -1166,6 +1200,7 @@ class _$OrderCancelImpl implements OrderCancel {
     TResult? Function(PromoCodePick value)? promoCodePick,
     TResult? Function(AddressPick value)? addressPick,
     TResult? Function(PaymentOption value)? paymentOption,
+    TResult? Function(RemoveAppliedPromo value)? removeAppliedPromo,
     TResult? Function(PickupDetailsPick value)? pickupDetailsPick,
     TResult? Function(UserNumber value)? userNumber,
     TResult? Function(RemoveAllFieldData value)? removeAllFieldData,
@@ -1187,6 +1222,7 @@ class _$OrderCancelImpl implements OrderCancel {
     TResult Function(PromoCodePick value)? promoCodePick,
     TResult Function(AddressPick value)? addressPick,
     TResult Function(PaymentOption value)? paymentOption,
+    TResult Function(RemoveAppliedPromo value)? removeAppliedPromo,
     TResult Function(PickupDetailsPick value)? pickupDetailsPick,
     TResult Function(UserNumber value)? userNumber,
     TResult Function(RemoveAllFieldData value)? removeAllFieldData,
@@ -1293,6 +1329,7 @@ class _$UserDetailsPickImpl implements UserDetailsPick {
     required TResult Function(Promo promo) promoCodePick,
     required TResult Function(User user) addressPick,
     required TResult Function(Payment payment) paymentOption,
+    required TResult Function() removeAppliedPromo,
     required TResult Function(PickUpDetails pickUpDetails) pickupDetailsPick,
     required TResult Function() userNumber,
     required TResult Function() removeAllFieldData,
@@ -1318,6 +1355,7 @@ class _$UserDetailsPickImpl implements UserDetailsPick {
     TResult? Function(Promo promo)? promoCodePick,
     TResult? Function(User user)? addressPick,
     TResult? Function(Payment payment)? paymentOption,
+    TResult? Function()? removeAppliedPromo,
     TResult? Function(PickUpDetails pickUpDetails)? pickupDetailsPick,
     TResult? Function()? userNumber,
     TResult? Function()? removeAllFieldData,
@@ -1342,6 +1380,7 @@ class _$UserDetailsPickImpl implements UserDetailsPick {
     TResult Function(Promo promo)? promoCodePick,
     TResult Function(User user)? addressPick,
     TResult Function(Payment payment)? paymentOption,
+    TResult Function()? removeAppliedPromo,
     TResult Function(PickUpDetails pickUpDetails)? pickupDetailsPick,
     TResult Function()? userNumber,
     TResult Function()? removeAllFieldData,
@@ -1367,6 +1406,7 @@ class _$UserDetailsPickImpl implements UserDetailsPick {
     required TResult Function(PromoCodePick value) promoCodePick,
     required TResult Function(AddressPick value) addressPick,
     required TResult Function(PaymentOption value) paymentOption,
+    required TResult Function(RemoveAppliedPromo value) removeAppliedPromo,
     required TResult Function(PickupDetailsPick value) pickupDetailsPick,
     required TResult Function(UserNumber value) userNumber,
     required TResult Function(RemoveAllFieldData value) removeAllFieldData,
@@ -1388,6 +1428,7 @@ class _$UserDetailsPickImpl implements UserDetailsPick {
     TResult? Function(PromoCodePick value)? promoCodePick,
     TResult? Function(AddressPick value)? addressPick,
     TResult? Function(PaymentOption value)? paymentOption,
+    TResult? Function(RemoveAppliedPromo value)? removeAppliedPromo,
     TResult? Function(PickupDetailsPick value)? pickupDetailsPick,
     TResult? Function(UserNumber value)? userNumber,
     TResult? Function(RemoveAllFieldData value)? removeAllFieldData,
@@ -1409,6 +1450,7 @@ class _$UserDetailsPickImpl implements UserDetailsPick {
     TResult Function(PromoCodePick value)? promoCodePick,
     TResult Function(AddressPick value)? addressPick,
     TResult Function(PaymentOption value)? paymentOption,
+    TResult Function(RemoveAppliedPromo value)? removeAppliedPromo,
     TResult Function(PickupDetailsPick value)? pickupDetailsPick,
     TResult Function(UserNumber value)? userNumber,
     TResult Function(RemoveAllFieldData value)? removeAllFieldData,
@@ -1514,6 +1556,7 @@ class _$ProductDetailsPickImpl implements ProductDetailsPick {
     required TResult Function(Promo promo) promoCodePick,
     required TResult Function(User user) addressPick,
     required TResult Function(Payment payment) paymentOption,
+    required TResult Function() removeAppliedPromo,
     required TResult Function(PickUpDetails pickUpDetails) pickupDetailsPick,
     required TResult Function() userNumber,
     required TResult Function() removeAllFieldData,
@@ -1539,6 +1582,7 @@ class _$ProductDetailsPickImpl implements ProductDetailsPick {
     TResult? Function(Promo promo)? promoCodePick,
     TResult? Function(User user)? addressPick,
     TResult? Function(Payment payment)? paymentOption,
+    TResult? Function()? removeAppliedPromo,
     TResult? Function(PickUpDetails pickUpDetails)? pickupDetailsPick,
     TResult? Function()? userNumber,
     TResult? Function()? removeAllFieldData,
@@ -1563,6 +1607,7 @@ class _$ProductDetailsPickImpl implements ProductDetailsPick {
     TResult Function(Promo promo)? promoCodePick,
     TResult Function(User user)? addressPick,
     TResult Function(Payment payment)? paymentOption,
+    TResult Function()? removeAppliedPromo,
     TResult Function(PickUpDetails pickUpDetails)? pickupDetailsPick,
     TResult Function()? userNumber,
     TResult Function()? removeAllFieldData,
@@ -1588,6 +1633,7 @@ class _$ProductDetailsPickImpl implements ProductDetailsPick {
     required TResult Function(PromoCodePick value) promoCodePick,
     required TResult Function(AddressPick value) addressPick,
     required TResult Function(PaymentOption value) paymentOption,
+    required TResult Function(RemoveAppliedPromo value) removeAppliedPromo,
     required TResult Function(PickupDetailsPick value) pickupDetailsPick,
     required TResult Function(UserNumber value) userNumber,
     required TResult Function(RemoveAllFieldData value) removeAllFieldData,
@@ -1609,6 +1655,7 @@ class _$ProductDetailsPickImpl implements ProductDetailsPick {
     TResult? Function(PromoCodePick value)? promoCodePick,
     TResult? Function(AddressPick value)? addressPick,
     TResult? Function(PaymentOption value)? paymentOption,
+    TResult? Function(RemoveAppliedPromo value)? removeAppliedPromo,
     TResult? Function(PickupDetailsPick value)? pickupDetailsPick,
     TResult? Function(UserNumber value)? userNumber,
     TResult? Function(RemoveAllFieldData value)? removeAllFieldData,
@@ -1630,6 +1677,7 @@ class _$ProductDetailsPickImpl implements ProductDetailsPick {
     TResult Function(PromoCodePick value)? promoCodePick,
     TResult Function(AddressPick value)? addressPick,
     TResult Function(PaymentOption value)? paymentOption,
+    TResult Function(RemoveAppliedPromo value)? removeAppliedPromo,
     TResult Function(PickupDetailsPick value)? pickupDetailsPick,
     TResult Function(UserNumber value)? userNumber,
     TResult Function(RemoveAllFieldData value)? removeAllFieldData,
@@ -1734,6 +1782,7 @@ class _$PromoCodePickImpl implements PromoCodePick {
     required TResult Function(Promo promo) promoCodePick,
     required TResult Function(User user) addressPick,
     required TResult Function(Payment payment) paymentOption,
+    required TResult Function() removeAppliedPromo,
     required TResult Function(PickUpDetails pickUpDetails) pickupDetailsPick,
     required TResult Function() userNumber,
     required TResult Function() removeAllFieldData,
@@ -1759,6 +1808,7 @@ class _$PromoCodePickImpl implements PromoCodePick {
     TResult? Function(Promo promo)? promoCodePick,
     TResult? Function(User user)? addressPick,
     TResult? Function(Payment payment)? paymentOption,
+    TResult? Function()? removeAppliedPromo,
     TResult? Function(PickUpDetails pickUpDetails)? pickupDetailsPick,
     TResult? Function()? userNumber,
     TResult? Function()? removeAllFieldData,
@@ -1783,6 +1833,7 @@ class _$PromoCodePickImpl implements PromoCodePick {
     TResult Function(Promo promo)? promoCodePick,
     TResult Function(User user)? addressPick,
     TResult Function(Payment payment)? paymentOption,
+    TResult Function()? removeAppliedPromo,
     TResult Function(PickUpDetails pickUpDetails)? pickupDetailsPick,
     TResult Function()? userNumber,
     TResult Function()? removeAllFieldData,
@@ -1808,6 +1859,7 @@ class _$PromoCodePickImpl implements PromoCodePick {
     required TResult Function(PromoCodePick value) promoCodePick,
     required TResult Function(AddressPick value) addressPick,
     required TResult Function(PaymentOption value) paymentOption,
+    required TResult Function(RemoveAppliedPromo value) removeAppliedPromo,
     required TResult Function(PickupDetailsPick value) pickupDetailsPick,
     required TResult Function(UserNumber value) userNumber,
     required TResult Function(RemoveAllFieldData value) removeAllFieldData,
@@ -1829,6 +1881,7 @@ class _$PromoCodePickImpl implements PromoCodePick {
     TResult? Function(PromoCodePick value)? promoCodePick,
     TResult? Function(AddressPick value)? addressPick,
     TResult? Function(PaymentOption value)? paymentOption,
+    TResult? Function(RemoveAppliedPromo value)? removeAppliedPromo,
     TResult? Function(PickupDetailsPick value)? pickupDetailsPick,
     TResult? Function(UserNumber value)? userNumber,
     TResult? Function(RemoveAllFieldData value)? removeAllFieldData,
@@ -1850,6 +1903,7 @@ class _$PromoCodePickImpl implements PromoCodePick {
     TResult Function(PromoCodePick value)? promoCodePick,
     TResult Function(AddressPick value)? addressPick,
     TResult Function(PaymentOption value)? paymentOption,
+    TResult Function(RemoveAppliedPromo value)? removeAppliedPromo,
     TResult Function(PickupDetailsPick value)? pickupDetailsPick,
     TResult Function(UserNumber value)? userNumber,
     TResult Function(RemoveAllFieldData value)? removeAllFieldData,
@@ -1953,6 +2007,7 @@ class _$AddressPickImpl implements AddressPick {
     required TResult Function(Promo promo) promoCodePick,
     required TResult Function(User user) addressPick,
     required TResult Function(Payment payment) paymentOption,
+    required TResult Function() removeAppliedPromo,
     required TResult Function(PickUpDetails pickUpDetails) pickupDetailsPick,
     required TResult Function() userNumber,
     required TResult Function() removeAllFieldData,
@@ -1978,6 +2033,7 @@ class _$AddressPickImpl implements AddressPick {
     TResult? Function(Promo promo)? promoCodePick,
     TResult? Function(User user)? addressPick,
     TResult? Function(Payment payment)? paymentOption,
+    TResult? Function()? removeAppliedPromo,
     TResult? Function(PickUpDetails pickUpDetails)? pickupDetailsPick,
     TResult? Function()? userNumber,
     TResult? Function()? removeAllFieldData,
@@ -2002,6 +2058,7 @@ class _$AddressPickImpl implements AddressPick {
     TResult Function(Promo promo)? promoCodePick,
     TResult Function(User user)? addressPick,
     TResult Function(Payment payment)? paymentOption,
+    TResult Function()? removeAppliedPromo,
     TResult Function(PickUpDetails pickUpDetails)? pickupDetailsPick,
     TResult Function()? userNumber,
     TResult Function()? removeAllFieldData,
@@ -2027,6 +2084,7 @@ class _$AddressPickImpl implements AddressPick {
     required TResult Function(PromoCodePick value) promoCodePick,
     required TResult Function(AddressPick value) addressPick,
     required TResult Function(PaymentOption value) paymentOption,
+    required TResult Function(RemoveAppliedPromo value) removeAppliedPromo,
     required TResult Function(PickupDetailsPick value) pickupDetailsPick,
     required TResult Function(UserNumber value) userNumber,
     required TResult Function(RemoveAllFieldData value) removeAllFieldData,
@@ -2048,6 +2106,7 @@ class _$AddressPickImpl implements AddressPick {
     TResult? Function(PromoCodePick value)? promoCodePick,
     TResult? Function(AddressPick value)? addressPick,
     TResult? Function(PaymentOption value)? paymentOption,
+    TResult? Function(RemoveAppliedPromo value)? removeAppliedPromo,
     TResult? Function(PickupDetailsPick value)? pickupDetailsPick,
     TResult? Function(UserNumber value)? userNumber,
     TResult? Function(RemoveAllFieldData value)? removeAllFieldData,
@@ -2069,6 +2128,7 @@ class _$AddressPickImpl implements AddressPick {
     TResult Function(PromoCodePick value)? promoCodePick,
     TResult Function(AddressPick value)? addressPick,
     TResult Function(PaymentOption value)? paymentOption,
+    TResult Function(RemoveAppliedPromo value)? removeAppliedPromo,
     TResult Function(PickupDetailsPick value)? pickupDetailsPick,
     TResult Function(UserNumber value)? userNumber,
     TResult Function(RemoveAllFieldData value)? removeAllFieldData,
@@ -2171,6 +2231,7 @@ class _$PaymentOptionImpl implements PaymentOption {
     required TResult Function(Promo promo) promoCodePick,
     required TResult Function(User user) addressPick,
     required TResult Function(Payment payment) paymentOption,
+    required TResult Function() removeAppliedPromo,
     required TResult Function(PickUpDetails pickUpDetails) pickupDetailsPick,
     required TResult Function() userNumber,
     required TResult Function() removeAllFieldData,
@@ -2196,6 +2257,7 @@ class _$PaymentOptionImpl implements PaymentOption {
     TResult? Function(Promo promo)? promoCodePick,
     TResult? Function(User user)? addressPick,
     TResult? Function(Payment payment)? paymentOption,
+    TResult? Function()? removeAppliedPromo,
     TResult? Function(PickUpDetails pickUpDetails)? pickupDetailsPick,
     TResult? Function()? userNumber,
     TResult? Function()? removeAllFieldData,
@@ -2220,6 +2282,7 @@ class _$PaymentOptionImpl implements PaymentOption {
     TResult Function(Promo promo)? promoCodePick,
     TResult Function(User user)? addressPick,
     TResult Function(Payment payment)? paymentOption,
+    TResult Function()? removeAppliedPromo,
     TResult Function(PickUpDetails pickUpDetails)? pickupDetailsPick,
     TResult Function()? userNumber,
     TResult Function()? removeAllFieldData,
@@ -2245,6 +2308,7 @@ class _$PaymentOptionImpl implements PaymentOption {
     required TResult Function(PromoCodePick value) promoCodePick,
     required TResult Function(AddressPick value) addressPick,
     required TResult Function(PaymentOption value) paymentOption,
+    required TResult Function(RemoveAppliedPromo value) removeAppliedPromo,
     required TResult Function(PickupDetailsPick value) pickupDetailsPick,
     required TResult Function(UserNumber value) userNumber,
     required TResult Function(RemoveAllFieldData value) removeAllFieldData,
@@ -2266,6 +2330,7 @@ class _$PaymentOptionImpl implements PaymentOption {
     TResult? Function(PromoCodePick value)? promoCodePick,
     TResult? Function(AddressPick value)? addressPick,
     TResult? Function(PaymentOption value)? paymentOption,
+    TResult? Function(RemoveAppliedPromo value)? removeAppliedPromo,
     TResult? Function(PickupDetailsPick value)? pickupDetailsPick,
     TResult? Function(UserNumber value)? userNumber,
     TResult? Function(RemoveAllFieldData value)? removeAllFieldData,
@@ -2287,6 +2352,7 @@ class _$PaymentOptionImpl implements PaymentOption {
     TResult Function(PromoCodePick value)? promoCodePick,
     TResult Function(AddressPick value)? addressPick,
     TResult Function(PaymentOption value)? paymentOption,
+    TResult Function(RemoveAppliedPromo value)? removeAppliedPromo,
     TResult Function(PickupDetailsPick value)? pickupDetailsPick,
     TResult Function(UserNumber value)? userNumber,
     TResult Function(RemoveAllFieldData value)? removeAllFieldData,
@@ -2308,6 +2374,199 @@ abstract class PaymentOption implements PlaceOrderEvent {
   @JsonKey(ignore: true)
   _$$PaymentOptionImplCopyWith<_$PaymentOptionImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$RemoveAppliedPromoImplCopyWith<$Res> {
+  factory _$$RemoveAppliedPromoImplCopyWith(_$RemoveAppliedPromoImpl value,
+          $Res Function(_$RemoveAppliedPromoImpl) then) =
+      __$$RemoveAppliedPromoImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$RemoveAppliedPromoImplCopyWithImpl<$Res>
+    extends _$PlaceOrderEventCopyWithImpl<$Res, _$RemoveAppliedPromoImpl>
+    implements _$$RemoveAppliedPromoImplCopyWith<$Res> {
+  __$$RemoveAppliedPromoImplCopyWithImpl(_$RemoveAppliedPromoImpl _value,
+      $Res Function(_$RemoveAppliedPromoImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$RemoveAppliedPromoImpl implements RemoveAppliedPromo {
+  const _$RemoveAppliedPromoImpl();
+
+  @override
+  String toString() {
+    return 'PlaceOrderEvent.removeAppliedPromo()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$RemoveAppliedPromoImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(PromoCodeRequestModel promoCodeRequestModel)
+        getPromoCode,
+    required TResult Function(
+            AbandendOrderRequestModel abandendOrderRequestModel)
+        abandendOrder,
+    required TResult Function() orderPlacing,
+    required TResult Function() getOrders,
+    required TResult Function(
+            OrderCancelationRequestModel orderCancelationRequestModel,
+            String orderId)
+        orderCancel,
+    required TResult Function(User user) userDetailsPick,
+    required TResult Function(ProductDetails productDetails) productDetailsPick,
+    required TResult Function(Promo promo) promoCodePick,
+    required TResult Function(User user) addressPick,
+    required TResult Function(Payment payment) paymentOption,
+    required TResult Function() removeAppliedPromo,
+    required TResult Function(PickUpDetails pickUpDetails) pickupDetailsPick,
+    required TResult Function() userNumber,
+    required TResult Function() removeAllFieldData,
+    required TResult Function() promoCodeSuccess,
+  }) {
+    return removeAppliedPromo();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(PromoCodeRequestModel promoCodeRequestModel)?
+        getPromoCode,
+    TResult? Function(AbandendOrderRequestModel abandendOrderRequestModel)?
+        abandendOrder,
+    TResult? Function()? orderPlacing,
+    TResult? Function()? getOrders,
+    TResult? Function(OrderCancelationRequestModel orderCancelationRequestModel,
+            String orderId)?
+        orderCancel,
+    TResult? Function(User user)? userDetailsPick,
+    TResult? Function(ProductDetails productDetails)? productDetailsPick,
+    TResult? Function(Promo promo)? promoCodePick,
+    TResult? Function(User user)? addressPick,
+    TResult? Function(Payment payment)? paymentOption,
+    TResult? Function()? removeAppliedPromo,
+    TResult? Function(PickUpDetails pickUpDetails)? pickupDetailsPick,
+    TResult? Function()? userNumber,
+    TResult? Function()? removeAllFieldData,
+    TResult? Function()? promoCodeSuccess,
+  }) {
+    return removeAppliedPromo?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(PromoCodeRequestModel promoCodeRequestModel)? getPromoCode,
+    TResult Function(AbandendOrderRequestModel abandendOrderRequestModel)?
+        abandendOrder,
+    TResult Function()? orderPlacing,
+    TResult Function()? getOrders,
+    TResult Function(OrderCancelationRequestModel orderCancelationRequestModel,
+            String orderId)?
+        orderCancel,
+    TResult Function(User user)? userDetailsPick,
+    TResult Function(ProductDetails productDetails)? productDetailsPick,
+    TResult Function(Promo promo)? promoCodePick,
+    TResult Function(User user)? addressPick,
+    TResult Function(Payment payment)? paymentOption,
+    TResult Function()? removeAppliedPromo,
+    TResult Function(PickUpDetails pickUpDetails)? pickupDetailsPick,
+    TResult Function()? userNumber,
+    TResult Function()? removeAllFieldData,
+    TResult Function()? promoCodeSuccess,
+    required TResult orElse(),
+  }) {
+    if (removeAppliedPromo != null) {
+      return removeAppliedPromo();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GetPromoCode value) getPromoCode,
+    required TResult Function(AbandendOrder value) abandendOrder,
+    required TResult Function(OrderPlacing value) orderPlacing,
+    required TResult Function(GetOrders value) getOrders,
+    required TResult Function(OrderCancel value) orderCancel,
+    required TResult Function(UserDetailsPick value) userDetailsPick,
+    required TResult Function(ProductDetailsPick value) productDetailsPick,
+    required TResult Function(PromoCodePick value) promoCodePick,
+    required TResult Function(AddressPick value) addressPick,
+    required TResult Function(PaymentOption value) paymentOption,
+    required TResult Function(RemoveAppliedPromo value) removeAppliedPromo,
+    required TResult Function(PickupDetailsPick value) pickupDetailsPick,
+    required TResult Function(UserNumber value) userNumber,
+    required TResult Function(RemoveAllFieldData value) removeAllFieldData,
+    required TResult Function(PromoCodeSuccess value) promoCodeSuccess,
+  }) {
+    return removeAppliedPromo(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetPromoCode value)? getPromoCode,
+    TResult? Function(AbandendOrder value)? abandendOrder,
+    TResult? Function(OrderPlacing value)? orderPlacing,
+    TResult? Function(GetOrders value)? getOrders,
+    TResult? Function(OrderCancel value)? orderCancel,
+    TResult? Function(UserDetailsPick value)? userDetailsPick,
+    TResult? Function(ProductDetailsPick value)? productDetailsPick,
+    TResult? Function(PromoCodePick value)? promoCodePick,
+    TResult? Function(AddressPick value)? addressPick,
+    TResult? Function(PaymentOption value)? paymentOption,
+    TResult? Function(RemoveAppliedPromo value)? removeAppliedPromo,
+    TResult? Function(PickupDetailsPick value)? pickupDetailsPick,
+    TResult? Function(UserNumber value)? userNumber,
+    TResult? Function(RemoveAllFieldData value)? removeAllFieldData,
+    TResult? Function(PromoCodeSuccess value)? promoCodeSuccess,
+  }) {
+    return removeAppliedPromo?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetPromoCode value)? getPromoCode,
+    TResult Function(AbandendOrder value)? abandendOrder,
+    TResult Function(OrderPlacing value)? orderPlacing,
+    TResult Function(GetOrders value)? getOrders,
+    TResult Function(OrderCancel value)? orderCancel,
+    TResult Function(UserDetailsPick value)? userDetailsPick,
+    TResult Function(ProductDetailsPick value)? productDetailsPick,
+    TResult Function(PromoCodePick value)? promoCodePick,
+    TResult Function(AddressPick value)? addressPick,
+    TResult Function(PaymentOption value)? paymentOption,
+    TResult Function(RemoveAppliedPromo value)? removeAppliedPromo,
+    TResult Function(PickupDetailsPick value)? pickupDetailsPick,
+    TResult Function(UserNumber value)? userNumber,
+    TResult Function(RemoveAllFieldData value)? removeAllFieldData,
+    TResult Function(PromoCodeSuccess value)? promoCodeSuccess,
+    required TResult orElse(),
+  }) {
+    if (removeAppliedPromo != null) {
+      return removeAppliedPromo(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class RemoveAppliedPromo implements PlaceOrderEvent {
+  const factory RemoveAppliedPromo() = _$RemoveAppliedPromoImpl;
 }
 
 /// @nodoc
@@ -2392,6 +2651,7 @@ class _$PickupDetailsPickImpl implements PickupDetailsPick {
     required TResult Function(Promo promo) promoCodePick,
     required TResult Function(User user) addressPick,
     required TResult Function(Payment payment) paymentOption,
+    required TResult Function() removeAppliedPromo,
     required TResult Function(PickUpDetails pickUpDetails) pickupDetailsPick,
     required TResult Function() userNumber,
     required TResult Function() removeAllFieldData,
@@ -2417,6 +2677,7 @@ class _$PickupDetailsPickImpl implements PickupDetailsPick {
     TResult? Function(Promo promo)? promoCodePick,
     TResult? Function(User user)? addressPick,
     TResult? Function(Payment payment)? paymentOption,
+    TResult? Function()? removeAppliedPromo,
     TResult? Function(PickUpDetails pickUpDetails)? pickupDetailsPick,
     TResult? Function()? userNumber,
     TResult? Function()? removeAllFieldData,
@@ -2441,6 +2702,7 @@ class _$PickupDetailsPickImpl implements PickupDetailsPick {
     TResult Function(Promo promo)? promoCodePick,
     TResult Function(User user)? addressPick,
     TResult Function(Payment payment)? paymentOption,
+    TResult Function()? removeAppliedPromo,
     TResult Function(PickUpDetails pickUpDetails)? pickupDetailsPick,
     TResult Function()? userNumber,
     TResult Function()? removeAllFieldData,
@@ -2466,6 +2728,7 @@ class _$PickupDetailsPickImpl implements PickupDetailsPick {
     required TResult Function(PromoCodePick value) promoCodePick,
     required TResult Function(AddressPick value) addressPick,
     required TResult Function(PaymentOption value) paymentOption,
+    required TResult Function(RemoveAppliedPromo value) removeAppliedPromo,
     required TResult Function(PickupDetailsPick value) pickupDetailsPick,
     required TResult Function(UserNumber value) userNumber,
     required TResult Function(RemoveAllFieldData value) removeAllFieldData,
@@ -2487,6 +2750,7 @@ class _$PickupDetailsPickImpl implements PickupDetailsPick {
     TResult? Function(PromoCodePick value)? promoCodePick,
     TResult? Function(AddressPick value)? addressPick,
     TResult? Function(PaymentOption value)? paymentOption,
+    TResult? Function(RemoveAppliedPromo value)? removeAppliedPromo,
     TResult? Function(PickupDetailsPick value)? pickupDetailsPick,
     TResult? Function(UserNumber value)? userNumber,
     TResult? Function(RemoveAllFieldData value)? removeAllFieldData,
@@ -2508,6 +2772,7 @@ class _$PickupDetailsPickImpl implements PickupDetailsPick {
     TResult Function(PromoCodePick value)? promoCodePick,
     TResult Function(AddressPick value)? addressPick,
     TResult Function(PaymentOption value)? paymentOption,
+    TResult Function(RemoveAppliedPromo value)? removeAppliedPromo,
     TResult Function(PickupDetailsPick value)? pickupDetailsPick,
     TResult Function(UserNumber value)? userNumber,
     TResult Function(RemoveAllFieldData value)? removeAllFieldData,
@@ -2585,6 +2850,7 @@ class _$UserNumberImpl implements UserNumber {
     required TResult Function(Promo promo) promoCodePick,
     required TResult Function(User user) addressPick,
     required TResult Function(Payment payment) paymentOption,
+    required TResult Function() removeAppliedPromo,
     required TResult Function(PickUpDetails pickUpDetails) pickupDetailsPick,
     required TResult Function() userNumber,
     required TResult Function() removeAllFieldData,
@@ -2610,6 +2876,7 @@ class _$UserNumberImpl implements UserNumber {
     TResult? Function(Promo promo)? promoCodePick,
     TResult? Function(User user)? addressPick,
     TResult? Function(Payment payment)? paymentOption,
+    TResult? Function()? removeAppliedPromo,
     TResult? Function(PickUpDetails pickUpDetails)? pickupDetailsPick,
     TResult? Function()? userNumber,
     TResult? Function()? removeAllFieldData,
@@ -2634,6 +2901,7 @@ class _$UserNumberImpl implements UserNumber {
     TResult Function(Promo promo)? promoCodePick,
     TResult Function(User user)? addressPick,
     TResult Function(Payment payment)? paymentOption,
+    TResult Function()? removeAppliedPromo,
     TResult Function(PickUpDetails pickUpDetails)? pickupDetailsPick,
     TResult Function()? userNumber,
     TResult Function()? removeAllFieldData,
@@ -2659,6 +2927,7 @@ class _$UserNumberImpl implements UserNumber {
     required TResult Function(PromoCodePick value) promoCodePick,
     required TResult Function(AddressPick value) addressPick,
     required TResult Function(PaymentOption value) paymentOption,
+    required TResult Function(RemoveAppliedPromo value) removeAppliedPromo,
     required TResult Function(PickupDetailsPick value) pickupDetailsPick,
     required TResult Function(UserNumber value) userNumber,
     required TResult Function(RemoveAllFieldData value) removeAllFieldData,
@@ -2680,6 +2949,7 @@ class _$UserNumberImpl implements UserNumber {
     TResult? Function(PromoCodePick value)? promoCodePick,
     TResult? Function(AddressPick value)? addressPick,
     TResult? Function(PaymentOption value)? paymentOption,
+    TResult? Function(RemoveAppliedPromo value)? removeAppliedPromo,
     TResult? Function(PickupDetailsPick value)? pickupDetailsPick,
     TResult? Function(UserNumber value)? userNumber,
     TResult? Function(RemoveAllFieldData value)? removeAllFieldData,
@@ -2701,6 +2971,7 @@ class _$UserNumberImpl implements UserNumber {
     TResult Function(PromoCodePick value)? promoCodePick,
     TResult Function(AddressPick value)? addressPick,
     TResult Function(PaymentOption value)? paymentOption,
+    TResult Function(RemoveAppliedPromo value)? removeAppliedPromo,
     TResult Function(PickupDetailsPick value)? pickupDetailsPick,
     TResult Function(UserNumber value)? userNumber,
     TResult Function(RemoveAllFieldData value)? removeAllFieldData,
@@ -2772,6 +3043,7 @@ class _$RemoveAllFieldDataImpl implements RemoveAllFieldData {
     required TResult Function(Promo promo) promoCodePick,
     required TResult Function(User user) addressPick,
     required TResult Function(Payment payment) paymentOption,
+    required TResult Function() removeAppliedPromo,
     required TResult Function(PickUpDetails pickUpDetails) pickupDetailsPick,
     required TResult Function() userNumber,
     required TResult Function() removeAllFieldData,
@@ -2797,6 +3069,7 @@ class _$RemoveAllFieldDataImpl implements RemoveAllFieldData {
     TResult? Function(Promo promo)? promoCodePick,
     TResult? Function(User user)? addressPick,
     TResult? Function(Payment payment)? paymentOption,
+    TResult? Function()? removeAppliedPromo,
     TResult? Function(PickUpDetails pickUpDetails)? pickupDetailsPick,
     TResult? Function()? userNumber,
     TResult? Function()? removeAllFieldData,
@@ -2821,6 +3094,7 @@ class _$RemoveAllFieldDataImpl implements RemoveAllFieldData {
     TResult Function(Promo promo)? promoCodePick,
     TResult Function(User user)? addressPick,
     TResult Function(Payment payment)? paymentOption,
+    TResult Function()? removeAppliedPromo,
     TResult Function(PickUpDetails pickUpDetails)? pickupDetailsPick,
     TResult Function()? userNumber,
     TResult Function()? removeAllFieldData,
@@ -2846,6 +3120,7 @@ class _$RemoveAllFieldDataImpl implements RemoveAllFieldData {
     required TResult Function(PromoCodePick value) promoCodePick,
     required TResult Function(AddressPick value) addressPick,
     required TResult Function(PaymentOption value) paymentOption,
+    required TResult Function(RemoveAppliedPromo value) removeAppliedPromo,
     required TResult Function(PickupDetailsPick value) pickupDetailsPick,
     required TResult Function(UserNumber value) userNumber,
     required TResult Function(RemoveAllFieldData value) removeAllFieldData,
@@ -2867,6 +3142,7 @@ class _$RemoveAllFieldDataImpl implements RemoveAllFieldData {
     TResult? Function(PromoCodePick value)? promoCodePick,
     TResult? Function(AddressPick value)? addressPick,
     TResult? Function(PaymentOption value)? paymentOption,
+    TResult? Function(RemoveAppliedPromo value)? removeAppliedPromo,
     TResult? Function(PickupDetailsPick value)? pickupDetailsPick,
     TResult? Function(UserNumber value)? userNumber,
     TResult? Function(RemoveAllFieldData value)? removeAllFieldData,
@@ -2888,6 +3164,7 @@ class _$RemoveAllFieldDataImpl implements RemoveAllFieldData {
     TResult Function(PromoCodePick value)? promoCodePick,
     TResult Function(AddressPick value)? addressPick,
     TResult Function(PaymentOption value)? paymentOption,
+    TResult Function(RemoveAppliedPromo value)? removeAppliedPromo,
     TResult Function(PickupDetailsPick value)? pickupDetailsPick,
     TResult Function(UserNumber value)? userNumber,
     TResult Function(RemoveAllFieldData value)? removeAllFieldData,
@@ -2959,6 +3236,7 @@ class _$PromoCodeSuccessImpl implements PromoCodeSuccess {
     required TResult Function(Promo promo) promoCodePick,
     required TResult Function(User user) addressPick,
     required TResult Function(Payment payment) paymentOption,
+    required TResult Function() removeAppliedPromo,
     required TResult Function(PickUpDetails pickUpDetails) pickupDetailsPick,
     required TResult Function() userNumber,
     required TResult Function() removeAllFieldData,
@@ -2984,6 +3262,7 @@ class _$PromoCodeSuccessImpl implements PromoCodeSuccess {
     TResult? Function(Promo promo)? promoCodePick,
     TResult? Function(User user)? addressPick,
     TResult? Function(Payment payment)? paymentOption,
+    TResult? Function()? removeAppliedPromo,
     TResult? Function(PickUpDetails pickUpDetails)? pickupDetailsPick,
     TResult? Function()? userNumber,
     TResult? Function()? removeAllFieldData,
@@ -3008,6 +3287,7 @@ class _$PromoCodeSuccessImpl implements PromoCodeSuccess {
     TResult Function(Promo promo)? promoCodePick,
     TResult Function(User user)? addressPick,
     TResult Function(Payment payment)? paymentOption,
+    TResult Function()? removeAppliedPromo,
     TResult Function(PickUpDetails pickUpDetails)? pickupDetailsPick,
     TResult Function()? userNumber,
     TResult Function()? removeAllFieldData,
@@ -3033,6 +3313,7 @@ class _$PromoCodeSuccessImpl implements PromoCodeSuccess {
     required TResult Function(PromoCodePick value) promoCodePick,
     required TResult Function(AddressPick value) addressPick,
     required TResult Function(PaymentOption value) paymentOption,
+    required TResult Function(RemoveAppliedPromo value) removeAppliedPromo,
     required TResult Function(PickupDetailsPick value) pickupDetailsPick,
     required TResult Function(UserNumber value) userNumber,
     required TResult Function(RemoveAllFieldData value) removeAllFieldData,
@@ -3054,6 +3335,7 @@ class _$PromoCodeSuccessImpl implements PromoCodeSuccess {
     TResult? Function(PromoCodePick value)? promoCodePick,
     TResult? Function(AddressPick value)? addressPick,
     TResult? Function(PaymentOption value)? paymentOption,
+    TResult? Function(RemoveAppliedPromo value)? removeAppliedPromo,
     TResult? Function(PickupDetailsPick value)? pickupDetailsPick,
     TResult? Function(UserNumber value)? userNumber,
     TResult? Function(RemoveAllFieldData value)? removeAllFieldData,
@@ -3075,6 +3357,7 @@ class _$PromoCodeSuccessImpl implements PromoCodeSuccess {
     TResult Function(PromoCodePick value)? promoCodePick,
     TResult Function(AddressPick value)? addressPick,
     TResult Function(PaymentOption value)? paymentOption,
+    TResult Function(RemoveAppliedPromo value)? removeAppliedPromo,
     TResult Function(PickupDetailsPick value)? pickupDetailsPick,
     TResult Function(UserNumber value)? userNumber,
     TResult Function(RemoveAllFieldData value)? removeAllFieldData,

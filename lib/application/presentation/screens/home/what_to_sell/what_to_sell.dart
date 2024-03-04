@@ -38,19 +38,6 @@ class WhatToSellWidget extends StatelessWidget {
                   itemCount: 5,
                   height: 100,
                 );
-              } else if (state.hasError) {
-                return Center(
-                  child: IconButton(
-                    onPressed: () {
-                      context.read<HomeBloc>().add(
-                            const HomeEvent.getAllCategory(),
-                          );
-                    },
-                    icon: const Icon(
-                      Icons.refresh,
-                    ),
-                  ),
-                );
               } else {
                 if (state.getCategoryResponceModel == null) {
                   return const Skeleton(

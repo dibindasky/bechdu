@@ -12,6 +12,7 @@ SelectedOption _$SelectedOptionFromJson(Map<String, dynamic> json) =>
       description: json['description'] as String?,
       value: json['value'] as bool?,
       type: json['type'] as String?,
+      selectioType: json['selectioType'] as String?,
     );
 
 Map<String, dynamic> _$SelectedOptionToJson(SelectedOption instance) =>
@@ -20,4 +21,5 @@ Map<String, dynamic> _$SelectedOptionToJson(SelectedOption instance) =>
       'description': instance.description,
       'value': instance.value,
       'type': instance.type,
+      'selectioType': instance.selectioType,
     };

@@ -3,7 +3,6 @@ import 'dart:developer';
 import 'package:beachdu/application/business_logic/brands_bloc/category_bloc_bloc.dart';
 import 'package:beachdu/application/business_logic/place_order/place_order_bloc.dart';
 import 'package:beachdu/application/business_logic/question_tab/question_tab_bloc.dart';
-import 'package:beachdu/application/presentation/screens/pickup/pickup_contaners/date_selection/date_picking_bottom_sheet.dart';
 import 'package:beachdu/application/presentation/screens/product_selection/product_screen.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
@@ -168,8 +167,8 @@ class _DateOrTimeState extends State<DateOrTime> {
               ],
             ),
           ),
-          BlocBuilder<QuestionTabBloc, QuestionTabState>(
-            builder: (context, questiontabBlocState) {
+          BlocBuilder<PlaceOrderBloc, PlaceOrderState>(
+            builder: (context, placeOrderBloc) {
               return CustomButton(
                 onPressed: () {
                   if (selectedTime != 'Time' && selectedDate != 'Date') {
@@ -239,7 +238,7 @@ class _DateOrTimeState extends State<DateOrTime> {
                     );
                   }
                 },
-                text: 'Place Order',
+                text: placeOrderBloc.isLoading ? 'OrderPlacing' : 'Place Order',
                 backgroundColor: kBluePrimary,
               );
             },

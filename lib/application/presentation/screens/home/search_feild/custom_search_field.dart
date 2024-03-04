@@ -6,13 +6,15 @@ import 'package:beachdu/application/presentation/routes/routes.dart';
 import 'package:beachdu/application/presentation/screens/home/home_screen.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
+import 'package:beachdu/application/presentation/utils/debouncer.dart';
 import 'package:beachdu/domain/model/search_model/search_param_model/search_param_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
 
 class CustomSearchFieldHome extends StatelessWidget {
-  const CustomSearchFieldHome({super.key});
+  CustomSearchFieldHome({super.key});
+  Debouncer debouncer = Debouncer(milliseconds: 300);
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +44,7 @@ class CustomSearchFieldHome extends StatelessWidget {
                 if (value.isNotEmpty) {
                   homeScreens.value = 1;
                   homeScreens.notifyListeners();
-                  Timer(const Duration(microseconds: 400), () {
+                  debouncer.run(() {
                     context.read<HomeBloc>().add(
                           HomeEvent.globalPrductSearch(
                             searchParamModel: SearchParamModel(search: value),

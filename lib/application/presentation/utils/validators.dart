@@ -10,6 +10,6 @@ bool isValidName(String input) {
 }
 
 bool isValidPhoneNumber(String phoneNumber) {
-  final RegExp phoneRegex = RegExp(r'^\d{10}$');
-  return phoneRegex.hasMatch(phoneNumber);
+  final RegExp phoneRegex = RegExp(r'^[\+]?[(]?[0-9]{3}[)]?[-\s\./0-9]*$');
+  return phoneRegex.hasMatch(phoneNumber) && phoneNumber.length >= 10;
 }

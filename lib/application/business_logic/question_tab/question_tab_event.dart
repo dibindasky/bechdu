@@ -11,9 +11,8 @@ class QuestionTabEvent with _$QuestionTabEvent {
   const factory QuestionTabEvent.getAnswerCount({
     required int answerCount,
   }) = GetAnswerCount;
-  const factory QuestionTabEvent.markedQuestions({
-    required SelectedOption selectedOption,
-  }) = MarkedQuestions;
+  const factory QuestionTabEvent.markedQuestions(
+      {required SelectedOption selectedOption}) = MarkedQuestions;
   const factory QuestionTabEvent.yesOrNo({
     required SelectedOption selectedOption,
   }) = YesOrNo;

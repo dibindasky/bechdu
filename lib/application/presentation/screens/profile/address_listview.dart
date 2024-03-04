@@ -1,3 +1,6 @@
+import 'dart:developer';
+
+import 'package:beachdu/application/business_logic/place_order/place_order_bloc.dart';
 import 'package:beachdu/application/business_logic/profile/profile_bloc.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/confirmation_daillogue/exit_app_dailogue.dart';
@@ -5,6 +8,8 @@ import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/application/presentation/utils/loading_indicators/loading_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../../domain/model/order_model/order_placed_request_model/user.dart';
 
 class AddressListView extends StatefulWidget {
   const AddressListView({
@@ -44,6 +49,13 @@ class _AddressListViewState extends State<AddressListView> {
             itemBuilder: (context, index) {
               return InkWell(
                 onTap: () {
+                  // Order placing request user object creation
+                  User user = User(address: state.address[index]);
+                  log('Picked add ${state.address[index]}');
+                  //Order placing address pick event
+                  context
+                      .read<PlaceOrderBloc>()
+                      .add(PlaceOrderEvent.addressPick(user: user));
                   setState(() {
                     isSelected = index;
                   });

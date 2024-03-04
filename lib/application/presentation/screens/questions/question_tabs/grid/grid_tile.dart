@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:beachdu/application/business_logic/question_tab/question_tab_bloc.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
@@ -30,10 +32,13 @@ class _GridOptionSelectorTileState extends State<GridOptionSelectorTile> {
         SelectedOption selectedOption = SelectedOption(
           description: widget.question.description,
           type: widget.question.type,
+          selectioType: 'one',
         );
         context.read<QuestionTabBloc>().add(QuestionTabEvent.markedQuestions(
               selectedOption: selectedOption,
             ));
+        log('UI grid widget.question.type ${widget.question.type}');
+        log('UI grid  description ${widget.question.description}');
       },
       child: Padding(
         padding: const EdgeInsets.all(8.0),

@@ -82,7 +82,8 @@ class PersonalDetails extends StatelessWidget {
             ),
           ),
           TTextFormField(
-            controller: context.read<AuthBloc>().phoneNumberController,
+            controller:
+                context.read<PlaceOrderBloc>().additionalNumberController,
             inputType: TextInputType.number,
             text: '00000 00000',
           ),
@@ -102,7 +103,7 @@ class PersonalDetails extends StatelessWidget {
                         .isEmpty) {
                   showSnack(
                     context: context,
-                    message: 'Please fill required fields',
+                    message: 'Please fill required feilds',
                     color: kRed,
                   );
                 } else {
@@ -114,13 +115,6 @@ class PersonalDetails extends StatelessWidget {
                       .read<PlaceOrderBloc>()
                       .additionalNumberController
                       .text;
-
-                  bool isValidPhoneNumber(String phoneNumber) {
-                    final RegExp phoneRegex =
-                        RegExp(r'^[\+]?[(]?[0-9]{3}[)]?[-\s\./0-9]*$');
-                    return phoneRegex.hasMatch(phoneNumber) &&
-                        phoneNumber.length >= 10;
-                  }
 
                   if (addPhone.isNotEmpty) {
                     if (!isValidPhoneNumber(addPhone)) {
@@ -135,7 +129,7 @@ class PersonalDetails extends StatelessWidget {
                   if (name.isEmpty || name.length < 3) {
                     showSnack(
                       context: context,
-                      message: 'Name cannot be empty or less than 3 characters',
+                      message: 'Not a valid name',
                       color: kRed,
                     );
                     return;
@@ -143,7 +137,7 @@ class PersonalDetails extends StatelessWidget {
                   if (!isValidEmail(email)) {
                     showSnack(
                       context: context,
-                      message: 'Not valid email',
+                      message: 'Not a valid email',
                       color: kRed,
                     );
                     return;

@@ -1,12 +1,12 @@
+import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:flutter/material.dart';
 
 MaterialBanner noInternetBanner() {
-  return const MaterialBanner(
+  return MaterialBanner(
     backgroundColor: Colors.red,
     content: Text(
       'Internet connection lost!!',
-      style: TextStyle(
-          fontSize: 17, fontWeight: FontWeight.w600, color: Colors.white),
+      style: textHeadBold1,
     ),
     actions: [SizedBox()],
   );

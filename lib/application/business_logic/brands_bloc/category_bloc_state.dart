@@ -12,6 +12,7 @@ class CategoryBlocState with _$CategoryBlocState {
     GetProductsRespoceModel? getProductsResponceModel,
     required List<List<String>> allItems,
     List<Brands>? filteredBrands,
+    List<String>? series,
     List<Product>? filteredProducts,
     List<String>? sortedPro,
   }) = _Initial;

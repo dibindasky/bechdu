@@ -8,8 +8,15 @@ class SelectedOption {
   String? description;
   bool? value;
   String? type;
+  String? selectioType;
 
-  SelectedOption({this.heading, this.description, this.value, this.type});
+  SelectedOption({
+    this.heading,
+    this.description,
+    this.value,
+    this.type,
+    this.selectioType,
+  });
 
   Map<String, dynamic> toJson() {
     return {

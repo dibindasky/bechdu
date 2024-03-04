@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'dart:developer';
-
 import 'package:beachdu/application/business_logic/brands_bloc/category_bloc_bloc.dart';
 import 'package:beachdu/application/business_logic/home_bloc/home_bloc.dart';
 import 'package:beachdu/application/business_logic/navbar/navbar_cubit.dart';
@@ -8,10 +7,8 @@ import 'package:beachdu/application/presentation/screens/product_selection/produ
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/application/presentation/utils/skeltons/skelton.dart';
-import 'package:beachdu/domain/core/failure/failure.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:lottie/lottie.dart';
 
 class HotDealsSession extends StatelessWidget {
   const HotDealsSession({super.key});
@@ -35,9 +32,6 @@ class HotDealsSession extends StatelessWidget {
                   itemCount: 2,
                   height: 50,
                 );
-              }
-              if (state.hasError) {
-                return Text(state.message ?? errorMessage);
               } else {
                 if (state.homeBannerResponceModel != null &&
                     state.homeBannerResponceModel!.sectionOne != null) {
@@ -45,7 +39,8 @@ class HotDealsSession extends StatelessWidget {
                     padding: const EdgeInsets.only(top: 5),
                     physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
-                    itemCount: 2,
+                    itemCount:
+                        state.homeBannerResponceModel!.sectionTwo!.length,
                     itemBuilder: (context, index) {
                       final data = state.homeBannerResponceModel!.sectionTwo;
                       String base64String = data![index].image!;
@@ -76,7 +71,7 @@ class HotDealsSession extends StatelessWidget {
                           secondtabScreensNotifier.notifyListeners();
                         },
                         child: Padding(
-                          padding: const EdgeInsets.only(bottom: 10),
+                          padding: const EdgeInsets.only(bottom: 10, left: 10),
                           child: Material(
                             elevation: 7,
                             borderRadius: kRadius10,
@@ -102,9 +97,15 @@ class HotDealsSession extends StatelessWidget {
                                       ),
                                     ),
                                     kHeight10,
-                                    Text(data[index].heading!,
-                                        style: textHeadSemiBold1.copyWith(
-                                            color: kWhite)),
+                                    Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal:
+                                              16.0), // Adjust padding as needed
+                                      child: Center(
+                                          child: Text(data[index].heading!,
+                                              style: textHeadSemiBold1.copyWith(
+                                                  color: kWhite))),
+                                    ),
                                     kHeight10,
                                     Row(
                                       mainAxisAlignment:
@@ -138,7 +139,11 @@ class HotDealsSession extends StatelessWidget {
                     },
                   );
                 } else {
-                  return Lottie.asset(emptyLottie);
+                  return const Skeleton(
+                    crossAxisCount: 2,
+                    itemCount: 2,
+                    height: 0,
+                  );
                 }
               }
             },

@@ -9,9 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class FinalProductPriceDetaails extends StatelessWidget {
-  const FinalProductPriceDetaails({
-    super.key,
-  });
+  const FinalProductPriceDetaails({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -50,13 +48,7 @@ class FinalProductPriceDetaails extends StatelessWidget {
               showSnack(
                 context: context,
                 message: state.message ?? errorMessage,
-              );
-            }
-            if (state.promoCodeResponceModel != null ||
-                state.promoCodeResponceModel!.message != null) {
-              showSnack(
-                context: context,
-                message: state.promoCodeResponceModel!.message!,
+                color: kRed,
               );
             }
           },
@@ -95,36 +87,23 @@ class FinalProductPriceDetaails extends StatelessWidget {
                               promoCodeRequestModel: promoCodeRequestModel,
                             ),
                           );
-                    } else {
-                      PromoCodeRequestModel promoCodeRequestModel =
-                          PromoCodeRequestModel(
-                        enteredCode: context
-                            .read<PlaceOrderBloc>()
-                            .promocodeController
-                            .text
-                            .trim(),
-                      );
-                      context.read<PlaceOrderBloc>().add(
-                            PlaceOrderEvent.getPromoCode(
-                              promoCodeRequestModel: promoCodeRequestModel,
-                            ),
-                          );
                     }
                   },
-                  child: context
-                          .read<PlaceOrderBloc>()
-                          .promocodeController
-                          .text
-                          .isEmpty
-                      ? Text(
-                          'Apply',
+                  child: BlocBuilder<PlaceOrderBloc, PlaceOrderState>(
+                    builder: (context, state) {
+                      if (state.promoCodeResponceModel == null) {
+                        return Text(
+                          state.isLoading ? 'Applying' : 'Apply',
                           style: textHeadRegular1,
-                        )
-                      : Container(
+                        );
+                      } else {
+                        return Container(
                           height: 30,
                           width: 110,
                           decoration: BoxDecoration(
-                              borderRadius: kRadius5, color: kBluePrimary),
+                            borderRadius: kRadius5,
+                            color: kBluePrimary,
+                          ),
                           child: Row(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -137,10 +116,10 @@ class FinalProductPriceDetaails extends StatelessWidget {
                                 padding: EdgeInsets.zero,
                                 iconSize: 18,
                                 onPressed: () {
-                                  context
-                                      .read<PlaceOrderBloc>()
-                                      .promocodeController
-                                      .clear();
+                                  context.read<PlaceOrderBloc>().add(
+                                        const PlaceOrderEvent
+                                            .removeAppliedPromo(),
+                                      );
                                 },
                                 icon: const Icon(
                                   Icons.cancel,
@@ -150,7 +129,10 @@ class FinalProductPriceDetaails extends StatelessWidget {
                               )
                             ],
                           ),
-                        ),
+                        );
+                      }
+                    },
+                  ),
                 ),
                 fillColor: kWhiteextra,
                 filled: true,
@@ -207,15 +189,17 @@ class FinalProductPriceDetaails extends StatelessWidget {
                     return Row(
                       children: [
                         Text(
-                          '₹ $basePrice',
+                          '₹ $basePrice  +',
                           style: textHeadSemiBold1.copyWith(
-                              fontSize: sWidth * .039),
+                            fontSize: sWidth * .039,
+                          ),
                         ),
                         kWidth10,
                         Text(
                           '₹ $value',
                           style: textHeadSemiBold1.copyWith(
-                              fontSize: sWidth * .039),
+                            fontSize: sWidth * .039,
+                          ),
                         ),
                       ],
                     );

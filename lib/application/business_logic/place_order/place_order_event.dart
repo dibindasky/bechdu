@@ -29,6 +29,7 @@ class PlaceOrderEvent with _$PlaceOrderEvent {
   const factory PlaceOrderEvent.paymentOption({
     required Payment payment,
   }) = PaymentOption;
+  const factory PlaceOrderEvent.removeAppliedPromo() = RemoveAppliedPromo;
   const factory PlaceOrderEvent.pickupDetailsPick({
     required PickUpDetails pickUpDetails,
   }) = PickupDetailsPick;

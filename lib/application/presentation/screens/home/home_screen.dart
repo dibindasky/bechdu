@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:beachdu/application/business_logic/brands_bloc/category_bloc_bloc.dart';
 import 'package:beachdu/application/business_logic/home_bloc/home_bloc.dart';
 import 'package:beachdu/application/business_logic/internet_connection_check/internet_connection_check_cubit.dart';
@@ -64,7 +63,7 @@ class _ScreenHomeState extends State<ScreenHome> {
   @override
   Widget build(BuildContext context) {
     WidgetsBinding.instance.addPostFrameCallback(
-      (timeStamp) {
+      (time) {
         context.read<LocationBloc>().add(const LocationEvent.locationPick());
         context.read<HomeBloc>().add(const HomeEvent.homePageBanners());
         context.read<HomeBloc>().add(const HomeEvent.getBestSellingProducts());
@@ -96,23 +95,55 @@ class _ScreenHomeState extends State<ScreenHome> {
                         ScaffoldMessenger.of(context)
                             .showMaterialBanner(noInternetBanner());
                       } else {
-                        ScaffoldMessenger.of(context)
-                            .hideCurrentMaterialBanner();
+                        WidgetsBinding.instance.addPostFrameCallback((_) {
+                          ScaffoldMessenger.of(context)
+                              .hideCurrentMaterialBanner();
+                        });
                       }
                     },
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        kHeight30,
-                        CustomSearchFieldHome(),
-                        kHeight30,
-                        ValueListenableBuilder(
-                          valueListenable: homeScreens,
-                          builder: (context, value, child) {
-                            return homeScreenList[value];
-                          },
-                        ),
-                      ],
+                    child: BlocBuilder<HomeBloc, HomeState>(
+                      builder: (context, state) {
+                        if (state.hasError) {
+                          return Align(
+                            alignment: Alignment.topCenter,
+                            child: IconButton(
+                              onPressed: () {
+                                context
+                                    .read<LocationBloc>()
+                                    .add(const LocationEvent.locationPick());
+                                context
+                                    .read<HomeBloc>()
+                                    .add(const HomeEvent.homePageBanners());
+                                context.read<HomeBloc>().add(
+                                    const HomeEvent.getBestSellingProducts());
+                                context
+                                    .read<CategoryBlocBloc>()
+                                    .add(const GetSingleCategoryBrands());
+                                context
+                                    .read<HomeBloc>()
+                                    .add(const HomeEvent.getAllCategory());
+                              },
+                              icon: const Icon(
+                                Icons.refresh,
+                              ),
+                            ),
+                          );
+                        }
+                        return Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            kHeight30,
+                            CustomSearchFieldHome(),
+                            kHeight30,
+                            ValueListenableBuilder(
+                              valueListenable: homeScreens,
+                              builder: (context, value, child) {
+                                return homeScreenList[value];
+                              },
+                            ),
+                          ],
+                        );
+                      },
                     ),
                   ),
                 ],
@@ -160,9 +191,8 @@ class GlobalProductSearch extends StatelessWidget {
             height: 0,
           );
         }
-
-        if (state.searchResponceModel != null &&
-            state.searchResponceModel!.product != null) {
+        if (state.searchResponceModel != null ||
+            state.searchResponceModel!.product!.isEmpty) {
           final products = state.searchResponceModel!.product!;
           return Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),

@@ -37,12 +37,6 @@ class BestSellingDevices extends StatelessWidget {
                     itemCount: 2,
                     height: 0,
                   );
-                }
-                if (state.hasError) {
-                  return IconButton(
-                    onPressed: () {},
-                    icon: const Icon(Icons.refresh),
-                  );
                 } else {
                   if (state.bestSellingProductsResponceModel != null) {
                     final data = state.bestSellingProductsResponceModel;

@@ -26,6 +26,7 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
   String? productImage;
   List<Brands> brandsList = [];
   List<Product> productList = [];
+  List<String> series = [];
   List<List<String>> dropDownItems = List.generate(3, (_) => []);
   CategoryBlocBloc(this.brandsRepository) : super(CategoryBlocState.intial()) {
     on<GetSingleCategoryBrands>(getSingleCategoryBrands);
@@ -204,6 +205,7 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
         hasError: false,
         isLoading: false,
         allItems: dropDownItems,
+        series: getSeriesSuccess,
       ));
       log("getSeries bloc dropDownItems length $dropDownItems");
     });

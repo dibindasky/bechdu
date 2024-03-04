@@ -44,9 +44,6 @@ class _CaurosalViewHomePageOffersState
                 itemCount: 2,
                 height: 0,
               );
-            }
-            if (state.hasError) {
-              return const Icon(Icons.refresh);
             } else {
               if (state.homeBannerResponceModel != null) {
                 return Column(

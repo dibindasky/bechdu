@@ -1,4 +1,3 @@
-import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:flutter/material.dart';
 
@@ -24,10 +23,13 @@ class RowDatas extends StatelessWidget {
     return Row(
       children: [
         kWidth10,
-        CircleAvatar(
-          backgroundColor: kWhite,
-          radius: 10,
-          backgroundImage: AssetImage('$imageFirst'),
+        SizedBox(
+          width: 20,
+          child: Image.asset(
+            "$imageFirst",
+            fit: BoxFit.cover,
+            scale: 1,
+          ),
         ),
         kWidth10,
         Column(

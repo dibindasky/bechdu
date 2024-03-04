@@ -5,7 +5,6 @@ import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/application/presentation/utils/custom_button.dart';
 import 'package:beachdu/application/presentation/utils/snackbar/snackbar.dart';
-import 'package:beachdu/domain/model/order_model/order_placed_request_model/order_placed_request_model.dart';
 import 'package:beachdu/domain/model/order_model/order_placed_request_model/payment.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

@@ -17,21 +17,21 @@ class TopImage extends StatelessWidget {
     return Stack(
       children: [
         if (fromWhere == FromWhere.pickupScreen)
-          Positioned(
+          const Positioned(
             top: -30,
             right: 59,
             child: CircleAvatar(
               radius: 50,
-              backgroundColor: kBlueLight.withOpacity(.16),
+              backgroundColor: kBlueLight,
             ),
           ),
         if (fromWhere == FromWhere.pickupScreen)
-          Positioned(
+          const Positioned(
             left: 150,
             bottom: -20,
             child: CircleAvatar(
               radius: 40,
-              backgroundColor: kBlueLight.withOpacity(.15),
+              backgroundColor: kGreenLight,
             ),
           ),
         BlocBuilder<QuestionTabBloc, QuestionTabState>(
@@ -42,7 +42,11 @@ class TopImage extends StatelessWidget {
               String url =
                   "${ApiEndPoints.baseUrlImagePath}${Uri.encodeComponent(image)}";
               return SizedBox(
-                height: sWidth * .40,
+                height: fromWhere == FromWhere.recalculateWithAmount
+                    ? sWidth * .44
+                    : fromWhere == FromWhere.checkoutAndPickupScreen
+                        ? sWidth * .6
+                        : sWidth * .34,
                 width: double.infinity,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(10),
@@ -52,14 +56,14 @@ class TopImage extends StatelessWidget {
                       children: [
                         kWidth10,
                         SizedBox(
-                          height: sWidth * .3,
+                          height: sWidth * .24,
                           width: sWidth * .16,
                           child: Image.network(
                             url,
-                            fit: BoxFit.cover,
+                            fit: BoxFit.fill,
                           ),
                         ),
-                        kWidth10,
+                        kWidth5,
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -103,7 +107,7 @@ class TopImage extends StatelessWidget {
                                     );
                                   } else if (state.hasError) {
                                     return const Center(
-                                      child: Text('Some error occured'),
+                                      child: Icon(Icons.refresh),
                                     );
                                   } else {
                                     return Column(
@@ -114,13 +118,13 @@ class TopImage extends StatelessWidget {
                                                     .basePriceModelResponce !=
                                                 null
                                             ? Text(
-                                                '${questiontabBloc.basePriceModelResponce!.basePrice}',
+                                                '₹ ${questiontabBloc.basePriceModelResponce!.basePrice}',
                                                 style: textHeadBoldBig.copyWith(
                                                   color: kWhite,
                                                 ),
                                               )
                                             : Text(
-                                                '0',
+                                                '₹ 0',
                                                 style: textHeadBoldBig.copyWith(
                                                   color: kWhite,
                                                 ),
@@ -128,13 +132,17 @@ class TopImage extends StatelessWidget {
                                         Row(
                                           children: [
                                             SizedBox(
-                                              width: sWidth * .36,
-                                              child: Text(
-                                                'Not Satisfied with our price ?',
-                                                maxLines: 2,
-                                                overflow: TextOverflow.ellipsis,
-                                                style: textHeadMedium1.copyWith(
-                                                    color: kWhite),
+                                              width: sWidth * .4,
+                                              child: FittedBox(
+                                                child: Text(
+                                                  'Not Satisfied with our price ?',
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
+                                                  style:
+                                                      textHeadMedium1.copyWith(
+                                                    color: kWhite,
+                                                  ),
+                                                ),
                                               ),
                                             ),
                                             TextButton(
@@ -152,6 +160,7 @@ class TopImage extends StatelessWidget {
                                                 'Recalculate',
                                                 style: textHeadInter.copyWith(
                                                   color: kWhite,
+                                                  fontWeight: FontWeight.w600,
                                                   decoration:
                                                       TextDecoration.underline,
                                                   decorationColor: kWhite,
@@ -184,28 +193,12 @@ class TopImage extends StatelessWidget {
                                     style:
                                         textHeadMedium1.copyWith(color: kWhite),
                                   ),
-                                  BlocBuilder<QuestionTabBloc,
-                                      QuestionTabState>(
-                                    builder: (context, state) {
-                                      if (state.isLoading) {
-                                        return const Center(
-                                          child: CircularProgressIndicator(
-                                            color: kGreenLight,
-                                          ),
-                                        );
-                                      } else if (state.hasError) {
-                                        return const Center(
-                                            child: Text('data error'));
-                                      } else {
-                                        return Text(
-                                          '${questiontabBloc.basePriceModelResponce!.basePrice}',
-                                          style: textHeadBoldBig.copyWith(
-                                            color: kWhite,
-                                          ),
-                                        );
-                                      }
-                                    },
-                                  ),
+                                  Text(
+                                    '${questiontabBloc.basePriceModelResponce!.basePrice}',
+                                    style: textHeadBoldBig.copyWith(
+                                      color: kWhite,
+                                    ),
+                                  )
                                 ],
                               ),
                             kHeight5,
@@ -213,7 +206,7 @@ class TopImage extends StatelessWidget {
                               Row(
                                 children: [
                                   Text(
-                                    'Divice Diagnosis',
+                                    'Device Diagnosis',
                                     style:
                                         textHeadBoldBig.copyWith(color: kWhite),
                                   ),
@@ -224,7 +217,7 @@ class TopImage extends StatelessWidget {
                                     color: kWhite,
                                   )
                                 ],
-                              )
+                              ),
                           ],
                         ),
                       ],

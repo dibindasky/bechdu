@@ -64,6 +64,11 @@ class QuestionTabBloc extends Bloc<QuestionTabEvent, QuestionTabState> {
         answerdCount--;
         break;
       }
+      if (i.selectioType == 'one') {
+        updatedList.remove(i);
+        answerdCount--;
+        break;
+      }
     }
     if (event.selectedOption.value != null && !isYesorNo) {
       log('find 3');
