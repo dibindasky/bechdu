@@ -4,9 +4,11 @@ part 'search_param_model.g.dart';
 
 @JsonSerializable()
 class SearchParamModel {
+  int? page;
+  int? pageSize;
   String? search;
 
-  SearchParamModel({this.search});
+  SearchParamModel({this.page, this.pageSize, this.search});
 
   factory SearchParamModel.fromJson(Map<String, dynamic> json) {
     return _$SearchParamModelFromJson(json);

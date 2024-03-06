@@ -1,8 +1,8 @@
 import 'dart:developer';
-
 import 'package:beachdu/application/business_logic/brands_bloc/category_bloc_bloc.dart';
 import 'package:beachdu/application/business_logic/place_order/place_order_bloc.dart';
 import 'package:beachdu/application/business_logic/question_tab/question_tab_bloc.dart';
+import 'package:beachdu/application/presentation/screens/pickup/pickup_screen.dart';
 import 'package:beachdu/application/presentation/screens/product_selection/product_screen.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
@@ -21,7 +21,6 @@ class DateOrTime extends StatefulWidget {
 }
 
 class _DateOrTimeState extends State<DateOrTime> {
-  final dateController = TextEditingController();
   String selectedDate = 'Date';
   String selectedTime = 'Time';
 
@@ -30,10 +29,11 @@ class _DateOrTimeState extends State<DateOrTime> {
     return BlocListener<PlaceOrderBloc, PlaceOrderState>(
       listener: (context, state) {
         if (state.orderPlacedResponceModel != null) {
-          showSnack(
-            context: context,
-            message: state.orderPlacedResponceModel!.message!,
-          );
+          context
+              .read<PlaceOrderBloc>()
+              .add(const PlaceOrderEvent.removeAppliedPromo());
+          pickupDetailChangeNotifier.value =
+              PickupDetailContainers.personalDetails;
           secondtabScreensNotifier.value = 5;
           secondtabScreensNotifier.notifyListeners();
         }
@@ -134,7 +134,7 @@ class _DateOrTimeState extends State<DateOrTime> {
                               '3:01 PM',
                               '3:00 PM',
                               '7:00 PM',
-                              '8:00 PM'
+                              '8:00 PM',
                             ].map<DropdownMenuItem<String>>(
                               (String value) {
                                 if (value == 'Time') {
@@ -143,7 +143,8 @@ class _DateOrTimeState extends State<DateOrTime> {
                                     child: Text(
                                       value,
                                       style: textHeadSemiBold1.copyWith(
-                                          color: textFieldBorderColor),
+                                        color: textFieldBorderColor,
+                                      ),
                                     ),
                                   );
                                 }
@@ -205,13 +206,12 @@ class _DateOrTimeState extends State<DateOrTime> {
                             .read<QuestionTabBloc>()
                             .basePrice
                             .toString(),
-                        options: context
-                            .read<QuestionTabBloc>()
-                            .state
-                            .selectedOption,
+                        options: context.read<QuestionTabBloc>().state.newList,
                       );
-                      log('Question picked options length order placing ontap ${context.read<QuestionTabBloc>().state.selectedOption.length}');
+                      // log('In date picking selectedNewOptions length order placing ontap ${context.read<PlaceOrderBloc>().state.selectedNewOptions!.length}');
+                      // log('Question picked options length order placing ontap ${context.read<QuestionTabBloc>().state.selectedOption.length}');
                       //Product details event call
+                      log('message${context.read<QuestionTabBloc>().state.selectedOption}');
                       context
                           .read<PlaceOrderBloc>()
                           .add(PlaceOrderEvent.productDetailsPick(
@@ -222,23 +222,23 @@ class _DateOrTimeState extends State<DateOrTime> {
                       context
                           .read<PlaceOrderBloc>()
                           .add(const PlaceOrderEvent.orderPlacing());
-                      context
-                          .read<PlaceOrderBloc>()
-                          .add(const PlaceOrderEvent.removeAllFieldData());
                     } else {
                       showSnack(
-                        context: context,
-                        message: 'Please fill personal details',
-                      );
+                          context: context,
+                          message: 'Please fill personal details',
+                          color: kRed);
                     }
                   } else {
                     showSnack(
                       context: context,
                       message: 'Please select Date and Time',
+                      color: kRed,
                     );
                   }
                 },
-                text: placeOrderBloc.isLoading ? 'OrderPlacing' : 'Place Order',
+                text: placeOrderBloc.isLoading
+                    ? 'OrderPlacing...'
+                    : 'Place Order',
                 backgroundColor: kBluePrimary,
               );
             },

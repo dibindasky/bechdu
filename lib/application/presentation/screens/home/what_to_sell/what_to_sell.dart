@@ -72,8 +72,8 @@ class WhatToSellWidget extends StatelessWidget {
                               data[index].categoryType!;
                           log('UI data[index].categoryType ===>>> : ${data[index].categoryType}');
                           context.read<NavbarCubit>().changeNavigationIndex(1);
-                          brandandProductValueNotifier.value = 0;
-                          brandandProductValueNotifier.notifyListeners();
+                          brandSeriesProductValueNotifier.value = 0;
+                          brandSeriesProductValueNotifier.notifyListeners();
                           secondtabScreensNotifier.value = 0;
                           secondtabScreensNotifier.notifyListeners();
                           context

@@ -23,7 +23,9 @@ class QuestionTabBloc extends Bloc<QuestionTabEvent, QuestionTabState> {
   final QuestionRepo questionRepo;
   int answerdCount = 0;
   num basePrice = 0;
+  List<SelectedOption> newList = [];
   List<SelectedOption> updatedList = [];
+
   QuestionTabBloc(this.questionRepo) : super(QuestionTabState.initial()) {
     on<TabChange>(tabChange);
     on<ResetTabSelection>(resetTabSelection);
@@ -85,43 +87,6 @@ class QuestionTabBloc extends Bloc<QuestionTabEvent, QuestionTabState> {
       selectedOption: updatedList,
       answerCount: answerdCount,
     ));
-
-    // bool isUnSelect = false;
-    // event.selectedOption.heading =
-    //     state.getQuestionModel!.sections![state.selectedTabIndex].heading;
-    // updatedList = List.from(state.selectedOption);
-    // log('state.selectedOption type ${event.selectedOption.type}');
-    // log('state.selectedOption value ${event.selectedOption.value}');
-    // for (var element in state.selectedOption) {
-    //   if (element.description == event.selectedOption.description) {
-    //     updatedList.remove(element);
-    //     answerdCount -= 1;
-    //     log('Answer count $answerdCount');
-    //     log('updatedList count ${updatedList.length}');
-    //     isUnSelect = true;
-    //     break;
-    //   }
-    // }
-    // if (event.selectedOption.type == 'yes/no' &&
-    //     event.selectedOption.value != null) {
-    //   updatedList.add(event.selectedOption);
-    //   answerdCount += 1;
-    //   isUnSelect = false;
-    //   log('Answer count $answerdCount');
-    //   log('updatedList count ${updatedList.length}');
-    // } else if (!isUnSelect) {
-    //   updatedList.add(event.selectedOption);
-    //   answerdCount += 1;
-    //   log('Answer count $answerdCount');
-    //   log('updatedList count ${updatedList.length}');
-    // }
-
-    // log('updatedList count last ${updatedList.length}');
-    // isUnSelect = false;
-    // emit(state.copyWith(
-    //   selectedOption: updatedList,
-    //   answerCount: answerdCount,
-    // ));
   }
 
   FutureOr<void> resetTabSelection(ResetTabSelection event, emit) {
@@ -129,11 +94,13 @@ class QuestionTabBloc extends Bloc<QuestionTabEvent, QuestionTabState> {
     updatedList.clear();
     log('answerdCount when resset tab $answerdCount');
     log('updatedList count when resset tab ${updatedList.length}');
+    log('New List of SelectedOPtion wen tab chngae ${newList.length}');
     emit(state.copyWith(selectedTabIndex: 0));
   }
 
   FutureOr<void> tabChange(TabChange event, emit) {
     answerdCount = 0;
+    log('New List of SelectedOPtion wen tab chngae ${newList.length}');
     log('answerdCount when tab change $answerdCount');
     if (state.selectedTabIndex < state.getQuestionModel!.sections!.length - 1) {
       emit(state.copyWith(
@@ -167,8 +134,14 @@ class QuestionTabBloc extends Bloc<QuestionTabEvent, QuestionTabState> {
   FutureOr<void> getBasePrice(GetBasePrice event, emit) async {
     emit(state.copyWith(isLoading: true, hasError: false));
     log('event.pickeQuestionModel ${event.pickupQuestionModel}');
+    for (var element in event.pickupQuestionModel.selectedOptions!) {
+      newList.add(element);
+    }
+
+    log("selectedOptions added newList in bloc ${newList.length}");
     final data = await questionRepo.getBasePrice(
-        pickeQuestionModel: event.pickupQuestionModel);
+      pickeQuestionModel: event.pickupQuestionModel,
+    );
     data.fold((failure) {
       emit(state.copyWith(
         hasError: true,
@@ -179,6 +152,7 @@ class QuestionTabBloc extends Bloc<QuestionTabEvent, QuestionTabState> {
         hasError: false,
         isLoading: false,
         basePriceModelResponce: successResponce,
+        selectedOption: newList,
       ));
       if (successResponce.basePrice != null) {
         basePrice = successResponce.basePrice!;

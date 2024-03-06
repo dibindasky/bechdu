@@ -11,3 +11,9 @@ enum FromWhere {
   checkoutAndPickupScreen,
   pickupScreen
 }
+
+enum LoginWay {
+  fromProfile,
+  fromQuestionPick,
+  fromInitial,
+}

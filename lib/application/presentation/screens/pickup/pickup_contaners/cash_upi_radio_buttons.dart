@@ -20,7 +20,6 @@ class CashOrUPI extends StatefulWidget {
 
 class _CashOrUPIState extends State<CashOrUPI> {
   String selectedRadio = 'cash';
-  TextEditingController upiIdController = TextEditingController();
 
   void handleRadioValueChanged(String? value) {
     setState(() {
@@ -47,9 +46,19 @@ class _CashOrUPIState extends State<CashOrUPI> {
               kHeight10,
               Row(
                 children: [
-                  Expanded(child: customRadioButton('Cash', 'cash')),
+                  Expanded(
+                      child: customRadioButton(
+                    'Cash',
+                    'cash',
+                    context,
+                  )),
                   kWidth10,
-                  Expanded(child: customRadioButton('UPI', 'upi')),
+                  Expanded(
+                      child: customRadioButton(
+                    'UPI',
+                    'upi',
+                    context,
+                  )),
                 ],
               ),
               if (selectedRadio == 'upi') ...[
@@ -77,6 +86,7 @@ class _CashOrUPIState extends State<CashOrUPI> {
                     id: context.read<PlaceOrderBloc>().upiIdController.text,
                   );
                   // event call for placing order
+
                   context
                       .read<PlaceOrderBloc>()
                       .add(PlaceOrderEvent.paymentOption(payment: payment));
@@ -87,8 +97,7 @@ class _CashOrUPIState extends State<CashOrUPI> {
                   showSnack(
                       context: context, message: 'Please fill Upi Details');
                 }
-              }
-              if (selectedRadio == 'cash') {
+              } else {
                 Payment payment = Payment(
                   type: selectedRadio,
                   id: '',
@@ -110,7 +119,7 @@ class _CashOrUPIState extends State<CashOrUPI> {
     );
   }
 
-  Widget customRadioButton(String label, String value) {
+  Widget customRadioButton(String label, String value, BuildContext context) {
     return GestureDetector(
       onTap: () {
         handleRadioValueChanged(value);
@@ -128,7 +137,8 @@ class _CashOrUPIState extends State<CashOrUPI> {
               style: textHeadSemiBold1.copyWith(fontSize: sWidth * .034),
             ),
             const Spacer(),
-            selectedRadio == value
+            selectedRadio == value ||
+                    (selectedRadio != 'cash' && selectedRadio != 'upi')
                 ? const CircleAvatar(
                     backgroundColor: kRadioButtnOuter,
                     radius: 10,
@@ -142,11 +152,5 @@ class _CashOrUPIState extends State<CashOrUPI> {
         ),
       ),
     );
-  }
-
-  @override
-  void dispose() {
-    upiIdController.dispose();
-    super.dispose();
   }
 }

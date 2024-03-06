@@ -3,6 +3,7 @@ import 'package:beachdu/application/business_logic/auth/auth_bloc.dart';
 import 'package:beachdu/application/presentation/routes/routes.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
+import 'package:beachdu/application/presentation/utils/enums/type_display.dart';
 import 'package:beachdu/application/presentation/utils/snackbar/snackbar.dart';
 import 'package:beachdu/application/presentation/widgets/custom_elevated_button.dart';
 import 'package:beachdu/domain/model/login/login_model/login_model.dart';
@@ -10,8 +11,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class BottomSections extends StatelessWidget {
-  const BottomSections({super.key, this.isFromInside});
-  final bool? isFromInside;
+  const BottomSections({
+    super.key,
+    required this.loginWay,
+  });
+  final LoginWay loginWay;
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -38,8 +43,9 @@ class BottomSections extends StatelessWidget {
           ),
         ),
         kHeight50,
-        isFromInside == true
-            ? kHeight20
+        loginWay == LoginWay.fromProfile ||
+                loginWay == LoginWay.fromQuestionPick
+            ? kHeight40
             : Align(
                 alignment: Alignment.center,
                 child: TextButton(
@@ -107,7 +113,11 @@ class BottomSections extends StatelessWidget {
               .read<AuthBloc>()
               .add(AuthEvent.otpSend(loginModel: loginModel));
 
-          Navigator.pushReplacementNamed(context, Routes.otpVerification);
+          Navigator.pushReplacementNamed(
+            context,
+            Routes.otpVerification,
+            arguments: loginWay,
+          );
         });
       }
     } else {

@@ -54,16 +54,25 @@ class TopImage extends StatelessWidget {
                     color: kGreenPrimary,
                     child: Row(
                       children: [
-                        kWidth10,
+                        fromWhere == FromWhere.pickupScreen ||
+                                fromWhere == FromWhere.checkoutAndPickupScreen
+                            ? kWidth20
+                            : kWidth10,
                         SizedBox(
-                          height: sWidth * .24,
-                          width: sWidth * .16,
+                          height: fromWhere == FromWhere.checkoutAndPickupScreen
+                              ? sWidth * .4
+                              : sWidth * .24,
+                          width: fromWhere == FromWhere.checkoutAndPickupScreen
+                              ? sWidth * .4
+                              : sWidth * .23,
                           child: Image.network(
                             url,
-                            fit: BoxFit.fill,
                           ),
                         ),
-                        kWidth5,
+                        fromWhere == FromWhere.pickupScreen ||
+                                fromWhere == FromWhere.checkoutAndPickupScreen
+                            ? kWidth30
+                            : kWidth10,
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -73,17 +82,14 @@ class TopImage extends StatelessWidget {
                               FittedBox(
                                 child: Row(
                                   children: [
-                                    SizedBox(
-                                      width: sWidth * .4,
-                                      child: Text(
-                                        '${questiontabBloc.product!.model}',
-                                        style: textHeadBold1.copyWith(
-                                          fontSize: sWidth * .043,
-                                          color: kWhite,
-                                          overflow: TextOverflow.ellipsis,
-                                        ),
-                                        maxLines: 2,
+                                    Text(
+                                      '${questiontabBloc.product!.model}',
+                                      style: textHeadBold1.copyWith(
+                                        fontSize: sWidth * .043,
+                                        color: kWhite,
+                                        overflow: TextOverflow.ellipsis,
                                       ),
+                                      //maxLines: 2,
                                     ),
                                     kWidth10,
                                     Text(
@@ -96,6 +102,9 @@ class TopImage extends StatelessWidget {
                                   ],
                                 ),
                               ),
+                            fromWhere == FromWhere.checkoutAndPickupScreen
+                                ? kHeight10
+                                : kEmpty,
                             if (fromWhere == FromWhere.recalculateWithAmount)
                               BlocBuilder<QuestionTabBloc, QuestionTabState>(
                                 builder: (context, state) {
@@ -132,16 +141,12 @@ class TopImage extends StatelessWidget {
                                         Row(
                                           children: [
                                             SizedBox(
-                                              width: sWidth * .4,
-                                              child: FittedBox(
-                                                child: Text(
-                                                  'Not Satisfied with our price ?',
-                                                  overflow:
-                                                      TextOverflow.ellipsis,
-                                                  style:
-                                                      textHeadMedium1.copyWith(
-                                                    color: kWhite,
-                                                  ),
+                                              width: sWidth * .34,
+                                              child: Text(
+                                                'Not Satisfied with our price ?',
+                                                overflow: TextOverflow.ellipsis,
+                                                style: textHeadMedium1.copyWith(
+                                                  color: kWhite,
                                                 ),
                                               ),
                                             ),
@@ -166,7 +171,7 @@ class TopImage extends StatelessWidget {
                                                   decorationColor: kWhite,
                                                 ),
                                               ),
-                                            )
+                                            ),
                                           ],
                                         )
                                       ],

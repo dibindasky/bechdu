@@ -5,16 +5,17 @@ import 'package:beachdu/application/presentation/screens/auth/login_screen/widge
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/application/presentation/utils/confirmation_daillogue/exit_app_dailogue.dart';
+import 'package:beachdu/application/presentation/utils/enums/type_display.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 
 class ScreenLogin extends StatelessWidget {
-  ScreenLogin({super.key, this.isFromInside});
+  ScreenLogin({super.key, required this.loginWay});
 
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   String initialCountry = 'NG';
-  bool? isFromInside = false;
+  final LoginWay loginWay;
   PhoneNumber phoneNumber = PhoneNumber(isoCode: 'IN');
 
   @override
@@ -75,7 +76,7 @@ class ScreenLogin extends StatelessWidget {
                       log('On Saved: $number');
                     },
                   ),
-                  BottomSections(isFromInside: isFromInside)
+                  BottomSections(loginWay: loginWay)
                 ],
               ),
             ),

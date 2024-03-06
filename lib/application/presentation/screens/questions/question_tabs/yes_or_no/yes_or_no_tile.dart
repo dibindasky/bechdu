@@ -3,6 +3,7 @@ import 'package:beachdu/application/business_logic/question_tab/question_tab_blo
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/domain/model/get_question_model/question.dart';
+import 'package:beachdu/domain/model/get_question_model/section.dart';
 import 'package:beachdu/domain/model/pickup_question_model/selected_option.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -11,9 +12,11 @@ class YesOrNoTile extends StatefulWidget {
   const YesOrNoTile({
     super.key,
     required this.question,
+    required this.section,
   });
 
   final Question question;
+  final Section section;
 
   @override
   State<YesOrNoTile> createState() => _YesOrNoTileState();
@@ -65,7 +68,7 @@ class _YesOrNoTileState extends State<YesOrNoTile> {
             // If the button is already selected, deselect it
             if (selected == yesOrNo) {
               SelectedOption selectedOption = SelectedOption(
-                heading: 'yes/no',
+                heading: widget.section.heading,
                 description: widget.question.description,
                 value: yesOrNo,
                 type: widget.question.type,
@@ -75,7 +78,7 @@ class _YesOrNoTileState extends State<YesOrNoTile> {
                   .add(QuestionTabEvent.markedQuestions(
                     selectedOption: selectedOption,
                   ));
-              log('UI  yesOrNo ${yesOrNo}');
+              log('UI  yesOrNo');
               log('UI widget.question.type ${widget.question.type}');
               setState(() {
                 selected = null;
@@ -83,10 +86,12 @@ class _YesOrNoTileState extends State<YesOrNoTile> {
             } else {
               log('Yes or no ');
               SelectedOption selectedOption = SelectedOption(
+                heading: widget.section.heading,
                 description: widget.question.description,
                 value: yesOrNo,
                 type: widget.question.type,
               );
+              log('Yes or no tape heading ${widget.section.heading}');
               context
                   .read<QuestionTabBloc>()
                   .add(QuestionTabEvent.markedQuestions(

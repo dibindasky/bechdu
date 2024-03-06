@@ -80,9 +80,14 @@ class AddAddressScreen extends StatelessWidget {
   }
 }
 
-class AddresCreationFields extends StatelessWidget {
+class AddresCreationFields extends StatefulWidget {
   const AddresCreationFields({super.key});
 
+  @override
+  State<AddresCreationFields> createState() => _AddresCreationFieldsState();
+}
+
+class _AddresCreationFieldsState extends State<AddresCreationFields> {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -246,13 +251,19 @@ class AddresCreationFields extends StatelessWidget {
 
               // Clear selected fields after adding address
               context.read<ProfileBloc>().addressController.clear();
-              context.read<LocationBloc>().add(const LocationEvent.clear());
-
+              //context.read<LocationBloc>().add(const LocationEvent.clear());
+              setState(() {
+                context.read<ProfileBloc>().isShowAddress = false;
+              });
               //Screen notifier changing
               profileScreensNotifier.value = 0;
               profileScreensNotifier.notifyListeners();
             } else {
-              showSnack(context: context, message: "please fill feilds");
+              showSnack(
+                context: context,
+                message: "please fill required feilds",
+                color: kRed,
+              );
             }
           },
           text: 'Add address',

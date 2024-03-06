@@ -23,7 +23,7 @@ class MyOrderContainer extends StatelessWidget {
     return BlocBuilder<PlaceOrderBloc, PlaceOrderState>(
       builder: (context, state) {
         final data = state.getAllOrderResponceModel!.orders![index];
-        final type = data.payment!.type!;
+        final type = data.payment?.type!;
 
         return Container(
           decoration: BoxDecoration(
@@ -96,7 +96,7 @@ class MyOrderContainer extends StatelessWidget {
                 heading: 'Pickup Location',
                 imageFirst: pickupLocationhand,
                 lastImage: pickupLocationIcon,
-                subHead: '${data.user!.address}',
+                subHead: '${data.user?.address}',
                 date: '${data.pickUpDetails!.date}',
               ),
               kHeight10,
@@ -111,7 +111,7 @@ class MyOrderContainer extends StatelessWidget {
               RowDatas(
                 isRow: true,
                 heading: 'Payment Method',
-                subHead: type,
+                subHead: type ?? '',
                 imageFirst: paymentMethodIcon,
                 date: '',
               ),

@@ -31,7 +31,10 @@ class ImageGridMaker extends StatelessWidget {
               ),
               physics: const NeverScrollableScrollPhysics(),
               itemBuilder: (context, index) {
-                return GridTileQuestion(question: section.options![index]);
+                return GridTileQuestion(
+                  question: section.options![index],
+                  section: section,
+                );
               },
             ),
           ],

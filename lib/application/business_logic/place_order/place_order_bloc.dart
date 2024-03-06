@@ -12,6 +12,7 @@ import 'package:beachdu/domain/model/order_model/order_placed_request_model/prod
 import 'package:beachdu/domain/model/order_model/order_placed_request_model/promo.dart';
 import 'package:beachdu/domain/model/order_model/order_placed_request_model/user.dart';
 import 'package:beachdu/domain/model/order_model/order_placed_responce_model/order_placed_responce_model.dart';
+import 'package:beachdu/domain/model/pickup_question_model/selected_option.dart';
 import 'package:beachdu/domain/model/promo_code_model/promo_code_request_model/promo_code_request_model.dart';
 import 'package:beachdu/domain/model/promo_code_model/promo_code_responce_model/promo_code_responce_model.dart';
 import 'package:beachdu/domain/repository/place_order.dart';
@@ -28,6 +29,8 @@ class PlaceOrderBloc extends Bloc<PlaceOrderEvent, PlaceOrderState> {
   final PlaceOrderRepo placeOrderRepo;
   int value = 0;
   String? number;
+  String cashSelection = 'cash';
+
   TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController numberController = TextEditingController();
@@ -49,7 +52,15 @@ class PlaceOrderBloc extends Bloc<PlaceOrderEvent, PlaceOrderState> {
     on<PickupDetailsPick>(pickupDetailsPick);
     on<UserNumber>(userNumber);
     on<RemoveAllFieldData>(removeAllFeildData);
+    // on<SelectedOptionEvent>(selectedOptionNewEvent);
   }
+
+  // FutureOr<void> selectedOptionNewEvent(SelectedOptionEvent event, emit) {
+  //   for (var element in event.selectedOption) {
+  //     state.selectedNewOptions!.add(element);
+  //   }
+  //   log('PlaceOrderBloc selectedOptionNewEvent selectedOption length ${state.selectedNewOptions!.length}');
+  // }
 
   FutureOr<void> removeAppliedPromo(RemoveAppliedPromo event, emit) {
     promocodeController.clear();
@@ -128,6 +139,8 @@ class PlaceOrderBloc extends Bloc<PlaceOrderEvent, PlaceOrderState> {
   }
 
   FutureOr<void> productDetailsPick(ProductDetailsPick event, emit) async {
+    // state.orderPlacedRequestModel.productDetails!.options =
+    //     state.selectedNewOptions;
     state.orderPlacedRequestModel.productDetails = event.productDetails;
     emit(state.copyWith(
       orderPlacedRequestModel: state.orderPlacedRequestModel,
@@ -168,13 +181,13 @@ class PlaceOrderBloc extends Bloc<PlaceOrderEvent, PlaceOrderState> {
     state.orderPlacedRequestModel.user!.phone = number;
     emit(state.copyWith(isLoading: true, hasError: false));
     var orderModel = state.orderPlacedRequestModel;
-
-    orderModel.promo = state.promoCodeResponceModel == null
-        ? Promo(code: '', price: '')
-        : Promo(
+    orderModel.promo = state.promoCodeResponceModel != null
+        ? Promo(
             code: promocodeController.text,
             price: state.promoCodeResponceModel!.value.toString(),
-          );
+          )
+        : Promo(code: '', price: '');
+    log("orderPlacing orderModel items ${orderModel.toJson()}");
 
     final data = await placeOrderRepo.orderPlacing(
       orderPlacedRequestModel: orderModel,
@@ -187,7 +200,6 @@ class PlaceOrderBloc extends Bloc<PlaceOrderEvent, PlaceOrderState> {
         message: falure.message,
       ));
     }, (orderPlacingSuccess) async {
-      log('orderPlacing bloc before emit');
       emit(
         state.copyWith(
           hasError: false,
@@ -196,9 +208,7 @@ class PlaceOrderBloc extends Bloc<PlaceOrderEvent, PlaceOrderState> {
           orderPlacedResponceModel: orderPlacingSuccess,
         ),
       );
-      log('orderPlacing bloc before after emit');
       add(const PlaceOrderEvent.getOrders());
-      log('orderPlacing bloc before after getOrders event call');
     });
   }
 

@@ -7,7 +7,6 @@ import 'package:beachdu/application/presentation/screens/product_selection/searc
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/application/presentation/utils/skeltons/skelton.dart';
-import 'package:beachdu/domain/core/failure/failure.dart';
 import 'package:beachdu/domain/model/category_model/single_category_brands_responce_model/brands.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -27,7 +26,7 @@ class BrandListviewBuilder extends StatelessWidget {
             height: 200,
           );
         } else if (state.hasError) {
-          return Center(child: Text(state.message ?? errorMessage));
+          return const Center(child: Icon(Icons.refresh));
         } else {
           if (state.filteredBrands == null ||
               state.getSingleCategoryResponce == null) {
@@ -75,6 +74,7 @@ class BrandListviewBuilder extends StatelessWidget {
                                       .categoryType = categoryType;
                                   context.read<CategoryBlocBloc>().barndName =
                                       brands[index].brandName!;
+
                                   context
                                       .read<CategoryBlocBloc>()
                                       .add(GetProducts(
@@ -95,8 +95,8 @@ class BrandListviewBuilder extends StatelessWidget {
                                       ));
 
                                   //Getting product screen
-                                  brandandProductValueNotifier.value = 1;
-                                  brandandProductValueNotifier
+                                  brandSeriesProductValueNotifier.value = 1;
+                                  brandSeriesProductValueNotifier
                                       .notifyListeners();
 
                                   // Reset question tab

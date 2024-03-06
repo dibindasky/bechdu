@@ -73,7 +73,7 @@ class FinalProductPriceDetaails extends StatelessWidget {
                         message: 'Please enter your promo code',
                         color: kRed,
                       );
-                    } else if (state.promoCodeResponceModel == null) {
+                    } else {
                       PromoCodeRequestModel promoCodeRequestModel =
                           PromoCodeRequestModel(
                         enteredCode: context

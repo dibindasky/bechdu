@@ -12,6 +12,7 @@ import 'package:beachdu/application/presentation/screens/profile/widgets/contain
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/application/presentation/utils/confirmation_daillogue/exit_app_dailogue.dart';
+import 'package:beachdu/application/presentation/utils/enums/type_display.dart';
 import 'package:beachdu/data/secure_storage/secure_fire_store.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -56,8 +57,8 @@ class ScreenProfile extends StatelessWidget {
     );
     return WillPopScope(
       onWillPop: () async {
-        bool shouldPop = await showConfirmationDialog(context);
-        return shouldPop;
+        context.read<NavbarCubit>().changeNavigationIndex(0);
+        return false;
       },
       child: Builder(builder: (context) {
         return GestureDetector(
@@ -95,7 +96,7 @@ class ScreenProfile extends StatelessWidget {
                           Navigator.pushNamed(
                             context,
                             Routes.signInOrLogin,
-                            arguments: true,
+                            arguments: LoginWay.fromProfile,
                           );
                         },
                         child: Text(
@@ -155,7 +156,7 @@ class ScreenProfile extends StatelessWidget {
                           ],
                         ),
                         kHeight20,
-                        const AddressListView(),
+                        const AddressListView(isFromProfile: true),
                         kHeight30,
                         GestureDetector(
                           onTap: () {
@@ -163,8 +164,8 @@ class ScreenProfile extends StatelessWidget {
                               context,
                               heading:
                                   'Are you really want to log out from Bechdu',
-                              onPressed: () {
-                                logOut(context);
+                              onPressed: () async {
+                                await logOut(context);
                               },
                             );
                           },
@@ -199,16 +200,17 @@ class ScreenProfile extends StatelessWidget {
   }
 
   Future<void> logOut(BuildContext context) async {
-    Navigator.pushReplacementNamed(
+    await Navigator.pushReplacementNamed(
       context,
       Routes.signInOrLogin,
-      arguments: false,
-    );
-    context.read<NavbarCubit>().changeNavigationIndex(0);
-    context.read<AuthBloc>().add(const LogOut());
-    secondtabScreensNotifier.value = 0;
-    secondtabScreensNotifier.notifyListeners();
-    brandandProductValueNotifier.value = 0;
-    brandandProductValueNotifier.notifyListeners();
+      arguments: LoginWay.fromInitial,
+    ).then((value) {
+      context.read<NavbarCubit>().changeNavigationIndex(0);
+      context.read<AuthBloc>().add(const LogOut());
+      secondtabScreensNotifier.value = 0;
+      secondtabScreensNotifier.notifyListeners();
+      brandSeriesProductValueNotifier.value = 0;
+      brandSeriesProductValueNotifier.notifyListeners();
+    });
   }
 }

@@ -1,4 +1,3 @@
-import 'package:beachdu/application/business_logic/place_order/place_order_bloc.dart';
 import 'package:beachdu/application/presentation/screens/product_selection/product_screen.dart';
 import 'package:beachdu/application/presentation/screens/questions/after_question_checked/final_price_screen/final_product_price_details.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
@@ -7,9 +6,7 @@ import 'package:beachdu/application/presentation/utils/enums/type_display.dart';
 import 'package:beachdu/application/presentation/utils/confirmation_daillogue/exit_app_dailogue.dart';
 import 'package:beachdu/application/presentation/widgets/custom_elevated_button.dart';
 import 'package:beachdu/application/presentation/widgets/top_image.dart';
-import 'package:beachdu/domain/model/order_model/order_placed_request_model/promo.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class FinalPriceScreen extends StatelessWidget {
   const FinalPriceScreen({super.key});

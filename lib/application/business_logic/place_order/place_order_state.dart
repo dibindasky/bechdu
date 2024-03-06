@@ -17,6 +17,7 @@ class PlaceOrderState with _$PlaceOrderState {
     required String address,
     required Promo promo,
     String? number,
+    List<SelectedOption>? selectedNewOptions,
     OrderCancelationResponceModel? orderCancelationResponceModel,
     GetAllOrderResponceModel? getAllOrderResponceModel,
   }) = _Initial;

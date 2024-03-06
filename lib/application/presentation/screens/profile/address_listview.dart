@@ -14,7 +14,10 @@ import '../../../../domain/model/order_model/order_placed_request_model/user.dar
 class AddressListView extends StatefulWidget {
   const AddressListView({
     super.key,
+    required this.isFromProfile,
   });
+
+  final bool isFromProfile;
 
   @override
   State<AddressListView> createState() => _AddressListViewState();
@@ -51,7 +54,7 @@ class _AddressListViewState extends State<AddressListView> {
                 onTap: () {
                   // Order placing request user object creation
                   User user = User(address: state.address[index]);
-                  log('Picked add ${state.address[index]}');
+                  log('Picked addrs ${state.address[index]}');
                   //Order placing address pick event
                   context
                       .read<PlaceOrderBloc>()
@@ -91,29 +94,32 @@ class _AddressListViewState extends State<AddressListView> {
                                 ],
                               ),
                             ),
-                            InkWell(
-                              onTap: () {
-                                showConfirmationDialog(
-                                  context,
-                                  heading: 'Do you want to delete this address',
-                                  onPressed: () {
-                                    Navigator.of(context).pop();
-                                    context.read<ProfileBloc>().add(
-                                          ProfileEvent.deleteAddress(
-                                            index: index,
-                                          ),
-                                        );
-                                  },
-                                );
-                              },
-                              child: const CircleAvatar(
-                                radius: 17,
-                                child: Icon(
-                                  Icons.delete,
-                                  color: kRed,
-                                ),
-                              ),
-                            ),
+                            widget.isFromProfile
+                                ? InkWell(
+                                    onTap: () {
+                                      showConfirmationDialog(
+                                        context,
+                                        heading:
+                                            'Do you want to delete this address',
+                                        onPressed: () {
+                                          Navigator.of(context).pop();
+                                          context.read<ProfileBloc>().add(
+                                                ProfileEvent.deleteAddress(
+                                                  index: index,
+                                                ),
+                                              );
+                                        },
+                                      );
+                                    },
+                                    child: const CircleAvatar(
+                                      radius: 17,
+                                      child: Icon(
+                                        Icons.delete,
+                                        color: kRed,
+                                      ),
+                                    ),
+                                  )
+                                : kEmpty,
                           ],
                         ),
                       ),

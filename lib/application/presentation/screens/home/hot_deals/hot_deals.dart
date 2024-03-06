@@ -65,8 +65,8 @@ class HotDealsSession extends StatelessWidget {
 
                           log('UI state.homeBannerResponceModel!.sectionOne![index].mobileLink! ===>>> : ${state.homeBannerResponceModel!.sectionOne![index].mobileLink!}');
                           context.read<NavbarCubit>().changeNavigationIndex(1);
-                          brandandProductValueNotifier.value = 0;
-                          brandandProductValueNotifier.notifyListeners();
+                          brandSeriesProductValueNotifier.value = 0;
+                          brandSeriesProductValueNotifier.notifyListeners();
                           secondtabScreensNotifier.value = 0;
                           secondtabScreensNotifier.notifyListeners();
                         },

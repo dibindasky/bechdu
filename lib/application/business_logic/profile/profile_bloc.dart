@@ -17,6 +17,7 @@ part 'profile_bloc.freezed.dart';
 @injectable
 class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   final ProfileRepo profileRepo;
+  bool isShowAddress = false;
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   TextEditingController profileNameController = TextEditingController();
   TextEditingController profileEmailController = TextEditingController();

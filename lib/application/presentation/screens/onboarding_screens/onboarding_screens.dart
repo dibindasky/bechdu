@@ -1,6 +1,7 @@
 import 'package:beachdu/application/presentation/routes/routes.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
+import 'package:beachdu/application/presentation/utils/enums/type_display.dart';
 import 'package:flutter/material.dart';
 
 class BechDuUserOnBoardingScreens extends StatefulWidget {
@@ -72,8 +73,10 @@ class _BechDuUserOnBoardingScreensState
               duration: const Duration(milliseconds: 500),
               curve: Curves.easeInOut);
         } else {
-          Navigator.of(context)
-              .pushReplacementNamed(Routes.signInOrLogin, arguments: false);
+          Navigator.of(context).pushReplacementNamed(
+            Routes.signInOrLogin,
+            arguments: LoginWay.fromInitial,
+          );
         }
       },
       child: Scaffold(

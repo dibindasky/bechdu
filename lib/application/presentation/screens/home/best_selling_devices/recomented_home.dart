@@ -93,8 +93,9 @@ class BestSellingDevices extends StatelessWidget {
                                 //Builder cahnges
                                 secondtabScreensNotifier.value = 1;
                                 secondtabScreensNotifier.notifyListeners();
-                                brandandProductValueNotifier.value = 0;
-                                brandandProductValueNotifier.notifyListeners();
+                                brandSeriesProductValueNotifier.value = 0;
+                                brandSeriesProductValueNotifier
+                                    .notifyListeners();
                               },
                               child: Padding(
                                 padding:

@@ -4,6 +4,7 @@ import 'package:beachdu/application/business_logic/question_tab/question_tab_blo
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/domain/model/get_question_model/question.dart';
+import 'package:beachdu/domain/model/get_question_model/section.dart';
 import 'package:beachdu/domain/model/pickup_question_model/selected_option.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,10 +15,12 @@ class GridOptionSelectorTile extends StatefulWidget {
     required this.question,
     required this.index,
     required this.func,
+    required this.section,
   });
   final Question question;
   final bool index;
   final VoidCallback func;
+  final Section section;
 
   @override
   State<GridOptionSelectorTile> createState() => _GridOptionSelectorTileState();
@@ -30,6 +33,7 @@ class _GridOptionSelectorTileState extends State<GridOptionSelectorTile> {
       onTap: () {
         widget.func();
         SelectedOption selectedOption = SelectedOption(
+          heading: widget.section.heading,
           description: widget.question.description,
           type: widget.question.type,
           selectioType: 'one',
@@ -38,6 +42,7 @@ class _GridOptionSelectorTileState extends State<GridOptionSelectorTile> {
               selectedOption: selectedOption,
             ));
         log('UI grid widget.question.type ${widget.question.type}');
+        log('UI grid section.heading ${widget.section.heading}');
         log('UI grid  description ${widget.question.description}');
       },
       child: Padding(

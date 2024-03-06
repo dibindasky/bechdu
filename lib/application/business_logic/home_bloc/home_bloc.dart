@@ -1,8 +1,10 @@
 import 'dart:async';
+import 'dart:developer';
 import 'package:beachdu/domain/model/best_selling_products_responce_model/best_selling_products_responce_model.dart';
 import 'package:beachdu/domain/model/category_model/get_category_responce_model/get_category_responce_model.dart';
 import 'package:beachdu/domain/model/get_products_respoce_model/product.dart';
 import 'package:beachdu/domain/model/home_banners_model/home_banner_responce_model/home_banner_responce_model.dart';
+import 'package:beachdu/domain/model/search_model/global_product_search_responce_model/global_product_search_responce_model.dart';
 import 'package:beachdu/domain/model/search_model/search_param_model/search_param_model.dart';
 import 'package:beachdu/domain/model/search_model/search_responce_model/search_responce_model.dart';
 import 'package:beachdu/domain/repository/home_repo.dart';
@@ -18,6 +20,8 @@ part 'home_bloc.freezed.dart';
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
   final HomeRepository homeRepository;
   String? slug;
+  int pageNumber = 1;
+  bool isScrollLoading = false;
   List<Product> productList = [];
 
   TextEditingController globalProductSearchController = TextEditingController();
@@ -27,14 +31,52 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     on<HomePageBanners>(homePageBanners);
     on<GetBestSellingProducts>(getBestSellingProducts);
     on<GlobalPrductSearch>(globalProductSearch);
+    on<NextPage>(nextPage);
+  }
+
+  FutureOr<void> nextPage(NextPage event, emit) async {
+    log('next page initial');
+    emit(state.copyWith(loadMore: true));
+    isScrollLoading = true;
+    pageNumber += 1;
+    final data = await homeRepository.globalProductSearch(
+        searchParamModel: SearchParamModel(
+      page: pageNumber,
+    ));
+    data.fold(
+      (failure) => emit(
+        state.copyWith(
+          loadMore: false,
+        ),
+      ),
+      (products) {
+        if (products.product == null) {
+          emit(state.copyWith(loadMore: false));
+          return;
+        }
+        emit(
+          state.copyWith(
+            loadMore: true,
+            products: [
+              ...state.products!,
+              ...products.product!,
+            ],
+          ),
+        );
+      },
+    );
+    isScrollLoading = false;
   }
 
   FutureOr<void> globalProductSearch(GlobalPrductSearch event, emit) async {
     emit(state.copyWith(isLoading: true, hasError: false));
+    pageNumber = 1;
+    event.searchParamModel.page = pageNumber;
+    event.searchParamModel.pageSize = 20;
     final data = await homeRepository.globalProductSearch(
       searchParamModel: event.searchParamModel,
     );
-    List<Product> filteredProducts = [];
+
     data.fold(
         (failure) => emit(
               state.copyWith(
@@ -46,8 +88,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         state.copyWith(
           isLoading: false,
           hasError: false,
-          filtteredProducts: filteredProducts,
           searchResponceModel: globalSearchSuccess,
+          products: globalSearchSuccess.product,
         ),
       );
     });

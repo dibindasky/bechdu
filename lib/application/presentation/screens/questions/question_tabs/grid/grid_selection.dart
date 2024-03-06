@@ -36,6 +36,7 @@ class _GridOptionMakerState extends State<GridOptionMaker> {
                     selectedIndex = index;
                   });
                 },
+                section: widget.section,
                 index: selectedIndex == index,
                 question: widget.section.options![index],
               ),

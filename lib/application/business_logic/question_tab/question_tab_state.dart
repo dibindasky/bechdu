@@ -11,6 +11,7 @@ class QuestionTabState with _$QuestionTabState {
     GetBasePriceModelResponce? basePriceModelResponce,
     required List<SelectedOption> selectedOption,
     GetQuestionModel? getQuestionModel,
+    List<SelectedOption>? newList,
     GetProductsRespoceModel? getProductsResponceModel,
     required int selectedTabIndex,
     AbandendOrderResponceModel? abandendOrderResponceModel,

@@ -20,6 +20,7 @@ class YesOrNoListMaker extends StatelessWidget {
               shrinkWrap: true,
               itemBuilder: (context, index) {
                 return YesOrNoTile(
+                  section: section,
                   question: section.options![index],
                 );
               },

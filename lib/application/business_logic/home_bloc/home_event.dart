@@ -10,4 +10,5 @@ class HomeEvent with _$HomeEvent {
   const factory HomeEvent.globalPrductSearch({
     required SearchParamModel searchParamModel,
   }) = GlobalPrductSearch;
+  const factory HomeEvent.nextPage() = NextPage;
 }

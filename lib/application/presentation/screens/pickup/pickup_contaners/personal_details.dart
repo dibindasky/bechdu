@@ -1,5 +1,8 @@
+import 'dart:developer';
+
 import 'package:beachdu/application/business_logic/auth/auth_bloc.dart';
 import 'package:beachdu/application/business_logic/place_order/place_order_bloc.dart';
+import 'package:beachdu/application/business_logic/profile/profile_bloc.dart';
 import 'package:beachdu/application/presentation/screens/pickup/pickup_screen.dart';
 import 'package:beachdu/application/presentation/screens/pickup/widgets/textfeild_custom.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
@@ -18,151 +21,161 @@ class PersonalDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     WidgetsBinding.instance.addPostFrameCallback(
       (timeStamp) {
+        context.read<ProfileBloc>().add(ProfileEvent.getUserInfo());
         context.read<PlaceOrderBloc>().add(const PlaceOrderEvent.userNumber());
       },
     );
     return SizedBox(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'NAME',
-            style: textHeadMedium1.copyWith(
-              fontSize: sWidth * .033,
-            ),
-          ),
-          TTextFormField(
-            controller: context.read<PlaceOrderBloc>().nameController,
-            text: 'Enter name',
-          ),
-          Text(
-            'EMAIL ADDRESS',
-            style: textHeadMedium1.copyWith(
-              fontSize: sWidth * .033,
-            ),
-          ),
-          TTextFormField(
-            controller: context.read<PlaceOrderBloc>().emailController,
-            text: 'Enter email',
-            inputType: TextInputType.emailAddress,
-          ),
-          Text(
-            'PHONE NUMBER',
-            style: textHeadMedium1.copyWith(
-              fontSize: sWidth * .033,
-            ),
-          ),
-          BlocBuilder<PlaceOrderBloc, PlaceOrderState>(
-            builder: (context, state) {
-              return Container(
-                padding: const EdgeInsets.only(left: 10),
-                height: 60,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  border: Border.all(color: textFieldBorderColor),
-                  borderRadius: BorderRadius.circular(10),
+      child: BlocBuilder<ProfileBloc, ProfileState>(
+        builder: (context, state) {
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'NAME',
+                style: textHeadMedium1.copyWith(
+                  fontSize: sWidth * .033,
                 ),
-                child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    '${state.number}',
-                    style: textHeadSemiBold1.copyWith(
-                      fontSize: sWidth * 0.04,
+              ),
+              TTextFormField(
+                controller: state.addressCreationResponceModel != null
+                    ? context.read<ProfileBloc>().profileNameController
+                    : context.read<PlaceOrderBloc>().nameController,
+                text: 'Enter name',
+              ),
+              Text(
+                'EMAIL ADDRESS',
+                style: textHeadMedium1.copyWith(
+                  fontSize: sWidth * .033,
+                ),
+              ),
+              TTextFormField(
+                controller: state.addressCreationResponceModel != null
+                    ? context.read<ProfileBloc>().profileEmailController
+                    : context.read<PlaceOrderBloc>().emailController,
+                text: 'Enter email',
+                inputType: TextInputType.emailAddress,
+              ),
+              Text(
+                'PHONE NUMBER',
+                style: textHeadMedium1.copyWith(
+                  fontSize: sWidth * .033,
+                ),
+              ),
+              BlocBuilder<PlaceOrderBloc, PlaceOrderState>(
+                builder: (context, state) {
+                  return Container(
+                    padding: const EdgeInsets.only(left: 10),
+                    height: 60,
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      border: Border.all(color: textFieldBorderColor),
+                      borderRadius: BorderRadius.circular(10),
                     ),
-                  ),
-                ),
-              );
-            },
-          ),
-          kHeight5,
-          Text(
-            'ADDITIONAL PHONE NUMBER',
-            style: textHeadMedium1.copyWith(
-              fontSize: sWidth * .033,
-            ),
-          ),
-          TTextFormField(
-            controller:
-                context.read<PlaceOrderBloc>().additionalNumberController,
-            inputType: TextInputType.number,
-            text: '00000 00000',
-          ),
-          Align(
-            alignment: Alignment.center,
-            child: CustomButton(
-              onPressed: () {
-                if (context
-                        .read<PlaceOrderBloc>()
-                        .emailController
-                        .text
-                        .isEmpty &&
-                    context
-                        .read<PlaceOrderBloc>()
-                        .nameController
-                        .text
-                        .isEmpty) {
-                  showSnack(
-                    context: context,
-                    message: 'Please fill required feilds',
-                    color: kRed,
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        '${state.number}',
+                        style: textHeadSemiBold1.copyWith(
+                          fontSize: sWidth * 0.04,
+                        ),
+                      ),
+                    ),
                   );
-                } else {
-                  String email =
-                      context.read<PlaceOrderBloc>().emailController.text;
-                  String name =
-                      context.read<PlaceOrderBloc>().nameController.text;
-                  String addPhone = context
-                      .read<PlaceOrderBloc>()
-                      .additionalNumberController
-                      .text;
-
-                  if (addPhone.isNotEmpty) {
-                    if (!isValidPhoneNumber(addPhone)) {
+                },
+              ),
+              kHeight5,
+              Text(
+                'ADDITIONAL PHONE NUMBER',
+                style: textHeadMedium1.copyWith(
+                  fontSize: sWidth * .033,
+                ),
+              ),
+              TTextFormField(
+                controller: state.addressCreationResponceModel != null
+                    ? context.read<ProfileBloc>().profileAddPhoneController
+                    : context.read<PlaceOrderBloc>().additionalNumberController,
+                inputType: TextInputType.number,
+                text: '00000 00000',
+              ),
+              Align(
+                alignment: Alignment.center,
+                child: CustomButton(
+                  onPressed: () {
+                    if (context
+                            .read<PlaceOrderBloc>()
+                            .emailController
+                            .text
+                            .isEmpty &&
+                        context
+                            .read<PlaceOrderBloc>()
+                            .nameController
+                            .text
+                            .isEmpty) {
                       showSnack(
                         context: context,
-                        message: 'Not valid additional number',
+                        message: 'Please fill required feilds',
                         color: kRed,
                       );
+                    } else {
+                      String email =
+                          context.read<PlaceOrderBloc>().emailController.text;
+                      String name =
+                          context.read<PlaceOrderBloc>().nameController.text;
+                      String addPhone = context
+                          .read<PlaceOrderBloc>()
+                          .additionalNumberController
+                          .text;
+
+                      if (addPhone.isNotEmpty &&
+                          !isValidPhoneNumber(addPhone)) {
+                        showSnack(
+                          context: context,
+                          message: 'Not valid additional number',
+                          color: kRed,
+                        );
+                      }
+
+                      if (name.length < 3) {
+                        showSnack(
+                          context: context,
+                          message: 'Not a valid name',
+                          color: kRed,
+                        );
+                        return;
+                      }
+
+                      if (!isValidEmail(email)) {
+                        showSnack(
+                          context: context,
+                          message: 'Not a valid email',
+                          color: kRed,
+                        );
+                        return;
+                      }
+
+                      User user = User(
+                        email: email,
+                        name: name,
+                        addPhone: addPhone.isEmpty ? '' : addPhone,
+                      );
+
+                      context
+                          .read<PlaceOrderBloc>()
+                          .add(PlaceOrderEvent.userDetailsPick(user: user));
+
+                      // Update the value of pickupDetailChangeNotifier
+                      pickupDetailChangeNotifier.value =
+                          PickupDetailContainers.address;
+                      pickupDetailChangeNotifier.notifyListeners();
                     }
-                  }
-
-                  if (name.isEmpty || name.length < 3) {
-                    showSnack(
-                      context: context,
-                      message: 'Not a valid name',
-                      color: kRed,
-                    );
-                    return;
-                  }
-                  if (!isValidEmail(email)) {
-                    showSnack(
-                      context: context,
-                      message: 'Not a valid email',
-                      color: kRed,
-                    );
-                    return;
-                  }
-                  User user = User(
-                    email: email,
-                    name: name,
-                    addPhone: addPhone.isEmpty ? '' : addPhone,
-                  );
-
-                  // Dispatch the userDetailsPick event
-                  context
-                      .read<PlaceOrderBloc>()
-                      .add(PlaceOrderEvent.userDetailsPick(user: user));
-
-                  // Update the value of pickupDetailChangeNotifier
-                  pickupDetailChangeNotifier.value =
-                      PickupDetailContainers.address;
-                  pickupDetailChangeNotifier.notifyListeners();
-                }
-              },
-              text: 'Continue',
-            ),
-          ),
-        ],
+                  },
+                  text: 'Continue',
+                ),
+              ),
+            ],
+          );
+        },
       ),
     );
   }

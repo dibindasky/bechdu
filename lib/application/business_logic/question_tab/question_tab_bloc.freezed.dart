@@ -1807,6 +1807,7 @@ mixin _$QuestionTabState {
       throw _privateConstructorUsedError;
   List<SelectedOption> get selectedOption => throw _privateConstructorUsedError;
   GetQuestionModel? get getQuestionModel => throw _privateConstructorUsedError;
+  List<SelectedOption>? get newList => throw _privateConstructorUsedError;
   GetProductsRespoceModel? get getProductsResponceModel =>
       throw _privateConstructorUsedError;
   int get selectedTabIndex => throw _privateConstructorUsedError;
@@ -1833,6 +1834,7 @@ abstract class $QuestionTabStateCopyWith<$Res> {
       GetBasePriceModelResponce? basePriceModelResponce,
       List<SelectedOption> selectedOption,
       GetQuestionModel? getQuestionModel,
+      List<SelectedOption>? newList,
       GetProductsRespoceModel? getProductsResponceModel,
       int selectedTabIndex,
       AbandendOrderResponceModel? abandendOrderResponceModel});
@@ -1859,6 +1861,7 @@ class _$QuestionTabStateCopyWithImpl<$Res, $Val extends QuestionTabState>
     Object? basePriceModelResponce = freezed,
     Object? selectedOption = null,
     Object? getQuestionModel = freezed,
+    Object? newList = freezed,
     Object? getProductsResponceModel = freezed,
     Object? selectedTabIndex = null,
     Object? abandendOrderResponceModel = freezed,
@@ -1896,6 +1899,10 @@ class _$QuestionTabStateCopyWithImpl<$Res, $Val extends QuestionTabState>
           ? _value.getQuestionModel
           : getQuestionModel // ignore: cast_nullable_to_non_nullable
               as GetQuestionModel?,
+      newList: freezed == newList
+          ? _value.newList
+          : newList // ignore: cast_nullable_to_non_nullable
+              as List<SelectedOption>?,
       getProductsResponceModel: freezed == getProductsResponceModel
           ? _value.getProductsResponceModel
           : getProductsResponceModel // ignore: cast_nullable_to_non_nullable
@@ -1929,6 +1936,7 @@ abstract class _$$InitialImplCopyWith<$Res>
       GetBasePriceModelResponce? basePriceModelResponce,
       List<SelectedOption> selectedOption,
       GetQuestionModel? getQuestionModel,
+      List<SelectedOption>? newList,
       GetProductsRespoceModel? getProductsResponceModel,
       int selectedTabIndex,
       AbandendOrderResponceModel? abandendOrderResponceModel});
@@ -1953,6 +1961,7 @@ class __$$InitialImplCopyWithImpl<$Res>
     Object? basePriceModelResponce = freezed,
     Object? selectedOption = null,
     Object? getQuestionModel = freezed,
+    Object? newList = freezed,
     Object? getProductsResponceModel = freezed,
     Object? selectedTabIndex = null,
     Object? abandendOrderResponceModel = freezed,
@@ -1990,6 +1999,10 @@ class __$$InitialImplCopyWithImpl<$Res>
           ? _value.getQuestionModel
           : getQuestionModel // ignore: cast_nullable_to_non_nullable
               as GetQuestionModel?,
+      newList: freezed == newList
+          ? _value._newList
+          : newList // ignore: cast_nullable_to_non_nullable
+              as List<SelectedOption>?,
       getProductsResponceModel: freezed == getProductsResponceModel
           ? _value.getProductsResponceModel
           : getProductsResponceModel // ignore: cast_nullable_to_non_nullable
@@ -2018,10 +2031,12 @@ class _$InitialImpl implements _Initial {
       this.basePriceModelResponce,
       required final List<SelectedOption> selectedOption,
       this.getQuestionModel,
+      final List<SelectedOption>? newList,
       this.getProductsResponceModel,
       required this.selectedTabIndex,
       this.abandendOrderResponceModel})
-      : _selectedOption = selectedOption;
+      : _selectedOption = selectedOption,
+        _newList = newList;
 
   @override
   final bool isLoading;
@@ -2045,6 +2060,16 @@ class _$InitialImpl implements _Initial {
 
   @override
   final GetQuestionModel? getQuestionModel;
+  final List<SelectedOption>? _newList;
+  @override
+  List<SelectedOption>? get newList {
+    final value = _newList;
+    if (value == null) return null;
+    if (_newList is EqualUnmodifiableListView) return _newList;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
   @override
   final GetProductsRespoceModel? getProductsResponceModel;
   @override
@@ -2054,7 +2079,7 @@ class _$InitialImpl implements _Initial {
 
   @override
   String toString() {
-    return 'QuestionTabState(isLoading: $isLoading, hasError: $hasError, message: $message, product: $product, answerCount: $answerCount, basePriceModelResponce: $basePriceModelResponce, selectedOption: $selectedOption, getQuestionModel: $getQuestionModel, getProductsResponceModel: $getProductsResponceModel, selectedTabIndex: $selectedTabIndex, abandendOrderResponceModel: $abandendOrderResponceModel)';
+    return 'QuestionTabState(isLoading: $isLoading, hasError: $hasError, message: $message, product: $product, answerCount: $answerCount, basePriceModelResponce: $basePriceModelResponce, selectedOption: $selectedOption, getQuestionModel: $getQuestionModel, newList: $newList, getProductsResponceModel: $getProductsResponceModel, selectedTabIndex: $selectedTabIndex, abandendOrderResponceModel: $abandendOrderResponceModel)';
   }
 
   @override
@@ -2076,6 +2101,7 @@ class _$InitialImpl implements _Initial {
                 .equals(other._selectedOption, _selectedOption) &&
             (identical(other.getQuestionModel, getQuestionModel) ||
                 other.getQuestionModel == getQuestionModel) &&
+            const DeepCollectionEquality().equals(other._newList, _newList) &&
             (identical(
                     other.getProductsResponceModel, getProductsResponceModel) ||
                 other.getProductsResponceModel == getProductsResponceModel) &&
@@ -2098,6 +2124,7 @@ class _$InitialImpl implements _Initial {
       basePriceModelResponce,
       const DeepCollectionEquality().hash(_selectedOption),
       getQuestionModel,
+      const DeepCollectionEquality().hash(_newList),
       getProductsResponceModel,
       selectedTabIndex,
       abandendOrderResponceModel);
@@ -2119,6 +2146,7 @@ abstract class _Initial implements QuestionTabState {
           final GetBasePriceModelResponce? basePriceModelResponce,
           required final List<SelectedOption> selectedOption,
           final GetQuestionModel? getQuestionModel,
+          final List<SelectedOption>? newList,
           final GetProductsRespoceModel? getProductsResponceModel,
           required final int selectedTabIndex,
           final AbandendOrderResponceModel? abandendOrderResponceModel}) =
@@ -2140,6 +2168,8 @@ abstract class _Initial implements QuestionTabState {
   List<SelectedOption> get selectedOption;
   @override
   GetQuestionModel? get getQuestionModel;
+  @override
+  List<SelectedOption>? get newList;
   @override
   GetProductsRespoceModel? get getProductsResponceModel;
   @override

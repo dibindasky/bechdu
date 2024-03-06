@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'dart:developer';
 
 import 'package:beachdu/application/business_logic/home_bloc/home_bloc.dart';
@@ -14,7 +13,7 @@ import 'package:iconsax/iconsax.dart';
 
 class CustomSearchFieldHome extends StatelessWidget {
   CustomSearchFieldHome({super.key});
-  Debouncer debouncer = Debouncer(milliseconds: 300);
+  Debouncer debouncer = Debouncer(milliseconds: 100);
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +49,7 @@ class CustomSearchFieldHome extends StatelessWidget {
                             searchParamModel: SearchParamModel(search: value),
                           ),
                         );
-                    log('event call UI $value');
+                    log('event call search UI $value');
                   });
                 } else {
                   homeScreens.value = 0;

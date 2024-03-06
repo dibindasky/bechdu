@@ -8,7 +8,7 @@ class ApiEndPoints {
   static const String picodeUpdate = 'user/users/{number}/pincode';
   static const String getBestSellingProducts =
       'product/best-selling-products/mobile';
-  static const String globalProductSearch = 'product/global-search';
+  static const String globalProductSearch = 'product/get-all-products';
   static const String getAllCategory = 'api/category/get-all-categories';
   static const String getsingleCategoryBrands = 'api/brand/brands-category/';
   static const String getProducts = 'product/get-products/';

@@ -1,7 +1,7 @@
+import 'package:beachdu/application/business_logic/navbar/navbar_cubit.dart';
 import 'package:beachdu/application/business_logic/place_order/place_order_bloc.dart';
 import 'package:beachdu/application/presentation/screens/order/widgets/my_order_container.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
-import 'package:beachdu/application/presentation/utils/confirmation_daillogue/exit_app_dailogue.dart';
 import 'package:beachdu/application/presentation/utils/skeltons/skelton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -19,8 +19,8 @@ class ScreenMyOrders extends StatelessWidget {
     );
     return WillPopScope(
       onWillPop: () async {
-        bool shouldPop = await showConfirmationDialog(context);
-        return shouldPop;
+        context.read<NavbarCubit>().changeNavigationIndex(0);
+        return false;
       },
       child: Scaffold(
         appBar: AppBar(

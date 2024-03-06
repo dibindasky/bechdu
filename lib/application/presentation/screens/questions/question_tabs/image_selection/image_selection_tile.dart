@@ -5,14 +5,20 @@ import 'package:beachdu/application/business_logic/question_tab/question_tab_blo
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/domain/model/get_question_model/question.dart';
+import 'package:beachdu/domain/model/get_question_model/section.dart';
 import 'package:beachdu/domain/model/pickup_question_model/selected_option.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class GridTileQuestion extends StatefulWidget {
-  const GridTileQuestion({super.key, required this.question});
+  const GridTileQuestion({
+    super.key,
+    required this.question,
+    required this.section,
+  });
 
   final Question question;
+  final Section section;
 
   @override
   State<GridTileQuestion> createState() => _GridTileQuestionState();
@@ -23,7 +29,7 @@ class _GridTileQuestionState extends State<GridTileQuestion> {
   @override
   void didUpdateWidget(GridTileQuestion oldWidget) {
     super.didUpdateWidget(oldWidget);
-    // Reset the selection when a new question is provided
+    //Reset the selection when a new question is provided
     if (widget.question != oldWidget.question) {
       setState(() {
         selected = false;
@@ -40,6 +46,7 @@ class _GridTileQuestionState extends State<GridTileQuestion> {
     return GestureDetector(
       onTap: () {
         SelectedOption selectedOption = SelectedOption(
+          heading: widget.section.heading,
           description: widget.question.description,
           type: widget.question.type,
         );
@@ -48,7 +55,7 @@ class _GridTileQuestionState extends State<GridTileQuestion> {
                 selectedOption: selectedOption,
               ),
             );
-        log('Image tile selectedOption$selectedOption');
+        log('UI image section.heading ${widget.section.heading}');
         setState(() {
           selected = !selected;
         });

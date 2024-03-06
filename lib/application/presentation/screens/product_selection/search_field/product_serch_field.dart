@@ -18,7 +18,9 @@ class ProductSearchField extends StatelessWidget {
           return Text(categoryState.message ?? 'An error occurred');
         } else {
           return buildDropdown(
-              categoryState.getSingleCategoryResponce!.brands!, context);
+            categoryState.getSingleCategoryResponce!.brands!,
+            context,
+          );
         }
       },
     );

@@ -9,7 +9,6 @@ import 'package:beachdu/application/presentation/utils/skeltons/skelton.dart';
 import 'package:beachdu/domain/core/api_endpoints/api_endpoints.dart';
 import 'package:beachdu/domain/model/get_products_respoce_model/product.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
 
@@ -42,46 +41,6 @@ class ProductListViewBuilder extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const ProductSearchField(),
-                kHeight10,
-                BlocBuilder<CategoryBlocBloc, CategoryBlocState>(
-                  builder: (context, state) {
-                    return GridView.builder(
-                      itemCount: state.series!.length,
-                      physics: const NeverScrollableScrollPhysics(),
-                      shrinkWrap: true,
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 3,
-                        mainAxisSpacing: 10,
-                        crossAxisSpacing: 4,
-                        childAspectRatio: 1 / .4,
-                      ),
-                      itemBuilder: (context, index) {
-                        return GestureDetector(
-                          onTap: () async {},
-                          child: ClipRRect(
-                            borderRadius: kRadius5,
-                            child: ColoredBox(
-                              color: kWhiteextra,
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  FittedBox(
-                                    child: Text(
-                                      ' ${state.series![index]}',
-                                      style: textHeadSemiBold1,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        );
-                      },
-                    );
-                  },
-                ),
                 kHeight20,
                 const ScreenProductSelectionProductFindDropdownGridView(),
                 kHeight10,
@@ -136,8 +95,8 @@ class ProductListViewBuilder extends StatelessWidget {
                               //Builder cahnges
                               secondtabScreensNotifier.value = 1;
                               secondtabScreensNotifier.notifyListeners();
-                              brandandProductValueNotifier.value = 0;
-                              brandandProductValueNotifier.notifyListeners();
+                              brandSeriesProductValueNotifier.value = 0;
+                              brandSeriesProductValueNotifier.notifyListeners();
                             },
                             child: Container(
                               padding: const EdgeInsets.all(10),

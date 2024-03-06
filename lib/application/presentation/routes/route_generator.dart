@@ -17,6 +17,7 @@ import 'package:beachdu/application/presentation/screens/questions/after_questio
 import 'package:beachdu/application/presentation/screens/questions/after_question_checked/success_order/success_product_place_rder.dart';
 import 'package:beachdu/application/presentation/screens/questions/questions_screen.dart';
 import 'package:beachdu/application/presentation/screens/splash/splash_screen.dart';
+import 'package:beachdu/application/presentation/utils/enums/type_display.dart';
 import 'package:flutter/material.dart';
 
 class RouteGenerator {
@@ -37,11 +38,13 @@ class RouteGenerator {
             ? fadePageRoute(screen: ScreenPinCodes(cityName: arguments))
             : _errorScreen();
       case Routes.signInOrLogin:
-        return arguments is bool
-            ? fadePageRoute(screen: ScreenLogin(isFromInside: arguments))
+        return arguments is LoginWay
+            ? fadePageRoute(screen: ScreenLogin(loginWay: arguments))
             : _errorScreen();
       case Routes.otpVerification:
-        return fadePageRoute(screen: const OTPScreen());
+        return arguments is LoginWay
+            ? fadePageRoute(screen: OTPScreen(loginWay: arguments))
+            : _errorScreen();
       case Routes.homeScreen:
         return fadePageRoute(screen: const ScreenHome());
       case Routes.location:
