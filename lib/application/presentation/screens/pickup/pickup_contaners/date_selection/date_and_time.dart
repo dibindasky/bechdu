@@ -206,12 +206,9 @@ class _DateOrTimeState extends State<DateOrTime> {
                             .read<QuestionTabBloc>()
                             .basePrice
                             .toString(),
-                        options: context.read<QuestionTabBloc>().state.newList,
+                        options: context.read<QuestionTabBloc>().newList,
                       );
-                      // log('In date picking selectedNewOptions length order placing ontap ${context.read<PlaceOrderBloc>().state.selectedNewOptions!.length}');
-                      // log('Question picked options length order placing ontap ${context.read<QuestionTabBloc>().state.selectedOption.length}');
-                      //Product details event call
-                      log('message${context.read<QuestionTabBloc>().state.selectedOption}');
+
                       context
                           .read<PlaceOrderBloc>()
                           .add(PlaceOrderEvent.productDetailsPick(
@@ -222,6 +219,8 @@ class _DateOrTimeState extends State<DateOrTime> {
                       context
                           .read<PlaceOrderBloc>()
                           .add(const PlaceOrderEvent.orderPlacing());
+                      secondtabScreensNotifier.value = 5;
+                      secondtabScreensNotifier.notifyListeners();
                     } else {
                       showSnack(
                           context: context,

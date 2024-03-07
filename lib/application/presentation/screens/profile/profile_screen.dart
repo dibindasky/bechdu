@@ -206,7 +206,7 @@ class ScreenProfile extends StatelessWidget {
       arguments: LoginWay.fromInitial,
     ).then((value) {
       context.read<NavbarCubit>().changeNavigationIndex(0);
-      context.read<AuthBloc>().add(const LogOut());
+      context.read<AuthBloc>().add(const AuthEvent.logOut());
       secondtabScreensNotifier.value = 0;
       secondtabScreensNotifier.notifyListeners();
       brandSeriesProductValueNotifier.value = 0;

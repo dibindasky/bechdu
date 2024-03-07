@@ -4,6 +4,7 @@ import 'dart:developer';
 import 'package:beachdu/application/business_logic/brands_bloc/category_bloc_bloc.dart';
 import 'package:beachdu/application/business_logic/home_bloc/home_bloc.dart';
 import 'package:beachdu/application/business_logic/navbar/navbar_cubit.dart';
+import 'package:beachdu/application/business_logic/question_tab/question_tab_bloc.dart';
 import 'package:beachdu/application/presentation/screens/product_selection/product_screen.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
@@ -60,6 +61,7 @@ class _CaurosalViewHomePageOffersState
                             data[index].heading!.replaceAll('<br/>', '');
                         return InkWell(
                           onTap: () {
+                            context.read<QuestionTabBloc>().newList.clear();
                             context
                                 .read<CategoryBlocBloc>()
                                 .add(GetSingleCategoryBrands(
@@ -108,13 +110,16 @@ class _CaurosalViewHomePageOffersState
                                         ClipRRect(
                                           borderRadius: kRadius5,
                                           child: ColoredBox(
-                                            color: kRedLight,
+                                            color: kBlueLight,
                                             child: Padding(
                                               padding:
                                                   const EdgeInsets.all(3.0),
                                               child: Text(
                                                 '${data[index].buttonText}',
-                                                style: textHeadSemiBold1,
+                                                style:
+                                                    textHeadSemiBold1.copyWith(
+                                                  color: kWhite,
+                                                ),
                                               ),
                                             ),
                                           ),

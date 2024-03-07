@@ -129,7 +129,7 @@ class LocationBloc extends Bloc<LocationEvent, LocationState> {
     data.fold((falure) => null, (successPincode) async {
       emit(
         state.copyWith(
-          message: successPincode.message,
+          message: 'Pincode updation successfully',
           pincodeUpdateResponceModel: successPincode,
           isLogin: loginStatus,
         ),

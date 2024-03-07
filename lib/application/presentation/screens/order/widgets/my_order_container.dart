@@ -11,10 +11,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pinput/pinput.dart';
 
 class MyOrderContainer extends StatelessWidget {
-  const MyOrderContainer({
-    super.key,
-    required this.index,
-  });
+  const MyOrderContainer({super.key, required this.index});
 
   final int index;
 
@@ -83,13 +80,6 @@ class MyOrderContainer extends StatelessWidget {
                 ],
               ),
               kHeight10,
-              RowDatas(
-                isRow: false,
-                heading: 'Pickup Partner',
-                imageFirst: 'assets/images/order_hand.png',
-                subHead: 'Mukesh Sharma',
-                date: '${data.pickUpDetails!.date}',
-              ),
               kHeight10,
               RowDatas(
                 isRow: false,
@@ -113,63 +103,87 @@ class MyOrderContainer extends StatelessWidget {
                 heading: 'Payment Method',
                 subHead: type ?? '',
                 imageFirst: paymentMethodIcon,
-                date: '',
+                date: data.payment?.id ?? '',
               ),
               kHeight10,
-              data.status == 'new'
-                  ? Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        CustomButton(
-                          fontSize: 11,
-                          height: 30,
-                          width: 100,
-                          text: 'Cancel Order',
-                          onPressed: () {
-                            cancelOrder(
-                              context,
-                              onPressed: () {
-                                if (context
-                                        .read<PlaceOrderBloc>()
-                                        .cancelationReasonController
-                                        .length >
-                                    10) {
-                                  //Order cancelation event
-                                  OrderCancelationRequestModel
-                                      orderCancelationRequestModel =
-                                      OrderCancelationRequestModel(
-                                    cancellationReason: context
-                                        .read<PlaceOrderBloc>()
-                                        .cancelationReasonController
-                                        .text,
-                                  );
-                                  context.read<PlaceOrderBloc>().add(
-                                        PlaceOrderEvent.orderCancel(
-                                          orderCancelationRequestModel:
-                                              orderCancelationRequestModel,
-                                          orderId: data.id!,
-                                        ),
-                                      );
-                                  context
-                                      .read<PlaceOrderBloc>()
-                                      .cancelationReasonController
-                                      .clear();
-                                  Navigator.of(context).pop();
-                                } else {
-                                  showSnack(
-                                    context: context,
-                                    message:
-                                        'Cancellation reason must have atleast 10 charectors',
-                                  );
-                                }
-                              },
-                            );
-                          },
+              Padding(
+                padding: const EdgeInsets.only(left: 22),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    ClipRRect(
+                      borderRadius: kRadius5,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 10,
+                          vertical: 5,
                         ),
-                        kWidth10,
-                      ],
-                    )
-                  : kEmpty,
+                        child: Text(
+                          '  ${data.orderId}  ',
+                          style: textHeadBold1.copyWith(
+                            fontSize: 16,
+                          ),
+                        ),
+                      ),
+                    ),
+                    data.status == 'new'
+                        ? Row(
+                            children: [
+                              CustomButton(
+                                fontSize: 11,
+                                height: 30,
+                                width: 100,
+                                text: 'Cancel Order',
+                                onPressed: () {
+                                  cancelOrder(
+                                    context,
+                                    onPressed: () {
+                                      if (context
+                                              .read<PlaceOrderBloc>()
+                                              .cancelationReasonController
+                                              .length >
+                                          10) {
+                                        //Order cancelation event
+                                        OrderCancelationRequestModel
+                                            orderCancelationRequestModel =
+                                            OrderCancelationRequestModel(
+                                          cancellationReason: context
+                                              .read<PlaceOrderBloc>()
+                                              .cancelationReasonController
+                                              .text,
+                                        );
+                                        context.read<PlaceOrderBloc>().add(
+                                              PlaceOrderEvent.orderCancel(
+                                                orderCancelationRequestModel:
+                                                    orderCancelationRequestModel,
+                                                orderId: data.id!,
+                                              ),
+                                            );
+                                        context
+                                            .read<PlaceOrderBloc>()
+                                            .cancelationReasonController
+                                            .clear();
+                                        Navigator.of(context).pop();
+                                      } else {
+                                        showSnack(
+                                          context: context,
+                                          message:
+                                              'Cancellation reason must have atleast 10 charectors',
+                                        );
+                                      }
+                                    },
+                                  );
+                                },
+                              ),
+                              kWidth10,
+                            ],
+                          )
+                        : data.status == 'Completed'
+                            ? const Icon(Icons.arrow_drop_down_circle_rounded)
+                            : kEmpty
+                  ],
+                ),
+              ),
               kHeight10,
             ],
           ),

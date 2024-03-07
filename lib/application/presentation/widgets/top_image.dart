@@ -65,9 +65,7 @@ class TopImage extends StatelessWidget {
                           width: fromWhere == FromWhere.checkoutAndPickupScreen
                               ? sWidth * .4
                               : sWidth * .23,
-                          child: Image.network(
-                            url,
-                          ),
+                          child: Image.network(url),
                         ),
                         fromWhere == FromWhere.pickupScreen ||
                                 fromWhere == FromWhere.checkoutAndPickupScreen

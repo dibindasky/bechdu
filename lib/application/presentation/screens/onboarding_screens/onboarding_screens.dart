@@ -1,6 +1,7 @@
 import 'package:beachdu/application/presentation/routes/routes.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
+import 'package:beachdu/application/presentation/utils/custom_button.dart';
 import 'package:beachdu/application/presentation/utils/enums/type_display.dart';
 import 'package:flutter/material.dart';
 
@@ -70,12 +71,8 @@ class _BechDuUserOnBoardingScreensState
       onTap: () {
         if (selectedIndex < totalPages - 1) {
           _pageController.nextPage(
-              duration: const Duration(milliseconds: 500),
-              curve: Curves.easeInOut);
-        } else {
-          Navigator.of(context).pushReplacementNamed(
-            Routes.signInOrLogin,
-            arguments: LoginWay.fromInitial,
+            duration: const Duration(milliseconds: 500),
+            curve: Curves.easeInOut,
           );
         }
       },
@@ -195,13 +192,23 @@ class _BechDuUserOnBoardingScreensState
                 ],
               ),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: List.generate(
-                totalPages,
-                (index) => buildPageIndicator(index),
-              ),
-            ),
+            selectedIndex == 2
+                ? CustomButton(
+                    onPressed: () {
+                      Navigator.of(context).pushReplacementNamed(
+                        Routes.signInOrLogin,
+                        arguments: LoginWay.fromInitial,
+                      );
+                    },
+                    text: 'Get Started',
+                  )
+                : Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: List.generate(
+                      totalPages,
+                      (index) => buildPageIndicator(index),
+                    ),
+                  ),
           ],
         ),
       ),
@@ -210,11 +217,10 @@ class _BechDuUserOnBoardingScreensState
 
   Widget buildPageIndicator(int index) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 4),
-      child: CircleAvatar(
-        radius: selectedIndex == index ? 7 : 3,
-        backgroundColor: selectedIndex == index ? kGreenPrimary : kBlack,
-      ),
-    );
+        padding: const EdgeInsets.symmetric(horizontal: 4),
+        child: CircleAvatar(
+          radius: selectedIndex == index ? 7 : 3,
+          backgroundColor: selectedIndex == index ? kGreenPrimary : kBlack,
+        ));
   }
 }

@@ -15,6 +15,7 @@ class PlaceOrderEvent with _$PlaceOrderEvent {
     required String orderId,
   }) = OrderCancel;
   const factory PlaceOrderEvent.userDetailsPick({
+    required Promo promo,
     required User user,
   }) = UserDetailsPick;
   const factory PlaceOrderEvent.productDetailsPick({

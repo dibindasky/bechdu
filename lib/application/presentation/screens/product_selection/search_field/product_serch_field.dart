@@ -29,7 +29,10 @@ class ProductSearchField extends StatelessWidget {
   Widget buildDropdown(List<Brands> brands, BuildContext context) {
     return TextFormField(
       onChanged: (value) {
-        context.read<CategoryBlocBloc>().add(ProductSearch(searchQuery: value));
+        context
+            .read<CategoryBlocBloc>()
+            .add(CategoryBlocEvent.seriesSearch(searchQuery: value));
+        //context.read<CategoryBlocBloc>().add(ProductSearch(searchQuery: value));
       },
       style: textHeadBold1.copyWith(fontSize: sWidth * .04),
       decoration: InputDecoration(

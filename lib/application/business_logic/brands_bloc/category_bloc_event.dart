@@ -11,6 +11,9 @@ class CategoryBlocEvent with _$CategoryBlocEvent {
   const factory CategoryBlocEvent.brandSearch({
     required String searchQuery,
   }) = BrandSearch;
+  const factory CategoryBlocEvent.seriesSearch({
+    required String searchQuery,
+  }) = SeriesSearch;
   const factory CategoryBlocEvent.getProducts({
     required String categoryType,
     required String brandName,

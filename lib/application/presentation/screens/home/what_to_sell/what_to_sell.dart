@@ -5,6 +5,7 @@ import 'package:beachdu/application/business_logic/brands_bloc/category_bloc_blo
 import 'package:beachdu/application/business_logic/home_bloc/home_bloc.dart';
 import 'package:beachdu/application/business_logic/navbar/navbar_cubit.dart';
 import 'package:beachdu/application/business_logic/place_order/place_order_bloc.dart';
+import 'package:beachdu/application/business_logic/question_tab/question_tab_bloc.dart';
 import 'package:beachdu/application/presentation/screens/product_selection/product_screen.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
@@ -62,6 +63,7 @@ class WhatToSellWidget extends StatelessWidget {
                           RegExp(r'data:image/[^;]+;base64,'), '');
                       return InkWell(
                         onTap: () {
+                          context.read<QuestionTabBloc>().newList.clear();
                           context
                               .read<CategoryBlocBloc>()
                               .add(GetSingleCategoryBrands(

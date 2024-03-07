@@ -34,9 +34,21 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
     on<GetProducts>(getProducts);
     on<ProductSearch>(productSearch);
     on<GetSeries>(getSeries);
+    on<SeriesSearch>(seriesSearch);
     on<GetModels>(getModels);
     on<GetVarients>(getVarients);
     on<SelectedProduct>(selectedProdct);
+  }
+
+  FutureOr<void> seriesSearch(SeriesSearch event, emit) {
+    final String searchQuery = event.searchQuery.toLowerCase();
+    final List<String> filteredSeries = series.where((item) {
+      final String series = item;
+      return series.contains(searchQuery);
+    }).toList();
+    emit(state.copyWith(
+      filteredSeries: filteredSeries,
+    ));
   }
 
   FutureOr<void> productSearch(
@@ -149,15 +161,6 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
         isLoading: false,
         hasError: true,
       ));
-      log('${failure.message}');
-      try {
-        dropDownItems[0].clear();
-        dropDownItems[1].clear();
-        dropDownItems[2].clear();
-        log('dropdwon items $dropDownItems');
-      } catch (e) {
-        print(e);
-      }
     }, (getproducts) {
       productList.clear();
       for (Product element in getproducts.products!) {
@@ -177,6 +180,7 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
       isLoading: true,
       hasError: false,
     ));
+
     final data = await brandsRepository.getSeries(
       brandName: event.brandName,
       categoryType: event.categoryType,
@@ -190,24 +194,12 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
         hasError: true,
       ));
     }, (getSeriesSuccess) {
-      try {
-        dropDownItems[0].clear();
-        dropDownItems[1].clear();
-        dropDownItems[2].clear();
-        //print(dropDownItems);
-      } catch (e) {
-        // print(e);
-      }
-      dropDownItems[0].addAll(getSeriesSuccess);
-      log('getSeriesSuccess bloc list $dropDownItems');
-
       emit(state.copyWith(
         hasError: false,
         isLoading: false,
         allItems: dropDownItems,
-        series: getSeriesSuccess,
+        filteredSeries: getSeriesSuccess,
       ));
-      log("getSeries bloc dropDownItems length $dropDownItems");
     });
   }
 
@@ -221,19 +213,6 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
     emit(state.copyWith(
       getProductsResponceModel: GetProductsRespoceModel(products: temp),
     ));
-    // final data = await brandsRepository.getModles(
-    //   categoryType: event.categoryType,
-    //   brandName: event.brandName,
-    //   seriesName: event.seriesName,
-    // );
-    // data.fold((failure) {
-    //   emit(state.copyWith(
-    //     hasError: true,
-    //     isLoading: false,
-    //   ));
-    // }, (getModelSucces) {
-    //   emit(state.copyWith());
-    // });
   }
 
   FutureOr<void> getModels(GetModels event, emit) async {

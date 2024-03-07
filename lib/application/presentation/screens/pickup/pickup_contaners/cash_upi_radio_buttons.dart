@@ -10,9 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CashOrUPI extends StatefulWidget {
-  const CashOrUPI({
-    super.key,
-  });
+  const CashOrUPI({super.key});
 
   @override
   State<CashOrUPI> createState() => _CashOrUPIState();

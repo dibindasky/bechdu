@@ -176,6 +176,10 @@ class QuestionTabBloc extends Bloc<QuestionTabEvent, QuestionTabState> {
 
   FutureOr<void> abandentOrder(AbandentOrder event, emit) async {
     emit(state.copyWith(isLoading: true, hasError: false));
+    final location = await SecureSotrage.getSelectedLocation();
+    final pincode = await SecureSotrage.getSelectedPincode();
+    event.abandendOrderRequestModel.abendendOrderUser!.city = location;
+    event.abandendOrderRequestModel.abendendOrderUser!.pincode = pincode;
     final data = await questionRepo.abandendOrder(
       abandendOrderRequestModel: event.abandendOrderRequestModel,
     );

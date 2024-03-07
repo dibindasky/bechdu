@@ -10,6 +10,7 @@ import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/application/presentation/utils/custom_button.dart';
 import 'package:beachdu/application/presentation/utils/snackbar/snackbar.dart';
 import 'package:beachdu/application/presentation/utils/validators.dart';
+import 'package:beachdu/domain/model/order_model/order_placed_request_model/promo.dart';
 import 'package:beachdu/domain/model/order_model/order_placed_request_model/user.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -21,13 +22,13 @@ class PersonalDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     WidgetsBinding.instance.addPostFrameCallback(
       (timeStamp) {
-        context.read<ProfileBloc>().add(ProfileEvent.getUserInfo());
+        context.read<ProfileBloc>().add(const ProfileEvent.getUserInfo());
         context.read<PlaceOrderBloc>().add(const PlaceOrderEvent.userNumber());
       },
     );
     return SizedBox(
       child: BlocBuilder<ProfileBloc, ProfileState>(
-        builder: (context, state) {
+        builder: (context, profileState) {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -38,7 +39,7 @@ class PersonalDetails extends StatelessWidget {
                 ),
               ),
               TTextFormField(
-                controller: state.addressCreationResponceModel != null
+                controller: profileState.addressCreationResponceModel != null
                     ? context.read<ProfileBloc>().profileNameController
                     : context.read<PlaceOrderBloc>().nameController,
                 text: 'Enter name',
@@ -50,7 +51,7 @@ class PersonalDetails extends StatelessWidget {
                 ),
               ),
               TTextFormField(
-                controller: state.addressCreationResponceModel != null
+                controller: profileState.addressCreationResponceModel != null
                     ? context.read<ProfileBloc>().profileEmailController
                     : context.read<PlaceOrderBloc>().emailController,
                 text: 'Enter email',
@@ -92,7 +93,7 @@ class PersonalDetails extends StatelessWidget {
                 ),
               ),
               TTextFormField(
-                controller: state.addressCreationResponceModel != null
+                controller: profileState.addressCreationResponceModel != null
                     ? context.read<ProfileBloc>().profileAddPhoneController
                     : context.read<PlaceOrderBloc>().additionalNumberController,
                 inputType: TextInputType.number,
@@ -100,77 +101,101 @@ class PersonalDetails extends StatelessWidget {
               ),
               Align(
                 alignment: Alignment.center,
-                child: CustomButton(
-                  onPressed: () {
-                    if (context
-                            .read<PlaceOrderBloc>()
-                            .emailController
-                            .text
-                            .isEmpty &&
-                        context
-                            .read<PlaceOrderBloc>()
-                            .nameController
-                            .text
-                            .isEmpty) {
-                      showSnack(
-                        context: context,
-                        message: 'Please fill required feilds',
-                        color: kRed,
-                      );
-                    } else {
-                      String email =
-                          context.read<PlaceOrderBloc>().emailController.text;
-                      String name =
-                          context.read<PlaceOrderBloc>().nameController.text;
-                      String addPhone = context
-                          .read<PlaceOrderBloc>()
-                          .additionalNumberController
-                          .text;
+                child: BlocBuilder<PlaceOrderBloc, PlaceOrderState>(
+                  builder: (context, placeOrderBloc) {
+                    return CustomButton(
+                      onPressed: () {
+                        if (context
+                                .read<PlaceOrderBloc>()
+                                .emailController
+                                .text
+                                .isEmpty &&
+                            context
+                                .read<PlaceOrderBloc>()
+                                .nameController
+                                .text
+                                .isEmpty) {
+                          showSnack(
+                            context: context,
+                            message: 'Please fill required feilds',
+                            color: kRed,
+                          );
+                        } else {
+                          String email = context
+                              .read<PlaceOrderBloc>()
+                              .emailController
+                              .text;
+                          String name = context
+                              .read<PlaceOrderBloc>()
+                              .nameController
+                              .text;
+                          String addPhone = context
+                              .read<PlaceOrderBloc>()
+                              .additionalNumberController
+                              .text;
 
-                      if (addPhone.isNotEmpty &&
-                          !isValidPhoneNumber(addPhone)) {
-                        showSnack(
-                          context: context,
-                          message: 'Not valid additional number',
-                          color: kRed,
-                        );
-                      }
+                          if (addPhone.isNotEmpty &&
+                              !isValidPhoneNumber(addPhone)) {
+                            showSnack(
+                              context: context,
+                              message: 'Not valid additional number',
+                              color: kRed,
+                            );
+                          }
 
-                      if (name.length < 3) {
-                        showSnack(
-                          context: context,
-                          message: 'Not a valid name',
-                          color: kRed,
-                        );
-                        return;
-                      }
+                          if (name.length < 3) {
+                            showSnack(
+                              context: context,
+                              message: 'Not a valid name',
+                              color: kRed,
+                            );
+                            return;
+                          }
 
-                      if (!isValidEmail(email)) {
-                        showSnack(
-                          context: context,
-                          message: 'Not a valid email',
-                          color: kRed,
-                        );
-                        return;
-                      }
+                          if (!isValidEmail(email)) {
+                            showSnack(
+                              context: context,
+                              message: 'Not a valid email',
+                              color: kRed,
+                            );
+                            return;
+                          }
 
-                      User user = User(
-                        email: email,
-                        name: name,
-                        addPhone: addPhone.isEmpty ? '' : addPhone,
-                      );
+                          User user = User(
+                            email: email,
+                            name: name,
+                            addPhone: addPhone.isEmpty ? '' : addPhone,
+                          );
 
-                      context
-                          .read<PlaceOrderBloc>()
-                          .add(PlaceOrderEvent.userDetailsPick(user: user));
+                          Promo promo = Promo(
+                            code: placeOrderBloc.promoCodeResponceModel != null
+                                ? context
+                                    .read<PlaceOrderBloc>()
+                                    .promocodeController
+                                    .text
+                                : '',
+                            price: placeOrderBloc.promoCodeResponceModel != null
+                                ? placeOrderBloc.promoCodeResponceModel!.value
+                                    .toString()
+                                : '',
+                          );
 
-                      // Update the value of pickupDetailChangeNotifier
-                      pickupDetailChangeNotifier.value =
-                          PickupDetailContainers.address;
-                      pickupDetailChangeNotifier.notifyListeners();
-                    }
+                          context
+                              .read<PlaceOrderBloc>()
+                              .add(PlaceOrderEvent.userDetailsPick(
+                                user: user,
+                                promo: promo,
+                              ));
+
+                          // Update the value of pickupDetailChangeNotifier
+                          pickupDetailChangeNotifier.value =
+                              PickupDetailContainers.address;
+                          pickupDetailChangeNotifier.notifyListeners();
+                        }
+                      },
+                      text: 'Continue',
+                    );
                   },
-                  text: 'Continue',
                 ),
               ),
             ],

@@ -1,3 +1,4 @@
+import 'package:beachdu/application/business_logic/auth/auth_bloc.dart';
 import 'package:beachdu/application/business_logic/navbar/navbar_cubit.dart';
 import 'package:beachdu/application/business_logic/place_order/place_order_bloc.dart';
 import 'package:beachdu/application/presentation/screens/order/widgets/my_order_container.dart';
@@ -32,28 +33,36 @@ class ScreenMyOrders extends StatelessWidget {
         ),
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 5),
-          child: BlocBuilder<PlaceOrderBloc, PlaceOrderState>(
+          child: BlocBuilder<AuthBloc, AuthState>(
             builder: (context, state) {
-              if (state.isLoading) {
-                return const Skeleton(
-                  crossAxisCount: 1,
-                  itemCount: 5,
-                  height: 50,
-                );
-              }
-              if (state.hasError) {
+              if (!state.logOrNot) {
                 return Lottie.asset(emptyLottie);
-              } else {
-                if (state.getAllOrderResponceModel == null) {
-                  return Lottie.asset(emptyLottie);
-                } else {
-                  return ListView.builder(
-                    itemCount: state.getAllOrderResponceModel!.orders!.length,
-                    itemBuilder: (context, index) =>
-                        MyOrderContainer(index: index),
-                  );
-                }
               }
+              return BlocBuilder<PlaceOrderBloc, PlaceOrderState>(
+                builder: (context, state) {
+                  if (state.isLoading) {
+                    return const Skeleton(
+                      crossAxisCount: 1,
+                      itemCount: 5,
+                      height: 50,
+                    );
+                  }
+                  if (state.hasError) {
+                    return Lottie.asset(emptyLottie);
+                  } else {
+                    if (state.getAllOrderResponceModel == null) {
+                      return Lottie.asset(emptyLottie);
+                    } else {
+                      return ListView.builder(
+                        itemCount:
+                            state.getAllOrderResponceModel!.orders!.length,
+                        itemBuilder: (context, index) =>
+                            MyOrderContainer(index: index),
+                      );
+                    }
+                  }
+                },
+              );
             },
           ),
         ),

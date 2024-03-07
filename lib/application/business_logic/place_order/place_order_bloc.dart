@@ -45,22 +45,13 @@ class PlaceOrderBloc extends Bloc<PlaceOrderEvent, PlaceOrderState> {
     on<GetOrders>(getOrders);
     on<OrderCancel>(orderCancel);
     on<ProductDetailsPick>(productDetailsPick);
-    on<PromoCodePick>(promocodePick);
     on<UserDetailsPick>(userDetailsPick);
     on<AddressPick>(addressPick);
     on<PaymentOption>(paymentOption);
     on<PickupDetailsPick>(pickupDetailsPick);
     on<UserNumber>(userNumber);
     on<RemoveAllFieldData>(removeAllFeildData);
-    // on<SelectedOptionEvent>(selectedOptionNewEvent);
   }
-
-  // FutureOr<void> selectedOptionNewEvent(SelectedOptionEvent event, emit) {
-  //   for (var element in event.selectedOption) {
-  //     state.selectedNewOptions!.add(element);
-  //   }
-  //   log('PlaceOrderBloc selectedOptionNewEvent selectedOption length ${state.selectedNewOptions!.length}');
-  // }
 
   FutureOr<void> removeAppliedPromo(RemoveAppliedPromo event, emit) {
     promocodeController.clear();
@@ -105,14 +96,6 @@ class PlaceOrderBloc extends Bloc<PlaceOrderEvent, PlaceOrderState> {
   FutureOr<void> userNumber(UserNumber event, emit) async {
     final number = await SecureSotrage.getNumber();
     emit(state.copyWith(number: number));
-  }
-
-  FutureOr<void> promocodePick(PromoCodePick event, emit) {
-    state.orderPlacedRequestModel.promo = event.promo;
-    emit(state.copyWith(
-      orderPlacedRequestModel: state.orderPlacedRequestModel,
-    ));
-    log('promoPick ${event.promo.code} ${event.promo.price}');
   }
 
   FutureOr<void> getOrders(GetOrders event, emit) async {
@@ -162,17 +145,30 @@ class PlaceOrderBloc extends Bloc<PlaceOrderEvent, PlaceOrderState> {
   }
 
   FutureOr<void> addressPick(AddressPick event, emit) {
-    state.orderPlacedRequestModel.user!.address = event.user.address;
+    state.orderPlacedRequestModel.user = event.user;
+    log('addressPick event bloc event.user ${event.user.address}');
+    log('addressPick event bloc state.orderPlacedRequestModel.user ${state.orderPlacedRequestModel.user?.address}');
     emit(state.copyWith(
       orderPlacedRequestModel: state.orderPlacedRequestModel,
     ));
   }
 
   FutureOr<void> userDetailsPick(UserDetailsPick event, emit) async {
+    OrderPlacedRequestModel orderPlacedRequestModel = OrderPlacedRequestModel(
+      promo: event.promo,
+      user: event.user,
+      productDetails: state.orderPlacedRequestModel.productDetails,
+      payment: state.orderPlacedRequestModel.payment,
+      pickUpDetails: state.orderPlacedRequestModel.pickUpDetails,
+    );
+
     state.orderPlacedRequestModel.user = event.user;
-    log('user name userDetailsPick event ${event.user.name}');
+    state.orderPlacedRequestModel.promo = event.promo;
+    log('userDetailsPick event bloc event.user addre >${event.user.address} email >${event.user.email} name >${event.user.name}');
+    log('userDetailsPick event bloc event.promo code >${event.promo.code} price >${event.promo.price}');
+    log('userDetailsPick event bloc state.orderPlacedRequestModel.user ${state.orderPlacedRequestModel.user}');
     emit(state.copyWith(
-      orderPlacedRequestModel: state.orderPlacedRequestModel,
+      orderPlacedRequestModel: orderPlacedRequestModel,
     ));
   }
 
@@ -181,13 +177,6 @@ class PlaceOrderBloc extends Bloc<PlaceOrderEvent, PlaceOrderState> {
     state.orderPlacedRequestModel.user!.phone = number;
     emit(state.copyWith(isLoading: true, hasError: false));
     var orderModel = state.orderPlacedRequestModel;
-    orderModel.promo = state.promoCodeResponceModel != null
-        ? Promo(
-            code: promocodeController.text,
-            price: state.promoCodeResponceModel!.value.toString(),
-          )
-        : Promo(code: '', price: '');
-    log("orderPlacing orderModel items ${orderModel.toJson()}");
 
     final data = await placeOrderRepo.orderPlacing(
       orderPlacedRequestModel: orderModel,
@@ -205,7 +194,6 @@ class PlaceOrderBloc extends Bloc<PlaceOrderEvent, PlaceOrderState> {
           hasError: false,
           isLoading: false,
           message: orderPlacingSuccess.message,
-          orderPlacedResponceModel: orderPlacingSuccess,
         ),
       );
       add(const PlaceOrderEvent.getOrders());

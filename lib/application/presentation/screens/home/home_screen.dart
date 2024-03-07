@@ -23,7 +23,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
 
 ValueNotifier<int> homeScreens = ValueNotifier(0);
-List<Widget> homeScreenList = [];
 
 class ScreenHome extends StatefulWidget {
   const ScreenHome({super.key});
@@ -47,8 +46,7 @@ class _ScreenHomeState extends State<ScreenHome> {
   _scrollCallBack() {
     log('scrollController outside condition');
     if (scrollController.position.pixels ==
-            scrollController.position.maxScrollExtent &&
-        !context.read<HomeBloc>().isScrollLoading) {
+        scrollController.position.maxScrollExtent) {
       context.read<HomeBloc>().add(const HomeEvent.nextPage());
       log('scrollController');
     }
@@ -123,10 +121,12 @@ class _ScreenHomeState extends State<ScreenHome> {
                         ScaffoldMessenger.of(context)
                             .showMaterialBanner(noInternetBanner());
                       } else {
-                        WidgetsBinding.instance.addPostFrameCallback((_) {
-                          ScaffoldMessenger.of(context)
-                              .hideCurrentMaterialBanner();
-                        });
+                        WidgetsBinding.instance.addPostFrameCallback(
+                          (_) {
+                            ScaffoldMessenger.of(context)
+                                .hideCurrentMaterialBanner();
+                          },
+                        );
                       }
                     },
                     child: BlocBuilder<HomeBloc, HomeState>(
@@ -169,8 +169,7 @@ class _ScreenHomeState extends State<ScreenHome> {
                                 if (value == 0) {
                                   return const AfterSearchWidgets();
                                 } else {
-                                  return GlobalProductSearch(
-                                      scrollController: scrollController);
+                                  return const GlobalProductSearch();
                                 }
                               },
                             ),
@@ -210,12 +209,16 @@ class AfterSearchWidgets extends StatelessWidget {
   }
 }
 
-class GlobalProductSearch extends StatelessWidget {
+class GlobalProductSearch extends StatefulWidget {
   const GlobalProductSearch({
     super.key,
-    required this.scrollController,
   });
-  final ScrollController scrollController;
+
+  @override
+  State<GlobalProductSearch> createState() => _GlobalProductSearchState();
+}
+
+class _GlobalProductSearchState extends State<GlobalProductSearch> {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<HomeBloc, HomeState>(
@@ -232,7 +235,7 @@ class GlobalProductSearch extends StatelessWidget {
             child: Column(
               children: [
                 GridView.builder(
-                  // controller: scrollController,
+                  //controller: widget.scrollController,
                   physics: const NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
                   itemCount:
@@ -254,6 +257,7 @@ class GlobalProductSearch extends StatelessWidget {
                     )}";
                     return GestureDetector(
                       onTap: () {
+                        context.read<QuestionTabBloc>().newList.clear();
                         context
                             .read<QuestionTabBloc>()
                             .add(QuestionTabEvent.getQuestions(
