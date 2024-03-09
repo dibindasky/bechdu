@@ -8,6 +8,7 @@ class PlaceOrderEvent with _$PlaceOrderEvent {
   const factory PlaceOrderEvent.abandendOrder({
     required AbandendOrderRequestModel abandendOrderRequestModel,
   }) = AbandendOrder;
+  const factory PlaceOrderEvent.getDatetime() = GetDatetime;
   const factory PlaceOrderEvent.orderPlacing() = OrderPlacing;
   const factory PlaceOrderEvent.getOrders() = GetOrders;
   const factory PlaceOrderEvent.orderCancel({

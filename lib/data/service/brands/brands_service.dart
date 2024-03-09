@@ -46,17 +46,14 @@ class BrandsService implements BrandsRepository {
   Future<Either<Failure, GetProductsRespoceModel>> getProducts({
     required String categoryType,
     required String brandName,
+    required String seriesName,
   }) async {
     try {
       final responce = await _dio.get(
-        '${ApiEndPoints.getProducts}$categoryType/$brandName',
+        '${ApiEndPoints.getProducts}$categoryType/$brandName/$seriesName',
       );
-      if (responce.statusCode == 200) {
-        return Right(GetProductsRespoceModel.fromJson(responce.data));
-      } else {
-        log('getProducts DioException ${responce.statusCode}');
-        return Left(Failure(message: 'errorMessage'));
-      }
+      log('getProducts data ${responce.data}');
+      return Right(GetProductsRespoceModel.fromJson(responce.data));
     } on DioException catch (e) {
       log('getProducts DioException ${e.response?.statusCode}');
       return Left(Failure(message: e.message ?? errorMessage));

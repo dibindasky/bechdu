@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:beachdu/application/business_logic/brands_bloc/category_bloc_bloc.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
@@ -53,33 +51,14 @@ class _DropDownBuilderState extends State<DropDownBuilder> {
           setState(() {
             selected = value;
           });
-          log('selected Series $selected');
-          switch (widget.index) {
-            case 0:
-              context.read<CategoryBlocBloc>().add(
-                    GetModels(
-                      brandName: context.read<CategoryBlocBloc>().barndName ??
-                          'mobile',
-                      categoryType:
-                          context.read<CategoryBlocBloc>().categoryType!,
-                      seriesName: context.read<CategoryBlocBloc>().seriesName!,
-                    ),
-                  );
-              break;
-            case 1:
-              context.read<CategoryBlocBloc>().add(
-                    GetVarients(
-                      brandName: context.read<CategoryBlocBloc>().barndName!,
-                      categoryType:
-                          context.read<CategoryBlocBloc>().categoryType!,
-                      seriesName: 'I Phone 7',
-                      model: 'I Phone 7 Plus',
-                    ),
-                  );
-              break;
-            default:
-              null;
-          }
+          context.read<CategoryBlocBloc>().add(
+                GetVarients(
+                  brandName: context.read<CategoryBlocBloc>().barndName!,
+                  categoryType: context.read<CategoryBlocBloc>().categoryType!,
+                  seriesName: 'I Phone 7',
+                  model: 'I Phone 7 Plus',
+                ),
+              );
         },
         value: selected,
         buttonStyleData: ButtonStyleData(

@@ -60,7 +60,13 @@ class MyOrderContainer extends StatelessWidget {
                   ClipRRect(
                     borderRadius: kRadius5,
                     child: ColoredBox(
-                      color: kRedLight.withOpacity(0.2),
+                      color: data.status == 'new'
+                          ? kBlueLight
+                          : data.status == 'cancelled'
+                              ? kRed
+                              : data.status == 'processing'
+                                  ? Colors.yellow
+                                  : kGreenLight,
                       child: Padding(
                         padding: const EdgeInsets.symmetric(
                           horizontal: 10,
@@ -69,7 +75,7 @@ class MyOrderContainer extends StatelessWidget {
                         child: Text(
                           '${data.status}',
                           style: textHeadRegular1.copyWith(
-                            color: kRedLight.withOpacity(0.9),
+                            color: kWhite,
                             fontSize: sWidth * .03,
                           ),
                         ),

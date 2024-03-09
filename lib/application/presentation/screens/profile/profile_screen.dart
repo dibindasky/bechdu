@@ -81,13 +81,13 @@ class ScreenProfile extends StatelessWidget {
               builder: (context, state) {
                 if (!state.logOrNot) {
                   return AlertDialog(
-                    backgroundColor: klightGreen,
+                    backgroundColor: kWhiteextra,
                     title: Text(
                       'You are not logged in',
                       style: textHeadBoldBig,
                     ),
                     content: Text(
-                      'You need to login to edit your profile.',
+                      'You need to login to visit your profile.',
                       style: textHeadMedium1,
                     ),
                     actions: [
@@ -108,86 +108,97 @@ class ScreenProfile extends StatelessWidget {
                   );
                 }
                 return SingleChildScrollView(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 15,
-                    ),
-                    child: Column(
-                      children: [
-                        CircleAvatar(
-                          backgroundColor: kGreenPrimary,
-                          radius: 58,
-                          child: CircleAvatar(
-                            backgroundColor: kBluePrimary,
-                            radius: 50,
-                            child: Text(
-                              'SR',
-                              style: textHeadBoldBig.copyWith(
-                                fontSize: sWidth * .1,
-                                color: kWhite,
-                              ),
-                            ),
-                          ),
-                        ),
-                        kHeight30,
-                        const UserInfoFields(),
-                        kHeight20,
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              'Address',
-                              style: textHeadRegular1,
-                            ),
-                            GestureDetector(
-                              onTap: () {
-                                profileScreensNotifier.value = 1;
-                                profileScreensNotifier.notifyListeners();
-                              },
-                              child: const CircleAvatar(
-                                backgroundColor: kBlack,
-                                radius: 12,
-                                child: Icon(
-                                  Icons.add,
+                  child: RefreshIndicator(
+                    onRefresh: () async {
+                      context
+                          .read<PlaceOrderBloc>()
+                          .add(const PlaceOrderEvent.userNumber());
+                      context
+                          .read<ProfileBloc>()
+                          .add(const ProfileEvent.getUserInfo());
+                      Future.delayed(const Duration(seconds: 2));
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 15,
+                      ),
+                      child: Column(
+                        children: [
+                          CircleAvatar(
+                            backgroundColor: kGreenPrimary,
+                            radius: 58,
+                            child: CircleAvatar(
+                              backgroundColor: kBluePrimary,
+                              radius: 50,
+                              child: Text(
+                                'SR',
+                                style: textHeadBoldBig.copyWith(
+                                  fontSize: sWidth * .1,
                                   color: kWhite,
                                 ),
                               ),
                             ),
-                          ],
-                        ),
-                        kHeight20,
-                        const AddressListView(isFromProfile: true),
-                        kHeight30,
-                        GestureDetector(
-                          onTap: () {
-                            showConfirmationDialog(
-                              context,
-                              heading:
-                                  'Are you really want to log out from Bechdu',
-                              onPressed: () async {
-                                await logOut(context);
-                              },
-                            );
-                          },
-                          child: Container(
-                            padding: const EdgeInsets.only(left: 10),
-                            height: 45,
-                            width: double.infinity,
-                            decoration: BoxDecoration(
-                              color: klightwhite,
-                              border: Border.all(color: klightgrey),
-                              borderRadius: kRadius10,
-                            ),
-                            child: Center(
-                              child: Text(
-                                'Log out',
-                                style: textHeadBold1,
+                          ),
+                          kHeight30,
+                          const UserInfoFields(),
+                          kHeight20,
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                'Address',
+                                style: textHeadRegular1,
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  profileScreensNotifier.value = 1;
+                                  profileScreensNotifier.notifyListeners();
+                                },
+                                child: const CircleAvatar(
+                                  backgroundColor: kBlack,
+                                  radius: 12,
+                                  child: Icon(
+                                    Icons.add,
+                                    color: kWhite,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          kHeight20,
+                          const AddressListView(isFromProfile: true),
+                          kHeight30,
+                          GestureDetector(
+                            onTap: () {
+                              showConfirmationDialog(
+                                context,
+                                heading:
+                                    'Are you really want to log out from Bechdu',
+                                onPressed: () async {
+                                  await logOut(context);
+                                },
+                              );
+                            },
+                            child: Container(
+                              padding: const EdgeInsets.only(left: 10),
+                              height: 45,
+                              width: double.infinity,
+                              decoration: BoxDecoration(
+                                color: klightwhite,
+                                border: Border.all(color: klightgrey),
+                                borderRadius: kRadius10,
+                              ),
+                              child: Center(
+                                child: Text(
+                                  'Log out',
+                                  style: textHeadBold1,
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                        kHeight20,
-                      ],
+                          kHeight20,
+                        ],
+                      ),
                     ),
                   ),
                 );
@@ -200,13 +211,14 @@ class ScreenProfile extends StatelessWidget {
   }
 
   Future<void> logOut(BuildContext context) async {
-    await Navigator.pushReplacementNamed(
+    context.read<AuthBloc>().add(const AuthEvent.logOut());
+    Navigator.pushReplacementNamed(
       context,
       Routes.signInOrLogin,
       arguments: LoginWay.fromInitial,
     ).then((value) {
       context.read<NavbarCubit>().changeNavigationIndex(0);
-      context.read<AuthBloc>().add(const AuthEvent.logOut());
+
       secondtabScreensNotifier.value = 0;
       secondtabScreensNotifier.notifyListeners();
       brandSeriesProductValueNotifier.value = 0;

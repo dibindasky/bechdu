@@ -1,9 +1,7 @@
-import 'dart:developer';
 import 'package:beachdu/application/business_logic/location/location_bloc.dart';
-import 'package:beachdu/application/business_logic/place_order/place_order_bloc.dart';
 import 'package:beachdu/application/business_logic/profile/profile_bloc.dart';
 import 'package:beachdu/application/presentation/screens/pickup/pickup_screen.dart';
-import 'package:beachdu/application/presentation/screens/profile/add_address/add_address.dart';
+import 'package:beachdu/application/presentation/screens/profile/add_address/adress_feilds.dart';
 import 'package:beachdu/application/presentation/screens/profile/address_listview.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
@@ -32,7 +30,6 @@ class _StreetAddressState extends State<StreetAddress> {
         builder: (context, state) {
           return Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            //crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const AddressListView(isFromProfile: false),
               kHeight20,
@@ -48,7 +45,6 @@ class _StreetAddressState extends State<StreetAddress> {
                       setState(() {
                         context.read<ProfileBloc>().isShowAddress =
                             !context.read<ProfileBloc>().isShowAddress;
-                        //log('tap value>>>== ${context.read<ProfileBloc>().isShowAddress}');
                       });
                     },
                     child: const CircleAvatar(

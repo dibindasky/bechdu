@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:developer';
 import 'package:beachdu/data/secure_storage/secure_fire_store.dart';
 import 'package:beachdu/domain/model/location/city_update_request_model/city_update_request_model.dart';
 import 'package:beachdu/domain/model/location/city_update_responce_model/city_update_responce_model.dart';
@@ -142,7 +141,7 @@ class LocationBloc extends Bloc<LocationEvent, LocationState> {
   }
 
   FutureOr<void> clear(Clear event, emit) {
-    pincode = '';
-    location = '';
+    pincode = null;
+    location = null;
   }
 }

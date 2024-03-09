@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:developer';
 import 'package:beachdu/application/business_logic/brands_bloc/category_bloc_bloc.dart';
 import 'package:beachdu/application/business_logic/home_bloc/home_bloc.dart';
@@ -7,6 +8,7 @@ import 'package:beachdu/application/business_logic/navbar/navbar_cubit.dart';
 import 'package:beachdu/application/business_logic/question_tab/question_tab_bloc.dart';
 import 'package:beachdu/application/presentation/screens/home/best_selling_devices/recomented_home.dart';
 import 'package:beachdu/application/presentation/screens/home/courosal_top/caurosal_top.dart';
+import 'package:beachdu/application/presentation/screens/home/location/city_choose.dart';
 import 'package:beachdu/application/presentation/screens/home/search_feild/custom_search_field.dart';
 import 'package:beachdu/application/presentation/screens/home/widgets/join_our_team.dart';
 import 'package:beachdu/application/presentation/screens/home/hot_deals/hot_deals.dart';
@@ -17,6 +19,7 @@ import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/application/presentation/utils/confirmation_daillogue/exit_app_dailogue.dart';
 import 'package:beachdu/application/presentation/utils/loading_indicators/loading_indicator.dart';
 import 'package:beachdu/application/presentation/utils/no_internet_banner.dart';
+import 'package:beachdu/data/secure_storage/secure_fire_store.dart';
 import 'package:beachdu/domain/core/api_endpoints/api_endpoints.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -33,6 +36,7 @@ class ScreenHome extends StatefulWidget {
 
 class _ScreenHomeState extends State<ScreenHome> {
   final scrollController = ScrollController();
+  late Timer _locationCheckTimer;
 
   @override
   void initState() {
@@ -40,6 +44,8 @@ class _ScreenHomeState extends State<ScreenHome> {
     scrollController.addListener(() {
       _scrollCallBack();
     });
+    _locationCheckTimer = Timer.periodic(
+        const Duration(seconds: 10), _checkLocationAndShowScreen);
     super.initState();
   }
 
@@ -55,37 +61,24 @@ class _ScreenHomeState extends State<ScreenHome> {
   @override
   void dispose() {
     scrollController.dispose();
+    _locationCheckTimer.cancel();
     super.dispose();
   }
-  // late Timer _locationCheckTimer;
 
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   _locationCheckTimer = Timer.periodic(
-  //       const Duration(seconds: 10), _checkLocationAndShowScreen);
-  // }
-
-  // @override
-  // void dispose() {
-  //   _locationCheckTimer.cancel(); // Cancel timer when widget is disposed
-  //   super.dispose();
-  // }
-
-  // void _checkLocationAndShowScreen(Timer timer) async {
-  //   bool isLocationSelected = await SecureSotrage.getPicodeBool();
-  //   if (!isLocationSelected) {
-  //     _locationCheckTimer.cancel();
-  //     Navigator.of(context).push(MaterialPageRoute(
-  //       builder: (context) => const ScreenLocations(),
-  //     ));
-  //   }
-  // }
+  void _checkLocationAndShowScreen(Timer timer) async {
+    bool isLocationSelected = await SecureSotrage.getPicodeBool();
+    if (!isLocationSelected && homeScreens.value != 1) {
+      _locationCheckTimer.cancel();
+      Navigator.of(context).push(MaterialPageRoute(
+        builder: (context) => const ScreenLocations(),
+      ));
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     WidgetsBinding.instance.addPostFrameCallback(
-      (time) {
+      (timeStamp) {
         context.read<LocationBloc>().add(const LocationEvent.locationPick());
         context.read<HomeBloc>().add(const HomeEvent.homePageBanners());
         context.read<HomeBloc>().add(const HomeEvent.getBestSellingProducts());
@@ -110,75 +103,91 @@ class _ScreenHomeState extends State<ScreenHome> {
         },
         child: Scaffold(
           body: SafeArea(
-            child: SingleChildScrollView(
-              controller: scrollController,
-              child: Stack(
-                children: [
-                  BlocListener<InternetConnectionCheckCubit,
-                      InternetConnectionCheckState>(
-                    listener: (context, state) {
-                      if (state is InternetDisconnected) {
-                        ScaffoldMessenger.of(context)
-                            .showMaterialBanner(noInternetBanner());
-                      } else {
-                        WidgetsBinding.instance.addPostFrameCallback(
-                          (_) {
-                            ScaffoldMessenger.of(context)
-                                .hideCurrentMaterialBanner();
-                          },
-                        );
-                      }
-                    },
-                    child: BlocBuilder<HomeBloc, HomeState>(
-                      builder: (context, state) {
-                        if (state.hasError) {
-                          return Align(
-                            alignment: Alignment.topCenter,
-                            child: IconButton(
-                              onPressed: () {
-                                context
-                                    .read<LocationBloc>()
-                                    .add(const LocationEvent.locationPick());
-                                context
-                                    .read<HomeBloc>()
-                                    .add(const HomeEvent.homePageBanners());
-                                context.read<HomeBloc>().add(
-                                    const HomeEvent.getBestSellingProducts());
-                                context
-                                    .read<CategoryBlocBloc>()
-                                    .add(const GetSingleCategoryBrands());
-                                context
-                                    .read<HomeBloc>()
-                                    .add(const HomeEvent.getAllCategory());
-                              },
-                              icon: const Icon(
-                                Icons.refresh,
-                              ),
-                            ),
+            child: RefreshIndicator(
+              onRefresh: () async {
+                context
+                    .read<LocationBloc>()
+                    .add(const LocationEvent.locationPick());
+                context.read<HomeBloc>().add(const HomeEvent.homePageBanners());
+                context
+                    .read<HomeBloc>()
+                    .add(const HomeEvent.getBestSellingProducts());
+                context
+                    .read<CategoryBlocBloc>()
+                    .add(const GetSingleCategoryBrands());
+                context.read<HomeBloc>().add(const HomeEvent.getAllCategory());
+                await Future.delayed(const Duration(seconds: 2));
+              },
+              child: SingleChildScrollView(
+                controller: scrollController,
+                child: Stack(
+                  children: [
+                    BlocListener<InternetConnectionCheckCubit,
+                        InternetConnectionCheckState>(
+                      listener: (context, state) {
+                        if (state is InternetDisconnected) {
+                          ScaffoldMessenger.of(context)
+                              .showMaterialBanner(noInternetBanner());
+                        } else {
+                          WidgetsBinding.instance.addPostFrameCallback(
+                            (_) {
+                              ScaffoldMessenger.of(context)
+                                  .hideCurrentMaterialBanner();
+                            },
                           );
                         }
-                        return Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            kHeight30,
-                            CustomSearchFieldHome(),
-                            kHeight30,
-                            ValueListenableBuilder(
-                              valueListenable: homeScreens,
-                              builder: (context, value, child) {
-                                if (value == 0) {
-                                  return const AfterSearchWidgets();
-                                } else {
-                                  return const GlobalProductSearch();
-                                }
-                              },
-                            ),
-                          ],
-                        );
                       },
+                      child: BlocBuilder<HomeBloc, HomeState>(
+                        builder: (context, state) {
+                          if (state.hasError) {
+                            return Align(
+                              alignment: Alignment.topCenter,
+                              child: IconButton(
+                                onPressed: () {
+                                  context
+                                      .read<LocationBloc>()
+                                      .add(const LocationEvent.locationPick());
+                                  context
+                                      .read<HomeBloc>()
+                                      .add(const HomeEvent.homePageBanners());
+                                  context.read<HomeBloc>().add(
+                                      const HomeEvent.getBestSellingProducts());
+                                  context
+                                      .read<CategoryBlocBloc>()
+                                      .add(const GetSingleCategoryBrands());
+                                  context
+                                      .read<HomeBloc>()
+                                      .add(const HomeEvent.getAllCategory());
+                                },
+                                icon: const Icon(
+                                  Icons.refresh,
+                                ),
+                              ),
+                            );
+                          }
+                          return Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              kHeight30,
+                              CustomSearchFieldHome(),
+                              kHeight30,
+                              ValueListenableBuilder(
+                                valueListenable: homeScreens,
+                                builder: (context, value, child) {
+                                  if (value == 0) {
+                                    return const AfterSearchWidgets();
+                                  } else {
+                                    return const GlobalProductSearch();
+                                  }
+                                },
+                              ),
+                            ],
+                          );
+                        },
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),
@@ -235,7 +244,6 @@ class _GlobalProductSearchState extends State<GlobalProductSearch> {
             child: Column(
               children: [
                 GridView.builder(
-                  //controller: widget.scrollController,
                   physics: const NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
                   itemCount:

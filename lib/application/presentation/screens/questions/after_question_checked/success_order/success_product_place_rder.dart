@@ -4,20 +4,28 @@ import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/application/presentation/utils/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:lottie/lottie.dart';
 
 class SuuccessOrderPlaced extends StatelessWidget {
   const SuuccessOrderPlaced({super.key});
 
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback(
+      (timeStamp) {
+        Future.delayed(const Duration(seconds: 10)).then((value) {
+          context.read<NavbarCubit>().changeNavigationIndex(2);
+          secondtabScreensNotifier.value = 0;
+          secondtabScreensNotifier.notifyListeners();
+        });
+      },
+    );
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 15),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Lottie.asset(orderSuccessLottie),
+            Image.asset(orderSuccessLottie),
             Text(
               'Thankyou for placing the order. Our pickup partner will reach out to you at given time.',
               style: textHeadSemiBold1,

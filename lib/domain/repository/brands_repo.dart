@@ -14,6 +14,7 @@ abstract class BrandsRepository {
   Future<Either<Failure, GetProductsRespoceModel>> getProducts({
     required String categoryType,
     required String brandName,
+    required String seriesName,
   });
   Future<Either<Failure, List<String>>> getSeries({
     required String brandName,

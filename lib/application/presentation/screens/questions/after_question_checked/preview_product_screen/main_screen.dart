@@ -52,6 +52,7 @@ class ScreenProductPreview extends StatelessWidget {
                       const TopImage(
                         fromWhere: FromWhere.recalculateWithAmount,
                       ),
+                      kHeight40,
                       BlocBuilder<QuestionTabBloc, QuestionTabState>(
                         builder: (context, state) {
                           return ListView.builder(

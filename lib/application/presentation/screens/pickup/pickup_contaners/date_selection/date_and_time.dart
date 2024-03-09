@@ -21,14 +21,20 @@ class DateOrTime extends StatefulWidget {
 }
 
 class _DateOrTimeState extends State<DateOrTime> {
-  String selectedDate = 'Date';
-  String selectedTime = 'Time';
+  String? selectedDate;
+  String? selectedTime;
 
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback(
+      (timeStamp) {
+        context.read<PlaceOrderBloc>().add(const PlaceOrderEvent.getDatetime());
+      },
+    );
     return BlocListener<PlaceOrderBloc, PlaceOrderState>(
       listener: (context, state) {
         if (state.orderPlacedResponceModel != null) {
+          context.read<QuestionTabBloc>().newList.clear();
           context
               .read<PlaceOrderBloc>()
               .add(const PlaceOrderEvent.removeAppliedPromo());
@@ -57,50 +63,43 @@ class _DateOrTimeState extends State<DateOrTime> {
                   ),
                   child: Row(
                     children: [
-                      Expanded(
-                        child: DropdownButtonHideUnderline(
-                          child: DropdownButton<String>(
-                            icon: const Icon(
-                              Icons.calendar_month,
-                              color: kBlueLight,
+                      BlocBuilder<PlaceOrderBloc, PlaceOrderState>(
+                        builder: (context, state) {
+                          return Expanded(
+                            child: DropdownButtonHideUnderline(
+                              child: DropdownButton<String>(
+                                hint: Text(
+                                  'Select Date',
+                                  style: textHeadInter.copyWith(color: kBlack),
+                                ),
+                                icon: const Icon(
+                                  Icons.calendar_month,
+                                  color: kBlueLight,
+                                ),
+                                value: selectedDate,
+                                onChanged: (String? newValue) {
+                                  setState(() {
+                                    selectedDate = newValue;
+                                  });
+                                },
+                                items:
+                                    state.dates?.map<DropdownMenuItem<String>>(
+                                  (String value) {
+                                    return DropdownMenuItem<String>(
+                                      value: value,
+                                      child: Text(
+                                        value,
+                                        style: textHeadSemiBold1.copyWith(
+                                          fontSize: sWidth * 0.04,
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                ).toList(),
+                              ),
                             ),
-                            value: selectedDate,
-                            onChanged: (String? newValue) {
-                              setState(() {
-                                selectedDate = newValue!;
-                              });
-                            },
-                            items: <String>[
-                              'Date',
-                              '12-03-2024',
-                              '12-02-2024',
-                              '10-03-2024',
-                              '07-03-2024'
-                            ].map<DropdownMenuItem<String>>(
-                              (String value) {
-                                if (value == 'Date') {
-                                  return DropdownMenuItem<String>(
-                                    value: value,
-                                    child: Text(
-                                      value,
-                                      style: textHeadSemiBold1.copyWith(
-                                          color: textFieldBorderColor),
-                                    ),
-                                  );
-                                }
-                                return DropdownMenuItem<String>(
-                                  value: value,
-                                  child: Text(
-                                    value,
-                                    style: textHeadSemiBold1.copyWith(
-                                      fontSize: sWidth * 0.04,
-                                    ),
-                                  ),
-                                );
-                              },
-                            ).toList(),
-                          ),
-                        ),
+                          );
+                        },
                       ),
                     ],
                   ),
@@ -116,51 +115,43 @@ class _DateOrTimeState extends State<DateOrTime> {
                   ),
                   child: Row(
                     children: [
-                      Expanded(
-                        child: DropdownButtonHideUnderline(
-                          child: DropdownButton<String>(
-                            icon: const Icon(
-                              Icons.access_time,
-                              color: kBlueLight,
-                            ),
-                            value: selectedTime,
-                            onChanged: (String? newValue) {
-                              setState(() {
-                                selectedTime = newValue!;
-                              });
-                            },
-                            items: <String>[
-                              'Time',
-                              '3:01 PM',
-                              '3:00 PM',
-                              '7:00 PM',
-                              '8:00 PM',
-                            ].map<DropdownMenuItem<String>>(
-                              (String value) {
-                                if (value == 'Time') {
-                                  return DropdownMenuItem<String>(
-                                    value: value,
-                                    child: Text(
-                                      value,
-                                      style: textHeadSemiBold1.copyWith(
-                                        color: textFieldBorderColor,
+                      BlocBuilder<PlaceOrderBloc, PlaceOrderState>(
+                        builder: (context, state) {
+                          return Expanded(
+                            child: DropdownButtonHideUnderline(
+                              child: DropdownButton<String>(
+                                hint: Text(
+                                  'Select Time',
+                                  style: textHeadInter.copyWith(color: kBlack),
+                                ),
+                                icon: const Icon(
+                                  Icons.access_time,
+                                  color: kBlueLight,
+                                ),
+                                value: selectedTime,
+                                onChanged: (String? newValue) {
+                                  setState(() {
+                                    selectedTime = newValue;
+                                  });
+                                },
+                                items:
+                                    state.time?.map<DropdownMenuItem<String>>(
+                                  (String value) {
+                                    return DropdownMenuItem<String>(
+                                      value: value,
+                                      child: Text(
+                                        value,
+                                        style: textHeadSemiBold1.copyWith(
+                                          fontSize: sWidth * 0.04,
+                                        ),
                                       ),
-                                    ),
-                                  );
-                                }
-                                return DropdownMenuItem<String>(
-                                  value: value,
-                                  child: Text(
-                                    value,
-                                    style: textHeadSemiBold1.copyWith(
-                                      fontSize: sWidth * 0.04,
-                                    ),
-                                  ),
-                                );
-                              },
-                            ).toList(),
-                          ),
-                        ),
+                                    );
+                                  },
+                                ).toList(),
+                              ),
+                            ),
+                          );
+                        },
                       ),
                     ],
                   ),
@@ -172,7 +163,7 @@ class _DateOrTimeState extends State<DateOrTime> {
             builder: (context, placeOrderBloc) {
               return CustomButton(
                 onPressed: () {
-                  if (selectedTime != 'Time' && selectedDate != 'Date') {
+                  if (selectedTime != null && selectedDate != null) {
                     if (context
                             .read<PlaceOrderBloc>()
                             .emailController

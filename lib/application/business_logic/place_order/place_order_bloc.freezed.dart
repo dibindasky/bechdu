@@ -23,6 +23,7 @@ mixin _$PlaceOrderEvent {
     required TResult Function(
             AbandendOrderRequestModel abandendOrderRequestModel)
         abandendOrder,
+    required TResult Function() getDatetime,
     required TResult Function() orderPlacing,
     required TResult Function() getOrders,
     required TResult Function(
@@ -49,6 +50,7 @@ mixin _$PlaceOrderEvent {
         getPromoCode,
     TResult? Function(AbandendOrderRequestModel abandendOrderRequestModel)?
         abandendOrder,
+    TResult? Function()? getDatetime,
     TResult? Function()? orderPlacing,
     TResult? Function()? getOrders,
     TResult? Function(OrderCancelationRequestModel orderCancelationRequestModel,
@@ -72,6 +74,7 @@ mixin _$PlaceOrderEvent {
     TResult Function(PromoCodeRequestModel promoCodeRequestModel)? getPromoCode,
     TResult Function(AbandendOrderRequestModel abandendOrderRequestModel)?
         abandendOrder,
+    TResult Function()? getDatetime,
     TResult Function()? orderPlacing,
     TResult Function()? getOrders,
     TResult Function(OrderCancelationRequestModel orderCancelationRequestModel,
@@ -95,6 +98,7 @@ mixin _$PlaceOrderEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(GetPromoCode value) getPromoCode,
     required TResult Function(AbandendOrder value) abandendOrder,
+    required TResult Function(GetDatetime value) getDatetime,
     required TResult Function(OrderPlacing value) orderPlacing,
     required TResult Function(GetOrders value) getOrders,
     required TResult Function(OrderCancel value) orderCancel,
@@ -115,6 +119,7 @@ mixin _$PlaceOrderEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(GetPromoCode value)? getPromoCode,
     TResult? Function(AbandendOrder value)? abandendOrder,
+    TResult? Function(GetDatetime value)? getDatetime,
     TResult? Function(OrderPlacing value)? orderPlacing,
     TResult? Function(GetOrders value)? getOrders,
     TResult? Function(OrderCancel value)? orderCancel,
@@ -135,6 +140,7 @@ mixin _$PlaceOrderEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GetPromoCode value)? getPromoCode,
     TResult Function(AbandendOrder value)? abandendOrder,
+    TResult Function(GetDatetime value)? getDatetime,
     TResult Function(OrderPlacing value)? orderPlacing,
     TResult Function(GetOrders value)? getOrders,
     TResult Function(OrderCancel value)? orderCancel,
@@ -242,6 +248,7 @@ class _$GetPromoCodeImpl implements GetPromoCode {
     required TResult Function(
             AbandendOrderRequestModel abandendOrderRequestModel)
         abandendOrder,
+    required TResult Function() getDatetime,
     required TResult Function() orderPlacing,
     required TResult Function() getOrders,
     required TResult Function(
@@ -271,6 +278,7 @@ class _$GetPromoCodeImpl implements GetPromoCode {
         getPromoCode,
     TResult? Function(AbandendOrderRequestModel abandendOrderRequestModel)?
         abandendOrder,
+    TResult? Function()? getDatetime,
     TResult? Function()? orderPlacing,
     TResult? Function()? getOrders,
     TResult? Function(OrderCancelationRequestModel orderCancelationRequestModel,
@@ -297,6 +305,7 @@ class _$GetPromoCodeImpl implements GetPromoCode {
     TResult Function(PromoCodeRequestModel promoCodeRequestModel)? getPromoCode,
     TResult Function(AbandendOrderRequestModel abandendOrderRequestModel)?
         abandendOrder,
+    TResult Function()? getDatetime,
     TResult Function()? orderPlacing,
     TResult Function()? getOrders,
     TResult Function(OrderCancelationRequestModel orderCancelationRequestModel,
@@ -326,6 +335,7 @@ class _$GetPromoCodeImpl implements GetPromoCode {
   TResult map<TResult extends Object?>({
     required TResult Function(GetPromoCode value) getPromoCode,
     required TResult Function(AbandendOrder value) abandendOrder,
+    required TResult Function(GetDatetime value) getDatetime,
     required TResult Function(OrderPlacing value) orderPlacing,
     required TResult Function(GetOrders value) getOrders,
     required TResult Function(OrderCancel value) orderCancel,
@@ -349,6 +359,7 @@ class _$GetPromoCodeImpl implements GetPromoCode {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(GetPromoCode value)? getPromoCode,
     TResult? Function(AbandendOrder value)? abandendOrder,
+    TResult? Function(GetDatetime value)? getDatetime,
     TResult? Function(OrderPlacing value)? orderPlacing,
     TResult? Function(GetOrders value)? getOrders,
     TResult? Function(OrderCancel value)? orderCancel,
@@ -372,6 +383,7 @@ class _$GetPromoCodeImpl implements GetPromoCode {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GetPromoCode value)? getPromoCode,
     TResult Function(AbandendOrder value)? abandendOrder,
+    TResult Function(GetDatetime value)? getDatetime,
     TResult Function(OrderPlacing value)? orderPlacing,
     TResult Function(GetOrders value)? getOrders,
     TResult Function(OrderCancel value)? orderCancel,
@@ -477,6 +489,7 @@ class _$AbandendOrderImpl implements AbandendOrder {
     required TResult Function(
             AbandendOrderRequestModel abandendOrderRequestModel)
         abandendOrder,
+    required TResult Function() getDatetime,
     required TResult Function() orderPlacing,
     required TResult Function() getOrders,
     required TResult Function(
@@ -506,6 +519,7 @@ class _$AbandendOrderImpl implements AbandendOrder {
         getPromoCode,
     TResult? Function(AbandendOrderRequestModel abandendOrderRequestModel)?
         abandendOrder,
+    TResult? Function()? getDatetime,
     TResult? Function()? orderPlacing,
     TResult? Function()? getOrders,
     TResult? Function(OrderCancelationRequestModel orderCancelationRequestModel,
@@ -532,6 +546,7 @@ class _$AbandendOrderImpl implements AbandendOrder {
     TResult Function(PromoCodeRequestModel promoCodeRequestModel)? getPromoCode,
     TResult Function(AbandendOrderRequestModel abandendOrderRequestModel)?
         abandendOrder,
+    TResult Function()? getDatetime,
     TResult Function()? orderPlacing,
     TResult Function()? getOrders,
     TResult Function(OrderCancelationRequestModel orderCancelationRequestModel,
@@ -561,6 +576,7 @@ class _$AbandendOrderImpl implements AbandendOrder {
   TResult map<TResult extends Object?>({
     required TResult Function(GetPromoCode value) getPromoCode,
     required TResult Function(AbandendOrder value) abandendOrder,
+    required TResult Function(GetDatetime value) getDatetime,
     required TResult Function(OrderPlacing value) orderPlacing,
     required TResult Function(GetOrders value) getOrders,
     required TResult Function(OrderCancel value) orderCancel,
@@ -584,6 +600,7 @@ class _$AbandendOrderImpl implements AbandendOrder {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(GetPromoCode value)? getPromoCode,
     TResult? Function(AbandendOrder value)? abandendOrder,
+    TResult? Function(GetDatetime value)? getDatetime,
     TResult? Function(OrderPlacing value)? orderPlacing,
     TResult? Function(GetOrders value)? getOrders,
     TResult? Function(OrderCancel value)? orderCancel,
@@ -607,6 +624,7 @@ class _$AbandendOrderImpl implements AbandendOrder {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GetPromoCode value)? getPromoCode,
     TResult Function(AbandendOrder value)? abandendOrder,
+    TResult Function(GetDatetime value)? getDatetime,
     TResult Function(OrderPlacing value)? orderPlacing,
     TResult Function(GetOrders value)? getOrders,
     TResult Function(OrderCancel value)? orderCancel,
@@ -639,6 +657,212 @@ abstract class AbandendOrder implements PlaceOrderEvent {
   @JsonKey(ignore: true)
   _$$AbandendOrderImplCopyWith<_$AbandendOrderImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$GetDatetimeImplCopyWith<$Res> {
+  factory _$$GetDatetimeImplCopyWith(
+          _$GetDatetimeImpl value, $Res Function(_$GetDatetimeImpl) then) =
+      __$$GetDatetimeImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$GetDatetimeImplCopyWithImpl<$Res>
+    extends _$PlaceOrderEventCopyWithImpl<$Res, _$GetDatetimeImpl>
+    implements _$$GetDatetimeImplCopyWith<$Res> {
+  __$$GetDatetimeImplCopyWithImpl(
+      _$GetDatetimeImpl _value, $Res Function(_$GetDatetimeImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$GetDatetimeImpl implements GetDatetime {
+  const _$GetDatetimeImpl();
+
+  @override
+  String toString() {
+    return 'PlaceOrderEvent.getDatetime()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$GetDatetimeImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(PromoCodeRequestModel promoCodeRequestModel)
+        getPromoCode,
+    required TResult Function(
+            AbandendOrderRequestModel abandendOrderRequestModel)
+        abandendOrder,
+    required TResult Function() getDatetime,
+    required TResult Function() orderPlacing,
+    required TResult Function() getOrders,
+    required TResult Function(
+            OrderCancelationRequestModel orderCancelationRequestModel,
+            String orderId)
+        orderCancel,
+    required TResult Function(Promo promo, User user) userDetailsPick,
+    required TResult Function(ProductDetails productDetails) productDetailsPick,
+    required TResult Function(Promo promo) promoCodePick,
+    required TResult Function(User user) addressPick,
+    required TResult Function(Payment payment) paymentOption,
+    required TResult Function(List<SelectedOption> selectedOption)
+        selectedOptionEvent,
+    required TResult Function() removeAppliedPromo,
+    required TResult Function(PickUpDetails pickUpDetails) pickupDetailsPick,
+    required TResult Function() userNumber,
+    required TResult Function() removeAllFieldData,
+    required TResult Function() promoCodeSuccess,
+  }) {
+    return getDatetime();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(PromoCodeRequestModel promoCodeRequestModel)?
+        getPromoCode,
+    TResult? Function(AbandendOrderRequestModel abandendOrderRequestModel)?
+        abandendOrder,
+    TResult? Function()? getDatetime,
+    TResult? Function()? orderPlacing,
+    TResult? Function()? getOrders,
+    TResult? Function(OrderCancelationRequestModel orderCancelationRequestModel,
+            String orderId)?
+        orderCancel,
+    TResult? Function(Promo promo, User user)? userDetailsPick,
+    TResult? Function(ProductDetails productDetails)? productDetailsPick,
+    TResult? Function(Promo promo)? promoCodePick,
+    TResult? Function(User user)? addressPick,
+    TResult? Function(Payment payment)? paymentOption,
+    TResult? Function(List<SelectedOption> selectedOption)? selectedOptionEvent,
+    TResult? Function()? removeAppliedPromo,
+    TResult? Function(PickUpDetails pickUpDetails)? pickupDetailsPick,
+    TResult? Function()? userNumber,
+    TResult? Function()? removeAllFieldData,
+    TResult? Function()? promoCodeSuccess,
+  }) {
+    return getDatetime?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(PromoCodeRequestModel promoCodeRequestModel)? getPromoCode,
+    TResult Function(AbandendOrderRequestModel abandendOrderRequestModel)?
+        abandendOrder,
+    TResult Function()? getDatetime,
+    TResult Function()? orderPlacing,
+    TResult Function()? getOrders,
+    TResult Function(OrderCancelationRequestModel orderCancelationRequestModel,
+            String orderId)?
+        orderCancel,
+    TResult Function(Promo promo, User user)? userDetailsPick,
+    TResult Function(ProductDetails productDetails)? productDetailsPick,
+    TResult Function(Promo promo)? promoCodePick,
+    TResult Function(User user)? addressPick,
+    TResult Function(Payment payment)? paymentOption,
+    TResult Function(List<SelectedOption> selectedOption)? selectedOptionEvent,
+    TResult Function()? removeAppliedPromo,
+    TResult Function(PickUpDetails pickUpDetails)? pickupDetailsPick,
+    TResult Function()? userNumber,
+    TResult Function()? removeAllFieldData,
+    TResult Function()? promoCodeSuccess,
+    required TResult orElse(),
+  }) {
+    if (getDatetime != null) {
+      return getDatetime();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GetPromoCode value) getPromoCode,
+    required TResult Function(AbandendOrder value) abandendOrder,
+    required TResult Function(GetDatetime value) getDatetime,
+    required TResult Function(OrderPlacing value) orderPlacing,
+    required TResult Function(GetOrders value) getOrders,
+    required TResult Function(OrderCancel value) orderCancel,
+    required TResult Function(UserDetailsPick value) userDetailsPick,
+    required TResult Function(ProductDetailsPick value) productDetailsPick,
+    required TResult Function(PromoCodePick value) promoCodePick,
+    required TResult Function(AddressPick value) addressPick,
+    required TResult Function(PaymentOption value) paymentOption,
+    required TResult Function(SelectedOptionEvent value) selectedOptionEvent,
+    required TResult Function(RemoveAppliedPromo value) removeAppliedPromo,
+    required TResult Function(PickupDetailsPick value) pickupDetailsPick,
+    required TResult Function(UserNumber value) userNumber,
+    required TResult Function(RemoveAllFieldData value) removeAllFieldData,
+    required TResult Function(PromoCodeSuccess value) promoCodeSuccess,
+  }) {
+    return getDatetime(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetPromoCode value)? getPromoCode,
+    TResult? Function(AbandendOrder value)? abandendOrder,
+    TResult? Function(GetDatetime value)? getDatetime,
+    TResult? Function(OrderPlacing value)? orderPlacing,
+    TResult? Function(GetOrders value)? getOrders,
+    TResult? Function(OrderCancel value)? orderCancel,
+    TResult? Function(UserDetailsPick value)? userDetailsPick,
+    TResult? Function(ProductDetailsPick value)? productDetailsPick,
+    TResult? Function(PromoCodePick value)? promoCodePick,
+    TResult? Function(AddressPick value)? addressPick,
+    TResult? Function(PaymentOption value)? paymentOption,
+    TResult? Function(SelectedOptionEvent value)? selectedOptionEvent,
+    TResult? Function(RemoveAppliedPromo value)? removeAppliedPromo,
+    TResult? Function(PickupDetailsPick value)? pickupDetailsPick,
+    TResult? Function(UserNumber value)? userNumber,
+    TResult? Function(RemoveAllFieldData value)? removeAllFieldData,
+    TResult? Function(PromoCodeSuccess value)? promoCodeSuccess,
+  }) {
+    return getDatetime?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetPromoCode value)? getPromoCode,
+    TResult Function(AbandendOrder value)? abandendOrder,
+    TResult Function(GetDatetime value)? getDatetime,
+    TResult Function(OrderPlacing value)? orderPlacing,
+    TResult Function(GetOrders value)? getOrders,
+    TResult Function(OrderCancel value)? orderCancel,
+    TResult Function(UserDetailsPick value)? userDetailsPick,
+    TResult Function(ProductDetailsPick value)? productDetailsPick,
+    TResult Function(PromoCodePick value)? promoCodePick,
+    TResult Function(AddressPick value)? addressPick,
+    TResult Function(PaymentOption value)? paymentOption,
+    TResult Function(SelectedOptionEvent value)? selectedOptionEvent,
+    TResult Function(RemoveAppliedPromo value)? removeAppliedPromo,
+    TResult Function(PickupDetailsPick value)? pickupDetailsPick,
+    TResult Function(UserNumber value)? userNumber,
+    TResult Function(RemoveAllFieldData value)? removeAllFieldData,
+    TResult Function(PromoCodeSuccess value)? promoCodeSuccess,
+    required TResult orElse(),
+  }) {
+    if (getDatetime != null) {
+      return getDatetime(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GetDatetime implements PlaceOrderEvent {
+  const factory GetDatetime() = _$GetDatetimeImpl;
 }
 
 /// @nodoc
@@ -684,6 +908,7 @@ class _$OrderPlacingImpl implements OrderPlacing {
     required TResult Function(
             AbandendOrderRequestModel abandendOrderRequestModel)
         abandendOrder,
+    required TResult Function() getDatetime,
     required TResult Function() orderPlacing,
     required TResult Function() getOrders,
     required TResult Function(
@@ -713,6 +938,7 @@ class _$OrderPlacingImpl implements OrderPlacing {
         getPromoCode,
     TResult? Function(AbandendOrderRequestModel abandendOrderRequestModel)?
         abandendOrder,
+    TResult? Function()? getDatetime,
     TResult? Function()? orderPlacing,
     TResult? Function()? getOrders,
     TResult? Function(OrderCancelationRequestModel orderCancelationRequestModel,
@@ -739,6 +965,7 @@ class _$OrderPlacingImpl implements OrderPlacing {
     TResult Function(PromoCodeRequestModel promoCodeRequestModel)? getPromoCode,
     TResult Function(AbandendOrderRequestModel abandendOrderRequestModel)?
         abandendOrder,
+    TResult Function()? getDatetime,
     TResult Function()? orderPlacing,
     TResult Function()? getOrders,
     TResult Function(OrderCancelationRequestModel orderCancelationRequestModel,
@@ -768,6 +995,7 @@ class _$OrderPlacingImpl implements OrderPlacing {
   TResult map<TResult extends Object?>({
     required TResult Function(GetPromoCode value) getPromoCode,
     required TResult Function(AbandendOrder value) abandendOrder,
+    required TResult Function(GetDatetime value) getDatetime,
     required TResult Function(OrderPlacing value) orderPlacing,
     required TResult Function(GetOrders value) getOrders,
     required TResult Function(OrderCancel value) orderCancel,
@@ -791,6 +1019,7 @@ class _$OrderPlacingImpl implements OrderPlacing {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(GetPromoCode value)? getPromoCode,
     TResult? Function(AbandendOrder value)? abandendOrder,
+    TResult? Function(GetDatetime value)? getDatetime,
     TResult? Function(OrderPlacing value)? orderPlacing,
     TResult? Function(GetOrders value)? getOrders,
     TResult? Function(OrderCancel value)? orderCancel,
@@ -814,6 +1043,7 @@ class _$OrderPlacingImpl implements OrderPlacing {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GetPromoCode value)? getPromoCode,
     TResult Function(AbandendOrder value)? abandendOrder,
+    TResult Function(GetDatetime value)? getDatetime,
     TResult Function(OrderPlacing value)? orderPlacing,
     TResult Function(GetOrders value)? getOrders,
     TResult Function(OrderCancel value)? orderCancel,
@@ -884,6 +1114,7 @@ class _$GetOrdersImpl implements GetOrders {
     required TResult Function(
             AbandendOrderRequestModel abandendOrderRequestModel)
         abandendOrder,
+    required TResult Function() getDatetime,
     required TResult Function() orderPlacing,
     required TResult Function() getOrders,
     required TResult Function(
@@ -913,6 +1144,7 @@ class _$GetOrdersImpl implements GetOrders {
         getPromoCode,
     TResult? Function(AbandendOrderRequestModel abandendOrderRequestModel)?
         abandendOrder,
+    TResult? Function()? getDatetime,
     TResult? Function()? orderPlacing,
     TResult? Function()? getOrders,
     TResult? Function(OrderCancelationRequestModel orderCancelationRequestModel,
@@ -939,6 +1171,7 @@ class _$GetOrdersImpl implements GetOrders {
     TResult Function(PromoCodeRequestModel promoCodeRequestModel)? getPromoCode,
     TResult Function(AbandendOrderRequestModel abandendOrderRequestModel)?
         abandendOrder,
+    TResult Function()? getDatetime,
     TResult Function()? orderPlacing,
     TResult Function()? getOrders,
     TResult Function(OrderCancelationRequestModel orderCancelationRequestModel,
@@ -968,6 +1201,7 @@ class _$GetOrdersImpl implements GetOrders {
   TResult map<TResult extends Object?>({
     required TResult Function(GetPromoCode value) getPromoCode,
     required TResult Function(AbandendOrder value) abandendOrder,
+    required TResult Function(GetDatetime value) getDatetime,
     required TResult Function(OrderPlacing value) orderPlacing,
     required TResult Function(GetOrders value) getOrders,
     required TResult Function(OrderCancel value) orderCancel,
@@ -991,6 +1225,7 @@ class _$GetOrdersImpl implements GetOrders {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(GetPromoCode value)? getPromoCode,
     TResult? Function(AbandendOrder value)? abandendOrder,
+    TResult? Function(GetDatetime value)? getDatetime,
     TResult? Function(OrderPlacing value)? orderPlacing,
     TResult? Function(GetOrders value)? getOrders,
     TResult? Function(OrderCancel value)? orderCancel,
@@ -1014,6 +1249,7 @@ class _$GetOrdersImpl implements GetOrders {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GetPromoCode value)? getPromoCode,
     TResult Function(AbandendOrder value)? abandendOrder,
+    TResult Function(GetDatetime value)? getDatetime,
     TResult Function(OrderPlacing value)? orderPlacing,
     TResult Function(GetOrders value)? getOrders,
     TResult Function(OrderCancel value)? orderCancel,
@@ -1125,6 +1361,7 @@ class _$OrderCancelImpl implements OrderCancel {
     required TResult Function(
             AbandendOrderRequestModel abandendOrderRequestModel)
         abandendOrder,
+    required TResult Function() getDatetime,
     required TResult Function() orderPlacing,
     required TResult Function() getOrders,
     required TResult Function(
@@ -1154,6 +1391,7 @@ class _$OrderCancelImpl implements OrderCancel {
         getPromoCode,
     TResult? Function(AbandendOrderRequestModel abandendOrderRequestModel)?
         abandendOrder,
+    TResult? Function()? getDatetime,
     TResult? Function()? orderPlacing,
     TResult? Function()? getOrders,
     TResult? Function(OrderCancelationRequestModel orderCancelationRequestModel,
@@ -1180,6 +1418,7 @@ class _$OrderCancelImpl implements OrderCancel {
     TResult Function(PromoCodeRequestModel promoCodeRequestModel)? getPromoCode,
     TResult Function(AbandendOrderRequestModel abandendOrderRequestModel)?
         abandendOrder,
+    TResult Function()? getDatetime,
     TResult Function()? orderPlacing,
     TResult Function()? getOrders,
     TResult Function(OrderCancelationRequestModel orderCancelationRequestModel,
@@ -1209,6 +1448,7 @@ class _$OrderCancelImpl implements OrderCancel {
   TResult map<TResult extends Object?>({
     required TResult Function(GetPromoCode value) getPromoCode,
     required TResult Function(AbandendOrder value) abandendOrder,
+    required TResult Function(GetDatetime value) getDatetime,
     required TResult Function(OrderPlacing value) orderPlacing,
     required TResult Function(GetOrders value) getOrders,
     required TResult Function(OrderCancel value) orderCancel,
@@ -1232,6 +1472,7 @@ class _$OrderCancelImpl implements OrderCancel {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(GetPromoCode value)? getPromoCode,
     TResult? Function(AbandendOrder value)? abandendOrder,
+    TResult? Function(GetDatetime value)? getDatetime,
     TResult? Function(OrderPlacing value)? orderPlacing,
     TResult? Function(GetOrders value)? getOrders,
     TResult? Function(OrderCancel value)? orderCancel,
@@ -1255,6 +1496,7 @@ class _$OrderCancelImpl implements OrderCancel {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GetPromoCode value)? getPromoCode,
     TResult Function(AbandendOrder value)? abandendOrder,
+    TResult Function(GetDatetime value)? getDatetime,
     TResult Function(OrderPlacing value)? orderPlacing,
     TResult Function(GetOrders value)? getOrders,
     TResult Function(OrderCancel value)? orderCancel,
@@ -1368,6 +1610,7 @@ class _$UserDetailsPickImpl implements UserDetailsPick {
     required TResult Function(
             AbandendOrderRequestModel abandendOrderRequestModel)
         abandendOrder,
+    required TResult Function() getDatetime,
     required TResult Function() orderPlacing,
     required TResult Function() getOrders,
     required TResult Function(
@@ -1397,6 +1640,7 @@ class _$UserDetailsPickImpl implements UserDetailsPick {
         getPromoCode,
     TResult? Function(AbandendOrderRequestModel abandendOrderRequestModel)?
         abandendOrder,
+    TResult? Function()? getDatetime,
     TResult? Function()? orderPlacing,
     TResult? Function()? getOrders,
     TResult? Function(OrderCancelationRequestModel orderCancelationRequestModel,
@@ -1423,6 +1667,7 @@ class _$UserDetailsPickImpl implements UserDetailsPick {
     TResult Function(PromoCodeRequestModel promoCodeRequestModel)? getPromoCode,
     TResult Function(AbandendOrderRequestModel abandendOrderRequestModel)?
         abandendOrder,
+    TResult Function()? getDatetime,
     TResult Function()? orderPlacing,
     TResult Function()? getOrders,
     TResult Function(OrderCancelationRequestModel orderCancelationRequestModel,
@@ -1452,6 +1697,7 @@ class _$UserDetailsPickImpl implements UserDetailsPick {
   TResult map<TResult extends Object?>({
     required TResult Function(GetPromoCode value) getPromoCode,
     required TResult Function(AbandendOrder value) abandendOrder,
+    required TResult Function(GetDatetime value) getDatetime,
     required TResult Function(OrderPlacing value) orderPlacing,
     required TResult Function(GetOrders value) getOrders,
     required TResult Function(OrderCancel value) orderCancel,
@@ -1475,6 +1721,7 @@ class _$UserDetailsPickImpl implements UserDetailsPick {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(GetPromoCode value)? getPromoCode,
     TResult? Function(AbandendOrder value)? abandendOrder,
+    TResult? Function(GetDatetime value)? getDatetime,
     TResult? Function(OrderPlacing value)? orderPlacing,
     TResult? Function(GetOrders value)? getOrders,
     TResult? Function(OrderCancel value)? orderCancel,
@@ -1498,6 +1745,7 @@ class _$UserDetailsPickImpl implements UserDetailsPick {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GetPromoCode value)? getPromoCode,
     TResult Function(AbandendOrder value)? abandendOrder,
+    TResult Function(GetDatetime value)? getDatetime,
     TResult Function(OrderPlacing value)? orderPlacing,
     TResult Function(GetOrders value)? getOrders,
     TResult Function(OrderCancel value)? orderCancel,
@@ -1604,6 +1852,7 @@ class _$ProductDetailsPickImpl implements ProductDetailsPick {
     required TResult Function(
             AbandendOrderRequestModel abandendOrderRequestModel)
         abandendOrder,
+    required TResult Function() getDatetime,
     required TResult Function() orderPlacing,
     required TResult Function() getOrders,
     required TResult Function(
@@ -1633,6 +1882,7 @@ class _$ProductDetailsPickImpl implements ProductDetailsPick {
         getPromoCode,
     TResult? Function(AbandendOrderRequestModel abandendOrderRequestModel)?
         abandendOrder,
+    TResult? Function()? getDatetime,
     TResult? Function()? orderPlacing,
     TResult? Function()? getOrders,
     TResult? Function(OrderCancelationRequestModel orderCancelationRequestModel,
@@ -1659,6 +1909,7 @@ class _$ProductDetailsPickImpl implements ProductDetailsPick {
     TResult Function(PromoCodeRequestModel promoCodeRequestModel)? getPromoCode,
     TResult Function(AbandendOrderRequestModel abandendOrderRequestModel)?
         abandendOrder,
+    TResult Function()? getDatetime,
     TResult Function()? orderPlacing,
     TResult Function()? getOrders,
     TResult Function(OrderCancelationRequestModel orderCancelationRequestModel,
@@ -1688,6 +1939,7 @@ class _$ProductDetailsPickImpl implements ProductDetailsPick {
   TResult map<TResult extends Object?>({
     required TResult Function(GetPromoCode value) getPromoCode,
     required TResult Function(AbandendOrder value) abandendOrder,
+    required TResult Function(GetDatetime value) getDatetime,
     required TResult Function(OrderPlacing value) orderPlacing,
     required TResult Function(GetOrders value) getOrders,
     required TResult Function(OrderCancel value) orderCancel,
@@ -1711,6 +1963,7 @@ class _$ProductDetailsPickImpl implements ProductDetailsPick {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(GetPromoCode value)? getPromoCode,
     TResult? Function(AbandendOrder value)? abandendOrder,
+    TResult? Function(GetDatetime value)? getDatetime,
     TResult? Function(OrderPlacing value)? orderPlacing,
     TResult? Function(GetOrders value)? getOrders,
     TResult? Function(OrderCancel value)? orderCancel,
@@ -1734,6 +1987,7 @@ class _$ProductDetailsPickImpl implements ProductDetailsPick {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GetPromoCode value)? getPromoCode,
     TResult Function(AbandendOrder value)? abandendOrder,
+    TResult Function(GetDatetime value)? getDatetime,
     TResult Function(OrderPlacing value)? orderPlacing,
     TResult Function(GetOrders value)? getOrders,
     TResult Function(OrderCancel value)? orderCancel,
@@ -1837,6 +2091,7 @@ class _$PromoCodePickImpl implements PromoCodePick {
     required TResult Function(
             AbandendOrderRequestModel abandendOrderRequestModel)
         abandendOrder,
+    required TResult Function() getDatetime,
     required TResult Function() orderPlacing,
     required TResult Function() getOrders,
     required TResult Function(
@@ -1866,6 +2121,7 @@ class _$PromoCodePickImpl implements PromoCodePick {
         getPromoCode,
     TResult? Function(AbandendOrderRequestModel abandendOrderRequestModel)?
         abandendOrder,
+    TResult? Function()? getDatetime,
     TResult? Function()? orderPlacing,
     TResult? Function()? getOrders,
     TResult? Function(OrderCancelationRequestModel orderCancelationRequestModel,
@@ -1892,6 +2148,7 @@ class _$PromoCodePickImpl implements PromoCodePick {
     TResult Function(PromoCodeRequestModel promoCodeRequestModel)? getPromoCode,
     TResult Function(AbandendOrderRequestModel abandendOrderRequestModel)?
         abandendOrder,
+    TResult Function()? getDatetime,
     TResult Function()? orderPlacing,
     TResult Function()? getOrders,
     TResult Function(OrderCancelationRequestModel orderCancelationRequestModel,
@@ -1921,6 +2178,7 @@ class _$PromoCodePickImpl implements PromoCodePick {
   TResult map<TResult extends Object?>({
     required TResult Function(GetPromoCode value) getPromoCode,
     required TResult Function(AbandendOrder value) abandendOrder,
+    required TResult Function(GetDatetime value) getDatetime,
     required TResult Function(OrderPlacing value) orderPlacing,
     required TResult Function(GetOrders value) getOrders,
     required TResult Function(OrderCancel value) orderCancel,
@@ -1944,6 +2202,7 @@ class _$PromoCodePickImpl implements PromoCodePick {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(GetPromoCode value)? getPromoCode,
     TResult? Function(AbandendOrder value)? abandendOrder,
+    TResult? Function(GetDatetime value)? getDatetime,
     TResult? Function(OrderPlacing value)? orderPlacing,
     TResult? Function(GetOrders value)? getOrders,
     TResult? Function(OrderCancel value)? orderCancel,
@@ -1967,6 +2226,7 @@ class _$PromoCodePickImpl implements PromoCodePick {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GetPromoCode value)? getPromoCode,
     TResult Function(AbandendOrder value)? abandendOrder,
+    TResult Function(GetDatetime value)? getDatetime,
     TResult Function(OrderPlacing value)? orderPlacing,
     TResult Function(GetOrders value)? getOrders,
     TResult Function(OrderCancel value)? orderCancel,
@@ -2069,6 +2329,7 @@ class _$AddressPickImpl implements AddressPick {
     required TResult Function(
             AbandendOrderRequestModel abandendOrderRequestModel)
         abandendOrder,
+    required TResult Function() getDatetime,
     required TResult Function() orderPlacing,
     required TResult Function() getOrders,
     required TResult Function(
@@ -2098,6 +2359,7 @@ class _$AddressPickImpl implements AddressPick {
         getPromoCode,
     TResult? Function(AbandendOrderRequestModel abandendOrderRequestModel)?
         abandendOrder,
+    TResult? Function()? getDatetime,
     TResult? Function()? orderPlacing,
     TResult? Function()? getOrders,
     TResult? Function(OrderCancelationRequestModel orderCancelationRequestModel,
@@ -2124,6 +2386,7 @@ class _$AddressPickImpl implements AddressPick {
     TResult Function(PromoCodeRequestModel promoCodeRequestModel)? getPromoCode,
     TResult Function(AbandendOrderRequestModel abandendOrderRequestModel)?
         abandendOrder,
+    TResult Function()? getDatetime,
     TResult Function()? orderPlacing,
     TResult Function()? getOrders,
     TResult Function(OrderCancelationRequestModel orderCancelationRequestModel,
@@ -2153,6 +2416,7 @@ class _$AddressPickImpl implements AddressPick {
   TResult map<TResult extends Object?>({
     required TResult Function(GetPromoCode value) getPromoCode,
     required TResult Function(AbandendOrder value) abandendOrder,
+    required TResult Function(GetDatetime value) getDatetime,
     required TResult Function(OrderPlacing value) orderPlacing,
     required TResult Function(GetOrders value) getOrders,
     required TResult Function(OrderCancel value) orderCancel,
@@ -2176,6 +2440,7 @@ class _$AddressPickImpl implements AddressPick {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(GetPromoCode value)? getPromoCode,
     TResult? Function(AbandendOrder value)? abandendOrder,
+    TResult? Function(GetDatetime value)? getDatetime,
     TResult? Function(OrderPlacing value)? orderPlacing,
     TResult? Function(GetOrders value)? getOrders,
     TResult? Function(OrderCancel value)? orderCancel,
@@ -2199,6 +2464,7 @@ class _$AddressPickImpl implements AddressPick {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GetPromoCode value)? getPromoCode,
     TResult Function(AbandendOrder value)? abandendOrder,
+    TResult Function(GetDatetime value)? getDatetime,
     TResult Function(OrderPlacing value)? orderPlacing,
     TResult Function(GetOrders value)? getOrders,
     TResult Function(OrderCancel value)? orderCancel,
@@ -2300,6 +2566,7 @@ class _$PaymentOptionImpl implements PaymentOption {
     required TResult Function(
             AbandendOrderRequestModel abandendOrderRequestModel)
         abandendOrder,
+    required TResult Function() getDatetime,
     required TResult Function() orderPlacing,
     required TResult Function() getOrders,
     required TResult Function(
@@ -2329,6 +2596,7 @@ class _$PaymentOptionImpl implements PaymentOption {
         getPromoCode,
     TResult? Function(AbandendOrderRequestModel abandendOrderRequestModel)?
         abandendOrder,
+    TResult? Function()? getDatetime,
     TResult? Function()? orderPlacing,
     TResult? Function()? getOrders,
     TResult? Function(OrderCancelationRequestModel orderCancelationRequestModel,
@@ -2355,6 +2623,7 @@ class _$PaymentOptionImpl implements PaymentOption {
     TResult Function(PromoCodeRequestModel promoCodeRequestModel)? getPromoCode,
     TResult Function(AbandendOrderRequestModel abandendOrderRequestModel)?
         abandendOrder,
+    TResult Function()? getDatetime,
     TResult Function()? orderPlacing,
     TResult Function()? getOrders,
     TResult Function(OrderCancelationRequestModel orderCancelationRequestModel,
@@ -2384,6 +2653,7 @@ class _$PaymentOptionImpl implements PaymentOption {
   TResult map<TResult extends Object?>({
     required TResult Function(GetPromoCode value) getPromoCode,
     required TResult Function(AbandendOrder value) abandendOrder,
+    required TResult Function(GetDatetime value) getDatetime,
     required TResult Function(OrderPlacing value) orderPlacing,
     required TResult Function(GetOrders value) getOrders,
     required TResult Function(OrderCancel value) orderCancel,
@@ -2407,6 +2677,7 @@ class _$PaymentOptionImpl implements PaymentOption {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(GetPromoCode value)? getPromoCode,
     TResult? Function(AbandendOrder value)? abandendOrder,
+    TResult? Function(GetDatetime value)? getDatetime,
     TResult? Function(OrderPlacing value)? orderPlacing,
     TResult? Function(GetOrders value)? getOrders,
     TResult? Function(OrderCancel value)? orderCancel,
@@ -2430,6 +2701,7 @@ class _$PaymentOptionImpl implements PaymentOption {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GetPromoCode value)? getPromoCode,
     TResult Function(AbandendOrder value)? abandendOrder,
+    TResult Function(GetDatetime value)? getDatetime,
     TResult Function(OrderPlacing value)? orderPlacing,
     TResult Function(GetOrders value)? getOrders,
     TResult Function(OrderCancel value)? orderCancel,
@@ -2542,6 +2814,7 @@ class _$SelectedOptionEventImpl implements SelectedOptionEvent {
     required TResult Function(
             AbandendOrderRequestModel abandendOrderRequestModel)
         abandendOrder,
+    required TResult Function() getDatetime,
     required TResult Function() orderPlacing,
     required TResult Function() getOrders,
     required TResult Function(
@@ -2571,6 +2844,7 @@ class _$SelectedOptionEventImpl implements SelectedOptionEvent {
         getPromoCode,
     TResult? Function(AbandendOrderRequestModel abandendOrderRequestModel)?
         abandendOrder,
+    TResult? Function()? getDatetime,
     TResult? Function()? orderPlacing,
     TResult? Function()? getOrders,
     TResult? Function(OrderCancelationRequestModel orderCancelationRequestModel,
@@ -2597,6 +2871,7 @@ class _$SelectedOptionEventImpl implements SelectedOptionEvent {
     TResult Function(PromoCodeRequestModel promoCodeRequestModel)? getPromoCode,
     TResult Function(AbandendOrderRequestModel abandendOrderRequestModel)?
         abandendOrder,
+    TResult Function()? getDatetime,
     TResult Function()? orderPlacing,
     TResult Function()? getOrders,
     TResult Function(OrderCancelationRequestModel orderCancelationRequestModel,
@@ -2626,6 +2901,7 @@ class _$SelectedOptionEventImpl implements SelectedOptionEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(GetPromoCode value) getPromoCode,
     required TResult Function(AbandendOrder value) abandendOrder,
+    required TResult Function(GetDatetime value) getDatetime,
     required TResult Function(OrderPlacing value) orderPlacing,
     required TResult Function(GetOrders value) getOrders,
     required TResult Function(OrderCancel value) orderCancel,
@@ -2649,6 +2925,7 @@ class _$SelectedOptionEventImpl implements SelectedOptionEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(GetPromoCode value)? getPromoCode,
     TResult? Function(AbandendOrder value)? abandendOrder,
+    TResult? Function(GetDatetime value)? getDatetime,
     TResult? Function(OrderPlacing value)? orderPlacing,
     TResult? Function(GetOrders value)? getOrders,
     TResult? Function(OrderCancel value)? orderCancel,
@@ -2672,6 +2949,7 @@ class _$SelectedOptionEventImpl implements SelectedOptionEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GetPromoCode value)? getPromoCode,
     TResult Function(AbandendOrder value)? abandendOrder,
+    TResult Function(GetDatetime value)? getDatetime,
     TResult Function(OrderPlacing value)? orderPlacing,
     TResult Function(GetOrders value)? getOrders,
     TResult Function(OrderCancel value)? orderCancel,
@@ -2749,6 +3027,7 @@ class _$RemoveAppliedPromoImpl implements RemoveAppliedPromo {
     required TResult Function(
             AbandendOrderRequestModel abandendOrderRequestModel)
         abandendOrder,
+    required TResult Function() getDatetime,
     required TResult Function() orderPlacing,
     required TResult Function() getOrders,
     required TResult Function(
@@ -2778,6 +3057,7 @@ class _$RemoveAppliedPromoImpl implements RemoveAppliedPromo {
         getPromoCode,
     TResult? Function(AbandendOrderRequestModel abandendOrderRequestModel)?
         abandendOrder,
+    TResult? Function()? getDatetime,
     TResult? Function()? orderPlacing,
     TResult? Function()? getOrders,
     TResult? Function(OrderCancelationRequestModel orderCancelationRequestModel,
@@ -2804,6 +3084,7 @@ class _$RemoveAppliedPromoImpl implements RemoveAppliedPromo {
     TResult Function(PromoCodeRequestModel promoCodeRequestModel)? getPromoCode,
     TResult Function(AbandendOrderRequestModel abandendOrderRequestModel)?
         abandendOrder,
+    TResult Function()? getDatetime,
     TResult Function()? orderPlacing,
     TResult Function()? getOrders,
     TResult Function(OrderCancelationRequestModel orderCancelationRequestModel,
@@ -2833,6 +3114,7 @@ class _$RemoveAppliedPromoImpl implements RemoveAppliedPromo {
   TResult map<TResult extends Object?>({
     required TResult Function(GetPromoCode value) getPromoCode,
     required TResult Function(AbandendOrder value) abandendOrder,
+    required TResult Function(GetDatetime value) getDatetime,
     required TResult Function(OrderPlacing value) orderPlacing,
     required TResult Function(GetOrders value) getOrders,
     required TResult Function(OrderCancel value) orderCancel,
@@ -2856,6 +3138,7 @@ class _$RemoveAppliedPromoImpl implements RemoveAppliedPromo {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(GetPromoCode value)? getPromoCode,
     TResult? Function(AbandendOrder value)? abandendOrder,
+    TResult? Function(GetDatetime value)? getDatetime,
     TResult? Function(OrderPlacing value)? orderPlacing,
     TResult? Function(GetOrders value)? getOrders,
     TResult? Function(OrderCancel value)? orderCancel,
@@ -2879,6 +3162,7 @@ class _$RemoveAppliedPromoImpl implements RemoveAppliedPromo {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GetPromoCode value)? getPromoCode,
     TResult Function(AbandendOrder value)? abandendOrder,
+    TResult Function(GetDatetime value)? getDatetime,
     TResult Function(OrderPlacing value)? orderPlacing,
     TResult Function(GetOrders value)? getOrders,
     TResult Function(OrderCancel value)? orderCancel,
@@ -2977,6 +3261,7 @@ class _$PickupDetailsPickImpl implements PickupDetailsPick {
     required TResult Function(
             AbandendOrderRequestModel abandendOrderRequestModel)
         abandendOrder,
+    required TResult Function() getDatetime,
     required TResult Function() orderPlacing,
     required TResult Function() getOrders,
     required TResult Function(
@@ -3006,6 +3291,7 @@ class _$PickupDetailsPickImpl implements PickupDetailsPick {
         getPromoCode,
     TResult? Function(AbandendOrderRequestModel abandendOrderRequestModel)?
         abandendOrder,
+    TResult? Function()? getDatetime,
     TResult? Function()? orderPlacing,
     TResult? Function()? getOrders,
     TResult? Function(OrderCancelationRequestModel orderCancelationRequestModel,
@@ -3032,6 +3318,7 @@ class _$PickupDetailsPickImpl implements PickupDetailsPick {
     TResult Function(PromoCodeRequestModel promoCodeRequestModel)? getPromoCode,
     TResult Function(AbandendOrderRequestModel abandendOrderRequestModel)?
         abandendOrder,
+    TResult Function()? getDatetime,
     TResult Function()? orderPlacing,
     TResult Function()? getOrders,
     TResult Function(OrderCancelationRequestModel orderCancelationRequestModel,
@@ -3061,6 +3348,7 @@ class _$PickupDetailsPickImpl implements PickupDetailsPick {
   TResult map<TResult extends Object?>({
     required TResult Function(GetPromoCode value) getPromoCode,
     required TResult Function(AbandendOrder value) abandendOrder,
+    required TResult Function(GetDatetime value) getDatetime,
     required TResult Function(OrderPlacing value) orderPlacing,
     required TResult Function(GetOrders value) getOrders,
     required TResult Function(OrderCancel value) orderCancel,
@@ -3084,6 +3372,7 @@ class _$PickupDetailsPickImpl implements PickupDetailsPick {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(GetPromoCode value)? getPromoCode,
     TResult? Function(AbandendOrder value)? abandendOrder,
+    TResult? Function(GetDatetime value)? getDatetime,
     TResult? Function(OrderPlacing value)? orderPlacing,
     TResult? Function(GetOrders value)? getOrders,
     TResult? Function(OrderCancel value)? orderCancel,
@@ -3107,6 +3396,7 @@ class _$PickupDetailsPickImpl implements PickupDetailsPick {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GetPromoCode value)? getPromoCode,
     TResult Function(AbandendOrder value)? abandendOrder,
+    TResult Function(GetDatetime value)? getDatetime,
     TResult Function(OrderPlacing value)? orderPlacing,
     TResult Function(GetOrders value)? getOrders,
     TResult Function(OrderCancel value)? orderCancel,
@@ -3183,6 +3473,7 @@ class _$UserNumberImpl implements UserNumber {
     required TResult Function(
             AbandendOrderRequestModel abandendOrderRequestModel)
         abandendOrder,
+    required TResult Function() getDatetime,
     required TResult Function() orderPlacing,
     required TResult Function() getOrders,
     required TResult Function(
@@ -3212,6 +3503,7 @@ class _$UserNumberImpl implements UserNumber {
         getPromoCode,
     TResult? Function(AbandendOrderRequestModel abandendOrderRequestModel)?
         abandendOrder,
+    TResult? Function()? getDatetime,
     TResult? Function()? orderPlacing,
     TResult? Function()? getOrders,
     TResult? Function(OrderCancelationRequestModel orderCancelationRequestModel,
@@ -3238,6 +3530,7 @@ class _$UserNumberImpl implements UserNumber {
     TResult Function(PromoCodeRequestModel promoCodeRequestModel)? getPromoCode,
     TResult Function(AbandendOrderRequestModel abandendOrderRequestModel)?
         abandendOrder,
+    TResult Function()? getDatetime,
     TResult Function()? orderPlacing,
     TResult Function()? getOrders,
     TResult Function(OrderCancelationRequestModel orderCancelationRequestModel,
@@ -3267,6 +3560,7 @@ class _$UserNumberImpl implements UserNumber {
   TResult map<TResult extends Object?>({
     required TResult Function(GetPromoCode value) getPromoCode,
     required TResult Function(AbandendOrder value) abandendOrder,
+    required TResult Function(GetDatetime value) getDatetime,
     required TResult Function(OrderPlacing value) orderPlacing,
     required TResult Function(GetOrders value) getOrders,
     required TResult Function(OrderCancel value) orderCancel,
@@ -3290,6 +3584,7 @@ class _$UserNumberImpl implements UserNumber {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(GetPromoCode value)? getPromoCode,
     TResult? Function(AbandendOrder value)? abandendOrder,
+    TResult? Function(GetDatetime value)? getDatetime,
     TResult? Function(OrderPlacing value)? orderPlacing,
     TResult? Function(GetOrders value)? getOrders,
     TResult? Function(OrderCancel value)? orderCancel,
@@ -3313,6 +3608,7 @@ class _$UserNumberImpl implements UserNumber {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GetPromoCode value)? getPromoCode,
     TResult Function(AbandendOrder value)? abandendOrder,
+    TResult Function(GetDatetime value)? getDatetime,
     TResult Function(OrderPlacing value)? orderPlacing,
     TResult Function(GetOrders value)? getOrders,
     TResult Function(OrderCancel value)? orderCancel,
@@ -3383,6 +3679,7 @@ class _$RemoveAllFieldDataImpl implements RemoveAllFieldData {
     required TResult Function(
             AbandendOrderRequestModel abandendOrderRequestModel)
         abandendOrder,
+    required TResult Function() getDatetime,
     required TResult Function() orderPlacing,
     required TResult Function() getOrders,
     required TResult Function(
@@ -3412,6 +3709,7 @@ class _$RemoveAllFieldDataImpl implements RemoveAllFieldData {
         getPromoCode,
     TResult? Function(AbandendOrderRequestModel abandendOrderRequestModel)?
         abandendOrder,
+    TResult? Function()? getDatetime,
     TResult? Function()? orderPlacing,
     TResult? Function()? getOrders,
     TResult? Function(OrderCancelationRequestModel orderCancelationRequestModel,
@@ -3438,6 +3736,7 @@ class _$RemoveAllFieldDataImpl implements RemoveAllFieldData {
     TResult Function(PromoCodeRequestModel promoCodeRequestModel)? getPromoCode,
     TResult Function(AbandendOrderRequestModel abandendOrderRequestModel)?
         abandendOrder,
+    TResult Function()? getDatetime,
     TResult Function()? orderPlacing,
     TResult Function()? getOrders,
     TResult Function(OrderCancelationRequestModel orderCancelationRequestModel,
@@ -3467,6 +3766,7 @@ class _$RemoveAllFieldDataImpl implements RemoveAllFieldData {
   TResult map<TResult extends Object?>({
     required TResult Function(GetPromoCode value) getPromoCode,
     required TResult Function(AbandendOrder value) abandendOrder,
+    required TResult Function(GetDatetime value) getDatetime,
     required TResult Function(OrderPlacing value) orderPlacing,
     required TResult Function(GetOrders value) getOrders,
     required TResult Function(OrderCancel value) orderCancel,
@@ -3490,6 +3790,7 @@ class _$RemoveAllFieldDataImpl implements RemoveAllFieldData {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(GetPromoCode value)? getPromoCode,
     TResult? Function(AbandendOrder value)? abandendOrder,
+    TResult? Function(GetDatetime value)? getDatetime,
     TResult? Function(OrderPlacing value)? orderPlacing,
     TResult? Function(GetOrders value)? getOrders,
     TResult? Function(OrderCancel value)? orderCancel,
@@ -3513,6 +3814,7 @@ class _$RemoveAllFieldDataImpl implements RemoveAllFieldData {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GetPromoCode value)? getPromoCode,
     TResult Function(AbandendOrder value)? abandendOrder,
+    TResult Function(GetDatetime value)? getDatetime,
     TResult Function(OrderPlacing value)? orderPlacing,
     TResult Function(GetOrders value)? getOrders,
     TResult Function(OrderCancel value)? orderCancel,
@@ -3583,6 +3885,7 @@ class _$PromoCodeSuccessImpl implements PromoCodeSuccess {
     required TResult Function(
             AbandendOrderRequestModel abandendOrderRequestModel)
         abandendOrder,
+    required TResult Function() getDatetime,
     required TResult Function() orderPlacing,
     required TResult Function() getOrders,
     required TResult Function(
@@ -3612,6 +3915,7 @@ class _$PromoCodeSuccessImpl implements PromoCodeSuccess {
         getPromoCode,
     TResult? Function(AbandendOrderRequestModel abandendOrderRequestModel)?
         abandendOrder,
+    TResult? Function()? getDatetime,
     TResult? Function()? orderPlacing,
     TResult? Function()? getOrders,
     TResult? Function(OrderCancelationRequestModel orderCancelationRequestModel,
@@ -3638,6 +3942,7 @@ class _$PromoCodeSuccessImpl implements PromoCodeSuccess {
     TResult Function(PromoCodeRequestModel promoCodeRequestModel)? getPromoCode,
     TResult Function(AbandendOrderRequestModel abandendOrderRequestModel)?
         abandendOrder,
+    TResult Function()? getDatetime,
     TResult Function()? orderPlacing,
     TResult Function()? getOrders,
     TResult Function(OrderCancelationRequestModel orderCancelationRequestModel,
@@ -3667,6 +3972,7 @@ class _$PromoCodeSuccessImpl implements PromoCodeSuccess {
   TResult map<TResult extends Object?>({
     required TResult Function(GetPromoCode value) getPromoCode,
     required TResult Function(AbandendOrder value) abandendOrder,
+    required TResult Function(GetDatetime value) getDatetime,
     required TResult Function(OrderPlacing value) orderPlacing,
     required TResult Function(GetOrders value) getOrders,
     required TResult Function(OrderCancel value) orderCancel,
@@ -3690,6 +3996,7 @@ class _$PromoCodeSuccessImpl implements PromoCodeSuccess {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(GetPromoCode value)? getPromoCode,
     TResult? Function(AbandendOrder value)? abandendOrder,
+    TResult? Function(GetDatetime value)? getDatetime,
     TResult? Function(OrderPlacing value)? orderPlacing,
     TResult? Function(GetOrders value)? getOrders,
     TResult? Function(OrderCancel value)? orderCancel,
@@ -3713,6 +4020,7 @@ class _$PromoCodeSuccessImpl implements PromoCodeSuccess {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GetPromoCode value)? getPromoCode,
     TResult Function(AbandendOrder value)? abandendOrder,
+    TResult Function(GetDatetime value)? getDatetime,
     TResult Function(OrderPlacing value)? orderPlacing,
     TResult Function(GetOrders value)? getOrders,
     TResult Function(OrderCancel value)? orderCancel,
@@ -3765,6 +4073,10 @@ mixin _$PlaceOrderState {
       throw _privateConstructorUsedError;
   GetAllOrderResponceModel? get getAllOrderResponceModel =>
       throw _privateConstructorUsedError;
+  DateTomeResponceModel? get dateTomeResponceModel =>
+      throw _privateConstructorUsedError;
+  List<String>? get dates => throw _privateConstructorUsedError;
+  List<String>? get time => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $PlaceOrderStateCopyWith<PlaceOrderState> get copyWith =>
@@ -3794,7 +4106,10 @@ abstract class $PlaceOrderStateCopyWith<$Res> {
       String? number,
       List<SelectedOption>? selectedNewOptions,
       OrderCancelationResponceModel? orderCancelationResponceModel,
-      GetAllOrderResponceModel? getAllOrderResponceModel});
+      GetAllOrderResponceModel? getAllOrderResponceModel,
+      DateTomeResponceModel? dateTomeResponceModel,
+      List<String>? dates,
+      List<String>? time});
 }
 
 /// @nodoc
@@ -3827,6 +4142,9 @@ class _$PlaceOrderStateCopyWithImpl<$Res, $Val extends PlaceOrderState>
     Object? selectedNewOptions = freezed,
     Object? orderCancelationResponceModel = freezed,
     Object? getAllOrderResponceModel = freezed,
+    Object? dateTomeResponceModel = freezed,
+    Object? dates = freezed,
+    Object? time = freezed,
   }) {
     return _then(_value.copyWith(
       isLoading: null == isLoading
@@ -3897,6 +4215,18 @@ class _$PlaceOrderStateCopyWithImpl<$Res, $Val extends PlaceOrderState>
           ? _value.getAllOrderResponceModel
           : getAllOrderResponceModel // ignore: cast_nullable_to_non_nullable
               as GetAllOrderResponceModel?,
+      dateTomeResponceModel: freezed == dateTomeResponceModel
+          ? _value.dateTomeResponceModel
+          : dateTomeResponceModel // ignore: cast_nullable_to_non_nullable
+              as DateTomeResponceModel?,
+      dates: freezed == dates
+          ? _value.dates
+          : dates // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
+      time: freezed == time
+          ? _value.time
+          : time // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
     ) as $Val);
   }
 }
@@ -3926,7 +4256,10 @@ abstract class _$$InitialImplCopyWith<$Res>
       String? number,
       List<SelectedOption>? selectedNewOptions,
       OrderCancelationResponceModel? orderCancelationResponceModel,
-      GetAllOrderResponceModel? getAllOrderResponceModel});
+      GetAllOrderResponceModel? getAllOrderResponceModel,
+      DateTomeResponceModel? dateTomeResponceModel,
+      List<String>? dates,
+      List<String>? time});
 }
 
 /// @nodoc
@@ -3957,6 +4290,9 @@ class __$$InitialImplCopyWithImpl<$Res>
     Object? selectedNewOptions = freezed,
     Object? orderCancelationResponceModel = freezed,
     Object? getAllOrderResponceModel = freezed,
+    Object? dateTomeResponceModel = freezed,
+    Object? dates = freezed,
+    Object? time = freezed,
   }) {
     return _then(_$InitialImpl(
       isLoading: null == isLoading
@@ -4027,6 +4363,18 @@ class __$$InitialImplCopyWithImpl<$Res>
           ? _value.getAllOrderResponceModel
           : getAllOrderResponceModel // ignore: cast_nullable_to_non_nullable
               as GetAllOrderResponceModel?,
+      dateTomeResponceModel: freezed == dateTomeResponceModel
+          ? _value.dateTomeResponceModel
+          : dateTomeResponceModel // ignore: cast_nullable_to_non_nullable
+              as DateTomeResponceModel?,
+      dates: freezed == dates
+          ? _value._dates
+          : dates // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
+      time: freezed == time
+          ? _value._time
+          : time // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
     ));
   }
 }
@@ -4051,8 +4399,13 @@ class _$InitialImpl implements _Initial {
       this.number,
       final List<SelectedOption>? selectedNewOptions,
       this.orderCancelationResponceModel,
-      this.getAllOrderResponceModel})
-      : _selectedNewOptions = selectedNewOptions;
+      this.getAllOrderResponceModel,
+      this.dateTomeResponceModel,
+      final List<String>? dates,
+      final List<String>? time})
+      : _selectedNewOptions = selectedNewOptions,
+        _dates = dates,
+        _time = time;
 
   @override
   final bool isLoading;
@@ -4097,10 +4450,31 @@ class _$InitialImpl implements _Initial {
   final OrderCancelationResponceModel? orderCancelationResponceModel;
   @override
   final GetAllOrderResponceModel? getAllOrderResponceModel;
+  @override
+  final DateTomeResponceModel? dateTomeResponceModel;
+  final List<String>? _dates;
+  @override
+  List<String>? get dates {
+    final value = _dates;
+    if (value == null) return null;
+    if (_dates is EqualUnmodifiableListView) return _dates;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  final List<String>? _time;
+  @override
+  List<String>? get time {
+    final value = _time;
+    if (value == null) return null;
+    if (_time is EqualUnmodifiableListView) return _time;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
-    return 'PlaceOrderState(isLoading: $isLoading, hasError: $hasError, loginStatus: $loginStatus, message: $message, promoCodeResponceModel: $promoCodeResponceModel, orderPlacedResponceModel: $orderPlacedResponceModel, orderPlacedRequestModel: $orderPlacedRequestModel, user: $user, payment: $payment, pickUpDetails: $pickUpDetails, productDetails: $productDetails, address: $address, promo: $promo, number: $number, selectedNewOptions: $selectedNewOptions, orderCancelationResponceModel: $orderCancelationResponceModel, getAllOrderResponceModel: $getAllOrderResponceModel)';
+    return 'PlaceOrderState(isLoading: $isLoading, hasError: $hasError, loginStatus: $loginStatus, message: $message, promoCodeResponceModel: $promoCodeResponceModel, orderPlacedResponceModel: $orderPlacedResponceModel, orderPlacedRequestModel: $orderPlacedRequestModel, user: $user, payment: $payment, pickUpDetails: $pickUpDetails, productDetails: $productDetails, address: $address, promo: $promo, number: $number, selectedNewOptions: $selectedNewOptions, orderCancelationResponceModel: $orderCancelationResponceModel, getAllOrderResponceModel: $getAllOrderResponceModel, dateTomeResponceModel: $dateTomeResponceModel, dates: $dates, time: $time)';
   }
 
   @override
@@ -4140,29 +4514,37 @@ class _$InitialImpl implements _Initial {
                     orderCancelationResponceModel) &&
             (identical(
                     other.getAllOrderResponceModel, getAllOrderResponceModel) ||
-                other.getAllOrderResponceModel == getAllOrderResponceModel));
+                other.getAllOrderResponceModel == getAllOrderResponceModel) &&
+            (identical(other.dateTomeResponceModel, dateTomeResponceModel) ||
+                other.dateTomeResponceModel == dateTomeResponceModel) &&
+            const DeepCollectionEquality().equals(other._dates, _dates) &&
+            const DeepCollectionEquality().equals(other._time, _time));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      isLoading,
-      hasError,
-      loginStatus,
-      message,
-      promoCodeResponceModel,
-      orderPlacedResponceModel,
-      orderPlacedRequestModel,
-      user,
-      payment,
-      pickUpDetails,
-      productDetails,
-      address,
-      promo,
-      number,
-      const DeepCollectionEquality().hash(_selectedNewOptions),
-      orderCancelationResponceModel,
-      getAllOrderResponceModel);
+  int get hashCode => Object.hashAll([
+        runtimeType,
+        isLoading,
+        hasError,
+        loginStatus,
+        message,
+        promoCodeResponceModel,
+        orderPlacedResponceModel,
+        orderPlacedRequestModel,
+        user,
+        payment,
+        pickUpDetails,
+        productDetails,
+        address,
+        promo,
+        number,
+        const DeepCollectionEquality().hash(_selectedNewOptions),
+        orderCancelationResponceModel,
+        getAllOrderResponceModel,
+        dateTomeResponceModel,
+        const DeepCollectionEquality().hash(_dates),
+        const DeepCollectionEquality().hash(_time)
+      ]);
 
   @JsonKey(ignore: true)
   @override
@@ -4173,24 +4555,26 @@ class _$InitialImpl implements _Initial {
 
 abstract class _Initial implements PlaceOrderState {
   const factory _Initial(
-          {required final bool isLoading,
-          required final bool hasError,
-          required final bool loginStatus,
-          final String? message,
-          final PromoCodeResponceModel? promoCodeResponceModel,
-          final OrderPlacedResponceModel? orderPlacedResponceModel,
-          required final OrderPlacedRequestModel orderPlacedRequestModel,
-          required final User user,
-          required final Payment payment,
-          required final PickUpDetails pickUpDetails,
-          required final ProductDetails productDetails,
-          required final String address,
-          required final Promo promo,
-          final String? number,
-          final List<SelectedOption>? selectedNewOptions,
-          final OrderCancelationResponceModel? orderCancelationResponceModel,
-          final GetAllOrderResponceModel? getAllOrderResponceModel}) =
-      _$InitialImpl;
+      {required final bool isLoading,
+      required final bool hasError,
+      required final bool loginStatus,
+      final String? message,
+      final PromoCodeResponceModel? promoCodeResponceModel,
+      final OrderPlacedResponceModel? orderPlacedResponceModel,
+      required final OrderPlacedRequestModel orderPlacedRequestModel,
+      required final User user,
+      required final Payment payment,
+      required final PickUpDetails pickUpDetails,
+      required final ProductDetails productDetails,
+      required final String address,
+      required final Promo promo,
+      final String? number,
+      final List<SelectedOption>? selectedNewOptions,
+      final OrderCancelationResponceModel? orderCancelationResponceModel,
+      final GetAllOrderResponceModel? getAllOrderResponceModel,
+      final DateTomeResponceModel? dateTomeResponceModel,
+      final List<String>? dates,
+      final List<String>? time}) = _$InitialImpl;
 
   @override
   bool get isLoading;
@@ -4226,6 +4610,12 @@ abstract class _Initial implements PlaceOrderState {
   OrderCancelationResponceModel? get orderCancelationResponceModel;
   @override
   GetAllOrderResponceModel? get getAllOrderResponceModel;
+  @override
+  DateTomeResponceModel? get dateTomeResponceModel;
+  @override
+  List<String>? get dates;
+  @override
+  List<String>? get time;
   @override
   @JsonKey(ignore: true)
   _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>

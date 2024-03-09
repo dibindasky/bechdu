@@ -1,10 +1,8 @@
-import 'dart:developer';
 import 'package:beachdu/application/business_logic/location/location_bloc.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/application/presentation/utils/loading_indicators/loading_indicator.dart';
 import 'package:beachdu/application/presentation/utils/snackbar/snackbar.dart';
-import 'package:beachdu/domain/core/failure/failure.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -49,6 +47,7 @@ class ScreenPinCodes extends StatelessWidget {
                     ),
                     const SizedBox(height: 10),
                     CupertinoTextField(
+                      keyboardType: TextInputType.number,
                       onChanged: (value) {
                         context
                             .read<LocationBloc>()
@@ -72,7 +71,7 @@ class ScreenPinCodes extends StatelessWidget {
                         if (state.pincodeResponceModel != null) {
                           showSnack(
                             context: context,
-                            message: state.message!,
+                            message: state.message ?? 'Code applied success',
                           );
                         }
                       },

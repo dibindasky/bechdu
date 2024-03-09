@@ -12,7 +12,7 @@ showConfirmationDialog(
   return showDialog(
     context: context,
     builder: (context) => AlertDialog(
-      backgroundColor: klightGreen,
+      backgroundColor: kWhiteextra,
       title: Text(
         heading ?? 'Do you really want to exit from Bechdu?',
         style: textHeadBold1,

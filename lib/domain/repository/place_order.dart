@@ -1,4 +1,5 @@
 import 'package:beachdu/domain/core/failure/failure.dart';
+import 'package:beachdu/domain/model/date_tome_responce_model/date_tome_responce_model.dart';
 import 'package:beachdu/domain/model/order_model/get_all_order_responce_model/get_all_order_responce_model.dart';
 import 'package:beachdu/domain/model/order_model/order_cancelation_request_model/order_cancelation_request_model.dart';
 import 'package:beachdu/domain/model/order_model/order_cancelation_responce_model/order_cancelation_responce_model.dart';
@@ -20,4 +21,5 @@ abstract class PlaceOrderRepo {
     required OrderCancelationRequestModel orderCancelationRequestModel,
     required String orderId,
   });
+  Future<Either<Failure, DateTomeResponceModel>> getDateTime();
 }

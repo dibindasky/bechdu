@@ -30,4 +30,5 @@ class ApiEndPoints {
   static const String getOrders = 'order/get-user-order/{number}';
   static const String orderCancel = 'order/{order_id}/user-cancel';
   static const String homePageBanners = 'dynamic/mobile/getHomePage';
+  static const String dateTime = 'dynamic/calendar/next-10-days';
 }

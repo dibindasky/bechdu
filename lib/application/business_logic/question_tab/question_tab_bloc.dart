@@ -34,6 +34,12 @@ class QuestionTabBloc extends Bloc<QuestionTabEvent, QuestionTabState> {
     on<GetBasePrice>(getBasePrice);
     on<AbandentOrder>(abandentOrder);
     on<YesOrNo>(yesOrNo);
+
+    on<ClearNewOPtionList>(clearOptionList);
+  }
+
+  FutureOr<void> clearOptionList(ClearNewOPtionList event, emit) {
+    newList.clear();
   }
 
   FutureOr<void> yesOrNo(YesOrNo event, emit) {

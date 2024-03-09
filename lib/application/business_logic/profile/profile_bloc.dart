@@ -18,6 +18,7 @@ part 'profile_bloc.freezed.dart';
 class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   final ProfileRepo profileRepo;
   bool isShowAddress = false;
+  String? name;
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   TextEditingController profileNameController = TextEditingController();
   TextEditingController profileEmailController = TextEditingController();
@@ -53,7 +54,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   }
 
   FutureOr<void> getUserInfo(GetUserInfo event, emit) async {
-    // if (state.user != null) return;
+    if (state.user != null) return;
     emit(state.copyWith(isLoading: true, hasError: false));
     final data = await profileRepo.getUserInfo();
     data.fold((fail) {
@@ -68,6 +69,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
         profileNameController.text = succsessUserData.user!.name ?? '';
         profileEmailController.text = succsessUserData.user!.email ?? '';
         profileAddPhoneController.text = succsessUserData.user!.addPhone ?? '';
+        name = succsessUserData.user!.name;
       }
       emit(state.copyWith(
         isLoading: false,

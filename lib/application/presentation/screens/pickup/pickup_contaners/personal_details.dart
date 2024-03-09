@@ -1,6 +1,4 @@
 import 'dart:developer';
-
-import 'package:beachdu/application/business_logic/auth/auth_bloc.dart';
 import 'package:beachdu/application/business_logic/place_order/place_order_bloc.dart';
 import 'package:beachdu/application/business_logic/profile/profile_bloc.dart';
 import 'package:beachdu/application/presentation/screens/pickup/pickup_screen.dart';
@@ -39,9 +37,7 @@ class PersonalDetails extends StatelessWidget {
                 ),
               ),
               TTextFormField(
-                controller: profileState.addressCreationResponceModel != null
-                    ? context.read<ProfileBloc>().profileNameController
-                    : context.read<PlaceOrderBloc>().nameController,
+                controller: context.read<PlaceOrderBloc>().nameController,
                 text: 'Enter name',
               ),
               Text(
@@ -51,9 +47,7 @@ class PersonalDetails extends StatelessWidget {
                 ),
               ),
               TTextFormField(
-                controller: profileState.addressCreationResponceModel != null
-                    ? context.read<ProfileBloc>().profileEmailController
-                    : context.read<PlaceOrderBloc>().emailController,
+                controller: context.read<PlaceOrderBloc>().emailController,
                 text: 'Enter email',
                 inputType: TextInputType.emailAddress,
               ),
@@ -93,9 +87,8 @@ class PersonalDetails extends StatelessWidget {
                 ),
               ),
               TTextFormField(
-                controller: profileState.addressCreationResponceModel != null
-                    ? context.read<ProfileBloc>().profileAddPhoneController
-                    : context.read<PlaceOrderBloc>().additionalNumberController,
+                controller:
+                    context.read<PlaceOrderBloc>().additionalNumberController,
                 inputType: TextInputType.number,
                 text: '00000 00000',
               ),
@@ -179,14 +172,14 @@ class PersonalDetails extends StatelessWidget {
                                     .toString()
                                 : '',
                           );
-
+                          log('perosll detail button promo  >${promo.toJson()}');
+                          log('perosll detail button user  >${user.toJson()}');
                           context
                               .read<PlaceOrderBloc>()
                               .add(PlaceOrderEvent.userDetailsPick(
                                 user: user,
                                 promo: promo,
                               ));
-
                           // Update the value of pickupDetailChangeNotifier
                           pickupDetailChangeNotifier.value =
                               PickupDetailContainers.address;

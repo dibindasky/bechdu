@@ -179,12 +179,12 @@ class BestSellingDevices extends StatelessWidget {
                                             ),
                                           ),
                                         ),
-                                        Positioned(
-                                          right: 20,
-                                          top: sWidth * 0.40,
-                                          child:
-                                              const UsersProfileStackRecomended(),
-                                        ),
+                                        // Positioned(
+                                        //   right: 20,
+                                        //   top: sWidth * 0.40,
+                                        //   child:
+                                        //       const UsersProfileStackRecomended(),
+                                        // ),
                                       ],
                                     ),
                                   ),

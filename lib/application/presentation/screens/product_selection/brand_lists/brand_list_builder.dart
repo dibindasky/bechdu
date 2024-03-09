@@ -69,18 +69,12 @@ class BrandListviewBuilder extends StatelessWidget {
                                           .read<CategoryBlocBloc>()
                                           .categoryType ??
                                       'mobile';
+
                                   context
                                       .read<CategoryBlocBloc>()
                                       .categoryType = categoryType;
                                   context.read<CategoryBlocBloc>().barndName =
                                       brands[index].brandName!;
-
-                                  context
-                                      .read<CategoryBlocBloc>()
-                                      .add(GetProducts(
-                                        categoryType: categoryType,
-                                        brandName: brands[index].brandName!,
-                                      ));
 
                                   //Series fetching for selected products
                                   context
@@ -94,7 +88,7 @@ class BrandListviewBuilder extends StatelessWidget {
                                             .categoryType!,
                                       ));
 
-                                  //Getting product screen
+                                  //Getting serirs screen screen
                                   brandSeriesProductValueNotifier.value = 1;
                                   brandSeriesProductValueNotifier
                                       .notifyListeners();

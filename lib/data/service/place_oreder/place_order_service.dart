@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:beachdu/data/secure_storage/secure_fire_store.dart';
 import 'package:beachdu/domain/core/api_endpoints/api_endpoints.dart';
 import 'package:beachdu/domain/core/failure/failure.dart';
+import 'package:beachdu/domain/model/date_tome_responce_model/date_tome_responce_model.dart';
 import 'package:beachdu/domain/model/order_model/get_all_order_responce_model/get_all_order_responce_model.dart';
 import 'package:beachdu/domain/model/order_model/order_cancelation_request_model/order_cancelation_request_model.dart';
 import 'package:beachdu/domain/model/order_model/order_cancelation_responce_model/order_cancelation_responce_model.dart';
@@ -108,14 +109,7 @@ class PlaceOrderService implements PlaceOrderRepo {
           'authorization': "Bearer $accessToken",
         },
       );
-      log('${orderCancelationRequestModel.toJson()}');
-      log(_dio.options.headers.toString());
-      log('respnce '
-          '${ApiEndPoints.orderCancel.replaceAll(
-        '{order_id}',
-        orderId,
-      )}'
-          '');
+
       final responce = await _dio.put(
         ApiEndPoints.orderCancel.replaceAll(
           '{order_id}',
@@ -131,6 +125,24 @@ class PlaceOrderService implements PlaceOrderRepo {
       return Left(Failure(message: e.response?.data['error'] ?? errorMessage));
     } catch (e) {
       log('orderCancel catch $e');
+      return Left(Failure(message: errorMessage));
+    }
+  }
+
+  @override
+  Future<Either<Failure, DateTomeResponceModel>> getDateTime() async {
+    try {
+      final responce = await _dio.get(
+        ApiEndPoints.dateTime,
+      );
+      log('getDateTime data ${responce.data}');
+
+      return Right(DateTomeResponceModel.fromJson(responce.data));
+    } on DioException catch (e) {
+      log('getDateTime DioException $e');
+      return Left(Failure(message: e.response?.data['error'] ?? errorMessage));
+    } catch (e) {
+      log('getDateTime catch $e');
       return Left(Failure(message: errorMessage));
     }
   }

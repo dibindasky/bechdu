@@ -1,3 +1,4 @@
+import 'package:beachdu/application/business_logic/brands_bloc/category_bloc_bloc.dart';
 import 'package:beachdu/application/business_logic/question_tab/question_tab_bloc.dart';
 import 'package:beachdu/application/presentation/screens/product_selection/product_screen.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
@@ -63,13 +64,13 @@ class TopImage extends StatelessWidget {
                               ? sWidth * .4
                               : sWidth * .24,
                           width: fromWhere == FromWhere.checkoutAndPickupScreen
-                              ? sWidth * .4
+                              ? sWidth * .34
                               : sWidth * .23,
                           child: Image.network(url),
                         ),
                         fromWhere == FromWhere.pickupScreen ||
                                 fromWhere == FromWhere.checkoutAndPickupScreen
-                            ? kWidth30
+                            ? kWidth20
                             : kWidth10,
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -87,7 +88,7 @@ class TopImage extends StatelessWidget {
                                         color: kWhite,
                                         overflow: TextOverflow.ellipsis,
                                       ),
-                                      //maxLines: 2,
+                                      maxLines: 2,
                                     ),
                                     kWidth10,
                                     Text(
@@ -150,6 +151,10 @@ class TopImage extends StatelessWidget {
                                             ),
                                             TextButton(
                                               onPressed: () {
+                                                context
+                                                    .read<QuestionTabBloc>()
+                                                    .newList
+                                                    .clear();
                                                 secondtabScreensNotifier.value =
                                                     1;
                                                 secondtabScreensNotifier
@@ -182,7 +187,8 @@ class TopImage extends StatelessWidget {
                                 fromWhere == FromWhere.pickupScreen)
                               Text(
                                 '${questiontabBloc.product!.model}',
-                                style: textHeadBold1.copyWith(color: kWhite),
+                                style: textHeadBold1.copyWith(
+                                    color: kWhite, fontSize: sWidth * .05),
                               ),
                             kHeight5,
                             if (fromWhere ==
@@ -197,7 +203,7 @@ class TopImage extends StatelessWidget {
                                         textHeadMedium1.copyWith(color: kWhite),
                                   ),
                                   Text(
-                                    '${questiontabBloc.basePriceModelResponce!.basePrice}',
+                                    '₹ ${questiontabBloc.basePriceModelResponce!.basePrice}',
                                     style: textHeadBoldBig.copyWith(
                                       color: kWhite,
                                     ),
@@ -213,12 +219,6 @@ class TopImage extends StatelessWidget {
                                     style:
                                         textHeadBoldBig.copyWith(color: kWhite),
                                   ),
-                                  kWidth30,
-                                  const Icon(
-                                    Icons.arrow_downward_sharp,
-                                    size: 18,
-                                    color: kWhite,
-                                  )
                                 ],
                               ),
                           ],
@@ -229,7 +229,9 @@ class TopImage extends StatelessWidget {
                 ),
               );
             } else {
-              return const Text('Empty');
+              return const Icon(
+                Icons.refresh,
+              );
             }
           },
         ),

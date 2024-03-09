@@ -31,39 +31,47 @@ class ScreenMyOrders extends StatelessWidget {
             style: textHeadBoldBig,
           ),
         ),
-        body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 5),
-          child: BlocBuilder<AuthBloc, AuthState>(
-            builder: (context, state) {
-              if (!state.logOrNot) {
-                return Lottie.asset(emptyLottie);
-              }
-              return BlocBuilder<PlaceOrderBloc, PlaceOrderState>(
-                builder: (context, state) {
-                  if (state.isLoading) {
-                    return const Skeleton(
-                      crossAxisCount: 1,
-                      itemCount: 5,
-                      height: 50,
-                    );
-                  }
-                  if (state.hasError) {
-                    return Lottie.asset(emptyLottie);
-                  } else {
-                    if (state.getAllOrderResponceModel == null) {
-                      return Lottie.asset(emptyLottie);
-                    } else {
-                      return ListView.builder(
-                        itemCount:
-                            state.getAllOrderResponceModel!.orders!.length,
-                        itemBuilder: (context, index) =>
-                            MyOrderContainer(index: index),
+        body: RefreshIndicator(
+          onRefresh: () async {
+            context
+                .read<PlaceOrderBloc>()
+                .add(const PlaceOrderEvent.getOrders());
+            await Future.delayed(const Duration(seconds: 2));
+          },
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 5),
+            child: BlocBuilder<AuthBloc, AuthState>(
+              builder: (context, state) {
+                if (!state.logOrNot) {
+                  return Lottie.asset(emptyLottie);
+                }
+                return BlocBuilder<PlaceOrderBloc, PlaceOrderState>(
+                  builder: (context, state) {
+                    if (state.isLoading) {
+                      return const Skeleton(
+                        crossAxisCount: 1,
+                        itemCount: 5,
+                        height: 50,
                       );
                     }
-                  }
-                },
-              );
-            },
+                    if (state.hasError) {
+                      return Lottie.asset(emptyLottie);
+                    } else {
+                      if (state.getAllOrderResponceModel == null) {
+                        return Lottie.asset(emptyLottie);
+                      } else {
+                        return ListView.builder(
+                          itemCount:
+                              state.getAllOrderResponceModel!.orders!.length,
+                          itemBuilder: (context, index) =>
+                              MyOrderContainer(index: index),
+                        );
+                      }
+                    }
+                  },
+                );
+              },
+            ),
           ),
         ),
       ),

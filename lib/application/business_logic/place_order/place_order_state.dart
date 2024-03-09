@@ -20,6 +20,9 @@ class PlaceOrderState with _$PlaceOrderState {
     List<SelectedOption>? selectedNewOptions,
     OrderCancelationResponceModel? orderCancelationResponceModel,
     GetAllOrderResponceModel? getAllOrderResponceModel,
+    DateTomeResponceModel? dateTomeResponceModel,
+    List<String>? dates,
+    List<String>? time,
   }) = _Initial;
 
   factory PlaceOrderState.initial() => PlaceOrderState(

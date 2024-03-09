@@ -13,7 +13,7 @@ import 'package:iconsax/iconsax.dart';
 
 class CustomSearchFieldHome extends StatelessWidget {
   CustomSearchFieldHome({super.key});
-  Debouncer debouncer = Debouncer(milliseconds: 100);
+  final Debouncer debouncer = Debouncer(milliseconds: 100);
 
   @override
   Widget build(BuildContext context) {
@@ -22,17 +22,17 @@ class CustomSearchFieldHome extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          SizedBox(
+          Container(
+            decoration:
+                BoxDecoration(borderRadius: kRadius10, color: klightwhite),
             width: sWidth * 0.7,
             child: TextField(
               controller:
                   context.read<HomeBloc>().globalProductSearchController,
               style: textHeadMedium1,
-              decoration: InputDecoration(
-                filled: true,
-                fillColor: klightwhite,
+              decoration: const InputDecoration(
                 hintText: 'Search products',
-                prefixIcon: const Icon(
+                prefixIcon: Icon(
                   Icons.search,
                   color: kBlack,
                   size: 20,

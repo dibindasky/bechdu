@@ -35,7 +35,6 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   }
 
   FutureOr<void> nextPage(NextPage event, emit) async {
-    log('next page initial');
     emit(state.copyWith(loadMore: true));
     isScrollLoading = true;
     pageNumber += 1;
@@ -97,7 +96,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
   FutureOr<void> getBestSellingProducts(
       GetBestSellingProducts event, emit) async {
-    //if (state.bestSellingProductsResponceModel != null) return;
+    if (state.bestSellingProductsResponceModel != null) return;
     emit(state.copyWith(isLoading: true, hasError: false));
     final data = await homeRepository.getBestSellingProducts();
     data.fold(
@@ -147,7 +146,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     GetAllCategory event,
     Emitter<HomeState> emit,
   ) async {
-    //if (state.getCategoryResponceModel != null) return;
+    if (state.getCategoryResponceModel != null) return;
     emit(state.copyWith(isLoading: true, hasError: false));
     final data = await homeRepository.getAllCategory();
     data.fold(

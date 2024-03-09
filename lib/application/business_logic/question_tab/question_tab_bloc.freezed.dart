@@ -33,6 +33,7 @@ mixin _$QuestionTabEvent {
     required TResult Function(
             AbandendOrderRequestModel abandendOrderRequestModel)
         abandentOrder,
+    required TResult Function() clearNewOPtionList,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -49,6 +50,7 @@ mixin _$QuestionTabEvent {
         getBasePrice,
     TResult? Function(AbandendOrderRequestModel abandendOrderRequestModel)?
         abandentOrder,
+    TResult? Function()? clearNewOPtionList,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -65,6 +67,7 @@ mixin _$QuestionTabEvent {
         getBasePrice,
     TResult Function(AbandendOrderRequestModel abandendOrderRequestModel)?
         abandentOrder,
+    TResult Function()? clearNewOPtionList,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -79,6 +82,7 @@ mixin _$QuestionTabEvent {
     required TResult Function(CountQuestionNumber value) countQuestionNumber,
     required TResult Function(GetBasePrice value) getBasePrice,
     required TResult Function(AbandentOrder value) abandentOrder,
+    required TResult Function(ClearNewOPtionList value) clearNewOPtionList,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -92,6 +96,7 @@ mixin _$QuestionTabEvent {
     TResult? Function(CountQuestionNumber value)? countQuestionNumber,
     TResult? Function(GetBasePrice value)? getBasePrice,
     TResult? Function(AbandentOrder value)? abandentOrder,
+    TResult? Function(ClearNewOPtionList value)? clearNewOPtionList,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -105,6 +110,7 @@ mixin _$QuestionTabEvent {
     TResult Function(CountQuestionNumber value)? countQuestionNumber,
     TResult Function(GetBasePrice value)? getBasePrice,
     TResult Function(AbandentOrder value)? abandentOrder,
+    TResult Function(ClearNewOPtionList value)? clearNewOPtionList,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -181,6 +187,7 @@ class _$TabChangeImpl implements TabChange {
     required TResult Function(
             AbandendOrderRequestModel abandendOrderRequestModel)
         abandentOrder,
+    required TResult Function() clearNewOPtionList,
   }) {
     return tabChange();
   }
@@ -200,6 +207,7 @@ class _$TabChangeImpl implements TabChange {
         getBasePrice,
     TResult? Function(AbandendOrderRequestModel abandendOrderRequestModel)?
         abandentOrder,
+    TResult? Function()? clearNewOPtionList,
   }) {
     return tabChange?.call();
   }
@@ -219,6 +227,7 @@ class _$TabChangeImpl implements TabChange {
         getBasePrice,
     TResult Function(AbandendOrderRequestModel abandendOrderRequestModel)?
         abandentOrder,
+    TResult Function()? clearNewOPtionList,
     required TResult orElse(),
   }) {
     if (tabChange != null) {
@@ -239,6 +248,7 @@ class _$TabChangeImpl implements TabChange {
     required TResult Function(CountQuestionNumber value) countQuestionNumber,
     required TResult Function(GetBasePrice value) getBasePrice,
     required TResult Function(AbandentOrder value) abandentOrder,
+    required TResult Function(ClearNewOPtionList value) clearNewOPtionList,
   }) {
     return tabChange(this);
   }
@@ -255,6 +265,7 @@ class _$TabChangeImpl implements TabChange {
     TResult? Function(CountQuestionNumber value)? countQuestionNumber,
     TResult? Function(GetBasePrice value)? getBasePrice,
     TResult? Function(AbandentOrder value)? abandentOrder,
+    TResult? Function(ClearNewOPtionList value)? clearNewOPtionList,
   }) {
     return tabChange?.call(this);
   }
@@ -271,6 +282,7 @@ class _$TabChangeImpl implements TabChange {
     TResult Function(CountQuestionNumber value)? countQuestionNumber,
     TResult Function(GetBasePrice value)? getBasePrice,
     TResult Function(AbandentOrder value)? abandentOrder,
+    TResult Function(ClearNewOPtionList value)? clearNewOPtionList,
     required TResult orElse(),
   }) {
     if (tabChange != null) {
@@ -337,6 +349,7 @@ class _$ResetTabSelectionImpl implements ResetTabSelection {
     required TResult Function(
             AbandendOrderRequestModel abandendOrderRequestModel)
         abandentOrder,
+    required TResult Function() clearNewOPtionList,
   }) {
     return resetTabSelection();
   }
@@ -356,6 +369,7 @@ class _$ResetTabSelectionImpl implements ResetTabSelection {
         getBasePrice,
     TResult? Function(AbandendOrderRequestModel abandendOrderRequestModel)?
         abandentOrder,
+    TResult? Function()? clearNewOPtionList,
   }) {
     return resetTabSelection?.call();
   }
@@ -375,6 +389,7 @@ class _$ResetTabSelectionImpl implements ResetTabSelection {
         getBasePrice,
     TResult Function(AbandendOrderRequestModel abandendOrderRequestModel)?
         abandentOrder,
+    TResult Function()? clearNewOPtionList,
     required TResult orElse(),
   }) {
     if (resetTabSelection != null) {
@@ -395,6 +410,7 @@ class _$ResetTabSelectionImpl implements ResetTabSelection {
     required TResult Function(CountQuestionNumber value) countQuestionNumber,
     required TResult Function(GetBasePrice value) getBasePrice,
     required TResult Function(AbandentOrder value) abandentOrder,
+    required TResult Function(ClearNewOPtionList value) clearNewOPtionList,
   }) {
     return resetTabSelection(this);
   }
@@ -411,6 +427,7 @@ class _$ResetTabSelectionImpl implements ResetTabSelection {
     TResult? Function(CountQuestionNumber value)? countQuestionNumber,
     TResult? Function(GetBasePrice value)? getBasePrice,
     TResult? Function(AbandentOrder value)? abandentOrder,
+    TResult? Function(ClearNewOPtionList value)? clearNewOPtionList,
   }) {
     return resetTabSelection?.call(this);
   }
@@ -427,6 +444,7 @@ class _$ResetTabSelectionImpl implements ResetTabSelection {
     TResult Function(CountQuestionNumber value)? countQuestionNumber,
     TResult Function(GetBasePrice value)? getBasePrice,
     TResult Function(AbandentOrder value)? abandentOrder,
+    TResult Function(ClearNewOPtionList value)? clearNewOPtionList,
     required TResult orElse(),
   }) {
     if (resetTabSelection != null) {
@@ -528,6 +546,7 @@ class _$GetQuestionsImpl implements GetQuestions {
     required TResult Function(
             AbandendOrderRequestModel abandendOrderRequestModel)
         abandentOrder,
+    required TResult Function() clearNewOPtionList,
   }) {
     return getQuestions(categoryType, product);
   }
@@ -547,6 +566,7 @@ class _$GetQuestionsImpl implements GetQuestions {
         getBasePrice,
     TResult? Function(AbandendOrderRequestModel abandendOrderRequestModel)?
         abandentOrder,
+    TResult? Function()? clearNewOPtionList,
   }) {
     return getQuestions?.call(categoryType, product);
   }
@@ -566,6 +586,7 @@ class _$GetQuestionsImpl implements GetQuestions {
         getBasePrice,
     TResult Function(AbandendOrderRequestModel abandendOrderRequestModel)?
         abandentOrder,
+    TResult Function()? clearNewOPtionList,
     required TResult orElse(),
   }) {
     if (getQuestions != null) {
@@ -586,6 +607,7 @@ class _$GetQuestionsImpl implements GetQuestions {
     required TResult Function(CountQuestionNumber value) countQuestionNumber,
     required TResult Function(GetBasePrice value) getBasePrice,
     required TResult Function(AbandentOrder value) abandentOrder,
+    required TResult Function(ClearNewOPtionList value) clearNewOPtionList,
   }) {
     return getQuestions(this);
   }
@@ -602,6 +624,7 @@ class _$GetQuestionsImpl implements GetQuestions {
     TResult? Function(CountQuestionNumber value)? countQuestionNumber,
     TResult? Function(GetBasePrice value)? getBasePrice,
     TResult? Function(AbandentOrder value)? abandentOrder,
+    TResult? Function(ClearNewOPtionList value)? clearNewOPtionList,
   }) {
     return getQuestions?.call(this);
   }
@@ -618,6 +641,7 @@ class _$GetQuestionsImpl implements GetQuestions {
     TResult Function(CountQuestionNumber value)? countQuestionNumber,
     TResult Function(GetBasePrice value)? getBasePrice,
     TResult Function(AbandentOrder value)? abandentOrder,
+    TResult Function(ClearNewOPtionList value)? clearNewOPtionList,
     required TResult orElse(),
   }) {
     if (getQuestions != null) {
@@ -720,6 +744,7 @@ class _$GetAnswerCountImpl implements GetAnswerCount {
     required TResult Function(
             AbandendOrderRequestModel abandendOrderRequestModel)
         abandentOrder,
+    required TResult Function() clearNewOPtionList,
   }) {
     return getAnswerCount(answerCount);
   }
@@ -739,6 +764,7 @@ class _$GetAnswerCountImpl implements GetAnswerCount {
         getBasePrice,
     TResult? Function(AbandendOrderRequestModel abandendOrderRequestModel)?
         abandentOrder,
+    TResult? Function()? clearNewOPtionList,
   }) {
     return getAnswerCount?.call(answerCount);
   }
@@ -758,6 +784,7 @@ class _$GetAnswerCountImpl implements GetAnswerCount {
         getBasePrice,
     TResult Function(AbandendOrderRequestModel abandendOrderRequestModel)?
         abandentOrder,
+    TResult Function()? clearNewOPtionList,
     required TResult orElse(),
   }) {
     if (getAnswerCount != null) {
@@ -778,6 +805,7 @@ class _$GetAnswerCountImpl implements GetAnswerCount {
     required TResult Function(CountQuestionNumber value) countQuestionNumber,
     required TResult Function(GetBasePrice value) getBasePrice,
     required TResult Function(AbandentOrder value) abandentOrder,
+    required TResult Function(ClearNewOPtionList value) clearNewOPtionList,
   }) {
     return getAnswerCount(this);
   }
@@ -794,6 +822,7 @@ class _$GetAnswerCountImpl implements GetAnswerCount {
     TResult? Function(CountQuestionNumber value)? countQuestionNumber,
     TResult? Function(GetBasePrice value)? getBasePrice,
     TResult? Function(AbandentOrder value)? abandentOrder,
+    TResult? Function(ClearNewOPtionList value)? clearNewOPtionList,
   }) {
     return getAnswerCount?.call(this);
   }
@@ -810,6 +839,7 @@ class _$GetAnswerCountImpl implements GetAnswerCount {
     TResult Function(CountQuestionNumber value)? countQuestionNumber,
     TResult Function(GetBasePrice value)? getBasePrice,
     TResult Function(AbandentOrder value)? abandentOrder,
+    TResult Function(ClearNewOPtionList value)? clearNewOPtionList,
     required TResult orElse(),
   }) {
     if (getAnswerCount != null) {
@@ -910,6 +940,7 @@ class _$MarkedQuestionsImpl implements MarkedQuestions {
     required TResult Function(
             AbandendOrderRequestModel abandendOrderRequestModel)
         abandentOrder,
+    required TResult Function() clearNewOPtionList,
   }) {
     return markedQuestions(selectedOption);
   }
@@ -929,6 +960,7 @@ class _$MarkedQuestionsImpl implements MarkedQuestions {
         getBasePrice,
     TResult? Function(AbandendOrderRequestModel abandendOrderRequestModel)?
         abandentOrder,
+    TResult? Function()? clearNewOPtionList,
   }) {
     return markedQuestions?.call(selectedOption);
   }
@@ -948,6 +980,7 @@ class _$MarkedQuestionsImpl implements MarkedQuestions {
         getBasePrice,
     TResult Function(AbandendOrderRequestModel abandendOrderRequestModel)?
         abandentOrder,
+    TResult Function()? clearNewOPtionList,
     required TResult orElse(),
   }) {
     if (markedQuestions != null) {
@@ -968,6 +1001,7 @@ class _$MarkedQuestionsImpl implements MarkedQuestions {
     required TResult Function(CountQuestionNumber value) countQuestionNumber,
     required TResult Function(GetBasePrice value) getBasePrice,
     required TResult Function(AbandentOrder value) abandentOrder,
+    required TResult Function(ClearNewOPtionList value) clearNewOPtionList,
   }) {
     return markedQuestions(this);
   }
@@ -984,6 +1018,7 @@ class _$MarkedQuestionsImpl implements MarkedQuestions {
     TResult? Function(CountQuestionNumber value)? countQuestionNumber,
     TResult? Function(GetBasePrice value)? getBasePrice,
     TResult? Function(AbandentOrder value)? abandentOrder,
+    TResult? Function(ClearNewOPtionList value)? clearNewOPtionList,
   }) {
     return markedQuestions?.call(this);
   }
@@ -1000,6 +1035,7 @@ class _$MarkedQuestionsImpl implements MarkedQuestions {
     TResult Function(CountQuestionNumber value)? countQuestionNumber,
     TResult Function(GetBasePrice value)? getBasePrice,
     TResult Function(AbandentOrder value)? abandentOrder,
+    TResult Function(ClearNewOPtionList value)? clearNewOPtionList,
     required TResult orElse(),
   }) {
     if (markedQuestions != null) {
@@ -1099,6 +1135,7 @@ class _$YesOrNoImpl implements YesOrNo {
     required TResult Function(
             AbandendOrderRequestModel abandendOrderRequestModel)
         abandentOrder,
+    required TResult Function() clearNewOPtionList,
   }) {
     return yesOrNo(selectedOption);
   }
@@ -1118,6 +1155,7 @@ class _$YesOrNoImpl implements YesOrNo {
         getBasePrice,
     TResult? Function(AbandendOrderRequestModel abandendOrderRequestModel)?
         abandentOrder,
+    TResult? Function()? clearNewOPtionList,
   }) {
     return yesOrNo?.call(selectedOption);
   }
@@ -1137,6 +1175,7 @@ class _$YesOrNoImpl implements YesOrNo {
         getBasePrice,
     TResult Function(AbandendOrderRequestModel abandendOrderRequestModel)?
         abandentOrder,
+    TResult Function()? clearNewOPtionList,
     required TResult orElse(),
   }) {
     if (yesOrNo != null) {
@@ -1157,6 +1196,7 @@ class _$YesOrNoImpl implements YesOrNo {
     required TResult Function(CountQuestionNumber value) countQuestionNumber,
     required TResult Function(GetBasePrice value) getBasePrice,
     required TResult Function(AbandentOrder value) abandentOrder,
+    required TResult Function(ClearNewOPtionList value) clearNewOPtionList,
   }) {
     return yesOrNo(this);
   }
@@ -1173,6 +1213,7 @@ class _$YesOrNoImpl implements YesOrNo {
     TResult? Function(CountQuestionNumber value)? countQuestionNumber,
     TResult? Function(GetBasePrice value)? getBasePrice,
     TResult? Function(AbandentOrder value)? abandentOrder,
+    TResult? Function(ClearNewOPtionList value)? clearNewOPtionList,
   }) {
     return yesOrNo?.call(this);
   }
@@ -1189,6 +1230,7 @@ class _$YesOrNoImpl implements YesOrNo {
     TResult Function(CountQuestionNumber value)? countQuestionNumber,
     TResult Function(GetBasePrice value)? getBasePrice,
     TResult Function(AbandentOrder value)? abandentOrder,
+    TResult Function(ClearNewOPtionList value)? clearNewOPtionList,
     required TResult orElse(),
   }) {
     if (yesOrNo != null) {
@@ -1289,6 +1331,7 @@ class _$CountQuestionNumberImpl implements CountQuestionNumber {
     required TResult Function(
             AbandendOrderRequestModel abandendOrderRequestModel)
         abandentOrder,
+    required TResult Function() clearNewOPtionList,
   }) {
     return countQuestionNumber(this.countQuestionNumber);
   }
@@ -1308,6 +1351,7 @@ class _$CountQuestionNumberImpl implements CountQuestionNumber {
         getBasePrice,
     TResult? Function(AbandendOrderRequestModel abandendOrderRequestModel)?
         abandentOrder,
+    TResult? Function()? clearNewOPtionList,
   }) {
     return countQuestionNumber?.call(this.countQuestionNumber);
   }
@@ -1327,6 +1371,7 @@ class _$CountQuestionNumberImpl implements CountQuestionNumber {
         getBasePrice,
     TResult Function(AbandendOrderRequestModel abandendOrderRequestModel)?
         abandentOrder,
+    TResult Function()? clearNewOPtionList,
     required TResult orElse(),
   }) {
     if (countQuestionNumber != null) {
@@ -1347,6 +1392,7 @@ class _$CountQuestionNumberImpl implements CountQuestionNumber {
     required TResult Function(CountQuestionNumber value) countQuestionNumber,
     required TResult Function(GetBasePrice value) getBasePrice,
     required TResult Function(AbandentOrder value) abandentOrder,
+    required TResult Function(ClearNewOPtionList value) clearNewOPtionList,
   }) {
     return countQuestionNumber(this);
   }
@@ -1363,6 +1409,7 @@ class _$CountQuestionNumberImpl implements CountQuestionNumber {
     TResult? Function(CountQuestionNumber value)? countQuestionNumber,
     TResult? Function(GetBasePrice value)? getBasePrice,
     TResult? Function(AbandentOrder value)? abandentOrder,
+    TResult? Function(ClearNewOPtionList value)? clearNewOPtionList,
   }) {
     return countQuestionNumber?.call(this);
   }
@@ -1379,6 +1426,7 @@ class _$CountQuestionNumberImpl implements CountQuestionNumber {
     TResult Function(CountQuestionNumber value)? countQuestionNumber,
     TResult Function(GetBasePrice value)? getBasePrice,
     TResult Function(AbandentOrder value)? abandentOrder,
+    TResult Function(ClearNewOPtionList value)? clearNewOPtionList,
     required TResult orElse(),
   }) {
     if (countQuestionNumber != null) {
@@ -1493,6 +1541,7 @@ class _$GetBasePriceImpl implements GetBasePrice {
     required TResult Function(
             AbandendOrderRequestModel abandendOrderRequestModel)
         abandentOrder,
+    required TResult Function() clearNewOPtionList,
   }) {
     return getBasePrice(abandendOrderRequestModel, pickupQuestionModel);
   }
@@ -1512,6 +1561,7 @@ class _$GetBasePriceImpl implements GetBasePrice {
         getBasePrice,
     TResult? Function(AbandendOrderRequestModel abandendOrderRequestModel)?
         abandentOrder,
+    TResult? Function()? clearNewOPtionList,
   }) {
     return getBasePrice?.call(abandendOrderRequestModel, pickupQuestionModel);
   }
@@ -1531,6 +1581,7 @@ class _$GetBasePriceImpl implements GetBasePrice {
         getBasePrice,
     TResult Function(AbandendOrderRequestModel abandendOrderRequestModel)?
         abandentOrder,
+    TResult Function()? clearNewOPtionList,
     required TResult orElse(),
   }) {
     if (getBasePrice != null) {
@@ -1551,6 +1602,7 @@ class _$GetBasePriceImpl implements GetBasePrice {
     required TResult Function(CountQuestionNumber value) countQuestionNumber,
     required TResult Function(GetBasePrice value) getBasePrice,
     required TResult Function(AbandentOrder value) abandentOrder,
+    required TResult Function(ClearNewOPtionList value) clearNewOPtionList,
   }) {
     return getBasePrice(this);
   }
@@ -1567,6 +1619,7 @@ class _$GetBasePriceImpl implements GetBasePrice {
     TResult? Function(CountQuestionNumber value)? countQuestionNumber,
     TResult? Function(GetBasePrice value)? getBasePrice,
     TResult? Function(AbandentOrder value)? abandentOrder,
+    TResult? Function(ClearNewOPtionList value)? clearNewOPtionList,
   }) {
     return getBasePrice?.call(this);
   }
@@ -1583,6 +1636,7 @@ class _$GetBasePriceImpl implements GetBasePrice {
     TResult Function(CountQuestionNumber value)? countQuestionNumber,
     TResult Function(GetBasePrice value)? getBasePrice,
     TResult Function(AbandentOrder value)? abandentOrder,
+    TResult Function(ClearNewOPtionList value)? clearNewOPtionList,
     required TResult orElse(),
   }) {
     if (getBasePrice != null) {
@@ -1686,6 +1740,7 @@ class _$AbandentOrderImpl implements AbandentOrder {
     required TResult Function(
             AbandendOrderRequestModel abandendOrderRequestModel)
         abandentOrder,
+    required TResult Function() clearNewOPtionList,
   }) {
     return abandentOrder(abandendOrderRequestModel);
   }
@@ -1705,6 +1760,7 @@ class _$AbandentOrderImpl implements AbandentOrder {
         getBasePrice,
     TResult? Function(AbandendOrderRequestModel abandendOrderRequestModel)?
         abandentOrder,
+    TResult? Function()? clearNewOPtionList,
   }) {
     return abandentOrder?.call(abandendOrderRequestModel);
   }
@@ -1724,6 +1780,7 @@ class _$AbandentOrderImpl implements AbandentOrder {
         getBasePrice,
     TResult Function(AbandendOrderRequestModel abandendOrderRequestModel)?
         abandentOrder,
+    TResult Function()? clearNewOPtionList,
     required TResult orElse(),
   }) {
     if (abandentOrder != null) {
@@ -1744,6 +1801,7 @@ class _$AbandentOrderImpl implements AbandentOrder {
     required TResult Function(CountQuestionNumber value) countQuestionNumber,
     required TResult Function(GetBasePrice value) getBasePrice,
     required TResult Function(AbandentOrder value) abandentOrder,
+    required TResult Function(ClearNewOPtionList value) clearNewOPtionList,
   }) {
     return abandentOrder(this);
   }
@@ -1760,6 +1818,7 @@ class _$AbandentOrderImpl implements AbandentOrder {
     TResult? Function(CountQuestionNumber value)? countQuestionNumber,
     TResult? Function(GetBasePrice value)? getBasePrice,
     TResult? Function(AbandentOrder value)? abandentOrder,
+    TResult? Function(ClearNewOPtionList value)? clearNewOPtionList,
   }) {
     return abandentOrder?.call(this);
   }
@@ -1776,6 +1835,7 @@ class _$AbandentOrderImpl implements AbandentOrder {
     TResult Function(CountQuestionNumber value)? countQuestionNumber,
     TResult Function(GetBasePrice value)? getBasePrice,
     TResult Function(AbandentOrder value)? abandentOrder,
+    TResult Function(ClearNewOPtionList value)? clearNewOPtionList,
     required TResult orElse(),
   }) {
     if (abandentOrder != null) {
@@ -1794,6 +1854,168 @@ abstract class AbandentOrder implements QuestionTabEvent {
   @JsonKey(ignore: true)
   _$$AbandentOrderImplCopyWith<_$AbandentOrderImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ClearNewOPtionListImplCopyWith<$Res> {
+  factory _$$ClearNewOPtionListImplCopyWith(_$ClearNewOPtionListImpl value,
+          $Res Function(_$ClearNewOPtionListImpl) then) =
+      __$$ClearNewOPtionListImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ClearNewOPtionListImplCopyWithImpl<$Res>
+    extends _$QuestionTabEventCopyWithImpl<$Res, _$ClearNewOPtionListImpl>
+    implements _$$ClearNewOPtionListImplCopyWith<$Res> {
+  __$$ClearNewOPtionListImplCopyWithImpl(_$ClearNewOPtionListImpl _value,
+      $Res Function(_$ClearNewOPtionListImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$ClearNewOPtionListImpl implements ClearNewOPtionList {
+  const _$ClearNewOPtionListImpl();
+
+  @override
+  String toString() {
+    return 'QuestionTabEvent.clearNewOPtionList()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$ClearNewOPtionListImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() tabChange,
+    required TResult Function() resetTabSelection,
+    required TResult Function(String categoryType, Product product)
+        getQuestions,
+    required TResult Function(int answerCount) getAnswerCount,
+    required TResult Function(SelectedOption selectedOption) markedQuestions,
+    required TResult Function(SelectedOption selectedOption) yesOrNo,
+    required TResult Function(int countQuestionNumber) countQuestionNumber,
+    required TResult Function(
+            AbandendOrderRequestModel abandendOrderRequestModel,
+            PickupQuestionModel pickupQuestionModel)
+        getBasePrice,
+    required TResult Function(
+            AbandendOrderRequestModel abandendOrderRequestModel)
+        abandentOrder,
+    required TResult Function() clearNewOPtionList,
+  }) {
+    return clearNewOPtionList();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? tabChange,
+    TResult? Function()? resetTabSelection,
+    TResult? Function(String categoryType, Product product)? getQuestions,
+    TResult? Function(int answerCount)? getAnswerCount,
+    TResult? Function(SelectedOption selectedOption)? markedQuestions,
+    TResult? Function(SelectedOption selectedOption)? yesOrNo,
+    TResult? Function(int countQuestionNumber)? countQuestionNumber,
+    TResult? Function(AbandendOrderRequestModel abandendOrderRequestModel,
+            PickupQuestionModel pickupQuestionModel)?
+        getBasePrice,
+    TResult? Function(AbandendOrderRequestModel abandendOrderRequestModel)?
+        abandentOrder,
+    TResult? Function()? clearNewOPtionList,
+  }) {
+    return clearNewOPtionList?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? tabChange,
+    TResult Function()? resetTabSelection,
+    TResult Function(String categoryType, Product product)? getQuestions,
+    TResult Function(int answerCount)? getAnswerCount,
+    TResult Function(SelectedOption selectedOption)? markedQuestions,
+    TResult Function(SelectedOption selectedOption)? yesOrNo,
+    TResult Function(int countQuestionNumber)? countQuestionNumber,
+    TResult Function(AbandendOrderRequestModel abandendOrderRequestModel,
+            PickupQuestionModel pickupQuestionModel)?
+        getBasePrice,
+    TResult Function(AbandendOrderRequestModel abandendOrderRequestModel)?
+        abandentOrder,
+    TResult Function()? clearNewOPtionList,
+    required TResult orElse(),
+  }) {
+    if (clearNewOPtionList != null) {
+      return clearNewOPtionList();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(TabChange value) tabChange,
+    required TResult Function(ResetTabSelection value) resetTabSelection,
+    required TResult Function(GetQuestions value) getQuestions,
+    required TResult Function(GetAnswerCount value) getAnswerCount,
+    required TResult Function(MarkedQuestions value) markedQuestions,
+    required TResult Function(YesOrNo value) yesOrNo,
+    required TResult Function(CountQuestionNumber value) countQuestionNumber,
+    required TResult Function(GetBasePrice value) getBasePrice,
+    required TResult Function(AbandentOrder value) abandentOrder,
+    required TResult Function(ClearNewOPtionList value) clearNewOPtionList,
+  }) {
+    return clearNewOPtionList(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(TabChange value)? tabChange,
+    TResult? Function(ResetTabSelection value)? resetTabSelection,
+    TResult? Function(GetQuestions value)? getQuestions,
+    TResult? Function(GetAnswerCount value)? getAnswerCount,
+    TResult? Function(MarkedQuestions value)? markedQuestions,
+    TResult? Function(YesOrNo value)? yesOrNo,
+    TResult? Function(CountQuestionNumber value)? countQuestionNumber,
+    TResult? Function(GetBasePrice value)? getBasePrice,
+    TResult? Function(AbandentOrder value)? abandentOrder,
+    TResult? Function(ClearNewOPtionList value)? clearNewOPtionList,
+  }) {
+    return clearNewOPtionList?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(TabChange value)? tabChange,
+    TResult Function(ResetTabSelection value)? resetTabSelection,
+    TResult Function(GetQuestions value)? getQuestions,
+    TResult Function(GetAnswerCount value)? getAnswerCount,
+    TResult Function(MarkedQuestions value)? markedQuestions,
+    TResult Function(YesOrNo value)? yesOrNo,
+    TResult Function(CountQuestionNumber value)? countQuestionNumber,
+    TResult Function(GetBasePrice value)? getBasePrice,
+    TResult Function(AbandentOrder value)? abandentOrder,
+    TResult Function(ClearNewOPtionList value)? clearNewOPtionList,
+    required TResult orElse(),
+  }) {
+    if (clearNewOPtionList != null) {
+      return clearNewOPtionList(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ClearNewOPtionList implements QuestionTabEvent {
+  const factory ClearNewOPtionList() = _$ClearNewOPtionListImpl;
 }
 
 /// @nodoc

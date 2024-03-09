@@ -15,8 +15,6 @@ class Product {
   String? brandName;
   String? seriesName;
   String? categoryType;
-  @JsonKey(name: '__v')
-  int? v;
 
   Product({
     this.id,
@@ -29,7 +27,6 @@ class Product {
     this.brandName,
     this.seriesName,
     this.categoryType,
-    this.v,
   });
 
   factory Product.fromJson(Map<String, dynamic> json) =>

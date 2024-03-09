@@ -23,11 +23,12 @@ class ImageGridMaker extends StatelessWidget {
               padding: const EdgeInsets.all(0),
               shrinkWrap: true,
               itemCount: section.options!.length,
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                childAspectRatio: 1 / 1.5,
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                childAspectRatio:
+                    section.options!.length <= 4 ? 1 / 1.2 : 1 / 1.5,
                 mainAxisSpacing: 20,
                 crossAxisSpacing: 20,
-                crossAxisCount: 3,
+                crossAxisCount: section.options!.length <= 4 ? 2 : 3,
               ),
               physics: const NeverScrollableScrollPhysics(),
               itemBuilder: (context, index) {

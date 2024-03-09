@@ -84,7 +84,7 @@ class _CaurosalViewHomePageOffersState
                             margin: const EdgeInsets.all(4),
                             width: sWidth,
                             decoration: BoxDecoration(
-                                color: const Color.fromARGB(255, 6, 0, 36),
+                                color: Color.fromARGB(255, 69, 177, 244),
                                 borderRadius: kRadius15),
                             child: Stack(
                               children: [
@@ -92,7 +92,7 @@ class _CaurosalViewHomePageOffersState
                                   bottom: 20,
                                   child: Container(
                                     margin: const EdgeInsets.symmetric(
-                                      horizontal: 10,
+                                      horizontal: 14,
                                     ),
                                     child: Column(
                                       crossAxisAlignment:
@@ -100,13 +100,16 @@ class _CaurosalViewHomePageOffersState
                                       mainAxisAlignment:
                                           MainAxisAlignment.start,
                                       children: [
-                                        Text(
-                                          heading,
-                                          style: textHeadMedium1.copyWith(
-                                            color: kWhite,
+                                        SizedBox(
+                                          width: sWidth * .6,
+                                          child: Text(
+                                            heading,
+                                            style: textHeadMedium1.copyWith(
+                                              color: kWhite,
+                                            ),
                                           ),
                                         ),
-                                        kHeight5,
+                                        kHeight10,
                                         ClipRRect(
                                           borderRadius: kRadius5,
                                           child: ColoredBox(
@@ -129,9 +132,10 @@ class _CaurosalViewHomePageOffersState
                                   ),
                                 ),
                                 Positioned(
+                                  top: 0,
                                   right: 10,
                                   child: SizedBox(
-                                    height: 120,
+                                    height: 90,
                                     width: 50,
                                     child: Image.memory(
                                       base64.decode(base64String),
@@ -139,8 +143,7 @@ class _CaurosalViewHomePageOffersState
                                           (context, error, stackTrace) {
                                         return const Icon(Icons.error);
                                       },
-                                      scale: 2,
-                                      fit: BoxFit.scaleDown,
+                                      fit: BoxFit.contain,
                                     ),
                                   ),
                                 ),

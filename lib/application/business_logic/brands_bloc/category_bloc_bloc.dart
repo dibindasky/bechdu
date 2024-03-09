@@ -27,7 +27,7 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
   List<Brands> brandsList = [];
   List<Product> productList = [];
   List<String> series = [];
-  List<List<String>> dropDownItems = List.generate(3, (_) => []);
+  List<List<String>> dropDownItems = List.generate(1, (_) => []);
   CategoryBlocBloc(this.brandsRepository) : super(CategoryBlocState.intial()) {
     on<GetSingleCategoryBrands>(getSingleCategoryBrands);
     on<BrandSearch>(brandSearch);
@@ -40,22 +40,24 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
     on<SelectedProduct>(selectedProdct);
   }
 
-  FutureOr<void> seriesSearch(SeriesSearch event, emit) {
+  FutureOr<void> seriesSearch(
+    SeriesSearch event,
+    Emitter<CategoryBlocState> emit,
+  ) {
     final String searchQuery = event.searchQuery.toLowerCase();
     final List<String> filteredSeries = series.where((item) {
-      final String series = item;
+      final String series = item.toLowerCase();
       return series.contains(searchQuery);
     }).toList();
-    emit(state.copyWith(
-      filteredSeries: filteredSeries,
-    ));
+
+    emit(state.copyWith(filteredSeries: filteredSeries));
   }
 
   FutureOr<void> productSearch(
     ProductSearch event,
     Emitter<CategoryBlocState> emit,
   ) async {
-    final String searchQuery = event.searchQuery.toLowerCase();
+    final String searchQuery = event.searchQuery.toLowerCase().trim();
     final List<Product> filteredProducts = productList.where((product) {
       final String model = product.model!.toLowerCase();
       final String varient = product.variant!.toLowerCase();
@@ -97,7 +99,7 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
     BrandSearch event,
     Emitter<CategoryBlocState> emit,
   ) {
-    final String searchQuery = event.searchQuery.toLowerCase();
+    final String searchQuery = event.searchQuery.toLowerCase().trim();
     final List<Brands> filteredBrands = brandsList.where((brand) {
       final String brandName = brand.brandName!.toLowerCase();
       return brandName.contains(searchQuery);
@@ -154,8 +156,11 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
     final data = await brandsRepository.getProducts(
       categoryType: event.categoryType,
       brandName: event.brandName,
+      seriesName: event.seriesName,
     );
+
     barndName = event.brandName;
+    seriesName = event.seriesName;
     data.fold((failure) {
       emit(state.copyWith(
         isLoading: false,
@@ -194,10 +199,11 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
         hasError: true,
       ));
     }, (getSeriesSuccess) {
+      series.clear();
+      series.addAll(getSeriesSuccess);
       emit(state.copyWith(
         hasError: false,
         isLoading: false,
-        allItems: dropDownItems,
         filteredSeries: getSeriesSuccess,
       ));
     });
@@ -226,17 +232,19 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
       categoryType: event.categoryType,
       seriesName: event.seriesName,
     );
-    seriesName = event.seriesName;
+
     log('getModles bloc categoryType >>>>=== : ${event.categoryType}');
     log('getModles bloc brandName >>>>=== : ${event.brandName}');
-    log('getModles bloc brandName >>>>=== : ${event.seriesName}');
+    log('getModles bloc seriesName >>>>=== : ${event.seriesName}');
+    log('getModles data ${data.toString()}');
     data.fold((failure) {
       emit(state.copyWith(
         isLoading: false,
         hasError: true,
       ));
     }, (getModelSuccess) {
-      dropDownItems[1].addAll(getModelSuccess);
+      dropDownItems.clear();
+      dropDownItems[0].addAll(getModelSuccess);
       emit(state.copyWith(
         hasError: false,
         isLoading: false,
@@ -257,13 +265,15 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
       seriesName: event.seriesName,
       model: event.model,
     );
+
     data.fold((failure) {
       emit(state.copyWith(
         isLoading: false,
         hasError: true,
       ));
     }, (getVarientsSuccess) {
-      dropDownItems[2].addAll(getVarientsSuccess);
+      dropDownItems[1].clear();
+      dropDownItems[1].addAll(getVarientsSuccess);
       emit(state.copyWith(
         hasError: false,
         isLoading: false,

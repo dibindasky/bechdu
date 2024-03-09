@@ -111,15 +111,25 @@ class _YesOrNoTileState extends State<YesOrNoTile> {
                   : selected == false && !yesOrNo
                       ? kRed
                       : yesOrNo
-                          ? kGreenLight.withOpacity(0.5)
-                          : kRedLight.withOpacity(0.5),
+                          ? kGreenLight.withOpacity(0.7)
+                          : kRedLight.withOpacity(0.7),
               child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                padding: selected == true && yesOrNo
+                    ? const EdgeInsets.symmetric(horizontal: 12, vertical: 2)
+                    : selected == false && !yesOrNo
+                        ? const EdgeInsets.symmetric(
+                            horizontal: 12, vertical: 2)
+                        : yesOrNo
+                            ? const EdgeInsets.symmetric(horizontal: 10)
+                            : const EdgeInsets.symmetric(horizontal: 10),
                 child: Row(
                   children: [
                     Icon(
-                      yesOrNo ? Icons.check : Icons.clear_outlined,
+                      selected == true && yesOrNo
+                          ? Icons.check
+                          : selected == false && !yesOrNo
+                              ? Icons.check
+                              : Icons.clear_outlined,
                       size: sWidth * 0.03,
                     ),
                     kWidth5,

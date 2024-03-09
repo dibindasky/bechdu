@@ -12,7 +12,10 @@ class ExpansionTileCustom extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ExpansionTile(
-      trailing: const Icon(Icons.arrow_drop_down),
+      trailing: const Icon(
+        Icons.arrow_drop_down,
+        color: kWhite,
+      ),
       expandedAlignment: Alignment.center,
       leading: const Icon(
         Icons.mobile_friendly_sharp,
@@ -22,45 +25,10 @@ class ExpansionTileCustom extends StatelessWidget {
       backgroundColor: klightwhite,
       maintainState: true,
       shape: const BeveledRectangleBorder(),
-      title: Row(
-        children: [
-          Text(
-            name,
-            style: textHeadBold1,
-          ),
-          kWidth10,
-          Text(
-            'Excellent',
-            style: textHeadInter.copyWith(
-              color: kGreenPrimary,
-              fontSize: sWidth * .03,
-            ),
-          ),
-        ],
+      title: Text(
+        name,
+        style: textHeadBold1,
       ),
-      children: const [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text('Are You able to attend call?'),
-                Text('Charger'),
-                Text('Cable'),
-              ],
-            ),
-            Column(
-              children: [
-                Icon(Icons.remove, size: 18, color: kRed),
-                Icon(Icons.add, size: 18, color: kGreenPrimary),
-                Icon(Icons.add, size: 18, color: kGreenPrimary),
-              ],
-            ),
-          ],
-        ),
-      ],
     );
   }
 }

@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:developer';
 import 'package:beachdu/data/secure_storage/secure_fire_store.dart';
+import 'package:beachdu/domain/model/date_tome_responce_model/date_tome_responce_model.dart';
 import 'package:beachdu/domain/model/order_model/abandend_order_request_model/abandend_order_request_model.dart';
 import 'package:beachdu/domain/model/order_model/get_all_order_responce_model/get_all_order_responce_model.dart';
 import 'package:beachdu/domain/model/order_model/order_cancelation_request_model/order_cancelation_request_model.dart';
@@ -41,6 +42,7 @@ class PlaceOrderBloc extends Bloc<PlaceOrderEvent, PlaceOrderState> {
   PlaceOrderBloc(this.placeOrderRepo) : super(PlaceOrderState.initial()) {
     on<GetPromoCode>(getPromoCode);
     on<RemoveAppliedPromo>(removeAppliedPromo);
+    on<GetDatetime>(getDateTime);
     on<OrderPlacing>(orderPlacing);
     on<GetOrders>(getOrders);
     on<OrderCancel>(orderCancel);
@@ -51,6 +53,25 @@ class PlaceOrderBloc extends Bloc<PlaceOrderEvent, PlaceOrderState> {
     on<PickupDetailsPick>(pickupDetailsPick);
     on<UserNumber>(userNumber);
     on<RemoveAllFieldData>(removeAllFeildData);
+  }
+
+  FutureOr<void> getDateTime(GetDatetime event, emit) async {
+    final data = await placeOrderRepo.getDateTime();
+    data.fold((falure) {
+      emit(state.copyWith(
+        hasError: true,
+        isLoading: false,
+        message: falure.message,
+      ));
+    }, (r) async {
+      emit(state.copyWith(
+        hasError: false,
+        isLoading: false,
+        dateTomeResponceModel: r,
+        time: r.timeSlot,
+        dates: r.dates,
+      ));
+    });
   }
 
   FutureOr<void> removeAppliedPromo(RemoveAppliedPromo event, emit) {
@@ -99,7 +120,7 @@ class PlaceOrderBloc extends Bloc<PlaceOrderEvent, PlaceOrderState> {
   }
 
   FutureOr<void> getOrders(GetOrders event, emit) async {
-    // if (state.getAllOrderResponceModel != null) return;
+    if (state.getAllOrderResponceModel != null) return;
     emit(state.copyWith(isLoading: true, hasError: false));
     final data = await placeOrderRepo.getOrders();
     final login = await SecureSotrage.getlLogin();
@@ -177,6 +198,12 @@ class PlaceOrderBloc extends Bloc<PlaceOrderEvent, PlaceOrderState> {
     state.orderPlacedRequestModel.user!.phone = number;
     emit(state.copyWith(isLoading: true, hasError: false));
     var orderModel = state.orderPlacedRequestModel;
+
+    log('orderPlacing bloc promo ${orderModel.promo?.toJson()}');
+    log('orderPlacing bloc user ${orderModel.user?.toJson()}');
+    log('orderPlacing bloc pickUpDetails ${orderModel.pickUpDetails?.toJson()}');
+    log('orderPlacing bloc productDetails ${orderModel.productDetails?.toJson()}');
+    log('orderPlacing bloc payment ${orderModel.payment?.toJson()}');
 
     final data = await placeOrderRepo.orderPlacing(
       orderPlacedRequestModel: orderModel,

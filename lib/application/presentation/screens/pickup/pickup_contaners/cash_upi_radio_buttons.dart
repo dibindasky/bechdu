@@ -5,6 +5,7 @@ import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/application/presentation/utils/custom_button.dart';
 import 'package:beachdu/application/presentation/utils/snackbar/snackbar.dart';
+import 'package:beachdu/application/presentation/utils/validators.dart';
 import 'package:beachdu/domain/model/order_model/order_placed_request_model/payment.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -63,7 +64,7 @@ class _CashOrUPIState extends State<CashOrUPI> {
                 kHeight10,
                 TTextFormField(
                   controller: context.read<PlaceOrderBloc>().upiIdController,
-                  text: 'UPI Id',
+                  text: 'Enter UPI id',
                 ),
               ],
             ],
@@ -79,21 +80,32 @@ class _CashOrUPIState extends State<CashOrUPI> {
                     .upiIdController
                     .text
                     .isNotEmpty) {
-                  Payment payment = Payment(
-                    type: selectedRadio,
-                    id: context.read<PlaceOrderBloc>().upiIdController.text,
-                  );
-                  // event call for placing order
-
-                  context
-                      .read<PlaceOrderBloc>()
-                      .add(PlaceOrderEvent.paymentOption(payment: payment));
-                  pickupDetailChangeNotifier.value =
-                      PickupDetailContainers.dateSelect;
-                  pickupDetailChangeNotifier.notifyListeners();
+                  final upiId =
+                      context.read<PlaceOrderBloc>().upiIdController.text;
+                  if (isValidUPI(upiId)) {
+                    Payment payment = Payment(
+                      type: selectedRadio,
+                      id: context.read<PlaceOrderBloc>().upiIdController.text,
+                    );
+                    context
+                        .read<PlaceOrderBloc>()
+                        .add(PlaceOrderEvent.paymentOption(payment: payment));
+                    pickupDetailChangeNotifier.value =
+                        PickupDetailContainers.dateSelect;
+                    pickupDetailChangeNotifier.notifyListeners();
+                  } else {
+                    showSnack(
+                      context: context,
+                      message: 'Upi id not valid',
+                      color: kRed,
+                    );
+                  }
                 } else {
                   showSnack(
-                      context: context, message: 'Please fill Upi Details');
+                    context: context,
+                    message: 'Please fill Upi Details',
+                    color: kRed,
+                  );
                 }
               } else {
                 Payment payment = Payment(
@@ -103,8 +115,6 @@ class _CashOrUPIState extends State<CashOrUPI> {
                 pickupDetailChangeNotifier.value =
                     PickupDetailContainers.dateSelect;
                 pickupDetailChangeNotifier.notifyListeners();
-
-                // event call for place order
                 context
                     .read<PlaceOrderBloc>()
                     .add(PlaceOrderEvent.paymentOption(payment: payment));

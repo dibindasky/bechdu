@@ -20,6 +20,9 @@ class _UserInfoFieldsState extends State<UserInfoFields> {
   bool isTExtFieldNumber = false;
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      context.read<ProfileBloc>().add(ProfileEvent.getUserInfo());
+    });
     return BlocBuilder<ProfileBloc, ProfileState>(
       builder: (context, profile) {
         return Column(
@@ -30,8 +33,11 @@ class _UserInfoFieldsState extends State<UserInfoFields> {
                     controller:
                         context.read<ProfileBloc>().profileNameController,
                     decoration: const InputDecoration(
-                        hintText: 'Enter username',
-                        hintStyle: TextStyle(color: klightgrey)),
+                      hintText: 'Enter username',
+                      hintStyle: TextStyle(
+                        color: klightgrey,
+                      ),
+                    ),
                   )
                 : Column(
                     children: [
@@ -39,7 +45,7 @@ class _UserInfoFieldsState extends State<UserInfoFields> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            '${profile.user != null && profile.user!.user != null && profile.user!.user!.name != null ? profile.user!.user!.name : 'Nill'}',
+                            '${profile.user != null && profile.user!.user != null && profile.user!.user!.name != null ? profile.user!.user!.name : 'Enter your name'}',
                             style: textHeadMedium1,
                           ),
                           TextButton(
@@ -49,7 +55,7 @@ class _UserInfoFieldsState extends State<UserInfoFields> {
                               });
                             },
                             child: Text(
-                              'Change',
+                              'Edit',
                               style:
                                   textHeadInter.copyWith(color: kGreenPrimary),
                             ),
@@ -76,7 +82,7 @@ class _UserInfoFieldsState extends State<UserInfoFields> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            '${profile.user != null && profile.user!.user != null && profile.user!.user!.email != null ? profile.user!.user!.email : 'Nill'}',
+                            '${profile.user != null && profile.user!.user != null && profile.user!.user!.email != null ? profile.user!.user!.email : 'Enter your email'}',
                             style: textHeadMedium1,
                           ),
                           TextButton(
@@ -86,7 +92,7 @@ class _UserInfoFieldsState extends State<UserInfoFields> {
                               });
                             },
                             child: Text(
-                              'Change',
+                              'Edit',
                               style:
                                   textHeadInter.copyWith(color: kGreenPrimary),
                             ),
@@ -135,7 +141,7 @@ class _UserInfoFieldsState extends State<UserInfoFields> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            '${profile.user != null && profile.user!.user != null && profile.user!.user!.addPhone != null ? profile.user!.user!.addPhone : 'Nill'}',
+                            '${profile.user != null && profile.user!.user != null && profile.user!.user!.addPhone != null ? profile.user!.user!.addPhone : 'Enter your Additional number'}',
                             style: textHeadMedium1,
                           ),
                           TextButton(
@@ -145,7 +151,7 @@ class _UserInfoFieldsState extends State<UserInfoFields> {
                               });
                             },
                             child: Text(
-                              'Change',
+                              'Edit',
                               style:
                                   textHeadInter.copyWith(color: kGreenPrimary),
                             ),
@@ -199,7 +205,7 @@ class _UserInfoFieldsState extends State<UserInfoFields> {
                     // Reset flags
                     setState(() {
                       isTExtFieldEmail = false;
-                      isTExtFieldNumber = false;
+                      isTExtFieldUsername = false;
                       isTExtFieldNumber = false;
                     });
                   },

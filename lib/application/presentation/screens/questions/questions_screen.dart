@@ -1,7 +1,7 @@
-import 'dart:developer';
+// ignore_for_file: use_build_context_synchronously
 
+import 'package:beachdu/application/business_logic/auth/auth_bloc.dart';
 import 'package:beachdu/application/business_logic/brands_bloc/category_bloc_bloc.dart';
-import 'package:beachdu/application/business_logic/place_order/place_order_bloc.dart';
 import 'package:beachdu/application/business_logic/question_tab/question_tab_bloc.dart';
 import 'package:beachdu/application/presentation/routes/routes.dart';
 import 'package:beachdu/application/presentation/screens/product_selection/product_screen.dart';
@@ -45,14 +45,14 @@ class QuestionTabs extends StatelessWidget {
           body: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: BlocBuilder<QuestionTabBloc, QuestionTabState>(
-              builder: (context, state) {
-                if (state.isLoading) {
+              builder: (context, questionTabBloc) {
+                if (questionTabBloc.isLoading) {
                   return const LoadingAnimation(width: 50);
-                } else if (state.hasError) {
+                } else if (questionTabBloc.hasError) {
                   return const Text('error');
                 } else {
-                  if (state.getQuestionModel == null ||
-                      state.getQuestionModel!.sections == null) {
+                  if (questionTabBloc.getQuestionModel == null ||
+                      questionTabBloc.getQuestionModel!.sections == null) {
                     return Center(child: Lottie.asset(emptyLottie));
                   } else {
                     return Column(
@@ -63,20 +63,10 @@ class QuestionTabs extends StatelessWidget {
                         kHeight20,
                         const QuestionTabAnswerSession(),
                         kHeight10,
-                        BlocBuilder<QuestionTabBloc, QuestionTabState>(
-                          // listener: (context, state) {
-                          //   if (state.basePriceModelResponce != null) {
-                          //     context.read<PlaceOrderBloc>().add(
-                          //           PlaceOrderEvent.selectedOptionEvent(
-                          //             selectedOption: state.newList!,
-                          //           ),
-                          //         );
-                          //   }
-                          //   log('lasrt contine button listener state.newList! ${state.newList!}');
-                          // },
-                          builder: (context, questionTabBloc) {
+                        BlocBuilder<AuthBloc, AuthState>(
+                          builder: (context, state) {
                             return CustomButton(
-                              onPressed: () {
+                              onPressed: () async {
                                 final currentSection =
                                     questionTabBloc.getQuestionModel!.sections![
                                         questionTabBloc.selectedTabIndex];
@@ -88,7 +78,8 @@ class QuestionTabs extends StatelessWidget {
                                   if (criteria == 'all') {
                                     if (questionTabBloc.answerCount ==
                                         currentSection.options!.length) {
-                                      loginOrNot(context, questionTabBloc);
+                                      await loginOrNot(
+                                          context, questionTabBloc, state);
                                     } else {
                                       showSnack(
                                           context: context,
@@ -97,7 +88,8 @@ class QuestionTabs extends StatelessWidget {
                                     }
                                   } else if (criteria == 'some') {
                                     if (questionTabBloc.answerCount >= 1) {
-                                      loginOrNot(context, questionTabBloc);
+                                      await loginOrNot(
+                                          context, questionTabBloc, state);
                                     } else {
                                       showSnack(
                                         context: context,
@@ -107,7 +99,8 @@ class QuestionTabs extends StatelessWidget {
                                     }
                                   } else if (criteria == 'one') {
                                     if (questionTabBloc.answerCount == 1) {
-                                      loginOrNot(context, questionTabBloc);
+                                      await loginOrNot(
+                                          context, questionTabBloc, state);
                                     } else {
                                       showSnack(
                                         context: context,
@@ -116,7 +109,8 @@ class QuestionTabs extends StatelessWidget {
                                       );
                                     }
                                   } else {
-                                    loginOrNot(context, questionTabBloc);
+                                    await loginOrNot(
+                                        context, questionTabBloc, state);
                                   }
                                 }
                                 if (criteria == 'all') {
@@ -184,16 +178,19 @@ class QuestionTabs extends StatelessWidget {
   Future<void> loginOrNot(
     BuildContext context,
     QuestionTabState questionTabBloc,
+    AuthState authState,
   ) async {
     final login = await SecureSotrage.getlLogin();
     if (!login) {
       // ignore: use_build_context_synchronously
-      Navigator.of(context).pushNamed(
+      await Navigator.of(context).pushNamed(
         Routes.signInOrLogin,
         arguments: LoginWay.fromQuestionPick,
       );
-      // ignore: use_build_context_synchronously
-      pickeQuestionModelEventDataPass(context, questionTabBloc);
+      if (authState.otpSendResponceModel != null) {
+        // ignore: use_build_context_synchronously
+        pickeQuestionModelEventDataPass(context, questionTabBloc);
+      }
     } else {
       // ignore: use_build_context_synchronously
       pickeQuestionModelEventDataPass(context, questionTabBloc);

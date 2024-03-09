@@ -26,7 +26,6 @@ class ScreenProductSelectionProductFindDropdownGridView
           ),
           itemBuilder: (context, index) {
             List<String> hints = [
-              'Series',
               'Model',
               'Storage',
             ];
