@@ -28,7 +28,7 @@ class BrandsService implements BrandsRepository {
       return Right(SingleCategoryBrandsResponceModel(brands: brandsList));
     } on DioException catch (e) {
       //log('Error getSingleCategory got 400 $e');
-      return Left(Failure(message: e.message ?? errorMessage));
+      return Left(Failure(message: e.response?.data['error'] ?? errorMessage));
     } catch (e) {
       //log('Error catch getSingleCategory $e');
       return Left(Failure(message: e.toString()));
@@ -56,7 +56,7 @@ class BrandsService implements BrandsRepository {
       return Right(GetProductsRespoceModel.fromJson(responce.data));
     } on DioException catch (e) {
       log('getProducts DioException ${e.response?.statusCode}');
-      return Left(Failure(message: e.message ?? errorMessage));
+      return Left(Failure(message: e.response?.data['error'] ?? errorMessage));
     } catch (e) {
       log('getProducts catch $e');
       return Left(Failure(message: errorMessage));
@@ -76,7 +76,7 @@ class BrandsService implements BrandsRepository {
       return Right(retVal);
     } on DioException catch (e) {
       log('getSeries DioException $e');
-      return Left(Failure(message: e.message ?? errorMessage));
+      return Left(Failure(message: e.response?.data['error'] ?? errorMessage));
     } catch (e) {
       log('getSeries error catch $e');
       return Left(Failure(message: errorMessage));
@@ -94,9 +94,10 @@ class BrandsService implements BrandsRepository {
           .get('${ApiEndPoints.getModels}$categoryType/$brandName/$seriesName');
       final data = responce.data as List<dynamic>;
       final retVal = data.map((e) => e.toString()).toList();
+      log('Get modelas data $retVal');
       return Right(retVal);
     } on DioException catch (e) {
-      return Left(Failure(message: e.message ?? errorMessage));
+      return Left(Failure(message: e.response?.data['error'] ?? errorMessage));
     } catch (e) {
       log('getModles error catch $e');
       return Left(Failure(message: errorMessage));
@@ -116,10 +117,11 @@ class BrandsService implements BrandsRepository {
       // log('getVarients data ${responce.data}');
       final data = responce.data as List<dynamic>;
       final retVal = data.map((e) => e.toString()).toList();
+      log('get varients $retVal');
       return Right(retVal);
     } on DioException catch (e) {
       //log('getVarients DioException $e');
-      return Left(Failure(message: e.message ?? errorMessage));
+      return Left(Failure(message: e.response?.data['error'] ?? errorMessage));
     } catch (e) {
       //log('getVarients error catch $e');
       return Left(Failure(message: errorMessage));

@@ -120,7 +120,7 @@ class PlaceOrderBloc extends Bloc<PlaceOrderEvent, PlaceOrderState> {
   }
 
   FutureOr<void> getOrders(GetOrders event, emit) async {
-    if (state.getAllOrderResponceModel != null) return;
+    //if (state.getAllOrderResponceModel != null) return;
     emit(state.copyWith(isLoading: true, hasError: false));
     final data = await placeOrderRepo.getOrders();
     final login = await SecureSotrage.getlLogin();
@@ -143,8 +143,6 @@ class PlaceOrderBloc extends Bloc<PlaceOrderEvent, PlaceOrderState> {
   }
 
   FutureOr<void> productDetailsPick(ProductDetailsPick event, emit) async {
-    // state.orderPlacedRequestModel.productDetails!.options =
-    //     state.selectedNewOptions;
     state.orderPlacedRequestModel.productDetails = event.productDetails;
     emit(state.copyWith(
       orderPlacedRequestModel: state.orderPlacedRequestModel,
@@ -166,16 +164,21 @@ class PlaceOrderBloc extends Bloc<PlaceOrderEvent, PlaceOrderState> {
   }
 
   FutureOr<void> addressPick(AddressPick event, emit) {
-    state.orderPlacedRequestModel.user = event.user;
+    OrderPlacedRequestModel updatedModel =
+        state.orderPlacedRequestModel.copyWith(
+      user: event.user,
+    );
+
     log('addressPick event bloc event.user ${event.user.address}');
     log('addressPick event bloc state.orderPlacedRequestModel.user ${state.orderPlacedRequestModel.user?.address}');
+
     emit(state.copyWith(
-      orderPlacedRequestModel: state.orderPlacedRequestModel,
+      orderPlacedRequestModel: updatedModel,
     ));
   }
 
   FutureOr<void> userDetailsPick(UserDetailsPick event, emit) async {
-    OrderPlacedRequestModel orderPlacedRequestModel = OrderPlacedRequestModel(
+    OrderPlacedRequestModel updatedModel = OrderPlacedRequestModel(
       promo: event.promo,
       user: event.user,
       productDetails: state.orderPlacedRequestModel.productDetails,
@@ -183,13 +186,11 @@ class PlaceOrderBloc extends Bloc<PlaceOrderEvent, PlaceOrderState> {
       pickUpDetails: state.orderPlacedRequestModel.pickUpDetails,
     );
 
-    state.orderPlacedRequestModel.user = event.user;
-    state.orderPlacedRequestModel.promo = event.promo;
-    log('userDetailsPick event bloc event.user addre >${event.user.address} email >${event.user.email} name >${event.user.name}');
+    log('userDetailsPick event bloc event.user email >${event.user.email} name >${event.user.name}');
     log('userDetailsPick event bloc event.promo code >${event.promo.code} price >${event.promo.price}');
-    log('userDetailsPick event bloc state.orderPlacedRequestModel.user ${state.orderPlacedRequestModel.user}');
+
     emit(state.copyWith(
-      orderPlacedRequestModel: orderPlacedRequestModel,
+      orderPlacedRequestModel: updatedModel,
     ));
   }
 
@@ -250,18 +251,17 @@ class PlaceOrderBloc extends Bloc<PlaceOrderEvent, PlaceOrderState> {
           hasError: false,
           isLoading: false,
           promoCodeResponceModel: promoCodeResponceModel,
-          //orderPlacedRequestModel: orderPlacedRequestModel,
         ),
       );
     });
   }
 
   FutureOr<void> removeAllFeildData(RemoveAllFieldData event, emit) {
-    nameController.clear();
-    emailController.clear();
-    numberController.clear();
-    additionalNumberController.clear();
-    promocodeController.clear();
-    upiIdController.clear();
+    nameController.text = '';
+    emailController.text = '';
+    numberController.text = '';
+    additionalNumberController.text = '';
+    promocodeController.text = '';
+    upiIdController.text = '';
   }
 }

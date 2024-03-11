@@ -14,7 +14,7 @@ class DropDownBuilder extends StatefulWidget {
   });
 
   final String searchHint;
-  final List<List<String>> optionsList;
+  final List<String> optionsList;
   final int index;
 
   @override
@@ -35,13 +35,13 @@ class _DropDownBuilderState extends State<DropDownBuilder> {
           style: textHeadInter.copyWith(color: klightgrey),
         ),
         isExpanded: true,
-        items: widget.optionsList.asMap().entries.map(
+        items: widget.optionsList.map(
           (entry) {
-            final options = entry.value;
+            final options = entry;
             return DropdownMenuItem(
-              value: options.first,
+              value: options,
               child: Text(
-                options.first,
+                options,
                 style: TextStyle(color: textColor),
               ),
             );
@@ -55,7 +55,7 @@ class _DropDownBuilderState extends State<DropDownBuilder> {
                 GetVarients(
                   brandName: context.read<CategoryBlocBloc>().barndName!,
                   categoryType: context.read<CategoryBlocBloc>().categoryType!,
-                  seriesName: 'I Phone 7',
+                  seriesName: context.read<CategoryBlocBloc>().seriesName!,
                   model: 'I Phone 7 Plus',
                 ),
               );

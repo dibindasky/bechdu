@@ -10,7 +10,8 @@ class CategoryBlocState with _$CategoryBlocState {
     String? selectedProduct,
     SingleCategoryBrandsResponceModel? getSingleCategoryResponce,
     GetProductsRespoceModel? getProductsResponceModel,
-    required List<List<String>> allItems,
+    required List<String> models,
+    required List<String> varients,
     List<Brands>? filteredBrands,
     List<String>? filteredSeries,
     List<Product>? filteredProducts,
@@ -18,6 +19,7 @@ class CategoryBlocState with _$CategoryBlocState {
   factory CategoryBlocState.intial() => const CategoryBlocState(
         isLoading: false,
         hasError: false,
-        allItems: [],
+        models: [],
+        varients: [],
       );
 }

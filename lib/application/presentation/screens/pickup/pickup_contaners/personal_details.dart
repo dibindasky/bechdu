@@ -98,93 +98,83 @@ class PersonalDetails extends StatelessWidget {
                   builder: (context, placeOrderBloc) {
                     return CustomButton(
                       onPressed: () {
-                        if (context
-                                .read<PlaceOrderBloc>()
-                                .emailController
-                                .text
-                                .isEmpty &&
-                            context
-                                .read<PlaceOrderBloc>()
-                                .nameController
-                                .text
-                                .isEmpty) {
+                        String email =
+                            context.read<PlaceOrderBloc>().emailController.text;
+                        String name =
+                            context.read<PlaceOrderBloc>().nameController.text;
+                        String addPhone = context
+                            .read<PlaceOrderBloc>()
+                            .additionalNumberController
+                            .text;
+
+                        if (email.isEmpty && name.isEmpty) {
                           showSnack(
                             context: context,
-                            message: 'Please fill required feilds',
+                            message: 'Please fill required fields',
                             color: kRed,
                           );
-                        } else {
-                          String email = context
-                              .read<PlaceOrderBloc>()
-                              .emailController
-                              .text;
-                          String name = context
-                              .read<PlaceOrderBloc>()
-                              .nameController
-                              .text;
-                          String addPhone = context
-                              .read<PlaceOrderBloc>()
-                              .additionalNumberController
-                              .text;
+                          return;
+                        }
 
-                          if (addPhone.isNotEmpty &&
-                              !isValidPhoneNumber(addPhone)) {
-                            showSnack(
-                              context: context,
-                              message: 'Not valid additional number',
-                              color: kRed,
-                            );
-                          }
-
-                          if (name.length < 3) {
-                            showSnack(
-                              context: context,
-                              message: 'Not a valid name',
-                              color: kRed,
-                            );
-                            return;
-                          }
-
-                          if (!isValidEmail(email)) {
-                            showSnack(
-                              context: context,
-                              message: 'Not a valid email',
-                              color: kRed,
-                            );
-                            return;
-                          }
-
-                          User user = User(
-                            email: email,
-                            name: name,
-                            addPhone: addPhone.isEmpty ? '' : addPhone,
+                        if (name.length < 3) {
+                          showSnack(
+                            context: context,
+                            message: 'Not a valid name : $name ',
+                            color: kRed,
                           );
+                          return;
+                        }
 
-                          Promo promo = Promo(
-                            code: placeOrderBloc.promoCodeResponceModel != null
-                                ? context
-                                    .read<PlaceOrderBloc>()
-                                    .promocodeController
-                                    .text
-                                : '',
-                            price: placeOrderBloc.promoCodeResponceModel != null
-                                ? placeOrderBloc.promoCodeResponceModel!.value
-                                    .toString()
-                                : '',
+                        if (!isValidEmail(email)) {
+                          showSnack(
+                            context: context,
+                            message: 'Not a valid email : $email',
+                            color: kRed,
                           );
-                          log('perosll detail button promo  >${promo.toJson()}');
-                          log('perosll detail button user  >${user.toJson()}');
-                          context
-                              .read<PlaceOrderBloc>()
-                              .add(PlaceOrderEvent.userDetailsPick(
+                          return;
+                        }
+
+                        if (addPhone.isNotEmpty &&
+                            !isValidPhoneNumber(addPhone)) {
+                          showSnack(
+                            context: context,
+                            message: 'Additional number is not valid $addPhone',
+                            color: kRed,
+                          );
+                          return;
+                        }
+
+                        User user = User(
+                          email: email,
+                          name: name,
+                          addPhone: addPhone.isEmpty ? '' : addPhone,
+                        );
+
+                        Promo promo = Promo(
+                          code: placeOrderBloc.promoCodeResponceModel != null
+                              ? context
+                                  .read<PlaceOrderBloc>()
+                                  .promocodeController
+                                  .text
+                              : '',
+                          price: placeOrderBloc.promoCodeResponceModel != null
+                              ? placeOrderBloc.promoCodeResponceModel!.value
+                                  .toString()
+                              : '',
+                        );
+
+                        log('perosll detail button promo  >${promo.toJson()}');
+                        log('perosll detail button user  >${user.toJson()}');
+                        context.read<PlaceOrderBloc>().add(
+                              PlaceOrderEvent.userDetailsPick(
                                 user: user,
                                 promo: promo,
-                              ));
-                          // Update the value of pickupDetailChangeNotifier
-                          pickupDetailChangeNotifier.value =
-                              PickupDetailContainers.address;
-                          pickupDetailChangeNotifier.notifyListeners();
-                        }
+                              ),
+                            );
+                        // Update the value of pickupDetailChangeNotifier
+                        pickupDetailChangeNotifier.value =
+                            PickupDetailContainers.address;
+                        pickupDetailChangeNotifier.notifyListeners();
                       },
                       text: 'Continue',
                     );

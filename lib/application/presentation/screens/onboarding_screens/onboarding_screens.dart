@@ -77,83 +77,86 @@ class _BechDuUserOnBoardingScreensState
         }
       },
       child: Scaffold(
-        body: Column(
-          children: [
-            SizedBox(
-              height: sHeight * .9,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Center(
-                    child: SizedBox(
-                      height: sWidth * .19,
-                      child: Hero(
-                        tag: 'logo',
-                        child: Image.asset(bechduMainlogo),
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(
+                height: sHeight * .9,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Center(
+                      child: SizedBox(
+                        height: sWidth * .19,
+                        child: Hero(
+                          tag: 'logo',
+                          child: Image.asset(bechduMainlogo),
+                        ),
                       ),
                     ),
-                  ),
-                  kHeight40,
-                  SizedBox(
-                    width: sWidth * 0.7,
-                    height: sWidth * 0.5,
-                    child: selectedIndex == 0
-                        ? SizedBox(
-                            child: Image.asset(
-                              personAnimationPic,
-                              fit: BoxFit.cover,
-                            ),
-                          )
-                        : selectedIndex == 1
-                            ? Center(
-                                child: SizedBox(
-                                  child: Image.asset(onBoardingsecondScreen),
-                                ),
-                              )
-                            : selectedIndex == 2
-                                ? Center(
-                                    child: SizedBox(
-                                      child: Image.asset(onBoardingThirdScreen),
-                                    ),
-                                  )
-                                : const SizedBox(),
-                  ),
-                  kHeight40,
-                  Text(
-                    textListFirst[selectedIndex],
-                    style: textHeadBoldBig.copyWith(color: kBlack),
-                  ),
-                  Text(
-                    textListSecond[selectedIndex],
-                    style: textHeadBoldBig.copyWith(color: kBlack),
-                  ),
-                  Text(
-                    'Lorem ipsum dolor sit amet,\n consectetur adipiscing elit.',
-                    style: textHeadInter.copyWith(
-                      color: klightgrey,
+                    kHeight40,
+                    SizedBox(
+                      width: sWidth * 0.7,
+                      height: sWidth * 0.5,
+                      child: selectedIndex == 0
+                          ? SizedBox(
+                              child: Image.asset(
+                                personAnimationPic,
+                                fit: BoxFit.cover,
+                              ),
+                            )
+                          : selectedIndex == 1
+                              ? Center(
+                                  child: SizedBox(
+                                    child: Image.asset(onBoardingsecondScreen),
+                                  ),
+                                )
+                              : selectedIndex == 2
+                                  ? Center(
+                                      child: SizedBox(
+                                        child:
+                                            Image.asset(onBoardingThirdScreen),
+                                      ),
+                                    )
+                                  : const SizedBox(),
                     ),
-                  ),
-                ],
+                    kHeight40,
+                    Text(
+                      textListFirst[selectedIndex],
+                      style: textHeadBoldBig.copyWith(color: kBlack),
+                    ),
+                    Text(
+                      textListSecond[selectedIndex],
+                      style: textHeadBoldBig.copyWith(color: kBlack),
+                    ),
+                    Text(
+                      'Lorem ipsum dolor sit amet,\n consectetur adipiscing elit.',
+                      style: textHeadInter.copyWith(
+                        color: klightgrey,
+                      ),
+                    ),
+                  ],
+                ),
               ),
-            ),
-            selectedIndex == 2
-                ? CustomButton(
-                    onPressed: () {
-                      Navigator.of(context).pushReplacementNamed(
-                        Routes.signInOrLogin,
-                        arguments: LoginWay.fromInitial,
-                      );
-                    },
-                    text: 'Get Started',
-                  )
-                : Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: List.generate(
-                      totalPages,
-                      (index) => buildPageIndicator(index),
+              selectedIndex == 2
+                  ? CustomButton(
+                      onPressed: () {
+                        Navigator.of(context).pushReplacementNamed(
+                          Routes.signInOrLogin,
+                          arguments: LoginWay.fromInitial,
+                        );
+                      },
+                      text: 'Get Started',
+                    )
+                  : Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: List.generate(
+                        totalPages,
+                        (index) => buildPageIndicator(index),
+                      ),
                     ),
-                  ),
-          ],
+            ],
+          ),
         ),
       ),
     );

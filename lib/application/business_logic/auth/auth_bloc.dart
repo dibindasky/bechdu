@@ -44,6 +44,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
                 hasError: true,
                 isLoading: false,
                 logOrNot: false,
+                message: failure.message,
                 load: false,
               ),
             ), (successOtpSend) async {
@@ -75,6 +76,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         state.copyWith(
           isLoading: false,
           hasError: false,
+          message: 'OTP verifying success',
           otpVerifyResponceModel: successNumberVerifying,
           logOrNot: true,
         ),

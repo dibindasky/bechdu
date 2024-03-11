@@ -68,10 +68,10 @@ class BottomSections extends StatelessWidget {
         kHeight50,
         BlocConsumer<AuthBloc, AuthState>(
           listener: (context, state) {
-            if (state.otpSendResponceModel!.message != null) {
+            if (state.otpSendResponceModel != null) {
               showSnack(
                 context: context,
-                message: state.otpSendResponceModel!.message!,
+                message: 'OTP send Successfully',
               );
             }
           },
@@ -97,13 +97,22 @@ class BottomSections extends StatelessWidget {
     RegExp phoneNumberRegExp = RegExp(r'^[0-9]+$');
     if (phoneNumberRegExp.hasMatch(phoneNumber)) {
       if (phoneNumber.isEmpty) {
-        showSnack(context: context, message: 'Enter your number');
+        showSnack(
+          context: context,
+          message: 'Enter your number',
+          color: kRed,
+        );
       } else if (phoneNumber.length < 10) {
-        showSnack(context: context, message: 'Number should be 10 digit');
+        showSnack(
+          context: context,
+          message: 'Number should be 10 digit',
+          color: kRed,
+        );
       } else if (phoneNumber.length > 10) {
         showSnack(
           context: context,
           message: 'Mobile number should keep 10 digit only',
+          color: kRed,
         );
       } else {
         Timer(const Duration(microseconds: 500), () {
@@ -124,6 +133,7 @@ class BottomSections extends StatelessWidget {
       showSnack(
         context: context,
         message: 'Not a valid phone number: $phoneNumber',
+        color: kRed,
       );
     }
   }

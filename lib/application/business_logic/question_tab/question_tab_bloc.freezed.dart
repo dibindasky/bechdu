@@ -19,10 +19,12 @@ mixin _$QuestionTabEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() tabChange,
+    required TResult Function(int index) tabMinus,
     required TResult Function() resetTabSelection,
     required TResult Function(String categoryType, Product product)
         getQuestions,
     required TResult Function(int answerCount) getAnswerCount,
+    required TResult Function() clearOneSection,
     required TResult Function(SelectedOption selectedOption) markedQuestions,
     required TResult Function(SelectedOption selectedOption) yesOrNo,
     required TResult Function(int countQuestionNumber) countQuestionNumber,
@@ -39,9 +41,11 @@ mixin _$QuestionTabEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? tabChange,
+    TResult? Function(int index)? tabMinus,
     TResult? Function()? resetTabSelection,
     TResult? Function(String categoryType, Product product)? getQuestions,
     TResult? Function(int answerCount)? getAnswerCount,
+    TResult? Function()? clearOneSection,
     TResult? Function(SelectedOption selectedOption)? markedQuestions,
     TResult? Function(SelectedOption selectedOption)? yesOrNo,
     TResult? Function(int countQuestionNumber)? countQuestionNumber,
@@ -56,9 +60,11 @@ mixin _$QuestionTabEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? tabChange,
+    TResult Function(int index)? tabMinus,
     TResult Function()? resetTabSelection,
     TResult Function(String categoryType, Product product)? getQuestions,
     TResult Function(int answerCount)? getAnswerCount,
+    TResult Function()? clearOneSection,
     TResult Function(SelectedOption selectedOption)? markedQuestions,
     TResult Function(SelectedOption selectedOption)? yesOrNo,
     TResult Function(int countQuestionNumber)? countQuestionNumber,
@@ -74,9 +80,11 @@ mixin _$QuestionTabEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(TabChange value) tabChange,
+    required TResult Function(TabMinus value) tabMinus,
     required TResult Function(ResetTabSelection value) resetTabSelection,
     required TResult Function(GetQuestions value) getQuestions,
     required TResult Function(GetAnswerCount value) getAnswerCount,
+    required TResult Function(ClearOneSection value) clearOneSection,
     required TResult Function(MarkedQuestions value) markedQuestions,
     required TResult Function(YesOrNo value) yesOrNo,
     required TResult Function(CountQuestionNumber value) countQuestionNumber,
@@ -88,9 +96,11 @@ mixin _$QuestionTabEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(TabChange value)? tabChange,
+    TResult? Function(TabMinus value)? tabMinus,
     TResult? Function(ResetTabSelection value)? resetTabSelection,
     TResult? Function(GetQuestions value)? getQuestions,
     TResult? Function(GetAnswerCount value)? getAnswerCount,
+    TResult? Function(ClearOneSection value)? clearOneSection,
     TResult? Function(MarkedQuestions value)? markedQuestions,
     TResult? Function(YesOrNo value)? yesOrNo,
     TResult? Function(CountQuestionNumber value)? countQuestionNumber,
@@ -102,9 +112,11 @@ mixin _$QuestionTabEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(TabChange value)? tabChange,
+    TResult Function(TabMinus value)? tabMinus,
     TResult Function(ResetTabSelection value)? resetTabSelection,
     TResult Function(GetQuestions value)? getQuestions,
     TResult Function(GetAnswerCount value)? getAnswerCount,
+    TResult Function(ClearOneSection value)? clearOneSection,
     TResult Function(MarkedQuestions value)? markedQuestions,
     TResult Function(YesOrNo value)? yesOrNo,
     TResult Function(CountQuestionNumber value)? countQuestionNumber,
@@ -173,10 +185,12 @@ class _$TabChangeImpl implements TabChange {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() tabChange,
+    required TResult Function(int index) tabMinus,
     required TResult Function() resetTabSelection,
     required TResult Function(String categoryType, Product product)
         getQuestions,
     required TResult Function(int answerCount) getAnswerCount,
+    required TResult Function() clearOneSection,
     required TResult Function(SelectedOption selectedOption) markedQuestions,
     required TResult Function(SelectedOption selectedOption) yesOrNo,
     required TResult Function(int countQuestionNumber) countQuestionNumber,
@@ -196,9 +210,11 @@ class _$TabChangeImpl implements TabChange {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? tabChange,
+    TResult? Function(int index)? tabMinus,
     TResult? Function()? resetTabSelection,
     TResult? Function(String categoryType, Product product)? getQuestions,
     TResult? Function(int answerCount)? getAnswerCount,
+    TResult? Function()? clearOneSection,
     TResult? Function(SelectedOption selectedOption)? markedQuestions,
     TResult? Function(SelectedOption selectedOption)? yesOrNo,
     TResult? Function(int countQuestionNumber)? countQuestionNumber,
@@ -216,9 +232,11 @@ class _$TabChangeImpl implements TabChange {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? tabChange,
+    TResult Function(int index)? tabMinus,
     TResult Function()? resetTabSelection,
     TResult Function(String categoryType, Product product)? getQuestions,
     TResult Function(int answerCount)? getAnswerCount,
+    TResult Function()? clearOneSection,
     TResult Function(SelectedOption selectedOption)? markedQuestions,
     TResult Function(SelectedOption selectedOption)? yesOrNo,
     TResult Function(int countQuestionNumber)? countQuestionNumber,
@@ -240,9 +258,11 @@ class _$TabChangeImpl implements TabChange {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(TabChange value) tabChange,
+    required TResult Function(TabMinus value) tabMinus,
     required TResult Function(ResetTabSelection value) resetTabSelection,
     required TResult Function(GetQuestions value) getQuestions,
     required TResult Function(GetAnswerCount value) getAnswerCount,
+    required TResult Function(ClearOneSection value) clearOneSection,
     required TResult Function(MarkedQuestions value) markedQuestions,
     required TResult Function(YesOrNo value) yesOrNo,
     required TResult Function(CountQuestionNumber value) countQuestionNumber,
@@ -257,9 +277,11 @@ class _$TabChangeImpl implements TabChange {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(TabChange value)? tabChange,
+    TResult? Function(TabMinus value)? tabMinus,
     TResult? Function(ResetTabSelection value)? resetTabSelection,
     TResult? Function(GetQuestions value)? getQuestions,
     TResult? Function(GetAnswerCount value)? getAnswerCount,
+    TResult? Function(ClearOneSection value)? clearOneSection,
     TResult? Function(MarkedQuestions value)? markedQuestions,
     TResult? Function(YesOrNo value)? yesOrNo,
     TResult? Function(CountQuestionNumber value)? countQuestionNumber,
@@ -274,9 +296,11 @@ class _$TabChangeImpl implements TabChange {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(TabChange value)? tabChange,
+    TResult Function(TabMinus value)? tabMinus,
     TResult Function(ResetTabSelection value)? resetTabSelection,
     TResult Function(GetQuestions value)? getQuestions,
     TResult Function(GetAnswerCount value)? getAnswerCount,
+    TResult Function(ClearOneSection value)? clearOneSection,
     TResult Function(MarkedQuestions value)? markedQuestions,
     TResult Function(YesOrNo value)? yesOrNo,
     TResult Function(CountQuestionNumber value)? countQuestionNumber,
@@ -294,6 +318,211 @@ class _$TabChangeImpl implements TabChange {
 
 abstract class TabChange implements QuestionTabEvent {
   const factory TabChange() = _$TabChangeImpl;
+}
+
+/// @nodoc
+abstract class _$$TabMinusImplCopyWith<$Res> {
+  factory _$$TabMinusImplCopyWith(
+          _$TabMinusImpl value, $Res Function(_$TabMinusImpl) then) =
+      __$$TabMinusImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int index});
+}
+
+/// @nodoc
+class __$$TabMinusImplCopyWithImpl<$Res>
+    extends _$QuestionTabEventCopyWithImpl<$Res, _$TabMinusImpl>
+    implements _$$TabMinusImplCopyWith<$Res> {
+  __$$TabMinusImplCopyWithImpl(
+      _$TabMinusImpl _value, $Res Function(_$TabMinusImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? index = null,
+  }) {
+    return _then(_$TabMinusImpl(
+      index: null == index
+          ? _value.index
+          : index // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$TabMinusImpl implements TabMinus {
+  const _$TabMinusImpl({required this.index});
+
+  @override
+  final int index;
+
+  @override
+  String toString() {
+    return 'QuestionTabEvent.tabMinus(index: $index)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$TabMinusImpl &&
+            (identical(other.index, index) || other.index == index));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, index);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$TabMinusImplCopyWith<_$TabMinusImpl> get copyWith =>
+      __$$TabMinusImplCopyWithImpl<_$TabMinusImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() tabChange,
+    required TResult Function(int index) tabMinus,
+    required TResult Function() resetTabSelection,
+    required TResult Function(String categoryType, Product product)
+        getQuestions,
+    required TResult Function(int answerCount) getAnswerCount,
+    required TResult Function() clearOneSection,
+    required TResult Function(SelectedOption selectedOption) markedQuestions,
+    required TResult Function(SelectedOption selectedOption) yesOrNo,
+    required TResult Function(int countQuestionNumber) countQuestionNumber,
+    required TResult Function(
+            AbandendOrderRequestModel abandendOrderRequestModel,
+            PickupQuestionModel pickupQuestionModel)
+        getBasePrice,
+    required TResult Function(
+            AbandendOrderRequestModel abandendOrderRequestModel)
+        abandentOrder,
+    required TResult Function() clearNewOPtionList,
+  }) {
+    return tabMinus(index);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? tabChange,
+    TResult? Function(int index)? tabMinus,
+    TResult? Function()? resetTabSelection,
+    TResult? Function(String categoryType, Product product)? getQuestions,
+    TResult? Function(int answerCount)? getAnswerCount,
+    TResult? Function()? clearOneSection,
+    TResult? Function(SelectedOption selectedOption)? markedQuestions,
+    TResult? Function(SelectedOption selectedOption)? yesOrNo,
+    TResult? Function(int countQuestionNumber)? countQuestionNumber,
+    TResult? Function(AbandendOrderRequestModel abandendOrderRequestModel,
+            PickupQuestionModel pickupQuestionModel)?
+        getBasePrice,
+    TResult? Function(AbandendOrderRequestModel abandendOrderRequestModel)?
+        abandentOrder,
+    TResult? Function()? clearNewOPtionList,
+  }) {
+    return tabMinus?.call(index);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? tabChange,
+    TResult Function(int index)? tabMinus,
+    TResult Function()? resetTabSelection,
+    TResult Function(String categoryType, Product product)? getQuestions,
+    TResult Function(int answerCount)? getAnswerCount,
+    TResult Function()? clearOneSection,
+    TResult Function(SelectedOption selectedOption)? markedQuestions,
+    TResult Function(SelectedOption selectedOption)? yesOrNo,
+    TResult Function(int countQuestionNumber)? countQuestionNumber,
+    TResult Function(AbandendOrderRequestModel abandendOrderRequestModel,
+            PickupQuestionModel pickupQuestionModel)?
+        getBasePrice,
+    TResult Function(AbandendOrderRequestModel abandendOrderRequestModel)?
+        abandentOrder,
+    TResult Function()? clearNewOPtionList,
+    required TResult orElse(),
+  }) {
+    if (tabMinus != null) {
+      return tabMinus(index);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(TabChange value) tabChange,
+    required TResult Function(TabMinus value) tabMinus,
+    required TResult Function(ResetTabSelection value) resetTabSelection,
+    required TResult Function(GetQuestions value) getQuestions,
+    required TResult Function(GetAnswerCount value) getAnswerCount,
+    required TResult Function(ClearOneSection value) clearOneSection,
+    required TResult Function(MarkedQuestions value) markedQuestions,
+    required TResult Function(YesOrNo value) yesOrNo,
+    required TResult Function(CountQuestionNumber value) countQuestionNumber,
+    required TResult Function(GetBasePrice value) getBasePrice,
+    required TResult Function(AbandentOrder value) abandentOrder,
+    required TResult Function(ClearNewOPtionList value) clearNewOPtionList,
+  }) {
+    return tabMinus(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(TabChange value)? tabChange,
+    TResult? Function(TabMinus value)? tabMinus,
+    TResult? Function(ResetTabSelection value)? resetTabSelection,
+    TResult? Function(GetQuestions value)? getQuestions,
+    TResult? Function(GetAnswerCount value)? getAnswerCount,
+    TResult? Function(ClearOneSection value)? clearOneSection,
+    TResult? Function(MarkedQuestions value)? markedQuestions,
+    TResult? Function(YesOrNo value)? yesOrNo,
+    TResult? Function(CountQuestionNumber value)? countQuestionNumber,
+    TResult? Function(GetBasePrice value)? getBasePrice,
+    TResult? Function(AbandentOrder value)? abandentOrder,
+    TResult? Function(ClearNewOPtionList value)? clearNewOPtionList,
+  }) {
+    return tabMinus?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(TabChange value)? tabChange,
+    TResult Function(TabMinus value)? tabMinus,
+    TResult Function(ResetTabSelection value)? resetTabSelection,
+    TResult Function(GetQuestions value)? getQuestions,
+    TResult Function(GetAnswerCount value)? getAnswerCount,
+    TResult Function(ClearOneSection value)? clearOneSection,
+    TResult Function(MarkedQuestions value)? markedQuestions,
+    TResult Function(YesOrNo value)? yesOrNo,
+    TResult Function(CountQuestionNumber value)? countQuestionNumber,
+    TResult Function(GetBasePrice value)? getBasePrice,
+    TResult Function(AbandentOrder value)? abandentOrder,
+    TResult Function(ClearNewOPtionList value)? clearNewOPtionList,
+    required TResult orElse(),
+  }) {
+    if (tabMinus != null) {
+      return tabMinus(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class TabMinus implements QuestionTabEvent {
+  const factory TabMinus({required final int index}) = _$TabMinusImpl;
+
+  int get index;
+  @JsonKey(ignore: true)
+  _$$TabMinusImplCopyWith<_$TabMinusImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -335,10 +564,12 @@ class _$ResetTabSelectionImpl implements ResetTabSelection {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() tabChange,
+    required TResult Function(int index) tabMinus,
     required TResult Function() resetTabSelection,
     required TResult Function(String categoryType, Product product)
         getQuestions,
     required TResult Function(int answerCount) getAnswerCount,
+    required TResult Function() clearOneSection,
     required TResult Function(SelectedOption selectedOption) markedQuestions,
     required TResult Function(SelectedOption selectedOption) yesOrNo,
     required TResult Function(int countQuestionNumber) countQuestionNumber,
@@ -358,9 +589,11 @@ class _$ResetTabSelectionImpl implements ResetTabSelection {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? tabChange,
+    TResult? Function(int index)? tabMinus,
     TResult? Function()? resetTabSelection,
     TResult? Function(String categoryType, Product product)? getQuestions,
     TResult? Function(int answerCount)? getAnswerCount,
+    TResult? Function()? clearOneSection,
     TResult? Function(SelectedOption selectedOption)? markedQuestions,
     TResult? Function(SelectedOption selectedOption)? yesOrNo,
     TResult? Function(int countQuestionNumber)? countQuestionNumber,
@@ -378,9 +611,11 @@ class _$ResetTabSelectionImpl implements ResetTabSelection {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? tabChange,
+    TResult Function(int index)? tabMinus,
     TResult Function()? resetTabSelection,
     TResult Function(String categoryType, Product product)? getQuestions,
     TResult Function(int answerCount)? getAnswerCount,
+    TResult Function()? clearOneSection,
     TResult Function(SelectedOption selectedOption)? markedQuestions,
     TResult Function(SelectedOption selectedOption)? yesOrNo,
     TResult Function(int countQuestionNumber)? countQuestionNumber,
@@ -402,9 +637,11 @@ class _$ResetTabSelectionImpl implements ResetTabSelection {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(TabChange value) tabChange,
+    required TResult Function(TabMinus value) tabMinus,
     required TResult Function(ResetTabSelection value) resetTabSelection,
     required TResult Function(GetQuestions value) getQuestions,
     required TResult Function(GetAnswerCount value) getAnswerCount,
+    required TResult Function(ClearOneSection value) clearOneSection,
     required TResult Function(MarkedQuestions value) markedQuestions,
     required TResult Function(YesOrNo value) yesOrNo,
     required TResult Function(CountQuestionNumber value) countQuestionNumber,
@@ -419,9 +656,11 @@ class _$ResetTabSelectionImpl implements ResetTabSelection {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(TabChange value)? tabChange,
+    TResult? Function(TabMinus value)? tabMinus,
     TResult? Function(ResetTabSelection value)? resetTabSelection,
     TResult? Function(GetQuestions value)? getQuestions,
     TResult? Function(GetAnswerCount value)? getAnswerCount,
+    TResult? Function(ClearOneSection value)? clearOneSection,
     TResult? Function(MarkedQuestions value)? markedQuestions,
     TResult? Function(YesOrNo value)? yesOrNo,
     TResult? Function(CountQuestionNumber value)? countQuestionNumber,
@@ -436,9 +675,11 @@ class _$ResetTabSelectionImpl implements ResetTabSelection {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(TabChange value)? tabChange,
+    TResult Function(TabMinus value)? tabMinus,
     TResult Function(ResetTabSelection value)? resetTabSelection,
     TResult Function(GetQuestions value)? getQuestions,
     TResult Function(GetAnswerCount value)? getAnswerCount,
+    TResult Function(ClearOneSection value)? clearOneSection,
     TResult Function(MarkedQuestions value)? markedQuestions,
     TResult Function(YesOrNo value)? yesOrNo,
     TResult Function(CountQuestionNumber value)? countQuestionNumber,
@@ -532,10 +773,12 @@ class _$GetQuestionsImpl implements GetQuestions {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() tabChange,
+    required TResult Function(int index) tabMinus,
     required TResult Function() resetTabSelection,
     required TResult Function(String categoryType, Product product)
         getQuestions,
     required TResult Function(int answerCount) getAnswerCount,
+    required TResult Function() clearOneSection,
     required TResult Function(SelectedOption selectedOption) markedQuestions,
     required TResult Function(SelectedOption selectedOption) yesOrNo,
     required TResult Function(int countQuestionNumber) countQuestionNumber,
@@ -555,9 +798,11 @@ class _$GetQuestionsImpl implements GetQuestions {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? tabChange,
+    TResult? Function(int index)? tabMinus,
     TResult? Function()? resetTabSelection,
     TResult? Function(String categoryType, Product product)? getQuestions,
     TResult? Function(int answerCount)? getAnswerCount,
+    TResult? Function()? clearOneSection,
     TResult? Function(SelectedOption selectedOption)? markedQuestions,
     TResult? Function(SelectedOption selectedOption)? yesOrNo,
     TResult? Function(int countQuestionNumber)? countQuestionNumber,
@@ -575,9 +820,11 @@ class _$GetQuestionsImpl implements GetQuestions {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? tabChange,
+    TResult Function(int index)? tabMinus,
     TResult Function()? resetTabSelection,
     TResult Function(String categoryType, Product product)? getQuestions,
     TResult Function(int answerCount)? getAnswerCount,
+    TResult Function()? clearOneSection,
     TResult Function(SelectedOption selectedOption)? markedQuestions,
     TResult Function(SelectedOption selectedOption)? yesOrNo,
     TResult Function(int countQuestionNumber)? countQuestionNumber,
@@ -599,9 +846,11 @@ class _$GetQuestionsImpl implements GetQuestions {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(TabChange value) tabChange,
+    required TResult Function(TabMinus value) tabMinus,
     required TResult Function(ResetTabSelection value) resetTabSelection,
     required TResult Function(GetQuestions value) getQuestions,
     required TResult Function(GetAnswerCount value) getAnswerCount,
+    required TResult Function(ClearOneSection value) clearOneSection,
     required TResult Function(MarkedQuestions value) markedQuestions,
     required TResult Function(YesOrNo value) yesOrNo,
     required TResult Function(CountQuestionNumber value) countQuestionNumber,
@@ -616,9 +865,11 @@ class _$GetQuestionsImpl implements GetQuestions {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(TabChange value)? tabChange,
+    TResult? Function(TabMinus value)? tabMinus,
     TResult? Function(ResetTabSelection value)? resetTabSelection,
     TResult? Function(GetQuestions value)? getQuestions,
     TResult? Function(GetAnswerCount value)? getAnswerCount,
+    TResult? Function(ClearOneSection value)? clearOneSection,
     TResult? Function(MarkedQuestions value)? markedQuestions,
     TResult? Function(YesOrNo value)? yesOrNo,
     TResult? Function(CountQuestionNumber value)? countQuestionNumber,
@@ -633,9 +884,11 @@ class _$GetQuestionsImpl implements GetQuestions {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(TabChange value)? tabChange,
+    TResult Function(TabMinus value)? tabMinus,
     TResult Function(ResetTabSelection value)? resetTabSelection,
     TResult Function(GetQuestions value)? getQuestions,
     TResult Function(GetAnswerCount value)? getAnswerCount,
+    TResult Function(ClearOneSection value)? clearOneSection,
     TResult Function(MarkedQuestions value)? markedQuestions,
     TResult Function(YesOrNo value)? yesOrNo,
     TResult Function(CountQuestionNumber value)? countQuestionNumber,
@@ -730,10 +983,12 @@ class _$GetAnswerCountImpl implements GetAnswerCount {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() tabChange,
+    required TResult Function(int index) tabMinus,
     required TResult Function() resetTabSelection,
     required TResult Function(String categoryType, Product product)
         getQuestions,
     required TResult Function(int answerCount) getAnswerCount,
+    required TResult Function() clearOneSection,
     required TResult Function(SelectedOption selectedOption) markedQuestions,
     required TResult Function(SelectedOption selectedOption) yesOrNo,
     required TResult Function(int countQuestionNumber) countQuestionNumber,
@@ -753,9 +1008,11 @@ class _$GetAnswerCountImpl implements GetAnswerCount {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? tabChange,
+    TResult? Function(int index)? tabMinus,
     TResult? Function()? resetTabSelection,
     TResult? Function(String categoryType, Product product)? getQuestions,
     TResult? Function(int answerCount)? getAnswerCount,
+    TResult? Function()? clearOneSection,
     TResult? Function(SelectedOption selectedOption)? markedQuestions,
     TResult? Function(SelectedOption selectedOption)? yesOrNo,
     TResult? Function(int countQuestionNumber)? countQuestionNumber,
@@ -773,9 +1030,11 @@ class _$GetAnswerCountImpl implements GetAnswerCount {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? tabChange,
+    TResult Function(int index)? tabMinus,
     TResult Function()? resetTabSelection,
     TResult Function(String categoryType, Product product)? getQuestions,
     TResult Function(int answerCount)? getAnswerCount,
+    TResult Function()? clearOneSection,
     TResult Function(SelectedOption selectedOption)? markedQuestions,
     TResult Function(SelectedOption selectedOption)? yesOrNo,
     TResult Function(int countQuestionNumber)? countQuestionNumber,
@@ -797,9 +1056,11 @@ class _$GetAnswerCountImpl implements GetAnswerCount {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(TabChange value) tabChange,
+    required TResult Function(TabMinus value) tabMinus,
     required TResult Function(ResetTabSelection value) resetTabSelection,
     required TResult Function(GetQuestions value) getQuestions,
     required TResult Function(GetAnswerCount value) getAnswerCount,
+    required TResult Function(ClearOneSection value) clearOneSection,
     required TResult Function(MarkedQuestions value) markedQuestions,
     required TResult Function(YesOrNo value) yesOrNo,
     required TResult Function(CountQuestionNumber value) countQuestionNumber,
@@ -814,9 +1075,11 @@ class _$GetAnswerCountImpl implements GetAnswerCount {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(TabChange value)? tabChange,
+    TResult? Function(TabMinus value)? tabMinus,
     TResult? Function(ResetTabSelection value)? resetTabSelection,
     TResult? Function(GetQuestions value)? getQuestions,
     TResult? Function(GetAnswerCount value)? getAnswerCount,
+    TResult? Function(ClearOneSection value)? clearOneSection,
     TResult? Function(MarkedQuestions value)? markedQuestions,
     TResult? Function(YesOrNo value)? yesOrNo,
     TResult? Function(CountQuestionNumber value)? countQuestionNumber,
@@ -831,9 +1094,11 @@ class _$GetAnswerCountImpl implements GetAnswerCount {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(TabChange value)? tabChange,
+    TResult Function(TabMinus value)? tabMinus,
     TResult Function(ResetTabSelection value)? resetTabSelection,
     TResult Function(GetQuestions value)? getQuestions,
     TResult Function(GetAnswerCount value)? getAnswerCount,
+    TResult Function(ClearOneSection value)? clearOneSection,
     TResult Function(MarkedQuestions value)? markedQuestions,
     TResult Function(YesOrNo value)? yesOrNo,
     TResult Function(CountQuestionNumber value)? countQuestionNumber,
@@ -857,6 +1122,180 @@ abstract class GetAnswerCount implements QuestionTabEvent {
   @JsonKey(ignore: true)
   _$$GetAnswerCountImplCopyWith<_$GetAnswerCountImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ClearOneSectionImplCopyWith<$Res> {
+  factory _$$ClearOneSectionImplCopyWith(_$ClearOneSectionImpl value,
+          $Res Function(_$ClearOneSectionImpl) then) =
+      __$$ClearOneSectionImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ClearOneSectionImplCopyWithImpl<$Res>
+    extends _$QuestionTabEventCopyWithImpl<$Res, _$ClearOneSectionImpl>
+    implements _$$ClearOneSectionImplCopyWith<$Res> {
+  __$$ClearOneSectionImplCopyWithImpl(
+      _$ClearOneSectionImpl _value, $Res Function(_$ClearOneSectionImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$ClearOneSectionImpl implements ClearOneSection {
+  const _$ClearOneSectionImpl();
+
+  @override
+  String toString() {
+    return 'QuestionTabEvent.clearOneSection()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$ClearOneSectionImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() tabChange,
+    required TResult Function(int index) tabMinus,
+    required TResult Function() resetTabSelection,
+    required TResult Function(String categoryType, Product product)
+        getQuestions,
+    required TResult Function(int answerCount) getAnswerCount,
+    required TResult Function() clearOneSection,
+    required TResult Function(SelectedOption selectedOption) markedQuestions,
+    required TResult Function(SelectedOption selectedOption) yesOrNo,
+    required TResult Function(int countQuestionNumber) countQuestionNumber,
+    required TResult Function(
+            AbandendOrderRequestModel abandendOrderRequestModel,
+            PickupQuestionModel pickupQuestionModel)
+        getBasePrice,
+    required TResult Function(
+            AbandendOrderRequestModel abandendOrderRequestModel)
+        abandentOrder,
+    required TResult Function() clearNewOPtionList,
+  }) {
+    return clearOneSection();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? tabChange,
+    TResult? Function(int index)? tabMinus,
+    TResult? Function()? resetTabSelection,
+    TResult? Function(String categoryType, Product product)? getQuestions,
+    TResult? Function(int answerCount)? getAnswerCount,
+    TResult? Function()? clearOneSection,
+    TResult? Function(SelectedOption selectedOption)? markedQuestions,
+    TResult? Function(SelectedOption selectedOption)? yesOrNo,
+    TResult? Function(int countQuestionNumber)? countQuestionNumber,
+    TResult? Function(AbandendOrderRequestModel abandendOrderRequestModel,
+            PickupQuestionModel pickupQuestionModel)?
+        getBasePrice,
+    TResult? Function(AbandendOrderRequestModel abandendOrderRequestModel)?
+        abandentOrder,
+    TResult? Function()? clearNewOPtionList,
+  }) {
+    return clearOneSection?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? tabChange,
+    TResult Function(int index)? tabMinus,
+    TResult Function()? resetTabSelection,
+    TResult Function(String categoryType, Product product)? getQuestions,
+    TResult Function(int answerCount)? getAnswerCount,
+    TResult Function()? clearOneSection,
+    TResult Function(SelectedOption selectedOption)? markedQuestions,
+    TResult Function(SelectedOption selectedOption)? yesOrNo,
+    TResult Function(int countQuestionNumber)? countQuestionNumber,
+    TResult Function(AbandendOrderRequestModel abandendOrderRequestModel,
+            PickupQuestionModel pickupQuestionModel)?
+        getBasePrice,
+    TResult Function(AbandendOrderRequestModel abandendOrderRequestModel)?
+        abandentOrder,
+    TResult Function()? clearNewOPtionList,
+    required TResult orElse(),
+  }) {
+    if (clearOneSection != null) {
+      return clearOneSection();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(TabChange value) tabChange,
+    required TResult Function(TabMinus value) tabMinus,
+    required TResult Function(ResetTabSelection value) resetTabSelection,
+    required TResult Function(GetQuestions value) getQuestions,
+    required TResult Function(GetAnswerCount value) getAnswerCount,
+    required TResult Function(ClearOneSection value) clearOneSection,
+    required TResult Function(MarkedQuestions value) markedQuestions,
+    required TResult Function(YesOrNo value) yesOrNo,
+    required TResult Function(CountQuestionNumber value) countQuestionNumber,
+    required TResult Function(GetBasePrice value) getBasePrice,
+    required TResult Function(AbandentOrder value) abandentOrder,
+    required TResult Function(ClearNewOPtionList value) clearNewOPtionList,
+  }) {
+    return clearOneSection(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(TabChange value)? tabChange,
+    TResult? Function(TabMinus value)? tabMinus,
+    TResult? Function(ResetTabSelection value)? resetTabSelection,
+    TResult? Function(GetQuestions value)? getQuestions,
+    TResult? Function(GetAnswerCount value)? getAnswerCount,
+    TResult? Function(ClearOneSection value)? clearOneSection,
+    TResult? Function(MarkedQuestions value)? markedQuestions,
+    TResult? Function(YesOrNo value)? yesOrNo,
+    TResult? Function(CountQuestionNumber value)? countQuestionNumber,
+    TResult? Function(GetBasePrice value)? getBasePrice,
+    TResult? Function(AbandentOrder value)? abandentOrder,
+    TResult? Function(ClearNewOPtionList value)? clearNewOPtionList,
+  }) {
+    return clearOneSection?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(TabChange value)? tabChange,
+    TResult Function(TabMinus value)? tabMinus,
+    TResult Function(ResetTabSelection value)? resetTabSelection,
+    TResult Function(GetQuestions value)? getQuestions,
+    TResult Function(GetAnswerCount value)? getAnswerCount,
+    TResult Function(ClearOneSection value)? clearOneSection,
+    TResult Function(MarkedQuestions value)? markedQuestions,
+    TResult Function(YesOrNo value)? yesOrNo,
+    TResult Function(CountQuestionNumber value)? countQuestionNumber,
+    TResult Function(GetBasePrice value)? getBasePrice,
+    TResult Function(AbandentOrder value)? abandentOrder,
+    TResult Function(ClearNewOPtionList value)? clearNewOPtionList,
+    required TResult orElse(),
+  }) {
+    if (clearOneSection != null) {
+      return clearOneSection(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ClearOneSection implements QuestionTabEvent {
+  const factory ClearOneSection() = _$ClearOneSectionImpl;
 }
 
 /// @nodoc
@@ -926,10 +1365,12 @@ class _$MarkedQuestionsImpl implements MarkedQuestions {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() tabChange,
+    required TResult Function(int index) tabMinus,
     required TResult Function() resetTabSelection,
     required TResult Function(String categoryType, Product product)
         getQuestions,
     required TResult Function(int answerCount) getAnswerCount,
+    required TResult Function() clearOneSection,
     required TResult Function(SelectedOption selectedOption) markedQuestions,
     required TResult Function(SelectedOption selectedOption) yesOrNo,
     required TResult Function(int countQuestionNumber) countQuestionNumber,
@@ -949,9 +1390,11 @@ class _$MarkedQuestionsImpl implements MarkedQuestions {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? tabChange,
+    TResult? Function(int index)? tabMinus,
     TResult? Function()? resetTabSelection,
     TResult? Function(String categoryType, Product product)? getQuestions,
     TResult? Function(int answerCount)? getAnswerCount,
+    TResult? Function()? clearOneSection,
     TResult? Function(SelectedOption selectedOption)? markedQuestions,
     TResult? Function(SelectedOption selectedOption)? yesOrNo,
     TResult? Function(int countQuestionNumber)? countQuestionNumber,
@@ -969,9 +1412,11 @@ class _$MarkedQuestionsImpl implements MarkedQuestions {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? tabChange,
+    TResult Function(int index)? tabMinus,
     TResult Function()? resetTabSelection,
     TResult Function(String categoryType, Product product)? getQuestions,
     TResult Function(int answerCount)? getAnswerCount,
+    TResult Function()? clearOneSection,
     TResult Function(SelectedOption selectedOption)? markedQuestions,
     TResult Function(SelectedOption selectedOption)? yesOrNo,
     TResult Function(int countQuestionNumber)? countQuestionNumber,
@@ -993,9 +1438,11 @@ class _$MarkedQuestionsImpl implements MarkedQuestions {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(TabChange value) tabChange,
+    required TResult Function(TabMinus value) tabMinus,
     required TResult Function(ResetTabSelection value) resetTabSelection,
     required TResult Function(GetQuestions value) getQuestions,
     required TResult Function(GetAnswerCount value) getAnswerCount,
+    required TResult Function(ClearOneSection value) clearOneSection,
     required TResult Function(MarkedQuestions value) markedQuestions,
     required TResult Function(YesOrNo value) yesOrNo,
     required TResult Function(CountQuestionNumber value) countQuestionNumber,
@@ -1010,9 +1457,11 @@ class _$MarkedQuestionsImpl implements MarkedQuestions {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(TabChange value)? tabChange,
+    TResult? Function(TabMinus value)? tabMinus,
     TResult? Function(ResetTabSelection value)? resetTabSelection,
     TResult? Function(GetQuestions value)? getQuestions,
     TResult? Function(GetAnswerCount value)? getAnswerCount,
+    TResult? Function(ClearOneSection value)? clearOneSection,
     TResult? Function(MarkedQuestions value)? markedQuestions,
     TResult? Function(YesOrNo value)? yesOrNo,
     TResult? Function(CountQuestionNumber value)? countQuestionNumber,
@@ -1027,9 +1476,11 @@ class _$MarkedQuestionsImpl implements MarkedQuestions {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(TabChange value)? tabChange,
+    TResult Function(TabMinus value)? tabMinus,
     TResult Function(ResetTabSelection value)? resetTabSelection,
     TResult Function(GetQuestions value)? getQuestions,
     TResult Function(GetAnswerCount value)? getAnswerCount,
+    TResult Function(ClearOneSection value)? clearOneSection,
     TResult Function(MarkedQuestions value)? markedQuestions,
     TResult Function(YesOrNo value)? yesOrNo,
     TResult Function(CountQuestionNumber value)? countQuestionNumber,
@@ -1121,10 +1572,12 @@ class _$YesOrNoImpl implements YesOrNo {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() tabChange,
+    required TResult Function(int index) tabMinus,
     required TResult Function() resetTabSelection,
     required TResult Function(String categoryType, Product product)
         getQuestions,
     required TResult Function(int answerCount) getAnswerCount,
+    required TResult Function() clearOneSection,
     required TResult Function(SelectedOption selectedOption) markedQuestions,
     required TResult Function(SelectedOption selectedOption) yesOrNo,
     required TResult Function(int countQuestionNumber) countQuestionNumber,
@@ -1144,9 +1597,11 @@ class _$YesOrNoImpl implements YesOrNo {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? tabChange,
+    TResult? Function(int index)? tabMinus,
     TResult? Function()? resetTabSelection,
     TResult? Function(String categoryType, Product product)? getQuestions,
     TResult? Function(int answerCount)? getAnswerCount,
+    TResult? Function()? clearOneSection,
     TResult? Function(SelectedOption selectedOption)? markedQuestions,
     TResult? Function(SelectedOption selectedOption)? yesOrNo,
     TResult? Function(int countQuestionNumber)? countQuestionNumber,
@@ -1164,9 +1619,11 @@ class _$YesOrNoImpl implements YesOrNo {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? tabChange,
+    TResult Function(int index)? tabMinus,
     TResult Function()? resetTabSelection,
     TResult Function(String categoryType, Product product)? getQuestions,
     TResult Function(int answerCount)? getAnswerCount,
+    TResult Function()? clearOneSection,
     TResult Function(SelectedOption selectedOption)? markedQuestions,
     TResult Function(SelectedOption selectedOption)? yesOrNo,
     TResult Function(int countQuestionNumber)? countQuestionNumber,
@@ -1188,9 +1645,11 @@ class _$YesOrNoImpl implements YesOrNo {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(TabChange value) tabChange,
+    required TResult Function(TabMinus value) tabMinus,
     required TResult Function(ResetTabSelection value) resetTabSelection,
     required TResult Function(GetQuestions value) getQuestions,
     required TResult Function(GetAnswerCount value) getAnswerCount,
+    required TResult Function(ClearOneSection value) clearOneSection,
     required TResult Function(MarkedQuestions value) markedQuestions,
     required TResult Function(YesOrNo value) yesOrNo,
     required TResult Function(CountQuestionNumber value) countQuestionNumber,
@@ -1205,9 +1664,11 @@ class _$YesOrNoImpl implements YesOrNo {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(TabChange value)? tabChange,
+    TResult? Function(TabMinus value)? tabMinus,
     TResult? Function(ResetTabSelection value)? resetTabSelection,
     TResult? Function(GetQuestions value)? getQuestions,
     TResult? Function(GetAnswerCount value)? getAnswerCount,
+    TResult? Function(ClearOneSection value)? clearOneSection,
     TResult? Function(MarkedQuestions value)? markedQuestions,
     TResult? Function(YesOrNo value)? yesOrNo,
     TResult? Function(CountQuestionNumber value)? countQuestionNumber,
@@ -1222,9 +1683,11 @@ class _$YesOrNoImpl implements YesOrNo {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(TabChange value)? tabChange,
+    TResult Function(TabMinus value)? tabMinus,
     TResult Function(ResetTabSelection value)? resetTabSelection,
     TResult Function(GetQuestions value)? getQuestions,
     TResult Function(GetAnswerCount value)? getAnswerCount,
+    TResult Function(ClearOneSection value)? clearOneSection,
     TResult Function(MarkedQuestions value)? markedQuestions,
     TResult Function(YesOrNo value)? yesOrNo,
     TResult Function(CountQuestionNumber value)? countQuestionNumber,
@@ -1317,10 +1780,12 @@ class _$CountQuestionNumberImpl implements CountQuestionNumber {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() tabChange,
+    required TResult Function(int index) tabMinus,
     required TResult Function() resetTabSelection,
     required TResult Function(String categoryType, Product product)
         getQuestions,
     required TResult Function(int answerCount) getAnswerCount,
+    required TResult Function() clearOneSection,
     required TResult Function(SelectedOption selectedOption) markedQuestions,
     required TResult Function(SelectedOption selectedOption) yesOrNo,
     required TResult Function(int countQuestionNumber) countQuestionNumber,
@@ -1340,9 +1805,11 @@ class _$CountQuestionNumberImpl implements CountQuestionNumber {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? tabChange,
+    TResult? Function(int index)? tabMinus,
     TResult? Function()? resetTabSelection,
     TResult? Function(String categoryType, Product product)? getQuestions,
     TResult? Function(int answerCount)? getAnswerCount,
+    TResult? Function()? clearOneSection,
     TResult? Function(SelectedOption selectedOption)? markedQuestions,
     TResult? Function(SelectedOption selectedOption)? yesOrNo,
     TResult? Function(int countQuestionNumber)? countQuestionNumber,
@@ -1360,9 +1827,11 @@ class _$CountQuestionNumberImpl implements CountQuestionNumber {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? tabChange,
+    TResult Function(int index)? tabMinus,
     TResult Function()? resetTabSelection,
     TResult Function(String categoryType, Product product)? getQuestions,
     TResult Function(int answerCount)? getAnswerCount,
+    TResult Function()? clearOneSection,
     TResult Function(SelectedOption selectedOption)? markedQuestions,
     TResult Function(SelectedOption selectedOption)? yesOrNo,
     TResult Function(int countQuestionNumber)? countQuestionNumber,
@@ -1384,9 +1853,11 @@ class _$CountQuestionNumberImpl implements CountQuestionNumber {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(TabChange value) tabChange,
+    required TResult Function(TabMinus value) tabMinus,
     required TResult Function(ResetTabSelection value) resetTabSelection,
     required TResult Function(GetQuestions value) getQuestions,
     required TResult Function(GetAnswerCount value) getAnswerCount,
+    required TResult Function(ClearOneSection value) clearOneSection,
     required TResult Function(MarkedQuestions value) markedQuestions,
     required TResult Function(YesOrNo value) yesOrNo,
     required TResult Function(CountQuestionNumber value) countQuestionNumber,
@@ -1401,9 +1872,11 @@ class _$CountQuestionNumberImpl implements CountQuestionNumber {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(TabChange value)? tabChange,
+    TResult? Function(TabMinus value)? tabMinus,
     TResult? Function(ResetTabSelection value)? resetTabSelection,
     TResult? Function(GetQuestions value)? getQuestions,
     TResult? Function(GetAnswerCount value)? getAnswerCount,
+    TResult? Function(ClearOneSection value)? clearOneSection,
     TResult? Function(MarkedQuestions value)? markedQuestions,
     TResult? Function(YesOrNo value)? yesOrNo,
     TResult? Function(CountQuestionNumber value)? countQuestionNumber,
@@ -1418,9 +1891,11 @@ class _$CountQuestionNumberImpl implements CountQuestionNumber {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(TabChange value)? tabChange,
+    TResult Function(TabMinus value)? tabMinus,
     TResult Function(ResetTabSelection value)? resetTabSelection,
     TResult Function(GetQuestions value)? getQuestions,
     TResult Function(GetAnswerCount value)? getAnswerCount,
+    TResult Function(ClearOneSection value)? clearOneSection,
     TResult Function(MarkedQuestions value)? markedQuestions,
     TResult Function(YesOrNo value)? yesOrNo,
     TResult Function(CountQuestionNumber value)? countQuestionNumber,
@@ -1527,10 +2002,12 @@ class _$GetBasePriceImpl implements GetBasePrice {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() tabChange,
+    required TResult Function(int index) tabMinus,
     required TResult Function() resetTabSelection,
     required TResult Function(String categoryType, Product product)
         getQuestions,
     required TResult Function(int answerCount) getAnswerCount,
+    required TResult Function() clearOneSection,
     required TResult Function(SelectedOption selectedOption) markedQuestions,
     required TResult Function(SelectedOption selectedOption) yesOrNo,
     required TResult Function(int countQuestionNumber) countQuestionNumber,
@@ -1550,9 +2027,11 @@ class _$GetBasePriceImpl implements GetBasePrice {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? tabChange,
+    TResult? Function(int index)? tabMinus,
     TResult? Function()? resetTabSelection,
     TResult? Function(String categoryType, Product product)? getQuestions,
     TResult? Function(int answerCount)? getAnswerCount,
+    TResult? Function()? clearOneSection,
     TResult? Function(SelectedOption selectedOption)? markedQuestions,
     TResult? Function(SelectedOption selectedOption)? yesOrNo,
     TResult? Function(int countQuestionNumber)? countQuestionNumber,
@@ -1570,9 +2049,11 @@ class _$GetBasePriceImpl implements GetBasePrice {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? tabChange,
+    TResult Function(int index)? tabMinus,
     TResult Function()? resetTabSelection,
     TResult Function(String categoryType, Product product)? getQuestions,
     TResult Function(int answerCount)? getAnswerCount,
+    TResult Function()? clearOneSection,
     TResult Function(SelectedOption selectedOption)? markedQuestions,
     TResult Function(SelectedOption selectedOption)? yesOrNo,
     TResult Function(int countQuestionNumber)? countQuestionNumber,
@@ -1594,9 +2075,11 @@ class _$GetBasePriceImpl implements GetBasePrice {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(TabChange value) tabChange,
+    required TResult Function(TabMinus value) tabMinus,
     required TResult Function(ResetTabSelection value) resetTabSelection,
     required TResult Function(GetQuestions value) getQuestions,
     required TResult Function(GetAnswerCount value) getAnswerCount,
+    required TResult Function(ClearOneSection value) clearOneSection,
     required TResult Function(MarkedQuestions value) markedQuestions,
     required TResult Function(YesOrNo value) yesOrNo,
     required TResult Function(CountQuestionNumber value) countQuestionNumber,
@@ -1611,9 +2094,11 @@ class _$GetBasePriceImpl implements GetBasePrice {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(TabChange value)? tabChange,
+    TResult? Function(TabMinus value)? tabMinus,
     TResult? Function(ResetTabSelection value)? resetTabSelection,
     TResult? Function(GetQuestions value)? getQuestions,
     TResult? Function(GetAnswerCount value)? getAnswerCount,
+    TResult? Function(ClearOneSection value)? clearOneSection,
     TResult? Function(MarkedQuestions value)? markedQuestions,
     TResult? Function(YesOrNo value)? yesOrNo,
     TResult? Function(CountQuestionNumber value)? countQuestionNumber,
@@ -1628,9 +2113,11 @@ class _$GetBasePriceImpl implements GetBasePrice {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(TabChange value)? tabChange,
+    TResult Function(TabMinus value)? tabMinus,
     TResult Function(ResetTabSelection value)? resetTabSelection,
     TResult Function(GetQuestions value)? getQuestions,
     TResult Function(GetAnswerCount value)? getAnswerCount,
+    TResult Function(ClearOneSection value)? clearOneSection,
     TResult Function(MarkedQuestions value)? markedQuestions,
     TResult Function(YesOrNo value)? yesOrNo,
     TResult Function(CountQuestionNumber value)? countQuestionNumber,
@@ -1726,10 +2213,12 @@ class _$AbandentOrderImpl implements AbandentOrder {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() tabChange,
+    required TResult Function(int index) tabMinus,
     required TResult Function() resetTabSelection,
     required TResult Function(String categoryType, Product product)
         getQuestions,
     required TResult Function(int answerCount) getAnswerCount,
+    required TResult Function() clearOneSection,
     required TResult Function(SelectedOption selectedOption) markedQuestions,
     required TResult Function(SelectedOption selectedOption) yesOrNo,
     required TResult Function(int countQuestionNumber) countQuestionNumber,
@@ -1749,9 +2238,11 @@ class _$AbandentOrderImpl implements AbandentOrder {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? tabChange,
+    TResult? Function(int index)? tabMinus,
     TResult? Function()? resetTabSelection,
     TResult? Function(String categoryType, Product product)? getQuestions,
     TResult? Function(int answerCount)? getAnswerCount,
+    TResult? Function()? clearOneSection,
     TResult? Function(SelectedOption selectedOption)? markedQuestions,
     TResult? Function(SelectedOption selectedOption)? yesOrNo,
     TResult? Function(int countQuestionNumber)? countQuestionNumber,
@@ -1769,9 +2260,11 @@ class _$AbandentOrderImpl implements AbandentOrder {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? tabChange,
+    TResult Function(int index)? tabMinus,
     TResult Function()? resetTabSelection,
     TResult Function(String categoryType, Product product)? getQuestions,
     TResult Function(int answerCount)? getAnswerCount,
+    TResult Function()? clearOneSection,
     TResult Function(SelectedOption selectedOption)? markedQuestions,
     TResult Function(SelectedOption selectedOption)? yesOrNo,
     TResult Function(int countQuestionNumber)? countQuestionNumber,
@@ -1793,9 +2286,11 @@ class _$AbandentOrderImpl implements AbandentOrder {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(TabChange value) tabChange,
+    required TResult Function(TabMinus value) tabMinus,
     required TResult Function(ResetTabSelection value) resetTabSelection,
     required TResult Function(GetQuestions value) getQuestions,
     required TResult Function(GetAnswerCount value) getAnswerCount,
+    required TResult Function(ClearOneSection value) clearOneSection,
     required TResult Function(MarkedQuestions value) markedQuestions,
     required TResult Function(YesOrNo value) yesOrNo,
     required TResult Function(CountQuestionNumber value) countQuestionNumber,
@@ -1810,9 +2305,11 @@ class _$AbandentOrderImpl implements AbandentOrder {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(TabChange value)? tabChange,
+    TResult? Function(TabMinus value)? tabMinus,
     TResult? Function(ResetTabSelection value)? resetTabSelection,
     TResult? Function(GetQuestions value)? getQuestions,
     TResult? Function(GetAnswerCount value)? getAnswerCount,
+    TResult? Function(ClearOneSection value)? clearOneSection,
     TResult? Function(MarkedQuestions value)? markedQuestions,
     TResult? Function(YesOrNo value)? yesOrNo,
     TResult? Function(CountQuestionNumber value)? countQuestionNumber,
@@ -1827,9 +2324,11 @@ class _$AbandentOrderImpl implements AbandentOrder {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(TabChange value)? tabChange,
+    TResult Function(TabMinus value)? tabMinus,
     TResult Function(ResetTabSelection value)? resetTabSelection,
     TResult Function(GetQuestions value)? getQuestions,
     TResult Function(GetAnswerCount value)? getAnswerCount,
+    TResult Function(ClearOneSection value)? clearOneSection,
     TResult Function(MarkedQuestions value)? markedQuestions,
     TResult Function(YesOrNo value)? yesOrNo,
     TResult Function(CountQuestionNumber value)? countQuestionNumber,
@@ -1895,10 +2394,12 @@ class _$ClearNewOPtionListImpl implements ClearNewOPtionList {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() tabChange,
+    required TResult Function(int index) tabMinus,
     required TResult Function() resetTabSelection,
     required TResult Function(String categoryType, Product product)
         getQuestions,
     required TResult Function(int answerCount) getAnswerCount,
+    required TResult Function() clearOneSection,
     required TResult Function(SelectedOption selectedOption) markedQuestions,
     required TResult Function(SelectedOption selectedOption) yesOrNo,
     required TResult Function(int countQuestionNumber) countQuestionNumber,
@@ -1918,9 +2419,11 @@ class _$ClearNewOPtionListImpl implements ClearNewOPtionList {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? tabChange,
+    TResult? Function(int index)? tabMinus,
     TResult? Function()? resetTabSelection,
     TResult? Function(String categoryType, Product product)? getQuestions,
     TResult? Function(int answerCount)? getAnswerCount,
+    TResult? Function()? clearOneSection,
     TResult? Function(SelectedOption selectedOption)? markedQuestions,
     TResult? Function(SelectedOption selectedOption)? yesOrNo,
     TResult? Function(int countQuestionNumber)? countQuestionNumber,
@@ -1938,9 +2441,11 @@ class _$ClearNewOPtionListImpl implements ClearNewOPtionList {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? tabChange,
+    TResult Function(int index)? tabMinus,
     TResult Function()? resetTabSelection,
     TResult Function(String categoryType, Product product)? getQuestions,
     TResult Function(int answerCount)? getAnswerCount,
+    TResult Function()? clearOneSection,
     TResult Function(SelectedOption selectedOption)? markedQuestions,
     TResult Function(SelectedOption selectedOption)? yesOrNo,
     TResult Function(int countQuestionNumber)? countQuestionNumber,
@@ -1962,9 +2467,11 @@ class _$ClearNewOPtionListImpl implements ClearNewOPtionList {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(TabChange value) tabChange,
+    required TResult Function(TabMinus value) tabMinus,
     required TResult Function(ResetTabSelection value) resetTabSelection,
     required TResult Function(GetQuestions value) getQuestions,
     required TResult Function(GetAnswerCount value) getAnswerCount,
+    required TResult Function(ClearOneSection value) clearOneSection,
     required TResult Function(MarkedQuestions value) markedQuestions,
     required TResult Function(YesOrNo value) yesOrNo,
     required TResult Function(CountQuestionNumber value) countQuestionNumber,
@@ -1979,9 +2486,11 @@ class _$ClearNewOPtionListImpl implements ClearNewOPtionList {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(TabChange value)? tabChange,
+    TResult? Function(TabMinus value)? tabMinus,
     TResult? Function(ResetTabSelection value)? resetTabSelection,
     TResult? Function(GetQuestions value)? getQuestions,
     TResult? Function(GetAnswerCount value)? getAnswerCount,
+    TResult? Function(ClearOneSection value)? clearOneSection,
     TResult? Function(MarkedQuestions value)? markedQuestions,
     TResult? Function(YesOrNo value)? yesOrNo,
     TResult? Function(CountQuestionNumber value)? countQuestionNumber,
@@ -1996,9 +2505,11 @@ class _$ClearNewOPtionListImpl implements ClearNewOPtionList {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(TabChange value)? tabChange,
+    TResult Function(TabMinus value)? tabMinus,
     TResult Function(ResetTabSelection value)? resetTabSelection,
     TResult Function(GetQuestions value)? getQuestions,
     TResult Function(GetAnswerCount value)? getAnswerCount,
+    TResult Function(ClearOneSection value)? clearOneSection,
     TResult Function(MarkedQuestions value)? markedQuestions,
     TResult Function(YesOrNo value)? yesOrNo,
     TResult Function(CountQuestionNumber value)? countQuestionNumber,

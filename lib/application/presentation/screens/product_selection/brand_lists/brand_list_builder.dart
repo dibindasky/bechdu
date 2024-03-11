@@ -1,10 +1,9 @@
-import 'dart:convert';
 import 'package:beachdu/application/business_logic/brands_bloc/category_bloc_bloc.dart';
-import 'package:beachdu/application/business_logic/home_bloc/home_bloc.dart';
-import 'package:beachdu/application/business_logic/question_tab/question_tab_bloc.dart';
-import 'package:beachdu/application/presentation/screens/product_selection/product_screen.dart';
+
+import 'package:beachdu/application/presentation/screens/product_selection/brand_lists/brand_container.dart';
+
 import 'package:beachdu/application/presentation/screens/product_selection/search_field/brand_search_field.dart';
-import 'package:beachdu/application/presentation/utils/colors.dart';
+
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/application/presentation/utils/skeltons/skelton.dart';
 import 'package:beachdu/domain/model/category_model/single_category_brands_responce_model/brands.dart';
@@ -23,7 +22,7 @@ class BrandListviewBuilder extends StatelessWidget {
           return const Skeleton(
             crossAxisCount: 2,
             itemCount: 15,
-            height: 200,
+            height: 00,
           );
         } else if (state.hasError) {
           return const Center(child: Icon(Icons.refresh));
@@ -58,91 +57,8 @@ class BrandListviewBuilder extends StatelessWidget {
                           mainAxisSpacing: 10,
                         ),
                         itemBuilder: (context, index) {
-                          String base64String = brands[index].brandImage!;
-                          base64String = base64String.replaceFirst(
-                              RegExp(r'data:image/[^;]+;base64,'), '');
-                          return BlocBuilder<HomeBloc, HomeState>(
-                            builder: (context, homeBloc) {
-                              return InkWell(
-                                onTap: () {
-                                  final categoryType = context
-                                          .read<CategoryBlocBloc>()
-                                          .categoryType ??
-                                      'mobile';
-
-                                  context
-                                      .read<CategoryBlocBloc>()
-                                      .categoryType = categoryType;
-                                  context.read<CategoryBlocBloc>().barndName =
-                                      brands[index].brandName!;
-
-                                  //Series fetching for selected products
-                                  context
-                                      .read<CategoryBlocBloc>()
-                                      .add(GetSeries(
-                                        brandName: context
-                                            .read<CategoryBlocBloc>()
-                                            .barndName!,
-                                        categoryType: context
-                                            .read<CategoryBlocBloc>()
-                                            .categoryType!,
-                                      ));
-
-                                  //Getting serirs screen screen
-                                  brandSeriesProductValueNotifier.value = 1;
-                                  brandSeriesProductValueNotifier
-                                      .notifyListeners();
-
-                                  // Reset question tab
-                                  context
-                                      .read<QuestionTabBloc>()
-                                      .add(const ResetTabSelection());
-                                },
-                                child: Material(
-                                  elevation: 1,
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Center(
-                                        child: SizedBox(
-                                          width: sWidth * .5,
-                                          height: 100,
-                                          child: ClipRRect(
-                                            borderRadius: kRadius10,
-                                            child: ColoredBox(
-                                              color: klightgrey.withOpacity(.1),
-                                              child: Padding(
-                                                padding:
-                                                    const EdgeInsets.all(8.0),
-                                                child: Image.memory(
-                                                  base64.decode(base64String),
-                                                  errorBuilder: (context, error,
-                                                      stackTrace) {
-                                                    return const Icon(
-                                                        Icons.error);
-                                                  },
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.all(10),
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(brands[index].brandName!),
-                                          ],
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              );
-                            },
+                          return BrandContainer(
+                            index: index,
                           );
                         },
                       ),

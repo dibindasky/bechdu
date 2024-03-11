@@ -44,7 +44,7 @@ class BottomSection extends StatelessWidget {
                       fontSize: sWidth * .045,
                       color: klightGreen,
                       decoration: TextDecoration.underline,
-                      decorationColor: klightGreen,
+                      decorationColor: kGreenPrimary,
                       decorationThickness: 1.4,
                     ),
                   ),
@@ -67,11 +67,15 @@ class BottomSection extends StatelessWidget {
                     if (phoneNumberRegExp.hasMatch(otp)) {
                       if (otp.isEmpty) {
                         showSnack(
-                            context: context, message: 'Enter your otp here');
+                          context: context,
+                          message: 'Enter your otp here',
+                          color: kRed,
+                        );
                       } else if (otp.length < 4) {
                         showSnack(
                           context: context,
                           message: 'OTP number should keep 4 digits',
+                          color: kRed,
                         );
                       } else {
                         //Login event calling
@@ -131,6 +135,7 @@ class BottomSection extends StatelessWidget {
                       showSnack(
                         context: context,
                         message: 'Not a OTP number: $otp',
+                        color: kRed,
                       );
                     }
                   },

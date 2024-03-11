@@ -42,7 +42,7 @@ class _GridOptionSelectorTileState extends State<GridOptionSelectorTile> {
               selectedOption: selectedOption,
             ));
         log('UI grid widget.question.type ${widget.question.type}');
-        log('UI grid section.heading ${widget.section.heading}');
+        log('UI grid section.heading ${widget.section.description}');
         log('UI grid  description ${widget.question.description}');
       },
       child: Padding(

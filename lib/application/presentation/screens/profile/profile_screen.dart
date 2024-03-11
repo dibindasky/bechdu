@@ -26,17 +26,11 @@ class PrfileLastBuilder extends StatelessWidget {
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
       valueListenable: profileScreensNotifier,
-      builder: (context, index, child) {
-        return profileSectionList[index];
-      },
+      builder: (context, index, child) =>
+          index == 0 ? ScreenProfile() : const AddAddressScreen(),
     );
   }
 }
-
-List<Widget> profileSectionList = [
-  ScreenProfile(),
-  const AddAddressScreen(),
-];
 
 class ScreenProfile extends StatelessWidget {
   ScreenProfile({super.key});
@@ -93,6 +87,11 @@ class ScreenProfile extends StatelessWidget {
                     actions: [
                       TextButton(
                         onPressed: () {
+                          context.read<AuthBloc>().otpController.clear();
+                          context
+                              .read<AuthBloc>()
+                              .phoneNumberController
+                              .clear();
                           Navigator.pushNamed(
                             context,
                             Routes.signInOrLogin,

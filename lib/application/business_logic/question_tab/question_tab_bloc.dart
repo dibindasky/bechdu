@@ -28,14 +28,24 @@ class QuestionTabBloc extends Bloc<QuestionTabEvent, QuestionTabState> {
 
   QuestionTabBloc(this.questionRepo) : super(QuestionTabState.initial()) {
     on<TabChange>(tabChange);
+    on<TabMinus>(tabMinus);
     on<ResetTabSelection>(resetTabSelection);
     on<GetQuestions>(getQuestions);
     on<MarkedQuestions>(markedQuestions);
     on<GetBasePrice>(getBasePrice);
     on<AbandentOrder>(abandentOrder);
     on<YesOrNo>(yesOrNo);
-
+    on<ClearOneSection>((event, emit) {});
     on<ClearNewOPtionList>(clearOptionList);
+  }
+
+  FutureOr<void> tabMinus(TabMinus event, emit) {
+    if (state.selectedTabIndex > 0 && state.selectedTabIndex < event.index) {
+      emit(state.copyWith(
+        answerCount: answerdCount,
+        selectedTabIndex: state.selectedTabIndex - 1,
+      ));
+    }
   }
 
   FutureOr<void> clearOptionList(ClearNewOPtionList event, emit) {
@@ -139,15 +149,13 @@ class QuestionTabBloc extends Bloc<QuestionTabEvent, QuestionTabState> {
 
   FutureOr<void> getBasePrice(GetBasePrice event, emit) async {
     emit(state.copyWith(isLoading: true, hasError: false));
-    log('event.pickeQuestionModel ${event.pickupQuestionModel}');
     for (var element in event.pickupQuestionModel.selectedOptions!) {
       newList.add(element);
     }
-
-    log("selectedOptions added newList in bloc ${newList.length}");
     final data = await questionRepo.getBasePrice(
       pickeQuestionModel: event.pickupQuestionModel,
     );
+
     data.fold((failure) {
       emit(state.copyWith(
         hasError: true,
@@ -182,8 +190,10 @@ class QuestionTabBloc extends Bloc<QuestionTabEvent, QuestionTabState> {
 
   FutureOr<void> abandentOrder(AbandentOrder event, emit) async {
     emit(state.copyWith(isLoading: true, hasError: false));
+    final number = await SecureSotrage.getNumber();
     final location = await SecureSotrage.getSelectedLocation();
     final pincode = await SecureSotrage.getSelectedPincode();
+    event.abandendOrderRequestModel.abendendOrderUser!.phone = number;
     event.abandendOrderRequestModel.abendendOrderUser!.city = location;
     event.abandendOrderRequestModel.abendendOrderUser!.pincode = pincode;
     final data = await questionRepo.abandendOrder(

@@ -52,10 +52,10 @@ class _AddressListViewState extends State<AddressListView> {
             itemBuilder: (context, index) {
               return InkWell(
                 onTap: () {
-                  // Order placing request user object creation
-                  User user = User(address: state.address[index]);
-                  log('Picked addrs ${state.address[index]}');
-                  //Order placing address pick event
+                  // Address pick request user object creation
+                  User user = User();
+                  user = user.copyWith(address: state.address[index]);
+                  log('Picked addrs ${user.address}');
                   context
                       .read<PlaceOrderBloc>()
                       .add(PlaceOrderEvent.addressPick(user: user));

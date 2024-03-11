@@ -5,6 +5,7 @@ part 'product_details.g.dart';
 
 @JsonSerializable()
 class ProductDetails {
+  String? category;
   String? name;
   String? slug;
   String? image;
@@ -12,6 +13,7 @@ class ProductDetails {
   List<SelectedOption>? options;
 
   ProductDetails({
+    this.category,
     this.name,
     this.slug,
     this.image,

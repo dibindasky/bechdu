@@ -26,8 +26,8 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
   String? productImage;
   List<Brands> brandsList = [];
   List<Product> productList = [];
+  List<List<String>> updatedItems = [];
   List<String> series = [];
-  List<List<String>> dropDownItems = List.generate(1, (_) => []);
   CategoryBlocBloc(this.brandsRepository) : super(CategoryBlocState.intial()) {
     on<GetSingleCategoryBrands>(getSingleCategoryBrands);
     on<BrandSearch>(brandSearch);
@@ -227,12 +227,12 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
       hasError: false,
       message: null,
     ));
+    state.varients.clear();
     final data = await brandsRepository.getModles(
       brandName: event.brandName,
       categoryType: event.categoryType,
       seriesName: event.seriesName,
     );
-
     log('getModles bloc categoryType >>>>=== : ${event.categoryType}');
     log('getModles bloc brandName >>>>=== : ${event.brandName}');
     log('getModles bloc seriesName >>>>=== : ${event.seriesName}');
@@ -243,12 +243,10 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
         hasError: true,
       ));
     }, (getModelSuccess) {
-      dropDownItems.clear();
-      dropDownItems[0].addAll(getModelSuccess);
       emit(state.copyWith(
         hasError: false,
         isLoading: false,
-        allItems: dropDownItems,
+        models: getModelSuccess,
       ));
     });
   }
@@ -272,12 +270,13 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
         hasError: true,
       ));
     }, (getVarientsSuccess) {
-      dropDownItems[1].clear();
-      dropDownItems[1].addAll(getVarientsSuccess);
+      List<String> updatedItems = List.from(state.varients);
+
+      updatedItems.addAll(getVarientsSuccess);
       emit(state.copyWith(
         hasError: false,
         isLoading: false,
-        allItems: dropDownItems,
+        varients: updatedItems,
       ));
     });
   }

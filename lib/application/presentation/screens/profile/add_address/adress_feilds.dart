@@ -72,6 +72,8 @@ class _AddresCreationFieldsState extends State<AddresCreationFields> {
                             value: entry,
                             child: Text(
                               entry,
+                              style: textHeadSemiBold1.copyWith(
+                                  fontSize: sWidth * 0.04),
                             ),
                           );
                         },
@@ -94,11 +96,11 @@ class _AddresCreationFieldsState extends State<AddresCreationFields> {
                                 cityUpdateRequestModel: cityUpdateRequestModel,
                               ),
                             );
-                        setState(() {
-                          selected = value!;
-                        });
+                        // setState(() {
+                        //   selected = value!;
+                        // });
                       },
-                      value: selected,
+                      value: context.read<LocationBloc>().location,
                       dropdownStyleData: DropdownStyleData(
                         decoration: BoxDecoration(
                           borderRadius: kRadius5,
@@ -227,12 +229,17 @@ class _AddresCreationFieldsState extends State<AddresCreationFields> {
                       addressCreationRequestModel: addressCreationRequestModel,
                     ),
                   );
+
               // Clear selected fields after adding address
               context.read<ProfileBloc>().addressController.clear();
               context.read<LocationBloc>().add(const LocationEvent.clear());
               //Screen notifier changing
+              // setState(() {
+              //   selected = null;
+              // });
               setState(() {
-                selected = null;
+                context.read<ProfileBloc>().isShowAddress =
+                    !context.read<ProfileBloc>().isShowAddress;
               });
               profileScreensNotifier.value = 0;
               profileScreensNotifier.notifyListeners();
@@ -264,7 +271,7 @@ class _AddresCreationFieldsState extends State<AddresCreationFields> {
         child: Padding(
           padding: const EdgeInsets.only(right: 10, top: 5),
           child: TextFormField(
-            style: const TextStyle(color: kWhite),
+            style: const TextStyle(color: kBlack),
             expands: true,
             maxLines: null,
             controller: controller,

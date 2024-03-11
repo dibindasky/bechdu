@@ -13,12 +13,12 @@ class FinalProductPriceDetaails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        kHeight30,
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10),
-          child: Row(
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 10),
+      child: Column(
+        children: [
+          kHeight30,
+          Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               SizedBox(
@@ -40,115 +40,113 @@ class FinalProductPriceDetaails extends StatelessWidget {
               ),
             ],
           ),
-        ),
-        kHeight10,
-        BlocConsumer<PlaceOrderBloc, PlaceOrderState>(
-          listener: (context, state) {
-            if (state.hasError) {
-              showSnack(
-                context: context,
-                message: state.message ?? errorMessage,
-                color: kRed,
-              );
-            }
-          },
-          builder: (context, state) {
-            return TextFormField(
-              controller: context.read<PlaceOrderBloc>().promocodeController,
-              style: textHeadMedium1.copyWith(
-                color: kBlack,
-                fontSize: sWidth * 0.033,
-              ),
-              keyboardType: TextInputType.name,
-              decoration: InputDecoration(
-                suffixIcon: TextButton(
-                  onPressed: () {
-                    if (context
-                        .read<PlaceOrderBloc>()
-                        .promocodeController
-                        .text
-                        .isEmpty) {
-                      showSnack(
-                        context: context,
-                        message: 'Please enter your promo code',
-                        color: kRed,
-                      );
-                    } else {
-                      PromoCodeRequestModel promoCodeRequestModel =
-                          PromoCodeRequestModel(
-                        enteredCode: context
-                            .read<PlaceOrderBloc>()
-                            .promocodeController
-                            .text
-                            .trim(),
-                      );
-                      context.read<PlaceOrderBloc>().add(
-                            PlaceOrderEvent.getPromoCode(
-                              promoCodeRequestModel: promoCodeRequestModel,
-                            ),
-                          );
-                    }
-                  },
-                  child: BlocBuilder<PlaceOrderBloc, PlaceOrderState>(
-                    builder: (context, state) {
-                      if (state.promoCodeResponceModel == null) {
-                        return Text(
-                          state.isLoading ? 'Applying' : 'Apply',
-                          style: textHeadRegular1,
+          kHeight10,
+          BlocConsumer<PlaceOrderBloc, PlaceOrderState>(
+            listener: (context, state) {
+              if (state.hasError) {
+                showSnack(
+                  context: context,
+                  message: state.message ?? errorMessage,
+                  color: kRed,
+                );
+              }
+            },
+            builder: (context, state) {
+              return TextFormField(
+                controller: context.read<PlaceOrderBloc>().promocodeController,
+                style: textHeadMedium1.copyWith(
+                  color: kBlack,
+                  fontSize: sWidth * 0.033,
+                ),
+                keyboardType: TextInputType.name,
+                decoration: InputDecoration(
+                  suffixIcon: TextButton(
+                    onPressed: () {
+                      if (context
+                          .read<PlaceOrderBloc>()
+                          .promocodeController
+                          .text
+                          .isEmpty) {
+                        showSnack(
+                          context: context,
+                          message: 'Please enter your promo code',
+                          color: kRed,
                         );
                       } else {
-                        return Container(
-                          height: 30,
-                          width: 110,
-                          decoration: BoxDecoration(
-                            borderRadius: kRadius5,
-                            color: kBluePrimary,
-                          ),
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Text(
-                                'Applied',
-                                style: textHeadInter.copyWith(color: kWhite),
-                              ),
-                              IconButton(
-                                padding: EdgeInsets.zero,
-                                iconSize: 18,
-                                onPressed: () {
-                                  context.read<PlaceOrderBloc>().add(
-                                        const PlaceOrderEvent
-                                            .removeAppliedPromo(),
-                                      );
-                                },
-                                icon: const Icon(
-                                  Icons.cancel,
-                                  color: kRed,
-                                  size: 15,
-                                ),
-                              )
-                            ],
-                          ),
+                        PromoCodeRequestModel promoCodeRequestModel =
+                            PromoCodeRequestModel(
+                          enteredCode: context
+                              .read<PlaceOrderBloc>()
+                              .promocodeController
+                              .text
+                              .trim(),
                         );
+                        context.read<PlaceOrderBloc>().add(
+                              PlaceOrderEvent.getPromoCode(
+                                promoCodeRequestModel: promoCodeRequestModel,
+                              ),
+                            );
                       }
                     },
+                    child: BlocBuilder<PlaceOrderBloc, PlaceOrderState>(
+                      builder: (context, state) {
+                        if (state.promoCodeResponceModel == null) {
+                          return Text(
+                            state.isLoading ? 'Applying' : 'Apply',
+                            style: textHeadRegular1,
+                          );
+                        } else {
+                          return Container(
+                            padding: const EdgeInsets.only(left: 10),
+                            height: 30,
+                            width: 115,
+                            decoration: BoxDecoration(
+                              borderRadius: kRadius5,
+                              color: kBluePrimary,
+                            ),
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Text(
+                                  'Applied',
+                                  style: textHeadInter.copyWith(color: kWhite),
+                                ),
+                                IconButton(
+                                  padding: EdgeInsets.zero,
+                                  iconSize: 18,
+                                  onPressed: () {
+                                    context.read<PlaceOrderBloc>().add(
+                                          const PlaceOrderEvent
+                                              .removeAppliedPromo(),
+                                        );
+                                  },
+                                  icon: const Icon(
+                                    Icons.cancel,
+                                    color: kRed,
+                                    size: 15,
+                                  ),
+                                )
+                              ],
+                            ),
+                          );
+                        }
+                      },
+                    ),
+                  ),
+                  fillColor: kWhiteextra,
+                  filled: true,
+                  hintText: 'Enter promo code',
+                  border: UnderlineInputBorder(
+                    borderSide: BorderSide.none,
+                    borderRadius: BorderRadius.circular(7),
                   ),
                 ),
-                fillColor: kWhiteextra,
-                filled: true,
-                hintText: 'Enter promo code',
-                border: UnderlineInputBorder(
-                  borderSide: BorderSide.none,
-                  borderRadius: BorderRadius.circular(7),
-                ),
-              ),
-            );
-          },
-        ),
-        kHeight20,
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10),
-          child: Row(
+              );
+            },
+          ),
+          kHeight20,
+          Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
@@ -168,13 +166,10 @@ class FinalProductPriceDetaails extends StatelessWidget {
               ),
             ],
           ),
-        ),
-        kHeight20,
-        const Divider(thickness: 2),
-        kHeight20,
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10),
-          child: Row(
+          kHeight20,
+          const Divider(thickness: 2),
+          kHeight20,
+          Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
@@ -213,8 +208,8 @@ class FinalProductPriceDetaails extends StatelessWidget {
               ),
             ],
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

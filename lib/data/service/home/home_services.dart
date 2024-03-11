@@ -34,13 +34,6 @@ class HomeServices implements HomeRepository {
   @override
   Future<Either<Failure, HomeBannerResponceModel>> getbanners() async {
     try {
-      // final accessToken =
-      //     await SecureSotrage.getToken().then((token) => token.accessToken);
-      // _dio.options.headers.addAll(
-      //   {
-      //     'authorization': 'Bearer $accessToken',
-      //   },
-      // );
       final responce = await _dio.get(ApiEndPoints.homePageBanners);
       // log('getbanners data ${responce.data}');
       return Right(HomeBannerResponceModel.fromJson(responce.data));
@@ -62,7 +55,7 @@ class HomeServices implements HomeRepository {
       return Right(BestSellingProductsResponceModel.fromJson(responce.data));
     } on DioException catch (e) {
       log('getBestSellingProducts DioException $e');
-      return Left(Failure(message: e.message ?? errorMessage));
+      return Left(Failure(message: e.response?.data['error'] ?? errorMessage));
     } catch (e) {
       log('getBestSellingProducts catch $e');
       return Left(Failure(message: errorMessage));
@@ -83,7 +76,7 @@ class HomeServices implements HomeRepository {
       return Right(SearchResponceModel.fromJson(responce.data));
     } on DioException catch (e) {
       log('globalProductSearch DioException $e');
-      return Left(Failure(message: e.message ?? errorMessage));
+      return Left(Failure(message: e.response?.data['error'] ?? errorMessage));
     } catch (e) {
       log('globalProductSearch catch $e');
       return Left(Failure(message: errorMessage));

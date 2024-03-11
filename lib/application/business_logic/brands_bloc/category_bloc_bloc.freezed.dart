@@ -2576,7 +2576,8 @@ mixin _$CategoryBlocState {
       throw _privateConstructorUsedError;
   GetProductsRespoceModel? get getProductsResponceModel =>
       throw _privateConstructorUsedError;
-  List<List<String>> get allItems => throw _privateConstructorUsedError;
+  List<String> get models => throw _privateConstructorUsedError;
+  List<String> get varients => throw _privateConstructorUsedError;
   List<Brands>? get filteredBrands => throw _privateConstructorUsedError;
   List<String>? get filteredSeries => throw _privateConstructorUsedError;
   List<Product>? get filteredProducts => throw _privateConstructorUsedError;
@@ -2600,7 +2601,8 @@ abstract class $CategoryBlocStateCopyWith<$Res> {
       String? selectedProduct,
       SingleCategoryBrandsResponceModel? getSingleCategoryResponce,
       GetProductsRespoceModel? getProductsResponceModel,
-      List<List<String>> allItems,
+      List<String> models,
+      List<String> varients,
       List<Brands>? filteredBrands,
       List<String>? filteredSeries,
       List<Product>? filteredProducts});
@@ -2626,7 +2628,8 @@ class _$CategoryBlocStateCopyWithImpl<$Res, $Val extends CategoryBlocState>
     Object? selectedProduct = freezed,
     Object? getSingleCategoryResponce = freezed,
     Object? getProductsResponceModel = freezed,
-    Object? allItems = null,
+    Object? models = null,
+    Object? varients = null,
     Object? filteredBrands = freezed,
     Object? filteredSeries = freezed,
     Object? filteredProducts = freezed,
@@ -2660,10 +2663,14 @@ class _$CategoryBlocStateCopyWithImpl<$Res, $Val extends CategoryBlocState>
           ? _value.getProductsResponceModel
           : getProductsResponceModel // ignore: cast_nullable_to_non_nullable
               as GetProductsRespoceModel?,
-      allItems: null == allItems
-          ? _value.allItems
-          : allItems // ignore: cast_nullable_to_non_nullable
-              as List<List<String>>,
+      models: null == models
+          ? _value.models
+          : models // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      varients: null == varients
+          ? _value.varients
+          : varients // ignore: cast_nullable_to_non_nullable
+              as List<String>,
       filteredBrands: freezed == filteredBrands
           ? _value.filteredBrands
           : filteredBrands // ignore: cast_nullable_to_non_nullable
@@ -2696,7 +2703,8 @@ abstract class _$$InitialImplCopyWith<$Res>
       String? selectedProduct,
       SingleCategoryBrandsResponceModel? getSingleCategoryResponce,
       GetProductsRespoceModel? getProductsResponceModel,
-      List<List<String>> allItems,
+      List<String> models,
+      List<String> varients,
       List<Brands>? filteredBrands,
       List<String>? filteredSeries,
       List<Product>? filteredProducts});
@@ -2720,7 +2728,8 @@ class __$$InitialImplCopyWithImpl<$Res>
     Object? selectedProduct = freezed,
     Object? getSingleCategoryResponce = freezed,
     Object? getProductsResponceModel = freezed,
-    Object? allItems = null,
+    Object? models = null,
+    Object? varients = null,
     Object? filteredBrands = freezed,
     Object? filteredSeries = freezed,
     Object? filteredProducts = freezed,
@@ -2754,10 +2763,14 @@ class __$$InitialImplCopyWithImpl<$Res>
           ? _value.getProductsResponceModel
           : getProductsResponceModel // ignore: cast_nullable_to_non_nullable
               as GetProductsRespoceModel?,
-      allItems: null == allItems
-          ? _value._allItems
-          : allItems // ignore: cast_nullable_to_non_nullable
-              as List<List<String>>,
+      models: null == models
+          ? _value._models
+          : models // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      varients: null == varients
+          ? _value._varients
+          : varients // ignore: cast_nullable_to_non_nullable
+              as List<String>,
       filteredBrands: freezed == filteredBrands
           ? _value._filteredBrands
           : filteredBrands // ignore: cast_nullable_to_non_nullable
@@ -2785,11 +2798,13 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
       this.selectedProduct,
       this.getSingleCategoryResponce,
       this.getProductsResponceModel,
-      required final List<List<String>> allItems,
+      required final List<String> models,
+      required final List<String> varients,
       final List<Brands>? filteredBrands,
       final List<String>? filteredSeries,
       final List<Product>? filteredProducts})
-      : _allItems = allItems,
+      : _models = models,
+        _varients = varients,
         _filteredBrands = filteredBrands,
         _filteredSeries = filteredSeries,
         _filteredProducts = filteredProducts;
@@ -2808,12 +2823,20 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
   final SingleCategoryBrandsResponceModel? getSingleCategoryResponce;
   @override
   final GetProductsRespoceModel? getProductsResponceModel;
-  final List<List<String>> _allItems;
+  final List<String> _models;
   @override
-  List<List<String>> get allItems {
-    if (_allItems is EqualUnmodifiableListView) return _allItems;
+  List<String> get models {
+    if (_models is EqualUnmodifiableListView) return _models;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_allItems);
+    return EqualUnmodifiableListView(_models);
+  }
+
+  final List<String> _varients;
+  @override
+  List<String> get varients {
+    if (_varients is EqualUnmodifiableListView) return _varients;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_varients);
   }
 
   final List<Brands>? _filteredBrands;
@@ -2849,7 +2872,7 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'CategoryBlocState(isLoading: $isLoading, hasError: $hasError, message: $message, isPro: $isPro, selectedProduct: $selectedProduct, getSingleCategoryResponce: $getSingleCategoryResponce, getProductsResponceModel: $getProductsResponceModel, allItems: $allItems, filteredBrands: $filteredBrands, filteredSeries: $filteredSeries, filteredProducts: $filteredProducts)';
+    return 'CategoryBlocState(isLoading: $isLoading, hasError: $hasError, message: $message, isPro: $isPro, selectedProduct: $selectedProduct, getSingleCategoryResponce: $getSingleCategoryResponce, getProductsResponceModel: $getProductsResponceModel, models: $models, varients: $varients, filteredBrands: $filteredBrands, filteredSeries: $filteredSeries, filteredProducts: $filteredProducts)';
   }
 
   @override
@@ -2866,7 +2889,8 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
           'getSingleCategoryResponce', getSingleCategoryResponce))
       ..add(DiagnosticsProperty(
           'getProductsResponceModel', getProductsResponceModel))
-      ..add(DiagnosticsProperty('allItems', allItems))
+      ..add(DiagnosticsProperty('models', models))
+      ..add(DiagnosticsProperty('varients', varients))
       ..add(DiagnosticsProperty('filteredBrands', filteredBrands))
       ..add(DiagnosticsProperty('filteredSeries', filteredSeries))
       ..add(DiagnosticsProperty('filteredProducts', filteredProducts));
@@ -2891,7 +2915,8 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
             (identical(
                     other.getProductsResponceModel, getProductsResponceModel) ||
                 other.getProductsResponceModel == getProductsResponceModel) &&
-            const DeepCollectionEquality().equals(other._allItems, _allItems) &&
+            const DeepCollectionEquality().equals(other._models, _models) &&
+            const DeepCollectionEquality().equals(other._varients, _varients) &&
             const DeepCollectionEquality()
                 .equals(other._filteredBrands, _filteredBrands) &&
             const DeepCollectionEquality()
@@ -2910,7 +2935,8 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
       selectedProduct,
       getSingleCategoryResponce,
       getProductsResponceModel,
-      const DeepCollectionEquality().hash(_allItems),
+      const DeepCollectionEquality().hash(_models),
+      const DeepCollectionEquality().hash(_varients),
       const DeepCollectionEquality().hash(_filteredBrands),
       const DeepCollectionEquality().hash(_filteredSeries),
       const DeepCollectionEquality().hash(_filteredProducts));
@@ -2931,7 +2957,8 @@ abstract class _Initial implements CategoryBlocState {
       final String? selectedProduct,
       final SingleCategoryBrandsResponceModel? getSingleCategoryResponce,
       final GetProductsRespoceModel? getProductsResponceModel,
-      required final List<List<String>> allItems,
+      required final List<String> models,
+      required final List<String> varients,
       final List<Brands>? filteredBrands,
       final List<String>? filteredSeries,
       final List<Product>? filteredProducts}) = _$InitialImpl;
@@ -2951,7 +2978,9 @@ abstract class _Initial implements CategoryBlocState {
   @override
   GetProductsRespoceModel? get getProductsResponceModel;
   @override
-  List<List<String>> get allItems;
+  List<String> get models;
+  @override
+  List<String> get varients;
   @override
   List<Brands>? get filteredBrands;
   @override

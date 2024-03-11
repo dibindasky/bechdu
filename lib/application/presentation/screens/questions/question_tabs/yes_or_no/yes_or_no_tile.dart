@@ -24,6 +24,16 @@ class YesOrNoTile extends StatefulWidget {
 
 class _YesOrNoTileState extends State<YesOrNoTile> {
   bool? selected;
+  @override
+  void didUpdateWidget(YesOrNoTile oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    //Reset the selection when a new question is provided
+    if (widget.question != oldWidget.question) {
+      setState(() {
+        selected = false;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {

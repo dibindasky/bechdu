@@ -16,7 +16,7 @@ class ScreenProductSelectionProductFindDropdownGridView
         return GridView.builder(
           physics: const NeverScrollableScrollPhysics(),
           shrinkWrap: true,
-          itemCount: context.read<CategoryBlocBloc>().state.allItems.length,
+          itemCount: state.models.length,
           scrollDirection: Axis.vertical,
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
@@ -32,9 +32,7 @@ class ScreenProductSelectionProductFindDropdownGridView
             return DropDownBuilder(
               index: index,
               searchHint: hints[index],
-              optionsList: getDynamicOptions(
-                context.read<CategoryBlocBloc>().dropDownItems[index],
-              ),
+              optionsList: ['vivo', 'oppo'],
             );
           },
         );

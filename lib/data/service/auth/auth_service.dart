@@ -50,7 +50,7 @@ class AuthService implements AuthRepo {
       return Right(OtpVerifyResponceModel.fromJson(responce.data));
     } on DioException catch (e) {
       log('otpVerifying DioException $e');
-      return Left(Failure(message: e.message ?? errorMessage));
+      return Left(Failure(message: e.response?.data['error'] ?? errorMessage));
     } catch (e) {
       log('otpVerifying catch $e');
       return Left(Failure(message: e.toString()));

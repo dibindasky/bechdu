@@ -24,6 +24,22 @@ class OrderPlacedRequestModel {
     this.promo,
   });
 
+  OrderPlacedRequestModel copyWith({
+    User? user,
+    Payment? payment,
+    PickUpDetails? pickUpDetails,
+    ProductDetails? productDetails,
+    Promo? promo,
+  }) {
+    return OrderPlacedRequestModel(
+      user: user ?? this.user,
+      payment: payment ?? this.payment,
+      pickUpDetails: pickUpDetails ?? this.pickUpDetails,
+      productDetails: productDetails ?? this.productDetails,
+      promo: promo ?? this.promo,
+    );
+  }
+
   factory OrderPlacedRequestModel.fromJson(Map<String, dynamic> json) {
     return _$OrderPlacedRequestModelFromJson(json);
   }

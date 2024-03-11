@@ -49,7 +49,7 @@ class QuestionTabs extends StatelessWidget {
                 if (questionTabBloc.isLoading) {
                   return const LoadingAnimation(width: 50);
                 } else if (questionTabBloc.hasError) {
-                  return const Text('error');
+                  return const LoadingAnimation(width: 50);
                 } else {
                   if (questionTabBloc.getQuestionModel == null ||
                       questionTabBloc.getQuestionModel!.sections == null) {
@@ -110,7 +110,10 @@ class QuestionTabs extends StatelessWidget {
                                     }
                                   } else {
                                     await loginOrNot(
-                                        context, questionTabBloc, state);
+                                      context,
+                                      questionTabBloc,
+                                      state,
+                                    );
                                   }
                                 }
                                 if (criteria == 'all') {
@@ -182,17 +185,14 @@ class QuestionTabs extends StatelessWidget {
   ) async {
     final login = await SecureSotrage.getlLogin();
     if (!login) {
-      // ignore: use_build_context_synchronously
-      await Navigator.of(context).pushNamed(
+      Navigator.of(context).pushNamed(
         Routes.signInOrLogin,
         arguments: LoginWay.fromQuestionPick,
       );
-      if (authState.otpSendResponceModel != null) {
-        // ignore: use_build_context_synchronously
+      if (authState.otpVerifyResponceModel != null) {
         pickeQuestionModelEventDataPass(context, questionTabBloc);
       }
     } else {
-      // ignore: use_build_context_synchronously
       pickeQuestionModelEventDataPass(context, questionTabBloc);
     }
   }

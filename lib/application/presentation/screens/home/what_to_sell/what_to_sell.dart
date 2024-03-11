@@ -81,11 +81,13 @@ class WhatToSellWidget extends StatelessWidget {
                           context
                               .read<PlaceOrderBloc>()
                               .add(const PlaceOrderEvent.removeAllFieldData());
+                          context
+                              .read<PlaceOrderBloc>()
+                              .add(const PlaceOrderEvent.removeAppliedPromo());
                         },
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Container(
-                            //padding: EdgeInsets.all(2),
                             width: 60,
                             height: 55,
                             decoration: BoxDecoration(

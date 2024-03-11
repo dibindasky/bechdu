@@ -14,36 +14,30 @@ class QuestionTabAnswerSession extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<QuestionTabBloc, QuestionTabState>(
       builder: (context, state) {
-        if (state.hasError) {
-          return const Center(
-            child: Text('Fetch error'),
-          );
-        } else {
-          if (state.getQuestionModel != null ||
-              state.getQuestionModel!.sections != null) {
-            final type =
-                state.getQuestionModel!.sections![state.selectedTabIndex].type;
-            if (type == 'yes/no') {
-              return YesOrNoListMaker(
-                section:
-                    state.getQuestionModel!.sections![state.selectedTabIndex],
-              );
-            } else if (type == 'image') {
-              return ImageGridMaker(
-                section:
-                    state.getQuestionModel!.sections![state.selectedTabIndex],
-              );
-            } else {
-              return GridOptionMaker(
-                section:
-                    state.getQuestionModel!.sections![state.selectedTabIndex],
-              );
-            }
+        if (state.getQuestionModel != null ||
+            state.getQuestionModel!.sections != null) {
+          final type =
+              state.getQuestionModel!.sections![state.selectedTabIndex].type;
+          if (type == 'yes/no') {
+            return YesOrNoListMaker(
+              section:
+                  state.getQuestionModel!.sections![state.selectedTabIndex],
+            );
+          } else if (type == 'image') {
+            return ImageGridMaker(
+              section:
+                  state.getQuestionModel!.sections![state.selectedTabIndex],
+            );
           } else {
-            return const Center(
-              child: Text("question tab error"),
+            return GridOptionMaker(
+              section:
+                  state.getQuestionModel!.sections![state.selectedTabIndex],
             );
           }
+        } else {
+          return const Center(
+            child: Text("question tab error"),
+          );
         }
       },
     );

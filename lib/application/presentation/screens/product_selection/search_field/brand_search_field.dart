@@ -2,7 +2,6 @@ import 'package:beachdu/application/business_logic/brands_bloc/category_bloc_blo
 import 'package:beachdu/application/business_logic/home_bloc/home_bloc.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
-import 'package:beachdu/domain/model/category_model/get_category_responce_model/category.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -13,37 +12,19 @@ class BrandSearchField extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<HomeBloc, HomeState>(
       builder: (context, homeState) {
-        if (homeState.isLoading) {
-          return const Center(child: CircularProgressIndicator());
-        } else if (homeState.hasError) {
-          return Text(homeState.message ?? 'An error occurred');
-        } else {
-          if (homeState.getCategoryResponceModel != null ||
-              homeState.getCategoryResponceModel!.category != null) {
-            return buildDropdown(
-                homeState.getCategoryResponceModel!.category!, context);
-          } else {
-            return const Center(child: Text('Data emtpty'));
-          }
-        }
-      },
-    );
-  }
-
-  Widget buildDropdown(List<Category> categories, BuildContext context) {
-    return TextFormField(
-      onChanged: (value) {
-        context.read<CategoryBlocBloc>().add(BrandSearch(searchQuery: value));
-      },
-      style: textHeadBold1.copyWith(fontSize: sWidth * .044),
-      decoration: InputDecoration(
-        contentPadding: const EdgeInsets.symmetric(vertical: .0),
-        prefixIcon: Padding(
-          padding: const EdgeInsets.only(left: 10),
-          child: DropdownButtonHideUnderline(
-            child: BlocBuilder<CategoryBlocBloc, CategoryBlocState>(
-              builder: (context, state) {
-                return DropdownButton<String>(
+        return TextFormField(
+          onChanged: (value) {
+            context
+                .read<CategoryBlocBloc>()
+                .add(BrandSearch(searchQuery: value));
+          },
+          style: textHeadBold1.copyWith(fontSize: sWidth * .044),
+          decoration: InputDecoration(
+            contentPadding: const EdgeInsets.symmetric(vertical: .0),
+            prefixIcon: Padding(
+              padding: const EdgeInsets.only(left: 10),
+              child: DropdownButtonHideUnderline(
+                child: DropdownButton<String>(
                   onChanged: (newValue) {
                     context.read<CategoryBlocBloc>().add(
                           GetSingleCategoryBrands(
@@ -54,7 +35,8 @@ class BrandSearchField extends StatelessWidget {
                         newValue ?? 'mobile';
                   },
                   value: context.read<CategoryBlocBloc>().categoryType,
-                  items: categories.map((category) {
+                  items: homeState.getCategoryResponceModel!.category!
+                      .map((category) {
                     return DropdownMenuItem<String>(
                       value: category.categoryType,
                       child: Text(category.categoryType!),
@@ -63,25 +45,25 @@ class BrandSearchField extends StatelessWidget {
                   hint: Text(
                     context.read<CategoryBlocBloc>().categoryType ?? 'mobile',
                   ),
-                );
-              },
+                ),
+              ),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(7),
+              borderSide: const BorderSide(color: kBlueLight),
+            ),
+            hintText: 'Search for Brands...',
+            hintStyle: textHeadBold1.copyWith(
+              fontSize: sWidth * .04,
+              color: kBlueLight,
+            ),
+            border: OutlineInputBorder(
+              borderSide: const BorderSide(color: kBlueLight, width: .2),
+              borderRadius: BorderRadius.circular(6),
             ),
           ),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(7),
-          borderSide: const BorderSide(color: kBlueLight),
-        ),
-        hintText: 'Search for Brands...',
-        hintStyle: textHeadBold1.copyWith(
-          fontSize: sWidth * .04,
-          color: kBlueLight,
-        ),
-        border: OutlineInputBorder(
-          borderSide: const BorderSide(color: kBlueLight, width: .2),
-          borderRadius: BorderRadius.circular(6),
-        ),
-      ),
+        );
+      },
     );
   }
 }

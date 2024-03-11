@@ -3,6 +3,7 @@ part of 'question_tab_bloc.dart';
 @freezed
 class QuestionTabEvent with _$QuestionTabEvent {
   const factory QuestionTabEvent.tabChange() = TabChange;
+  const factory QuestionTabEvent.tabMinus({required int index}) = TabMinus;
   const factory QuestionTabEvent.resetTabSelection() = ResetTabSelection;
   const factory QuestionTabEvent.getQuestions({
     required String categoryType,
@@ -11,6 +12,7 @@ class QuestionTabEvent with _$QuestionTabEvent {
   const factory QuestionTabEvent.getAnswerCount({
     required int answerCount,
   }) = GetAnswerCount;
+  const factory QuestionTabEvent.clearOneSection() = ClearOneSection;
   const factory QuestionTabEvent.markedQuestions(
       {required SelectedOption selectedOption}) = MarkedQuestions;
   const factory QuestionTabEvent.yesOrNo({

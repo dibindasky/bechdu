@@ -37,7 +37,7 @@ class TopImage extends StatelessWidget {
           ),
         BlocBuilder<QuestionTabBloc, QuestionTabState>(
           builder: (context, questiontabBloc) {
-            if (questiontabBloc.getQuestionModel != null ||
+            if (questiontabBloc.getQuestionModel != null &&
                 questiontabBloc.getQuestionModel!.sections != null) {
               final image = questiontabBloc.product!.productImage!;
               String url =
@@ -88,7 +88,7 @@ class TopImage extends StatelessWidget {
                                         color: kWhite,
                                         overflow: TextOverflow.ellipsis,
                                       ),
-                                      maxLines: 2,
+                                      maxLines: 3,
                                     ),
                                     kWidth10,
                                     Text(
@@ -112,10 +112,6 @@ class TopImage extends StatelessWidget {
                                       child: CircularProgressIndicator(
                                         color: kWhite,
                                       ),
-                                    );
-                                  } else if (state.hasError) {
-                                    return const Center(
-                                      child: Icon(Icons.refresh),
                                     );
                                   } else {
                                     return Column(
@@ -210,7 +206,6 @@ class TopImage extends StatelessWidget {
                                   )
                                 ],
                               ),
-                            kHeight5,
                             if (fromWhere == FromWhere.questionScreen)
                               Row(
                                 children: [

@@ -18,6 +18,17 @@ class GridOptionMaker extends StatefulWidget {
 class _GridOptionMakerState extends State<GridOptionMaker> {
   int selectedIndex = -1;
   @override
+  void didUpdateWidget(GridOptionMaker oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    //Reset the selection when a new question is provided
+    if (widget.section != oldWidget.section) {
+      setState(() {
+        selectedIndex = -1;
+      });
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Expanded(
       child: SingleChildScrollView(
