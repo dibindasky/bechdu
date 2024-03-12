@@ -26,35 +26,37 @@ class OTPScreen extends StatelessWidget {
           focusScopeNode.unfocus();
         }
       },
-      child: Scaffold(
-        appBar: AppBar(
-          automaticallyImplyLeading: false,
-          toolbarHeight: 100,
-        ),
-        body: BlocListener<AuthBloc, AuthState>(
-          listener: (context, state) {
-            if (state.hasError) {
-              showSnack(
-                context: context,
-                message: state.message ?? errorMessage,
-                color: kRed,
-              );
-            }
-            if (state.otpVerifyResponceModel != null) {
-              loginOrSignup(context);
-              context.read<AuthBloc>().phoneNumberController.clear();
-              context.read<AuthBloc>().otpController.clear();
-            }
-          },
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: ListView(
-              children: [
-                const LogoToCountDownSection(),
-                kHeight50,
-                PinEnterField(),
-                BottomSection(loginWay: loginWay),
-              ],
+      child: PopScope(
+        child: Scaffold(
+          appBar: AppBar(
+            automaticallyImplyLeading: false,
+            toolbarHeight: 100,
+          ),
+          body: BlocListener<AuthBloc, AuthState>(
+            listener: (context, state) {
+              if (state.hasError) {
+                showSnack(
+                  context: context,
+                  message: state.message ?? errorMessage,
+                  color: kRed,
+                );
+              }
+              if (state.otpVerifyResponceModel != null) {
+                loginOrSignup(context);
+                context.read<AuthBloc>().phoneNumberController.clear();
+                context.read<AuthBloc>().otpController.clear();
+              }
+            },
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: ListView(
+                children: [
+                  const LogoToCountDownSection(),
+                  kHeight50,
+                  PinEnterField(),
+                  BottomSection(loginWay: loginWay),
+                ],
+              ),
             ),
           ),
         ),

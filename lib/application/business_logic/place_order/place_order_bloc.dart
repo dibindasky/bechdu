@@ -47,7 +47,7 @@ class PlaceOrderBloc extends Bloc<PlaceOrderEvent, PlaceOrderState> {
     on<GetOrders>(getOrders);
     on<OrderCancel>(orderCancel);
     on<ProductDetailsPick>(productDetailsPick);
-    on<UserDetailsPick>(userDetailsPick);
+    //on<UserDetailsPick>(userDetailsPick);
     on<AddressPick>(addressPick);
     on<PaymentOption>(paymentOption);
     on<PickupDetailsPick>(pickupDetailsPick);
@@ -167,6 +167,7 @@ class PlaceOrderBloc extends Bloc<PlaceOrderEvent, PlaceOrderState> {
     OrderPlacedRequestModel updatedModel =
         state.orderPlacedRequestModel.copyWith(
       user: event.user,
+      promo: event.promo,
     );
 
     log('addressPick event bloc event.user ${event.user.address}');
@@ -177,22 +178,22 @@ class PlaceOrderBloc extends Bloc<PlaceOrderEvent, PlaceOrderState> {
     ));
   }
 
-  FutureOr<void> userDetailsPick(UserDetailsPick event, emit) async {
-    OrderPlacedRequestModel updatedModel = OrderPlacedRequestModel(
-      promo: event.promo,
-      user: event.user,
-      productDetails: state.orderPlacedRequestModel.productDetails,
-      payment: state.orderPlacedRequestModel.payment,
-      pickUpDetails: state.orderPlacedRequestModel.pickUpDetails,
-    );
+  // FutureOr<void> userDetailsPick(UserDetailsPick event, emit) async {
+  //   // OrderPlacedRequestModel updatedModel = OrderPlacedRequestModel(
+  //   //   promo: event.promo,
+  //   //   user: event.user,
+  //   //   productDetails: state.orderPlacedRequestModel.productDetails,
+  //   //   payment: state.orderPlacedRequestModel.payment,
+  //   //   pickUpDetails: state.orderPlacedRequestModel.pickUpDetails,
+  //   // );
 
-    log('userDetailsPick event bloc event.user email >${event.user.email} name >${event.user.name}');
-    log('userDetailsPick event bloc event.promo code >${event.promo.code} price >${event.promo.price}');
+  //   log('userDetailsPick event bloc event.user email >${event.user.email} name >${event.user.name}');
+  //   log('userDetailsPick event bloc event.promo code >${event.promo.code} price >${event.promo.price}');
 
-    emit(state.copyWith(
-      orderPlacedRequestModel: updatedModel,
-    ));
-  }
+  //   // emit(state.copyWith(
+  //   //   orderPlacedRequestModel: updatedModel,
+  //   // ));
+  // }
 
   FutureOr<void> orderPlacing(OrderPlacing event, emit) async {
     final number = await SecureSotrage.getNumber();

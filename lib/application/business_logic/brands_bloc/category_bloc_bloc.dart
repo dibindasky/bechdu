@@ -4,7 +4,6 @@ import 'package:beachdu/domain/model/category_model/single_category_brands_respo
 import 'package:beachdu/domain/model/category_model/single_category_brands_responce_model/single_category_brands_responce_model.dart';
 import 'package:beachdu/domain/model/get_products_respoce_model/get_products_respoce_model.dart';
 import 'package:beachdu/domain/model/get_products_respoce_model/product.dart';
-
 import 'package:beachdu/domain/repository/brands_repo.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/foundation.dart';
@@ -49,7 +48,6 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
       final String series = item.toLowerCase();
       return series.contains(searchQuery);
     }).toList();
-
     emit(state.copyWith(filteredSeries: filteredSeries));
   }
 
@@ -168,9 +166,14 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
       ));
     }, (getproducts) {
       productList.clear();
-      for (Product element in getproducts.products!) {
+      for (var element in getproducts.products!) {
         productList.add(element);
       }
+      // productList = getproducts.products!
+      //     .where(
+      //         (product) => product.model == model && product.variant == verient)
+      //     .toList();
+      log('productList $productList');
       emit(state.copyWith(
         isLoading: false,
         hasError: false,
@@ -227,12 +230,12 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
       hasError: false,
       message: null,
     ));
-    state.varients.clear();
     final data = await brandsRepository.getModles(
       brandName: event.brandName,
       categoryType: event.categoryType,
       seriesName: event.seriesName,
     );
+
     log('getModles bloc categoryType >>>>=== : ${event.categoryType}');
     log('getModles bloc brandName >>>>=== : ${event.brandName}');
     log('getModles bloc seriesName >>>>=== : ${event.seriesName}');
@@ -247,6 +250,7 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
         hasError: false,
         isLoading: false,
         models: getModelSuccess,
+        allItems: updatedItems,
       ));
     });
   }
@@ -257,26 +261,25 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
       hasError: false,
       message: null,
     ));
+
     final data = await brandsRepository.getVarients(
       brandName: event.brandName,
       categoryType: event.categoryType,
       seriesName: event.seriesName,
       model: event.model,
     );
-
+    model = event.model;
+    log('Selected Model in blc $model');
     data.fold((failure) {
       emit(state.copyWith(
         isLoading: false,
         hasError: true,
       ));
     }, (getVarientsSuccess) {
-      List<String> updatedItems = List.from(state.varients);
-
-      updatedItems.addAll(getVarientsSuccess);
       emit(state.copyWith(
         hasError: false,
         isLoading: false,
-        varients: updatedItems,
+        varients: getVarientsSuccess,
       ));
     });
   }

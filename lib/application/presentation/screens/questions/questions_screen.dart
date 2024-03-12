@@ -1,5 +1,7 @@
 // ignore_for_file: use_build_context_synchronously
 
+import 'dart:developer';
+
 import 'package:beachdu/application/business_logic/auth/auth_bloc.dart';
 import 'package:beachdu/application/business_logic/brands_bloc/category_bloc_bloc.dart';
 import 'package:beachdu/application/business_logic/question_tab/question_tab_bloc.dart';
@@ -190,6 +192,7 @@ class QuestionTabs extends StatelessWidget {
         arguments: LoginWay.fromQuestionPick,
       );
       if (authState.otpVerifyResponceModel != null) {
+        log('Question pick in condition');
         pickeQuestionModelEventDataPass(context, questionTabBloc);
       }
     } else {

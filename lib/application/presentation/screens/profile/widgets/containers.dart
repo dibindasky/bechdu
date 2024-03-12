@@ -18,143 +18,117 @@ class _UserInfoFieldsState extends State<UserInfoFields> {
   bool isTExtFieldUsername = false;
   bool isTExtFieldEmail = false;
   bool isTExtFieldNumber = false;
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      context.read<ProfileBloc>().add(ProfileEvent.getUserInfo());
+      context.read<ProfileBloc>().add(const ProfileEvent.getUserInfo());
     });
     return BlocBuilder<ProfileBloc, ProfileState>(
       builder: (context, profile) {
-        return Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            isTExtFieldUsername
-                ? TextField(
-                    controller:
-                        context.read<ProfileBloc>().profileNameController,
-                    decoration: const InputDecoration(
-                      hintText: 'Enter username',
-                      hintStyle: TextStyle(
-                        color: klightgrey,
+        return Form(
+          key: _formKey,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              isTExtFieldUsername
+                  ? TextField(
+                      controller:
+                          context.read<ProfileBloc>().profileNameController,
+                      decoration: const InputDecoration(
+                        hintText: 'Enter username',
+                        hintStyle: TextStyle(
+                          color: klightgrey,
+                        ),
                       ),
-                    ),
-                  )
-                : Column(
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            '${profile.user != null && profile.user!.user != null && profile.user!.user!.name != null ? profile.user!.user!.name : 'Enter your name'}',
-                            style: textHeadMedium1,
-                          ),
-                          TextButton(
-                            onPressed: () {
-                              setState(() {
-                                isTExtFieldUsername = true;
-                              });
-                            },
-                            child: Text(
-                              'Edit',
-                              style:
-                                  textHeadInter.copyWith(color: kGreenPrimary),
-                            ),
-                          ),
-                        ],
-                      ),
-                      const Divider(
-                        thickness: 2,
-                      ),
-                    ],
-                  ),
-            // // Email field
-            isTExtFieldEmail
-                ? TextField(
-                    controller:
-                        context.read<ProfileBloc>().profileEmailController,
-                    decoration: const InputDecoration(
-                        hintText: 'Enter email',
-                        hintStyle: TextStyle(color: klightgrey)),
-                  )
-                : Column(
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            '${profile.user != null && profile.user!.user != null && profile.user!.user!.email != null ? profile.user!.user!.email : 'Enter your email'}',
-                            style: textHeadMedium1,
-                          ),
-                          TextButton(
-                            onPressed: () {
-                              setState(() {
-                                isTExtFieldEmail = true;
-                              });
-                            },
-                            child: Text(
-                              'Edit',
-                              style:
-                                  textHeadInter.copyWith(color: kGreenPrimary),
-                            ),
-                          ),
-                        ],
-                      ),
-                      const Divider(
-                        thickness: 3,
-                      ),
-                    ],
-                  ),
-            kHeight20,
-
-            BlocBuilder<PlaceOrderBloc, PlaceOrderState>(
-              builder: (context, state) {
-                return Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    )
+                  : Column(
                       children: [
-                        Text(
-                          '${state.number}',
-                          style: textHeadMedium1,
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              context
+                                      .read<ProfileBloc>()
+                                      .profileNameController
+                                      .text
+                                      .isEmpty
+                                  ? 'Enter your name'
+                                  : context
+                                      .read<ProfileBloc>()
+                                      .profileNameController
+                                      .text,
+                              style: textHeadMedium1,
+                            ),
+                            TextButton(
+                              onPressed: () {
+                                setState(() {
+                                  isTExtFieldUsername = true;
+                                });
+                              },
+                              child: Text(
+                                'Edit',
+                                style: textHeadInter.copyWith(
+                                    color: kGreenPrimary),
+                              ),
+                            ),
+                          ],
+                        ),
+                        const Divider(
+                          thickness: 2,
                         ),
                       ],
                     ),
-                    const Divider(
-                      thickness: 2,
+              // // Email field
+              isTExtFieldUsername
+                  ? TextField(
+                      controller:
+                          context.read<ProfileBloc>().profileEmailController,
+                      decoration: const InputDecoration(
+                          hintText: 'Enter email',
+                          hintStyle: TextStyle(color: klightgrey)),
+                    )
+                  : Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              '${profile.user != null && profile.user!.user != null && profile.user!.user!.email != null ? profile.user!.user!.email : 'Enter your email'}',
+                              style: textHeadMedium1,
+                            ),
+                            TextButton(
+                              onPressed: () {
+                                setState(() {
+                                  isTExtFieldUsername = true;
+                                });
+                              },
+                              child: Text(
+                                'Edit',
+                                style: textHeadInter.copyWith(
+                                    color: kGreenPrimary),
+                              ),
+                            ),
+                          ],
+                        ),
+                        const Divider(
+                          thickness: 3,
+                        ),
+                      ],
                     ),
-                  ],
-                );
-              },
-            ),
-            //Additional Mobile Number field
-            isTExtFieldNumber
-                ? TextField(
-                    controller:
-                        context.read<ProfileBloc>().profileAddPhoneController,
-                    decoration: const InputDecoration(
-                        hintText: 'Enter additional number',
-                        hintStyle: TextStyle(color: klightgrey)),
-                  )
-                : Column(
+              kHeight20,
+
+              BlocBuilder<PlaceOrderBloc, PlaceOrderState>(
+                builder: (context, state) {
+                  return Column(
                     children: [
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            '${profile.user != null && profile.user!.user != null && profile.user!.user!.addPhone != null ? profile.user!.user!.addPhone : 'Enter your Additional number'}',
+                            '${state.number}',
                             style: textHeadMedium1,
-                          ),
-                          TextButton(
-                            onPressed: () {
-                              setState(() {
-                                isTExtFieldNumber = true;
-                              });
-                            },
-                            child: Text(
-                              'Edit',
-                              style:
-                                  textHeadInter.copyWith(color: kGreenPrimary),
-                            ),
                           ),
                         ],
                       ),
@@ -162,57 +136,105 @@ class _UserInfoFieldsState extends State<UserInfoFields> {
                         thickness: 2,
                       ),
                     ],
-                  ),
-
-            kHeight20,
-            // Save button
-            if (isTExtFieldUsername || isTExtFieldEmail || isTExtFieldNumber)
-              Align(
-                alignment: Alignment.center,
-                child: CustomButton(
-                  onPressed: () {
-                    // Check which fields are changed and send the request
-                    if (isTExtFieldUsername ||
-                        isTExtFieldEmail ||
-                        isTExtFieldNumber) {
-                      // Prepare request model
-                      UserInfoRequestModel userInfoRequestModel =
-                          UserInfoRequestModel(
-                        name: isTExtFieldUsername
-                            ? context
-                                .read<ProfileBloc>()
-                                .profileNameController
-                                .text
-                            : '',
-                        email: context
-                            .read<ProfileBloc>()
-                            .profileEmailController
-                            .text,
-                        addPhone: context
-                            .read<ProfileBloc>()
-                            .profileAddPhoneController
-                            .text,
-                      );
-
-                      // Send request to update user information
-                      context.read<ProfileBloc>().add(
-                            ProfileEvent.updateUser(
-                              userInfoRequestModel: userInfoRequestModel,
-                            ),
-                          );
-                    }
-
-                    // Reset flags
-                    setState(() {
-                      isTExtFieldEmail = false;
-                      isTExtFieldUsername = false;
-                      isTExtFieldNumber = false;
-                    });
-                  },
-                  text: 'Save',
-                ),
+                  );
+                },
               ),
-          ],
+              //Additional Mobile Number field
+              isTExtFieldUsername
+                  ? SizedBox(
+                      height: 60,
+                      child: TextField(
+                        controller: context
+                            .read<ProfileBloc>()
+                            .profileAddPhoneController,
+                        decoration: const InputDecoration(
+                            hintText: 'Enter additional number',
+                            hintStyle: TextStyle(color: klightgrey)),
+                      ),
+                    )
+                  : Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              '${profile.user != null && profile.user!.user != null && profile.user!.user!.addPhone != null ? profile.user!.user!.addPhone : 'Enter your Additional number'}',
+                              style: textHeadMedium1,
+                            ),
+                            TextButton(
+                              onPressed: () {
+                                setState(() {
+                                  isTExtFieldUsername = true;
+                                });
+                                context
+                                    .read<ProfileBloc>()
+                                    .profileAddPhoneController
+                                    .text;
+                              },
+                              child: Text(
+                                'Edit',
+                                style: textHeadInter.copyWith(
+                                    color: kGreenPrimary),
+                              ),
+                            ),
+                          ],
+                        ),
+                        const Divider(
+                          thickness: 2,
+                        ),
+                      ],
+                    ),
+
+              kHeight20,
+              // Save button
+              if (isTExtFieldUsername)
+                Align(
+                  alignment: Alignment.center,
+                  child: CustomButton(
+                    onPressed: () {
+                      if (_formKey.currentState!.validate()) {
+                        if (isTExtFieldUsername ||
+                            isTExtFieldEmail ||
+                            isTExtFieldNumber) {
+                          // Prepare request model
+                          UserInfoRequestModel userInfoRequestModel =
+                              UserInfoRequestModel(
+                            name: isTExtFieldUsername
+                                ? context
+                                    .read<ProfileBloc>()
+                                    .profileNameController
+                                    .text
+                                : '',
+                            email: context
+                                .read<ProfileBloc>()
+                                .profileEmailController
+                                .text,
+                            addPhone: context
+                                .read<ProfileBloc>()
+                                .profileAddPhoneController
+                                .text,
+                          );
+
+                          // Send request to update user information
+                          context.read<ProfileBloc>().add(
+                                ProfileEvent.updateUser(
+                                  userInfoRequestModel: userInfoRequestModel,
+                                ),
+                              );
+                        }
+
+                        // Reset flags
+                        setState(() {
+                          isTExtFieldUsername = false;
+                        });
+                      }
+                      // Check which fields are changed and send the request
+                    },
+                    text: 'Save',
+                  ),
+                ),
+            ],
+          ),
         );
       },
     );

@@ -19,7 +19,7 @@ showConfirmationDialog(
       ),
       actions: [
         TextButton(
-          onPressed: onPressed,
+          onPressed: onPressed ?? () => Navigator.pop(context),
           child: Text(
             !noButton ? 'Yes' : operationButtonName ?? 'Sure',
             style: textHeadBold1,

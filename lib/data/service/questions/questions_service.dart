@@ -65,6 +65,7 @@ class QuestionService implements QuestionRepo {
         ApiEndPoints.abandendOrder,
         data: abandendOrderRequestModel.toJson(),
       );
+      log('abandendOrder data ${responce.data}');
       return Right(AbandendOrderResponceModel.fromJson(responce.data));
     } on DioException catch (e) {
       log('abandendOrder DioException $e');

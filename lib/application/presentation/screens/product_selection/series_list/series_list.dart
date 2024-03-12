@@ -26,7 +26,7 @@ class SeriesSelectionBuilder extends StatelessWidget {
             child: Center(child: Icon(Icons.refresh)),
           );
         } else {
-          if (state.filteredSeries != null ||
+          if (state.filteredSeries != null &&
               state.filteredSeries!.isNotEmpty) {
             final seriesList = state.filteredSeries!;
             return Column(
@@ -44,9 +44,9 @@ class SeriesSelectionBuilder extends StatelessWidget {
                         gridDelegate:
                             const SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 2,
-                          crossAxisSpacing: 20,
-                          mainAxisSpacing: 20,
-                          childAspectRatio: 1 / .5,
+                          crossAxisSpacing: 10,
+                          mainAxisSpacing: 10,
+                          childAspectRatio: 1 / .3,
                         ),
                         itemBuilder: (context, index) {
                           return SeriesContainer(index: index);

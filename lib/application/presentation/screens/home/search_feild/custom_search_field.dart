@@ -25,14 +25,27 @@ class CustomSearchFieldHome extends StatelessWidget {
           Container(
             decoration:
                 BoxDecoration(borderRadius: kRadius10, color: klightwhite),
-            width: sWidth * 0.7,
+            width: sWidth * 0.79,
             child: TextField(
               controller:
                   context.read<HomeBloc>().globalProductSearchController,
               style: textHeadMedium1,
-              decoration: const InputDecoration(
+              decoration: InputDecoration(
                 hintText: 'Search products',
-                prefixIcon: Icon(
+                suffixIcon: context
+                        .read<HomeBloc>()
+                        .globalProductSearchController
+                        .text
+                        .isEmpty
+                    ? null
+                    : IconButton(
+                        onPressed: () => context
+                            .read<HomeBloc>()
+                            .globalProductSearchController
+                            .clear(),
+                        icon: const Icon(Icons.clear),
+                      ),
+                prefixIcon: const Icon(
                   Icons.search,
                   color: kBlack,
                   size: 20,
@@ -54,6 +67,10 @@ class CustomSearchFieldHome extends StatelessWidget {
                 } else {
                   homeScreens.value = 0;
                   homeScreens.notifyListeners();
+                  context
+                      .read<HomeBloc>()
+                      .globalProductSearchController
+                      .clear();
                 }
               },
             ),

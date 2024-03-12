@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:beachdu/application/business_logic/brands_bloc/category_bloc_bloc.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
@@ -11,11 +13,15 @@ class DropDownBuilder extends StatefulWidget {
     required this.searchHint,
     required this.optionsList,
     required this.index,
+    required this.onChanged,
+    this.initailvalue,
   });
 
   final String searchHint;
   final List<String> optionsList;
   final int index;
+  final Function(String?)? onChanged;
+  final String? initailvalue;
 
   @override
   State<DropDownBuilder> createState() => _DropDownBuilderState();
@@ -26,12 +32,13 @@ class _DropDownBuilderState extends State<DropDownBuilder> {
   String? selected;
   Color contsinerColor = kWhite;
   Color textColor = kWhite;
+
   @override
   Widget build(BuildContext context) {
     return DropdownButtonHideUnderline(
       child: DropdownButton2<String>(
         hint: Text(
-          widget.searchHint,
+          selected ?? widget.searchHint,
           style: textHeadInter.copyWith(color: klightgrey),
         ),
         isExpanded: true,
@@ -47,19 +54,7 @@ class _DropDownBuilderState extends State<DropDownBuilder> {
             );
           },
         ).toList(),
-        onChanged: (value) {
-          setState(() {
-            selected = value;
-          });
-          context.read<CategoryBlocBloc>().add(
-                GetVarients(
-                  brandName: context.read<CategoryBlocBloc>().barndName!,
-                  categoryType: context.read<CategoryBlocBloc>().categoryType!,
-                  seriesName: context.read<CategoryBlocBloc>().seriesName!,
-                  model: 'I Phone 7 Plus',
-                ),
-              );
-        },
+        onChanged: widget.onChanged,
         value: selected,
         buttonStyleData: ButtonStyleData(
           decoration: BoxDecoration(

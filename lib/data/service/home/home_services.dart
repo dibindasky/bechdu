@@ -71,8 +71,8 @@ class HomeServices implements HomeRepository {
         ApiEndPoints.globalProductSearch,
         queryParameters: searchParamModel.toJson(),
       );
-      log('searchParamModel ${searchParamModel.toJson()}');
-      log('globalProductSearch data ${responce.data}');
+      // log('searchParamModel ${searchParamModel.toJson()}');
+      // log('globalProductSearch data ${responce.data}');
       return Right(SearchResponceModel.fromJson(responce.data));
     } on DioException catch (e) {
       log('globalProductSearch DioException $e');

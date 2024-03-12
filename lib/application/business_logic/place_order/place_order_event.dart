@@ -15,10 +15,7 @@ class PlaceOrderEvent with _$PlaceOrderEvent {
     required OrderCancelationRequestModel orderCancelationRequestModel,
     required String orderId,
   }) = OrderCancel;
-  const factory PlaceOrderEvent.userDetailsPick({
-    required Promo promo,
-    required User user,
-  }) = UserDetailsPick;
+
   const factory PlaceOrderEvent.productDetailsPick({
     required ProductDetails productDetails,
   }) = ProductDetailsPick;
@@ -27,6 +24,7 @@ class PlaceOrderEvent with _$PlaceOrderEvent {
   }) = PromoCodePick;
   const factory PlaceOrderEvent.addressPick({
     required User user,
+    required Promo promo,
   }) = AddressPick;
   const factory PlaceOrderEvent.paymentOption({
     required Payment payment,

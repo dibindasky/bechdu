@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:beachdu/application/business_logic/auth/auth_bloc.dart';
 import 'package:beachdu/application/business_logic/brands_bloc/category_bloc_bloc.dart';
 import 'package:beachdu/application/business_logic/question_tab/question_tab_bloc.dart';
@@ -22,9 +24,19 @@ class BottomSection extends StatelessWidget {
     return Column(
       children: [
         kHeight20,
-        Text(
-          "I didn't receive any code. RESEND",
-          style: textHeadMedium1,
+        Text.rich(
+          TextSpan(
+            text: "I didn't receive any code.",
+            style: textHeadMedium1.copyWith(
+              fontSize: sWidth * .037,
+            ),
+            children: [
+              TextSpan(
+                text: 'RESEND',
+                style: textHeadBold1.copyWith(color: klightgrey),
+              ),
+            ],
+          ),
         ),
         kHeight50,
         loginWay == LoginWay.fromProfile ||
@@ -42,7 +54,7 @@ class BottomSection extends StatelessWidget {
                     'Skip for now',
                     style: textHeadInter.copyWith(
                       fontSize: sWidth * .045,
-                      color: klightGreen,
+                      color: kGreenPrimary,
                       decoration: TextDecoration.underline,
                       decorationColor: kGreenPrimary,
                       decorationThickness: 1.4,
@@ -93,44 +105,44 @@ class BottomSection extends StatelessWidget {
                                 otpVerifyRequestModel: otpVerifyRequestModel,
                               ),
                             );
-                        if (loginWay == LoginWay.fromQuestionPick) {
-                          PickupQuestionModel pickepQuestionModel =
-                              PickupQuestionModel(
-                            categoryType:
-                                context.read<CategoryBlocBloc>().categoryType,
-                            productSlug: context.read<CategoryBlocBloc>().slug,
-                            selectedOptions: context
-                                .read<QuestionTabBloc>()
-                                .state
-                                .selectedOption,
-                          );
 
-                          //Product name Concatination
-                          final verient =
-                              context.read<CategoryBlocBloc>().verient;
-                          final model = context.read<CategoryBlocBloc>().model;
-                          final name = '$verient $model';
+                        log('login screen GetBasePrice onpress   pick in condition');
+                        PickupQuestionModel pickepQuestionModel =
+                            PickupQuestionModel(
+                          categoryType:
+                              context.read<CategoryBlocBloc>().categoryType,
+                          productSlug: context.read<CategoryBlocBloc>().slug,
+                          selectedOptions: context
+                              .read<QuestionTabBloc>()
+                              .state
+                              .selectedOption,
+                        );
 
-                          ProductDetails productDetails = ProductDetails(
-                            slug: context.read<CategoryBlocBloc>().slug,
-                            name: name,
-                            options: questionBlo.selectedOption,
-                          );
+                        //Product name Concatination
+                        final verient =
+                            context.read<CategoryBlocBloc>().verient;
+                        final model = context.read<CategoryBlocBloc>().model;
+                        final name = '$verient $model';
 
-                          AbandendOrderRequestModel abandendOrderRequestModel =
-                              AbandendOrderRequestModel(
-                                  productDetails: productDetails);
+                        ProductDetails productDetails = ProductDetails(
+                          slug: context.read<CategoryBlocBloc>().slug,
+                          name: name,
+                          options: questionBlo.selectedOption,
+                        );
 
-                          context.read<QuestionTabBloc>().add(
-                                GetBasePrice(
-                                  pickupQuestionModel: pickepQuestionModel,
-                                  abandendOrderRequestModel:
-                                      abandendOrderRequestModel,
-                                ),
-                              );
-                        }
-                        // context.read<AuthBloc>().phoneNumberController.clear();
+                        AbandendOrderRequestModel abandendOrderRequestModel =
+                            AbandendOrderRequestModel(
+                                productDetails: productDetails);
+
+                        context.read<QuestionTabBloc>().add(
+                              GetBasePrice(
+                                pickupQuestionModel: pickepQuestionModel,
+                                abandendOrderRequestModel:
+                                    abandendOrderRequestModel,
+                              ),
+                            );
                       }
+                      // context.read<AuthBloc>().phoneNumberController.clear();
                     } else {
                       showSnack(
                         context: context,

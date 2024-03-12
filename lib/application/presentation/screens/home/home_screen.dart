@@ -103,14 +103,8 @@ class _ScreenHomeState extends State<ScreenHome> {
           if (homeScreens.value == 1) {
             homeScreens.value == 0;
             homeScreens.notifyListeners();
-          } else {
-            showConfirmationDialog(
-              context,
-              onPressed: () => Navigator.pop(context),
-            );
           }
-
-          return false;
+          return true;
         },
         child: Scaffold(
           body: SafeArea(

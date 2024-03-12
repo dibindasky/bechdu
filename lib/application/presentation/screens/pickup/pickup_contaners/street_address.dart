@@ -36,10 +36,7 @@ class _StreetAddressState extends State<StreetAddress> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    'Address',
-                    style: textHeadRegular1,
-                  ),
+                  Text('Address', style: textHeadRegular1),
                   GestureDetector(
                     onTap: () {
                       setState(() {

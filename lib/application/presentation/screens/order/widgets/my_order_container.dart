@@ -64,7 +64,8 @@ class MyOrderContainer extends StatelessWidget {
                           ? kBlueLight
                           : data.status == 'cancelled'
                               ? kRed
-                              : data.status == 'processing'
+                              : data.status == 'processing' &&
+                                      data.status == 'rescheduled'
                                   ? Colors.yellow
                                   : kGreenLight,
                       child: Padding(

@@ -128,7 +128,7 @@ class ScreenLocations extends StatelessWidget {
                                   ),
                                   itemBuilder: (context, index) {
                                     return GestureDetector(
-                                      onTap: () async {
+                                      onTap: () {
                                         //Pincode load event
                                         context.read<LocationBloc>().add(
                                               LocationEvent.pinCodePick(
@@ -177,7 +177,7 @@ class ScreenLocations extends StatelessWidget {
                                                   radius: 3,
                                                 ),
                                               ),
-                                              kWidth10,
+                                              const SizedBox(width: 3),
                                               FittedBox(
                                                 child: Text(
                                                   state.filteredLocations![

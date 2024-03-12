@@ -677,8 +677,6 @@ mixin _$ProfileState {
   AddressCreationResponceModel? get addressCreationResponceModel =>
       throw _privateConstructorUsedError;
   UserInfo? get user => throw _privateConstructorUsedError;
-  UserInfoResponceModel? get userInfoResponceModel =>
-      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ProfileStateCopyWith<ProfileState> get copyWith =>
@@ -697,8 +695,7 @@ abstract class $ProfileStateCopyWith<$Res> {
       String? message,
       List<String> address,
       AddressCreationResponceModel? addressCreationResponceModel,
-      UserInfo? user,
-      UserInfoResponceModel? userInfoResponceModel});
+      UserInfo? user});
 }
 
 /// @nodoc
@@ -720,7 +717,6 @@ class _$ProfileStateCopyWithImpl<$Res, $Val extends ProfileState>
     Object? address = null,
     Object? addressCreationResponceModel = freezed,
     Object? user = freezed,
-    Object? userInfoResponceModel = freezed,
   }) {
     return _then(_value.copyWith(
       isLoading: null == isLoading
@@ -747,10 +743,6 @@ class _$ProfileStateCopyWithImpl<$Res, $Val extends ProfileState>
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
               as UserInfo?,
-      userInfoResponceModel: freezed == userInfoResponceModel
-          ? _value.userInfoResponceModel
-          : userInfoResponceModel // ignore: cast_nullable_to_non_nullable
-              as UserInfoResponceModel?,
     ) as $Val);
   }
 }
@@ -769,8 +761,7 @@ abstract class _$$InitialImplCopyWith<$Res>
       String? message,
       List<String> address,
       AddressCreationResponceModel? addressCreationResponceModel,
-      UserInfo? user,
-      UserInfoResponceModel? userInfoResponceModel});
+      UserInfo? user});
 }
 
 /// @nodoc
@@ -790,7 +781,6 @@ class __$$InitialImplCopyWithImpl<$Res>
     Object? address = null,
     Object? addressCreationResponceModel = freezed,
     Object? user = freezed,
-    Object? userInfoResponceModel = freezed,
   }) {
     return _then(_$InitialImpl(
       isLoading: null == isLoading
@@ -817,10 +807,6 @@ class __$$InitialImplCopyWithImpl<$Res>
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
               as UserInfo?,
-      userInfoResponceModel: freezed == userInfoResponceModel
-          ? _value.userInfoResponceModel
-          : userInfoResponceModel // ignore: cast_nullable_to_non_nullable
-              as UserInfoResponceModel?,
     ));
   }
 }
@@ -834,8 +820,7 @@ class _$InitialImpl implements _Initial {
       this.message,
       required final List<String> address,
       this.addressCreationResponceModel,
-      this.user,
-      this.userInfoResponceModel})
+      this.user})
       : _address = address;
 
   @override
@@ -856,12 +841,10 @@ class _$InitialImpl implements _Initial {
   final AddressCreationResponceModel? addressCreationResponceModel;
   @override
   final UserInfo? user;
-  @override
-  final UserInfoResponceModel? userInfoResponceModel;
 
   @override
   String toString() {
-    return 'ProfileState(isLoading: $isLoading, hasError: $hasError, message: $message, address: $address, addressCreationResponceModel: $addressCreationResponceModel, user: $user, userInfoResponceModel: $userInfoResponceModel)';
+    return 'ProfileState(isLoading: $isLoading, hasError: $hasError, message: $message, address: $address, addressCreationResponceModel: $addressCreationResponceModel, user: $user)';
   }
 
   @override
@@ -879,9 +862,7 @@ class _$InitialImpl implements _Initial {
                     addressCreationResponceModel) ||
                 other.addressCreationResponceModel ==
                     addressCreationResponceModel) &&
-            (identical(other.user, user) || other.user == user) &&
-            (identical(other.userInfoResponceModel, userInfoResponceModel) ||
-                other.userInfoResponceModel == userInfoResponceModel));
+            (identical(other.user, user) || other.user == user));
   }
 
   @override
@@ -892,8 +873,7 @@ class _$InitialImpl implements _Initial {
       message,
       const DeepCollectionEquality().hash(_address),
       addressCreationResponceModel,
-      user,
-      userInfoResponceModel);
+      user);
 
   @JsonKey(ignore: true)
   @override
@@ -909,8 +889,7 @@ abstract class _Initial implements ProfileState {
       final String? message,
       required final List<String> address,
       final AddressCreationResponceModel? addressCreationResponceModel,
-      final UserInfo? user,
-      final UserInfoResponceModel? userInfoResponceModel}) = _$InitialImpl;
+      final UserInfo? user}) = _$InitialImpl;
 
   @override
   bool get isLoading;
@@ -924,8 +903,6 @@ abstract class _Initial implements ProfileState {
   AddressCreationResponceModel? get addressCreationResponceModel;
   @override
   UserInfo? get user;
-  @override
-  UserInfoResponceModel? get userInfoResponceModel;
   @override
   @JsonKey(ignore: true)
   _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>

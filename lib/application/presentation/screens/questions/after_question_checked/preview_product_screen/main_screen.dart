@@ -52,7 +52,15 @@ class ScreenProductPreview extends StatelessWidget {
                       const TopImage(
                         fromWhere: FromWhere.recalculateWithAmount,
                       ),
-                      kHeight40,
+                      kHeight20,
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20),
+                        child: Text(
+                          'Device Diagnosis',
+                          style: textHeadBold1.copyWith(fontSize: 18),
+                        ),
+                      ),
+                      // kHeight20,
                       BlocBuilder<QuestionTabBloc, QuestionTabState>(
                         builder: (context, state) {
                           return ListView.builder(

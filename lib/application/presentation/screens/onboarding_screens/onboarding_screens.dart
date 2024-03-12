@@ -99,24 +99,82 @@ class _BechDuUserOnBoardingScreensState
                       width: sWidth * 0.7,
                       height: sWidth * 0.5,
                       child: selectedIndex == 0
-                          ? SizedBox(
-                              child: Image.asset(
-                                personAnimationPic,
-                                fit: BoxFit.cover,
-                              ),
+                          ? Stack(
+                              children: [
+                                const Center(
+                                  child: CircleAvatar(
+                                    backgroundColor: kGreenPrimary,
+                                    radius: 90,
+                                  ),
+                                ),
+                                Positioned(
+                                  top: MediaQuery.of(context).size.width * 0.02,
+                                  left:
+                                      MediaQuery.of(context).size.width * 0.16,
+                                  child: SizedBox(
+                                    height: sWidth * 0.45,
+                                    child: Image.asset(onBoardingpersonScreen),
+                                  ),
+                                ),
+                              ],
                             )
                           : selectedIndex == 1
-                              ? Center(
-                                  child: SizedBox(
-                                    child: Image.asset(onBoardingsecondScreen),
-                                  ),
+                              ? Stack(
+                                  children: [
+                                    const Center(
+                                      child: CircleAvatar(
+                                        backgroundColor: kBluePrimary,
+                                        radius: 87,
+                                        child: CircleAvatar(
+                                          backgroundColor: kWhite,
+                                          radius: 85,
+                                          child: CircleAvatar(
+                                            backgroundColor: kBluePrimary,
+                                            radius: 79,
+                                            child: CircleAvatar(
+                                              backgroundColor: kWhite,
+                                              radius: 77,
+                                              child: CircleAvatar(
+                                                backgroundColor: kBluePrimary,
+                                                radius: 70,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    Center(
+                                      child: SizedBox(
+                                        height: sWidth * 0.45,
+                                        child:
+                                            Image.asset(onBoardingsecondScreen),
+                                      ),
+                                    ),
+                                  ],
                                 )
                               : selectedIndex == 2
-                                  ? Center(
-                                      child: SizedBox(
-                                        child:
-                                            Image.asset(onBoardingThirdScreen),
-                                      ),
+                                  ? Stack(
+                                      children: [
+                                        const Center(
+                                          child: CircleAvatar(
+                                            backgroundColor: kBluePrimary,
+                                            radius: 80,
+                                          ),
+                                        ),
+                                        Positioned(
+                                          top: 0, // Adjust as needed
+                                          bottom: 0, // Adjust as needed
+                                          left: 0, // Adjust as needed
+                                          right: 0, // Adjust as needed
+                                          child: Center(
+                                            child: SizedBox(
+                                              height: sWidth * 0.8,
+                                              child: Image.asset(
+                                                  onBoardingThirdScreen),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
                                     )
                                   : const SizedBox(),
                     ),

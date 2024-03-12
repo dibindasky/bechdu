@@ -4,7 +4,6 @@ import 'package:beachdu/domain/model/address_model/address_creation_request_mode
 import 'package:beachdu/domain/model/address_model/address_creation_responce_model/address_creation_responce_model.dart';
 import 'package:beachdu/domain/model/profile/user_info/user_info.dart';
 import 'package:beachdu/domain/model/profile/user_info_request_model/user_info_request_model.dart';
-import 'package:beachdu/domain/model/profile/user_info_responce_model/user_info_responce_model.dart';
 import 'package:beachdu/domain/repository/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -48,13 +47,13 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
         isLoading: false,
         hasError: false,
         address: addressList,
-        userInfoResponceModel: succsessUserData,
+        user: succsessUserData,
       ));
     });
   }
 
   FutureOr<void> getUserInfo(GetUserInfo event, emit) async {
-    if (state.user != null) return;
+    //if (state.user != null) return;
     emit(state.copyWith(isLoading: true, hasError: false));
     final data = await profileRepo.getUserInfo();
     data.fold((fail) {
@@ -109,9 +108,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
 
   FutureOr<void> deleteAddress(DeleteAddress event, emit) async {
     emit(state.copyWith(isLoading: true, hasError: false));
-    final data = await profileRepo.deleteAddress(
-      index: event.index,
-    );
+    final data = await profileRepo.deleteAddress(index: event.index);
     data.fold((failure) {
       emit(state.copyWith(
         isLoading: false,

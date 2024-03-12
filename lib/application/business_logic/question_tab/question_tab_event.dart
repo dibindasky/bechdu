@@ -12,6 +12,8 @@ class QuestionTabEvent with _$QuestionTabEvent {
   const factory QuestionTabEvent.getAnswerCount({
     required int answerCount,
   }) = GetAnswerCount;
+  const factory QuestionTabEvent.goBackIndex({required int index}) =
+      GoBackIndex;
   const factory QuestionTabEvent.clearOneSection() = ClearOneSection;
   const factory QuestionTabEvent.markedQuestions(
       {required SelectedOption selectedOption}) = MarkedQuestions;

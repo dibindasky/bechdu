@@ -6,7 +6,6 @@ import 'package:beachdu/domain/model/address_model/address_creation_request_mode
 import 'package:beachdu/domain/model/address_model/address_creation_responce_model/address_creation_responce_model.dart';
 import 'package:beachdu/domain/model/profile/user_info/user_info.dart';
 import 'package:beachdu/domain/model/profile/user_info_request_model/user_info_request_model.dart';
-import 'package:beachdu/domain/model/profile/user_info_responce_model/user_info_responce_model.dart';
 import 'package:beachdu/domain/repository/profile.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
@@ -24,16 +23,12 @@ class AddressService implements ProfileRepo {
       final accessToken =
           await SecureSotrage.getToken().then((token) => token.accessToken);
       _dio.options.headers.addAll(
-        {
-          'authorization': 'Bearer $accessToken',
-        },
+        {'authorization': 'Bearer $accessToken'},
       );
       final responce = await _dio.post(
         ApiEndPoints.addAddress,
         data: addressCreationRequestModel.toJson(),
       );
-      print('address data after send ${addressCreationRequestModel.toJson()}');
-      print('address data from api ${responce.data}');
       return Right(AddressCreationResponceModel.fromJson(responce.data));
     } on DioException catch (e) {
       log('address data DioException api $e');
@@ -62,8 +57,6 @@ class AddressService implements ProfileRepo {
             .replaceFirst('{number}', number)
             .replaceFirst('{index}', '$index'),
       );
-      print('address data after send');
-      print('address data from api ${responce.data}');
       return Right(AddressCreationResponceModel.fromJson(responce.data));
     } on DioException catch (e) {
       log('address data DioException api $e');
@@ -87,7 +80,7 @@ class AddressService implements ProfileRepo {
       );
       final responce = await _dio
           .get(ApiEndPoints.getUserInfo.replaceFirst('{number}', number));
-      print('getUserInfo data from api ${responce.data}');
+      log('getUserInfo data from api ${responce.data}');
       return Right(UserInfo.fromJson(responce.data));
     } on DioException catch (e) {
       log('getUserInfo data DioException api $e');
@@ -99,7 +92,7 @@ class AddressService implements ProfileRepo {
   }
 
   @override
-  Future<Either<Failure, UserInfoResponceModel>> updateUser({
+  Future<Either<Failure, UserInfo>> updateUser({
     required UserInfoRequestModel userInfoRequestModel,
   }) async {
     try {
@@ -111,14 +104,12 @@ class AddressService implements ProfileRepo {
           'authorization': 'Bearer $accessToken',
         },
       );
-      log('userInfoRequestModel json ${userInfoRequestModel.toJson()}');
       final responce = await _dio
           .put(ApiEndPoints.updateUserInfo.replaceFirst('{number}', number));
 
-      return Right(UserInfoResponceModel.fromJson(responce.data));
+      return Right(UserInfo.fromJson(responce.data));
     } on DioException catch (e) {
-      log('getUserInfo data DioException api $e');
-      return Left(Failure(message: errorMessage));
+      return Left(Failure(message: e.message));
     } catch (e) {
       log('getUserInfo data catch api $e');
       return Left(Failure(message: e.toString()));

@@ -8,6 +8,7 @@ import 'package:beachdu/domain/model/get_question_model/question.dart';
 import 'package:beachdu/domain/model/get_question_model/section.dart';
 import 'package:beachdu/domain/model/pickup_question_model/selected_option.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class GridTileQuestion extends StatefulWidget {
@@ -78,15 +79,21 @@ class _GridTileQuestionState extends State<GridTileQuestion> {
                 AspectRatio(
                   aspectRatio: 1,
                   child: SizedBox(
-                      height: 70,
-                      width: 20,
-                      child: Image.memory(base64.decode(base64String))),
+                    height: 70,
+                    width: 20,
+                    child: Image.memory(
+                      base64.decode(base64String),
+                    ),
+                  ),
                 ),
-                Text(
-                  widget.question.description!,
-                  style: textHeadBold1.copyWith(fontSize: sWidth * .026),
-                  textAlign: TextAlign.center,
-                  maxLines: 2,
+                FittedBox(
+                  child: Text(
+                    widget.question.description ?? 'No tittle',
+                    style: textHeadBold1.copyWith(
+                      fontSize: sWidth * .032,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
                 ),
               ],
             ),

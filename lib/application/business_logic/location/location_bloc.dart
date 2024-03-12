@@ -70,6 +70,7 @@ class LocationBloc extends Bloc<LocationEvent, LocationState> {
   FutureOr<void> locationUpdate(LocationUpdate event, emit) async {
     final loginStatus = await SecureSotrage.getlLogin();
 
+    if (loginStatus == false) return;
     final data = await locationRepo.locationUpdation(
       cityUpdateRequestModel: event.cityUpdateRequestModel,
     );
@@ -122,13 +123,13 @@ class LocationBloc extends Bloc<LocationEvent, LocationState> {
 
   FutureOr<void> pincodeUpdate(PincodeUpdate event, emit) async {
     final loginStatus = await SecureSotrage.getlLogin();
+    if (loginStatus == false) return;
     final data = await locationRepo.pincodeUpdation(
       pincodeUpdateRequestModel: event.pincodeUpdateRequestModel,
     );
     data.fold((falure) => null, (successPincode) async {
       emit(
         state.copyWith(
-          message: 'Pincode updation successfully',
           pincodeUpdateResponceModel: successPincode,
           isLogin: loginStatus,
         ),

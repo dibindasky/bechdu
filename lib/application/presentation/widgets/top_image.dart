@@ -61,17 +61,17 @@ class TopImage extends StatelessWidget {
                             : kWidth10,
                         SizedBox(
                           height: fromWhere == FromWhere.checkoutAndPickupScreen
-                              ? sWidth * .4
+                              ? sWidth * .38
                               : sWidth * .24,
                           width: fromWhere == FromWhere.checkoutAndPickupScreen
                               ? sWidth * .34
-                              : sWidth * .23,
+                              : sWidth * .21,
                           child: Image.network(url),
                         ),
                         fromWhere == FromWhere.pickupScreen ||
                                 fromWhere == FromWhere.checkoutAndPickupScreen
-                            ? kWidth20
-                            : kWidth10,
+                            ? kEmpty
+                            : kWidth5,
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -135,14 +135,12 @@ class TopImage extends StatelessWidget {
                                               ),
                                         Row(
                                           children: [
-                                            SizedBox(
-                                              width: sWidth * .34,
-                                              child: Text(
-                                                'Not Satisfied with our price ?',
-                                                overflow: TextOverflow.ellipsis,
-                                                style: textHeadMedium1.copyWith(
-                                                  color: kWhite,
-                                                ),
+                                            Text(
+                                              'Not Satisfied with our price ?',
+                                              overflow: TextOverflow.ellipsis,
+                                              style: textHeadMedium1.copyWith(
+                                                color: kWhite,
+                                                fontSize: sWidth * .025,
                                               ),
                                             ),
                                             TextButton(
@@ -162,6 +160,7 @@ class TopImage extends StatelessWidget {
                                               },
                                               child: Text(
                                                 'Recalculate',
+                                                overflow: TextOverflow.ellipsis,
                                                 style: textHeadInter.copyWith(
                                                   color: kWhite,
                                                   fontWeight: FontWeight.w600,
@@ -181,11 +180,10 @@ class TopImage extends StatelessWidget {
                             if (fromWhere ==
                                     FromWhere.checkoutAndPickupScreen ||
                                 fromWhere == FromWhere.pickupScreen)
-                              Text(
-                                '${questiontabBloc.product!.model}',
-                                style: textHeadBold1.copyWith(
-                                    color: kWhite, fontSize: sWidth * .05),
-                              ),
+                              Text('${questiontabBloc.product!.model}',
+                                  style: textHeadBold1.copyWith(
+                                      color: kWhite, fontSize: sWidth * .05),
+                                  overflow: TextOverflow.ellipsis),
                             kHeight5,
                             if (fromWhere ==
                                     FromWhere.checkoutAndPickupScreen ||
@@ -193,17 +191,16 @@ class TopImage extends StatelessWidget {
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
+                                  Text('${questiontabBloc.product!.variant}',
+                                      style: textHeadMedium1.copyWith(
+                                          color: kWhite),
+                                      overflow: TextOverflow.ellipsis),
                                   Text(
-                                    '${questiontabBloc.product!.variant}',
-                                    style:
-                                        textHeadMedium1.copyWith(color: kWhite),
-                                  ),
-                                  Text(
-                                    '₹ ${questiontabBloc.basePriceModelResponce!.basePrice}',
-                                    style: textHeadBoldBig.copyWith(
-                                      color: kWhite,
-                                    ),
-                                  )
+                                      '₹ ${questiontabBloc.basePriceModelResponce!.basePrice}',
+                                      style: textHeadBoldBig.copyWith(
+                                        color: kWhite,
+                                      ),
+                                      overflow: TextOverflow.ellipsis)
                                 ],
                               ),
                             if (fromWhere == FromWhere.questionScreen)

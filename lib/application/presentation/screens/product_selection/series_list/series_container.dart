@@ -20,10 +20,8 @@ class SeriesContainer extends StatelessWidget {
     return BlocBuilder<CategoryBlocBloc, CategoryBlocState>(
       builder: (context, state) {
         final seriesList = state.filteredSeries!;
-
         return GestureDetector(
           onTap: () {
-            context.read<CategoryBlocBloc>().seriesName = seriesList[index];
             brandSeriesProductValueNotifier.value = 2;
             brandSeriesProductValueNotifier.notifyListeners();
             context.read<CategoryBlocBloc>().add(
@@ -35,7 +33,7 @@ class SeriesContainer extends StatelessWidget {
                   ),
                 );
             context.read<CategoryBlocBloc>().seriesName = seriesList[index];
-            log('Series contsiner ontapp${seriesList[index]}');
+
             // call series event
             context.read<CategoryBlocBloc>().add(
                   CategoryBlocEvent.getModels(
@@ -46,32 +44,25 @@ class SeriesContainer extends StatelessWidget {
                   ),
                 );
           },
-          child: Material(
-            elevation: 1,
-            child: Center(
-              child: Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: SizedBox(
-                  height: 50,
-                  child: ClipRRect(
-                    borderRadius: kRadius10,
-                    child: ColoredBox(
-                      color: kBlueLight,
-                      child: Center(
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 4,
-                          ),
-                          child: Text(
-                            maxLines: 4,
-                            state.filteredSeries![index],
-                            style: textHeadBold1.copyWith(
-                              color: kWhite,
-                            ),
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ),
+          child: SizedBox(
+            height: 40,
+            child: ClipRRect(
+              borderRadius: kRadius10,
+              child: ColoredBox(
+                color: kBlueLight,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 10,
+                  ),
+                  child: Align(
+                    alignment: Alignment.center,
+                    child: Text(
+                      maxLines: 4,
+                      state.filteredSeries![index],
+                      style: textHeadBold1.copyWith(
+                        color: kWhite,
                       ),
+                      overflow: TextOverflow.ellipsis,
                     ),
                   ),
                 ),

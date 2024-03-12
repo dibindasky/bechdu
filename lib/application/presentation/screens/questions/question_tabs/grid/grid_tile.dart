@@ -58,6 +58,7 @@ class _GridOptionSelectorTileState extends State<GridOptionSelectorTile> {
               child: Text(
                 widget.question.description!,
                 style: textHeadBold1.copyWith(
+                  fontSize: 15,
                   color: widget.index ? kWhite : kBluePrimary,
                 ),
               ),

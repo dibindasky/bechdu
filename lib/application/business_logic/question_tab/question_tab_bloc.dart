@@ -37,6 +37,28 @@ class QuestionTabBloc extends Bloc<QuestionTabEvent, QuestionTabState> {
     on<YesOrNo>(yesOrNo);
     on<ClearOneSection>((event, emit) {});
     on<ClearNewOPtionList>(clearOptionList);
+    on<GoBackIndex>(goBackIndex);
+  }
+  FutureOr<void> goBackIndex(GoBackIndex event, emit) async {
+    if (event.index > state.selectedTabIndex ||
+        event.index == state.selectedTabIndex) {
+      return;
+    }
+    if (event.index + 1 == state.selectedTabIndex) {
+      emit(
+        state.copyWith(
+          message: null,
+          hasError: false,
+          selectedTabIndex: event.index,
+        ),
+      );
+    } else {
+      emit(
+        state.copyWith(
+          message: 'you can go back to the previous step only',
+        ),
+      );
+    }
   }
 
   FutureOr<void> tabMinus(TabMinus event, emit) {
@@ -152,16 +174,18 @@ class QuestionTabBloc extends Bloc<QuestionTabEvent, QuestionTabState> {
     for (var element in event.pickupQuestionModel.selectedOptions!) {
       newList.add(element);
     }
+    log('getBasePrice one');
     final data = await questionRepo.getBasePrice(
       pickeQuestionModel: event.pickupQuestionModel,
     );
-
+    log('getBasePrice second');
     data.fold((failure) {
       emit(state.copyWith(
         hasError: true,
         isLoading: false,
       ));
     }, (successResponce) async {
+      log('getBasePrice third');
       emit(state.copyWith(
         hasError: false,
         isLoading: false,
@@ -169,6 +193,7 @@ class QuestionTabBloc extends Bloc<QuestionTabEvent, QuestionTabState> {
         selectedOption: newList,
       ));
       if (successResponce.basePrice != null) {
+        log('getBasePrice forth');
         basePrice = successResponce.basePrice!;
         final phone = await SecureSotrage.getNumber();
         final city = await SecureSotrage.getSelectedLocation();
@@ -181,15 +206,18 @@ class QuestionTabBloc extends Bloc<QuestionTabEvent, QuestionTabState> {
         log('User datas bloc $phone $city $pincode');
         event.abandendOrderRequestModel.abendendOrderUser = abendendOrderUser;
         event.abandendOrderRequestModel.productDetails!.price = '$basePrice';
+        log('getBasePrice fiffth');
         add(QuestionTabEvent.abandentOrder(
           abandendOrderRequestModel: event.abandendOrderRequestModel,
         ));
+        log('getBasePrice sixth');
       }
     });
   }
 
   FutureOr<void> abandentOrder(AbandentOrder event, emit) async {
     emit(state.copyWith(isLoading: true, hasError: false));
+    log('abandentOrder first');
     final number = await SecureSotrage.getNumber();
     final location = await SecureSotrage.getSelectedLocation();
     final pincode = await SecureSotrage.getSelectedPincode();
@@ -199,12 +227,14 @@ class QuestionTabBloc extends Bloc<QuestionTabEvent, QuestionTabState> {
     final data = await questionRepo.abandendOrder(
       abandendOrderRequestModel: event.abandendOrderRequestModel,
     );
+    log('abandentOrder second');
     data.fold((falure) {
       emit(state.copyWith(
         hasError: true,
         isLoading: false,
       ));
     }, (abandendOrderResponceModel) async {
+      log('abandentOrder third');
       emit(
         state.copyWith(
           hasError: false,
@@ -212,6 +242,7 @@ class QuestionTabBloc extends Bloc<QuestionTabEvent, QuestionTabState> {
           abandendOrderResponceModel: abandendOrderResponceModel,
         ),
       );
+      log('abandentOrder forth');
     });
   }
 }

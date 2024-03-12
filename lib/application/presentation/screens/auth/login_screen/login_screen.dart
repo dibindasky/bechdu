@@ -4,7 +4,6 @@ import 'package:beachdu/application/presentation/screens/auth/login_screen/widge
 import 'package:beachdu/application/presentation/screens/auth/login_screen/widget/logo_to_mobile_no.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
-import 'package:beachdu/application/presentation/utils/confirmation_daillogue/exit_app_dailogue.dart';
 import 'package:beachdu/application/presentation/utils/enums/type_display.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -27,11 +26,8 @@ class ScreenLogin extends StatelessWidget {
           focusScopeNode.unfocus();
         }
       },
-      child: WillPopScope(
-        onWillPop: () async {
-          bool shouldPop = await showConfirmationDialog(context);
-          return shouldPop;
-        },
+      child: PopScope(
+        canPop: false,
         child: Scaffold(
           appBar: AppBar(
             automaticallyImplyLeading: false,

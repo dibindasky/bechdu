@@ -31,4 +31,6 @@ class ApiEndPoints {
   static const String orderCancel = 'order/{order_id}/user-cancel';
   static const String homePageBanners = 'dynamic/mobile/getHomePage';
   static const String dateTime = 'dynamic/calendar/next-10-days';
+  static const String invoiceDownLoad =
+      'order/generate-invoice/{number}/{order_id}';
 }

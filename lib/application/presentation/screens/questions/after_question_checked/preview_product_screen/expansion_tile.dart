@@ -11,24 +11,28 @@ class ExpansionTileCustom extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ExpansionTile(
-      trailing: const Icon(
-        Icons.arrow_drop_down,
-        color: kWhite,
-      ),
-      expandedAlignment: Alignment.center,
-      leading: const Icon(
-        Icons.mobile_friendly_sharp,
-        color: kGreenPrimary,
-        size: 17,
-      ),
-      backgroundColor: klightwhite,
-      maintainState: true,
-      shape: const BeveledRectangleBorder(),
-      title: Text(
-        name,
-        style: textHeadBold1,
-      ),
+    return Column(
+      children: [
+        ExpansionTile(
+          trailing: const Icon(
+            Icons.arrow_drop_down,
+            color: kWhite,
+          ),
+          expandedAlignment: Alignment.center,
+          leading: const Icon(
+            Icons.mobile_friendly_sharp,
+            color: kGreenPrimary,
+            size: 17,
+          ),
+          backgroundColor: klightwhite,
+          maintainState: true,
+          shape: const BeveledRectangleBorder(),
+          title: Text(
+            name,
+            style: textHeadBold1,
+          ),
+        ),
+      ],
     );
   }
 }
