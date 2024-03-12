@@ -15,13 +15,9 @@ import 'package:beachdu/application/presentation/screens/home/search_feild/custo
 import 'package:beachdu/application/presentation/screens/home/widgets/join_our_team.dart';
 import 'package:beachdu/application/presentation/screens/home/hot_deals/hot_deals.dart';
 import 'package:beachdu/application/presentation/screens/home/what_to_sell/what_to_sell.dart';
-
 import 'package:beachdu/application/presentation/utils/constants.dart';
-import 'package:beachdu/application/presentation/utils/confirmation_daillogue/exit_app_dailogue.dart';
-
 import 'package:beachdu/application/presentation/utils/no_internet_banner.dart';
 import 'package:beachdu/data/secure_storage/secure_fire_store.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -44,8 +40,9 @@ class _ScreenHomeState extends State<ScreenHome> {
     scrollController.addListener(() {
       _scrollCallBack();
     });
-    _locationCheckTimer = Timer.periodic(
-        const Duration(seconds: 10), _checkLocationAndShowScreen);
+    Future.delayed(
+      const Duration(seconds: 10),
+    ).then((value) => _checkLocationAndShowScreen);
     super.initState();
   }
 
@@ -70,11 +67,9 @@ class _ScreenHomeState extends State<ScreenHome> {
     bool isLocationSelected = await SecureSotrage.getPicodeBool();
     if (!isLocationSelected && homeScreens.value != 1) {
       _locationCheckTimer.cancel();
-      Navigator.of(context)
-          .push(MaterialPageRoute(
-            builder: (context) => const ScreenLocations(),
-          ))
-          .then((_) => _locationCheckTimer.cancel());
+      Navigator.of(context).push(MaterialPageRoute(
+        builder: (context) => const ScreenLocations(),
+      ));
     }
   }
 

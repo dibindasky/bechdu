@@ -110,6 +110,23 @@ void sizeFinder(BuildContext context) {
   sWidth = size.width > 450 ? 450 : size.width;
 }
 
+Color getStatusColor(String status) {
+  switch (status) {
+    case "new":
+      return kBluePrimary;
+    case "cancelled":
+      return kRed;
+    case "Completed":
+      return kGreenPrimary;
+    case "processing":
+      return kYellowPrimary;
+    case "rescheduled":
+      return kYellowPrimary;
+    default:
+      return kBluePrimary;
+  }
+}
+
 List<String> textListFirst = [
   'Hi There!',
   'Want to sell',

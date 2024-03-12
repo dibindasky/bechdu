@@ -25,7 +25,7 @@ class GlobalProductSearch extends StatelessWidget {
             child: Lottie.asset(emptyLottie),
           );
         }
-        if (state.products != null || state.products!.isNotEmpty) {
+        else  {
           final products = state.products!;
           return Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),

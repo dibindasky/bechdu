@@ -60,14 +60,7 @@ class MyOrderContainer extends StatelessWidget {
                   ClipRRect(
                     borderRadius: kRadius5,
                     child: ColoredBox(
-                      color: data.status == 'new'
-                          ? kBlueLight
-                          : data.status == 'cancelled'
-                              ? kRed
-                              : data.status == 'processing' &&
-                                      data.status == 'rescheduled'
-                                  ? Colors.yellow
-                                  : kGreenLight,
+                      color: getStatusColor(data.status!),
                       child: Padding(
                         padding: const EdgeInsets.symmetric(
                           horizontal: 10,
@@ -175,7 +168,8 @@ class MyOrderContainer extends StatelessWidget {
                                         showSnack(
                                           context: context,
                                           message:
-                                              'Cancellation reason must have atleast 10 charectors',
+                                              'Cancellation reason must have atleast 10 character',
+                                          color: kRed,
                                         );
                                       }
                                     },
