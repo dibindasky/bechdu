@@ -24,8 +24,7 @@ class GlobalProductSearch extends StatelessWidget {
           return Center(
             child: Lottie.asset(emptyLottie),
           );
-        }
-        else  {
+        } else {
           final products = state.products!;
           return Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -140,10 +139,6 @@ class GlobalProductSearch extends StatelessWidget {
                 ],
               ),
             ),
-          );
-        } else {
-          return Center(
-            child: Lottie.asset(emptyLottie),
           );
         }
       },
