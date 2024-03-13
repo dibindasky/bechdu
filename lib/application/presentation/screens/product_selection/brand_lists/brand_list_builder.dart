@@ -3,6 +3,7 @@ import 'package:beachdu/application/business_logic/brands_bloc/category_bloc_blo
 import 'package:beachdu/application/presentation/screens/product_selection/brand_lists/brand_container.dart';
 
 import 'package:beachdu/application/presentation/screens/product_selection/search_field/brand_search_field.dart';
+import 'package:beachdu/application/presentation/utils/colors.dart';
 
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/application/presentation/utils/skeltons/skelton.dart';
@@ -25,7 +26,11 @@ class BrandListviewBuilder extends StatelessWidget {
             height: 00,
           );
         } else if (state.hasError) {
-          return const Center(child: Icon(Icons.refresh));
+          return const Center(
+            child: CircularProgressIndicator(
+              color: kGreenPrimary,
+            ),
+          );
         } else {
           if (state.filteredBrands == null ||
               state.getSingleCategoryResponce == null) {

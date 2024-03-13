@@ -136,7 +136,8 @@ class ScreenLocations extends StatelessWidget {
                                                     .filteredLocations![index],
                                               ),
                                             );
-                                        // if (state.isLogin) {
+
+                                        //picked location update even
                                         CityUpdateRequestModel
                                             cityUpdateRequestModel =
                                             CityUpdateRequestModel(
@@ -148,8 +149,6 @@ class ScreenLocations extends StatelessWidget {
                                                     cityUpdateRequestModel,
                                               ),
                                             );
-                                        //}
-                                        // //picked location update event
 
                                         //Navigating to pincode screen
                                         Navigator.of(context)

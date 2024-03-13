@@ -43,7 +43,7 @@ class TopImage extends StatelessWidget {
                   "${ApiEndPoints.baseUrlImagePath}${Uri.encodeComponent(image)}";
               return SizedBox(
                 height: fromWhere == FromWhere.recalculateWithAmount
-                    ? sWidth * .44
+                    ? sWidth * .36
                     : fromWhere == FromWhere.checkoutAndPickupScreen
                         ? sWidth * .6
                         : sWidth * .34,
@@ -61,11 +61,14 @@ class TopImage extends StatelessWidget {
                         SizedBox(
                           height: fromWhere == FromWhere.checkoutAndPickupScreen
                               ? sWidth * .38
-                              : sWidth * .24,
+                              : sWidth * .30,
                           width: fromWhere == FromWhere.checkoutAndPickupScreen
                               ? sWidth * .34
-                              : sWidth * .21,
-                          child: Image.network(url),
+                              : sWidth * .2,
+                          child: Image.network(
+                            url,
+                            fit: BoxFit.fill,
+                          ),
                         ),
                         fromWhere == FromWhere.pickupScreen ||
                                 fromWhere == FromWhere.checkoutAndPickupScreen
@@ -87,7 +90,6 @@ class TopImage extends StatelessWidget {
                                         color: kWhite,
                                         overflow: TextOverflow.ellipsis,
                                       ),
-                                      maxLines: 3,
                                     ),
                                     kWidth10,
                                     Text(

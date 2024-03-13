@@ -9,6 +9,7 @@ class SecureSotrage {
   static String loginKey = 'login_key';
   static String locationkey = 'location_key';
   static String pincodekey = 'pincode_key';
+  static String locationBool = 'location_bool';
   static String pincodeBool = 'pincode_bool';
   static String phoneNumberKey = 'phone_number';
 
@@ -87,9 +88,20 @@ class SecureSotrage {
     return isPincode ?? '';
   }
 
+  static Future<void> setLocationBool() async {
+    log("setPicodeBool ==>>");
+    await secureStorage.write(key: locationBool, value: '1');
+  }
+
   static Future<void> setPicodeBool() async {
     log("setPicodeBool ==>>");
     await secureStorage.write(key: pincodeBool, value: '1');
+  }
+
+  static Future<bool> getLocationBool() async {
+    final isPincode = await secureStorage.read(key: locationBool);
+    log("getPicodeBool ==>> ${isPincode == '1'}");
+    return isPincode == '1';
   }
 
   static Future<bool> getPicodeBool() async {

@@ -1,6 +1,4 @@
-import 'dart:convert';
 import 'dart:developer';
-import 'dart:typed_data';
 import 'package:beachdu/data/pdf_generator.dart';
 import 'package:beachdu/data/secure_storage/secure_fire_store.dart';
 import 'package:beachdu/domain/core/api_endpoints/api_endpoints.dart';
@@ -175,7 +173,7 @@ class PlaceOrderService implements PlaceOrderRepo {
         if (response.statusCode == 200) {
           return Right(response.data);
         } else {
-          final errorMessage = response.data['error'] ?? 'Download failed';
+          const errorMessage = 'Download failed';
           return Left(Failure(message: errorMessage));
         }
       }

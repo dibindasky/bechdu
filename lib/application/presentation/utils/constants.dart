@@ -34,9 +34,10 @@ const profileImage =
 const orderSuccessNetwrokImage =
     'https://s3-alpha-sig.figma.com/img/0c88/1cbc/8744bb18caf793eaadc694435afa0ebf?Expires=1707091200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=A017~DJZjkzYM6URwdWMSAgfe5uIFNxttsFoqrT4I3j9ykGTh5i~h-aFqbwChF6LYA~JBB9omy8FkuD4bDqi~VX~68PIeQiXTeIkkHcaGigVbdZtc~VvKFW1gXkBu-3I9ionTIp15XhV7TJzpVoangnY0EB-CylKRhhfvc4Y0V7OQ2cWNiOwHuuOZlqnjko0q~N5-JQUsZcp-LGmJVJD342tYj3EdZTZ0Yw860ZMN2aD2YQkTO4HnSHHQK5eLg-wOEay2hLAMn92n6VS6PmPy6PlaOoNH9rZbte2Ni-Z3dc82QIx4vhUbr2q7WEFMD4ROn6vs5RDVDlzRIXeESZsMg__';
 const orderSuccessLottie = 'assets/images/orderSuccessBechdu.jpeg';
-const onBoardingpersonScreen = 'assets/images/onboarding_first_person.png';
-const onBoardingsecondScreen = 'assets/images/mobile image onboard.png';
-const onBoardingThirdScreen = 'assets/images/onbard screen third image.png';
+const onBoardingpersonScreen =
+    'assets/images/personAnimationPich-removebg-preview.png';
+const onBoardingsecondScreen = 'assets/images/onboard second_phone image.jpeg';
+const onBoardingThirdScreen = 'assets/images/onboarding icon third.png';
 const locationbackgropundImage = 'assets/images/location_backgrounds.png';
 const emptyLottie = 'assets/lottie/animation_lmyr4fc2.json';
 double sHeight = 900;

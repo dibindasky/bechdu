@@ -68,13 +68,6 @@ class BottomSection extends StatelessWidget {
           builder: (context, questionBlo) {
             return BlocBuilder<AuthBloc, AuthState>(
               builder: (context, state) {
-                if (state.hasError) {
-                  showSnack(
-                    context: context,
-                    message: state.message ?? errorMessage,
-                    color: kRed,
-                  );
-                }
                 if (state.otpVerifyResponceModel != null) {
                   log('condition pick in condition');
                   PickupQuestionModel pickepQuestionModel = PickupQuestionModel(

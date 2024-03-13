@@ -74,6 +74,8 @@ class LocationBloc extends Bloc<LocationEvent, LocationState> {
     final data = await locationRepo.locationUpdation(
       cityUpdateRequestModel: event.cityUpdateRequestModel,
     );
+    await SecureSotrage.setLocationBool();
+    await SecureSotrage.setPincode(pincode: '');
     data.fold((falure) => null, (successupdation) async {
       emit(
         state.copyWith(

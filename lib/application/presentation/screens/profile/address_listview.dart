@@ -70,13 +70,17 @@ class _AddressListViewState extends State<AddressListView> {
                       );
                       // Address pick request user object creation
                       User user = User();
-                      String email =
-                          context.read<PlaceOrderBloc>().emailController.text;
-                      String name =
-                          context.read<PlaceOrderBloc>().nameController.text;
+                      String email = context
+                          .read<ProfileBloc>()
+                          .profileEmailController
+                          .text;
+                      String name = context
+                          .read<ProfileBloc>()
+                          .profileNameController
+                          .text;
                       String addPhone = context
-                          .read<PlaceOrderBloc>()
-                          .additionalNumberController
+                          .read<ProfileBloc>()
+                          .profileAddPhoneController
                           .text;
                       user = user.copyWith(
                         address: state.address[index],

@@ -1,21 +1,22 @@
 import 'dart:async';
-import 'dart:developer';
 import 'package:beachdu/application/business_logic/auth/auth_bloc.dart';
 import 'package:beachdu/application/presentation/routes/routes.dart';
 import 'package:beachdu/application/presentation/screens/auth/otp_screen/widgets/bottom_section.dart';
 import 'package:beachdu/application/presentation/screens/auth/otp_screen/widgets/logo_to_countdown.dart';
 import 'package:beachdu/application/presentation/screens/auth/otp_screen/widgets/pinput.dart';
 import 'package:beachdu/application/presentation/screens/product_selection/product_screen.dart';
+import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/application/presentation/utils/enums/type_display.dart';
 import 'package:beachdu/application/presentation/utils/snackbar/snackbar.dart';
-
+import 'package:beachdu/domain/core/failure/failure.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class OTPScreen extends StatelessWidget {
   const OTPScreen({super.key, required this.loginWay});
   final LoginWay loginWay;
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -34,6 +35,13 @@ class OTPScreen extends StatelessWidget {
           ),
           body: BlocListener<AuthBloc, AuthState>(
             listener: (context, state) {
+              if (state.hasError) {
+                showSnack(
+                  context: context,
+                  message: state.message ?? errorMessage,
+                  color: kRed,
+                );
+              }
               if (state.otpVerifyResponceModel != null) {
                 showSnack(context: context, message: 'Login Successfully');
                 loginOrSignup(context);

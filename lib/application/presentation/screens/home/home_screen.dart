@@ -15,6 +15,7 @@ import 'package:beachdu/application/presentation/screens/home/search_feild/custo
 import 'package:beachdu/application/presentation/screens/home/widgets/join_our_team.dart';
 import 'package:beachdu/application/presentation/screens/home/hot_deals/hot_deals.dart';
 import 'package:beachdu/application/presentation/screens/home/what_to_sell/what_to_sell.dart';
+import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/application/presentation/utils/no_internet_banner.dart';
 import 'package:beachdu/data/secure_storage/secure_fire_store.dart';
@@ -75,9 +76,10 @@ class _ScreenHomeState extends State<ScreenHome> {
   Widget build(BuildContext context) {
     WidgetsBinding.instance.addPostFrameCallback(
       (timeStamp) async {
-        bool islocation = await SecureSotrage.getPicodeBool();
-        if (!islocation) {
-          Future.delayed(const Duration(seconds: 10))
+        bool isLocation = await SecureSotrage.getLocationBool();
+        bool isPincode = await SecureSotrage.getPicodeBool();
+        if (!isLocation || !isPincode) {
+          Future.delayed(const Duration(seconds: 20))
               .then((value) => Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) => const ScreenLocations(),
                   )));
@@ -141,28 +143,9 @@ class _ScreenHomeState extends State<ScreenHome> {
                       child: BlocBuilder<HomeBloc, HomeState>(
                         builder: (context, state) {
                           if (state.hasError) {
-                            return Align(
-                              alignment: Alignment.topCenter,
-                              child: IconButton(
-                                onPressed: () {
-                                  context
-                                      .read<LocationBloc>()
-                                      .add(const LocationEvent.locationPick());
-                                  context
-                                      .read<HomeBloc>()
-                                      .add(const HomeEvent.homePageBanners());
-                                  context.read<HomeBloc>().add(
-                                      const HomeEvent.getBestSellingProducts());
-                                  context
-                                      .read<CategoryBlocBloc>()
-                                      .add(const GetSingleCategoryBrands());
-                                  context
-                                      .read<HomeBloc>()
-                                      .add(const HomeEvent.getAllCategory());
-                                },
-                                icon: const Icon(
-                                  Icons.refresh,
-                                ),
+                            return const Center(
+                              child: CircularProgressIndicator(
+                                color: kGreenPrimary,
                               ),
                             );
                           }

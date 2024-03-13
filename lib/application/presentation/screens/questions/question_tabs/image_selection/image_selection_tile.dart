@@ -33,6 +33,11 @@ class _GridTileQuestionState extends State<GridTileQuestion> {
   void didUpdateWidget(GridTileQuestion oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (widget.question != oldWidget.question) {
+      final data = widget.question.image;
+      String base64String = data ?? dummyImage;
+      base64String =
+          base64String.replaceFirst(RegExp(r'data:image/[^;]+;base64,'), '');
+      imageBytes = base64Decode(base64String);
       setState(() {
         selected = false;
       });
@@ -52,11 +57,13 @@ class _GridTileQuestionState extends State<GridTileQuestion> {
   }
 
   @override
+  void deactivate() {
+    super.deactivate();
+    imageBytes = null; // Clear image data when widget is removed
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final data = widget.question.image;
-    String base64String = data ?? dummyImage;
-    base64String =
-        base64String.replaceFirst(RegExp(r'data:image/[^;]+;base64,'), '');
     return GestureDetector(
       onTap: () {
         SelectedOption selectedOption = SelectedOption(
@@ -90,10 +97,7 @@ class _GridTileQuestionState extends State<GridTileQuestion> {
               AspectRatio(
                 aspectRatio: 1,
                 child: imageBytes != null
-                    ? Image.memory(
-                        imageBytes!,
-                        fit: BoxFit.cover,
-                      )
+                    ? Image.memory(imageBytes!)
                     : const SizedBox(
                         child: Center(child: CircularProgressIndicator()),
                       ),
@@ -102,7 +106,7 @@ class _GridTileQuestionState extends State<GridTileQuestion> {
                 child: Text(
                   widget.question.description ?? 'No tittle',
                   style: textHeadBold1.copyWith(
-                    fontSize: sWidth * .032,
+                    fontSize: sWidth * .036,
                   ),
                   textAlign: TextAlign.center,
                 ),

@@ -41,7 +41,7 @@ mixin _$PlaceOrderEvent {
     required TResult Function() userNumber,
     required TResult Function() removeAllFieldData,
     required TResult Function() promoCodeSuccess,
-    required TResult Function(String orderId) invoiceDownload,
+    required TResult Function(bool isLoad, String orderId) invoiceDownload,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -66,7 +66,7 @@ mixin _$PlaceOrderEvent {
     TResult? Function()? userNumber,
     TResult? Function()? removeAllFieldData,
     TResult? Function()? promoCodeSuccess,
-    TResult? Function(String orderId)? invoiceDownload,
+    TResult? Function(bool isLoad, String orderId)? invoiceDownload,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -90,7 +90,7 @@ mixin _$PlaceOrderEvent {
     TResult Function()? userNumber,
     TResult Function()? removeAllFieldData,
     TResult Function()? promoCodeSuccess,
-    TResult Function(String orderId)? invoiceDownload,
+    TResult Function(bool isLoad, String orderId)? invoiceDownload,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -266,7 +266,7 @@ class _$GetPromoCodeImpl implements GetPromoCode {
     required TResult Function() userNumber,
     required TResult Function() removeAllFieldData,
     required TResult Function() promoCodeSuccess,
-    required TResult Function(String orderId) invoiceDownload,
+    required TResult Function(bool isLoad, String orderId) invoiceDownload,
   }) {
     return getPromoCode(promoCodeRequestModel);
   }
@@ -294,7 +294,7 @@ class _$GetPromoCodeImpl implements GetPromoCode {
     TResult? Function()? userNumber,
     TResult? Function()? removeAllFieldData,
     TResult? Function()? promoCodeSuccess,
-    TResult? Function(String orderId)? invoiceDownload,
+    TResult? Function(bool isLoad, String orderId)? invoiceDownload,
   }) {
     return getPromoCode?.call(promoCodeRequestModel);
   }
@@ -321,7 +321,7 @@ class _$GetPromoCodeImpl implements GetPromoCode {
     TResult Function()? userNumber,
     TResult Function()? removeAllFieldData,
     TResult Function()? promoCodeSuccess,
-    TResult Function(String orderId)? invoiceDownload,
+    TResult Function(bool isLoad, String orderId)? invoiceDownload,
     required TResult orElse(),
   }) {
     if (getPromoCode != null) {
@@ -507,7 +507,7 @@ class _$AbandendOrderImpl implements AbandendOrder {
     required TResult Function() userNumber,
     required TResult Function() removeAllFieldData,
     required TResult Function() promoCodeSuccess,
-    required TResult Function(String orderId) invoiceDownload,
+    required TResult Function(bool isLoad, String orderId) invoiceDownload,
   }) {
     return abandendOrder(abandendOrderRequestModel);
   }
@@ -535,7 +535,7 @@ class _$AbandendOrderImpl implements AbandendOrder {
     TResult? Function()? userNumber,
     TResult? Function()? removeAllFieldData,
     TResult? Function()? promoCodeSuccess,
-    TResult? Function(String orderId)? invoiceDownload,
+    TResult? Function(bool isLoad, String orderId)? invoiceDownload,
   }) {
     return abandendOrder?.call(abandendOrderRequestModel);
   }
@@ -562,7 +562,7 @@ class _$AbandendOrderImpl implements AbandendOrder {
     TResult Function()? userNumber,
     TResult Function()? removeAllFieldData,
     TResult Function()? promoCodeSuccess,
-    TResult Function(String orderId)? invoiceDownload,
+    TResult Function(bool isLoad, String orderId)? invoiceDownload,
     required TResult orElse(),
   }) {
     if (abandendOrder != null) {
@@ -720,7 +720,7 @@ class _$GetDatetimeImpl implements GetDatetime {
     required TResult Function() userNumber,
     required TResult Function() removeAllFieldData,
     required TResult Function() promoCodeSuccess,
-    required TResult Function(String orderId) invoiceDownload,
+    required TResult Function(bool isLoad, String orderId) invoiceDownload,
   }) {
     return getDatetime();
   }
@@ -748,7 +748,7 @@ class _$GetDatetimeImpl implements GetDatetime {
     TResult? Function()? userNumber,
     TResult? Function()? removeAllFieldData,
     TResult? Function()? promoCodeSuccess,
-    TResult? Function(String orderId)? invoiceDownload,
+    TResult? Function(bool isLoad, String orderId)? invoiceDownload,
   }) {
     return getDatetime?.call();
   }
@@ -775,7 +775,7 @@ class _$GetDatetimeImpl implements GetDatetime {
     TResult Function()? userNumber,
     TResult Function()? removeAllFieldData,
     TResult Function()? promoCodeSuccess,
-    TResult Function(String orderId)? invoiceDownload,
+    TResult Function(bool isLoad, String orderId)? invoiceDownload,
     required TResult orElse(),
   }) {
     if (getDatetime != null) {
@@ -926,7 +926,7 @@ class _$OrderPlacingImpl implements OrderPlacing {
     required TResult Function() userNumber,
     required TResult Function() removeAllFieldData,
     required TResult Function() promoCodeSuccess,
-    required TResult Function(String orderId) invoiceDownload,
+    required TResult Function(bool isLoad, String orderId) invoiceDownload,
   }) {
     return orderPlacing();
   }
@@ -954,7 +954,7 @@ class _$OrderPlacingImpl implements OrderPlacing {
     TResult? Function()? userNumber,
     TResult? Function()? removeAllFieldData,
     TResult? Function()? promoCodeSuccess,
-    TResult? Function(String orderId)? invoiceDownload,
+    TResult? Function(bool isLoad, String orderId)? invoiceDownload,
   }) {
     return orderPlacing?.call();
   }
@@ -981,7 +981,7 @@ class _$OrderPlacingImpl implements OrderPlacing {
     TResult Function()? userNumber,
     TResult Function()? removeAllFieldData,
     TResult Function()? promoCodeSuccess,
-    TResult Function(String orderId)? invoiceDownload,
+    TResult Function(bool isLoad, String orderId)? invoiceDownload,
     required TResult orElse(),
   }) {
     if (orderPlacing != null) {
@@ -1158,7 +1158,7 @@ class _$GetOrdersImpl implements GetOrders {
     required TResult Function() userNumber,
     required TResult Function() removeAllFieldData,
     required TResult Function() promoCodeSuccess,
-    required TResult Function(String orderId) invoiceDownload,
+    required TResult Function(bool isLoad, String orderId) invoiceDownload,
   }) {
     return getOrders(isLoad);
   }
@@ -1186,7 +1186,7 @@ class _$GetOrdersImpl implements GetOrders {
     TResult? Function()? userNumber,
     TResult? Function()? removeAllFieldData,
     TResult? Function()? promoCodeSuccess,
-    TResult? Function(String orderId)? invoiceDownload,
+    TResult? Function(bool isLoad, String orderId)? invoiceDownload,
   }) {
     return getOrders?.call(isLoad);
   }
@@ -1213,7 +1213,7 @@ class _$GetOrdersImpl implements GetOrders {
     TResult Function()? userNumber,
     TResult Function()? removeAllFieldData,
     TResult Function()? promoCodeSuccess,
-    TResult Function(String orderId)? invoiceDownload,
+    TResult Function(bool isLoad, String orderId)? invoiceDownload,
     required TResult orElse(),
   }) {
     if (getOrders != null) {
@@ -1410,7 +1410,7 @@ class _$OrderCancelImpl implements OrderCancel {
     required TResult Function() userNumber,
     required TResult Function() removeAllFieldData,
     required TResult Function() promoCodeSuccess,
-    required TResult Function(String orderId) invoiceDownload,
+    required TResult Function(bool isLoad, String orderId) invoiceDownload,
   }) {
     return orderCancel(orderCancelationRequestModel, orderId);
   }
@@ -1438,7 +1438,7 @@ class _$OrderCancelImpl implements OrderCancel {
     TResult? Function()? userNumber,
     TResult? Function()? removeAllFieldData,
     TResult? Function()? promoCodeSuccess,
-    TResult? Function(String orderId)? invoiceDownload,
+    TResult? Function(bool isLoad, String orderId)? invoiceDownload,
   }) {
     return orderCancel?.call(orderCancelationRequestModel, orderId);
   }
@@ -1465,7 +1465,7 @@ class _$OrderCancelImpl implements OrderCancel {
     TResult Function()? userNumber,
     TResult Function()? removeAllFieldData,
     TResult Function()? promoCodeSuccess,
-    TResult Function(String orderId)? invoiceDownload,
+    TResult Function(bool isLoad, String orderId)? invoiceDownload,
     required TResult orElse(),
   }) {
     if (orderCancel != null) {
@@ -1652,7 +1652,7 @@ class _$ProductDetailsPickImpl implements ProductDetailsPick {
     required TResult Function() userNumber,
     required TResult Function() removeAllFieldData,
     required TResult Function() promoCodeSuccess,
-    required TResult Function(String orderId) invoiceDownload,
+    required TResult Function(bool isLoad, String orderId) invoiceDownload,
   }) {
     return productDetailsPick(productDetails);
   }
@@ -1680,7 +1680,7 @@ class _$ProductDetailsPickImpl implements ProductDetailsPick {
     TResult? Function()? userNumber,
     TResult? Function()? removeAllFieldData,
     TResult? Function()? promoCodeSuccess,
-    TResult? Function(String orderId)? invoiceDownload,
+    TResult? Function(bool isLoad, String orderId)? invoiceDownload,
   }) {
     return productDetailsPick?.call(productDetails);
   }
@@ -1707,7 +1707,7 @@ class _$ProductDetailsPickImpl implements ProductDetailsPick {
     TResult Function()? userNumber,
     TResult Function()? removeAllFieldData,
     TResult Function()? promoCodeSuccess,
-    TResult Function(String orderId)? invoiceDownload,
+    TResult Function(bool isLoad, String orderId)? invoiceDownload,
     required TResult orElse(),
   }) {
     if (productDetailsPick != null) {
@@ -1891,7 +1891,7 @@ class _$PromoCodePickImpl implements PromoCodePick {
     required TResult Function() userNumber,
     required TResult Function() removeAllFieldData,
     required TResult Function() promoCodeSuccess,
-    required TResult Function(String orderId) invoiceDownload,
+    required TResult Function(bool isLoad, String orderId) invoiceDownload,
   }) {
     return promoCodePick(promo);
   }
@@ -1919,7 +1919,7 @@ class _$PromoCodePickImpl implements PromoCodePick {
     TResult? Function()? userNumber,
     TResult? Function()? removeAllFieldData,
     TResult? Function()? promoCodeSuccess,
-    TResult? Function(String orderId)? invoiceDownload,
+    TResult? Function(bool isLoad, String orderId)? invoiceDownload,
   }) {
     return promoCodePick?.call(promo);
   }
@@ -1946,7 +1946,7 @@ class _$PromoCodePickImpl implements PromoCodePick {
     TResult Function()? userNumber,
     TResult Function()? removeAllFieldData,
     TResult Function()? promoCodeSuccess,
-    TResult Function(String orderId)? invoiceDownload,
+    TResult Function(bool isLoad, String orderId)? invoiceDownload,
     required TResult orElse(),
   }) {
     if (promoCodePick != null) {
@@ -2137,7 +2137,7 @@ class _$AddressPickImpl implements AddressPick {
     required TResult Function() userNumber,
     required TResult Function() removeAllFieldData,
     required TResult Function() promoCodeSuccess,
-    required TResult Function(String orderId) invoiceDownload,
+    required TResult Function(bool isLoad, String orderId) invoiceDownload,
   }) {
     return addressPick(user, promo);
   }
@@ -2165,7 +2165,7 @@ class _$AddressPickImpl implements AddressPick {
     TResult? Function()? userNumber,
     TResult? Function()? removeAllFieldData,
     TResult? Function()? promoCodeSuccess,
-    TResult? Function(String orderId)? invoiceDownload,
+    TResult? Function(bool isLoad, String orderId)? invoiceDownload,
   }) {
     return addressPick?.call(user, promo);
   }
@@ -2192,7 +2192,7 @@ class _$AddressPickImpl implements AddressPick {
     TResult Function()? userNumber,
     TResult Function()? removeAllFieldData,
     TResult Function()? promoCodeSuccess,
-    TResult Function(String orderId)? invoiceDownload,
+    TResult Function(bool isLoad, String orderId)? invoiceDownload,
     required TResult orElse(),
   }) {
     if (addressPick != null) {
@@ -2377,7 +2377,7 @@ class _$PaymentOptionImpl implements PaymentOption {
     required TResult Function() userNumber,
     required TResult Function() removeAllFieldData,
     required TResult Function() promoCodeSuccess,
-    required TResult Function(String orderId) invoiceDownload,
+    required TResult Function(bool isLoad, String orderId) invoiceDownload,
   }) {
     return paymentOption(payment);
   }
@@ -2405,7 +2405,7 @@ class _$PaymentOptionImpl implements PaymentOption {
     TResult? Function()? userNumber,
     TResult? Function()? removeAllFieldData,
     TResult? Function()? promoCodeSuccess,
-    TResult? Function(String orderId)? invoiceDownload,
+    TResult? Function(bool isLoad, String orderId)? invoiceDownload,
   }) {
     return paymentOption?.call(payment);
   }
@@ -2432,7 +2432,7 @@ class _$PaymentOptionImpl implements PaymentOption {
     TResult Function()? userNumber,
     TResult Function()? removeAllFieldData,
     TResult Function()? promoCodeSuccess,
-    TResult Function(String orderId)? invoiceDownload,
+    TResult Function(bool isLoad, String orderId)? invoiceDownload,
     required TResult orElse(),
   }) {
     if (paymentOption != null) {
@@ -2625,7 +2625,7 @@ class _$SelectedOptionEventImpl implements SelectedOptionEvent {
     required TResult Function() userNumber,
     required TResult Function() removeAllFieldData,
     required TResult Function() promoCodeSuccess,
-    required TResult Function(String orderId) invoiceDownload,
+    required TResult Function(bool isLoad, String orderId) invoiceDownload,
   }) {
     return selectedOptionEvent(selectedOption);
   }
@@ -2653,7 +2653,7 @@ class _$SelectedOptionEventImpl implements SelectedOptionEvent {
     TResult? Function()? userNumber,
     TResult? Function()? removeAllFieldData,
     TResult? Function()? promoCodeSuccess,
-    TResult? Function(String orderId)? invoiceDownload,
+    TResult? Function(bool isLoad, String orderId)? invoiceDownload,
   }) {
     return selectedOptionEvent?.call(selectedOption);
   }
@@ -2680,7 +2680,7 @@ class _$SelectedOptionEventImpl implements SelectedOptionEvent {
     TResult Function()? userNumber,
     TResult Function()? removeAllFieldData,
     TResult Function()? promoCodeSuccess,
-    TResult Function(String orderId)? invoiceDownload,
+    TResult Function(bool isLoad, String orderId)? invoiceDownload,
     required TResult orElse(),
   }) {
     if (selectedOptionEvent != null) {
@@ -2838,7 +2838,7 @@ class _$RemoveAppliedPromoImpl implements RemoveAppliedPromo {
     required TResult Function() userNumber,
     required TResult Function() removeAllFieldData,
     required TResult Function() promoCodeSuccess,
-    required TResult Function(String orderId) invoiceDownload,
+    required TResult Function(bool isLoad, String orderId) invoiceDownload,
   }) {
     return removeAppliedPromo();
   }
@@ -2866,7 +2866,7 @@ class _$RemoveAppliedPromoImpl implements RemoveAppliedPromo {
     TResult? Function()? userNumber,
     TResult? Function()? removeAllFieldData,
     TResult? Function()? promoCodeSuccess,
-    TResult? Function(String orderId)? invoiceDownload,
+    TResult? Function(bool isLoad, String orderId)? invoiceDownload,
   }) {
     return removeAppliedPromo?.call();
   }
@@ -2893,7 +2893,7 @@ class _$RemoveAppliedPromoImpl implements RemoveAppliedPromo {
     TResult Function()? userNumber,
     TResult Function()? removeAllFieldData,
     TResult Function()? promoCodeSuccess,
-    TResult Function(String orderId)? invoiceDownload,
+    TResult Function(bool isLoad, String orderId)? invoiceDownload,
     required TResult orElse(),
   }) {
     if (removeAppliedPromo != null) {
@@ -3072,7 +3072,7 @@ class _$PickupDetailsPickImpl implements PickupDetailsPick {
     required TResult Function() userNumber,
     required TResult Function() removeAllFieldData,
     required TResult Function() promoCodeSuccess,
-    required TResult Function(String orderId) invoiceDownload,
+    required TResult Function(bool isLoad, String orderId) invoiceDownload,
   }) {
     return pickupDetailsPick(pickUpDetails);
   }
@@ -3100,7 +3100,7 @@ class _$PickupDetailsPickImpl implements PickupDetailsPick {
     TResult? Function()? userNumber,
     TResult? Function()? removeAllFieldData,
     TResult? Function()? promoCodeSuccess,
-    TResult? Function(String orderId)? invoiceDownload,
+    TResult? Function(bool isLoad, String orderId)? invoiceDownload,
   }) {
     return pickupDetailsPick?.call(pickUpDetails);
   }
@@ -3127,7 +3127,7 @@ class _$PickupDetailsPickImpl implements PickupDetailsPick {
     TResult Function()? userNumber,
     TResult Function()? removeAllFieldData,
     TResult Function()? promoCodeSuccess,
-    TResult Function(String orderId)? invoiceDownload,
+    TResult Function(bool isLoad, String orderId)? invoiceDownload,
     required TResult orElse(),
   }) {
     if (pickupDetailsPick != null) {
@@ -3284,7 +3284,7 @@ class _$UserNumberImpl implements UserNumber {
     required TResult Function() userNumber,
     required TResult Function() removeAllFieldData,
     required TResult Function() promoCodeSuccess,
-    required TResult Function(String orderId) invoiceDownload,
+    required TResult Function(bool isLoad, String orderId) invoiceDownload,
   }) {
     return userNumber();
   }
@@ -3312,7 +3312,7 @@ class _$UserNumberImpl implements UserNumber {
     TResult? Function()? userNumber,
     TResult? Function()? removeAllFieldData,
     TResult? Function()? promoCodeSuccess,
-    TResult? Function(String orderId)? invoiceDownload,
+    TResult? Function(bool isLoad, String orderId)? invoiceDownload,
   }) {
     return userNumber?.call();
   }
@@ -3339,7 +3339,7 @@ class _$UserNumberImpl implements UserNumber {
     TResult Function()? userNumber,
     TResult Function()? removeAllFieldData,
     TResult Function()? promoCodeSuccess,
-    TResult Function(String orderId)? invoiceDownload,
+    TResult Function(bool isLoad, String orderId)? invoiceDownload,
     required TResult orElse(),
   }) {
     if (userNumber != null) {
@@ -3490,7 +3490,7 @@ class _$RemoveAllFieldDataImpl implements RemoveAllFieldData {
     required TResult Function() userNumber,
     required TResult Function() removeAllFieldData,
     required TResult Function() promoCodeSuccess,
-    required TResult Function(String orderId) invoiceDownload,
+    required TResult Function(bool isLoad, String orderId) invoiceDownload,
   }) {
     return removeAllFieldData();
   }
@@ -3518,7 +3518,7 @@ class _$RemoveAllFieldDataImpl implements RemoveAllFieldData {
     TResult? Function()? userNumber,
     TResult? Function()? removeAllFieldData,
     TResult? Function()? promoCodeSuccess,
-    TResult? Function(String orderId)? invoiceDownload,
+    TResult? Function(bool isLoad, String orderId)? invoiceDownload,
   }) {
     return removeAllFieldData?.call();
   }
@@ -3545,7 +3545,7 @@ class _$RemoveAllFieldDataImpl implements RemoveAllFieldData {
     TResult Function()? userNumber,
     TResult Function()? removeAllFieldData,
     TResult Function()? promoCodeSuccess,
-    TResult Function(String orderId)? invoiceDownload,
+    TResult Function(bool isLoad, String orderId)? invoiceDownload,
     required TResult orElse(),
   }) {
     if (removeAllFieldData != null) {
@@ -3696,7 +3696,7 @@ class _$PromoCodeSuccessImpl implements PromoCodeSuccess {
     required TResult Function() userNumber,
     required TResult Function() removeAllFieldData,
     required TResult Function() promoCodeSuccess,
-    required TResult Function(String orderId) invoiceDownload,
+    required TResult Function(bool isLoad, String orderId) invoiceDownload,
   }) {
     return promoCodeSuccess();
   }
@@ -3724,7 +3724,7 @@ class _$PromoCodeSuccessImpl implements PromoCodeSuccess {
     TResult? Function()? userNumber,
     TResult? Function()? removeAllFieldData,
     TResult? Function()? promoCodeSuccess,
-    TResult? Function(String orderId)? invoiceDownload,
+    TResult? Function(bool isLoad, String orderId)? invoiceDownload,
   }) {
     return promoCodeSuccess?.call();
   }
@@ -3751,7 +3751,7 @@ class _$PromoCodeSuccessImpl implements PromoCodeSuccess {
     TResult Function()? userNumber,
     TResult Function()? removeAllFieldData,
     TResult Function()? promoCodeSuccess,
-    TResult Function(String orderId)? invoiceDownload,
+    TResult Function(bool isLoad, String orderId)? invoiceDownload,
     required TResult orElse(),
   }) {
     if (promoCodeSuccess != null) {
@@ -3847,7 +3847,7 @@ abstract class _$$InvoiceDownloadImplCopyWith<$Res> {
           $Res Function(_$InvoiceDownloadImpl) then) =
       __$$InvoiceDownloadImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String orderId});
+  $Res call({bool isLoad, String orderId});
 }
 
 /// @nodoc
@@ -3861,9 +3861,14 @@ class __$$InvoiceDownloadImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? isLoad = null,
     Object? orderId = null,
   }) {
     return _then(_$InvoiceDownloadImpl(
+      isLoad: null == isLoad
+          ? _value.isLoad
+          : isLoad // ignore: cast_nullable_to_non_nullable
+              as bool,
       orderId: null == orderId
           ? _value.orderId
           : orderId // ignore: cast_nullable_to_non_nullable
@@ -3875,14 +3880,16 @@ class __$$InvoiceDownloadImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$InvoiceDownloadImpl implements InvoiceDownload {
-  const _$InvoiceDownloadImpl({required this.orderId});
+  const _$InvoiceDownloadImpl({required this.isLoad, required this.orderId});
 
+  @override
+  final bool isLoad;
   @override
   final String orderId;
 
   @override
   String toString() {
-    return 'PlaceOrderEvent.invoiceDownload(orderId: $orderId)';
+    return 'PlaceOrderEvent.invoiceDownload(isLoad: $isLoad, orderId: $orderId)';
   }
 
   @override
@@ -3890,11 +3897,12 @@ class _$InvoiceDownloadImpl implements InvoiceDownload {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$InvoiceDownloadImpl &&
+            (identical(other.isLoad, isLoad) || other.isLoad == isLoad) &&
             (identical(other.orderId, orderId) || other.orderId == orderId));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, orderId);
+  int get hashCode => Object.hash(runtimeType, isLoad, orderId);
 
   @JsonKey(ignore: true)
   @override
@@ -3929,9 +3937,9 @@ class _$InvoiceDownloadImpl implements InvoiceDownload {
     required TResult Function() userNumber,
     required TResult Function() removeAllFieldData,
     required TResult Function() promoCodeSuccess,
-    required TResult Function(String orderId) invoiceDownload,
+    required TResult Function(bool isLoad, String orderId) invoiceDownload,
   }) {
-    return invoiceDownload(orderId);
+    return invoiceDownload(isLoad, orderId);
   }
 
   @override
@@ -3957,9 +3965,9 @@ class _$InvoiceDownloadImpl implements InvoiceDownload {
     TResult? Function()? userNumber,
     TResult? Function()? removeAllFieldData,
     TResult? Function()? promoCodeSuccess,
-    TResult? Function(String orderId)? invoiceDownload,
+    TResult? Function(bool isLoad, String orderId)? invoiceDownload,
   }) {
-    return invoiceDownload?.call(orderId);
+    return invoiceDownload?.call(isLoad, orderId);
   }
 
   @override
@@ -3984,11 +3992,11 @@ class _$InvoiceDownloadImpl implements InvoiceDownload {
     TResult Function()? userNumber,
     TResult Function()? removeAllFieldData,
     TResult Function()? promoCodeSuccess,
-    TResult Function(String orderId)? invoiceDownload,
+    TResult Function(bool isLoad, String orderId)? invoiceDownload,
     required TResult orElse(),
   }) {
     if (invoiceDownload != null) {
-      return invoiceDownload(orderId);
+      return invoiceDownload(isLoad, orderId);
     }
     return orElse();
   }
@@ -4071,9 +4079,11 @@ class _$InvoiceDownloadImpl implements InvoiceDownload {
 }
 
 abstract class InvoiceDownload implements PlaceOrderEvent {
-  const factory InvoiceDownload({required final String orderId}) =
-      _$InvoiceDownloadImpl;
+  const factory InvoiceDownload(
+      {required final bool isLoad,
+      required final String orderId}) = _$InvoiceDownloadImpl;
 
+  bool get isLoad;
   String get orderId;
   @JsonKey(ignore: true)
   _$$InvoiceDownloadImplCopyWith<_$InvoiceDownloadImpl> get copyWith =>

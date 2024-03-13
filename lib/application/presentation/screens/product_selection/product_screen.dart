@@ -48,57 +48,53 @@ class ScreenProductSelection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<CategoryBlocBloc, CategoryBlocState>(
-      builder: (context, state) {
-        return GestureDetector(
-          onTap: () {
-            FocusScopeNode focusScopeNode = FocusScope.of(context);
-            if (!focusScopeNode.hasPrimaryFocus) {
-              focusScopeNode.unfocus();
-            }
-          },
-          child: WillPopScope(
-            onWillPop: () async {
-              if (brandSeriesProductValueNotifier.value == 2) {
-                brandSeriesProductValueNotifier.value = 1;
-                brandSeriesProductValueNotifier.notifyListeners();
-              } else if (brandSeriesProductValueNotifier.value == 1) {
-                brandSeriesProductValueNotifier.value = 0;
-                brandSeriesProductValueNotifier.notifyListeners();
-              } else {
-                context.read<NavbarCubit>().changeNavigationIndex(0);
-              }
-              return false;
-            },
-            child: Scaffold(
-              body: SafeArea(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: ListView(
-                    children: [
-                      kHeight10,
-                      ValueListenableBuilder(
-                        valueListenable: brandSeriesProductValueNotifier,
-                        builder: (context, index, child) {
-                          if (index == 0) {
-                            return const BrandListviewBuilder();
-                          }
-                          if (index == 1) {
-                            return const SeriesSelectionBuilder();
-                          } else {
-                            return const ProductListViewBuilder();
-                          }
-                        },
-                      ),
-                      kHeight20,
-                    ],
+    return GestureDetector(
+      onTap: () {
+        FocusScopeNode focusScopeNode = FocusScope.of(context);
+        if (!focusScopeNode.hasPrimaryFocus) {
+          focusScopeNode.unfocus();
+        }
+      },
+      child: WillPopScope(
+        onWillPop: () async {
+          if (brandSeriesProductValueNotifier.value == 2) {
+            brandSeriesProductValueNotifier.value = 1;
+            brandSeriesProductValueNotifier.notifyListeners();
+          } else if (brandSeriesProductValueNotifier.value == 1) {
+            brandSeriesProductValueNotifier.value = 0;
+            brandSeriesProductValueNotifier.notifyListeners();
+          } else {
+            context.read<NavbarCubit>().changeNavigationIndex(0);
+          }
+          return false;
+        },
+        child: Scaffold(
+          body: SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: ListView(
+                children: [
+                  kHeight10,
+                  ValueListenableBuilder(
+                    valueListenable: brandSeriesProductValueNotifier,
+                    builder: (context, index, child) {
+                      if (index == 0) {
+                        return const BrandListviewBuilder();
+                      }
+                      if (index == 1) {
+                        return const SeriesSelectionBuilder();
+                      } else {
+                        return const ProductListViewBuilder();
+                      }
+                    },
                   ),
-                ),
+                  kHeight20,
+                ],
               ),
             ),
           ),
-        );
-      },
+        ),
+      ),
     );
   }
 }

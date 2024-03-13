@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:async';
 import 'package:beachdu/application/business_logic/auth/auth_bloc.dart';
 import 'package:beachdu/application/business_logic/location/location_bloc.dart';
@@ -9,6 +11,7 @@ import 'package:beachdu/application/presentation/screens/product_selection/produ
 import 'package:beachdu/application/presentation/screens/profile/add_address/add_address.dart';
 import 'package:beachdu/application/presentation/screens/profile/address_listview.dart';
 import 'package:beachdu/application/presentation/screens/profile/widgets/containers.dart';
+import 'package:beachdu/application/presentation/utils/circle_animation.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/application/presentation/utils/confirmation_daillogue/exit_app_dailogue.dart';
@@ -34,8 +37,8 @@ class PrfileLastBuilder extends StatelessWidget {
 }
 
 class ScreenProfile extends StatelessWidget {
-  ScreenProfile({super.key});
-  String firstTwoLetters = '';
+  const ScreenProfile({super.key});
+
   @override
   Widget build(BuildContext context) {
     WidgetsBinding.instance.addPostFrameCallback(
@@ -45,7 +48,6 @@ class ScreenProfile extends StatelessWidget {
           context
               .read<PlaceOrderBloc>()
               .add(const PlaceOrderEvent.userNumber());
-          // ignore: use_build_context_synchronously
           context.read<ProfileBloc>().add(const ProfileEvent.getUserInfo());
         }
       },
@@ -130,26 +132,28 @@ class ScreenProfile extends StatelessWidget {
                                     .read<ProfileBloc>()
                                     .profileNameController
                                     .text;
-                            return CircleAvatar(
-                              backgroundColor: kGreenPrimary,
-                              radius: 58,
-                              child: state.isLoading
-                                  ? const Center(
-                                      child: CircularProgressIndicator(
-                                        color: kGreenLight,
-                                      ),
-                                    )
-                                  : CircleAvatar(
-                                      backgroundColor: kBluePrimary,
-                                      radius: 50,
-                                      child: Text(
-                                        '${name.toUpperCase()}',
-                                        style: textHeadBoldBig.copyWith(
-                                          fontSize: sWidth * .1,
-                                          color: kWhite,
+                            return AnimatedGrowShrinkContainer(
+                              child: CircleAvatar(
+                                backgroundColor: kGreenPrimary,
+                                radius: 58,
+                                child: state.isLoading
+                                    ? const Center(
+                                        child: CircularProgressIndicator(
+                                          color: kGreenLight,
+                                        ),
+                                      )
+                                    : CircleAvatar(
+                                        backgroundColor: kBluePrimary,
+                                        radius: 50,
+                                        child: Text(
+                                          '${name.toUpperCase()}',
+                                          style: textHeadBoldBig.copyWith(
+                                            fontSize: sWidth * .1,
+                                            color: kWhite,
+                                          ),
                                         ),
                                       ),
-                                    ),
+                              ),
                             );
                           },
                         ),

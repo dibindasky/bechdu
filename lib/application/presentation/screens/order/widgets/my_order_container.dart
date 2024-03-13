@@ -199,6 +199,7 @@ class MyOrderContainer extends StatelessWidget {
                                           context.read<PlaceOrderBloc>().add(
                                                   PlaceOrderEvent
                                                       .invoiceDownload(
+                                                isLoad: true,
                                                 orderId: data.id!,
                                               ));
                                         },

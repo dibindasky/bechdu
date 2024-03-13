@@ -40,6 +40,7 @@ class PlaceOrderEvent with _$PlaceOrderEvent {
   const factory PlaceOrderEvent.removeAllFieldData() = RemoveAllFieldData;
   const factory PlaceOrderEvent.promoCodeSuccess() = PromoCodeSuccess;
   const factory PlaceOrderEvent.invoiceDownload({
+    required bool isLoad,
     required String orderId,
   }) = InvoiceDownload;
 }

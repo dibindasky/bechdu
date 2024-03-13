@@ -56,7 +56,7 @@ class PlaceOrderBloc extends Bloc<PlaceOrderEvent, PlaceOrderState> {
   }
 
   FutureOr<void> invoiceDownLoad(InvoiceDownload event, emit) async {
-    // emit(state.copyWith(isLoading: true, hasError: false));
+    emit(state.copyWith(isLoading: true, hasError: false));
     final number = await SecureSotrage.getNumber();
     await placeOrderRepo.downloadInvoice(
       orderId: event.orderId,

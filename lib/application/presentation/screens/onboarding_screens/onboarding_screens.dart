@@ -97,26 +97,13 @@ class _BechDuUserOnBoardingScreensState
                     kHeight40,
                     SizedBox(
                       width: sWidth * 0.7,
-                      height: sWidth * 0.5,
+                      height: sWidth * 0.6,
                       child: selectedIndex == 0
-                          ? Stack(
-                              children: [
-                                const Center(
-                                  child: CircleAvatar(
-                                    backgroundColor: kGreenPrimary,
-                                    radius: 90,
-                                  ),
-                                ),
-                                Positioned(
-                                  top: MediaQuery.of(context).size.width * 0.02,
-                                  left:
-                                      MediaQuery.of(context).size.width * 0.16,
-                                  child: SizedBox(
-                                    height: sWidth * 0.45,
-                                    child: Image.asset(onBoardingpersonScreen),
-                                  ),
-                                ),
-                              ],
+                          ? SizedBox(
+                              child: Image.asset(
+                                onBoardingpersonScreen,
+                                fit: BoxFit.cover,
+                              ),
                             )
                           : selectedIndex == 1
                               ? Stack(

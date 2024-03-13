@@ -71,7 +71,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     emit(state.copyWith(isLoading: true, hasError: false));
     pageNumber = 1;
     event.searchParamModel.page = pageNumber;
-    event.searchParamModel.pageSize = 30;
+    event.searchParamModel.pageSize = 10;
     final data = await homeRepository.globalProductSearch(
       searchParamModel: event.searchParamModel,
     );
