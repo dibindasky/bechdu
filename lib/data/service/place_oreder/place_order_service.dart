@@ -1,11 +1,12 @@
+import 'dart:convert';
 import 'dart:developer';
-
+import 'dart:typed_data';
+import 'package:beachdu/data/pdf_generator.dart';
 import 'package:beachdu/data/secure_storage/secure_fire_store.dart';
 import 'package:beachdu/domain/core/api_endpoints/api_endpoints.dart';
 import 'package:beachdu/domain/core/failure/failure.dart';
 import 'package:beachdu/domain/model/date_tome_responce_model/date_tome_responce_model.dart';
 import 'package:beachdu/domain/model/order_model/get_all_order_responce_model/get_all_order_responce_model.dart';
-import 'package:beachdu/domain/model/order_model/invoice_request_model/invoice_request_model.dart';
 import 'package:beachdu/domain/model/order_model/order_cancelation_request_model/order_cancelation_request_model.dart';
 import 'package:beachdu/domain/model/order_model/order_cancelation_responce_model/order_cancelation_responce_model.dart';
 import 'package:beachdu/domain/model/order_model/order_placed_request_model/order_placed_request_model.dart';
@@ -148,32 +149,80 @@ class PlaceOrderService implements PlaceOrderRepo {
   }
 
   @override
-  Future<Either<Failure, InvoiceRequestModel>> invoiceDownLoad(
-      {required InvoiceRequestModel invoiceRequestModel,
-      required String orderId}) async {
+  Future<Either<Failure, String>> invoiceDownLoad({
+    required String orderId,
+    required String number,
+  }) async {
     try {
-      final accessToken =
-          await SecureSotrage.getToken().then((token) => token.accessToken);
-      _dio.options.headers.addAll(
-        {
-          'authorization': "Bearer $accessToken",
-        },
-      );
+      // Request storage permission
+      final permissionGranted = await takePermission();
+      if (!permissionGranted) {
+        return Left(Failure(message: 'Storage denied'));
+      } else {
+        final accessToken =
+            await SecureSotrage.getToken().then((token) => token.accessToken);
+        _dio.options.headers.addAll({'authorization': "Bearer $accessToken"});
 
-      final responce = await _dio.put(
-        ApiEndPoints.invoiceDownLoad.replaceAll('{order_id}', orderId),
-        data: invoiceRequestModel.toJson(),
-      );
-      log('invoiceDownLoad data ${responce.data}');
-      log(_dio.options.headers.toString());
+        final url = ApiEndPoints.invoiceDownLoad
+            .replaceAll('{order_id}', orderId)
+            .replaceAll('{number}', number);
 
-      return Right(InvoiceRequestModel.fromJson(responce.data));
+        final response = await _dio.get(
+          url,
+          data: {"orderID": orderId},
+        );
+
+        if (response.statusCode == 200) {
+          return Right(response.data);
+        } else {
+          final errorMessage = response.data['error'] ?? 'Download failed';
+          return Left(Failure(message: errorMessage));
+        }
+      }
     } on DioException catch (e) {
-      log('orderCancel DioException $e');
-      return Left(Failure(message: e.response?.data['error'] ?? errorMessage));
+      log('invoiceDownLoad DioError: ${e.message}');
+      return Left(Failure(message: 'Network error'));
     } catch (e) {
-      log('orderCancel catch $e');
-      return Left(Failure(message: errorMessage));
+      log('invoiceDownLoad catch: $e');
+      return Left(Failure(message: 'Unexpected error'));
+    }
+  }
+
+  @override
+  Future<void> downloadInvoice(
+      {required String orderId, required String number}) async {
+    try {
+      // Request storage permission
+      final permissionGranted = await takePermission();
+      if (!permissionGranted) {
+        log('Storage permission denied. Download cannot proceed.');
+        return;
+      } else {
+        final accessToken =
+            await SecureSotrage.getToken().then((token) => token.accessToken);
+        _dio.options.headers.addAll({'authorization': "Bearer $accessToken"});
+
+        final url = ApiEndPoints.invoiceDownLoad
+            .replaceAll('{order_id}', orderId)
+            .replaceAll('{number}', number);
+
+        final response = await _dio.get(url,
+            data: {"orderID": orderId},
+            options: Options(responseType: ResponseType.bytes));
+
+        if (response.statusCode == 200) {
+          final pdfBytes = List<int>.from(response.data);
+          await downloadPDFBuffer(pdfBytes, 'invoice.pdf');
+          log('Invoice downloaded successfully!');
+        } else {
+          const errorMessage = 'Download failed';
+          log(errorMessage);
+        }
+      }
+    } on DioException catch (e) {
+      log('invoiceDownLoad DioError: ${e.message}');
+    } catch (e) {
+      log('invoiceDownLoad catch: $e');
     }
   }
 }

@@ -16,6 +16,7 @@ import 'package:beachdu/application/presentation/utils/enums/type_display.dart';
 import 'package:beachdu/data/secure_storage/secure_fire_store.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pinput/pinput.dart';
 
 ValueNotifier<int> profileScreensNotifier = ValueNotifier(0);
 
@@ -109,24 +110,48 @@ class ScreenProfile extends StatelessWidget {
                 return SingleChildScrollView(
                   child: Padding(
                     padding: const EdgeInsets.symmetric(
-                      horizontal: 15,
+                      horizontal: 30,
                     ),
                     child: Column(
                       children: [
-                        CircleAvatar(
-                          backgroundColor: kGreenPrimary,
-                          radius: 58,
-                          child: CircleAvatar(
-                            backgroundColor: kBluePrimary,
-                            radius: 50,
-                            child: Text(
-                              'SR',
-                              style: textHeadBoldBig.copyWith(
-                                fontSize: sWidth * .1,
-                                color: kWhite,
-                              ),
-                            ),
-                          ),
+                        BlocBuilder<ProfileBloc, ProfileState>(
+                          builder: (context, state) {
+                            final name = context
+                                        .read<ProfileBloc>()
+                                        .profileNameController
+                                        .length >=
+                                    2
+                                ? context
+                                    .read<ProfileBloc>()
+                                    .profileNameController
+                                    .text
+                                    .substring(0, 2)
+                                : context
+                                    .read<ProfileBloc>()
+                                    .profileNameController
+                                    .text;
+                            return CircleAvatar(
+                              backgroundColor: kGreenPrimary,
+                              radius: 58,
+                              child: state.isLoading
+                                  ? const Center(
+                                      child: CircularProgressIndicator(
+                                        color: kGreenLight,
+                                      ),
+                                    )
+                                  : CircleAvatar(
+                                      backgroundColor: kBluePrimary,
+                                      radius: 50,
+                                      child: Text(
+                                        '${name.toUpperCase()}',
+                                        style: textHeadBoldBig.copyWith(
+                                          fontSize: sWidth * .1,
+                                          color: kWhite,
+                                        ),
+                                      ),
+                                    ),
+                            );
+                          },
                         ),
                         kHeight30,
                         const UserInfoFields(),

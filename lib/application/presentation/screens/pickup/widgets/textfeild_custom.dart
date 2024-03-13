@@ -1,5 +1,6 @@
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
+import 'package:beachdu/application/presentation/utils/validators.dart';
 import 'package:flutter/material.dart';
 
 class TTextFormField extends StatelessWidget {
@@ -12,11 +13,15 @@ class TTextFormField extends StatelessWidget {
   final int? maxLines;
   final Widget? suffixIcon;
   final Color? clr;
+  final InputDecoration? inputDecoration;
   final Function(String)? onChanaged;
   final VoidCallback? onTap;
+  final String? Function(String?)? validator;
   const TTextFormField({
     Key? key,
     this.clr,
+    this.inputDecoration,
+    this.validator,
     this.suffixIcon,
     required this.text,
     this.inputType,
@@ -32,7 +37,7 @@ class TTextFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 10),
+      padding: const EdgeInsets.symmetric(vertical: 5),
       child: TextFormField(
         keyboardType: inputType,
         onTap: onTap,
@@ -40,35 +45,34 @@ class TTextFormField extends StatelessWidget {
         style: textHeadSemiBold1.copyWith(fontSize: sWidth * 0.04),
         maxLength: maxlegth,
         onChanged: onChanaged,
-        validator: (value) {
-          if (value == null || value.isEmpty) {
-            return 'Please $text';
-          }
-          if (text == 'Enter Your name' && value.length < 4) {
-            return 'Name must contain at least 4 letters';
-          }
-          if (text == 'Enter Your email' && !isValidEmail(value)) {
-            return 'Please enter a valid email address';
-          }
-          if (text == 'Enter Your password' && !isValidPassword(value)) {
-            return 'Password must contain at least 8 characters, \none uppercase letter, one lowercase letter, \nand one digit.';
-          }
-          if (text == 'Enter your phone number') {
-            if (!RegExp(r'^[0-9]+$').hasMatch(value)) {
-              return 'Enter valid phone number (numeric characters only)';
-            } else if (value.length != 10) {
-              return 'Phone number should have exactly 10 digits';
-            }
-          }
-          if (text == 'Enter your Zipcode') {
-            if (!RegExp(r'^[0-9]+$').hasMatch(value)) {
-              return 'Enter valid zipcode (numeric characters only)';
-            } else if (value.length < 6) {
-              return 'Zipcode should have 6 digits or more than 6 digits';
-            }
-          }
-          return null;
-        },
+        validator: validator ??
+            (value) {
+              if (value == null || value.isEmpty) {
+                return 'Please $text';
+              }
+              if (text == 'Enter name' && value.length < 3) {
+                return 'Name must contain at least 3 letters';
+              }
+              if (text == 'Enter email' && !isValidEmail(value)) {
+                return 'Please enter a valid email address';
+              }
+              if (text == 'Enter Your password' && !isValidPassword(value)) {
+                return 'Password must contain at least 8 characters, \none uppercase letter, one lowercase letter, \nand one digit.';
+              }
+              if (text == 'number number') {
+                if (!RegExp(r'^[0-9]+$').hasMatch(value)) {
+                  return 'Enter valid phone number (numeric characters only)';
+                } else if (value.length != 10) {
+                  return 'Phone number should have exactly 10 digits';
+                }
+              }
+
+              if (text == 'Enter UPI id' && !isValidUPI(value)) {
+                return 'Please enter a UPI id';
+              }
+
+              return null;
+            },
         controller: controller,
         decoration: InputDecoration(
           suffixIcon: suffixIcon,

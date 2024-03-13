@@ -23,6 +23,7 @@ class PlaceOrderState with _$PlaceOrderState {
     DateTomeResponceModel? dateTomeResponceModel,
     List<String>? dates,
     List<String>? time,
+    File? data,
   }) = _Initial;
 
   factory PlaceOrderState.initial() => PlaceOrderState(

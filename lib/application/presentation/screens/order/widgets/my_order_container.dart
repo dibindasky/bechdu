@@ -180,7 +180,34 @@ class MyOrderContainer extends StatelessWidget {
                             ],
                           )
                         : data.status == 'Completed'
-                            ? const Icon(Icons.arrow_drop_down_circle_rounded)
+                            ? Row(
+                                children: [
+                                  BlocBuilder<PlaceOrderBloc, PlaceOrderState>(
+                                    builder: (context, state) {
+                                      if (state.isLoading) {
+                                        return const Center(
+                                          child: CircularProgressIndicator(),
+                                        );
+                                      }
+                                      return CustomButton(
+                                        fontSize: 11,
+                                        height: 30,
+                                        width: 130,
+                                        color: kRed,
+                                        text: 'Download invoice',
+                                        onPressed: () {
+                                          context.read<PlaceOrderBloc>().add(
+                                                  PlaceOrderEvent
+                                                      .invoiceDownload(
+                                                orderId: data.id!,
+                                              ));
+                                        },
+                                      );
+                                    },
+                                  ),
+                                  kWidth10,
+                                ],
+                              )
                             : kEmpty
                   ],
                 ),

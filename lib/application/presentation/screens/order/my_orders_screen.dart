@@ -15,7 +15,9 @@ class ScreenMyOrders extends StatelessWidget {
   Widget build(BuildContext context) {
     WidgetsBinding.instance.addPostFrameCallback(
       (timeStamp) async {
-        context.read<PlaceOrderBloc>().add(const PlaceOrderEvent.getOrders());
+        context
+            .read<PlaceOrderBloc>()
+            .add(const PlaceOrderEvent.getOrders(isLoad: false));
       },
     );
     return WillPopScope(
@@ -35,7 +37,7 @@ class ScreenMyOrders extends StatelessWidget {
           onRefresh: () async {
             context
                 .read<PlaceOrderBloc>()
-                .add(const PlaceOrderEvent.getOrders());
+                .add(const PlaceOrderEvent.getOrders(isLoad: true));
             await Future.delayed(const Duration(seconds: 2));
           },
           child: Padding(

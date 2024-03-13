@@ -122,12 +122,15 @@ class GlobalProductSearch extends StatelessWidget {
                                     overflow: TextOverflow.ellipsis),
                               ),
                               kWidth10,
-                              Text(products[index].variant!,
-                                  style: textHeadBold1),
+                              Text(
+                                products[index].variant!,
+                                style: textHeadBold1,
+                              ),
                               Text(
                                 'Upto ₹${products[index].estimatedPrice}',
                                 style: textHeadMedium1.copyWith(
-                                    fontSize: sWidth * .034),
+                                  fontSize: sWidth * .034,
+                                ),
                               ),
                               kHeight5,
                             ],

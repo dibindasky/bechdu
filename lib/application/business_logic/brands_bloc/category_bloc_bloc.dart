@@ -26,6 +26,8 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
   List<Brands> brandsList = [];
   List<Product> productList = [];
   List<List<String>> updatedItems = [];
+  String? modelFilter;
+  String? varientFilter;
   List<String> series = [];
   CategoryBlocBloc(this.brandsRepository) : super(CategoryBlocState.intial()) {
     on<GetSingleCategoryBrands>(getSingleCategoryBrands);
@@ -36,14 +38,13 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
     on<SeriesSearch>(seriesSearch);
     on<GetModels>(getModels);
     on<GetVarients>(getVarients);
-    on<SelectedProduct>(selectedProdct);
   }
 
   FutureOr<void> seriesSearch(
     SeriesSearch event,
     Emitter<CategoryBlocState> emit,
   ) {
-    final String searchQuery = event.searchQuery.toLowerCase();
+    final String searchQuery = event.searchQuery.toLowerCase().trim();
     final List<String> filteredSeries = series.where((item) {
       final String series = item.toLowerCase();
       return series.contains(searchQuery);
@@ -107,10 +108,6 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
     ));
   }
 
-  FutureOr<void> selectedProdct(SelectedProduct event, emit) {
-    emit(state.copyWith(selectedProduct: event.selectedProduct));
-  }
-
   FutureOr<void> getSingleCategoryBrands(
     GetSingleCategoryBrands event,
     Emitter<CategoryBlocState> emit,
@@ -170,8 +167,8 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
         productList.add(element);
       }
       // productList = getproducts.products!
-      //     .where(
-      //         (product) => product.model == model && product.variant == verient)
+      //     .where((product) =>
+      //         product.model == modelFilter && product.variant == varientFilter)
       //     .toList();
       log('productList $productList');
       emit(state.copyWith(
@@ -213,14 +210,14 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
   }
 
   FutureOr<void> productUpdate(GetModels event, emit) async {
-    List<Product> temp = [];
-    for (var element in state.getProductsResponceModel!.products!) {
-      if (element.seriesName == event.seriesName) {
-        temp.add(element);
-      }
-    }
+    final List<Product> temp = List.from(state.filteredProducts ?? []);
+    productList = temp
+        .where((product) =>
+            product.model == modelFilter && product.variant == varientFilter)
+        .toList();
+    log('productList $productList');
     emit(state.copyWith(
-      getProductsResponceModel: GetProductsRespoceModel(products: temp),
+      filteredProducts: temp,
     ));
   }
 
@@ -268,7 +265,7 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
       seriesName: event.seriesName,
       model: event.model,
     );
-    model = event.model;
+    modelFilter = event.model;
     log('Selected Model in blc $model');
     data.fold((failure) {
       emit(state.copyWith(

@@ -25,7 +25,7 @@ mixin _$PlaceOrderEvent {
         abandendOrder,
     required TResult Function() getDatetime,
     required TResult Function() orderPlacing,
-    required TResult Function() getOrders,
+    required TResult Function(bool? isLoad) getOrders,
     required TResult Function(
             OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)
@@ -41,6 +41,7 @@ mixin _$PlaceOrderEvent {
     required TResult Function() userNumber,
     required TResult Function() removeAllFieldData,
     required TResult Function() promoCodeSuccess,
+    required TResult Function(String orderId) invoiceDownload,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -51,7 +52,7 @@ mixin _$PlaceOrderEvent {
         abandendOrder,
     TResult? Function()? getDatetime,
     TResult? Function()? orderPlacing,
-    TResult? Function()? getOrders,
+    TResult? Function(bool? isLoad)? getOrders,
     TResult? Function(OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)?
         orderCancel,
@@ -65,6 +66,7 @@ mixin _$PlaceOrderEvent {
     TResult? Function()? userNumber,
     TResult? Function()? removeAllFieldData,
     TResult? Function()? promoCodeSuccess,
+    TResult? Function(String orderId)? invoiceDownload,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -74,7 +76,7 @@ mixin _$PlaceOrderEvent {
         abandendOrder,
     TResult Function()? getDatetime,
     TResult Function()? orderPlacing,
-    TResult Function()? getOrders,
+    TResult Function(bool? isLoad)? getOrders,
     TResult Function(OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)?
         orderCancel,
@@ -88,6 +90,7 @@ mixin _$PlaceOrderEvent {
     TResult Function()? userNumber,
     TResult Function()? removeAllFieldData,
     TResult Function()? promoCodeSuccess,
+    TResult Function(String orderId)? invoiceDownload,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -109,6 +112,7 @@ mixin _$PlaceOrderEvent {
     required TResult Function(UserNumber value) userNumber,
     required TResult Function(RemoveAllFieldData value) removeAllFieldData,
     required TResult Function(PromoCodeSuccess value) promoCodeSuccess,
+    required TResult Function(InvoiceDownload value) invoiceDownload,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -129,6 +133,7 @@ mixin _$PlaceOrderEvent {
     TResult? Function(UserNumber value)? userNumber,
     TResult? Function(RemoveAllFieldData value)? removeAllFieldData,
     TResult? Function(PromoCodeSuccess value)? promoCodeSuccess,
+    TResult? Function(InvoiceDownload value)? invoiceDownload,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -149,6 +154,7 @@ mixin _$PlaceOrderEvent {
     TResult Function(UserNumber value)? userNumber,
     TResult Function(RemoveAllFieldData value)? removeAllFieldData,
     TResult Function(PromoCodeSuccess value)? promoCodeSuccess,
+    TResult Function(InvoiceDownload value)? invoiceDownload,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -244,7 +250,7 @@ class _$GetPromoCodeImpl implements GetPromoCode {
         abandendOrder,
     required TResult Function() getDatetime,
     required TResult Function() orderPlacing,
-    required TResult Function() getOrders,
+    required TResult Function(bool? isLoad) getOrders,
     required TResult Function(
             OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)
@@ -260,6 +266,7 @@ class _$GetPromoCodeImpl implements GetPromoCode {
     required TResult Function() userNumber,
     required TResult Function() removeAllFieldData,
     required TResult Function() promoCodeSuccess,
+    required TResult Function(String orderId) invoiceDownload,
   }) {
     return getPromoCode(promoCodeRequestModel);
   }
@@ -273,7 +280,7 @@ class _$GetPromoCodeImpl implements GetPromoCode {
         abandendOrder,
     TResult? Function()? getDatetime,
     TResult? Function()? orderPlacing,
-    TResult? Function()? getOrders,
+    TResult? Function(bool? isLoad)? getOrders,
     TResult? Function(OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)?
         orderCancel,
@@ -287,6 +294,7 @@ class _$GetPromoCodeImpl implements GetPromoCode {
     TResult? Function()? userNumber,
     TResult? Function()? removeAllFieldData,
     TResult? Function()? promoCodeSuccess,
+    TResult? Function(String orderId)? invoiceDownload,
   }) {
     return getPromoCode?.call(promoCodeRequestModel);
   }
@@ -299,7 +307,7 @@ class _$GetPromoCodeImpl implements GetPromoCode {
         abandendOrder,
     TResult Function()? getDatetime,
     TResult Function()? orderPlacing,
-    TResult Function()? getOrders,
+    TResult Function(bool? isLoad)? getOrders,
     TResult Function(OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)?
         orderCancel,
@@ -313,6 +321,7 @@ class _$GetPromoCodeImpl implements GetPromoCode {
     TResult Function()? userNumber,
     TResult Function()? removeAllFieldData,
     TResult Function()? promoCodeSuccess,
+    TResult Function(String orderId)? invoiceDownload,
     required TResult orElse(),
   }) {
     if (getPromoCode != null) {
@@ -340,6 +349,7 @@ class _$GetPromoCodeImpl implements GetPromoCode {
     required TResult Function(UserNumber value) userNumber,
     required TResult Function(RemoveAllFieldData value) removeAllFieldData,
     required TResult Function(PromoCodeSuccess value) promoCodeSuccess,
+    required TResult Function(InvoiceDownload value) invoiceDownload,
   }) {
     return getPromoCode(this);
   }
@@ -363,6 +373,7 @@ class _$GetPromoCodeImpl implements GetPromoCode {
     TResult? Function(UserNumber value)? userNumber,
     TResult? Function(RemoveAllFieldData value)? removeAllFieldData,
     TResult? Function(PromoCodeSuccess value)? promoCodeSuccess,
+    TResult? Function(InvoiceDownload value)? invoiceDownload,
   }) {
     return getPromoCode?.call(this);
   }
@@ -386,6 +397,7 @@ class _$GetPromoCodeImpl implements GetPromoCode {
     TResult Function(UserNumber value)? userNumber,
     TResult Function(RemoveAllFieldData value)? removeAllFieldData,
     TResult Function(PromoCodeSuccess value)? promoCodeSuccess,
+    TResult Function(InvoiceDownload value)? invoiceDownload,
     required TResult orElse(),
   }) {
     if (getPromoCode != null) {
@@ -479,7 +491,7 @@ class _$AbandendOrderImpl implements AbandendOrder {
         abandendOrder,
     required TResult Function() getDatetime,
     required TResult Function() orderPlacing,
-    required TResult Function() getOrders,
+    required TResult Function(bool? isLoad) getOrders,
     required TResult Function(
             OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)
@@ -495,6 +507,7 @@ class _$AbandendOrderImpl implements AbandendOrder {
     required TResult Function() userNumber,
     required TResult Function() removeAllFieldData,
     required TResult Function() promoCodeSuccess,
+    required TResult Function(String orderId) invoiceDownload,
   }) {
     return abandendOrder(abandendOrderRequestModel);
   }
@@ -508,7 +521,7 @@ class _$AbandendOrderImpl implements AbandendOrder {
         abandendOrder,
     TResult? Function()? getDatetime,
     TResult? Function()? orderPlacing,
-    TResult? Function()? getOrders,
+    TResult? Function(bool? isLoad)? getOrders,
     TResult? Function(OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)?
         orderCancel,
@@ -522,6 +535,7 @@ class _$AbandendOrderImpl implements AbandendOrder {
     TResult? Function()? userNumber,
     TResult? Function()? removeAllFieldData,
     TResult? Function()? promoCodeSuccess,
+    TResult? Function(String orderId)? invoiceDownload,
   }) {
     return abandendOrder?.call(abandendOrderRequestModel);
   }
@@ -534,7 +548,7 @@ class _$AbandendOrderImpl implements AbandendOrder {
         abandendOrder,
     TResult Function()? getDatetime,
     TResult Function()? orderPlacing,
-    TResult Function()? getOrders,
+    TResult Function(bool? isLoad)? getOrders,
     TResult Function(OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)?
         orderCancel,
@@ -548,6 +562,7 @@ class _$AbandendOrderImpl implements AbandendOrder {
     TResult Function()? userNumber,
     TResult Function()? removeAllFieldData,
     TResult Function()? promoCodeSuccess,
+    TResult Function(String orderId)? invoiceDownload,
     required TResult orElse(),
   }) {
     if (abandendOrder != null) {
@@ -575,6 +590,7 @@ class _$AbandendOrderImpl implements AbandendOrder {
     required TResult Function(UserNumber value) userNumber,
     required TResult Function(RemoveAllFieldData value) removeAllFieldData,
     required TResult Function(PromoCodeSuccess value) promoCodeSuccess,
+    required TResult Function(InvoiceDownload value) invoiceDownload,
   }) {
     return abandendOrder(this);
   }
@@ -598,6 +614,7 @@ class _$AbandendOrderImpl implements AbandendOrder {
     TResult? Function(UserNumber value)? userNumber,
     TResult? Function(RemoveAllFieldData value)? removeAllFieldData,
     TResult? Function(PromoCodeSuccess value)? promoCodeSuccess,
+    TResult? Function(InvoiceDownload value)? invoiceDownload,
   }) {
     return abandendOrder?.call(this);
   }
@@ -621,6 +638,7 @@ class _$AbandendOrderImpl implements AbandendOrder {
     TResult Function(UserNumber value)? userNumber,
     TResult Function(RemoveAllFieldData value)? removeAllFieldData,
     TResult Function(PromoCodeSuccess value)? promoCodeSuccess,
+    TResult Function(InvoiceDownload value)? invoiceDownload,
     required TResult orElse(),
   }) {
     if (abandendOrder != null) {
@@ -686,7 +704,7 @@ class _$GetDatetimeImpl implements GetDatetime {
         abandendOrder,
     required TResult Function() getDatetime,
     required TResult Function() orderPlacing,
-    required TResult Function() getOrders,
+    required TResult Function(bool? isLoad) getOrders,
     required TResult Function(
             OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)
@@ -702,6 +720,7 @@ class _$GetDatetimeImpl implements GetDatetime {
     required TResult Function() userNumber,
     required TResult Function() removeAllFieldData,
     required TResult Function() promoCodeSuccess,
+    required TResult Function(String orderId) invoiceDownload,
   }) {
     return getDatetime();
   }
@@ -715,7 +734,7 @@ class _$GetDatetimeImpl implements GetDatetime {
         abandendOrder,
     TResult? Function()? getDatetime,
     TResult? Function()? orderPlacing,
-    TResult? Function()? getOrders,
+    TResult? Function(bool? isLoad)? getOrders,
     TResult? Function(OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)?
         orderCancel,
@@ -729,6 +748,7 @@ class _$GetDatetimeImpl implements GetDatetime {
     TResult? Function()? userNumber,
     TResult? Function()? removeAllFieldData,
     TResult? Function()? promoCodeSuccess,
+    TResult? Function(String orderId)? invoiceDownload,
   }) {
     return getDatetime?.call();
   }
@@ -741,7 +761,7 @@ class _$GetDatetimeImpl implements GetDatetime {
         abandendOrder,
     TResult Function()? getDatetime,
     TResult Function()? orderPlacing,
-    TResult Function()? getOrders,
+    TResult Function(bool? isLoad)? getOrders,
     TResult Function(OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)?
         orderCancel,
@@ -755,6 +775,7 @@ class _$GetDatetimeImpl implements GetDatetime {
     TResult Function()? userNumber,
     TResult Function()? removeAllFieldData,
     TResult Function()? promoCodeSuccess,
+    TResult Function(String orderId)? invoiceDownload,
     required TResult orElse(),
   }) {
     if (getDatetime != null) {
@@ -782,6 +803,7 @@ class _$GetDatetimeImpl implements GetDatetime {
     required TResult Function(UserNumber value) userNumber,
     required TResult Function(RemoveAllFieldData value) removeAllFieldData,
     required TResult Function(PromoCodeSuccess value) promoCodeSuccess,
+    required TResult Function(InvoiceDownload value) invoiceDownload,
   }) {
     return getDatetime(this);
   }
@@ -805,6 +827,7 @@ class _$GetDatetimeImpl implements GetDatetime {
     TResult? Function(UserNumber value)? userNumber,
     TResult? Function(RemoveAllFieldData value)? removeAllFieldData,
     TResult? Function(PromoCodeSuccess value)? promoCodeSuccess,
+    TResult? Function(InvoiceDownload value)? invoiceDownload,
   }) {
     return getDatetime?.call(this);
   }
@@ -828,6 +851,7 @@ class _$GetDatetimeImpl implements GetDatetime {
     TResult Function(UserNumber value)? userNumber,
     TResult Function(RemoveAllFieldData value)? removeAllFieldData,
     TResult Function(PromoCodeSuccess value)? promoCodeSuccess,
+    TResult Function(InvoiceDownload value)? invoiceDownload,
     required TResult orElse(),
   }) {
     if (getDatetime != null) {
@@ -886,7 +910,7 @@ class _$OrderPlacingImpl implements OrderPlacing {
         abandendOrder,
     required TResult Function() getDatetime,
     required TResult Function() orderPlacing,
-    required TResult Function() getOrders,
+    required TResult Function(bool? isLoad) getOrders,
     required TResult Function(
             OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)
@@ -902,6 +926,7 @@ class _$OrderPlacingImpl implements OrderPlacing {
     required TResult Function() userNumber,
     required TResult Function() removeAllFieldData,
     required TResult Function() promoCodeSuccess,
+    required TResult Function(String orderId) invoiceDownload,
   }) {
     return orderPlacing();
   }
@@ -915,7 +940,7 @@ class _$OrderPlacingImpl implements OrderPlacing {
         abandendOrder,
     TResult? Function()? getDatetime,
     TResult? Function()? orderPlacing,
-    TResult? Function()? getOrders,
+    TResult? Function(bool? isLoad)? getOrders,
     TResult? Function(OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)?
         orderCancel,
@@ -929,6 +954,7 @@ class _$OrderPlacingImpl implements OrderPlacing {
     TResult? Function()? userNumber,
     TResult? Function()? removeAllFieldData,
     TResult? Function()? promoCodeSuccess,
+    TResult? Function(String orderId)? invoiceDownload,
   }) {
     return orderPlacing?.call();
   }
@@ -941,7 +967,7 @@ class _$OrderPlacingImpl implements OrderPlacing {
         abandendOrder,
     TResult Function()? getDatetime,
     TResult Function()? orderPlacing,
-    TResult Function()? getOrders,
+    TResult Function(bool? isLoad)? getOrders,
     TResult Function(OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)?
         orderCancel,
@@ -955,6 +981,7 @@ class _$OrderPlacingImpl implements OrderPlacing {
     TResult Function()? userNumber,
     TResult Function()? removeAllFieldData,
     TResult Function()? promoCodeSuccess,
+    TResult Function(String orderId)? invoiceDownload,
     required TResult orElse(),
   }) {
     if (orderPlacing != null) {
@@ -982,6 +1009,7 @@ class _$OrderPlacingImpl implements OrderPlacing {
     required TResult Function(UserNumber value) userNumber,
     required TResult Function(RemoveAllFieldData value) removeAllFieldData,
     required TResult Function(PromoCodeSuccess value) promoCodeSuccess,
+    required TResult Function(InvoiceDownload value) invoiceDownload,
   }) {
     return orderPlacing(this);
   }
@@ -1005,6 +1033,7 @@ class _$OrderPlacingImpl implements OrderPlacing {
     TResult? Function(UserNumber value)? userNumber,
     TResult? Function(RemoveAllFieldData value)? removeAllFieldData,
     TResult? Function(PromoCodeSuccess value)? promoCodeSuccess,
+    TResult? Function(InvoiceDownload value)? invoiceDownload,
   }) {
     return orderPlacing?.call(this);
   }
@@ -1028,6 +1057,7 @@ class _$OrderPlacingImpl implements OrderPlacing {
     TResult Function(UserNumber value)? userNumber,
     TResult Function(RemoveAllFieldData value)? removeAllFieldData,
     TResult Function(PromoCodeSuccess value)? promoCodeSuccess,
+    TResult Function(InvoiceDownload value)? invoiceDownload,
     required TResult orElse(),
   }) {
     if (orderPlacing != null) {
@@ -1046,6 +1076,8 @@ abstract class _$$GetOrdersImplCopyWith<$Res> {
   factory _$$GetOrdersImplCopyWith(
           _$GetOrdersImpl value, $Res Function(_$GetOrdersImpl) then) =
       __$$GetOrdersImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({bool? isLoad});
 }
 
 /// @nodoc
@@ -1055,26 +1087,50 @@ class __$$GetOrdersImplCopyWithImpl<$Res>
   __$$GetOrdersImplCopyWithImpl(
       _$GetOrdersImpl _value, $Res Function(_$GetOrdersImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? isLoad = freezed,
+  }) {
+    return _then(_$GetOrdersImpl(
+      isLoad: freezed == isLoad
+          ? _value.isLoad
+          : isLoad // ignore: cast_nullable_to_non_nullable
+              as bool?,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$GetOrdersImpl implements GetOrders {
-  const _$GetOrdersImpl();
+  const _$GetOrdersImpl({this.isLoad});
+
+  @override
+  final bool? isLoad;
 
   @override
   String toString() {
-    return 'PlaceOrderEvent.getOrders()';
+    return 'PlaceOrderEvent.getOrders(isLoad: $isLoad)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$GetOrdersImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$GetOrdersImpl &&
+            (identical(other.isLoad, isLoad) || other.isLoad == isLoad));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, isLoad);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetOrdersImplCopyWith<_$GetOrdersImpl> get copyWith =>
+      __$$GetOrdersImplCopyWithImpl<_$GetOrdersImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1086,7 +1142,7 @@ class _$GetOrdersImpl implements GetOrders {
         abandendOrder,
     required TResult Function() getDatetime,
     required TResult Function() orderPlacing,
-    required TResult Function() getOrders,
+    required TResult Function(bool? isLoad) getOrders,
     required TResult Function(
             OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)
@@ -1102,8 +1158,9 @@ class _$GetOrdersImpl implements GetOrders {
     required TResult Function() userNumber,
     required TResult Function() removeAllFieldData,
     required TResult Function() promoCodeSuccess,
+    required TResult Function(String orderId) invoiceDownload,
   }) {
-    return getOrders();
+    return getOrders(isLoad);
   }
 
   @override
@@ -1115,7 +1172,7 @@ class _$GetOrdersImpl implements GetOrders {
         abandendOrder,
     TResult? Function()? getDatetime,
     TResult? Function()? orderPlacing,
-    TResult? Function()? getOrders,
+    TResult? Function(bool? isLoad)? getOrders,
     TResult? Function(OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)?
         orderCancel,
@@ -1129,8 +1186,9 @@ class _$GetOrdersImpl implements GetOrders {
     TResult? Function()? userNumber,
     TResult? Function()? removeAllFieldData,
     TResult? Function()? promoCodeSuccess,
+    TResult? Function(String orderId)? invoiceDownload,
   }) {
-    return getOrders?.call();
+    return getOrders?.call(isLoad);
   }
 
   @override
@@ -1141,7 +1199,7 @@ class _$GetOrdersImpl implements GetOrders {
         abandendOrder,
     TResult Function()? getDatetime,
     TResult Function()? orderPlacing,
-    TResult Function()? getOrders,
+    TResult Function(bool? isLoad)? getOrders,
     TResult Function(OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)?
         orderCancel,
@@ -1155,10 +1213,11 @@ class _$GetOrdersImpl implements GetOrders {
     TResult Function()? userNumber,
     TResult Function()? removeAllFieldData,
     TResult Function()? promoCodeSuccess,
+    TResult Function(String orderId)? invoiceDownload,
     required TResult orElse(),
   }) {
     if (getOrders != null) {
-      return getOrders();
+      return getOrders(isLoad);
     }
     return orElse();
   }
@@ -1182,6 +1241,7 @@ class _$GetOrdersImpl implements GetOrders {
     required TResult Function(UserNumber value) userNumber,
     required TResult Function(RemoveAllFieldData value) removeAllFieldData,
     required TResult Function(PromoCodeSuccess value) promoCodeSuccess,
+    required TResult Function(InvoiceDownload value) invoiceDownload,
   }) {
     return getOrders(this);
   }
@@ -1205,6 +1265,7 @@ class _$GetOrdersImpl implements GetOrders {
     TResult? Function(UserNumber value)? userNumber,
     TResult? Function(RemoveAllFieldData value)? removeAllFieldData,
     TResult? Function(PromoCodeSuccess value)? promoCodeSuccess,
+    TResult? Function(InvoiceDownload value)? invoiceDownload,
   }) {
     return getOrders?.call(this);
   }
@@ -1228,6 +1289,7 @@ class _$GetOrdersImpl implements GetOrders {
     TResult Function(UserNumber value)? userNumber,
     TResult Function(RemoveAllFieldData value)? removeAllFieldData,
     TResult Function(PromoCodeSuccess value)? promoCodeSuccess,
+    TResult Function(InvoiceDownload value)? invoiceDownload,
     required TResult orElse(),
   }) {
     if (getOrders != null) {
@@ -1238,7 +1300,12 @@ class _$GetOrdersImpl implements GetOrders {
 }
 
 abstract class GetOrders implements PlaceOrderEvent {
-  const factory GetOrders() = _$GetOrdersImpl;
+  const factory GetOrders({final bool? isLoad}) = _$GetOrdersImpl;
+
+  bool? get isLoad;
+  @JsonKey(ignore: true)
+  _$$GetOrdersImplCopyWith<_$GetOrdersImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1327,7 +1394,7 @@ class _$OrderCancelImpl implements OrderCancel {
         abandendOrder,
     required TResult Function() getDatetime,
     required TResult Function() orderPlacing,
-    required TResult Function() getOrders,
+    required TResult Function(bool? isLoad) getOrders,
     required TResult Function(
             OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)
@@ -1343,6 +1410,7 @@ class _$OrderCancelImpl implements OrderCancel {
     required TResult Function() userNumber,
     required TResult Function() removeAllFieldData,
     required TResult Function() promoCodeSuccess,
+    required TResult Function(String orderId) invoiceDownload,
   }) {
     return orderCancel(orderCancelationRequestModel, orderId);
   }
@@ -1356,7 +1424,7 @@ class _$OrderCancelImpl implements OrderCancel {
         abandendOrder,
     TResult? Function()? getDatetime,
     TResult? Function()? orderPlacing,
-    TResult? Function()? getOrders,
+    TResult? Function(bool? isLoad)? getOrders,
     TResult? Function(OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)?
         orderCancel,
@@ -1370,6 +1438,7 @@ class _$OrderCancelImpl implements OrderCancel {
     TResult? Function()? userNumber,
     TResult? Function()? removeAllFieldData,
     TResult? Function()? promoCodeSuccess,
+    TResult? Function(String orderId)? invoiceDownload,
   }) {
     return orderCancel?.call(orderCancelationRequestModel, orderId);
   }
@@ -1382,7 +1451,7 @@ class _$OrderCancelImpl implements OrderCancel {
         abandendOrder,
     TResult Function()? getDatetime,
     TResult Function()? orderPlacing,
-    TResult Function()? getOrders,
+    TResult Function(bool? isLoad)? getOrders,
     TResult Function(OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)?
         orderCancel,
@@ -1396,6 +1465,7 @@ class _$OrderCancelImpl implements OrderCancel {
     TResult Function()? userNumber,
     TResult Function()? removeAllFieldData,
     TResult Function()? promoCodeSuccess,
+    TResult Function(String orderId)? invoiceDownload,
     required TResult orElse(),
   }) {
     if (orderCancel != null) {
@@ -1423,6 +1493,7 @@ class _$OrderCancelImpl implements OrderCancel {
     required TResult Function(UserNumber value) userNumber,
     required TResult Function(RemoveAllFieldData value) removeAllFieldData,
     required TResult Function(PromoCodeSuccess value) promoCodeSuccess,
+    required TResult Function(InvoiceDownload value) invoiceDownload,
   }) {
     return orderCancel(this);
   }
@@ -1446,6 +1517,7 @@ class _$OrderCancelImpl implements OrderCancel {
     TResult? Function(UserNumber value)? userNumber,
     TResult? Function(RemoveAllFieldData value)? removeAllFieldData,
     TResult? Function(PromoCodeSuccess value)? promoCodeSuccess,
+    TResult? Function(InvoiceDownload value)? invoiceDownload,
   }) {
     return orderCancel?.call(this);
   }
@@ -1469,6 +1541,7 @@ class _$OrderCancelImpl implements OrderCancel {
     TResult Function(UserNumber value)? userNumber,
     TResult Function(RemoveAllFieldData value)? removeAllFieldData,
     TResult Function(PromoCodeSuccess value)? promoCodeSuccess,
+    TResult Function(InvoiceDownload value)? invoiceDownload,
     required TResult orElse(),
   }) {
     if (orderCancel != null) {
@@ -1563,7 +1636,7 @@ class _$ProductDetailsPickImpl implements ProductDetailsPick {
         abandendOrder,
     required TResult Function() getDatetime,
     required TResult Function() orderPlacing,
-    required TResult Function() getOrders,
+    required TResult Function(bool? isLoad) getOrders,
     required TResult Function(
             OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)
@@ -1579,6 +1652,7 @@ class _$ProductDetailsPickImpl implements ProductDetailsPick {
     required TResult Function() userNumber,
     required TResult Function() removeAllFieldData,
     required TResult Function() promoCodeSuccess,
+    required TResult Function(String orderId) invoiceDownload,
   }) {
     return productDetailsPick(productDetails);
   }
@@ -1592,7 +1666,7 @@ class _$ProductDetailsPickImpl implements ProductDetailsPick {
         abandendOrder,
     TResult? Function()? getDatetime,
     TResult? Function()? orderPlacing,
-    TResult? Function()? getOrders,
+    TResult? Function(bool? isLoad)? getOrders,
     TResult? Function(OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)?
         orderCancel,
@@ -1606,6 +1680,7 @@ class _$ProductDetailsPickImpl implements ProductDetailsPick {
     TResult? Function()? userNumber,
     TResult? Function()? removeAllFieldData,
     TResult? Function()? promoCodeSuccess,
+    TResult? Function(String orderId)? invoiceDownload,
   }) {
     return productDetailsPick?.call(productDetails);
   }
@@ -1618,7 +1693,7 @@ class _$ProductDetailsPickImpl implements ProductDetailsPick {
         abandendOrder,
     TResult Function()? getDatetime,
     TResult Function()? orderPlacing,
-    TResult Function()? getOrders,
+    TResult Function(bool? isLoad)? getOrders,
     TResult Function(OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)?
         orderCancel,
@@ -1632,6 +1707,7 @@ class _$ProductDetailsPickImpl implements ProductDetailsPick {
     TResult Function()? userNumber,
     TResult Function()? removeAllFieldData,
     TResult Function()? promoCodeSuccess,
+    TResult Function(String orderId)? invoiceDownload,
     required TResult orElse(),
   }) {
     if (productDetailsPick != null) {
@@ -1659,6 +1735,7 @@ class _$ProductDetailsPickImpl implements ProductDetailsPick {
     required TResult Function(UserNumber value) userNumber,
     required TResult Function(RemoveAllFieldData value) removeAllFieldData,
     required TResult Function(PromoCodeSuccess value) promoCodeSuccess,
+    required TResult Function(InvoiceDownload value) invoiceDownload,
   }) {
     return productDetailsPick(this);
   }
@@ -1682,6 +1759,7 @@ class _$ProductDetailsPickImpl implements ProductDetailsPick {
     TResult? Function(UserNumber value)? userNumber,
     TResult? Function(RemoveAllFieldData value)? removeAllFieldData,
     TResult? Function(PromoCodeSuccess value)? promoCodeSuccess,
+    TResult? Function(InvoiceDownload value)? invoiceDownload,
   }) {
     return productDetailsPick?.call(this);
   }
@@ -1705,6 +1783,7 @@ class _$ProductDetailsPickImpl implements ProductDetailsPick {
     TResult Function(UserNumber value)? userNumber,
     TResult Function(RemoveAllFieldData value)? removeAllFieldData,
     TResult Function(PromoCodeSuccess value)? promoCodeSuccess,
+    TResult Function(InvoiceDownload value)? invoiceDownload,
     required TResult orElse(),
   }) {
     if (productDetailsPick != null) {
@@ -1796,7 +1875,7 @@ class _$PromoCodePickImpl implements PromoCodePick {
         abandendOrder,
     required TResult Function() getDatetime,
     required TResult Function() orderPlacing,
-    required TResult Function() getOrders,
+    required TResult Function(bool? isLoad) getOrders,
     required TResult Function(
             OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)
@@ -1812,6 +1891,7 @@ class _$PromoCodePickImpl implements PromoCodePick {
     required TResult Function() userNumber,
     required TResult Function() removeAllFieldData,
     required TResult Function() promoCodeSuccess,
+    required TResult Function(String orderId) invoiceDownload,
   }) {
     return promoCodePick(promo);
   }
@@ -1825,7 +1905,7 @@ class _$PromoCodePickImpl implements PromoCodePick {
         abandendOrder,
     TResult? Function()? getDatetime,
     TResult? Function()? orderPlacing,
-    TResult? Function()? getOrders,
+    TResult? Function(bool? isLoad)? getOrders,
     TResult? Function(OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)?
         orderCancel,
@@ -1839,6 +1919,7 @@ class _$PromoCodePickImpl implements PromoCodePick {
     TResult? Function()? userNumber,
     TResult? Function()? removeAllFieldData,
     TResult? Function()? promoCodeSuccess,
+    TResult? Function(String orderId)? invoiceDownload,
   }) {
     return promoCodePick?.call(promo);
   }
@@ -1851,7 +1932,7 @@ class _$PromoCodePickImpl implements PromoCodePick {
         abandendOrder,
     TResult Function()? getDatetime,
     TResult Function()? orderPlacing,
-    TResult Function()? getOrders,
+    TResult Function(bool? isLoad)? getOrders,
     TResult Function(OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)?
         orderCancel,
@@ -1865,6 +1946,7 @@ class _$PromoCodePickImpl implements PromoCodePick {
     TResult Function()? userNumber,
     TResult Function()? removeAllFieldData,
     TResult Function()? promoCodeSuccess,
+    TResult Function(String orderId)? invoiceDownload,
     required TResult orElse(),
   }) {
     if (promoCodePick != null) {
@@ -1892,6 +1974,7 @@ class _$PromoCodePickImpl implements PromoCodePick {
     required TResult Function(UserNumber value) userNumber,
     required TResult Function(RemoveAllFieldData value) removeAllFieldData,
     required TResult Function(PromoCodeSuccess value) promoCodeSuccess,
+    required TResult Function(InvoiceDownload value) invoiceDownload,
   }) {
     return promoCodePick(this);
   }
@@ -1915,6 +1998,7 @@ class _$PromoCodePickImpl implements PromoCodePick {
     TResult? Function(UserNumber value)? userNumber,
     TResult? Function(RemoveAllFieldData value)? removeAllFieldData,
     TResult? Function(PromoCodeSuccess value)? promoCodeSuccess,
+    TResult? Function(InvoiceDownload value)? invoiceDownload,
   }) {
     return promoCodePick?.call(this);
   }
@@ -1938,6 +2022,7 @@ class _$PromoCodePickImpl implements PromoCodePick {
     TResult Function(UserNumber value)? userNumber,
     TResult Function(RemoveAllFieldData value)? removeAllFieldData,
     TResult Function(PromoCodeSuccess value)? promoCodeSuccess,
+    TResult Function(InvoiceDownload value)? invoiceDownload,
     required TResult orElse(),
   }) {
     if (promoCodePick != null) {
@@ -2036,7 +2121,7 @@ class _$AddressPickImpl implements AddressPick {
         abandendOrder,
     required TResult Function() getDatetime,
     required TResult Function() orderPlacing,
-    required TResult Function() getOrders,
+    required TResult Function(bool? isLoad) getOrders,
     required TResult Function(
             OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)
@@ -2052,6 +2137,7 @@ class _$AddressPickImpl implements AddressPick {
     required TResult Function() userNumber,
     required TResult Function() removeAllFieldData,
     required TResult Function() promoCodeSuccess,
+    required TResult Function(String orderId) invoiceDownload,
   }) {
     return addressPick(user, promo);
   }
@@ -2065,7 +2151,7 @@ class _$AddressPickImpl implements AddressPick {
         abandendOrder,
     TResult? Function()? getDatetime,
     TResult? Function()? orderPlacing,
-    TResult? Function()? getOrders,
+    TResult? Function(bool? isLoad)? getOrders,
     TResult? Function(OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)?
         orderCancel,
@@ -2079,6 +2165,7 @@ class _$AddressPickImpl implements AddressPick {
     TResult? Function()? userNumber,
     TResult? Function()? removeAllFieldData,
     TResult? Function()? promoCodeSuccess,
+    TResult? Function(String orderId)? invoiceDownload,
   }) {
     return addressPick?.call(user, promo);
   }
@@ -2091,7 +2178,7 @@ class _$AddressPickImpl implements AddressPick {
         abandendOrder,
     TResult Function()? getDatetime,
     TResult Function()? orderPlacing,
-    TResult Function()? getOrders,
+    TResult Function(bool? isLoad)? getOrders,
     TResult Function(OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)?
         orderCancel,
@@ -2105,6 +2192,7 @@ class _$AddressPickImpl implements AddressPick {
     TResult Function()? userNumber,
     TResult Function()? removeAllFieldData,
     TResult Function()? promoCodeSuccess,
+    TResult Function(String orderId)? invoiceDownload,
     required TResult orElse(),
   }) {
     if (addressPick != null) {
@@ -2132,6 +2220,7 @@ class _$AddressPickImpl implements AddressPick {
     required TResult Function(UserNumber value) userNumber,
     required TResult Function(RemoveAllFieldData value) removeAllFieldData,
     required TResult Function(PromoCodeSuccess value) promoCodeSuccess,
+    required TResult Function(InvoiceDownload value) invoiceDownload,
   }) {
     return addressPick(this);
   }
@@ -2155,6 +2244,7 @@ class _$AddressPickImpl implements AddressPick {
     TResult? Function(UserNumber value)? userNumber,
     TResult? Function(RemoveAllFieldData value)? removeAllFieldData,
     TResult? Function(PromoCodeSuccess value)? promoCodeSuccess,
+    TResult? Function(InvoiceDownload value)? invoiceDownload,
   }) {
     return addressPick?.call(this);
   }
@@ -2178,6 +2268,7 @@ class _$AddressPickImpl implements AddressPick {
     TResult Function(UserNumber value)? userNumber,
     TResult Function(RemoveAllFieldData value)? removeAllFieldData,
     TResult Function(PromoCodeSuccess value)? promoCodeSuccess,
+    TResult Function(InvoiceDownload value)? invoiceDownload,
     required TResult orElse(),
   }) {
     if (addressPick != null) {
@@ -2270,7 +2361,7 @@ class _$PaymentOptionImpl implements PaymentOption {
         abandendOrder,
     required TResult Function() getDatetime,
     required TResult Function() orderPlacing,
-    required TResult Function() getOrders,
+    required TResult Function(bool? isLoad) getOrders,
     required TResult Function(
             OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)
@@ -2286,6 +2377,7 @@ class _$PaymentOptionImpl implements PaymentOption {
     required TResult Function() userNumber,
     required TResult Function() removeAllFieldData,
     required TResult Function() promoCodeSuccess,
+    required TResult Function(String orderId) invoiceDownload,
   }) {
     return paymentOption(payment);
   }
@@ -2299,7 +2391,7 @@ class _$PaymentOptionImpl implements PaymentOption {
         abandendOrder,
     TResult? Function()? getDatetime,
     TResult? Function()? orderPlacing,
-    TResult? Function()? getOrders,
+    TResult? Function(bool? isLoad)? getOrders,
     TResult? Function(OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)?
         orderCancel,
@@ -2313,6 +2405,7 @@ class _$PaymentOptionImpl implements PaymentOption {
     TResult? Function()? userNumber,
     TResult? Function()? removeAllFieldData,
     TResult? Function()? promoCodeSuccess,
+    TResult? Function(String orderId)? invoiceDownload,
   }) {
     return paymentOption?.call(payment);
   }
@@ -2325,7 +2418,7 @@ class _$PaymentOptionImpl implements PaymentOption {
         abandendOrder,
     TResult Function()? getDatetime,
     TResult Function()? orderPlacing,
-    TResult Function()? getOrders,
+    TResult Function(bool? isLoad)? getOrders,
     TResult Function(OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)?
         orderCancel,
@@ -2339,6 +2432,7 @@ class _$PaymentOptionImpl implements PaymentOption {
     TResult Function()? userNumber,
     TResult Function()? removeAllFieldData,
     TResult Function()? promoCodeSuccess,
+    TResult Function(String orderId)? invoiceDownload,
     required TResult orElse(),
   }) {
     if (paymentOption != null) {
@@ -2366,6 +2460,7 @@ class _$PaymentOptionImpl implements PaymentOption {
     required TResult Function(UserNumber value) userNumber,
     required TResult Function(RemoveAllFieldData value) removeAllFieldData,
     required TResult Function(PromoCodeSuccess value) promoCodeSuccess,
+    required TResult Function(InvoiceDownload value) invoiceDownload,
   }) {
     return paymentOption(this);
   }
@@ -2389,6 +2484,7 @@ class _$PaymentOptionImpl implements PaymentOption {
     TResult? Function(UserNumber value)? userNumber,
     TResult? Function(RemoveAllFieldData value)? removeAllFieldData,
     TResult? Function(PromoCodeSuccess value)? promoCodeSuccess,
+    TResult? Function(InvoiceDownload value)? invoiceDownload,
   }) {
     return paymentOption?.call(this);
   }
@@ -2412,6 +2508,7 @@ class _$PaymentOptionImpl implements PaymentOption {
     TResult Function(UserNumber value)? userNumber,
     TResult Function(RemoveAllFieldData value)? removeAllFieldData,
     TResult Function(PromoCodeSuccess value)? promoCodeSuccess,
+    TResult Function(InvoiceDownload value)? invoiceDownload,
     required TResult orElse(),
   }) {
     if (paymentOption != null) {
@@ -2512,7 +2609,7 @@ class _$SelectedOptionEventImpl implements SelectedOptionEvent {
         abandendOrder,
     required TResult Function() getDatetime,
     required TResult Function() orderPlacing,
-    required TResult Function() getOrders,
+    required TResult Function(bool? isLoad) getOrders,
     required TResult Function(
             OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)
@@ -2528,6 +2625,7 @@ class _$SelectedOptionEventImpl implements SelectedOptionEvent {
     required TResult Function() userNumber,
     required TResult Function() removeAllFieldData,
     required TResult Function() promoCodeSuccess,
+    required TResult Function(String orderId) invoiceDownload,
   }) {
     return selectedOptionEvent(selectedOption);
   }
@@ -2541,7 +2639,7 @@ class _$SelectedOptionEventImpl implements SelectedOptionEvent {
         abandendOrder,
     TResult? Function()? getDatetime,
     TResult? Function()? orderPlacing,
-    TResult? Function()? getOrders,
+    TResult? Function(bool? isLoad)? getOrders,
     TResult? Function(OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)?
         orderCancel,
@@ -2555,6 +2653,7 @@ class _$SelectedOptionEventImpl implements SelectedOptionEvent {
     TResult? Function()? userNumber,
     TResult? Function()? removeAllFieldData,
     TResult? Function()? promoCodeSuccess,
+    TResult? Function(String orderId)? invoiceDownload,
   }) {
     return selectedOptionEvent?.call(selectedOption);
   }
@@ -2567,7 +2666,7 @@ class _$SelectedOptionEventImpl implements SelectedOptionEvent {
         abandendOrder,
     TResult Function()? getDatetime,
     TResult Function()? orderPlacing,
-    TResult Function()? getOrders,
+    TResult Function(bool? isLoad)? getOrders,
     TResult Function(OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)?
         orderCancel,
@@ -2581,6 +2680,7 @@ class _$SelectedOptionEventImpl implements SelectedOptionEvent {
     TResult Function()? userNumber,
     TResult Function()? removeAllFieldData,
     TResult Function()? promoCodeSuccess,
+    TResult Function(String orderId)? invoiceDownload,
     required TResult orElse(),
   }) {
     if (selectedOptionEvent != null) {
@@ -2608,6 +2708,7 @@ class _$SelectedOptionEventImpl implements SelectedOptionEvent {
     required TResult Function(UserNumber value) userNumber,
     required TResult Function(RemoveAllFieldData value) removeAllFieldData,
     required TResult Function(PromoCodeSuccess value) promoCodeSuccess,
+    required TResult Function(InvoiceDownload value) invoiceDownload,
   }) {
     return selectedOptionEvent(this);
   }
@@ -2631,6 +2732,7 @@ class _$SelectedOptionEventImpl implements SelectedOptionEvent {
     TResult? Function(UserNumber value)? userNumber,
     TResult? Function(RemoveAllFieldData value)? removeAllFieldData,
     TResult? Function(PromoCodeSuccess value)? promoCodeSuccess,
+    TResult? Function(InvoiceDownload value)? invoiceDownload,
   }) {
     return selectedOptionEvent?.call(this);
   }
@@ -2654,6 +2756,7 @@ class _$SelectedOptionEventImpl implements SelectedOptionEvent {
     TResult Function(UserNumber value)? userNumber,
     TResult Function(RemoveAllFieldData value)? removeAllFieldData,
     TResult Function(PromoCodeSuccess value)? promoCodeSuccess,
+    TResult Function(InvoiceDownload value)? invoiceDownload,
     required TResult orElse(),
   }) {
     if (selectedOptionEvent != null) {
@@ -2719,7 +2822,7 @@ class _$RemoveAppliedPromoImpl implements RemoveAppliedPromo {
         abandendOrder,
     required TResult Function() getDatetime,
     required TResult Function() orderPlacing,
-    required TResult Function() getOrders,
+    required TResult Function(bool? isLoad) getOrders,
     required TResult Function(
             OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)
@@ -2735,6 +2838,7 @@ class _$RemoveAppliedPromoImpl implements RemoveAppliedPromo {
     required TResult Function() userNumber,
     required TResult Function() removeAllFieldData,
     required TResult Function() promoCodeSuccess,
+    required TResult Function(String orderId) invoiceDownload,
   }) {
     return removeAppliedPromo();
   }
@@ -2748,7 +2852,7 @@ class _$RemoveAppliedPromoImpl implements RemoveAppliedPromo {
         abandendOrder,
     TResult? Function()? getDatetime,
     TResult? Function()? orderPlacing,
-    TResult? Function()? getOrders,
+    TResult? Function(bool? isLoad)? getOrders,
     TResult? Function(OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)?
         orderCancel,
@@ -2762,6 +2866,7 @@ class _$RemoveAppliedPromoImpl implements RemoveAppliedPromo {
     TResult? Function()? userNumber,
     TResult? Function()? removeAllFieldData,
     TResult? Function()? promoCodeSuccess,
+    TResult? Function(String orderId)? invoiceDownload,
   }) {
     return removeAppliedPromo?.call();
   }
@@ -2774,7 +2879,7 @@ class _$RemoveAppliedPromoImpl implements RemoveAppliedPromo {
         abandendOrder,
     TResult Function()? getDatetime,
     TResult Function()? orderPlacing,
-    TResult Function()? getOrders,
+    TResult Function(bool? isLoad)? getOrders,
     TResult Function(OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)?
         orderCancel,
@@ -2788,6 +2893,7 @@ class _$RemoveAppliedPromoImpl implements RemoveAppliedPromo {
     TResult Function()? userNumber,
     TResult Function()? removeAllFieldData,
     TResult Function()? promoCodeSuccess,
+    TResult Function(String orderId)? invoiceDownload,
     required TResult orElse(),
   }) {
     if (removeAppliedPromo != null) {
@@ -2815,6 +2921,7 @@ class _$RemoveAppliedPromoImpl implements RemoveAppliedPromo {
     required TResult Function(UserNumber value) userNumber,
     required TResult Function(RemoveAllFieldData value) removeAllFieldData,
     required TResult Function(PromoCodeSuccess value) promoCodeSuccess,
+    required TResult Function(InvoiceDownload value) invoiceDownload,
   }) {
     return removeAppliedPromo(this);
   }
@@ -2838,6 +2945,7 @@ class _$RemoveAppliedPromoImpl implements RemoveAppliedPromo {
     TResult? Function(UserNumber value)? userNumber,
     TResult? Function(RemoveAllFieldData value)? removeAllFieldData,
     TResult? Function(PromoCodeSuccess value)? promoCodeSuccess,
+    TResult? Function(InvoiceDownload value)? invoiceDownload,
   }) {
     return removeAppliedPromo?.call(this);
   }
@@ -2861,6 +2969,7 @@ class _$RemoveAppliedPromoImpl implements RemoveAppliedPromo {
     TResult Function(UserNumber value)? userNumber,
     TResult Function(RemoveAllFieldData value)? removeAllFieldData,
     TResult Function(PromoCodeSuccess value)? promoCodeSuccess,
+    TResult Function(InvoiceDownload value)? invoiceDownload,
     required TResult orElse(),
   }) {
     if (removeAppliedPromo != null) {
@@ -2947,7 +3056,7 @@ class _$PickupDetailsPickImpl implements PickupDetailsPick {
         abandendOrder,
     required TResult Function() getDatetime,
     required TResult Function() orderPlacing,
-    required TResult Function() getOrders,
+    required TResult Function(bool? isLoad) getOrders,
     required TResult Function(
             OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)
@@ -2963,6 +3072,7 @@ class _$PickupDetailsPickImpl implements PickupDetailsPick {
     required TResult Function() userNumber,
     required TResult Function() removeAllFieldData,
     required TResult Function() promoCodeSuccess,
+    required TResult Function(String orderId) invoiceDownload,
   }) {
     return pickupDetailsPick(pickUpDetails);
   }
@@ -2976,7 +3086,7 @@ class _$PickupDetailsPickImpl implements PickupDetailsPick {
         abandendOrder,
     TResult? Function()? getDatetime,
     TResult? Function()? orderPlacing,
-    TResult? Function()? getOrders,
+    TResult? Function(bool? isLoad)? getOrders,
     TResult? Function(OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)?
         orderCancel,
@@ -2990,6 +3100,7 @@ class _$PickupDetailsPickImpl implements PickupDetailsPick {
     TResult? Function()? userNumber,
     TResult? Function()? removeAllFieldData,
     TResult? Function()? promoCodeSuccess,
+    TResult? Function(String orderId)? invoiceDownload,
   }) {
     return pickupDetailsPick?.call(pickUpDetails);
   }
@@ -3002,7 +3113,7 @@ class _$PickupDetailsPickImpl implements PickupDetailsPick {
         abandendOrder,
     TResult Function()? getDatetime,
     TResult Function()? orderPlacing,
-    TResult Function()? getOrders,
+    TResult Function(bool? isLoad)? getOrders,
     TResult Function(OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)?
         orderCancel,
@@ -3016,6 +3127,7 @@ class _$PickupDetailsPickImpl implements PickupDetailsPick {
     TResult Function()? userNumber,
     TResult Function()? removeAllFieldData,
     TResult Function()? promoCodeSuccess,
+    TResult Function(String orderId)? invoiceDownload,
     required TResult orElse(),
   }) {
     if (pickupDetailsPick != null) {
@@ -3043,6 +3155,7 @@ class _$PickupDetailsPickImpl implements PickupDetailsPick {
     required TResult Function(UserNumber value) userNumber,
     required TResult Function(RemoveAllFieldData value) removeAllFieldData,
     required TResult Function(PromoCodeSuccess value) promoCodeSuccess,
+    required TResult Function(InvoiceDownload value) invoiceDownload,
   }) {
     return pickupDetailsPick(this);
   }
@@ -3066,6 +3179,7 @@ class _$PickupDetailsPickImpl implements PickupDetailsPick {
     TResult? Function(UserNumber value)? userNumber,
     TResult? Function(RemoveAllFieldData value)? removeAllFieldData,
     TResult? Function(PromoCodeSuccess value)? promoCodeSuccess,
+    TResult? Function(InvoiceDownload value)? invoiceDownload,
   }) {
     return pickupDetailsPick?.call(this);
   }
@@ -3089,6 +3203,7 @@ class _$PickupDetailsPickImpl implements PickupDetailsPick {
     TResult Function(UserNumber value)? userNumber,
     TResult Function(RemoveAllFieldData value)? removeAllFieldData,
     TResult Function(PromoCodeSuccess value)? promoCodeSuccess,
+    TResult Function(InvoiceDownload value)? invoiceDownload,
     required TResult orElse(),
   }) {
     if (pickupDetailsPick != null) {
@@ -3153,7 +3268,7 @@ class _$UserNumberImpl implements UserNumber {
         abandendOrder,
     required TResult Function() getDatetime,
     required TResult Function() orderPlacing,
-    required TResult Function() getOrders,
+    required TResult Function(bool? isLoad) getOrders,
     required TResult Function(
             OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)
@@ -3169,6 +3284,7 @@ class _$UserNumberImpl implements UserNumber {
     required TResult Function() userNumber,
     required TResult Function() removeAllFieldData,
     required TResult Function() promoCodeSuccess,
+    required TResult Function(String orderId) invoiceDownload,
   }) {
     return userNumber();
   }
@@ -3182,7 +3298,7 @@ class _$UserNumberImpl implements UserNumber {
         abandendOrder,
     TResult? Function()? getDatetime,
     TResult? Function()? orderPlacing,
-    TResult? Function()? getOrders,
+    TResult? Function(bool? isLoad)? getOrders,
     TResult? Function(OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)?
         orderCancel,
@@ -3196,6 +3312,7 @@ class _$UserNumberImpl implements UserNumber {
     TResult? Function()? userNumber,
     TResult? Function()? removeAllFieldData,
     TResult? Function()? promoCodeSuccess,
+    TResult? Function(String orderId)? invoiceDownload,
   }) {
     return userNumber?.call();
   }
@@ -3208,7 +3325,7 @@ class _$UserNumberImpl implements UserNumber {
         abandendOrder,
     TResult Function()? getDatetime,
     TResult Function()? orderPlacing,
-    TResult Function()? getOrders,
+    TResult Function(bool? isLoad)? getOrders,
     TResult Function(OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)?
         orderCancel,
@@ -3222,6 +3339,7 @@ class _$UserNumberImpl implements UserNumber {
     TResult Function()? userNumber,
     TResult Function()? removeAllFieldData,
     TResult Function()? promoCodeSuccess,
+    TResult Function(String orderId)? invoiceDownload,
     required TResult orElse(),
   }) {
     if (userNumber != null) {
@@ -3249,6 +3367,7 @@ class _$UserNumberImpl implements UserNumber {
     required TResult Function(UserNumber value) userNumber,
     required TResult Function(RemoveAllFieldData value) removeAllFieldData,
     required TResult Function(PromoCodeSuccess value) promoCodeSuccess,
+    required TResult Function(InvoiceDownload value) invoiceDownload,
   }) {
     return userNumber(this);
   }
@@ -3272,6 +3391,7 @@ class _$UserNumberImpl implements UserNumber {
     TResult? Function(UserNumber value)? userNumber,
     TResult? Function(RemoveAllFieldData value)? removeAllFieldData,
     TResult? Function(PromoCodeSuccess value)? promoCodeSuccess,
+    TResult? Function(InvoiceDownload value)? invoiceDownload,
   }) {
     return userNumber?.call(this);
   }
@@ -3295,6 +3415,7 @@ class _$UserNumberImpl implements UserNumber {
     TResult Function(UserNumber value)? userNumber,
     TResult Function(RemoveAllFieldData value)? removeAllFieldData,
     TResult Function(PromoCodeSuccess value)? promoCodeSuccess,
+    TResult Function(InvoiceDownload value)? invoiceDownload,
     required TResult orElse(),
   }) {
     if (userNumber != null) {
@@ -3353,7 +3474,7 @@ class _$RemoveAllFieldDataImpl implements RemoveAllFieldData {
         abandendOrder,
     required TResult Function() getDatetime,
     required TResult Function() orderPlacing,
-    required TResult Function() getOrders,
+    required TResult Function(bool? isLoad) getOrders,
     required TResult Function(
             OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)
@@ -3369,6 +3490,7 @@ class _$RemoveAllFieldDataImpl implements RemoveAllFieldData {
     required TResult Function() userNumber,
     required TResult Function() removeAllFieldData,
     required TResult Function() promoCodeSuccess,
+    required TResult Function(String orderId) invoiceDownload,
   }) {
     return removeAllFieldData();
   }
@@ -3382,7 +3504,7 @@ class _$RemoveAllFieldDataImpl implements RemoveAllFieldData {
         abandendOrder,
     TResult? Function()? getDatetime,
     TResult? Function()? orderPlacing,
-    TResult? Function()? getOrders,
+    TResult? Function(bool? isLoad)? getOrders,
     TResult? Function(OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)?
         orderCancel,
@@ -3396,6 +3518,7 @@ class _$RemoveAllFieldDataImpl implements RemoveAllFieldData {
     TResult? Function()? userNumber,
     TResult? Function()? removeAllFieldData,
     TResult? Function()? promoCodeSuccess,
+    TResult? Function(String orderId)? invoiceDownload,
   }) {
     return removeAllFieldData?.call();
   }
@@ -3408,7 +3531,7 @@ class _$RemoveAllFieldDataImpl implements RemoveAllFieldData {
         abandendOrder,
     TResult Function()? getDatetime,
     TResult Function()? orderPlacing,
-    TResult Function()? getOrders,
+    TResult Function(bool? isLoad)? getOrders,
     TResult Function(OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)?
         orderCancel,
@@ -3422,6 +3545,7 @@ class _$RemoveAllFieldDataImpl implements RemoveAllFieldData {
     TResult Function()? userNumber,
     TResult Function()? removeAllFieldData,
     TResult Function()? promoCodeSuccess,
+    TResult Function(String orderId)? invoiceDownload,
     required TResult orElse(),
   }) {
     if (removeAllFieldData != null) {
@@ -3449,6 +3573,7 @@ class _$RemoveAllFieldDataImpl implements RemoveAllFieldData {
     required TResult Function(UserNumber value) userNumber,
     required TResult Function(RemoveAllFieldData value) removeAllFieldData,
     required TResult Function(PromoCodeSuccess value) promoCodeSuccess,
+    required TResult Function(InvoiceDownload value) invoiceDownload,
   }) {
     return removeAllFieldData(this);
   }
@@ -3472,6 +3597,7 @@ class _$RemoveAllFieldDataImpl implements RemoveAllFieldData {
     TResult? Function(UserNumber value)? userNumber,
     TResult? Function(RemoveAllFieldData value)? removeAllFieldData,
     TResult? Function(PromoCodeSuccess value)? promoCodeSuccess,
+    TResult? Function(InvoiceDownload value)? invoiceDownload,
   }) {
     return removeAllFieldData?.call(this);
   }
@@ -3495,6 +3621,7 @@ class _$RemoveAllFieldDataImpl implements RemoveAllFieldData {
     TResult Function(UserNumber value)? userNumber,
     TResult Function(RemoveAllFieldData value)? removeAllFieldData,
     TResult Function(PromoCodeSuccess value)? promoCodeSuccess,
+    TResult Function(InvoiceDownload value)? invoiceDownload,
     required TResult orElse(),
   }) {
     if (removeAllFieldData != null) {
@@ -3553,7 +3680,7 @@ class _$PromoCodeSuccessImpl implements PromoCodeSuccess {
         abandendOrder,
     required TResult Function() getDatetime,
     required TResult Function() orderPlacing,
-    required TResult Function() getOrders,
+    required TResult Function(bool? isLoad) getOrders,
     required TResult Function(
             OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)
@@ -3569,6 +3696,7 @@ class _$PromoCodeSuccessImpl implements PromoCodeSuccess {
     required TResult Function() userNumber,
     required TResult Function() removeAllFieldData,
     required TResult Function() promoCodeSuccess,
+    required TResult Function(String orderId) invoiceDownload,
   }) {
     return promoCodeSuccess();
   }
@@ -3582,7 +3710,7 @@ class _$PromoCodeSuccessImpl implements PromoCodeSuccess {
         abandendOrder,
     TResult? Function()? getDatetime,
     TResult? Function()? orderPlacing,
-    TResult? Function()? getOrders,
+    TResult? Function(bool? isLoad)? getOrders,
     TResult? Function(OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)?
         orderCancel,
@@ -3596,6 +3724,7 @@ class _$PromoCodeSuccessImpl implements PromoCodeSuccess {
     TResult? Function()? userNumber,
     TResult? Function()? removeAllFieldData,
     TResult? Function()? promoCodeSuccess,
+    TResult? Function(String orderId)? invoiceDownload,
   }) {
     return promoCodeSuccess?.call();
   }
@@ -3608,7 +3737,7 @@ class _$PromoCodeSuccessImpl implements PromoCodeSuccess {
         abandendOrder,
     TResult Function()? getDatetime,
     TResult Function()? orderPlacing,
-    TResult Function()? getOrders,
+    TResult Function(bool? isLoad)? getOrders,
     TResult Function(OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)?
         orderCancel,
@@ -3622,6 +3751,7 @@ class _$PromoCodeSuccessImpl implements PromoCodeSuccess {
     TResult Function()? userNumber,
     TResult Function()? removeAllFieldData,
     TResult Function()? promoCodeSuccess,
+    TResult Function(String orderId)? invoiceDownload,
     required TResult orElse(),
   }) {
     if (promoCodeSuccess != null) {
@@ -3649,6 +3779,7 @@ class _$PromoCodeSuccessImpl implements PromoCodeSuccess {
     required TResult Function(UserNumber value) userNumber,
     required TResult Function(RemoveAllFieldData value) removeAllFieldData,
     required TResult Function(PromoCodeSuccess value) promoCodeSuccess,
+    required TResult Function(InvoiceDownload value) invoiceDownload,
   }) {
     return promoCodeSuccess(this);
   }
@@ -3672,6 +3803,7 @@ class _$PromoCodeSuccessImpl implements PromoCodeSuccess {
     TResult? Function(UserNumber value)? userNumber,
     TResult? Function(RemoveAllFieldData value)? removeAllFieldData,
     TResult? Function(PromoCodeSuccess value)? promoCodeSuccess,
+    TResult? Function(InvoiceDownload value)? invoiceDownload,
   }) {
     return promoCodeSuccess?.call(this);
   }
@@ -3695,6 +3827,7 @@ class _$PromoCodeSuccessImpl implements PromoCodeSuccess {
     TResult Function(UserNumber value)? userNumber,
     TResult Function(RemoveAllFieldData value)? removeAllFieldData,
     TResult Function(PromoCodeSuccess value)? promoCodeSuccess,
+    TResult Function(InvoiceDownload value)? invoiceDownload,
     required TResult orElse(),
   }) {
     if (promoCodeSuccess != null) {
@@ -3706,6 +3839,245 @@ class _$PromoCodeSuccessImpl implements PromoCodeSuccess {
 
 abstract class PromoCodeSuccess implements PlaceOrderEvent {
   const factory PromoCodeSuccess() = _$PromoCodeSuccessImpl;
+}
+
+/// @nodoc
+abstract class _$$InvoiceDownloadImplCopyWith<$Res> {
+  factory _$$InvoiceDownloadImplCopyWith(_$InvoiceDownloadImpl value,
+          $Res Function(_$InvoiceDownloadImpl) then) =
+      __$$InvoiceDownloadImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String orderId});
+}
+
+/// @nodoc
+class __$$InvoiceDownloadImplCopyWithImpl<$Res>
+    extends _$PlaceOrderEventCopyWithImpl<$Res, _$InvoiceDownloadImpl>
+    implements _$$InvoiceDownloadImplCopyWith<$Res> {
+  __$$InvoiceDownloadImplCopyWithImpl(
+      _$InvoiceDownloadImpl _value, $Res Function(_$InvoiceDownloadImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? orderId = null,
+  }) {
+    return _then(_$InvoiceDownloadImpl(
+      orderId: null == orderId
+          ? _value.orderId
+          : orderId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$InvoiceDownloadImpl implements InvoiceDownload {
+  const _$InvoiceDownloadImpl({required this.orderId});
+
+  @override
+  final String orderId;
+
+  @override
+  String toString() {
+    return 'PlaceOrderEvent.invoiceDownload(orderId: $orderId)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$InvoiceDownloadImpl &&
+            (identical(other.orderId, orderId) || other.orderId == orderId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, orderId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$InvoiceDownloadImplCopyWith<_$InvoiceDownloadImpl> get copyWith =>
+      __$$InvoiceDownloadImplCopyWithImpl<_$InvoiceDownloadImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(PromoCodeRequestModel promoCodeRequestModel)
+        getPromoCode,
+    required TResult Function(
+            AbandendOrderRequestModel abandendOrderRequestModel)
+        abandendOrder,
+    required TResult Function() getDatetime,
+    required TResult Function() orderPlacing,
+    required TResult Function(bool? isLoad) getOrders,
+    required TResult Function(
+            OrderCancelationRequestModel orderCancelationRequestModel,
+            String orderId)
+        orderCancel,
+    required TResult Function(ProductDetails productDetails) productDetailsPick,
+    required TResult Function(Promo promo) promoCodePick,
+    required TResult Function(User user, Promo promo) addressPick,
+    required TResult Function(Payment payment) paymentOption,
+    required TResult Function(List<SelectedOption> selectedOption)
+        selectedOptionEvent,
+    required TResult Function() removeAppliedPromo,
+    required TResult Function(PickUpDetails pickUpDetails) pickupDetailsPick,
+    required TResult Function() userNumber,
+    required TResult Function() removeAllFieldData,
+    required TResult Function() promoCodeSuccess,
+    required TResult Function(String orderId) invoiceDownload,
+  }) {
+    return invoiceDownload(orderId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(PromoCodeRequestModel promoCodeRequestModel)?
+        getPromoCode,
+    TResult? Function(AbandendOrderRequestModel abandendOrderRequestModel)?
+        abandendOrder,
+    TResult? Function()? getDatetime,
+    TResult? Function()? orderPlacing,
+    TResult? Function(bool? isLoad)? getOrders,
+    TResult? Function(OrderCancelationRequestModel orderCancelationRequestModel,
+            String orderId)?
+        orderCancel,
+    TResult? Function(ProductDetails productDetails)? productDetailsPick,
+    TResult? Function(Promo promo)? promoCodePick,
+    TResult? Function(User user, Promo promo)? addressPick,
+    TResult? Function(Payment payment)? paymentOption,
+    TResult? Function(List<SelectedOption> selectedOption)? selectedOptionEvent,
+    TResult? Function()? removeAppliedPromo,
+    TResult? Function(PickUpDetails pickUpDetails)? pickupDetailsPick,
+    TResult? Function()? userNumber,
+    TResult? Function()? removeAllFieldData,
+    TResult? Function()? promoCodeSuccess,
+    TResult? Function(String orderId)? invoiceDownload,
+  }) {
+    return invoiceDownload?.call(orderId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(PromoCodeRequestModel promoCodeRequestModel)? getPromoCode,
+    TResult Function(AbandendOrderRequestModel abandendOrderRequestModel)?
+        abandendOrder,
+    TResult Function()? getDatetime,
+    TResult Function()? orderPlacing,
+    TResult Function(bool? isLoad)? getOrders,
+    TResult Function(OrderCancelationRequestModel orderCancelationRequestModel,
+            String orderId)?
+        orderCancel,
+    TResult Function(ProductDetails productDetails)? productDetailsPick,
+    TResult Function(Promo promo)? promoCodePick,
+    TResult Function(User user, Promo promo)? addressPick,
+    TResult Function(Payment payment)? paymentOption,
+    TResult Function(List<SelectedOption> selectedOption)? selectedOptionEvent,
+    TResult Function()? removeAppliedPromo,
+    TResult Function(PickUpDetails pickUpDetails)? pickupDetailsPick,
+    TResult Function()? userNumber,
+    TResult Function()? removeAllFieldData,
+    TResult Function()? promoCodeSuccess,
+    TResult Function(String orderId)? invoiceDownload,
+    required TResult orElse(),
+  }) {
+    if (invoiceDownload != null) {
+      return invoiceDownload(orderId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GetPromoCode value) getPromoCode,
+    required TResult Function(AbandendOrder value) abandendOrder,
+    required TResult Function(GetDatetime value) getDatetime,
+    required TResult Function(OrderPlacing value) orderPlacing,
+    required TResult Function(GetOrders value) getOrders,
+    required TResult Function(OrderCancel value) orderCancel,
+    required TResult Function(ProductDetailsPick value) productDetailsPick,
+    required TResult Function(PromoCodePick value) promoCodePick,
+    required TResult Function(AddressPick value) addressPick,
+    required TResult Function(PaymentOption value) paymentOption,
+    required TResult Function(SelectedOptionEvent value) selectedOptionEvent,
+    required TResult Function(RemoveAppliedPromo value) removeAppliedPromo,
+    required TResult Function(PickupDetailsPick value) pickupDetailsPick,
+    required TResult Function(UserNumber value) userNumber,
+    required TResult Function(RemoveAllFieldData value) removeAllFieldData,
+    required TResult Function(PromoCodeSuccess value) promoCodeSuccess,
+    required TResult Function(InvoiceDownload value) invoiceDownload,
+  }) {
+    return invoiceDownload(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetPromoCode value)? getPromoCode,
+    TResult? Function(AbandendOrder value)? abandendOrder,
+    TResult? Function(GetDatetime value)? getDatetime,
+    TResult? Function(OrderPlacing value)? orderPlacing,
+    TResult? Function(GetOrders value)? getOrders,
+    TResult? Function(OrderCancel value)? orderCancel,
+    TResult? Function(ProductDetailsPick value)? productDetailsPick,
+    TResult? Function(PromoCodePick value)? promoCodePick,
+    TResult? Function(AddressPick value)? addressPick,
+    TResult? Function(PaymentOption value)? paymentOption,
+    TResult? Function(SelectedOptionEvent value)? selectedOptionEvent,
+    TResult? Function(RemoveAppliedPromo value)? removeAppliedPromo,
+    TResult? Function(PickupDetailsPick value)? pickupDetailsPick,
+    TResult? Function(UserNumber value)? userNumber,
+    TResult? Function(RemoveAllFieldData value)? removeAllFieldData,
+    TResult? Function(PromoCodeSuccess value)? promoCodeSuccess,
+    TResult? Function(InvoiceDownload value)? invoiceDownload,
+  }) {
+    return invoiceDownload?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetPromoCode value)? getPromoCode,
+    TResult Function(AbandendOrder value)? abandendOrder,
+    TResult Function(GetDatetime value)? getDatetime,
+    TResult Function(OrderPlacing value)? orderPlacing,
+    TResult Function(GetOrders value)? getOrders,
+    TResult Function(OrderCancel value)? orderCancel,
+    TResult Function(ProductDetailsPick value)? productDetailsPick,
+    TResult Function(PromoCodePick value)? promoCodePick,
+    TResult Function(AddressPick value)? addressPick,
+    TResult Function(PaymentOption value)? paymentOption,
+    TResult Function(SelectedOptionEvent value)? selectedOptionEvent,
+    TResult Function(RemoveAppliedPromo value)? removeAppliedPromo,
+    TResult Function(PickupDetailsPick value)? pickupDetailsPick,
+    TResult Function(UserNumber value)? userNumber,
+    TResult Function(RemoveAllFieldData value)? removeAllFieldData,
+    TResult Function(PromoCodeSuccess value)? promoCodeSuccess,
+    TResult Function(InvoiceDownload value)? invoiceDownload,
+    required TResult orElse(),
+  }) {
+    if (invoiceDownload != null) {
+      return invoiceDownload(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class InvoiceDownload implements PlaceOrderEvent {
+  const factory InvoiceDownload({required final String orderId}) =
+      _$InvoiceDownloadImpl;
+
+  String get orderId;
+  @JsonKey(ignore: true)
+  _$$InvoiceDownloadImplCopyWith<_$InvoiceDownloadImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -3737,6 +4109,7 @@ mixin _$PlaceOrderState {
       throw _privateConstructorUsedError;
   List<String>? get dates => throw _privateConstructorUsedError;
   List<String>? get time => throw _privateConstructorUsedError;
+  File? get data => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $PlaceOrderStateCopyWith<PlaceOrderState> get copyWith =>
@@ -3769,7 +4142,8 @@ abstract class $PlaceOrderStateCopyWith<$Res> {
       GetAllOrderResponceModel? getAllOrderResponceModel,
       DateTomeResponceModel? dateTomeResponceModel,
       List<String>? dates,
-      List<String>? time});
+      List<String>? time,
+      File? data});
 }
 
 /// @nodoc
@@ -3805,6 +4179,7 @@ class _$PlaceOrderStateCopyWithImpl<$Res, $Val extends PlaceOrderState>
     Object? dateTomeResponceModel = freezed,
     Object? dates = freezed,
     Object? time = freezed,
+    Object? data = freezed,
   }) {
     return _then(_value.copyWith(
       isLoading: null == isLoading
@@ -3887,6 +4262,10 @@ class _$PlaceOrderStateCopyWithImpl<$Res, $Val extends PlaceOrderState>
           ? _value.time
           : time // ignore: cast_nullable_to_non_nullable
               as List<String>?,
+      data: freezed == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as File?,
     ) as $Val);
   }
 }
@@ -3919,7 +4298,8 @@ abstract class _$$InitialImplCopyWith<$Res>
       GetAllOrderResponceModel? getAllOrderResponceModel,
       DateTomeResponceModel? dateTomeResponceModel,
       List<String>? dates,
-      List<String>? time});
+      List<String>? time,
+      File? data});
 }
 
 /// @nodoc
@@ -3953,6 +4333,7 @@ class __$$InitialImplCopyWithImpl<$Res>
     Object? dateTomeResponceModel = freezed,
     Object? dates = freezed,
     Object? time = freezed,
+    Object? data = freezed,
   }) {
     return _then(_$InitialImpl(
       isLoading: null == isLoading
@@ -4035,6 +4416,10 @@ class __$$InitialImplCopyWithImpl<$Res>
           ? _value._time
           : time // ignore: cast_nullable_to_non_nullable
               as List<String>?,
+      data: freezed == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as File?,
     ));
   }
 }
@@ -4062,7 +4447,8 @@ class _$InitialImpl implements _Initial {
       this.getAllOrderResponceModel,
       this.dateTomeResponceModel,
       final List<String>? dates,
-      final List<String>? time})
+      final List<String>? time,
+      this.data})
       : _selectedNewOptions = selectedNewOptions,
         _dates = dates,
         _time = time;
@@ -4133,8 +4519,11 @@ class _$InitialImpl implements _Initial {
   }
 
   @override
+  final File? data;
+
+  @override
   String toString() {
-    return 'PlaceOrderState(isLoading: $isLoading, hasError: $hasError, loginStatus: $loginStatus, message: $message, promoCodeResponceModel: $promoCodeResponceModel, orderPlacedResponceModel: $orderPlacedResponceModel, orderPlacedRequestModel: $orderPlacedRequestModel, user: $user, payment: $payment, pickUpDetails: $pickUpDetails, productDetails: $productDetails, address: $address, promo: $promo, number: $number, selectedNewOptions: $selectedNewOptions, orderCancelationResponceModel: $orderCancelationResponceModel, getAllOrderResponceModel: $getAllOrderResponceModel, dateTomeResponceModel: $dateTomeResponceModel, dates: $dates, time: $time)';
+    return 'PlaceOrderState(isLoading: $isLoading, hasError: $hasError, loginStatus: $loginStatus, message: $message, promoCodeResponceModel: $promoCodeResponceModel, orderPlacedResponceModel: $orderPlacedResponceModel, orderPlacedRequestModel: $orderPlacedRequestModel, user: $user, payment: $payment, pickUpDetails: $pickUpDetails, productDetails: $productDetails, address: $address, promo: $promo, number: $number, selectedNewOptions: $selectedNewOptions, orderCancelationResponceModel: $orderCancelationResponceModel, getAllOrderResponceModel: $getAllOrderResponceModel, dateTomeResponceModel: $dateTomeResponceModel, dates: $dates, time: $time, data: $data)';
   }
 
   @override
@@ -4178,7 +4567,8 @@ class _$InitialImpl implements _Initial {
             (identical(other.dateTomeResponceModel, dateTomeResponceModel) ||
                 other.dateTomeResponceModel == dateTomeResponceModel) &&
             const DeepCollectionEquality().equals(other._dates, _dates) &&
-            const DeepCollectionEquality().equals(other._time, _time));
+            const DeepCollectionEquality().equals(other._time, _time) &&
+            (identical(other.data, data) || other.data == data));
   }
 
   @override
@@ -4203,7 +4593,8 @@ class _$InitialImpl implements _Initial {
         getAllOrderResponceModel,
         dateTomeResponceModel,
         const DeepCollectionEquality().hash(_dates),
-        const DeepCollectionEquality().hash(_time)
+        const DeepCollectionEquality().hash(_time),
+        data
       ]);
 
   @JsonKey(ignore: true)
@@ -4234,7 +4625,8 @@ abstract class _Initial implements PlaceOrderState {
       final GetAllOrderResponceModel? getAllOrderResponceModel,
       final DateTomeResponceModel? dateTomeResponceModel,
       final List<String>? dates,
-      final List<String>? time}) = _$InitialImpl;
+      final List<String>? time,
+      final File? data}) = _$InitialImpl;
 
   @override
   bool get isLoading;
@@ -4276,6 +4668,8 @@ abstract class _Initial implements PlaceOrderState {
   List<String>? get dates;
   @override
   List<String>? get time;
+  @override
+  File? get data;
   @override
   @JsonKey(ignore: true)
   _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>

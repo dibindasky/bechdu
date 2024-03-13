@@ -1,7 +1,6 @@
 import 'package:beachdu/domain/core/failure/failure.dart';
 import 'package:beachdu/domain/model/date_tome_responce_model/date_tome_responce_model.dart';
 import 'package:beachdu/domain/model/order_model/get_all_order_responce_model/get_all_order_responce_model.dart';
-import 'package:beachdu/domain/model/order_model/invoice_request_model/invoice_request_model.dart';
 import 'package:beachdu/domain/model/order_model/order_cancelation_request_model/order_cancelation_request_model.dart';
 import 'package:beachdu/domain/model/order_model/order_cancelation_responce_model/order_cancelation_responce_model.dart';
 import 'package:beachdu/domain/model/order_model/order_placed_request_model/order_placed_request_model.dart';
@@ -23,7 +22,12 @@ abstract class PlaceOrderRepo {
     required String orderId,
   });
   Future<Either<Failure, DateTomeResponceModel>> getDateTime();
-  Future<Either<Failure, InvoiceRequestModel>> invoiceDownLoad(
-      {required InvoiceRequestModel invoiceRequestModel,
-      required String orderId});
+  Future<Either<Failure, String>> invoiceDownLoad({
+    required String orderId,
+    required String number,
+  });
+  Future<void> downloadInvoice({
+    required String orderId,
+    required String number,
+  });
 }

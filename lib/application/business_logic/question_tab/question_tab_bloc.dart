@@ -227,6 +227,8 @@ class QuestionTabBloc extends Bloc<QuestionTabEvent, QuestionTabState> {
     final data = await questionRepo.abandendOrder(
       abandendOrderRequestModel: event.abandendOrderRequestModel,
     );
+    log('abandentOrder  ${event.abandendOrderRequestModel.abendendOrderUser!.toJson()}');
+    log('abandentOrder  ${event.abandendOrderRequestModel.productDetails!.toJson()}');
     log('abandentOrder second');
     data.fold((falure) {
       emit(state.copyWith(

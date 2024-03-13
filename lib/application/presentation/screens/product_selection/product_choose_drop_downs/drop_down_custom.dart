@@ -1,11 +1,7 @@
-import 'dart:developer';
-
-import 'package:beachdu/application/business_logic/brands_bloc/category_bloc_bloc.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class DropDownBuilder extends StatefulWidget {
   const DropDownBuilder({

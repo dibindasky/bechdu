@@ -32,7 +32,6 @@ class ScreenHome extends StatefulWidget {
 
 class _ScreenHomeState extends State<ScreenHome> {
   final scrollController = ScrollController();
-  late Timer _locationCheckTimer;
 
   @override
   void initState() {
@@ -40,9 +39,9 @@ class _ScreenHomeState extends State<ScreenHome> {
     scrollController.addListener(() {
       _scrollCallBack();
     });
-    Future.delayed(
-      const Duration(seconds: 10),
-    ).then((value) => _checkLocationAndShowScreen);
+    // Future.delayed(
+    //   const Duration(seconds: 10),
+    // ).then((value) => _checkLocationAndShowScreen);
     super.initState();
   }
 
@@ -59,24 +58,30 @@ class _ScreenHomeState extends State<ScreenHome> {
   @override
   void dispose() {
     scrollController.dispose();
-    _locationCheckTimer.cancel();
     super.dispose();
   }
 
-  void _checkLocationAndShowScreen(Timer timer) async {
-    bool isLocationSelected = await SecureSotrage.getPicodeBool();
-    if (!isLocationSelected && homeScreens.value != 1) {
-      _locationCheckTimer.cancel();
-      Navigator.of(context).push(MaterialPageRoute(
-        builder: (context) => const ScreenLocations(),
-      ));
-    }
-  }
+  // void _checkLocationAndShowScreen(Timer timer) async {
+  //   bool isLocationSelected = await SecureSotrage.getPicodeBool();
+  //   if (!isLocationSelected && homeScreens.value != 1) {
+  //     _locationCheckTimer.cancel();
+  //     Navigator.of(context).push(MaterialPageRoute(
+  //       builder: (context) => const ScreenLocations(),
+  //     ));
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
     WidgetsBinding.instance.addPostFrameCallback(
-      (timeStamp) {
+      (timeStamp) async {
+        bool islocation = await SecureSotrage.getPicodeBool();
+        if (!islocation) {
+          Future.delayed(const Duration(seconds: 10))
+              .then((value) => Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const ScreenLocations(),
+                  )));
+        }
         context.read<LocationBloc>().add(const LocationEvent.locationPick());
         context.read<HomeBloc>().add(const HomeEvent.homePageBanners());
         context.read<HomeBloc>().add(const HomeEvent.getBestSellingProducts());
@@ -129,12 +134,8 @@ class _ScreenHomeState extends State<ScreenHome> {
                           ScaffoldMessenger.of(context)
                               .showMaterialBanner(noInternetBanner());
                         } else {
-                          WidgetsBinding.instance.addPostFrameCallback(
-                            (_) {
-                              ScaffoldMessenger.of(context)
-                                  .hideCurrentMaterialBanner();
-                            },
-                          );
+                          ScaffoldMessenger.of(context)
+                              .hideCurrentMaterialBanner();
                         }
                       },
                       child: BlocBuilder<HomeBloc, HomeState>(
@@ -168,9 +169,8 @@ class _ScreenHomeState extends State<ScreenHome> {
                           return Column(
                             mainAxisSize: MainAxisSize.min,
                             children: [
-                              kHeight30,
                               CustomSearchFieldHome(),
-                              kHeight30,
+                              kHeight20,
                               ValueListenableBuilder(
                                 valueListenable: homeScreens,
                                 builder: (context, value, child) {

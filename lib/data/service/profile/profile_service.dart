@@ -80,7 +80,6 @@ class AddressService implements ProfileRepo {
       );
       final responce = await _dio
           .get(ApiEndPoints.getUserInfo.replaceFirst('{number}', number));
-      log('getUserInfo data from api ${responce.data}');
       return Right(UserInfo.fromJson(responce.data));
     } on DioException catch (e) {
       log('getUserInfo data DioException api $e');
@@ -104,11 +103,13 @@ class AddressService implements ProfileRepo {
           'authorization': 'Bearer $accessToken',
         },
       );
-      final responce = await _dio
-          .put(ApiEndPoints.updateUserInfo.replaceFirst('{number}', number));
-
+      final responce = await _dio.post(
+        ApiEndPoints.updateUserInfo.replaceFirst('{number}', number),
+        data: userInfoRequestModel.toJson(),
+      );
       return Right(UserInfo.fromJson(responce.data));
     } on DioException catch (e) {
+      log('updateUser DioException  ${e}');
       return Left(Failure(message: e.message));
     } catch (e) {
       log('getUserInfo data catch api $e');

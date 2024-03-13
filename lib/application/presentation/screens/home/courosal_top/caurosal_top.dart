@@ -81,13 +81,31 @@ class _CaurosalViewHomePageOffersState
                             secondtabScreensNotifier.notifyListeners();
                           },
                           child: Container(
-                            margin: const EdgeInsets.all(4),
+                            margin: const EdgeInsets.only(left: 4, right: 4),
                             width: sWidth,
                             decoration: BoxDecoration(
-                                color: Color.fromARGB(255, 69, 177, 244),
-                                borderRadius: kRadius15),
+                              color: const Color.fromARGB(255, 69, 177, 244),
+                              borderRadius: kRadius15,
+                            ),
                             child: Stack(
                               children: [
+                                Positioned(
+                                  top:
+                                      -0, // Adjusted top position for slight overlap
+                                  right: 10,
+                                  child: SizedBox(
+                                    height: 80,
+                                    width: 70,
+                                    child: Image.memory(
+                                      base64.decode(base64String),
+                                      errorBuilder:
+                                          (context, error, stackTrace) {
+                                        return const Icon(Icons.error);
+                                      },
+                                      fit: BoxFit.contain,
+                                    ),
+                                  ),
+                                ),
                                 Positioned(
                                   bottom: 20,
                                   child: Container(
@@ -116,34 +134,19 @@ class _CaurosalViewHomePageOffersState
                                             color: kBlueLight,
                                             child: Padding(
                                               padding:
-                                                  const EdgeInsets.all(3.0),
+                                                  const EdgeInsets.all(5.0),
                                               child: Text(
                                                 '${data[index].buttonText}',
                                                 style:
                                                     textHeadSemiBold1.copyWith(
                                                   color: kWhite,
+                                                  fontSize: 12,
                                                 ),
                                               ),
                                             ),
                                           ),
                                         ),
                                       ],
-                                    ),
-                                  ),
-                                ),
-                                Positioned(
-                                  top: 0,
-                                  right: 10,
-                                  child: SizedBox(
-                                    height: 90,
-                                    width: 50,
-                                    child: Image.memory(
-                                      base64.decode(base64String),
-                                      errorBuilder:
-                                          (context, error, stackTrace) {
-                                        return const Icon(Icons.error);
-                                      },
-                                      fit: BoxFit.contain,
                                     ),
                                   ),
                                 ),
@@ -172,7 +175,8 @@ class _CaurosalViewHomePageOffersState
                   ],
                 );
               } else {
-                return Skeleton(crossAxisCount: 2, itemCount: 2, height: 0);
+                return const Skeleton(
+                    crossAxisCount: 2, itemCount: 2, height: 0);
               }
             }
           },

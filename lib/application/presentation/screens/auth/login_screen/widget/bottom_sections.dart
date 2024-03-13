@@ -67,14 +67,7 @@ class BottomSections extends StatelessWidget {
               ),
         kHeight50,
         BlocConsumer<AuthBloc, AuthState>(
-          listener: (context, state) {
-            if (state.otpSendResponceModel != null) {
-              showSnack(
-                context: context,
-                message: 'OTP send Successfully',
-              );
-            }
-          },
+          listener: (context, state) {},
           builder: (context, state) {
             return ElevatedButtonLong(
               wdth: sWidth * .7,
@@ -122,7 +115,7 @@ class BottomSections extends StatelessWidget {
               .read<AuthBloc>()
               .add(AuthEvent.otpSend(loginModel: loginModel));
 
-          Navigator.pushReplacementNamed(
+          Navigator.pushNamed(
             context,
             Routes.otpVerification,
             arguments: loginWay,

@@ -8,6 +8,7 @@ import 'package:beachdu/domain/model/get_question_model/question.dart';
 import 'package:beachdu/domain/model/get_question_model/section.dart';
 import 'package:beachdu/domain/model/pickup_question_model/selected_option.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -27,15 +28,27 @@ class GridTileQuestion extends StatefulWidget {
 
 class _GridTileQuestionState extends State<GridTileQuestion> {
   bool selected = false;
+
   @override
   void didUpdateWidget(GridTileQuestion oldWidget) {
     super.didUpdateWidget(oldWidget);
-    //Reset the selection when a new question is provided
     if (widget.question != oldWidget.question) {
       setState(() {
         selected = false;
       });
     }
+  }
+
+  Uint8List? imageBytes;
+
+  @override
+  void initState() {
+    super.initState();
+    final data = widget.question.image;
+    String base64String = data ?? dummyImage;
+    base64String =
+        base64String.replaceFirst(RegExp(r'data:image/[^;]+;base64,'), '');
+    imageBytes = base64Decode(base64String);
   }
 
   @override
@@ -65,38 +78,36 @@ class _GridTileQuestionState extends State<GridTileQuestion> {
         decoration: BoxDecoration(
           border: Border.all(
             color: selected ? kGreenPrimary : kBlack,
-            width: 1.7,
+            width: selected ? 4 : 1.2,
           ),
           borderRadius: kRadius5,
         ),
-        child: ColoredBox(
-          color: selected ? kGreenLight.withOpacity(0.3) : kWhite,
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                AspectRatio(
-                  aspectRatio: 1,
-                  child: SizedBox(
-                    height: 70,
-                    width: 20,
-                    child: Image.memory(
-                      base64.decode(base64String),
-                    ),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              AspectRatio(
+                aspectRatio: 1,
+                child: imageBytes != null
+                    ? Image.memory(
+                        imageBytes!,
+                        fit: BoxFit.cover,
+                      )
+                    : const SizedBox(
+                        child: Center(child: CircularProgressIndicator()),
+                      ),
+              ),
+              FittedBox(
+                child: Text(
+                  widget.question.description ?? 'No tittle',
+                  style: textHeadBold1.copyWith(
+                    fontSize: sWidth * .032,
                   ),
+                  textAlign: TextAlign.center,
                 ),
-                FittedBox(
-                  child: Text(
-                    widget.question.description ?? 'No tittle',
-                    style: textHeadBold1.copyWith(
-                      fontSize: sWidth * .032,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),

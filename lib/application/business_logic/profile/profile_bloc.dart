@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 import 'package:beachdu/data/secure_storage/secure_fire_store.dart';
 import 'package:beachdu/domain/model/address_model/address_creation_request_model/address_creation_request_model.dart';
 import 'package:beachdu/domain/model/address_model/address_creation_responce_model/address_creation_responce_model.dart';
@@ -17,6 +18,7 @@ part 'profile_bloc.freezed.dart';
 class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   final ProfileRepo profileRepo;
   bool isShowAddress = false;
+  bool isVisible = false;
   String? name;
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   TextEditingController profileNameController = TextEditingController();
@@ -43,6 +45,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
         hasError: true,
       ));
     }, (succsessUserData) {
+      log('updateuser bloc ${succsessUserData.user!.toJson()}');
       emit(state.copyWith(
         isLoading: false,
         hasError: false,

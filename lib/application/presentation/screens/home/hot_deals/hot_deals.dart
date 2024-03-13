@@ -49,10 +49,10 @@ class HotDealsSession extends StatelessWidget {
                           RegExp(r'data:image/[^;]+;base64,'), '');
                       final background = index % 2 == 0
                           ? const Color.fromARGB(255, 6, 0, 36)
-                          : const Color.fromARGB(255, 194, 178, 154);
+                          : const Color.fromARGB(255, 3, 1, 12);
                       final priceColor = index % 2 == 0
                           ? const Color.fromARGB(255, 255, 114, 105)
-                          : const Color.fromARGB(255, 6, 0, 36);
+                          : const Color.fromARGB(255, 255, 114, 105);
                       return GestureDetector(
                         onTap: () {
                           context.read<QuestionTabBloc>().newList.clear();
@@ -65,7 +65,6 @@ class HotDealsSession extends StatelessWidget {
                           context.read<CategoryBlocBloc>().categoryType =
                               data[index].mobileLink!;
 
-                          log('UI state.homeBannerResponceModel!.sectionOne![index].mobileLink! ===>>> : ${state.homeBannerResponceModel!.sectionOne![index].mobileLink!}');
                           context.read<NavbarCubit>().changeNavigationIndex(1);
                           brandSeriesProductValueNotifier.value = 0;
                           brandSeriesProductValueNotifier.notifyListeners();

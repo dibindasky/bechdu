@@ -1,8 +1,12 @@
+import 'dart:developer';
+
 import 'package:beachdu/application/business_logic/place_order/place_order_bloc.dart';
 import 'package:beachdu/application/business_logic/profile/profile_bloc.dart';
+import 'package:beachdu/application/presentation/screens/pickup/widgets/textfeild_custom.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/application/presentation/utils/custom_button.dart';
+import 'package:beachdu/application/presentation/utils/validators.dart';
 import 'package:beachdu/domain/model/profile/user_info_request_model/user_info_request_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -15,9 +19,6 @@ class UserInfoFields extends StatefulWidget {
 }
 
 class _UserInfoFieldsState extends State<UserInfoFields> {
-  bool isTExtFieldUsername = false;
-  bool isTExtFieldEmail = false;
-  bool isTExtFieldNumber = false;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
@@ -32,39 +33,26 @@ class _UserInfoFieldsState extends State<UserInfoFields> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              isTExtFieldUsername
-                  ? TextField(
+              context.read<ProfileBloc>().isVisible
+                  ? TTextFormField(
                       controller:
                           context.read<ProfileBloc>().profileNameController,
-                      decoration: const InputDecoration(
-                        hintText: 'Enter username',
-                        hintStyle: TextStyle(
-                          color: klightgrey,
-                        ),
-                      ),
+                      text: 'Enter name',
                     )
                   : Column(
                       children: [
+                        kHeight5,
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              context
-                                      .read<ProfileBloc>()
-                                      .profileNameController
-                                      .text
-                                      .isEmpty
-                                  ? 'Enter your name'
-                                  : context
-                                      .read<ProfileBloc>()
-                                      .profileNameController
-                                      .text,
+                              '${profile.user != null && profile.user!.user != null && profile.user!.user!.name != null ? profile.user!.user!.name : 'Enter name'}',
                               style: textHeadMedium1,
                             ),
                             TextButton(
                               onPressed: () {
                                 setState(() {
-                                  isTExtFieldUsername = true;
+                                  context.read<ProfileBloc>().isVisible = true;
                                 });
                               },
                               child: Text(
@@ -76,32 +64,31 @@ class _UserInfoFieldsState extends State<UserInfoFields> {
                           ],
                         ),
                         const Divider(
-                          thickness: 2,
+                          thickness: 1,
                         ),
                       ],
                     ),
               // // Email field
-              isTExtFieldUsername
-                  ? TextField(
+              context.read<ProfileBloc>().isVisible
+                  ? TTextFormField(
                       controller:
                           context.read<ProfileBloc>().profileEmailController,
-                      decoration: const InputDecoration(
-                          hintText: 'Enter email',
-                          hintStyle: TextStyle(color: klightgrey)),
+                      text: 'Enter email',
                     )
                   : Column(
                       children: [
+                        kHeight5,
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              '${profile.user != null && profile.user!.user != null && profile.user!.user!.email != null ? profile.user!.user!.email : 'Enter your email'}',
+                              '${profile.user != null && profile.user!.user != null && profile.user!.user!.email != null ? profile.user!.user!.email : 'Enter email'}',
                               style: textHeadMedium1,
                             ),
                             TextButton(
                               onPressed: () {
                                 setState(() {
-                                  isTExtFieldUsername = true;
+                                  context.read<ProfileBloc>().isVisible = true;
                                 });
                               },
                               child: Text(
@@ -113,18 +100,16 @@ class _UserInfoFieldsState extends State<UserInfoFields> {
                           ],
                         ),
                         const Divider(
-                          thickness: 3,
+                          thickness: 1,
                         ),
                       ],
                     ),
               kHeight20,
-
               BlocBuilder<PlaceOrderBloc, PlaceOrderState>(
                 builder: (context, state) {
                   return Column(
                     children: [
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
                             '${state.number}',
@@ -132,28 +117,34 @@ class _UserInfoFieldsState extends State<UserInfoFields> {
                           ),
                         ],
                       ),
+                      kHeight10,
                       const Divider(
-                        thickness: 2,
+                        thickness: 1,
                       ),
                     ],
                   );
                 },
               ),
               //Additional Mobile Number field
-              isTExtFieldUsername
-                  ? SizedBox(
-                      height: 60,
-                      child: TextField(
-                        controller: context
-                            .read<ProfileBloc>()
-                            .profileAddPhoneController,
-                        decoration: const InputDecoration(
-                            hintText: 'Enter additional number',
-                            hintStyle: TextStyle(color: klightgrey)),
-                      ),
+              context.read<ProfileBloc>().isVisible
+                  ? TTextFormField(
+                      validator: (value) {
+                        if (value != null && value.isNotEmpty) {
+                          if (value.length != 10 ||
+                              !isValidPhoneNumber(value)) {
+                            return 'Additional number is not valid';
+                          }
+                        }
+                        return null;
+                      },
+                      controller:
+                          context.read<ProfileBloc>().profileAddPhoneController,
+                      inputType: TextInputType.number,
+                      text: 'Additional number',
                     )
                   : Column(
                       children: [
+                        kHeight5,
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -164,12 +155,8 @@ class _UserInfoFieldsState extends State<UserInfoFields> {
                             TextButton(
                               onPressed: () {
                                 setState(() {
-                                  isTExtFieldUsername = true;
+                                  context.read<ProfileBloc>().isVisible = true;
                                 });
-                                context
-                                    .read<ProfileBloc>()
-                                    .profileAddPhoneController
-                                    .text;
                               },
                               child: Text(
                                 'Edit',
@@ -180,26 +167,22 @@ class _UserInfoFieldsState extends State<UserInfoFields> {
                           ],
                         ),
                         const Divider(
-                          thickness: 2,
+                          thickness: 1,
                         ),
                       ],
                     ),
-
-              kHeight20,
-              // Save button
-              if (isTExtFieldUsername)
+              kHeight30,
+              if (context.read<ProfileBloc>().isVisible)
                 Align(
                   alignment: Alignment.center,
                   child: CustomButton(
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
-                        if (isTExtFieldUsername ||
-                            isTExtFieldEmail ||
-                            isTExtFieldNumber) {
+                        if (context.read<ProfileBloc>().isVisible) {
                           // Prepare request model
                           UserInfoRequestModel userInfoRequestModel =
                               UserInfoRequestModel(
-                            name: isTExtFieldUsername
+                            name: context.read<ProfileBloc>().isVisible
                                 ? context
                                     .read<ProfileBloc>()
                                     .profileNameController
@@ -222,10 +205,10 @@ class _UserInfoFieldsState extends State<UserInfoFields> {
                                 ),
                               );
                         }
-
+                        log('updateUser');
                         // Reset flags
                         setState(() {
-                          isTExtFieldUsername = false;
+                          context.read<ProfileBloc>().isVisible = false;
                         });
                       }
                       // Check which fields are changed and send the request
@@ -233,6 +216,8 @@ class _UserInfoFieldsState extends State<UserInfoFields> {
                     text: 'Save',
                   ),
                 ),
+              kHeight20,
+              // Save button
             ],
           ),
         );

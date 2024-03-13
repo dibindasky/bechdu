@@ -163,29 +163,31 @@ class ScreenLocations extends StatelessWidget {
                                         borderRadius: kRadius5,
                                         child: ColoredBox(
                                           color: kWhiteextra,
-                                          child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceEvenly,
-                                            children: [
-                                              CircleAvatar(
-                                                backgroundColor:
-                                                    Colors.green[50],
-                                                radius: 7,
-                                                child: const CircleAvatar(
+                                          child: FittedBox(
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.spaceEvenly,
+                                              children: [
+                                                kWidth5,
+                                                CircleAvatar(
                                                   backgroundColor:
-                                                      Colors.lightGreen,
-                                                  radius: 3,
+                                                      Colors.green[50],
+                                                  radius: 7,
+                                                  child: const CircleAvatar(
+                                                    backgroundColor:
+                                                        Colors.lightGreen,
+                                                    radius: 3,
+                                                  ),
                                                 ),
-                                              ),
-                                              const SizedBox(width: 3),
-                                              FittedBox(
-                                                child: Text(
+                                                const SizedBox(width: 3),
+                                                Text(
                                                   state.filteredLocations![
                                                       index],
                                                   style: textHeadSemiBold1,
                                                 ),
-                                              ),
-                                            ],
+                                                kWidth10,
+                                              ],
+                                            ),
                                           ),
                                         ),
                                       ),

@@ -56,6 +56,8 @@ class QuestionService implements QuestionRepo {
     try {
       final accessToken =
           await SecureSotrage.getToken().then((token) => token.accessToken);
+      log('abandendOrder ${abandendOrderRequestModel.abendendOrderUser!.toJson()}');
+      log('abandendOrder ${abandendOrderRequestModel.productDetails!.toJson()}');
       _dio.options.headers.addAll(
         {
           'authorization': "Bearer $accessToken",
@@ -65,6 +67,7 @@ class QuestionService implements QuestionRepo {
         ApiEndPoints.abandendOrder,
         data: abandendOrderRequestModel.toJson(),
       );
+
       log('abandendOrder data ${responce.data}');
       return Right(AbandendOrderResponceModel.fromJson(responce.data));
     } on DioException catch (e) {

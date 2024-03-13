@@ -3,8 +3,6 @@ part of 'category_bloc_bloc.dart';
 @freezed
 class CategoryBlocEvent with _$CategoryBlocEvent {
   const factory CategoryBlocEvent.getAllCategory() = GetAllCategory;
-  const factory CategoryBlocEvent.selectedProduct(
-      {required String selectedProduct}) = SelectedProduct;
   const factory CategoryBlocEvent.getSingleCategoryBrands({
     String? categoryType,
   }) = GetSingleCategoryBrands;
@@ -27,7 +25,8 @@ class CategoryBlocEvent with _$CategoryBlocEvent {
     required String categoryType,
   }) = GetSeries;
   const factory CategoryBlocEvent.productUpdate({
-    required String seriesName,
+    String? model,
+    String? varinet,
   }) = ProductUpdate;
   const factory CategoryBlocEvent.getModels({
     required String categoryType,

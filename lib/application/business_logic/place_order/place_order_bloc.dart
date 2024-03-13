@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:developer';
+import 'dart:io';
 import 'package:beachdu/data/secure_storage/secure_fire_store.dart';
 import 'package:beachdu/domain/model/date_tome_responce_model/date_tome_responce_model.dart';
 import 'package:beachdu/domain/model/order_model/abandend_order_request_model/abandend_order_request_model.dart';
@@ -30,7 +31,6 @@ class PlaceOrderBloc extends Bloc<PlaceOrderEvent, PlaceOrderState> {
   final PlaceOrderRepo placeOrderRepo;
   int value = 0;
   String? number;
-  String cashSelection = 'cash';
 
   TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
@@ -47,12 +47,21 @@ class PlaceOrderBloc extends Bloc<PlaceOrderEvent, PlaceOrderState> {
     on<GetOrders>(getOrders);
     on<OrderCancel>(orderCancel);
     on<ProductDetailsPick>(productDetailsPick);
-    //on<UserDetailsPick>(userDetailsPick);
     on<AddressPick>(addressPick);
     on<PaymentOption>(paymentOption);
     on<PickupDetailsPick>(pickupDetailsPick);
     on<UserNumber>(userNumber);
     on<RemoveAllFieldData>(removeAllFeildData);
+    on<InvoiceDownload>(invoiceDownLoad);
+  }
+
+  FutureOr<void> invoiceDownLoad(InvoiceDownload event, emit) async {
+    // emit(state.copyWith(isLoading: true, hasError: false));
+    final number = await SecureSotrage.getNumber();
+    await placeOrderRepo.downloadInvoice(
+      orderId: event.orderId,
+      number: number,
+    );
   }
 
   FutureOr<void> getDateTime(GetDatetime event, emit) async {
@@ -120,7 +129,7 @@ class PlaceOrderBloc extends Bloc<PlaceOrderEvent, PlaceOrderState> {
   }
 
   FutureOr<void> getOrders(GetOrders event, emit) async {
-    //if (state.getAllOrderResponceModel != null) return;
+    if (state.getAllOrderResponceModel != null && event.isLoad == false) return;
     emit(state.copyWith(isLoading: true, hasError: false));
     final data = await placeOrderRepo.getOrders();
     final login = await SecureSotrage.getlLogin();

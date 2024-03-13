@@ -10,7 +10,7 @@ class PlaceOrderEvent with _$PlaceOrderEvent {
   }) = AbandendOrder;
   const factory PlaceOrderEvent.getDatetime() = GetDatetime;
   const factory PlaceOrderEvent.orderPlacing() = OrderPlacing;
-  const factory PlaceOrderEvent.getOrders() = GetOrders;
+  const factory PlaceOrderEvent.getOrders({bool? isLoad}) = GetOrders;
   const factory PlaceOrderEvent.orderCancel({
     required OrderCancelationRequestModel orderCancelationRequestModel,
     required String orderId,
@@ -39,4 +39,7 @@ class PlaceOrderEvent with _$PlaceOrderEvent {
   const factory PlaceOrderEvent.userNumber() = UserNumber;
   const factory PlaceOrderEvent.removeAllFieldData() = RemoveAllFieldData;
   const factory PlaceOrderEvent.promoCodeSuccess() = PromoCodeSuccess;
+  const factory PlaceOrderEvent.invoiceDownload({
+    required String orderId,
+  }) = InvoiceDownload;
 }
