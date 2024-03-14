@@ -62,6 +62,7 @@ class PlaceOrderBloc extends Bloc<PlaceOrderEvent, PlaceOrderState> {
       orderId: event.orderId,
       number: number,
     );
+    emit(state.copyWith(isLoading: false, hasError: false));
   }
 
   FutureOr<void> getDateTime(GetDatetime event, emit) async {
@@ -72,7 +73,7 @@ class PlaceOrderBloc extends Bloc<PlaceOrderEvent, PlaceOrderState> {
         isLoading: false,
         message: falure.message,
       ));
-    }, (r) async {
+    }, (r) {
       emit(state.copyWith(
         hasError: false,
         isLoading: false,
@@ -186,23 +187,6 @@ class PlaceOrderBloc extends Bloc<PlaceOrderEvent, PlaceOrderState> {
       orderPlacedRequestModel: updatedModel,
     ));
   }
-
-  // FutureOr<void> userDetailsPick(UserDetailsPick event, emit) async {
-  //   // OrderPlacedRequestModel updatedModel = OrderPlacedRequestModel(
-  //   //   promo: event.promo,
-  //   //   user: event.user,
-  //   //   productDetails: state.orderPlacedRequestModel.productDetails,
-  //   //   payment: state.orderPlacedRequestModel.payment,
-  //   //   pickUpDetails: state.orderPlacedRequestModel.pickUpDetails,
-  //   // );
-
-  //   log('userDetailsPick event bloc event.user email >${event.user.email} name >${event.user.name}');
-  //   log('userDetailsPick event bloc event.promo code >${event.promo.code} price >${event.promo.price}');
-
-  //   // emit(state.copyWith(
-  //   //   orderPlacedRequestModel: updatedModel,
-  //   // ));
-  // }
 
   FutureOr<void> orderPlacing(OrderPlacing event, emit) async {
     final number = await SecureSotrage.getNumber();

@@ -15,6 +15,7 @@ import 'package:beachdu/domain/repository/place_order.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
+import 'package:path_provider/path_provider.dart';
 
 @LazySingleton(as: PlaceOrderRepo)
 @singleton
@@ -77,6 +78,7 @@ class PlaceOrderService implements PlaceOrderRepo {
       final number = await SecureSotrage.getNumber();
       final accessToken =
           await SecureSotrage.getToken().then((token) => token.accessToken);
+
       _dio.options.headers.addAll(
         {
           'authorization': "Bearer $accessToken",
@@ -187,35 +189,33 @@ class PlaceOrderService implements PlaceOrderRepo {
   }
 
   @override
-  Future<void> downloadInvoice(
-      {required String orderId, required String number}) async {
+  Future<void> downloadInvoice({
+    required String orderId,
+    required String number,
+  }) async {
     try {
-      // Request storage permission
       final permissionGranted = await takePermission();
-      if (!permissionGranted) {
-        log('Storage permission denied. Download cannot proceed.');
-        return;
+      if (!permissionGranted) return;
+      final accessToken =
+          await SecureSotrage.getToken().then((token) => token.accessToken);
+      _dio.options.headers.addAll({'authorization': "Bearer $accessToken"});
+
+      final url = ApiEndPoints.invoiceDownLoad
+          .replaceAll('{order_id}', orderId)
+          .replaceAll('{number}', number);
+
+      final response = await _dio.get(url, data: {"orderID": orderId});
+      log('${response.data}');
+      if (response.statusCode == 200) {
+        final pdfBuffer = stringToUint8List(response.data);
+        const fileName = 'invoice.pdf';
+        final directory = await getApplicationDocumentsDirectory();
+        final filePath = '${directory.path}/$fileName';
+        await savePdfBufferToFile(pdfBuffer, filePath);
+        log('Invoice downloaded successfully!');
       } else {
-        final accessToken =
-            await SecureSotrage.getToken().then((token) => token.accessToken);
-        _dio.options.headers.addAll({'authorization': "Bearer $accessToken"});
-
-        final url = ApiEndPoints.invoiceDownLoad
-            .replaceAll('{order_id}', orderId)
-            .replaceAll('{number}', number);
-
-        final response = await _dio.get(url,
-            data: {"orderID": orderId},
-            options: Options(responseType: ResponseType.bytes));
-
-        if (response.statusCode == 200) {
-          final pdfBytes = List<int>.from(response.data);
-          await downloadPDFBuffer(pdfBytes, 'invoice.pdf');
-          log('Invoice downloaded successfully!');
-        } else {
-          const errorMessage = 'Download failed';
-          log(errorMessage);
-        }
+        const errorMessage = 'Download failed';
+        log(errorMessage);
       }
     } on DioException catch (e) {
       log('invoiceDownLoad DioError: ${e.message}');

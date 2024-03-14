@@ -18,6 +18,8 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$AuthEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() onBoardBool,
+    required TResult Function() vistedOrNot,
     required TResult Function(LoginModel loginModel) otpSend,
     required TResult Function(OtpVerifyRequestModel otpVerifyRequestModel)
         otpVeriying,
@@ -27,6 +29,8 @@ mixin _$AuthEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? onBoardBool,
+    TResult? Function()? vistedOrNot,
     TResult? Function(LoginModel loginModel)? otpSend,
     TResult? Function(OtpVerifyRequestModel otpVerifyRequestModel)? otpVeriying,
     TResult? Function()? logOut,
@@ -35,6 +39,8 @@ mixin _$AuthEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? onBoardBool,
+    TResult Function()? vistedOrNot,
     TResult Function(LoginModel loginModel)? otpSend,
     TResult Function(OtpVerifyRequestModel otpVerifyRequestModel)? otpVeriying,
     TResult Function()? logOut,
@@ -44,6 +50,8 @@ mixin _$AuthEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(OnBoardBool value) onBoardBool,
+    required TResult Function(VistedOrNot value) vistedOrNot,
     required TResult Function(OtpSend value) otpSend,
     required TResult Function(OtpVeriying value) otpVeriying,
     required TResult Function(LogOut value) logOut,
@@ -52,6 +60,8 @@ mixin _$AuthEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(OnBoardBool value)? onBoardBool,
+    TResult? Function(VistedOrNot value)? vistedOrNot,
     TResult? Function(OtpSend value)? otpSend,
     TResult? Function(OtpVeriying value)? otpVeriying,
     TResult? Function(LogOut value)? logOut,
@@ -60,6 +70,8 @@ mixin _$AuthEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(OnBoardBool value)? onBoardBool,
+    TResult Function(VistedOrNot value)? vistedOrNot,
     TResult Function(OtpSend value)? otpSend,
     TResult Function(OtpVeriying value)? otpVeriying,
     TResult Function(LogOut value)? logOut,
@@ -84,6 +96,260 @@ class _$AuthEventCopyWithImpl<$Res, $Val extends AuthEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$OnBoardBoolImplCopyWith<$Res> {
+  factory _$$OnBoardBoolImplCopyWith(
+          _$OnBoardBoolImpl value, $Res Function(_$OnBoardBoolImpl) then) =
+      __$$OnBoardBoolImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$OnBoardBoolImplCopyWithImpl<$Res>
+    extends _$AuthEventCopyWithImpl<$Res, _$OnBoardBoolImpl>
+    implements _$$OnBoardBoolImplCopyWith<$Res> {
+  __$$OnBoardBoolImplCopyWithImpl(
+      _$OnBoardBoolImpl _value, $Res Function(_$OnBoardBoolImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$OnBoardBoolImpl implements OnBoardBool {
+  const _$OnBoardBoolImpl();
+
+  @override
+  String toString() {
+    return 'AuthEvent.onBoardBool()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$OnBoardBoolImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() onBoardBool,
+    required TResult Function() vistedOrNot,
+    required TResult Function(LoginModel loginModel) otpSend,
+    required TResult Function(OtpVerifyRequestModel otpVerifyRequestModel)
+        otpVeriying,
+    required TResult Function() logOut,
+    required TResult Function() logOrNot,
+  }) {
+    return onBoardBool();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? onBoardBool,
+    TResult? Function()? vistedOrNot,
+    TResult? Function(LoginModel loginModel)? otpSend,
+    TResult? Function(OtpVerifyRequestModel otpVerifyRequestModel)? otpVeriying,
+    TResult? Function()? logOut,
+    TResult? Function()? logOrNot,
+  }) {
+    return onBoardBool?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? onBoardBool,
+    TResult Function()? vistedOrNot,
+    TResult Function(LoginModel loginModel)? otpSend,
+    TResult Function(OtpVerifyRequestModel otpVerifyRequestModel)? otpVeriying,
+    TResult Function()? logOut,
+    TResult Function()? logOrNot,
+    required TResult orElse(),
+  }) {
+    if (onBoardBool != null) {
+      return onBoardBool();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(OnBoardBool value) onBoardBool,
+    required TResult Function(VistedOrNot value) vistedOrNot,
+    required TResult Function(OtpSend value) otpSend,
+    required TResult Function(OtpVeriying value) otpVeriying,
+    required TResult Function(LogOut value) logOut,
+    required TResult Function(LogOrNot value) logOrNot,
+  }) {
+    return onBoardBool(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(OnBoardBool value)? onBoardBool,
+    TResult? Function(VistedOrNot value)? vistedOrNot,
+    TResult? Function(OtpSend value)? otpSend,
+    TResult? Function(OtpVeriying value)? otpVeriying,
+    TResult? Function(LogOut value)? logOut,
+    TResult? Function(LogOrNot value)? logOrNot,
+  }) {
+    return onBoardBool?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(OnBoardBool value)? onBoardBool,
+    TResult Function(VistedOrNot value)? vistedOrNot,
+    TResult Function(OtpSend value)? otpSend,
+    TResult Function(OtpVeriying value)? otpVeriying,
+    TResult Function(LogOut value)? logOut,
+    TResult Function(LogOrNot value)? logOrNot,
+    required TResult orElse(),
+  }) {
+    if (onBoardBool != null) {
+      return onBoardBool(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class OnBoardBool implements AuthEvent {
+  const factory OnBoardBool() = _$OnBoardBoolImpl;
+}
+
+/// @nodoc
+abstract class _$$VistedOrNotImplCopyWith<$Res> {
+  factory _$$VistedOrNotImplCopyWith(
+          _$VistedOrNotImpl value, $Res Function(_$VistedOrNotImpl) then) =
+      __$$VistedOrNotImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$VistedOrNotImplCopyWithImpl<$Res>
+    extends _$AuthEventCopyWithImpl<$Res, _$VistedOrNotImpl>
+    implements _$$VistedOrNotImplCopyWith<$Res> {
+  __$$VistedOrNotImplCopyWithImpl(
+      _$VistedOrNotImpl _value, $Res Function(_$VistedOrNotImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$VistedOrNotImpl implements VistedOrNot {
+  const _$VistedOrNotImpl();
+
+  @override
+  String toString() {
+    return 'AuthEvent.vistedOrNot()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$VistedOrNotImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() onBoardBool,
+    required TResult Function() vistedOrNot,
+    required TResult Function(LoginModel loginModel) otpSend,
+    required TResult Function(OtpVerifyRequestModel otpVerifyRequestModel)
+        otpVeriying,
+    required TResult Function() logOut,
+    required TResult Function() logOrNot,
+  }) {
+    return vistedOrNot();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? onBoardBool,
+    TResult? Function()? vistedOrNot,
+    TResult? Function(LoginModel loginModel)? otpSend,
+    TResult? Function(OtpVerifyRequestModel otpVerifyRequestModel)? otpVeriying,
+    TResult? Function()? logOut,
+    TResult? Function()? logOrNot,
+  }) {
+    return vistedOrNot?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? onBoardBool,
+    TResult Function()? vistedOrNot,
+    TResult Function(LoginModel loginModel)? otpSend,
+    TResult Function(OtpVerifyRequestModel otpVerifyRequestModel)? otpVeriying,
+    TResult Function()? logOut,
+    TResult Function()? logOrNot,
+    required TResult orElse(),
+  }) {
+    if (vistedOrNot != null) {
+      return vistedOrNot();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(OnBoardBool value) onBoardBool,
+    required TResult Function(VistedOrNot value) vistedOrNot,
+    required TResult Function(OtpSend value) otpSend,
+    required TResult Function(OtpVeriying value) otpVeriying,
+    required TResult Function(LogOut value) logOut,
+    required TResult Function(LogOrNot value) logOrNot,
+  }) {
+    return vistedOrNot(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(OnBoardBool value)? onBoardBool,
+    TResult? Function(VistedOrNot value)? vistedOrNot,
+    TResult? Function(OtpSend value)? otpSend,
+    TResult? Function(OtpVeriying value)? otpVeriying,
+    TResult? Function(LogOut value)? logOut,
+    TResult? Function(LogOrNot value)? logOrNot,
+  }) {
+    return vistedOrNot?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(OnBoardBool value)? onBoardBool,
+    TResult Function(VistedOrNot value)? vistedOrNot,
+    TResult Function(OtpSend value)? otpSend,
+    TResult Function(OtpVeriying value)? otpVeriying,
+    TResult Function(LogOut value)? logOut,
+    TResult Function(LogOrNot value)? logOrNot,
+    required TResult orElse(),
+  }) {
+    if (vistedOrNot != null) {
+      return vistedOrNot(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class VistedOrNot implements AuthEvent {
+  const factory VistedOrNot() = _$VistedOrNotImpl;
 }
 
 /// @nodoc
@@ -151,6 +417,8 @@ class _$OtpSendImpl implements OtpSend {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() onBoardBool,
+    required TResult Function() vistedOrNot,
     required TResult Function(LoginModel loginModel) otpSend,
     required TResult Function(OtpVerifyRequestModel otpVerifyRequestModel)
         otpVeriying,
@@ -163,6 +431,8 @@ class _$OtpSendImpl implements OtpSend {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? onBoardBool,
+    TResult? Function()? vistedOrNot,
     TResult? Function(LoginModel loginModel)? otpSend,
     TResult? Function(OtpVerifyRequestModel otpVerifyRequestModel)? otpVeriying,
     TResult? Function()? logOut,
@@ -174,6 +444,8 @@ class _$OtpSendImpl implements OtpSend {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? onBoardBool,
+    TResult Function()? vistedOrNot,
     TResult Function(LoginModel loginModel)? otpSend,
     TResult Function(OtpVerifyRequestModel otpVerifyRequestModel)? otpVeriying,
     TResult Function()? logOut,
@@ -189,6 +461,8 @@ class _$OtpSendImpl implements OtpSend {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(OnBoardBool value) onBoardBool,
+    required TResult Function(VistedOrNot value) vistedOrNot,
     required TResult Function(OtpSend value) otpSend,
     required TResult Function(OtpVeriying value) otpVeriying,
     required TResult Function(LogOut value) logOut,
@@ -200,6 +474,8 @@ class _$OtpSendImpl implements OtpSend {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(OnBoardBool value)? onBoardBool,
+    TResult? Function(VistedOrNot value)? vistedOrNot,
     TResult? Function(OtpSend value)? otpSend,
     TResult? Function(OtpVeriying value)? otpVeriying,
     TResult? Function(LogOut value)? logOut,
@@ -211,6 +487,8 @@ class _$OtpSendImpl implements OtpSend {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(OnBoardBool value)? onBoardBool,
+    TResult Function(VistedOrNot value)? vistedOrNot,
     TResult Function(OtpSend value)? otpSend,
     TResult Function(OtpVeriying value)? otpVeriying,
     TResult Function(LogOut value)? logOut,
@@ -298,6 +576,8 @@ class _$OtpVeriyingImpl implements OtpVeriying {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() onBoardBool,
+    required TResult Function() vistedOrNot,
     required TResult Function(LoginModel loginModel) otpSend,
     required TResult Function(OtpVerifyRequestModel otpVerifyRequestModel)
         otpVeriying,
@@ -310,6 +590,8 @@ class _$OtpVeriyingImpl implements OtpVeriying {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? onBoardBool,
+    TResult? Function()? vistedOrNot,
     TResult? Function(LoginModel loginModel)? otpSend,
     TResult? Function(OtpVerifyRequestModel otpVerifyRequestModel)? otpVeriying,
     TResult? Function()? logOut,
@@ -321,6 +603,8 @@ class _$OtpVeriyingImpl implements OtpVeriying {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? onBoardBool,
+    TResult Function()? vistedOrNot,
     TResult Function(LoginModel loginModel)? otpSend,
     TResult Function(OtpVerifyRequestModel otpVerifyRequestModel)? otpVeriying,
     TResult Function()? logOut,
@@ -336,6 +620,8 @@ class _$OtpVeriyingImpl implements OtpVeriying {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(OnBoardBool value) onBoardBool,
+    required TResult Function(VistedOrNot value) vistedOrNot,
     required TResult Function(OtpSend value) otpSend,
     required TResult Function(OtpVeriying value) otpVeriying,
     required TResult Function(LogOut value) logOut,
@@ -347,6 +633,8 @@ class _$OtpVeriyingImpl implements OtpVeriying {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(OnBoardBool value)? onBoardBool,
+    TResult? Function(VistedOrNot value)? vistedOrNot,
     TResult? Function(OtpSend value)? otpSend,
     TResult? Function(OtpVeriying value)? otpVeriying,
     TResult? Function(LogOut value)? logOut,
@@ -358,6 +646,8 @@ class _$OtpVeriyingImpl implements OtpVeriying {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(OnBoardBool value)? onBoardBool,
+    TResult Function(VistedOrNot value)? vistedOrNot,
     TResult Function(OtpSend value)? otpSend,
     TResult Function(OtpVeriying value)? otpVeriying,
     TResult Function(LogOut value)? logOut,
@@ -420,6 +710,8 @@ class _$LogOutImpl implements LogOut {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() onBoardBool,
+    required TResult Function() vistedOrNot,
     required TResult Function(LoginModel loginModel) otpSend,
     required TResult Function(OtpVerifyRequestModel otpVerifyRequestModel)
         otpVeriying,
@@ -432,6 +724,8 @@ class _$LogOutImpl implements LogOut {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? onBoardBool,
+    TResult? Function()? vistedOrNot,
     TResult? Function(LoginModel loginModel)? otpSend,
     TResult? Function(OtpVerifyRequestModel otpVerifyRequestModel)? otpVeriying,
     TResult? Function()? logOut,
@@ -443,6 +737,8 @@ class _$LogOutImpl implements LogOut {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? onBoardBool,
+    TResult Function()? vistedOrNot,
     TResult Function(LoginModel loginModel)? otpSend,
     TResult Function(OtpVerifyRequestModel otpVerifyRequestModel)? otpVeriying,
     TResult Function()? logOut,
@@ -458,6 +754,8 @@ class _$LogOutImpl implements LogOut {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(OnBoardBool value) onBoardBool,
+    required TResult Function(VistedOrNot value) vistedOrNot,
     required TResult Function(OtpSend value) otpSend,
     required TResult Function(OtpVeriying value) otpVeriying,
     required TResult Function(LogOut value) logOut,
@@ -469,6 +767,8 @@ class _$LogOutImpl implements LogOut {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(OnBoardBool value)? onBoardBool,
+    TResult? Function(VistedOrNot value)? vistedOrNot,
     TResult? Function(OtpSend value)? otpSend,
     TResult? Function(OtpVeriying value)? otpVeriying,
     TResult? Function(LogOut value)? logOut,
@@ -480,6 +780,8 @@ class _$LogOutImpl implements LogOut {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(OnBoardBool value)? onBoardBool,
+    TResult Function(VistedOrNot value)? vistedOrNot,
     TResult Function(OtpSend value)? otpSend,
     TResult Function(OtpVeriying value)? otpVeriying,
     TResult Function(LogOut value)? logOut,
@@ -535,6 +837,8 @@ class _$LogOrNotImpl implements LogOrNot {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() onBoardBool,
+    required TResult Function() vistedOrNot,
     required TResult Function(LoginModel loginModel) otpSend,
     required TResult Function(OtpVerifyRequestModel otpVerifyRequestModel)
         otpVeriying,
@@ -547,6 +851,8 @@ class _$LogOrNotImpl implements LogOrNot {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? onBoardBool,
+    TResult? Function()? vistedOrNot,
     TResult? Function(LoginModel loginModel)? otpSend,
     TResult? Function(OtpVerifyRequestModel otpVerifyRequestModel)? otpVeriying,
     TResult? Function()? logOut,
@@ -558,6 +864,8 @@ class _$LogOrNotImpl implements LogOrNot {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? onBoardBool,
+    TResult Function()? vistedOrNot,
     TResult Function(LoginModel loginModel)? otpSend,
     TResult Function(OtpVerifyRequestModel otpVerifyRequestModel)? otpVeriying,
     TResult Function()? logOut,
@@ -573,6 +881,8 @@ class _$LogOrNotImpl implements LogOrNot {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(OnBoardBool value) onBoardBool,
+    required TResult Function(VistedOrNot value) vistedOrNot,
     required TResult Function(OtpSend value) otpSend,
     required TResult Function(OtpVeriying value) otpVeriying,
     required TResult Function(LogOut value) logOut,
@@ -584,6 +894,8 @@ class _$LogOrNotImpl implements LogOrNot {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(OnBoardBool value)? onBoardBool,
+    TResult? Function(VistedOrNot value)? vistedOrNot,
     TResult? Function(OtpSend value)? otpSend,
     TResult? Function(OtpVeriying value)? otpVeriying,
     TResult? Function(LogOut value)? logOut,
@@ -595,6 +907,8 @@ class _$LogOrNotImpl implements LogOrNot {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(OnBoardBool value)? onBoardBool,
+    TResult Function(VistedOrNot value)? vistedOrNot,
     TResult Function(OtpSend value)? otpSend,
     TResult Function(OtpVeriying value)? otpVeriying,
     TResult Function(LogOut value)? logOut,
@@ -624,6 +938,7 @@ mixin _$AuthState {
       throw _privateConstructorUsedError;
   bool get logOrNot => throw _privateConstructorUsedError;
   String? get number => throw _privateConstructorUsedError;
+  bool get isVisited => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AuthStateCopyWith<AuthState> get copyWith =>
@@ -643,7 +958,8 @@ abstract class $AuthStateCopyWith<$Res> {
       OtpSendResponceModel? otpSendResponceModel,
       OtpVerifyResponceModel? otpVerifyResponceModel,
       bool logOrNot,
-      String? number});
+      String? number,
+      bool isVisited});
 }
 
 /// @nodoc
@@ -667,6 +983,7 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
     Object? otpVerifyResponceModel = freezed,
     Object? logOrNot = null,
     Object? number = freezed,
+    Object? isVisited = null,
   }) {
     return _then(_value.copyWith(
       isLoading: null == isLoading
@@ -701,6 +1018,10 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
           ? _value.number
           : number // ignore: cast_nullable_to_non_nullable
               as String?,
+      isVisited: null == isVisited
+          ? _value.isVisited
+          : isVisited // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -721,7 +1042,8 @@ abstract class _$$InitialImplCopyWith<$Res>
       OtpSendResponceModel? otpSendResponceModel,
       OtpVerifyResponceModel? otpVerifyResponceModel,
       bool logOrNot,
-      String? number});
+      String? number,
+      bool isVisited});
 }
 
 /// @nodoc
@@ -743,6 +1065,7 @@ class __$$InitialImplCopyWithImpl<$Res>
     Object? otpVerifyResponceModel = freezed,
     Object? logOrNot = null,
     Object? number = freezed,
+    Object? isVisited = null,
   }) {
     return _then(_$InitialImpl(
       isLoading: null == isLoading
@@ -777,6 +1100,10 @@ class __$$InitialImplCopyWithImpl<$Res>
           ? _value.number
           : number // ignore: cast_nullable_to_non_nullable
               as String?,
+      isVisited: null == isVisited
+          ? _value.isVisited
+          : isVisited // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -792,7 +1119,8 @@ class _$InitialImpl implements _Initial {
       this.otpSendResponceModel,
       this.otpVerifyResponceModel,
       required this.logOrNot,
-      this.number});
+      this.number,
+      required this.isVisited});
 
   @override
   final bool isLoading;
@@ -810,10 +1138,12 @@ class _$InitialImpl implements _Initial {
   final bool logOrNot;
   @override
   final String? number;
+  @override
+  final bool isVisited;
 
   @override
   String toString() {
-    return 'AuthState(isLoading: $isLoading, hasError: $hasError, load: $load, message: $message, otpSendResponceModel: $otpSendResponceModel, otpVerifyResponceModel: $otpVerifyResponceModel, logOrNot: $logOrNot, number: $number)';
+    return 'AuthState(isLoading: $isLoading, hasError: $hasError, load: $load, message: $message, otpSendResponceModel: $otpSendResponceModel, otpVerifyResponceModel: $otpVerifyResponceModel, logOrNot: $logOrNot, number: $number, isVisited: $isVisited)';
   }
 
   @override
@@ -833,12 +1163,23 @@ class _$InitialImpl implements _Initial {
                 other.otpVerifyResponceModel == otpVerifyResponceModel) &&
             (identical(other.logOrNot, logOrNot) ||
                 other.logOrNot == logOrNot) &&
-            (identical(other.number, number) || other.number == number));
+            (identical(other.number, number) || other.number == number) &&
+            (identical(other.isVisited, isVisited) ||
+                other.isVisited == isVisited));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isLoading, hasError, load,
-      message, otpSendResponceModel, otpVerifyResponceModel, logOrNot, number);
+  int get hashCode => Object.hash(
+      runtimeType,
+      isLoading,
+      hasError,
+      load,
+      message,
+      otpSendResponceModel,
+      otpVerifyResponceModel,
+      logOrNot,
+      number,
+      isVisited);
 
   @JsonKey(ignore: true)
   @override
@@ -856,7 +1197,8 @@ abstract class _Initial implements AuthState {
       final OtpSendResponceModel? otpSendResponceModel,
       final OtpVerifyResponceModel? otpVerifyResponceModel,
       required final bool logOrNot,
-      final String? number}) = _$InitialImpl;
+      final String? number,
+      required final bool isVisited}) = _$InitialImpl;
 
   @override
   bool get isLoading;
@@ -874,6 +1216,8 @@ abstract class _Initial implements AuthState {
   bool get logOrNot;
   @override
   String? get number;
+  @override
+  bool get isVisited;
   @override
   @JsonKey(ignore: true)
   _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>

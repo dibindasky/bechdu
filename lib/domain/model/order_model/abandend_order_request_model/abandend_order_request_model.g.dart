@@ -16,11 +16,13 @@ AbandendOrderRequestModel _$AbandendOrderRequestModelFromJson(
           ? null
           : ProductDetails.fromJson(
               json['productDetails'] as Map<String, dynamic>),
+      platform: json['platform'] as String? ?? 'mobile',
     );
 
 Map<String, dynamic> _$AbandendOrderRequestModelToJson(
         AbandendOrderRequestModel instance) =>
     <String, dynamic>{
+      'platform': instance.platform,
       'user': instance.abendendOrderUser,
       'productDetails': instance.productDetails,
     };

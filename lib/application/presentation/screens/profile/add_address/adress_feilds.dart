@@ -83,9 +83,10 @@ class _AddresCreationFieldsState extends State<AddresCreationFields> {
                           context.read<LocationBloc>().pincode = null;
                         }
                         context.read<LocationBloc>().location = value;
-                        log('location selection selectd loc UI  ${context.read<LocationBloc>().location ?? ''}');
-                        context.read<LocationBloc>().add(
-                            LocationEvent.pinCodePick(cityName: value ?? ''));
+
+                        context
+                            .read<LocationBloc>()
+                            .add(LocationEvent.pinCodePick(cityName: value!));
                         //picked loaction update event
                         CityUpdateRequestModel cityUpdateRequestModel =
                             CityUpdateRequestModel(

@@ -1,9 +1,11 @@
+import 'package:beachdu/application/business_logic/auth/auth_bloc.dart';
 import 'package:beachdu/application/presentation/routes/routes.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/application/presentation/utils/custom_button.dart';
 import 'package:beachdu/application/presentation/utils/enums/type_display.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class BechDuUserOnBoardingScreens extends StatefulWidget {
   const BechDuUserOnBoardingScreens({Key? key}) : super(key: key);
@@ -186,6 +188,9 @@ class _BechDuUserOnBoardingScreensState
               selectedIndex == 2
                   ? CustomButton(
                       onPressed: () {
+                        context
+                            .read<AuthBloc>()
+                            .add(const AuthEvent.onBoardBool());
                         Navigator.of(context).pushReplacementNamed(
                           Routes.signInOrLogin,
                           arguments: LoginWay.fromInitial,

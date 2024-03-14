@@ -33,6 +33,7 @@ class ScreenHome extends StatefulWidget {
 
 class _ScreenHomeState extends State<ScreenHome> {
   final scrollController = ScrollController();
+  bool locationSelected = false;
 
   @override
   void initState() {
@@ -40,9 +41,7 @@ class _ScreenHomeState extends State<ScreenHome> {
     scrollController.addListener(() {
       _scrollCallBack();
     });
-    // Future.delayed(
-    //   const Duration(seconds: 10),
-    // ).then((value) => _checkLocationAndShowScreen);
+    _checkLocationAndShowScreen();
     super.initState();
   }
 
@@ -62,37 +61,35 @@ class _ScreenHomeState extends State<ScreenHome> {
     super.dispose();
   }
 
-  // void _checkLocationAndShowScreen(Timer timer) async {
-  //   bool isLocationSelected = await SecureSotrage.getPicodeBool();
-  //   if (!isLocationSelected && homeScreens.value != 1) {
-  //     _locationCheckTimer.cancel();
-  //     Navigator.of(context).push(MaterialPageRoute(
-  //       builder: (context) => const ScreenLocations(),
-  //     ));
-  //   }
-  // }
+  void _checkLocationAndShowScreen() async {
+    bool isLocation = await SecureSotrage.getLocationBool();
+    bool isPincode = await SecureSotrage.getPicodeBool();
+
+    setState(() {
+      locationSelected = isLocation || isPincode; // Update flag based on data
+    });
+
+    if (!locationSelected) {
+      Future.delayed(const Duration(seconds: 10), () {
+        if (!locationSelected && homeScreens.value != 1) {
+          Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => const ScreenLocations(),
+          ));
+        }
+      });
+    }
+
+    context.read<LocationBloc>().add(const LocationEvent.locationPick());
+    context.read<HomeBloc>().add(const HomeEvent.homePageBanners());
+    context.read<HomeBloc>().add(const HomeEvent.getBestSellingProducts());
+    context
+        .read<CategoryBlocBloc>()
+        .add(const CategoryBlocEvent.getSingleCategoryBrands());
+    context.read<HomeBloc>().add(const HomeEvent.getAllCategory());
+  }
 
   @override
   Widget build(BuildContext context) {
-    WidgetsBinding.instance.addPostFrameCallback(
-      (timeStamp) async {
-        bool isLocation = await SecureSotrage.getLocationBool();
-        bool isPincode = await SecureSotrage.getPicodeBool();
-        if (!isLocation || !isPincode) {
-          Future.delayed(const Duration(seconds: 20))
-              .then((value) => Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => const ScreenLocations(),
-                  )));
-        }
-        context.read<LocationBloc>().add(const LocationEvent.locationPick());
-        context.read<HomeBloc>().add(const HomeEvent.homePageBanners());
-        context.read<HomeBloc>().add(const HomeEvent.getBestSellingProducts());
-        context
-            .read<CategoryBlocBloc>()
-            .add(const CategoryBlocEvent.getSingleCategoryBrands());
-        context.read<HomeBloc>().add(const HomeEvent.getAllCategory());
-      },
-    );
     return GestureDetector(
       onTap: () {
         FocusScopeNode focusScopeNode = FocusScope.of(context);
@@ -103,8 +100,10 @@ class _ScreenHomeState extends State<ScreenHome> {
       child: WillPopScope(
         onWillPop: () async {
           if (homeScreens.value == 1) {
-            homeScreens.value == 0;
+            homeScreens.value = 0;
             homeScreens.notifyListeners();
+            context.read<HomeBloc>().globalProductSearchController.clear();
+            return false;
           }
           return true;
         },
@@ -152,6 +151,7 @@ class _ScreenHomeState extends State<ScreenHome> {
                           return Column(
                             mainAxisSize: MainAxisSize.min,
                             children: [
+                              kHeight20,
                               CustomSearchFieldHome(),
                               kHeight20,
                               ValueListenableBuilder(

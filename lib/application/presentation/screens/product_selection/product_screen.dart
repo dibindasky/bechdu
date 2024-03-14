@@ -60,6 +60,8 @@ class ScreenProductSelection extends StatelessWidget {
           if (brandSeriesProductValueNotifier.value == 2) {
             brandSeriesProductValueNotifier.value = 1;
             brandSeriesProductValueNotifier.notifyListeners();
+            context.read<CategoryBlocBloc>().modelFilter = null;
+            context.read<CategoryBlocBloc>().varientFilter = null;
           } else if (brandSeriesProductValueNotifier.value == 1) {
             brandSeriesProductValueNotifier.value = 0;
             brandSeriesProductValueNotifier.notifyListeners();

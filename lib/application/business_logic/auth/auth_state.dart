@@ -11,11 +11,13 @@ class AuthState with _$AuthState {
     OtpVerifyResponceModel? otpVerifyResponceModel,
     required bool logOrNot,
     String? number,
+    required bool isVisited,
   }) = _Initial;
   factory AuthState.initail() => const AuthState(
         isLoading: false,
         hasError: false,
         logOrNot: false,
         load: false,
+        isVisited: false,
       );
 }

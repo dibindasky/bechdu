@@ -9,6 +9,7 @@ part of 'order_placed_request_model.dart';
 OrderPlacedRequestModel _$OrderPlacedRequestModelFromJson(
         Map<String, dynamic> json) =>
     OrderPlacedRequestModel(
+      platform: json['platform'] as String? ?? 'mobile',
       user: json['user'] == null
           ? null
           : User.fromJson(json['user'] as Map<String, dynamic>),
@@ -31,6 +32,7 @@ OrderPlacedRequestModel _$OrderPlacedRequestModelFromJson(
 Map<String, dynamic> _$OrderPlacedRequestModelToJson(
         OrderPlacedRequestModel instance) =>
     <String, dynamic>{
+      'platform': instance.platform,
       'user': instance.user,
       'payment': instance.payment,
       'pickUpDetails': instance.pickUpDetails,

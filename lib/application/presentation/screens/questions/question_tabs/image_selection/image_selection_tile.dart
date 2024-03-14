@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'dart:developer';
-
 import 'package:beachdu/application/business_logic/question_tab/question_tab_bloc.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
@@ -9,7 +8,6 @@ import 'package:beachdu/domain/model/get_question_model/section.dart';
 import 'package:beachdu/domain/model/pickup_question_model/selected_option.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class GridTileQuestion extends StatefulWidget {
@@ -60,6 +58,11 @@ class _GridTileQuestionState extends State<GridTileQuestion> {
   void deactivate() {
     super.deactivate();
     imageBytes = null; // Clear image data when widget is removed
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
   }
 
   @override

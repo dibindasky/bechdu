@@ -12,8 +12,11 @@ class SecureSotrage {
   static String locationBool = 'location_bool';
   static String pincodeBool = 'pincode_bool';
   static String phoneNumberKey = 'phone_number';
+  static String onboardBool = 'on_board_bool';
 
   static const FlutterSecureStorage secureStorage = FlutterSecureStorage();
+  static const FlutterSecureStorage onBoardVistedSecure =
+      FlutterSecureStorage();
 
   static Future<void> saveToken({
     required TokenModel tokenModel,
@@ -89,13 +92,24 @@ class SecureSotrage {
   }
 
   static Future<void> setLocationBool() async {
-    log("setPicodeBool ==>>");
+    log("setLocationBool ==>>");
     await secureStorage.write(key: locationBool, value: '1');
   }
 
   static Future<void> setPicodeBool() async {
     log("setPicodeBool ==>>");
     await secureStorage.write(key: pincodeBool, value: '1');
+  }
+
+  static Future<void> setOnboardBool() async {
+    log("setOnboardBool ==>>");
+    await onBoardVistedSecure.write(key: onboardBool, value: '1');
+  }
+
+  static Future<bool> getOnboardBool() async {
+    final onBoard = await onBoardVistedSecure.read(key: onboardBool);
+    log("getOnboardBool ${onBoard == '1'}");
+    return onBoard == '1';
   }
 
   static Future<bool> getLocationBool() async {

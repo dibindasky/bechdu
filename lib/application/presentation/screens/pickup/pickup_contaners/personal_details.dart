@@ -21,6 +21,7 @@ class _PersonalDetailsState extends State<PersonalDetails> {
 
   @override
   void initState() {
+    context.read<ProfileBloc>().add(const ProfileEvent.getUserInfo());
     context.read<PlaceOrderBloc>().nameController.text =
         context.read<PlaceOrderBloc>().nameController.text.isEmpty
             ? context.read<ProfileBloc>().profileNameController.text
@@ -40,7 +41,6 @@ class _PersonalDetailsState extends State<PersonalDetails> {
   Widget build(BuildContext context) {
     WidgetsBinding.instance.addPostFrameCallback(
       (timeStamp) {
-        //context.read<ProfileBloc>().add(const ProfileEvent.getUserInfo());
         context.read<PlaceOrderBloc>().add(const PlaceOrderEvent.userNumber());
       },
     );

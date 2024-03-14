@@ -7,11 +7,13 @@ part 'abandend_order_request_model.g.dart';
 
 @JsonSerializable()
 class AbandendOrderRequestModel {
+  String? platform;
   @JsonKey(name: 'user')
   AbendendOrderUser? abendendOrderUser;
   ProductDetails? productDetails;
 
-  AbandendOrderRequestModel({this.abendendOrderUser, this.productDetails});
+  AbandendOrderRequestModel(
+      {this.abendendOrderUser, this.productDetails, this.platform = 'mobile'});
 
   factory AbandendOrderRequestModel.fromJson(Map<String, dynamic> json) {
     return _$AbandendOrderRequestModelFromJson(json);

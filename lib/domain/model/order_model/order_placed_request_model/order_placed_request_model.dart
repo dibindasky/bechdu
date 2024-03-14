@@ -10,6 +10,7 @@ part 'order_placed_request_model.g.dart';
 
 @JsonSerializable()
 class OrderPlacedRequestModel {
+  String? platform;
   User? user;
   Payment? payment;
   PickUpDetails? pickUpDetails;
@@ -17,6 +18,7 @@ class OrderPlacedRequestModel {
   Promo? promo;
 
   OrderPlacedRequestModel({
+    this.platform = 'mobile',
     this.user,
     this.payment,
     this.pickUpDetails,
@@ -25,6 +27,7 @@ class OrderPlacedRequestModel {
   });
 
   OrderPlacedRequestModel copyWith({
+    String? platform,
     User? user,
     Payment? payment,
     PickUpDetails? pickUpDetails,
@@ -32,6 +35,7 @@ class OrderPlacedRequestModel {
     Promo? promo,
   }) {
     return OrderPlacedRequestModel(
+      platform: platform ?? this.platform,
       user: user ?? this.user,
       payment: payment ?? this.payment,
       pickUpDetails: pickUpDetails ?? this.pickUpDetails,

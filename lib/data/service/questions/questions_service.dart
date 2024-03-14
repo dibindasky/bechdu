@@ -56,6 +56,7 @@ class QuestionService implements QuestionRepo {
     try {
       final accessToken =
           await SecureSotrage.getToken().then((token) => token.accessToken);
+      log('${abandendOrderRequestModel.platform}');
       log('abandendOrder ${abandendOrderRequestModel.abendendOrderUser!.toJson()}');
       log('abandendOrder ${abandendOrderRequestModel.productDetails!.toJson()}');
       _dio.options.headers.addAll(

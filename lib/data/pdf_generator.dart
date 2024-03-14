@@ -1,5 +1,7 @@
+import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -25,4 +27,13 @@ Future<bool> takePermission() async {
     print("Storage permission denied");
     return false;
   }
+}
+
+Uint8List stringToUint8List(String input) {
+  return Uint8List.fromList(utf8.encode(input));
+}
+
+Future<void> savePdfBufferToFile(Uint8List pdfBuffer, String filePath) async {
+  final file = File(filePath);
+  await file.writeAsBytes(pdfBuffer);
 }

@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:developer';
 import 'package:beachdu/data/secure_storage/secure_fire_store.dart';
 import 'package:beachdu/domain/model/login/login_model/login_model.dart';
 import 'package:beachdu/domain/model/login/otp_send_responce_model/otp_send_responce_model.dart';
@@ -23,16 +22,21 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   String phoneNumber = '';
   bool isPhoneNumberValid = false;
   AuthBloc(this.authRepo) : super(AuthState.initail()) {
+    on<OnBoardBool>(onBoardBool);
     on<LogOrNot>(logOrNot);
     on<OtpSend>(otpSend);
     on<OtpVeriying>(otpVerifying);
     on<LogOut>(logOut);
   }
 
+  FutureOr<void> onBoardBool(OnBoardBool event, emit) async {
+    await SecureSotrage.setOnboardBool();
+  }
+
   FutureOr<void> logOrNot(LogOrNot event, emit) async {
+    final isVisted = await SecureSotrage.getOnboardBool();
     final logOrNot = await SecureSotrage.getlLogin();
-    log('logOrNot bloc $logOrNot');
-    emit(state.copyWith(logOrNot: logOrNot));
+    emit(state.copyWith(logOrNot: logOrNot, isVisited: isVisted));
   }
 
   FutureOr<void> otpSend(OtpSend event, emit) async {

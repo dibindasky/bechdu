@@ -57,7 +57,7 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
     Emitter<CategoryBlocState> emit,
   ) async {
     final String searchQuery = event.searchQuery.toLowerCase().trim();
-    final List<Product> filteredProducts = productList.where((product) {
+    final List<Product> filteredProducts = productList!.where((product) {
       final String model = product.model!.toLowerCase();
       final String varient = product.variant!.toLowerCase();
       final String brand = product.brandName!.toLowerCase();
@@ -67,30 +67,6 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
     }).toList();
     emit(state.copyWith(
       filteredProducts: filteredProducts,
-    ));
-  }
-
-  FutureOr<void> search(
-    BrandSearch event,
-    Emitter<CategoryBlocState> emit,
-  ) async {
-    final String searchQuery = event.searchQuery.toLowerCase();
-    final List<Product> filteredProducts = productList.where((product) {
-      final String model = product.model!.toLowerCase();
-      final String brand = product.brandName!.toLowerCase();
-      final String series = product.seriesName!.toLowerCase();
-      return model.contains(searchQuery) ||
-          brand.contains(searchQuery) ||
-          series.contains(searchQuery);
-    }).toList();
-
-    final List<Brands> filteredBrands = brandsList.where((brand) {
-      final String brandName = brand.brandName!.toLowerCase();
-      return brandName.contains(searchQuery);
-    }).toList();
-    emit(state.copyWith(
-      filteredProducts: filteredProducts,
-      filteredBrands: filteredBrands,
     ));
   }
 
@@ -162,15 +138,19 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
         hasError: true,
       ));
     }, (getproducts) {
-      productList.clear();
-      for (var element in getproducts.products!) {
-        productList.add(element);
+      productList = getproducts.products ?? [];
+      log('mode DATA BLOC$modelFilter');
+      if (modelFilter != null) {
+        log('mode DATA $modelFilter');
+        productList = productList
+            .where((product) => product.model == modelFilter)
+            .toList();
       }
-      // productList = getproducts.products!
-      //     .where((product) =>
-      //         product.model == modelFilter && product.variant == varientFilter)
-      //     .toList();
-      log('productList $productList');
+      if (varientFilter != null) {
+        productList = productList
+            .where((product) => product.variant == varientFilter)
+            .toList();
+      }
       emit(state.copyWith(
         isLoading: false,
         hasError: false,
@@ -206,19 +186,8 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
         isLoading: false,
         filteredSeries: getSeriesSuccess,
       ));
+      //add(CategoryBlocEvent.getProducts(categoryType: categoryType, brandName: brandName, seriesName: seriesName));
     });
-  }
-
-  FutureOr<void> productUpdate(GetModels event, emit) async {
-    final List<Product> temp = List.from(state.filteredProducts ?? []);
-    productList = temp
-        .where((product) =>
-            product.model == modelFilter && product.variant == varientFilter)
-        .toList();
-    log('productList $productList');
-    emit(state.copyWith(
-      filteredProducts: temp,
-    ));
   }
 
   FutureOr<void> getModels(GetModels event, emit) async {
@@ -232,11 +201,7 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
       categoryType: event.categoryType,
       seriesName: event.seriesName,
     );
-
-    log('getModles bloc categoryType >>>>=== : ${event.categoryType}');
-    log('getModles bloc brandName >>>>=== : ${event.brandName}');
-    log('getModles bloc seriesName >>>>=== : ${event.seriesName}');
-    log('getModles data ${data.toString()}');
+    varientFilter = null;
     data.fold((failure) {
       emit(state.copyWith(
         isLoading: false,
@@ -266,7 +231,7 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
       model: event.model,
     );
     modelFilter = event.model;
-    log('Selected Model in blc $model');
+
     data.fold((failure) {
       emit(state.copyWith(
         isLoading: false,

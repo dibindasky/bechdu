@@ -90,14 +90,15 @@ class _CaurosalViewHomePageOffersState
                             child: Stack(
                               children: [
                                 Positioned(
-                                  top:
-                                      -0, // Adjusted top position for slight overlap
                                   right: 10,
+                                  top: 30,
                                   child: SizedBox(
-                                    height: 80,
+                                    height: 60,
                                     width: 70,
                                     child: Image.memory(
-                                      base64.decode(base64String),
+                                      base64.decode(
+                                        base64String,
+                                      ),
                                       errorBuilder:
                                           (context, error, stackTrace) {
                                         return const Icon(Icons.error);
@@ -109,6 +110,7 @@ class _CaurosalViewHomePageOffersState
                                 Positioned(
                                   bottom: 20,
                                   child: Container(
+                                    width: sWidth * .54,
                                     margin: const EdgeInsets.symmetric(
                                       horizontal: 14,
                                     ),

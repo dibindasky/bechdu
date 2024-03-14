@@ -27,6 +27,7 @@ class GridOptionSelectorTile extends StatefulWidget {
 }
 
 class _GridOptionSelectorTileState extends State<GridOptionSelectorTile> {
+  bool selected = false;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -44,12 +45,15 @@ class _GridOptionSelectorTileState extends State<GridOptionSelectorTile> {
         log('UI grid widget.question.type ${widget.question.type}');
         log('UI grid section.heading ${widget.section.description}');
         log('UI grid  description ${widget.question.description}');
+        setState(() {
+          selected = !selected;
+        });
       },
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: DecoratedBox(
           decoration: BoxDecoration(
-            color: widget.index ? kBluePrimary : knill,
+            color: selected ? kBluePrimary : knill,
             border: Border.all(color: kBluePrimary, width: 2),
           ),
           child: Padding(
@@ -59,7 +63,7 @@ class _GridOptionSelectorTileState extends State<GridOptionSelectorTile> {
                 widget.question.description!,
                 style: textHeadBold1.copyWith(
                   fontSize: 15,
-                  color: widget.index ? kWhite : kBluePrimary,
+                  color: selected ? kWhite : kBluePrimary,
                 ),
               ),
             ),

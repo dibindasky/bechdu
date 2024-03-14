@@ -75,6 +75,8 @@ class LocationBloc extends Bloc<LocationEvent, LocationState> {
       cityUpdateRequestModel: event.cityUpdateRequestModel,
     );
     await SecureSotrage.setLocationBool();
+    await SecureSotrage.setLocation(
+        location: event.cityUpdateRequestModel.city!);
     await SecureSotrage.setPincode(pincode: '');
     data.fold((falure) => null, (successupdation) async {
       emit(
