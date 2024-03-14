@@ -111,6 +111,8 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
           hasError: false,
           getSingleCategoryResponce: successSingleCagetgoryModel,
           filteredBrands: brandsList,
+          varients: [],
+          models: [],
         ),
       );
     });
@@ -185,8 +187,8 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
         hasError: false,
         isLoading: false,
         filteredSeries: getSeriesSuccess,
+        varients: [],
       ));
-      //add(CategoryBlocEvent.getProducts(categoryType: categoryType, brandName: brandName, seriesName: seriesName));
     });
   }
 
@@ -213,6 +215,7 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
         isLoading: false,
         models: getModelSuccess,
         allItems: updatedItems,
+        varients: [],
       ));
     });
   }

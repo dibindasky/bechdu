@@ -19,9 +19,13 @@ class _ScreenProductSelectionProductFindDropdownGridViewState
   String? selecteVerient;
   TextEditingController modelController = TextEditingController();
   TextEditingController varientController = TextEditingController();
-  Color contsinerColor = kWhite;
+  bool containerOpenArrow1 = false;
+  bool containerOpenArrow2 = false;
+  bool containerOpenn = false;
   Color textColor = kWhite;
   bool isOpen = false;
+  bool isModelDropdownOpen = false; // Track state of model dropdown
+  bool isVariantDropdownOpen = false;
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<CategoryBlocBloc, CategoryBlocState>(
@@ -39,9 +43,15 @@ class _ScreenProductSelectionProductFindDropdownGridViewState
                   builder: (context, state) {
                     return DropdownButtonHideUnderline(
                       child: DropdownButton2<String>(
+                        iconStyleData: IconStyleData(
+                            icon: containerOpenArrow2
+                                ? Icon(
+                                    Icons.arrow_drop_up_sharp,
+                                  )
+                                : Icon(Icons.arrow_drop_down_outlined)),
                         buttonStyleData: ButtonStyleData(
                           decoration: BoxDecoration(
-                            color: contsinerColor,
+                            color: kWhite,
                             border: Border.all(
                               color: textFieldBorderColor,
                             ),
@@ -61,7 +71,7 @@ class _ScreenProductSelectionProductFindDropdownGridViewState
                                 child: Text(
                                   model,
                                   style: textHeadSemiBold1.copyWith(
-                                      fontSize: sWidth * 0.036),
+                                      color: kBlack, fontSize: sWidth * 0.036),
                                   overflow: TextOverflow.ellipsis,
                                 ),
                               ),
@@ -115,7 +125,7 @@ class _ScreenProductSelectionProductFindDropdownGridViewState
                           maxHeight: 250,
                         ),
                         menuItemStyleData: const MenuItemStyleData(
-                          height: 50,
+                          height: 40,
                         ),
                         dropdownSearchData: dropdownSearchData(
                             controller: modelController, data: 'model'),
@@ -123,15 +133,15 @@ class _ScreenProductSelectionProductFindDropdownGridViewState
                           if (!isOpen) {
                             modelController.clear();
                             setState(() {
-                              isOpen = !isOpen;
                               textColor = kBlack;
-                              contsinerColor = kWhite;
+                              containerOpenArrow2 = false;
+                              containerOpenn = true;
                             });
                           } else {
                             setState(() {
-                              isOpen = !isOpen;
-                              contsinerColor = kBluePrimary;
+                              containerOpenArrow2 = true;
                               textColor = kWhite;
+                              isModelDropdownOpen = isOpen;
                             });
                           }
                         },
@@ -154,9 +164,16 @@ class _ScreenProductSelectionProductFindDropdownGridViewState
                 builder: (context, state) {
                   return DropdownButtonHideUnderline(
                     child: DropdownButton2<String>(
+                      iconStyleData: IconStyleData(
+                          icon: containerOpenArrow1
+                              ? const Icon(
+                                  Icons.arrow_drop_up_sharp,
+                                  color: kWhite,
+                                )
+                              : const Icon(Icons.arrow_drop_down_outlined)),
                       buttonStyleData: ButtonStyleData(
                         decoration: BoxDecoration(
-                          color: contsinerColor,
+                          color: containerOpenArrow1 ? kBluePrimary : null,
                           border: Border.all(
                             color: textFieldBorderColor,
                           ),
@@ -180,7 +197,8 @@ class _ScreenProductSelectionProductFindDropdownGridViewState
                               varient,
                               style: textHeadSemiBold1.copyWith(
                                   fontSize: sWidth * 0.04,
-                                  color: isOpen ? kWhite : kBlack),
+                                  color:
+                                      isVariantDropdownOpen ? kWhite : kBlack),
                             ),
                           );
                         },
@@ -218,13 +236,17 @@ class _ScreenProductSelectionProductFindDropdownGridViewState
                         if (!isOpen) {
                           varientController.clear();
                           setState(() {
-                            textColor = kBlack;
-                            contsinerColor = kBluePrimary;
+                            isVariantDropdownOpen = false;
+                            //textColor = kBlack;
+                            //contsinerColor = kBluePrimary;
+                            containerOpenArrow1 = false;
                           });
                         } else {
                           setState(() {
-                            textColor = kWhite;
-                            contsinerColor = kWhite;
+                            isVariantDropdownOpen = true;
+                            // textColor = kWhite;
+                            //ontsinerColor = kWhite;
+                            containerOpenArrow1 = true;
                           });
                         }
                       },
@@ -239,45 +261,43 @@ class _ScreenProductSelectionProductFindDropdownGridViewState
     );
   }
 
-  DropdownSearchData<String> dropdownSearchData(
-      {TextEditingController? controller, String? data}) {
+  DropdownSearchData<String> dropdownSearchData({
+    TextEditingController? controller,
+    String? data,
+  }) {
     return DropdownSearchData(
       searchController: controller,
-      searchInnerWidgetHeight: 50,
+      searchInnerWidgetHeight: 0,
       searchInnerWidget: Container(
-        decoration: BoxDecoration(
-            border: Border.all(
-          color: kWhite,
-        )),
+        decoration: const BoxDecoration(
+          border: Border(
+            bottom: BorderSide(
+              color: kWhite,
+            ),
+          ),
+        ),
         height: 50,
-        child: Padding(
-          padding: const EdgeInsets.only(right: 10, top: 5),
-          child: TextFormField(
-            style: const TextStyle(color: kWhite),
-            expands: true,
-            maxLines: null,
-            controller: controller,
-            decoration: InputDecoration(
-              labelStyle: textHeadBoldBig,
-              icon: const Padding(
-                padding: EdgeInsets.only(left: 8.0, top: 5),
-                child: Icon(
-                  Icons.search,
-                  color: kWhite,
-                ),
-              ),
-              isDense: true,
-              contentPadding: const EdgeInsets.symmetric(
+        child: TextFormField(
+          style: const TextStyle(color: kWhite),
+          expands: true,
+          maxLines: null,
+          controller: controller,
+          decoration: InputDecoration(
+            counterStyle: const TextStyle(color: kWhite),
+            labelStyle: textHeadBoldBig,
+            icon: const Padding(
+              padding: EdgeInsets.symmetric(
                 horizontal: 10,
                 vertical: 8,
               ),
-              hintText: 'Search $data',
-              hintStyle: textHeadMedium1.copyWith(color: kWhite),
-              border: OutlineInputBorder(
-                borderSide: const BorderSide(color: kWhite),
-                borderRadius: kRadius10,
+              child: Icon(
+                Icons.search,
+                color: kWhite,
               ),
             ),
+            isDense: true,
+            hintText: 'Search',
+            hintStyle: textHeadMedium1.copyWith(color: kWhite),
           ),
         ),
       ),

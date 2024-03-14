@@ -30,6 +30,11 @@ class LocationBloc extends Bloc<LocationEvent, LocationState> {
     on<PincodeUpdate>(pincodeUpdate);
     on<SetPicondeSecure>(setPincodeSecure);
     on<Clear>(clear);
+    on<LocationSkipEvent>(locationSkipEvent);
+  }
+
+  FutureOr<void> locationSkipEvent(LocationSkipEvent event, emit) {
+    SecureSotrage.setlocatioSkipdBool();
   }
 
   FutureOr<void> setPincodeSecure(SetPicondeSecure event, emit) async {

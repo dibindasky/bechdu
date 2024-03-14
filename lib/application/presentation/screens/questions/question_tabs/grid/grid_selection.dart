@@ -44,7 +44,11 @@ class _GridOptionMakerState extends State<GridOptionMaker> {
               itemBuilder: (context, index) => GridOptionSelectorTile(
                 func: () {
                   setState(() {
-                    selectedIndex = index;
+                    if (selectedIndex == index) {
+                      selectedIndex = -1;
+                    } else {
+                      selectedIndex = index;
+                    }
                   });
                 },
                 section: widget.section,

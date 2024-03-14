@@ -5,9 +5,9 @@ part 'invoice_request_model.g.dart';
 @JsonSerializable()
 class InvoiceRequestModel {
   @JsonKey(name: 'orderID')
-  String? orderId;
+  String? base64String;
 
-  InvoiceRequestModel({this.orderId});
+  InvoiceRequestModel({this.base64String});
 
   factory InvoiceRequestModel.fromJson(Map<String, dynamic> json) {
     return _$InvoiceRequestModelFromJson(json);

@@ -13,6 +13,7 @@ class SecureSotrage {
   static String pincodeBool = 'pincode_bool';
   static String phoneNumberKey = 'phone_number';
   static String onboardBool = 'on_board_bool';
+  static String setlocatioSkipd = 'set_locatio_Skip';
 
   static const FlutterSecureStorage secureStorage = FlutterSecureStorage();
   static const FlutterSecureStorage onBoardVistedSecure =
@@ -41,6 +42,17 @@ class SecureSotrage {
     log('AccessToken ===>> $accessToken');
     log('RefreshToken ===>> $refreshToken');
     return TokenModel(accessToken: accessToken, refershToken: refreshToken);
+  }
+
+  static Future<void> setlocatioSkipdBool() async {
+    log("setlocatioSkipdBool ==>>");
+    await onBoardVistedSecure.write(key: setlocatioSkipd, value: '1');
+  }
+
+  static Future<bool> getlocatioSkipBool() async {
+    final onBoard = await onBoardVistedSecure.read(key: setlocatioSkipd);
+    log("getlocatioSkipBool ${onBoard == '1'}");
+    return onBoard == '1';
   }
 
   static Future<String?> getAccessToken() async {

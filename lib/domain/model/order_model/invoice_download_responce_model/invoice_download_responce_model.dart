@@ -4,9 +4,9 @@ part 'invoice_download_responce_model.g.dart';
 
 @JsonSerializable()
 class InvoiceDownloadResponceModel {
-  String? name;
+  String? base64String;
 
-  InvoiceDownloadResponceModel({this.name});
+  InvoiceDownloadResponceModel({this.base64String});
 
   factory InvoiceDownloadResponceModel.fromJson(Map<String, dynamic> json) {
     return _$InvoiceDownloadResponceModelFromJson(json);

@@ -18,6 +18,7 @@ import 'package:beachdu/application/presentation/screens/questions/after_questio
 import 'package:beachdu/application/presentation/screens/questions/questions_screen.dart';
 import 'package:beachdu/application/presentation/screens/splash/splash_screen.dart';
 import 'package:beachdu/application/presentation/utils/enums/type_display.dart';
+import 'package:beachdu/application/presentation/utils/pdf_viewer.dart';
 import 'package:flutter/material.dart';
 
 class RouteGenerator {
@@ -36,6 +37,11 @@ class RouteGenerator {
       case Routes.pincode:
         return arguments is String
             ? fadePageRoute(screen: ScreenPinCodes(cityName: arguments))
+            : _errorScreen();
+      case Routes.pdfPage:
+        return arguments is String
+            ? MaterialPageRoute(
+                builder: (ctx) => ScreenPdfPreview(base64: arguments))
             : _errorScreen();
       case Routes.signInOrLogin:
         return arguments is LoginWay

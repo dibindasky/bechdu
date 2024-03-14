@@ -113,19 +113,19 @@ class _BechDuUserOnBoardingScreensState
                                     const Center(
                                       child: CircleAvatar(
                                         backgroundColor: kBluePrimary,
-                                        radius: 87,
+                                        radius: 77,
                                         child: CircleAvatar(
                                           backgroundColor: kWhite,
-                                          radius: 85,
+                                          radius: 75,
                                           child: CircleAvatar(
                                             backgroundColor: kBluePrimary,
-                                            radius: 79,
+                                            radius: 67,
                                             child: CircleAvatar(
                                               backgroundColor: kWhite,
-                                              radius: 77,
+                                              radius: 65,
                                               child: CircleAvatar(
                                                 backgroundColor: kBluePrimary,
-                                                radius: 70,
+                                                radius: 60,
                                               ),
                                             ),
                                           ),
@@ -147,7 +147,7 @@ class _BechDuUserOnBoardingScreensState
                                         const Center(
                                           child: CircleAvatar(
                                             backgroundColor: kBluePrimary,
-                                            radius: 80,
+                                            radius: 70,
                                           ),
                                         ),
                                         Positioned(

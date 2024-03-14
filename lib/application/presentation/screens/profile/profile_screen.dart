@@ -48,7 +48,9 @@ class ScreenProfile extends StatelessWidget {
           context
               .read<PlaceOrderBloc>()
               .add(const PlaceOrderEvent.userNumber());
-          context.read<ProfileBloc>().add(const ProfileEvent.getUserInfo());
+          context
+              .read<ProfileBloc>()
+              .add(const ProfileEvent.getUserInfo(isLoad: false));
         }
       },
     );
@@ -136,23 +138,17 @@ class ScreenProfile extends StatelessWidget {
                               child: CircleAvatar(
                                 backgroundColor: kGreenPrimary,
                                 radius: 58,
-                                child: state.isLoading
-                                    ? const Center(
-                                        child: CircularProgressIndicator(
-                                          color: kGreenLight,
-                                        ),
-                                      )
-                                    : CircleAvatar(
-                                        backgroundColor: kBluePrimary,
-                                        radius: 50,
-                                        child: Text(
-                                          '${name.toUpperCase()}',
-                                          style: textHeadBoldBig.copyWith(
-                                            fontSize: sWidth * .1,
-                                            color: kWhite,
-                                          ),
-                                        ),
-                                      ),
+                                child: CircleAvatar(
+                                  backgroundColor: kBluePrimary,
+                                  radius: 50,
+                                  child: Text(
+                                    ' ${name.toUpperCase()} ',
+                                    style: textHeadBoldBig.copyWith(
+                                      fontSize: sWidth * .1,
+                                      color: kWhite,
+                                    ),
+                                  ),
+                                ),
                               ),
                             );
                           },

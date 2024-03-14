@@ -203,6 +203,9 @@ class ScreenLocations extends StatelessWidget {
                       Center(
                         child: CustomButton(
                           onPressed: () {
+                            context
+                                .read<LocationBloc>()
+                                .add(const LocationEvent.locationSkipEvent());
                             Navigator.of(context).pop();
                           },
                           text: 'Go back',

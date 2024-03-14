@@ -40,7 +40,7 @@ class ScreenMyOrders extends StatelessWidget {
             context
                 .read<PlaceOrderBloc>()
                 .add(const PlaceOrderEvent.getOrders(isLoad: true));
-            await Future.delayed(const Duration(seconds: 2));
+            await Future.delayed(const Duration(seconds: 1));
           },
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 5),

@@ -56,7 +56,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   }
 
   FutureOr<void> getUserInfo(GetUserInfo event, emit) async {
-    //if (state.user != null) return;
+    if (state.user != null && event.isLoad == false) return;
     emit(state.copyWith(isLoading: true, hasError: false));
     final data = await profileRepo.getUserInfo();
     data.fold((fail) {

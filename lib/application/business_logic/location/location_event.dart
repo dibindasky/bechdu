@@ -19,4 +19,5 @@ class LocationEvent with _$LocationEvent {
     required String pincode,
   }) = SetPicondeSecure;
   const factory LocationEvent.clear() = Clear;
+  const factory LocationEvent.locationSkipEvent() = LocationSkipEvent;
 }

@@ -24,7 +24,9 @@ class _UserInfoFieldsState extends State<UserInfoFields> {
   @override
   Widget build(BuildContext context) {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      context.read<ProfileBloc>().add(const ProfileEvent.getUserInfo());
+      context
+          .read<ProfileBloc>()
+          .add(const ProfileEvent.getUserInfo(isLoad: false));
     });
     return BlocBuilder<ProfileBloc, ProfileState>(
       builder: (context, profile) {

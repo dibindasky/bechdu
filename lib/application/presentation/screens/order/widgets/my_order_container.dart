@@ -1,5 +1,5 @@
-import 'dart:io';
 import 'package:beachdu/application/business_logic/place_order/place_order_bloc.dart';
+import 'package:beachdu/application/presentation/routes/routes.dart';
 import 'package:beachdu/application/presentation/screens/order/widgets/cancel_order_dailog.dart';
 import 'package:beachdu/application/presentation/screens/order/widgets/row_data.dart';
 import 'package:beachdu/application/presentation/screens/product_selection/widgets/custom_button.dart';
@@ -7,11 +7,8 @@ import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/application/presentation/utils/snackbar/snackbar.dart';
 import 'package:beachdu/domain/model/order_model/order_cancelation_request_model/order_cancelation_request_model.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:permission_handler/permission_handler.dart';
 import 'package:pinput/pinput.dart';
 
 class MyOrderContainer extends StatelessWidget {
@@ -186,8 +183,26 @@ class MyOrderContainer extends StatelessWidget {
                         : data.status == 'Completed'
                             ? Row(
                                 children: [
-                                  BlocBuilder<PlaceOrderBloc, PlaceOrderState>(
+                                  BlocConsumer<PlaceOrderBloc, PlaceOrderState>(
+                                    listener: (context, state) {
+                                      if (state.downloaded) {
+                                        showSnack(
+                                          context: context,
+                                          message: state.message!,
+                                        );
+                                        Navigator.of(context).pushNamed(
+                                          Routes.pdfPage,
+                                          arguments: state.invoice,
+                                        );
+                                      }
+                                    },
                                     builder: (context, state) {
+                                      if (state.downloading) {
+                                        return const Center(
+                                          child: CircularProgressIndicator(),
+                                        );
+                                      }
+
                                       return CustomButton(
                                         fontSize: 11,
                                         height: 30,
@@ -197,9 +212,11 @@ class MyOrderContainer extends StatelessWidget {
                                         onPressed: () async {
                                           //downloadPdf(data.id!, context);
                                           context.read<PlaceOrderBloc>().add(
-                                              PlaceOrderEvent.invoiceDownload(
-                                                  isLoad: true,
-                                                  orderId: data.id!));
+                                                  PlaceOrderEvent
+                                                      .invoiceDownload(
+                                                isLoad: true,
+                                                orderId: data.id!,
+                                              ));
                                         },
                                       );
                                     },
@@ -217,42 +234,5 @@ class MyOrderContainer extends StatelessWidget {
         );
       },
     );
-  }
-
-  Future<void> _downloadFile(String url, BuildContext context) async {
-    try {
-      // Request storage permission
-      var status = await Permission.storage.request();
-      if (!status.isGranted) {
-        throw Exception("Permission denied");
-      }
-
-      // Get external storage directory
-      Directory? directory = await getExternalStorageDirectory();
-      if (directory == null) {
-        throw Exception("Failed to get external storage directory");
-      }
-
-      // Create file path
-      String savePath = '${directory.path}/file.pdf';
-
-      // Make HTTP request to download file
-      var response = await Dio().get(url);
-      if (response.statusCode == 200) {
-        // Write file to device storage
-        File file = File(savePath);
-        // await file.writeAsBytes(response.bodyBytes);
-
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text("File downloaded successfully")),
-        );
-      } else {
-        throw Exception("Failed to download file");
-      }
-    } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("Failed to download file: $e")),
-      );
-    }
   }
 }

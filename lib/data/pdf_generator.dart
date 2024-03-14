@@ -1,39 +1,44 @@
 import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
-import 'dart:typed_data';
-
-import 'package:path_provider/path_provider.dart';
+import 'package:dio/dio.dart';
+import 'package:downloads_path_provider_28/downloads_path_provider_28.dart';
+import 'package:open_file/open_file.dart';
 import 'package:permission_handler/permission_handler.dart';
 
-Future<void> downloadPDFBuffer(List<int> pdfBytes, String fileName) async {
-  try {
-    List<int> bytes = pdfBytes;
-    final directory = await getExternalStorageDirectory();
-    final file = File('${directory!.path}/$fileName');
-    log('path $file');
-    await file.writeAsBytes(bytes);
-  } catch (e) {
-    log('Error downloading PDF: $e');
-  }
-}
-
 Future<bool> takePermission() async {
-  var status = await Permission.storage.request();
-  if (status == PermissionStatus.granted) {
-    print("Storage permission granted");
+  Map<Permission, PermissionStatus> statuses = await [
+    Permission.storage,
+    //add more permission to request here.
+  ].request();
+  if (statuses[Permission.storage]!.isGranted) {
     return true;
   } else {
-    print("Storage permission denied");
     return false;
   }
 }
 
-Uint8List stringToUint8List(String input) {
-  return Uint8List.fromList(utf8.encode(input));
-}
+Future<void> pdfGenerator(String base64String) async {
+  try {
+    var dir = await DownloadsPathProvider.downloadsDirectory;
+    if (dir != null) {
+      String savename = "file.pdf";
+      String savePath = dir.path + "/$savename";
+      log(savePath);
+      try {
+        var bytes = base64Decode(base64String.replaceAll("\n", ''));
 
-Future<void> savePdfBufferToFile(Uint8List pdfBuffer, String filePath) async {
-  final file = File(filePath);
-  await file.writeAsBytes(pdfBuffer);
+        final file = File(savePath);
+        await file.writeAsBytes(bytes);
+        print('PDF Path: ${file.path}');
+        await OpenFile.open(file.path);
+      } on DioException catch (e) {
+        log(e.message.toString());
+      }
+    } else {
+      log("No permission to read and write.");
+    }
+  } catch (e) {
+    print('Error generating PDF: $e');
+  }
 }

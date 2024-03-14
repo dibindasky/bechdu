@@ -61,10 +61,10 @@ class TopImage extends StatelessWidget {
                         SizedBox(
                           height: fromWhere == FromWhere.checkoutAndPickupScreen
                               ? sWidth * .38
-                              : sWidth * .30,
+                              : sWidth * .26,
                           width: fromWhere == FromWhere.checkoutAndPickupScreen
                               ? sWidth * .34
-                              : sWidth * .2,
+                              : sWidth * .25,
                           child: Image.network(
                             url,
                             fit: BoxFit.fill,
@@ -163,6 +163,7 @@ class TopImage extends StatelessWidget {
                                                 'Recalculate',
                                                 overflow: TextOverflow.ellipsis,
                                                 style: textHeadInter.copyWith(
+                                                  fontSize: sWidth * .030,
                                                   color: kWhite,
                                                   fontWeight: FontWeight.w600,
                                                   decoration:

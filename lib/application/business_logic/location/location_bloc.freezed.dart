@@ -29,6 +29,7 @@ mixin _$LocationEvent {
         pincodeUpdate,
     required TResult Function(String pincode) setPicondeSecure,
     required TResult Function() clear,
+    required TResult Function() locationSkipEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -43,6 +44,7 @@ mixin _$LocationEvent {
         pincodeUpdate,
     TResult? Function(String pincode)? setPicondeSecure,
     TResult? Function()? clear,
+    TResult? Function()? locationSkipEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -57,6 +59,7 @@ mixin _$LocationEvent {
         pincodeUpdate,
     TResult Function(String pincode)? setPicondeSecure,
     TResult Function()? clear,
+    TResult Function()? locationSkipEvent,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -70,6 +73,7 @@ mixin _$LocationEvent {
     required TResult Function(PincodeUpdate value) pincodeUpdate,
     required TResult Function(SetPicondeSecure value) setPicondeSecure,
     required TResult Function(Clear value) clear,
+    required TResult Function(LocationSkipEvent value) locationSkipEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -82,6 +86,7 @@ mixin _$LocationEvent {
     TResult? Function(PincodeUpdate value)? pincodeUpdate,
     TResult? Function(SetPicondeSecure value)? setPicondeSecure,
     TResult? Function(Clear value)? clear,
+    TResult? Function(LocationSkipEvent value)? locationSkipEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -94,6 +99,7 @@ mixin _$LocationEvent {
     TResult Function(PincodeUpdate value)? pincodeUpdate,
     TResult Function(SetPicondeSecure value)? setPicondeSecure,
     TResult Function(Clear value)? clear,
+    TResult Function(LocationSkipEvent value)? locationSkipEvent,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -166,6 +172,7 @@ class _$LocationPickImpl implements LocationPick {
         pincodeUpdate,
     required TResult Function(String pincode) setPicondeSecure,
     required TResult Function() clear,
+    required TResult Function() locationSkipEvent,
   }) {
     return locationPick();
   }
@@ -183,6 +190,7 @@ class _$LocationPickImpl implements LocationPick {
         pincodeUpdate,
     TResult? Function(String pincode)? setPicondeSecure,
     TResult? Function()? clear,
+    TResult? Function()? locationSkipEvent,
   }) {
     return locationPick?.call();
   }
@@ -200,6 +208,7 @@ class _$LocationPickImpl implements LocationPick {
         pincodeUpdate,
     TResult Function(String pincode)? setPicondeSecure,
     TResult Function()? clear,
+    TResult Function()? locationSkipEvent,
     required TResult orElse(),
   }) {
     if (locationPick != null) {
@@ -219,6 +228,7 @@ class _$LocationPickImpl implements LocationPick {
     required TResult Function(PincodeUpdate value) pincodeUpdate,
     required TResult Function(SetPicondeSecure value) setPicondeSecure,
     required TResult Function(Clear value) clear,
+    required TResult Function(LocationSkipEvent value) locationSkipEvent,
   }) {
     return locationPick(this);
   }
@@ -234,6 +244,7 @@ class _$LocationPickImpl implements LocationPick {
     TResult? Function(PincodeUpdate value)? pincodeUpdate,
     TResult? Function(SetPicondeSecure value)? setPicondeSecure,
     TResult? Function(Clear value)? clear,
+    TResult? Function(LocationSkipEvent value)? locationSkipEvent,
   }) {
     return locationPick?.call(this);
   }
@@ -249,6 +260,7 @@ class _$LocationPickImpl implements LocationPick {
     TResult Function(PincodeUpdate value)? pincodeUpdate,
     TResult Function(SetPicondeSecure value)? setPicondeSecure,
     TResult Function(Clear value)? clear,
+    TResult Function(LocationSkipEvent value)? locationSkipEvent,
     required TResult orElse(),
   }) {
     if (locationPick != null) {
@@ -339,6 +351,7 @@ class _$LocationSearchImpl implements LocationSearch {
         pincodeUpdate,
     required TResult Function(String pincode) setPicondeSecure,
     required TResult Function() clear,
+    required TResult Function() locationSkipEvent,
   }) {
     return locationSearch(searchQuery);
   }
@@ -356,6 +369,7 @@ class _$LocationSearchImpl implements LocationSearch {
         pincodeUpdate,
     TResult? Function(String pincode)? setPicondeSecure,
     TResult? Function()? clear,
+    TResult? Function()? locationSkipEvent,
   }) {
     return locationSearch?.call(searchQuery);
   }
@@ -373,6 +387,7 @@ class _$LocationSearchImpl implements LocationSearch {
         pincodeUpdate,
     TResult Function(String pincode)? setPicondeSecure,
     TResult Function()? clear,
+    TResult Function()? locationSkipEvent,
     required TResult orElse(),
   }) {
     if (locationSearch != null) {
@@ -392,6 +407,7 @@ class _$LocationSearchImpl implements LocationSearch {
     required TResult Function(PincodeUpdate value) pincodeUpdate,
     required TResult Function(SetPicondeSecure value) setPicondeSecure,
     required TResult Function(Clear value) clear,
+    required TResult Function(LocationSkipEvent value) locationSkipEvent,
   }) {
     return locationSearch(this);
   }
@@ -407,6 +423,7 @@ class _$LocationSearchImpl implements LocationSearch {
     TResult? Function(PincodeUpdate value)? pincodeUpdate,
     TResult? Function(SetPicondeSecure value)? setPicondeSecure,
     TResult? Function(Clear value)? clear,
+    TResult? Function(LocationSkipEvent value)? locationSkipEvent,
   }) {
     return locationSearch?.call(this);
   }
@@ -422,6 +439,7 @@ class _$LocationSearchImpl implements LocationSearch {
     TResult Function(PincodeUpdate value)? pincodeUpdate,
     TResult Function(SetPicondeSecure value)? setPicondeSecure,
     TResult Function(Clear value)? clear,
+    TResult Function(LocationSkipEvent value)? locationSkipEvent,
     required TResult orElse(),
   }) {
     if (locationSearch != null) {
@@ -518,6 +536,7 @@ class _$LocationUpdateImpl implements LocationUpdate {
         pincodeUpdate,
     required TResult Function(String pincode) setPicondeSecure,
     required TResult Function() clear,
+    required TResult Function() locationSkipEvent,
   }) {
     return locationUpdate(cityUpdateRequestModel);
   }
@@ -535,6 +554,7 @@ class _$LocationUpdateImpl implements LocationUpdate {
         pincodeUpdate,
     TResult? Function(String pincode)? setPicondeSecure,
     TResult? Function()? clear,
+    TResult? Function()? locationSkipEvent,
   }) {
     return locationUpdate?.call(cityUpdateRequestModel);
   }
@@ -552,6 +572,7 @@ class _$LocationUpdateImpl implements LocationUpdate {
         pincodeUpdate,
     TResult Function(String pincode)? setPicondeSecure,
     TResult Function()? clear,
+    TResult Function()? locationSkipEvent,
     required TResult orElse(),
   }) {
     if (locationUpdate != null) {
@@ -571,6 +592,7 @@ class _$LocationUpdateImpl implements LocationUpdate {
     required TResult Function(PincodeUpdate value) pincodeUpdate,
     required TResult Function(SetPicondeSecure value) setPicondeSecure,
     required TResult Function(Clear value) clear,
+    required TResult Function(LocationSkipEvent value) locationSkipEvent,
   }) {
     return locationUpdate(this);
   }
@@ -586,6 +608,7 @@ class _$LocationUpdateImpl implements LocationUpdate {
     TResult? Function(PincodeUpdate value)? pincodeUpdate,
     TResult? Function(SetPicondeSecure value)? setPicondeSecure,
     TResult? Function(Clear value)? clear,
+    TResult? Function(LocationSkipEvent value)? locationSkipEvent,
   }) {
     return locationUpdate?.call(this);
   }
@@ -601,6 +624,7 @@ class _$LocationUpdateImpl implements LocationUpdate {
     TResult Function(PincodeUpdate value)? pincodeUpdate,
     TResult Function(SetPicondeSecure value)? setPicondeSecure,
     TResult Function(Clear value)? clear,
+    TResult Function(LocationSkipEvent value)? locationSkipEvent,
     required TResult orElse(),
   }) {
     if (locationUpdate != null) {
@@ -697,6 +721,7 @@ class _$PinCodePickImpl implements PinCodePick {
         pincodeUpdate,
     required TResult Function(String pincode) setPicondeSecure,
     required TResult Function() clear,
+    required TResult Function() locationSkipEvent,
   }) {
     return pinCodePick(cityName);
   }
@@ -714,6 +739,7 @@ class _$PinCodePickImpl implements PinCodePick {
         pincodeUpdate,
     TResult? Function(String pincode)? setPicondeSecure,
     TResult? Function()? clear,
+    TResult? Function()? locationSkipEvent,
   }) {
     return pinCodePick?.call(cityName);
   }
@@ -731,6 +757,7 @@ class _$PinCodePickImpl implements PinCodePick {
         pincodeUpdate,
     TResult Function(String pincode)? setPicondeSecure,
     TResult Function()? clear,
+    TResult Function()? locationSkipEvent,
     required TResult orElse(),
   }) {
     if (pinCodePick != null) {
@@ -750,6 +777,7 @@ class _$PinCodePickImpl implements PinCodePick {
     required TResult Function(PincodeUpdate value) pincodeUpdate,
     required TResult Function(SetPicondeSecure value) setPicondeSecure,
     required TResult Function(Clear value) clear,
+    required TResult Function(LocationSkipEvent value) locationSkipEvent,
   }) {
     return pinCodePick(this);
   }
@@ -765,6 +793,7 @@ class _$PinCodePickImpl implements PinCodePick {
     TResult? Function(PincodeUpdate value)? pincodeUpdate,
     TResult? Function(SetPicondeSecure value)? setPicondeSecure,
     TResult? Function(Clear value)? clear,
+    TResult? Function(LocationSkipEvent value)? locationSkipEvent,
   }) {
     return pinCodePick?.call(this);
   }
@@ -780,6 +809,7 @@ class _$PinCodePickImpl implements PinCodePick {
     TResult Function(PincodeUpdate value)? pincodeUpdate,
     TResult Function(SetPicondeSecure value)? setPicondeSecure,
     TResult Function(Clear value)? clear,
+    TResult Function(LocationSkipEvent value)? locationSkipEvent,
     required TResult orElse(),
   }) {
     if (pinCodePick != null) {
@@ -875,6 +905,7 @@ class _$PincodeSearchImpl implements PincodeSearch {
         pincodeUpdate,
     required TResult Function(String pincode) setPicondeSecure,
     required TResult Function() clear,
+    required TResult Function() locationSkipEvent,
   }) {
     return pincodeSearch(searchQuery);
   }
@@ -892,6 +923,7 @@ class _$PincodeSearchImpl implements PincodeSearch {
         pincodeUpdate,
     TResult? Function(String pincode)? setPicondeSecure,
     TResult? Function()? clear,
+    TResult? Function()? locationSkipEvent,
   }) {
     return pincodeSearch?.call(searchQuery);
   }
@@ -909,6 +941,7 @@ class _$PincodeSearchImpl implements PincodeSearch {
         pincodeUpdate,
     TResult Function(String pincode)? setPicondeSecure,
     TResult Function()? clear,
+    TResult Function()? locationSkipEvent,
     required TResult orElse(),
   }) {
     if (pincodeSearch != null) {
@@ -928,6 +961,7 @@ class _$PincodeSearchImpl implements PincodeSearch {
     required TResult Function(PincodeUpdate value) pincodeUpdate,
     required TResult Function(SetPicondeSecure value) setPicondeSecure,
     required TResult Function(Clear value) clear,
+    required TResult Function(LocationSkipEvent value) locationSkipEvent,
   }) {
     return pincodeSearch(this);
   }
@@ -943,6 +977,7 @@ class _$PincodeSearchImpl implements PincodeSearch {
     TResult? Function(PincodeUpdate value)? pincodeUpdate,
     TResult? Function(SetPicondeSecure value)? setPicondeSecure,
     TResult? Function(Clear value)? clear,
+    TResult? Function(LocationSkipEvent value)? locationSkipEvent,
   }) {
     return pincodeSearch?.call(this);
   }
@@ -958,6 +993,7 @@ class _$PincodeSearchImpl implements PincodeSearch {
     TResult Function(PincodeUpdate value)? pincodeUpdate,
     TResult Function(SetPicondeSecure value)? setPicondeSecure,
     TResult Function(Clear value)? clear,
+    TResult Function(LocationSkipEvent value)? locationSkipEvent,
     required TResult orElse(),
   }) {
     if (pincodeSearch != null) {
@@ -1054,6 +1090,7 @@ class _$PincodeUpdateImpl implements PincodeUpdate {
         pincodeUpdate,
     required TResult Function(String pincode) setPicondeSecure,
     required TResult Function() clear,
+    required TResult Function() locationSkipEvent,
   }) {
     return pincodeUpdate(pincodeUpdateRequestModel);
   }
@@ -1071,6 +1108,7 @@ class _$PincodeUpdateImpl implements PincodeUpdate {
         pincodeUpdate,
     TResult? Function(String pincode)? setPicondeSecure,
     TResult? Function()? clear,
+    TResult? Function()? locationSkipEvent,
   }) {
     return pincodeUpdate?.call(pincodeUpdateRequestModel);
   }
@@ -1088,6 +1126,7 @@ class _$PincodeUpdateImpl implements PincodeUpdate {
         pincodeUpdate,
     TResult Function(String pincode)? setPicondeSecure,
     TResult Function()? clear,
+    TResult Function()? locationSkipEvent,
     required TResult orElse(),
   }) {
     if (pincodeUpdate != null) {
@@ -1107,6 +1146,7 @@ class _$PincodeUpdateImpl implements PincodeUpdate {
     required TResult Function(PincodeUpdate value) pincodeUpdate,
     required TResult Function(SetPicondeSecure value) setPicondeSecure,
     required TResult Function(Clear value) clear,
+    required TResult Function(LocationSkipEvent value) locationSkipEvent,
   }) {
     return pincodeUpdate(this);
   }
@@ -1122,6 +1162,7 @@ class _$PincodeUpdateImpl implements PincodeUpdate {
     TResult? Function(PincodeUpdate value)? pincodeUpdate,
     TResult? Function(SetPicondeSecure value)? setPicondeSecure,
     TResult? Function(Clear value)? clear,
+    TResult? Function(LocationSkipEvent value)? locationSkipEvent,
   }) {
     return pincodeUpdate?.call(this);
   }
@@ -1137,6 +1178,7 @@ class _$PincodeUpdateImpl implements PincodeUpdate {
     TResult Function(PincodeUpdate value)? pincodeUpdate,
     TResult Function(SetPicondeSecure value)? setPicondeSecure,
     TResult Function(Clear value)? clear,
+    TResult Function(LocationSkipEvent value)? locationSkipEvent,
     required TResult orElse(),
   }) {
     if (pincodeUpdate != null) {
@@ -1233,6 +1275,7 @@ class _$SetPicondeSecureImpl implements SetPicondeSecure {
         pincodeUpdate,
     required TResult Function(String pincode) setPicondeSecure,
     required TResult Function() clear,
+    required TResult Function() locationSkipEvent,
   }) {
     return setPicondeSecure(pincode);
   }
@@ -1250,6 +1293,7 @@ class _$SetPicondeSecureImpl implements SetPicondeSecure {
         pincodeUpdate,
     TResult? Function(String pincode)? setPicondeSecure,
     TResult? Function()? clear,
+    TResult? Function()? locationSkipEvent,
   }) {
     return setPicondeSecure?.call(pincode);
   }
@@ -1267,6 +1311,7 @@ class _$SetPicondeSecureImpl implements SetPicondeSecure {
         pincodeUpdate,
     TResult Function(String pincode)? setPicondeSecure,
     TResult Function()? clear,
+    TResult Function()? locationSkipEvent,
     required TResult orElse(),
   }) {
     if (setPicondeSecure != null) {
@@ -1286,6 +1331,7 @@ class _$SetPicondeSecureImpl implements SetPicondeSecure {
     required TResult Function(PincodeUpdate value) pincodeUpdate,
     required TResult Function(SetPicondeSecure value) setPicondeSecure,
     required TResult Function(Clear value) clear,
+    required TResult Function(LocationSkipEvent value) locationSkipEvent,
   }) {
     return setPicondeSecure(this);
   }
@@ -1301,6 +1347,7 @@ class _$SetPicondeSecureImpl implements SetPicondeSecure {
     TResult? Function(PincodeUpdate value)? pincodeUpdate,
     TResult? Function(SetPicondeSecure value)? setPicondeSecure,
     TResult? Function(Clear value)? clear,
+    TResult? Function(LocationSkipEvent value)? locationSkipEvent,
   }) {
     return setPicondeSecure?.call(this);
   }
@@ -1316,6 +1363,7 @@ class _$SetPicondeSecureImpl implements SetPicondeSecure {
     TResult Function(PincodeUpdate value)? pincodeUpdate,
     TResult Function(SetPicondeSecure value)? setPicondeSecure,
     TResult Function(Clear value)? clear,
+    TResult Function(LocationSkipEvent value)? locationSkipEvent,
     required TResult orElse(),
   }) {
     if (setPicondeSecure != null) {
@@ -1384,6 +1432,7 @@ class _$ClearImpl implements Clear {
         pincodeUpdate,
     required TResult Function(String pincode) setPicondeSecure,
     required TResult Function() clear,
+    required TResult Function() locationSkipEvent,
   }) {
     return clear();
   }
@@ -1401,6 +1450,7 @@ class _$ClearImpl implements Clear {
         pincodeUpdate,
     TResult? Function(String pincode)? setPicondeSecure,
     TResult? Function()? clear,
+    TResult? Function()? locationSkipEvent,
   }) {
     return clear?.call();
   }
@@ -1418,6 +1468,7 @@ class _$ClearImpl implements Clear {
         pincodeUpdate,
     TResult Function(String pincode)? setPicondeSecure,
     TResult Function()? clear,
+    TResult Function()? locationSkipEvent,
     required TResult orElse(),
   }) {
     if (clear != null) {
@@ -1437,6 +1488,7 @@ class _$ClearImpl implements Clear {
     required TResult Function(PincodeUpdate value) pincodeUpdate,
     required TResult Function(SetPicondeSecure value) setPicondeSecure,
     required TResult Function(Clear value) clear,
+    required TResult Function(LocationSkipEvent value) locationSkipEvent,
   }) {
     return clear(this);
   }
@@ -1452,6 +1504,7 @@ class _$ClearImpl implements Clear {
     TResult? Function(PincodeUpdate value)? pincodeUpdate,
     TResult? Function(SetPicondeSecure value)? setPicondeSecure,
     TResult? Function(Clear value)? clear,
+    TResult? Function(LocationSkipEvent value)? locationSkipEvent,
   }) {
     return clear?.call(this);
   }
@@ -1467,6 +1520,7 @@ class _$ClearImpl implements Clear {
     TResult Function(PincodeUpdate value)? pincodeUpdate,
     TResult Function(SetPicondeSecure value)? setPicondeSecure,
     TResult Function(Clear value)? clear,
+    TResult Function(LocationSkipEvent value)? locationSkipEvent,
     required TResult orElse(),
   }) {
     if (clear != null) {
@@ -1478,6 +1532,157 @@ class _$ClearImpl implements Clear {
 
 abstract class Clear implements LocationEvent {
   const factory Clear() = _$ClearImpl;
+}
+
+/// @nodoc
+abstract class _$$LocationSkipEventImplCopyWith<$Res> {
+  factory _$$LocationSkipEventImplCopyWith(_$LocationSkipEventImpl value,
+          $Res Function(_$LocationSkipEventImpl) then) =
+      __$$LocationSkipEventImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$LocationSkipEventImplCopyWithImpl<$Res>
+    extends _$LocationEventCopyWithImpl<$Res, _$LocationSkipEventImpl>
+    implements _$$LocationSkipEventImplCopyWith<$Res> {
+  __$$LocationSkipEventImplCopyWithImpl(_$LocationSkipEventImpl _value,
+      $Res Function(_$LocationSkipEventImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$LocationSkipEventImpl implements LocationSkipEvent {
+  const _$LocationSkipEventImpl();
+
+  @override
+  String toString() {
+    return 'LocationEvent.locationSkipEvent()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$LocationSkipEventImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() locationPick,
+    required TResult Function(String searchQuery) locationSearch,
+    required TResult Function(CityUpdateRequestModel cityUpdateRequestModel)
+        locationUpdate,
+    required TResult Function(String cityName) pinCodePick,
+    required TResult Function(String searchQuery) pincodeSearch,
+    required TResult Function(
+            PincodeUpdateRequestModel pincodeUpdateRequestModel)
+        pincodeUpdate,
+    required TResult Function(String pincode) setPicondeSecure,
+    required TResult Function() clear,
+    required TResult Function() locationSkipEvent,
+  }) {
+    return locationSkipEvent();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? locationPick,
+    TResult? Function(String searchQuery)? locationSearch,
+    TResult? Function(CityUpdateRequestModel cityUpdateRequestModel)?
+        locationUpdate,
+    TResult? Function(String cityName)? pinCodePick,
+    TResult? Function(String searchQuery)? pincodeSearch,
+    TResult? Function(PincodeUpdateRequestModel pincodeUpdateRequestModel)?
+        pincodeUpdate,
+    TResult? Function(String pincode)? setPicondeSecure,
+    TResult? Function()? clear,
+    TResult? Function()? locationSkipEvent,
+  }) {
+    return locationSkipEvent?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? locationPick,
+    TResult Function(String searchQuery)? locationSearch,
+    TResult Function(CityUpdateRequestModel cityUpdateRequestModel)?
+        locationUpdate,
+    TResult Function(String cityName)? pinCodePick,
+    TResult Function(String searchQuery)? pincodeSearch,
+    TResult Function(PincodeUpdateRequestModel pincodeUpdateRequestModel)?
+        pincodeUpdate,
+    TResult Function(String pincode)? setPicondeSecure,
+    TResult Function()? clear,
+    TResult Function()? locationSkipEvent,
+    required TResult orElse(),
+  }) {
+    if (locationSkipEvent != null) {
+      return locationSkipEvent();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(LocationPick value) locationPick,
+    required TResult Function(LocationSearch value) locationSearch,
+    required TResult Function(LocationUpdate value) locationUpdate,
+    required TResult Function(PinCodePick value) pinCodePick,
+    required TResult Function(PincodeSearch value) pincodeSearch,
+    required TResult Function(PincodeUpdate value) pincodeUpdate,
+    required TResult Function(SetPicondeSecure value) setPicondeSecure,
+    required TResult Function(Clear value) clear,
+    required TResult Function(LocationSkipEvent value) locationSkipEvent,
+  }) {
+    return locationSkipEvent(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(LocationPick value)? locationPick,
+    TResult? Function(LocationSearch value)? locationSearch,
+    TResult? Function(LocationUpdate value)? locationUpdate,
+    TResult? Function(PinCodePick value)? pinCodePick,
+    TResult? Function(PincodeSearch value)? pincodeSearch,
+    TResult? Function(PincodeUpdate value)? pincodeUpdate,
+    TResult? Function(SetPicondeSecure value)? setPicondeSecure,
+    TResult? Function(Clear value)? clear,
+    TResult? Function(LocationSkipEvent value)? locationSkipEvent,
+  }) {
+    return locationSkipEvent?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(LocationPick value)? locationPick,
+    TResult Function(LocationSearch value)? locationSearch,
+    TResult Function(LocationUpdate value)? locationUpdate,
+    TResult Function(PinCodePick value)? pinCodePick,
+    TResult Function(PincodeSearch value)? pincodeSearch,
+    TResult Function(PincodeUpdate value)? pincodeUpdate,
+    TResult Function(SetPicondeSecure value)? setPicondeSecure,
+    TResult Function(Clear value)? clear,
+    TResult Function(LocationSkipEvent value)? locationSkipEvent,
+    required TResult orElse(),
+  }) {
+    if (locationSkipEvent != null) {
+      return locationSkipEvent(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class LocationSkipEvent implements LocationEvent {
+  const factory LocationSkipEvent() = _$LocationSkipEventImpl;
 }
 
 /// @nodoc

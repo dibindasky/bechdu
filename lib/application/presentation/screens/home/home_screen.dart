@@ -64,9 +64,10 @@ class _ScreenHomeState extends State<ScreenHome> {
   void _checkLocationAndShowScreen() async {
     bool isLocation = await SecureSotrage.getLocationBool();
     bool isPincode = await SecureSotrage.getPicodeBool();
-
+    bool isSkip = await SecureSotrage.getlocatioSkipBool();
     setState(() {
-      locationSelected = isLocation || isPincode; // Update flag based on data
+      locationSelected =
+          isLocation || isPincode || isSkip; // Update flag based on data
     });
 
     if (!locationSelected) {

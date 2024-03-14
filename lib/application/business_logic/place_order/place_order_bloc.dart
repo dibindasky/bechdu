@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:developer';
 import 'dart:io';
+import 'package:beachdu/data/pdf_generator.dart';
 import 'package:beachdu/data/secure_storage/secure_fire_store.dart';
 import 'package:beachdu/domain/model/date_tome_responce_model/date_tome_responce_model.dart';
 import 'package:beachdu/domain/model/order_model/abandend_order_request_model/abandend_order_request_model.dart';
@@ -56,13 +57,35 @@ class PlaceOrderBloc extends Bloc<PlaceOrderEvent, PlaceOrderState> {
   }
 
   FutureOr<void> invoiceDownLoad(InvoiceDownload event, emit) async {
-    emit(state.copyWith(isLoading: true, hasError: false));
+    final permissionGranted = await takePermission();
+    if (!permissionGranted) return;
+    emit(state.copyWith(
+      hasError: false,
+      downloading: true,
+      downloaded: false,
+    ));
     final number = await SecureSotrage.getNumber();
-    await placeOrderRepo.downloadInvoice(
+    final result = await placeOrderRepo.downloadInvoice(
       orderId: event.orderId,
       number: number,
     );
-    emit(state.copyWith(isLoading: false, hasError: false));
+    result.fold(
+        (l) => emit(state.copyWith(
+              hasError: true,
+              downloading: false,
+              downloaded: false,
+              message: 'Error while generating invoice',
+            )), (r) async {
+      emit(
+        state.copyWith(
+          downloading: false,
+          downloaded: true,
+          message: 'File downloaded successfully',
+          invoice: r.base64String,
+        ),
+      );
+      await pdfGenerator(r.base64String!);
+    });
   }
 
   FutureOr<void> getDateTime(GetDatetime event, emit) async {

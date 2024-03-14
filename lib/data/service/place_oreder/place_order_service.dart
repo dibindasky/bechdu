@@ -1,10 +1,10 @@
 import 'dart:developer';
-import 'package:beachdu/data/pdf_generator.dart';
 import 'package:beachdu/data/secure_storage/secure_fire_store.dart';
 import 'package:beachdu/domain/core/api_endpoints/api_endpoints.dart';
 import 'package:beachdu/domain/core/failure/failure.dart';
 import 'package:beachdu/domain/model/date_tome_responce_model/date_tome_responce_model.dart';
 import 'package:beachdu/domain/model/order_model/get_all_order_responce_model/get_all_order_responce_model.dart';
+import 'package:beachdu/domain/model/order_model/invoice_download_responce_model/invoice_download_responce_model.dart';
 import 'package:beachdu/domain/model/order_model/order_cancelation_request_model/order_cancelation_request_model.dart';
 import 'package:beachdu/domain/model/order_model/order_cancelation_responce_model/order_cancelation_responce_model.dart';
 import 'package:beachdu/domain/model/order_model/order_placed_request_model/order_placed_request_model.dart';
@@ -15,7 +15,6 @@ import 'package:beachdu/domain/repository/place_order.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
-import 'package:path_provider/path_provider.dart';
 
 @LazySingleton(as: PlaceOrderRepo)
 @singleton
@@ -149,53 +148,13 @@ class PlaceOrderService implements PlaceOrderRepo {
   }
 
   @override
-  Future<Either<Failure, String>> invoiceDownLoad({
+  Future<Either<Failure, InvoiceDownloadResponceModel>> downloadInvoice({
     required String orderId,
     required String number,
   }) async {
     try {
-      // Request storage permission
-      final permissionGranted = await takePermission();
-      if (!permissionGranted) {
-        return Left(Failure(message: 'Storage denied'));
-      } else {
-        final accessToken =
-            await SecureSotrage.getToken().then((token) => token.accessToken);
-        _dio.options.headers.addAll({'authorization': "Bearer $accessToken"});
-
-        final url = ApiEndPoints.invoiceDownLoad
-            .replaceAll('{order_id}', orderId)
-            .replaceAll('{number}', number);
-
-        final response = await _dio.get(
-          url,
-          data: {"orderID": orderId},
-        );
-
-        if (response.statusCode == 200) {
-          return Right(response.data);
-        } else {
-          const errorMessage = 'Download failed';
-          return Left(Failure(message: errorMessage));
-        }
-      }
-    } on DioException catch (e) {
-      log('invoiceDownLoad DioError: ${e.message}');
-      return Left(Failure(message: 'Network error'));
-    } catch (e) {
-      log('invoiceDownLoad catch: $e');
-      return Left(Failure(message: 'Unexpected error'));
-    }
-  }
-
-  @override
-  Future<void> downloadInvoice({
-    required String orderId,
-    required String number,
-  }) async {
-    try {
-      final permissionGranted = await takePermission();
-      if (!permissionGranted) return;
+      // final permissionGranted = await takePermission();
+      // if (!permissionGranted) return;
       final accessToken =
           await SecureSotrage.getToken().then((token) => token.accessToken);
       _dio.options.headers.addAll({'authorization': "Bearer $accessToken"});
@@ -206,21 +165,13 @@ class PlaceOrderService implements PlaceOrderRepo {
 
       final response = await _dio.get(url, data: {"orderID": orderId});
       log('${response.data}');
-      if (response.statusCode == 200) {
-        final pdfBuffer = stringToUint8List(response.data);
-        const fileName = 'invoice.pdf';
-        final directory = await getApplicationDocumentsDirectory();
-        final filePath = '${directory.path}/$fileName';
-        await savePdfBufferToFile(pdfBuffer, filePath);
-        log('Invoice downloaded successfully!');
-      } else {
-        const errorMessage = 'Download failed';
-        log(errorMessage);
-      }
+      return Right(InvoiceDownloadResponceModel.fromJson(response.data));
     } on DioException catch (e) {
       log('invoiceDownLoad DioError: ${e.message}');
+      return Left(Failure(message: errorMessage));
     } catch (e) {
-      log('invoiceDownLoad catch: $e');
+      log('downloadInvoice exception => $e');
+      return Left(Failure(message: errorMessage));
     }
   }
 }

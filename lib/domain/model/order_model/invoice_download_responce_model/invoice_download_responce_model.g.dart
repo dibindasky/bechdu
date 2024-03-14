@@ -9,11 +9,11 @@ part of 'invoice_download_responce_model.dart';
 InvoiceDownloadResponceModel _$InvoiceDownloadResponceModelFromJson(
         Map<String, dynamic> json) =>
     InvoiceDownloadResponceModel(
-      name: json['name'] as String?,
+      base64String: json['base64String'] as String?,
     );
 
 Map<String, dynamic> _$InvoiceDownloadResponceModelToJson(
         InvoiceDownloadResponceModel instance) =>
     <String, dynamic>{
-      'name': instance.name,
+      'base64String': instance.base64String,
     };

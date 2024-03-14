@@ -8,11 +8,11 @@ part of 'invoice_request_model.dart';
 
 InvoiceRequestModel _$InvoiceRequestModelFromJson(Map<String, dynamic> json) =>
     InvoiceRequestModel(
-      orderId: json['orderID'] as String?,
+      base64String: json['orderID'] as String?,
     );
 
 Map<String, dynamic> _$InvoiceRequestModelToJson(
         InvoiceRequestModel instance) =>
     <String, dynamic>{
-      'orderID': instance.orderId,
+      'orderID': instance.base64String,
     };

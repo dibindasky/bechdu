@@ -4119,7 +4119,10 @@ mixin _$PlaceOrderState {
       throw _privateConstructorUsedError;
   List<String>? get dates => throw _privateConstructorUsedError;
   List<String>? get time => throw _privateConstructorUsedError;
+  bool get downloading => throw _privateConstructorUsedError;
+  bool get downloaded => throw _privateConstructorUsedError;
   File? get data => throw _privateConstructorUsedError;
+  String? get invoice => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $PlaceOrderStateCopyWith<PlaceOrderState> get copyWith =>
@@ -4153,7 +4156,10 @@ abstract class $PlaceOrderStateCopyWith<$Res> {
       DateTomeResponceModel? dateTomeResponceModel,
       List<String>? dates,
       List<String>? time,
-      File? data});
+      bool downloading,
+      bool downloaded,
+      File? data,
+      String? invoice});
 }
 
 /// @nodoc
@@ -4189,7 +4195,10 @@ class _$PlaceOrderStateCopyWithImpl<$Res, $Val extends PlaceOrderState>
     Object? dateTomeResponceModel = freezed,
     Object? dates = freezed,
     Object? time = freezed,
+    Object? downloading = null,
+    Object? downloaded = null,
     Object? data = freezed,
+    Object? invoice = freezed,
   }) {
     return _then(_value.copyWith(
       isLoading: null == isLoading
@@ -4272,10 +4281,22 @@ class _$PlaceOrderStateCopyWithImpl<$Res, $Val extends PlaceOrderState>
           ? _value.time
           : time // ignore: cast_nullable_to_non_nullable
               as List<String>?,
+      downloading: null == downloading
+          ? _value.downloading
+          : downloading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      downloaded: null == downloaded
+          ? _value.downloaded
+          : downloaded // ignore: cast_nullable_to_non_nullable
+              as bool,
       data: freezed == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
               as File?,
+      invoice: freezed == invoice
+          ? _value.invoice
+          : invoice // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -4309,7 +4330,10 @@ abstract class _$$InitialImplCopyWith<$Res>
       DateTomeResponceModel? dateTomeResponceModel,
       List<String>? dates,
       List<String>? time,
-      File? data});
+      bool downloading,
+      bool downloaded,
+      File? data,
+      String? invoice});
 }
 
 /// @nodoc
@@ -4343,7 +4367,10 @@ class __$$InitialImplCopyWithImpl<$Res>
     Object? dateTomeResponceModel = freezed,
     Object? dates = freezed,
     Object? time = freezed,
+    Object? downloading = null,
+    Object? downloaded = null,
     Object? data = freezed,
+    Object? invoice = freezed,
   }) {
     return _then(_$InitialImpl(
       isLoading: null == isLoading
@@ -4426,10 +4453,22 @@ class __$$InitialImplCopyWithImpl<$Res>
           ? _value._time
           : time // ignore: cast_nullable_to_non_nullable
               as List<String>?,
+      downloading: null == downloading
+          ? _value.downloading
+          : downloading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      downloaded: null == downloaded
+          ? _value.downloaded
+          : downloaded // ignore: cast_nullable_to_non_nullable
+              as bool,
       data: freezed == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
               as File?,
+      invoice: freezed == invoice
+          ? _value.invoice
+          : invoice // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -4458,7 +4497,10 @@ class _$InitialImpl implements _Initial {
       this.dateTomeResponceModel,
       final List<String>? dates,
       final List<String>? time,
-      this.data})
+      required this.downloading,
+      required this.downloaded,
+      this.data,
+      this.invoice})
       : _selectedNewOptions = selectedNewOptions,
         _dates = dates,
         _time = time;
@@ -4529,11 +4571,17 @@ class _$InitialImpl implements _Initial {
   }
 
   @override
+  final bool downloading;
+  @override
+  final bool downloaded;
+  @override
   final File? data;
+  @override
+  final String? invoice;
 
   @override
   String toString() {
-    return 'PlaceOrderState(isLoading: $isLoading, hasError: $hasError, loginStatus: $loginStatus, message: $message, promoCodeResponceModel: $promoCodeResponceModel, orderPlacedResponceModel: $orderPlacedResponceModel, orderPlacedRequestModel: $orderPlacedRequestModel, user: $user, payment: $payment, pickUpDetails: $pickUpDetails, productDetails: $productDetails, address: $address, promo: $promo, number: $number, selectedNewOptions: $selectedNewOptions, orderCancelationResponceModel: $orderCancelationResponceModel, getAllOrderResponceModel: $getAllOrderResponceModel, dateTomeResponceModel: $dateTomeResponceModel, dates: $dates, time: $time, data: $data)';
+    return 'PlaceOrderState(isLoading: $isLoading, hasError: $hasError, loginStatus: $loginStatus, message: $message, promoCodeResponceModel: $promoCodeResponceModel, orderPlacedResponceModel: $orderPlacedResponceModel, orderPlacedRequestModel: $orderPlacedRequestModel, user: $user, payment: $payment, pickUpDetails: $pickUpDetails, productDetails: $productDetails, address: $address, promo: $promo, number: $number, selectedNewOptions: $selectedNewOptions, orderCancelationResponceModel: $orderCancelationResponceModel, getAllOrderResponceModel: $getAllOrderResponceModel, dateTomeResponceModel: $dateTomeResponceModel, dates: $dates, time: $time, downloading: $downloading, downloaded: $downloaded, data: $data, invoice: $invoice)';
   }
 
   @override
@@ -4578,7 +4626,12 @@ class _$InitialImpl implements _Initial {
                 other.dateTomeResponceModel == dateTomeResponceModel) &&
             const DeepCollectionEquality().equals(other._dates, _dates) &&
             const DeepCollectionEquality().equals(other._time, _time) &&
-            (identical(other.data, data) || other.data == data));
+            (identical(other.downloading, downloading) ||
+                other.downloading == downloading) &&
+            (identical(other.downloaded, downloaded) ||
+                other.downloaded == downloaded) &&
+            (identical(other.data, data) || other.data == data) &&
+            (identical(other.invoice, invoice) || other.invoice == invoice));
   }
 
   @override
@@ -4604,7 +4657,10 @@ class _$InitialImpl implements _Initial {
         dateTomeResponceModel,
         const DeepCollectionEquality().hash(_dates),
         const DeepCollectionEquality().hash(_time),
-        data
+        downloading,
+        downloaded,
+        data,
+        invoice
       ]);
 
   @JsonKey(ignore: true)
@@ -4636,7 +4692,10 @@ abstract class _Initial implements PlaceOrderState {
       final DateTomeResponceModel? dateTomeResponceModel,
       final List<String>? dates,
       final List<String>? time,
-      final File? data}) = _$InitialImpl;
+      required final bool downloading,
+      required final bool downloaded,
+      final File? data,
+      final String? invoice}) = _$InitialImpl;
 
   @override
   bool get isLoading;
@@ -4679,7 +4738,13 @@ abstract class _Initial implements PlaceOrderState {
   @override
   List<String>? get time;
   @override
+  bool get downloading;
+  @override
+  bool get downloaded;
+  @override
   File? get data;
+  @override
+  String? get invoice;
   @override
   @JsonKey(ignore: true)
   _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>

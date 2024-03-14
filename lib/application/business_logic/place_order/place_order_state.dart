@@ -23,13 +23,18 @@ class PlaceOrderState with _$PlaceOrderState {
     DateTomeResponceModel? dateTomeResponceModel,
     List<String>? dates,
     List<String>? time,
+    required bool downloading,
+    required bool downloaded,
     File? data,
+    String? invoice,
   }) = _Initial;
 
   factory PlaceOrderState.initial() => PlaceOrderState(
         isLoading: false,
         hasError: false,
         loginStatus: false,
+        downloaded: false,
+        downloading: false,
         orderPlacedRequestModel: OrderPlacedRequestModel(),
         user: User(),
         payment: Payment(),
