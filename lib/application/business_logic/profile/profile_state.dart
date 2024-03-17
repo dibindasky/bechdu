@@ -9,6 +9,7 @@ class ProfileState with _$ProfileState {
     required List<String> address,
     AddressCreationResponceModel? addressCreationResponceModel,
     UserInfo? user,
+    DeleteAccountResponceModel? deleteAccountResponceModel,
   }) = _Initial;
   factory ProfileState.initail() => const ProfileState(
         isLoading: false,

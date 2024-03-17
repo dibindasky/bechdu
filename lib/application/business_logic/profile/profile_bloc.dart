@@ -3,8 +3,12 @@ import 'dart:developer';
 import 'package:beachdu/data/secure_storage/secure_fire_store.dart';
 import 'package:beachdu/domain/model/address_model/address_creation_request_model/address_creation_request_model.dart';
 import 'package:beachdu/domain/model/address_model/address_creation_responce_model/address_creation_responce_model.dart';
+import 'package:beachdu/domain/model/login/login_model/login_model.dart';
+import 'package:beachdu/domain/model/login/otp_verify_request_model/otp_verify_request_model.dart';
+import 'package:beachdu/domain/model/profile/delete_account_responce_model/delete_account_responce_model.dart';
 import 'package:beachdu/domain/model/profile/user_info/user_info.dart';
 import 'package:beachdu/domain/model/profile/user_info_request_model/user_info_request_model.dart';
+import 'package:beachdu/domain/repository/auth_repo.dart';
 import 'package:beachdu/domain/repository/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -17,6 +21,7 @@ part 'profile_bloc.freezed.dart';
 @injectable
 class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   final ProfileRepo profileRepo;
+  final AuthRepo authRepo;
   bool isShowAddress = false;
   bool isVisible = false;
   String? name;
@@ -27,11 +32,53 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   List<String> addressList = [];
   TextEditingController addressController = TextEditingController();
 
-  ProfileBloc(this.profileRepo) : super(ProfileState.initail()) {
+  ProfileBloc(this.profileRepo, this.authRepo) : super(ProfileState.initail()) {
     on<AddAddress>(addAddress);
     on<DeleteAddress>(deleteAddress);
     on<GetUserInfo>(getUserInfo);
     on<UpdateUser>(updateuser);
+    on<GetDeletionOtp>(getDeletionOtp);
+    on<DeleteAccount>(deleteAccount);
+  }
+
+  FutureOr<void> getDeletionOtp(GetDeletionOtp event, emit) async {
+    emit(state.copyWith(hasError: false, isLoading: false));
+    final number = await SecureSotrage.getNumber();
+    LoginModel loginModel = LoginModel(mobileNumber: number);
+    final data = await authRepo.otpSend(loginModel: loginModel);
+    data.fold(
+      (l) => emit(state.copyWith(isLoading: false, hasError: true)),
+      (r) => emit(
+        state.copyWith(
+            isLoading: false,
+            hasError: false,
+            message: 'OTP send successfully'),
+      ),
+    );
+  }
+
+  FutureOr<void> deleteAccount(DeleteAccount event, emit) async {
+    emit(state.copyWith(hasError: false, isLoading: false));
+    final number = await SecureSotrage.getNumber();
+    event.otpVerifyRequestModel.phone = number;
+    final data = await profileRepo.deletAcocunt(
+      otpVerifyRequestModel: event.otpVerifyRequestModel,
+    );
+    data.fold(
+        (failure) => emit(
+              state.copyWith(
+                hasError: true,
+                isLoading: false,
+              ),
+            ), (successOtpSend) async {
+      emit(
+        state.copyWith(
+          isLoading: false,
+          hasError: false,
+          message: successOtpSend.message,
+        ),
+      );
+    });
   }
 
   FutureOr<void> updateuser(UpdateUser event, emit) async {

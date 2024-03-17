@@ -57,7 +57,7 @@ class _GridTileQuestionState extends State<GridTileQuestion> {
   @override
   void deactivate() {
     super.deactivate();
-    imageBytes = null; // Clear image data when widget is removed
+    imageBytes = null;
   }
 
   @override

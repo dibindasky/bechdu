@@ -12,4 +12,9 @@ class ProfileEvent with _$ProfileEvent {
   const factory ProfileEvent.updateUser({
     required UserInfoRequestModel userInfoRequestModel,
   }) = UpdateUser;
+  const factory ProfileEvent.getDeletionOtp({LoginModel? loginModel}) =
+      GetDeletionOtp;
+  const factory ProfileEvent.deleteAccount({
+    required OtpVerifyRequestModel otpVerifyRequestModel,
+  }) = DeleteAccount;
 }

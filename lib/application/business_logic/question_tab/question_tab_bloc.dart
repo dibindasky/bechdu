@@ -5,6 +5,7 @@ import 'package:beachdu/domain/model/get_base_price_model_responce/get_base_pric
 import 'package:beachdu/domain/model/get_products_respoce_model/get_products_respoce_model.dart';
 import 'package:beachdu/domain/model/get_products_respoce_model/product.dart';
 import 'package:beachdu/domain/model/get_question_model/get_question_model.dart';
+import 'package:beachdu/domain/model/get_question_model/section.dart';
 import 'package:beachdu/domain/model/pickup_question_model/pickup_question_model.dart';
 import 'package:beachdu/domain/model/pickup_question_model/selected_option.dart';
 import 'package:beachdu/domain/repository/question_repo.dart';
@@ -45,19 +46,13 @@ class QuestionTabBloc extends Bloc<QuestionTabEvent, QuestionTabState> {
       return;
     }
     if (event.index + 1 == state.selectedTabIndex) {
-      emit(
-        state.copyWith(
-          message: null,
-          hasError: false,
-          selectedTabIndex: event.index,
-        ),
-      );
+      emit(state.copyWith(
+          message: null, hasError: false, selectedTabIndex: event.index));
     } else {
-      emit(
-        state.copyWith(
-          message: 'you can go back to the previous step only',
-        ),
-      );
+      emit(state.copyWith(
+        message: 'you can go back to the previous step only',
+        hasError: true,
+      ));
     }
   }
 
@@ -147,6 +142,35 @@ class QuestionTabBloc extends Bloc<QuestionTabEvent, QuestionTabState> {
       ));
     }
   }
+
+  // FutureOr<void> getQuestion(GetQuestions event, emit) async {
+  //   emit(state.copyWith(
+  //       slug: event.slug,
+  //       priceCalculationError: false,
+  //       questionLoading: true,
+  //       sections: null,
+  //       message: null,
+  //       hasError: false));
+  //   final result = await requoteService.getQuestions(category: event.category);
+  //   result.fold(
+  //       (l) => emit(state.copyWith(
+  //           hasError: true, questionLoading: false, message: l.message)), (r) {
+  //     Map<String, List<SelectedOption>> map = {};
+  //     if (r.sections != null) {
+  //       for (var element in r.sections!.toList()) {
+  //         if (!map.containsKey(element.heading)) {
+  //           map[element.heading!] = <SelectedOption>[];
+  //         }
+  //       }
+  //     }
+  //     return emit(state.copyWith(
+  //         questionLoading: false,
+  //         sections: r.sections,
+  //         category: r.categoryType,
+  //         selectedAnswers: map,
+  //         hasError: false));
+  //   });
+  // }
 
   FutureOr<void> getQuestions(GetQuestions event, emit) async {
     emit(state.copyWith(isLoading: true, hasError: false));

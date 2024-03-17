@@ -33,4 +33,5 @@ class ApiEndPoints {
   static const String dateTime = 'dynamic/calendar/next-10-days';
   static const String invoiceDownLoad =
       'order/generate-invoice/{number}/{order_id}';
+  static const String deleteAccount = 'user/account-deletion';
 }

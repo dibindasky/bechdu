@@ -15,6 +15,8 @@ class QuestionTabState with _$QuestionTabState {
     GetProductsRespoceModel? getProductsResponceModel,
     required int selectedTabIndex,
     AbandendOrderResponceModel? abandendOrderResponceModel,
+    List<Section>? sections,
+    required Map<String, List<SelectedOption>> selectedAnswers,
   }) = _Initial;
 
   factory QuestionTabState.initial() => const QuestionTabState(
@@ -23,5 +25,6 @@ class QuestionTabState with _$QuestionTabState {
         answerCount: 0,
         selectedTabIndex: 0,
         selectedOption: [],
+        selectedAnswers: {},
       );
 }

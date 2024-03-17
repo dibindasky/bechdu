@@ -143,9 +143,12 @@ class _ScreenHomeState extends State<ScreenHome> {
                       child: BlocBuilder<HomeBloc, HomeState>(
                         builder: (context, state) {
                           if (state.hasError) {
-                            return const Center(
-                              child: CircularProgressIndicator(
-                                color: kGreenPrimary,
+                            return SizedBox(
+                              height: sHeight,
+                              child: const Center(
+                                child: CircularProgressIndicator(
+                                  color: kGreenPrimary,
+                                ),
                               ),
                             );
                           }

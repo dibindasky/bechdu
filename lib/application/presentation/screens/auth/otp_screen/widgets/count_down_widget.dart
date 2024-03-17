@@ -41,7 +41,7 @@ class _CountdownTimerState extends State<CountdownTimer> {
     String seconds = (_remainingTime.inSeconds % 60).toString().padLeft(2, '0');
     return Text(
       '$minutes:$seconds',
-      style: textHeadMedium1.copyWith(fontSize: sWidth * .042),
+      style: textHeadMedium1.copyWith(fontSize: sWidth * .035),
     );
   }
 

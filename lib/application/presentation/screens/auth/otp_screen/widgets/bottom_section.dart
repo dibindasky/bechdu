@@ -1,47 +1,109 @@
-import 'dart:developer';
-
+import 'dart:async';
 import 'package:beachdu/application/business_logic/auth/auth_bloc.dart';
-import 'package:beachdu/application/business_logic/brands_bloc/category_bloc_bloc.dart';
 import 'package:beachdu/application/business_logic/question_tab/question_tab_bloc.dart';
 import 'package:beachdu/application/presentation/routes/routes.dart';
+import 'package:beachdu/application/presentation/screens/auth/otp_screen/widgets/count_down_widget.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/application/presentation/utils/enums/type_display.dart';
 import 'package:beachdu/application/presentation/utils/snackbar/snackbar.dart';
 import 'package:beachdu/application/presentation/widgets/custom_elevated_button.dart';
-import 'package:beachdu/domain/core/failure/failure.dart';
+import 'package:beachdu/domain/model/login/login_model/login_model.dart';
 import 'package:beachdu/domain/model/login/otp_verify_request_model/otp_verify_request_model.dart';
-import 'package:beachdu/domain/model/order_model/abandend_order_request_model/abandend_order_request_model.dart';
-import 'package:beachdu/domain/model/order_model/abandend_order_request_model/product_details.dart';
-import 'package:beachdu/domain/model/pickup_question_model/pickup_question_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class BottomSection extends StatelessWidget {
+class BottomSection extends StatefulWidget {
   const BottomSection({super.key, required this.loginWay});
+
   final LoginWay loginWay;
+
+  @override
+  State<BottomSection> createState() => _BottomSectionState();
+}
+
+class _BottomSectionState extends State<BottomSection> {
+  bool canResend = true;
+  Color klightgrey = Colors.grey;
+  bool _canResend = true;
+
+  Color resendButtonColor = Colors.grey;
+
+  void _startResendCooldown() {
+    setState(() {
+      _canResend = false;
+      resendButtonColor = Colors.grey;
+    });
+
+    Timer(const Duration(seconds: 30), () {
+      setState(() {
+        _canResend = true;
+        resendButtonColor = Colors.black;
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         kHeight20,
-        Text.rich(
-          TextSpan(
-            text: "I didn't receive any code.",
-            style: textHeadMedium1.copyWith(
-              fontSize: sWidth * .037,
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              "I didn't receive any code. ",
+              style: textHeadMedium1,
             ),
-            children: [
-              TextSpan(
-                text: 'RESEND',
-                style: textHeadBold1.copyWith(color: klightgrey),
+            TextButton(
+              onPressed: _canResend
+                  ? () {
+                      _startResendCooldown();
+                      Future.delayed(const Duration(seconds: 30)).then(
+                        (value) {
+                          final phoneNumber = context
+                              .read<AuthBloc>()
+                              .phoneNumberController
+                              .text
+                              .replaceAll(' ', '');
+                          LoginModel loginModel = LoginModel(
+                            mobileNumber: phoneNumber,
+                          );
+                          context.read<AuthBloc>().add(
+                                AuthEvent.otpSend(loginModel: loginModel),
+                              );
+                          Navigator.pushReplacementNamed(
+                            context,
+                            Routes.otpVerification,
+                            arguments: widget.loginWay,
+                          );
+                        },
+                      );
+                      showSnack(context: context, message: 'OTP Re-sended');
+                    }
+                  : null,
+              child: Text(
+                'RESEND',
+                style: textHeadMedium1.copyWith(color: resendButtonColor),
               ),
+            ),
+          ],
+        ),
+        if (!_canResend)
+         const Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text('Please wait for '),
+              CountdownTimer(
+                duration: Duration(seconds: 30),
+              ),
+              Text(' before resending OTP')
             ],
           ),
-        ),
+       const SizedBox(height: 50),
         kHeight50,
-        loginWay == LoginWay.fromProfile ||
-                loginWay == LoginWay.fromQuestionPick
+        widget.loginWay == LoginWay.fromProfile ||
+                widget.loginWay == LoginWay.fromQuestionPick
             ? kHeight20
             : Align(
                 alignment: Alignment.center,
@@ -68,36 +130,6 @@ class BottomSection extends StatelessWidget {
           builder: (context, questionBlo) {
             return BlocBuilder<AuthBloc, AuthState>(
               builder: (context, state) {
-                if (state.otpVerifyResponceModel != null) {
-                  log('condition pick in condition');
-                  PickupQuestionModel pickepQuestionModel = PickupQuestionModel(
-                    categoryType: context.read<CategoryBlocBloc>().categoryType,
-                    productSlug: context.read<CategoryBlocBloc>().slug,
-                    selectedOptions:
-                        context.read<QuestionTabBloc>().state.selectedOption,
-                  );
-
-                  //Product name Concatination
-                  final verient = context.read<CategoryBlocBloc>().verient;
-                  final model = context.read<CategoryBlocBloc>().model;
-                  final name = '$verient $model';
-
-                  ProductDetails productDetails = ProductDetails(
-                    slug: context.read<CategoryBlocBloc>().slug,
-                    name: name,
-                    options: questionBlo.selectedOption,
-                  );
-
-                  AbandendOrderRequestModel abandendOrderRequestModel =
-                      AbandendOrderRequestModel(productDetails: productDetails);
-
-                  context.read<QuestionTabBloc>().add(
-                        GetBasePrice(
-                          pickupQuestionModel: pickepQuestionModel,
-                          abandendOrderRequestModel: abandendOrderRequestModel,
-                        ),
-                      );
-                }
                 return ElevatedButtonLong(
                   wdth: sWidth * .7,
                   onPressed: () {

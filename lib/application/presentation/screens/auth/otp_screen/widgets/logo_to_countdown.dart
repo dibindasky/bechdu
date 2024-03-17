@@ -76,9 +76,6 @@ class _LogoToCountDownSectionState extends State<LogoToCountDownSection>
             fontSize: sWidth * .037,
           ),
         ),
-        const CountdownTimer(
-          duration: Duration(minutes: 10),
-        ),
         kHeight20,
       ],
     );

@@ -6,6 +6,7 @@ showConfirmationDialog(
   BuildContext context, {
   bool noButton = false,
   String? heading,
+  Widget? content,
   void Function()? onPressed,
   String? operationButtonName,
 }) async {
@@ -17,6 +18,7 @@ showConfirmationDialog(
         heading ?? 'Do you really want to exit from Bechdu?',
         style: textHeadBold1,
       ),
+      content: content,
       actions: [
         TextButton(
           onPressed: onPressed ?? () => Navigator.pop(context),

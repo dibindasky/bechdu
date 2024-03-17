@@ -2,7 +2,9 @@ import 'package:beachdu/application/business_logic/brands_bloc/category_bloc_blo
 import 'package:beachdu/application/presentation/screens/product_selection/product_choose_drop_downs/drop_down_grid_builder.dart.dart';
 import 'package:beachdu/application/presentation/screens/product_selection/product_lists/product_container.dart';
 import 'package:beachdu/application/presentation/screens/product_selection/search_field/product_serch_field.dart';
+import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
+import 'package:beachdu/application/presentation/utils/loading_indicators/loading_indicator.dart';
 import 'package:beachdu/application/presentation/utils/skeltons/skelton.dart';
 import 'package:beachdu/domain/model/get_products_respoce_model/product.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +25,12 @@ class ProductListViewBuilder extends StatelessWidget {
             height: 200,
           );
         } else if (categoryState.hasError) {
-          return const Center(child: Icon(Icons.refresh_outlined));
+          return SizedBox(
+            height: sHeight,
+            child: const Center(
+              child: Center(child: LoadingAnimation(width: 30)),
+            ),
+          );
         } else {
           if (categoryState.filteredProducts == null) {
             return const Skeleton(

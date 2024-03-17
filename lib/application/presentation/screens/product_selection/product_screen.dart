@@ -73,7 +73,7 @@ class ScreenProductSelection extends StatelessWidget {
         child: Scaffold(
           body: SafeArea(
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 15),
               child: ListView(
                 children: [
                   kHeight10,

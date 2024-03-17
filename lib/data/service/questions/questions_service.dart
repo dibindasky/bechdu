@@ -1,5 +1,4 @@
-import 'dart:developer';
-import 'package:beachdu/data/secure_storage/secure_fire_store.dart';
+import 'package:beachdu/data/service/api_service.dart';
 import 'package:beachdu/domain/core/api_endpoints/api_endpoints.dart';
 import 'package:beachdu/domain/core/failure/failure.dart';
 import 'package:beachdu/domain/model/get_base_price_model_responce/get_base_price_model_responce.dart';
@@ -15,14 +14,15 @@ import 'package:injectable/injectable.dart';
 @LazySingleton(as: QuestionRepo)
 @injectable
 class QuestionService implements QuestionRepo {
-  final _dio = Dio(BaseOptions(baseUrl: ApiEndPoints.baseUrl));
+  final ApiService _apiService;
+  QuestionService(this._apiService);
   @override
   Future<Either<Failure, GetQuestionModel>> getQuestions({
     required String categoryType,
   }) async {
     try {
       final responce =
-          await _dio.get('${ApiEndPoints.getquestions}/$categoryType');
+          await _apiService.get('${ApiEndPoints.getquestions}/$categoryType');
       return Right(GetQuestionModel.fromJson(responce.data));
     } on DioException catch (e) {
       return Left(Failure(message: e.message ?? errorMessage));
@@ -36,15 +36,12 @@ class QuestionService implements QuestionRepo {
     required PickupQuestionModel pickeQuestionModel,
   }) async {
     try {
-      final response = await _dio.post(ApiEndPoints.getBasePrice,
+      final response = await _apiService.post(ApiEndPoints.getBasePrice,
           data: pickeQuestionModel.toJson());
-      log('getBasePrice ${response.data}');
       return Right(GetBasePriceModelResponce.fromJson(response.data));
     } on DioException catch (e) {
-      log('getBasePrice DioError $e');
       return Left(Failure(message: e.message));
     } catch (e) {
-      log('getBasePrice catch $e');
       return Left(Failure(message: e.toString()));
     }
   }
@@ -54,28 +51,15 @@ class QuestionService implements QuestionRepo {
     required AbandendOrderRequestModel abandendOrderRequestModel,
   }) async {
     try {
-      final accessToken =
-          await SecureSotrage.getToken().then((token) => token.accessToken);
-      log('${abandendOrderRequestModel.platform}');
-      log('abandendOrder ${abandendOrderRequestModel.abendendOrderUser!.toJson()}');
-      log('abandendOrder ${abandendOrderRequestModel.productDetails!.toJson()}');
-      _dio.options.headers.addAll(
-        {
-          'authorization': "Bearer $accessToken",
-        },
-      );
-      final responce = await _dio.post(
+      final responce = await _apiService.post(
+        addHeader: true,
         ApiEndPoints.abandendOrder,
         data: abandendOrderRequestModel.toJson(),
       );
-
-      log('abandendOrder data ${responce.data}');
       return Right(AbandendOrderResponceModel.fromJson(responce.data));
     } on DioException catch (e) {
-      log('abandendOrder DioException $e');
       return Left(Failure(message: e.message ?? errorMessage));
     } catch (e) {
-      log('abandendOrder catch $e');
       return Left(Failure(message: '$e'));
     }
   }

@@ -2835,6 +2835,9 @@ mixin _$QuestionTabState {
   int get selectedTabIndex => throw _privateConstructorUsedError;
   AbandendOrderResponceModel? get abandendOrderResponceModel =>
       throw _privateConstructorUsedError;
+  List<Section>? get sections => throw _privateConstructorUsedError;
+  Map<String, List<SelectedOption>> get selectedAnswers =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $QuestionTabStateCopyWith<QuestionTabState> get copyWith =>
@@ -2859,7 +2862,9 @@ abstract class $QuestionTabStateCopyWith<$Res> {
       List<SelectedOption>? newList,
       GetProductsRespoceModel? getProductsResponceModel,
       int selectedTabIndex,
-      AbandendOrderResponceModel? abandendOrderResponceModel});
+      AbandendOrderResponceModel? abandendOrderResponceModel,
+      List<Section>? sections,
+      Map<String, List<SelectedOption>> selectedAnswers});
 }
 
 /// @nodoc
@@ -2887,6 +2892,8 @@ class _$QuestionTabStateCopyWithImpl<$Res, $Val extends QuestionTabState>
     Object? getProductsResponceModel = freezed,
     Object? selectedTabIndex = null,
     Object? abandendOrderResponceModel = freezed,
+    Object? sections = freezed,
+    Object? selectedAnswers = null,
   }) {
     return _then(_value.copyWith(
       isLoading: null == isLoading
@@ -2937,6 +2944,14 @@ class _$QuestionTabStateCopyWithImpl<$Res, $Val extends QuestionTabState>
           ? _value.abandendOrderResponceModel
           : abandendOrderResponceModel // ignore: cast_nullable_to_non_nullable
               as AbandendOrderResponceModel?,
+      sections: freezed == sections
+          ? _value.sections
+          : sections // ignore: cast_nullable_to_non_nullable
+              as List<Section>?,
+      selectedAnswers: null == selectedAnswers
+          ? _value.selectedAnswers
+          : selectedAnswers // ignore: cast_nullable_to_non_nullable
+              as Map<String, List<SelectedOption>>,
     ) as $Val);
   }
 }
@@ -2961,7 +2976,9 @@ abstract class _$$InitialImplCopyWith<$Res>
       List<SelectedOption>? newList,
       GetProductsRespoceModel? getProductsResponceModel,
       int selectedTabIndex,
-      AbandendOrderResponceModel? abandendOrderResponceModel});
+      AbandendOrderResponceModel? abandendOrderResponceModel,
+      List<Section>? sections,
+      Map<String, List<SelectedOption>> selectedAnswers});
 }
 
 /// @nodoc
@@ -2987,6 +3004,8 @@ class __$$InitialImplCopyWithImpl<$Res>
     Object? getProductsResponceModel = freezed,
     Object? selectedTabIndex = null,
     Object? abandendOrderResponceModel = freezed,
+    Object? sections = freezed,
+    Object? selectedAnswers = null,
   }) {
     return _then(_$InitialImpl(
       isLoading: null == isLoading
@@ -3037,6 +3056,14 @@ class __$$InitialImplCopyWithImpl<$Res>
           ? _value.abandendOrderResponceModel
           : abandendOrderResponceModel // ignore: cast_nullable_to_non_nullable
               as AbandendOrderResponceModel?,
+      sections: freezed == sections
+          ? _value._sections
+          : sections // ignore: cast_nullable_to_non_nullable
+              as List<Section>?,
+      selectedAnswers: null == selectedAnswers
+          ? _value._selectedAnswers
+          : selectedAnswers // ignore: cast_nullable_to_non_nullable
+              as Map<String, List<SelectedOption>>,
     ));
   }
 }
@@ -3056,9 +3083,13 @@ class _$InitialImpl implements _Initial {
       final List<SelectedOption>? newList,
       this.getProductsResponceModel,
       required this.selectedTabIndex,
-      this.abandendOrderResponceModel})
+      this.abandendOrderResponceModel,
+      final List<Section>? sections,
+      required final Map<String, List<SelectedOption>> selectedAnswers})
       : _selectedOption = selectedOption,
-        _newList = newList;
+        _newList = newList,
+        _sections = sections,
+        _selectedAnswers = selectedAnswers;
 
   @override
   final bool isLoading;
@@ -3098,10 +3129,27 @@ class _$InitialImpl implements _Initial {
   final int selectedTabIndex;
   @override
   final AbandendOrderResponceModel? abandendOrderResponceModel;
+  final List<Section>? _sections;
+  @override
+  List<Section>? get sections {
+    final value = _sections;
+    if (value == null) return null;
+    if (_sections is EqualUnmodifiableListView) return _sections;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  final Map<String, List<SelectedOption>> _selectedAnswers;
+  @override
+  Map<String, List<SelectedOption>> get selectedAnswers {
+    if (_selectedAnswers is EqualUnmodifiableMapView) return _selectedAnswers;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_selectedAnswers);
+  }
 
   @override
   String toString() {
-    return 'QuestionTabState(isLoading: $isLoading, hasError: $hasError, message: $message, product: $product, answerCount: $answerCount, basePriceModelResponce: $basePriceModelResponce, selectedOption: $selectedOption, getQuestionModel: $getQuestionModel, newList: $newList, getProductsResponceModel: $getProductsResponceModel, selectedTabIndex: $selectedTabIndex, abandendOrderResponceModel: $abandendOrderResponceModel)';
+    return 'QuestionTabState(isLoading: $isLoading, hasError: $hasError, message: $message, product: $product, answerCount: $answerCount, basePriceModelResponce: $basePriceModelResponce, selectedOption: $selectedOption, getQuestionModel: $getQuestionModel, newList: $newList, getProductsResponceModel: $getProductsResponceModel, selectedTabIndex: $selectedTabIndex, abandendOrderResponceModel: $abandendOrderResponceModel, sections: $sections, selectedAnswers: $selectedAnswers)';
   }
 
   @override
@@ -3132,7 +3180,10 @@ class _$InitialImpl implements _Initial {
             (identical(other.abandendOrderResponceModel,
                     abandendOrderResponceModel) ||
                 other.abandendOrderResponceModel ==
-                    abandendOrderResponceModel));
+                    abandendOrderResponceModel) &&
+            const DeepCollectionEquality().equals(other._sections, _sections) &&
+            const DeepCollectionEquality()
+                .equals(other._selectedAnswers, _selectedAnswers));
   }
 
   @override
@@ -3149,7 +3200,9 @@ class _$InitialImpl implements _Initial {
       const DeepCollectionEquality().hash(_newList),
       getProductsResponceModel,
       selectedTabIndex,
-      abandendOrderResponceModel);
+      abandendOrderResponceModel,
+      const DeepCollectionEquality().hash(_sections),
+      const DeepCollectionEquality().hash(_selectedAnswers));
 
   @JsonKey(ignore: true)
   @override
@@ -3171,7 +3224,9 @@ abstract class _Initial implements QuestionTabState {
           final List<SelectedOption>? newList,
           final GetProductsRespoceModel? getProductsResponceModel,
           required final int selectedTabIndex,
-          final AbandendOrderResponceModel? abandendOrderResponceModel}) =
+          final AbandendOrderResponceModel? abandendOrderResponceModel,
+          final List<Section>? sections,
+          required final Map<String, List<SelectedOption>> selectedAnswers}) =
       _$InitialImpl;
 
   @override
@@ -3198,6 +3253,10 @@ abstract class _Initial implements QuestionTabState {
   int get selectedTabIndex;
   @override
   AbandendOrderResponceModel? get abandendOrderResponceModel;
+  @override
+  List<Section>? get sections;
+  @override
+  Map<String, List<SelectedOption>> get selectedAnswers;
   @override
   @JsonKey(ignore: true)
   _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>

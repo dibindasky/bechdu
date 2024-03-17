@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'package:beachdu/data/service/api_service.dart';
 import 'package:beachdu/domain/core/api_endpoints/api_endpoints.dart';
 import 'package:beachdu/domain/core/failure/failure.dart';
 import 'package:beachdu/domain/model/best_selling_products_responce_model/best_selling_products_responce_model.dart';
@@ -14,11 +15,14 @@ import 'package:injectable/injectable.dart';
 @LazySingleton(as: HomeRepository)
 @injectable
 class HomeServices implements HomeRepository {
-  final _dio = Dio(BaseOptions(baseUrl: ApiEndPoints.baseUrl));
+  final ApiService _apiService;
+
+  HomeServices(this._apiService);
+
   @override
   Future<Either<Failure, GetCategoryResponceModel>> getAllCategory() async {
     try {
-      final response = await _dio.get(ApiEndPoints.getAllCategory);
+      final response = await _apiService.get(ApiEndPoints.getAllCategory);
       if (response.statusCode == 200) {
         return Right(GetCategoryResponceModel.fromJson(response.data));
       } else {
@@ -34,14 +38,11 @@ class HomeServices implements HomeRepository {
   @override
   Future<Either<Failure, HomeBannerResponceModel>> getbanners() async {
     try {
-      final responce = await _dio.get(ApiEndPoints.homePageBanners);
-      // log('getbanners data ${responce.data}');
+      final responce = await _apiService.get(ApiEndPoints.homePageBanners);
       return Right(HomeBannerResponceModel.fromJson(responce.data));
     } on DioException catch (e) {
-      log('getbanners DioException $e');
       return Left(Failure(message: e.message ?? errorMessage));
     } catch (e) {
-      log('getbanners catch $e');
       return Left(Failure(message: errorMessage));
     }
   }
@@ -50,14 +51,12 @@ class HomeServices implements HomeRepository {
   Future<Either<Failure, BestSellingProductsResponceModel>>
       getBestSellingProducts() async {
     try {
-      final responce = await _dio.get(ApiEndPoints.getBestSellingProducts);
-      //log('getBestSellingProducts data ${responce.data}');
+      final responce =
+          await _apiService.get(ApiEndPoints.getBestSellingProducts);
       return Right(BestSellingProductsResponceModel.fromJson(responce.data));
     } on DioException catch (e) {
-      log('getBestSellingProducts DioException $e');
       return Left(Failure(message: e.response?.data['error'] ?? errorMessage));
     } catch (e) {
-      log('getBestSellingProducts catch $e');
       return Left(Failure(message: errorMessage));
     }
   }
@@ -67,18 +66,15 @@ class HomeServices implements HomeRepository {
     required SearchParamModel searchParamModel,
   }) async {
     try {
-      final responce = await _dio.get(
+      final responce = await _apiService.get(
         ApiEndPoints.globalProductSearch,
         queryParameters: searchParamModel.toJson(),
       );
-      // log('searchParamModel ${searchParamModel.toJson()}');
-      // log('globalProductSearch data ${responce.data}');
+
       return Right(SearchResponceModel.fromJson(responce.data));
     } on DioException catch (e) {
-      log('globalProductSearch DioException $e');
       return Left(Failure(message: e.response?.data['error'] ?? errorMessage));
     } catch (e) {
-      log('globalProductSearch catch $e');
       return Left(Failure(message: errorMessage));
     }
   }

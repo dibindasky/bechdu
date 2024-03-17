@@ -1,5 +1,6 @@
 import 'dart:developer';
 import 'package:beachdu/data/secure_storage/secure_fire_store.dart';
+import 'package:beachdu/data/service/api_service.dart';
 import 'package:beachdu/domain/core/api_endpoints/api_endpoints.dart';
 import 'package:beachdu/domain/core/failure/failure.dart';
 import 'package:beachdu/domain/model/location/city_update_request_model/city_update_request_model.dart';
@@ -14,20 +15,19 @@ import 'package:injectable/injectable.dart';
 @LazySingleton(as: LocationRepo)
 @singleton
 class LocationService implements LocationRepo {
-  final Dio _dio = Dio(BaseOptions(baseUrl: ApiEndPoints.baseUrl));
+  final ApiService _apiService;
+  LocationService(this._apiService);
   @override
   Future<Either<Failure, List<String>>> locationPick() async {
     try {
-      final responce = await _dio.get(ApiEndPoints.getCityNames);
+      final responce = await _apiService.get(ApiEndPoints.getCityNames);
       final data = responce.data as List<dynamic>;
       final retVal = data.map((e) => e.toString()).toList();
       //log('locationPick retVal $retVal');
       return Right(retVal);
     } on DioException catch (e) {
-      log('locationPick DioException $e');
       return Left(Failure(message: e.response?.data['error'] ?? errorMessage));
     } catch (e) {
-      log('locationPick catch $e');
       return Left(Failure(message: e.toString()));
     }
   }
@@ -37,17 +37,14 @@ class LocationService implements LocationRepo {
     required String cityName,
   }) async {
     try {
-      final response = await _dio
+      final response = await _apiService
           .get(ApiEndPoints.getPinCodes.replaceFirst('{location}', cityName));
       log('pincodePick retVal ${response.data}');
-      final data = response.data[0]['pinCodes']; // Extracting the pinCodes list
+      final data = response.data[0]['pinCodes'];
       return Right(List<String>.from(data));
-      // return Right(PincodeResponceModel.fromJson(responce.data));
     } on DioException catch (e) {
-      log('pincodePick DioException $e');
       return Left(Failure(message: e.message ?? errorMessage));
     } catch (e) {
-      log('pincodePick catch $e');
       return Left(Failure(message: e.toString()));
     }
   }
@@ -58,24 +55,15 @@ class LocationService implements LocationRepo {
   }) async {
     try {
       final number = await SecureSotrage.getNumber();
-      final accessToken =
-          await SecureSotrage.getToken().then((token) => token.accessToken);
-      _dio.options.headers.addAll(
-        {
-          'authorization': "Bearer $accessToken",
-        },
-      );
-      final response = await _dio.put(
+      final response = await _apiService.put(
+        addHeader: true,
         ApiEndPoints.cityUpdate.replaceFirst('{number}', number),
         data: cityUpdateRequestModel.toJson(),
       );
-      print('locationUpdation data ${response.data}');
       return Right(CityUpdateResponceModel.fromJson(response.data));
     } on DioException catch (e) {
-      log('locationUpdation DioException $e');
       return Left(Failure(message: e.message ?? errorMessage));
     } catch (e) {
-      log('locationUpdation catch $e');
       return Left(Failure(message: e.toString()));
     }
   }
@@ -86,14 +74,8 @@ class LocationService implements LocationRepo {
   }) async {
     try {
       final number = await SecureSotrage.getNumber();
-      final accessToken =
-          await SecureSotrage.getToken().then((token) => token.accessToken);
-      _dio.options.headers.addAll(
-        {
-          'authorization': "Bearer $accessToken",
-        },
-      );
-      final response = await _dio.put(
+      final response = await _apiService.put(
+        addHeader: true,
         ApiEndPoints.picodeUpdate.replaceFirst('{number}', number),
         data: pincodeUpdateRequestModel.toJson(),
       );

@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'package:beachdu/data/service/api_service.dart';
 import 'package:beachdu/domain/core/api_endpoints/api_endpoints.dart';
 import 'package:beachdu/domain/core/failure/failure.dart';
 import 'package:beachdu/domain/model/category_model/single_category_brands_responce_model/brands.dart';
@@ -12,7 +13,8 @@ import 'package:dio/dio.dart';
 @LazySingleton(as: BrandsRepository)
 @injectable
 class BrandsService implements BrandsRepository {
-  final Dio _dio = Dio(BaseOptions(baseUrl: ApiEndPoints.baseUrl));
+  final ApiService _apiService;
+  BrandsService(this._apiService);
 
   @override
   Future<Either<Failure, SingleCategoryBrandsResponceModel>>
@@ -20,17 +22,15 @@ class BrandsService implements BrandsRepository {
     String? categoryType,
   }) async {
     try {
-      final response = await _dio.get(
+      final response = await _apiService.get(
           '${ApiEndPoints.getsingleCategoryBrands}${categoryType ?? 'mobile'}');
       final List<dynamic> responseData = response.data;
       final List<Brands> brandsList =
           responseData.map((item) => Brands.fromJson(item)).toList();
       return Right(SingleCategoryBrandsResponceModel(brands: brandsList));
     } on DioException catch (e) {
-      //log('Error getSingleCategory got 400 $e');
       return Left(Failure(message: e.response?.data['error'] ?? errorMessage));
     } catch (e) {
-      //log('Error catch getSingleCategory $e');
       return Left(Failure(message: e.toString()));
     }
   }
@@ -49,15 +49,13 @@ class BrandsService implements BrandsRepository {
     required String seriesName,
   }) async {
     try {
-      final responce = await _dio.get(
+      final responce = await _apiService.get(
         '${ApiEndPoints.getProducts}$categoryType/$brandName/$seriesName',
       );
       return Right(GetProductsRespoceModel.fromJson(responce.data));
     } on DioException catch (e) {
-      log('getProducts DioException ${e.response?.statusCode}');
       return Left(Failure(message: e.response?.data['error'] ?? errorMessage));
     } catch (e) {
-      log('getProducts catch $e');
       return Left(Failure(message: errorMessage));
     }
   }
@@ -68,16 +66,14 @@ class BrandsService implements BrandsRepository {
     required String categoryType,
   }) async {
     try {
-      final responce =
-          await _dio.get('${ApiEndPoints.getSeries}$brandName/$categoryType');
+      final responce = await _apiService
+          .get('${ApiEndPoints.getSeries}$brandName/$categoryType');
       final data = responce.data as List<dynamic>;
       final retVal = data.map((e) => e.toString()).toList();
       return Right(retVal);
     } on DioException catch (e) {
-      log('getSeries DioException $e');
       return Left(Failure(message: e.response?.data['error'] ?? errorMessage));
     } catch (e) {
-      log('getSeries error catch $e');
       return Left(Failure(message: errorMessage));
     }
   }
@@ -89,16 +85,14 @@ class BrandsService implements BrandsRepository {
     required String seriesName,
   }) async {
     try {
-      final responce = await _dio
+      final responce = await _apiService
           .get('${ApiEndPoints.getModels}$categoryType/$brandName/$seriesName');
       final data = responce.data as List<dynamic>;
       final retVal = data.map((e) => e.toString()).toList();
-      log('Get modelas data $retVal');
       return Right(retVal);
     } on DioException catch (e) {
       return Left(Failure(message: e.response?.data['error'] ?? errorMessage));
     } catch (e) {
-      log('getModles error catch $e');
       return Left(Failure(message: errorMessage));
     }
   }
@@ -111,17 +105,15 @@ class BrandsService implements BrandsRepository {
     required String model,
   }) async {
     try {
-      final responce = await _dio.get(
+      final responce = await _apiService.get(
           '${ApiEndPoints.getVarients}$categoryType/$brandName/$seriesName/$model');
-      // log('getVarients data ${responce.data}');
+
       final data = responce.data as List<dynamic>;
       final retVal = data.map((e) => e.toString()).toList();
       return Right(retVal);
     } on DioException catch (e) {
-      //log('getVarients DioException $e');
       return Left(Failure(message: e.message));
     } catch (e) {
-      //log('getVarients error catch $e');
       return Left(Failure(message: errorMessage));
     }
   }

@@ -33,43 +33,48 @@ class ScreenBottomNavigation extends StatelessWidget {
               color: kBlack,
               child: Padding(
                 padding: const EdgeInsets.only(left: 10, right: 10, top: 15),
-                child: BottomNavigationBar(
-                  useLegacyColorScheme: false,
-                  type: BottomNavigationBarType.fixed,
-                  enableFeedback: false,
-                  onTap: (value) {
-                    context.read<NavbarCubit>().changeNavigationIndex(value);
-                    context
-                        .read<QuestionTabBloc>()
-                        .add(const ResetTabSelection());
-                  },
-                  unselectedItemColor: kWhite,
-                  showUnselectedLabels: true,
-                  backgroundColor: kBlack,
-                  currentIndex: state.selectedIndex,
-                  selectedItemColor: kGreenPrimary,
-                  items: const [
-                    BottomNavigationBarItem(
-                      backgroundColor: kBlack,
-                      icon: Icon(Icons.home_filled),
-                      label: '',
-                    ),
-                    BottomNavigationBarItem(
-                      backgroundColor: kBlack,
-                      icon: Icon(Icons.phone_android),
-                      label: '',
-                    ),
-                    BottomNavigationBarItem(
-                      backgroundColor: kBlack,
-                      icon: Icon(Icons.format_list_bulleted_rounded),
-                      label: '',
-                    ),
-                    BottomNavigationBarItem(
-                      backgroundColor: kBlack,
-                      icon: Icon(Icons.person),
-                      label: '',
-                    )
-                  ],
+                child: Theme(
+                  data: Theme.of(context).copyWith(
+                    splashColor: knill,
+                  ),
+                  child: BottomNavigationBar(
+                    useLegacyColorScheme: false,
+                    type: BottomNavigationBarType.fixed,
+                    enableFeedback: false,
+                    onTap: (value) {
+                      context.read<NavbarCubit>().changeNavigationIndex(value);
+                      context
+                          .read<QuestionTabBloc>()
+                          .add(const ResetTabSelection());
+                    },
+                    unselectedItemColor: kWhite,
+                    showUnselectedLabels: true,
+                    backgroundColor: kBlack,
+                    currentIndex: state.selectedIndex,
+                    selectedItemColor: kGreenPrimary,
+                    items: const [
+                      BottomNavigationBarItem(
+                        backgroundColor: kBlack,
+                        icon: Icon(Icons.home_filled),
+                        label: '',
+                      ),
+                      BottomNavigationBarItem(
+                        backgroundColor: kBlack,
+                        icon: Icon(Icons.phone_android),
+                        label: '',
+                      ),
+                      BottomNavigationBarItem(
+                        backgroundColor: kBlack,
+                        icon: Icon(Icons.format_list_bulleted_rounded),
+                        label: '',
+                      ),
+                      BottomNavigationBarItem(
+                        backgroundColor: kBlack,
+                        icon: Icon(Icons.person),
+                        label: '',
+                      )
+                    ],
+                  ),
                 ),
               ),
             ),

@@ -33,9 +33,9 @@ class QuestionScreenTabs extends StatelessWidget {
                   state.getQuestionModel!.sections!.length,
                   (index) => InkWell(
                     onTap: () {
-                      context
-                          .read<QuestionTabBloc>()
-                          .add(const QuestionTabEvent.resetTabSelection());
+                      // context
+                      //     .read<QuestionTabBloc>()
+                      //     .add(const QuestionTabEvent.resetTabSelection());
                       context
                           .read<QuestionTabBloc>()
                           .add(QuestionTabEvent.tabMinus(index: index));

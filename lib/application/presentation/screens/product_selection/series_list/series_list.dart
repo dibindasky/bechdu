@@ -1,7 +1,9 @@
 import 'package:beachdu/application/business_logic/brands_bloc/category_bloc_bloc.dart';
 import 'package:beachdu/application/presentation/screens/product_selection/search_field/series_search.dart';
 import 'package:beachdu/application/presentation/screens/product_selection/series_list/series_container.dart';
+import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
+import 'package:beachdu/application/presentation/utils/loading_indicators/loading_indicator.dart';
 import 'package:beachdu/application/presentation/utils/skeltons/skelton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -22,8 +24,11 @@ class SeriesSelectionBuilder extends StatelessWidget {
           );
         }
         if (state.hasError) {
-          return const Center(
-            child: Center(child: Icon(Icons.refresh)),
+          return SizedBox(
+            height: sHeight,
+            child: const Center(
+              child: Center(child: LoadingAnimation(width: 30)),
+            ),
           );
         } else {
           if (state.filteredSeries != null &&

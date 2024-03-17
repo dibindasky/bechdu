@@ -1,5 +1,6 @@
 import 'dart:developer';
 import 'package:beachdu/data/secure_storage/secure_fire_store.dart';
+import 'package:beachdu/data/service/api_service.dart';
 import 'package:beachdu/domain/core/api_endpoints/api_endpoints.dart';
 import 'package:beachdu/domain/core/failure/failure.dart';
 import 'package:beachdu/domain/model/date_tome_responce_model/date_tome_responce_model.dart';
@@ -19,29 +20,23 @@ import 'package:injectable/injectable.dart';
 @LazySingleton(as: PlaceOrderRepo)
 @singleton
 class PlaceOrderService implements PlaceOrderRepo {
+  final ApiService _apiService;
+  PlaceOrderService(this._apiService);
   final Dio _dio = Dio(BaseOptions(baseUrl: ApiEndPoints.baseUrl));
   @override
   Future<Either<Failure, PromoCodeResponceModel>> getPomoCode({
     required PromoCodeRequestModel promoCodeRequestModel,
   }) async {
     try {
-      final accessToken =
-          await SecureSotrage.getToken().then((token) => token.accessToken);
-      _dio.options.headers.addAll(
-        {
-          'authorization': "Bearer $accessToken",
-        },
-      );
-      final responce = await _dio.post(
+      final responce = await _apiService.post(
+        addHeader: true,
         ApiEndPoints.getPromoCode,
         data: promoCodeRequestModel.toJson(),
       );
       return Right(PromoCodeResponceModel.fromJson(responce.data));
     } on DioException catch (e) {
-      //log('getPomoCode DioException $e');
       return Left(Failure(message: e.response?.data['error'] ?? errorMessage));
     } catch (e) {
-      // log('getPomoCode catch $e');
       return Left(Failure(message: errorMessage));
     }
   }
@@ -51,15 +46,8 @@ class PlaceOrderService implements PlaceOrderRepo {
     required OrderPlacedRequestModel orderPlacedRequestModel,
   }) async {
     try {
-      final accessToken =
-          await SecureSotrage.getToken().then((token) => token.accessToken);
-      _dio.options.headers.addAll(
-        {
-          'authorization': "Bearer $accessToken",
-        },
-      );
-      log('orderPlacing ${orderPlacedRequestModel.toJson()}');
-      final responce = await _dio.post(
+      final responce = await _apiService.post(
+        addHeader: true,
         ApiEndPoints.orderPlacing,
         data: orderPlacedRequestModel.toJson(),
       );
@@ -75,24 +63,12 @@ class PlaceOrderService implements PlaceOrderRepo {
   Future<Either<Failure, GetAllOrderResponceModel>> getOrders() async {
     try {
       final number = await SecureSotrage.getNumber();
-      final accessToken =
-          await SecureSotrage.getToken().then((token) => token.accessToken);
-
-      _dio.options.headers.addAll(
-        {
-          'authorization': "Bearer $accessToken",
-        },
-      );
-
-      final responce =
-          await _dio.get(ApiEndPoints.getOrders.replaceAll('{number}', number));
-
+      final responce = await _apiService
+          .get(ApiEndPoints.getOrders.replaceAll('{number}', number));
       return Right(GetAllOrderResponceModel.fromJson(responce.data));
     } on DioException catch (e) {
-      log('getOrders DioException $e');
-      return Left(Failure(message: errorMessage));
+      return Left(Failure(message: e.message));
     } catch (e) {
-      log('getOrders catch $e');
       return Left(Failure(message: errorMessage));
     }
   }
@@ -103,29 +79,15 @@ class PlaceOrderService implements PlaceOrderRepo {
     required String orderId,
   }) async {
     try {
-      final accessToken =
-          await SecureSotrage.getToken().then((token) => token.accessToken);
-      _dio.options.headers.addAll(
-        {
-          'authorization': "Bearer $accessToken",
-        },
-      );
-
-      final responce = await _dio.put(
-        ApiEndPoints.orderCancel.replaceAll(
-          '{order_id}',
-          orderId,
-        ),
+      final responce = await _apiService.put(
+        addHeader: true,
+        ApiEndPoints.orderCancel.replaceAll('{order_id}', orderId),
         data: orderCancelationRequestModel.toJson(),
       );
-      log(_dio.options.headers.toString());
-
       return Right(OrderCancelationResponceModel.fromJson(responce.data));
     } on DioException catch (e) {
-      log('orderCancel DioException $e');
       return Left(Failure(message: e.response?.data['error'] ?? errorMessage));
     } catch (e) {
-      log('orderCancel catch $e');
       return Left(Failure(message: errorMessage));
     }
   }
@@ -133,10 +95,9 @@ class PlaceOrderService implements PlaceOrderRepo {
   @override
   Future<Either<Failure, DateTomeResponceModel>> getDateTime() async {
     try {
-      final responce = await _dio.get(
+      final responce = await _apiService.get(
         ApiEndPoints.dateTime,
       );
-
       return Right(DateTomeResponceModel.fromJson(responce.data));
     } on DioException catch (e) {
       log('getDateTime DioException $e');
@@ -153,24 +114,16 @@ class PlaceOrderService implements PlaceOrderRepo {
     required String number,
   }) async {
     try {
-      // final permissionGranted = await takePermission();
-      // if (!permissionGranted) return;
-      final accessToken =
-          await SecureSotrage.getToken().then((token) => token.accessToken);
-      _dio.options.headers.addAll({'authorization': "Bearer $accessToken"});
-
       final url = ApiEndPoints.invoiceDownLoad
           .replaceAll('{order_id}', orderId)
           .replaceAll('{number}', number);
-
-      final response = await _dio.get(url, data: {"orderID": orderId});
+      final response = await _apiService
+          .get(addHeader: true, url, data: {"orderID": orderId});
       log('${response.data}');
       return Right(InvoiceDownloadResponceModel.fromJson(response.data));
     } on DioException catch (e) {
-      log('invoiceDownLoad DioError: ${e.message}');
-      return Left(Failure(message: errorMessage));
+      return Left(Failure(message: e.message));
     } catch (e) {
-      log('downloadInvoice exception => $e');
       return Left(Failure(message: errorMessage));
     }
   }
