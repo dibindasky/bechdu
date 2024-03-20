@@ -7,6 +7,8 @@ class QuestionTabState with _$QuestionTabState {
     required bool hasError,
     String? message,
     Product? product,
+    String? category,
+    String? slug,
     required int answerCount,
     GetBasePriceModelResponce? basePriceModelResponce,
     required List<SelectedOption> selectedOption,

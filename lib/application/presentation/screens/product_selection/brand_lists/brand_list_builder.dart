@@ -31,7 +31,8 @@ class BrandListviewBuilder extends StatelessWidget {
           );
         } else {
           if (state.filteredBrands == null ||
-              state.getSingleCategoryResponce == null) {
+              state.getSingleCategoryResponce == null ||
+              state.getSingleCategoryResponce!.brands == null) {
             return Align(
               alignment: Alignment.bottomCenter,
               child: LottieBuilder.asset(emptyLottie),

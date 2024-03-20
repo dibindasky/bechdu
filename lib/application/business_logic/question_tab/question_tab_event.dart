@@ -14,6 +14,8 @@ class QuestionTabEvent with _$QuestionTabEvent {
   }) = GetAnswerCount;
   const factory QuestionTabEvent.goBackIndex({required int index}) =
       GoBackIndex;
+  const factory QuestionTabEvent.markAnswer(
+      {required SelectedOption selectedOption}) = MarkAnswer;
   const factory QuestionTabEvent.clearOneSection() = ClearOneSection;
   const factory QuestionTabEvent.markedQuestions(
       {required SelectedOption selectedOption}) = MarkedQuestions;
@@ -23,9 +25,10 @@ class QuestionTabEvent with _$QuestionTabEvent {
   const factory QuestionTabEvent.countQuestionNumber({
     required int countQuestionNumber,
   }) = CountQuestionNumber;
+  const factory QuestionTabEvent.changeIndex({required int index}) =
+      ChangeIndex;
   const factory QuestionTabEvent.getBasePrice({
     required AbandendOrderRequestModel abandendOrderRequestModel,
-    required PickupQuestionModel pickupQuestionModel,
   }) = GetBasePrice;
   const factory QuestionTabEvent.abandentOrder({
     required AbandendOrderRequestModel abandendOrderRequestModel,

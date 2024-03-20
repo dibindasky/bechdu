@@ -34,6 +34,9 @@ class RequoteTabs extends StatelessWidget {
                     state.sections?.length ?? 0,
                     (index) => InkWell(
                       onTap: () {
+                        // context
+                        //     .read<QuestionTabBloc>()
+                        //     .add(const QuestionTabEvent.resetTabSelection());
                         context
                             .read<QuestionTabBloc>()
                             .add(QuestionTabEvent.goBackIndex(index: index));

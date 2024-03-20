@@ -45,10 +45,10 @@ class _ScreenProductSelectionProductFindDropdownGridViewState
                       child: DropdownButton2<String>(
                         iconStyleData: IconStyleData(
                             icon: containerOpenArrow2
-                                ? Icon(
+                                ? const Icon(
                                     Icons.arrow_drop_up_sharp,
                                   )
-                                : Icon(Icons.arrow_drop_down_outlined)),
+                                : const Icon(Icons.arrow_drop_down_outlined)),
                         buttonStyleData: ButtonStyleData(
                           decoration: BoxDecoration(
                             color: kWhite,
@@ -71,7 +71,7 @@ class _ScreenProductSelectionProductFindDropdownGridViewState
                                 child: Text(
                                   model,
                                   style: textHeadSemiBold1.copyWith(
-                                      color: kBlack, fontSize: sWidth * 0.036),
+                                      color: kWhite, fontSize: sWidth * 0.036),
                                   overflow: TextOverflow.ellipsis,
                                 ),
                               ),
