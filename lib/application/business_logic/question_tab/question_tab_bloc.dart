@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'dart:developer';
-import 'package:beachdu/application/presentation/screens/product_selection/product_screen.dart';
 import 'package:beachdu/data/secure_storage/secure_fire_store.dart';
 import 'package:beachdu/domain/model/get_base_price_model_responce/get_base_price_model_responce.dart';
 import 'package:beachdu/domain/model/get_products_respoce_model/get_products_respoce_model.dart';
@@ -222,23 +221,35 @@ class QuestionTabBloc extends Bloc<QuestionTabEvent, QuestionTabState> {
     } else if (state.selectedTabIndex != state.sections!.length - 1) {
       emit(state.copyWith(
           message: null, hasError: false, selectedTabIndex: event.index));
-    } else if (state.selectedTabIndex == state.sections!.length - 1) {
-      secondtabScreensNotifier.value = 2;
-      secondtabScreensNotifier.notifyListeners();
-      AbandendOrderRequestModel abandendOrderRequestModel =
-          AbandendOrderRequestModel();
-      add(QuestionTabEvent.getBasePrice(
-          abandendOrderRequestModel: abandendOrderRequestModel));
     }
+    //else if (state.selectedTabIndex == state.sections!.length - 1) {
+    //   final login = await SecureSotrage.getlLogin();
+    //   if (login == true) {
+    //     // ProductDetails productDetails=ProductDetails(name: ,slug: ,options: ,price: ,);
+    //     // AbandendOrderRequestModel abandendOrderRequestModel =
+    //     //AbandendOrderRequestModel(productDetails: productDetails);
+    //     // add(
+    //     //   QuestionTabEvent.getBasePrice(
+    //     //       abandendOrderRequestModel: abandendOrderRequestModel),
+    //     // );
+    //     // secondtabScreensNotifier.value = 2;
+    //     // secondtabScreensNotifier.notifyListeners();
+    //   }
+    //}
   }
 
   FutureOr<void> getQuestions(GetQuestions event, emit) async {
-    emit(state.copyWith(sections: null, message: null, hasError: false));
+    emit(state.copyWith(
+        isLoading: true, sections: null, message: null, hasError: false));
     final result = await questionRepo.getQuestions(
       categoryType: event.categoryType,
     );
-    result.fold((l) => emit(state.copyWith(hasError: true, message: l.message)),
-        (r) {
+    result.fold(
+        (l) => emit(state.copyWith(
+              hasError: true,
+              message: l.message,
+              isLoading: false,
+            )), (r) {
       Map<String, List<SelectedOption>> map = {};
       if (r.sections != null) {
         for (var element in r.sections!.toList()) {
@@ -249,6 +260,7 @@ class QuestionTabBloc extends Bloc<QuestionTabEvent, QuestionTabState> {
       }
       return emit(state.copyWith(
         sections: r.sections,
+        isLoading: false,
         selectedAnswers: map,
         hasError: false,
         getQuestionModel: r,
@@ -280,9 +292,6 @@ class QuestionTabBloc extends Bloc<QuestionTabEvent, QuestionTabState> {
 
   FutureOr<void> getBasePrice(GetBasePrice event, emit) async {
     emit(state.copyWith(isLoading: true, hasError: false));
-    // for (var element in event.pickupQuestionModel.selectedOptions!) {
-    //   newList.add(element);
-    // }
     List<SelectedOption> list = [];
     for (var element in state.sections!) {
       list.addAll(state.selectedAnswers[element.heading]!);
@@ -293,11 +302,7 @@ class QuestionTabBloc extends Bloc<QuestionTabEvent, QuestionTabState> {
     log('getBasePrice one');
 
     final data = await questionRepo.getBasePrice(
-      pickeQuestionModel: PickupQuestionModel(
-        selectedOptions: list,
-        categoryType: state.category,
-        productSlug: state.slug,
-      ),
+      pickeQuestionModel: event.pickupQuestionModel,
     );
     log('getBasePrice second');
     data.fold((failure) {
@@ -330,8 +335,7 @@ class QuestionTabBloc extends Bloc<QuestionTabEvent, QuestionTabState> {
 
         log('getBasePrice fiffth');
         add(QuestionTabEvent.abandentOrder(
-          abandendOrderRequestModel: event.abandendOrderRequestModel,
-        ));
+            abandendOrderRequestModel: event.abandendOrderRequestModel));
         log('getBasePrice sixth');
       }
     });

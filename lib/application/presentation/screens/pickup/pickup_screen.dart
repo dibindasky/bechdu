@@ -25,9 +25,6 @@ class ScreenPickUp extends StatelessWidget {
   Widget build(BuildContext context) {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       PickupDetailContainers.personalDetails;
-      context
-          .read<ProfileBloc>()
-          .add(const ProfileEvent.getUserInfo(isLoad: false));
     });
     return GestureDetector(
       onTap: () {

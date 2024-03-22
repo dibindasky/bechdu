@@ -25,6 +25,7 @@ class RequoteTabs extends StatelessWidget {
           },
           child: SizedBox(
             width: sWidth,
+            height: 50,
             child: FittedBox(
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -34,9 +35,6 @@ class RequoteTabs extends StatelessWidget {
                     state.sections?.length ?? 0,
                     (index) => InkWell(
                       onTap: () {
-                        // context
-                        //     .read<QuestionTabBloc>()
-                        //     .add(const QuestionTabEvent.resetTabSelection());
                         context
                             .read<QuestionTabBloc>()
                             .add(QuestionTabEvent.goBackIndex(index: index));

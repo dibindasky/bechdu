@@ -10,7 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class PersonalDetails extends StatefulWidget {
-  PersonalDetails({super.key});
+  const PersonalDetails({super.key});
 
   @override
   State<PersonalDetails> createState() => _PersonalDetailsState();
@@ -21,21 +21,6 @@ class _PersonalDetailsState extends State<PersonalDetails> {
 
   @override
   void initState() {
-    context
-        .read<ProfileBloc>()
-        .add(const ProfileEvent.getUserInfo(isLoad: true));
-    context.read<PlaceOrderBloc>().nameController.text =
-        context.read<PlaceOrderBloc>().nameController.text.isEmpty
-            ? context.read<ProfileBloc>().profileNameController.text
-            : context.read<PlaceOrderBloc>().nameController.text;
-    context.read<PlaceOrderBloc>().emailController.text =
-        context.read<PlaceOrderBloc>().emailController.text.isEmpty
-            ? context.read<ProfileBloc>().profileEmailController.text
-            : context.read<PlaceOrderBloc>().emailController.text;
-    context.read<PlaceOrderBloc>().additionalNumberController.text =
-        context.read<PlaceOrderBloc>().additionalNumberController.text.isEmpty
-            ? context.read<ProfileBloc>().profileAddPhoneController.text
-            : context.read<PlaceOrderBloc>().additionalNumberController.text;
     super.initState();
   }
 
@@ -43,6 +28,24 @@ class _PersonalDetailsState extends State<PersonalDetails> {
   Widget build(BuildContext context) {
     WidgetsBinding.instance.addPostFrameCallback(
       (timeStamp) {
+        context
+            .read<ProfileBloc>()
+            .add(const ProfileEvent.getUserInfo(isLoad: true));
+        context.read<PlaceOrderBloc>().nameController.text =
+            context.read<PlaceOrderBloc>().nameController.text.isEmpty
+                ? context.read<ProfileBloc>().profileNameController.text
+                : context.read<PlaceOrderBloc>().nameController.text;
+        context.read<PlaceOrderBloc>().emailController.text =
+            context.read<PlaceOrderBloc>().emailController.text.isEmpty
+                ? context.read<ProfileBloc>().profileEmailController.text
+                : context.read<PlaceOrderBloc>().emailController.text;
+        context.read<PlaceOrderBloc>().additionalNumberController.text = context
+                .read<PlaceOrderBloc>()
+                .additionalNumberController
+                .text
+                .isEmpty
+            ? context.read<ProfileBloc>().profileAddPhoneController.text
+            : context.read<PlaceOrderBloc>().additionalNumberController.text;
         context.read<PlaceOrderBloc>().add(const PlaceOrderEvent.userNumber());
       },
     );
@@ -54,9 +57,7 @@ class _PersonalDetailsState extends State<PersonalDetails> {
           children: [
             Text(
               'NAME',
-              style: textHeadMedium1.copyWith(
-                fontSize: sWidth * .033,
-              ),
+              style: textHeadMedium1.copyWith(fontSize: sWidth * .033),
             ),
             TTextFormField(
               controller: context.read<PlaceOrderBloc>().nameController,

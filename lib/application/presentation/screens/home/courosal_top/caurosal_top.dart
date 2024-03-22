@@ -30,11 +30,6 @@ class _CaurosalViewHomePageOffersState
 
   @override
   Widget build(BuildContext context) {
-    WidgetsBinding.instance.addPostFrameCallback(
-      (timeStamp) {
-        context.read<HomeBloc>().add(const HomeEvent.homePageBanners());
-      },
-    );
     return Column(
       children: [
         BlocBuilder<HomeBloc, HomeState>(

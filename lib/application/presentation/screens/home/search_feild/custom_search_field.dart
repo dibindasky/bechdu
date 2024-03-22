@@ -1,5 +1,4 @@
 import 'dart:developer';
-
 import 'package:beachdu/application/business_logic/home_bloc/home_bloc.dart';
 import 'package:beachdu/application/presentation/routes/routes.dart';
 import 'package:beachdu/application/presentation/screens/home/home_screen.dart';
@@ -9,7 +8,6 @@ import 'package:beachdu/application/presentation/utils/debouncer.dart';
 import 'package:beachdu/domain/model/search_model/search_param_model/search_param_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:iconsax/iconsax.dart';
 
 class CustomSearchFieldHome extends StatelessWidget {
   CustomSearchFieldHome({super.key});
@@ -82,7 +80,7 @@ class CustomSearchFieldHome extends StatelessWidget {
             ),
             child: IconButton(
               icon: const Icon(
-                Iconsax.location,
+                Icons.place,
                 color: kBlack,
               ),
               onPressed: () {

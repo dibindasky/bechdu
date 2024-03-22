@@ -44,9 +44,10 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
     SeriesSearch event,
     Emitter<CategoryBlocState> emit,
   ) {
-    final String searchQuery = event.searchQuery.toLowerCase().trim();
+    final String searchQuery =
+        event.searchQuery.toLowerCase().trim().replaceAll(' ', '');
     final List<String> filteredSeries = series.where((item) {
-      final String series = item.toLowerCase();
+      final String series = item.toLowerCase().trim().replaceAll(' ', '');
       return series.contains(searchQuery);
     }).toList();
     emit(state.copyWith(filteredSeries: filteredSeries));
@@ -56,11 +57,15 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
     ProductSearch event,
     Emitter<CategoryBlocState> emit,
   ) async {
-    final String searchQuery = event.searchQuery.toLowerCase().trim();
-    final List<Product> filteredProducts = productList!.where((product) {
-      final String model = product.model!.toLowerCase();
-      final String varient = product.variant!.toLowerCase();
-      final String brand = product.brandName!.toLowerCase();
+    final String searchQuery =
+        event.searchQuery.toLowerCase().trim().replaceAll(' ', '');
+    final List<Product> filteredProducts = productList.where((product) {
+      final String model =
+          product.model!.toLowerCase().trim().replaceAll(' ', '');
+      final String varient =
+          product.variant!.toLowerCase().trim().replaceAll(' ', '');
+      final String brand =
+          product.brandName!.toLowerCase().trim().replaceAll(' ', '');
       return model.contains(searchQuery) ||
           varient.contains(searchQuery) ||
           brand.contains(searchQuery);
@@ -74,9 +79,11 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
     BrandSearch event,
     Emitter<CategoryBlocState> emit,
   ) {
-    final String searchQuery = event.searchQuery.toLowerCase().trim();
+    final String searchQuery =
+        event.searchQuery.toLowerCase().trim().replaceAll(' ', '');
     final List<Brands> filteredBrands = brandsList.where((brand) {
-      final String brandName = brand.brandName!.toLowerCase();
+      final String brandName =
+          brand.brandName!.toLowerCase().trim().replaceAll(' ', '');
       return brandName.contains(searchQuery);
     }).toList();
     emit(state.copyWith(

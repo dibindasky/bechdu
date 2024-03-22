@@ -5,6 +5,7 @@ class QuestionTabState with _$QuestionTabState {
   const factory QuestionTabState({
     required bool isLoading,
     required bool hasError,
+    required bool done,
     String? message,
     Product? product,
     String? category,
@@ -24,6 +25,7 @@ class QuestionTabState with _$QuestionTabState {
   factory QuestionTabState.initial() => const QuestionTabState(
         isLoading: false,
         hasError: false,
+        done: false,
         answerCount: 0,
         selectedTabIndex: 0,
         selectedOption: [],

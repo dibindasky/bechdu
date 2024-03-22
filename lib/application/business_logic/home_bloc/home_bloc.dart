@@ -35,42 +35,34 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
   FutureOr<void> nextPage(NextPage event, emit) async {
     emit(state.copyWith(loadMore: true));
-    isScrollLoading = true;
-    pageNumber += 1;
     final data = await homeRepository.globalProductSearch(
         searchParamModel: SearchParamModel(
-      page: pageNumber,
+      page: ++pageNumber,
     ));
     data.fold(
       (failure) => emit(
-        state.copyWith(
-          loadMore: false,
-        ),
+        state.copyWith(loadMore: false, hasError: true),
       ),
       (products) {
-        if (products.product == null) {
-          emit(state.copyWith(loadMore: false));
-          return;
-        }
         emit(
           state.copyWith(
             loadMore: true,
+            hasError: false,
             products: [
-              ...state.products ?? [],
+              ...state.products!,
               ...products.product!,
             ],
           ),
         );
       },
     );
-    isScrollLoading = false;
   }
 
   FutureOr<void> globalProductSearch(GlobalPrductSearch event, emit) async {
     emit(state.copyWith(isLoading: true, hasError: false));
     pageNumber = 1;
     event.searchParamModel.page = pageNumber;
-    event.searchParamModel.pageSize = 10;
+    event.searchParamModel.pageSize = 11;
     final data = await homeRepository.globalProductSearch(
       searchParamModel: event.searchParamModel,
     );
@@ -98,6 +90,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     if (state.bestSellingProductsResponceModel != null) return;
     emit(state.copyWith(isLoading: true, hasError: false));
     final data = await homeRepository.getBestSellingProducts();
+
     data.fold(
       (failure) => emit(
         state.copyWith(

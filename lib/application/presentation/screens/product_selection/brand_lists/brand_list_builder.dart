@@ -3,7 +3,9 @@ import 'package:beachdu/application/presentation/screens/product_selection/brand
 import 'package:beachdu/application/presentation/screens/product_selection/search_field/brand_search_field.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/application/presentation/utils/loading_indicators/loading_indicator.dart';
+import 'package:beachdu/application/presentation/utils/refresh_indicator_custom.dart';
 import 'package:beachdu/application/presentation/utils/skeltons/skelton.dart';
+import 'package:beachdu/domain/core/failure/failure.dart';
 import 'package:beachdu/domain/model/category_model/single_category_brands_responce_model/brands.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -29,47 +31,39 @@ class BrandListviewBuilder extends StatelessWidget {
               child: LoadingAnimation(width: 30),
             ),
           );
-        } else {
-          if (state.filteredBrands == null ||
-              state.getSingleCategoryResponce == null ||
-              state.getSingleCategoryResponce!.brands == null) {
-            return Align(
-              alignment: Alignment.bottomCenter,
-              child: LottieBuilder.asset(emptyLottie),
-            );
-          } else {
-            final data = state.getSingleCategoryResponce;
-            final List<Brands> brands = state.filteredBrands ?? data!.brands!;
-            return Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const BrandSearchField(),
-                kHeight10,
-                Text('Showing All Brands', style: textHeadBold1),
-                kHeight10,
-                state.filteredBrands!.isEmpty
-                    ? LottieBuilder.asset(emptyLottie)
-                    : GridView.builder(
-                        physics: const NeverScrollableScrollPhysics(),
-                        shrinkWrap: true,
-                        itemCount: brands.length,
-                        scrollDirection: Axis.vertical,
-                        gridDelegate:
-                            const SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 2,
-                          crossAxisSpacing: 10,
-                          mainAxisSpacing: 10,
-                        ),
-                        itemBuilder: (context, index) {
-                          return BrandContainer(
-                            index: index,
-                          );
-                        },
-                      ),
-              ],
-            );
-          }
+        } else if (state.filteredBrands == null) {
+          return Lottie.asset(emptyLottie);
         }
+        final data = state.getSingleCategoryResponce;
+        final List<Brands> brands = state.filteredBrands ?? data!.brands!;
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const BrandSearchField(),
+            kHeight10,
+            Text('Showing All Brands', style: textHeadBold1),
+            kHeight10,
+            brands.isEmpty
+                ? Center(child: Lottie.asset(emptyLottie))
+                : GridView.builder(
+                    physics: const NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    itemCount: brands.length,
+                    scrollDirection: Axis.vertical,
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 10,
+                      mainAxisSpacing: 10,
+                    ),
+                    itemBuilder: (context, index) {
+                      return BrandContainer(
+                        index: index,
+                      );
+                    },
+                  ),
+          ],
+        );
       },
     );
   }

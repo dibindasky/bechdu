@@ -1,5 +1,8 @@
 import 'dart:developer';
+import 'package:beachdu/application/presentation/routes/routes.dart';
+import 'package:beachdu/application/presentation/utils/enums/type_display.dart';
 import 'package:beachdu/data/secure_storage/secure_fire_store.dart';
+import 'package:beachdu/main.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 
@@ -54,6 +57,9 @@ class ApiService {
     } on DioException catch (exception) {
       log('Dio exception code => ${exception.response?.statusCode}');
       log('Dio exception => ${exception.response}');
+      if (exception.response?.statusCode == 403) {
+        _logOut();
+      }
       rethrow;
     } catch (e) {
       log('Exception => $e');
@@ -91,6 +97,9 @@ class ApiService {
     } on DioException catch (exception) {
       log('Dio exception code => ${exception.response?.statusCode}');
       log('Dio exception => ${exception.response?.statusCode}');
+      if (exception.response?.statusCode == 403) {
+        _logOut();
+      }
       rethrow;
     } catch (e) {
       log('Exception => $e');
@@ -126,6 +135,9 @@ class ApiService {
     } on DioException catch (exception) {
       log('Dio exception code => ${exception.response?.statusCode}');
       log('Dio exception => ${exception.response?.statusCode}');
+      if (exception.response?.statusCode == 403) {
+        _logOut();
+      }
       rethrow;
     } catch (e) {
       log('Exception => $e');
@@ -160,6 +172,9 @@ class ApiService {
     } on DioException catch (exception) {
       log('Dio exception code => ${exception.response?.statusCode}');
       log('Dio exception => ${exception.response?.statusCode}');
+      if (exception.response?.statusCode == 403) {
+        _logOut();
+      }
       rethrow;
     } catch (e) {
       log('Exception => $e');
@@ -194,10 +209,22 @@ class ApiService {
     } on DioException catch (exception) {
       log('Dio exception code => ${exception.response?.statusCode}');
       log('Dio exception => ${exception.response?.statusCode}');
+      if (exception.response?.statusCode == 403) {
+        _logOut();
+      }
       rethrow;
     } catch (e) {
       log('Exception => $e');
       rethrow;
     }
+  }
+
+  void _logOut() {
+    SecureSotrage.clearLogin();
+    navigatorKey.currentState!.pushNamedAndRemoveUntil(
+      Routes.signInOrLogin,
+      arguments: LoginWay.fromInitial,
+      (route) => false,
+    );
   }
 }

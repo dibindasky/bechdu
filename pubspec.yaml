@@ -35,10 +35,7 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
-  dotted_dashed_line: ^0.0.3
-  location: ^5.0.3
   dropdown_button2: ^2.3.9
-  iconsax: ^0.0.8
   intl_phone_number_input: ^0.7.4
   pinput: ^3.0.1
   dio: ^5.4.0
@@ -57,12 +54,9 @@ dependencies:
   flutter_secure_storage: ^9.0.0
   connectivity_plus: ^5.0.2
   path_provider: ^2.1.2
-  flutter_downloader: ^1.11.6
   permission_handler: ^11.3.0
-  cached_network_image: ^3.3.1
   file_picker: ^6.2.0
   downloads_path_provider_28: ^0.1.2
-  pdf: ^3.10.8
   pdf_render: ^1.4.6
   open_file: ^3.3.2
 

@@ -25,22 +25,50 @@ class SeriesSearchField extends StatelessWidget {
               builder: (context, state) {
                 return DropdownButton<String>(
                   onChanged: (newValue) {
-                    context.read<CategoryBlocBloc>().barndName = newValue;
-                    context.read<CategoryBlocBloc>().add(
-                          GetSeries(
+                    // Handle dropdown change
+                    if (newValue == 'All Series') {
+                      // Dispatch an event to fetch all series
+                      context.read<CategoryBlocBloc>().add(GetSeries(
                             brandName: newValue!,
                             categoryType:
                                 context.read<CategoryBlocBloc>().categoryType!,
-                          ),
-                        );
+                          ));
+                    } else {
+                      // Dispatch an event to fetch series for a specific brand
+                      context.read<CategoryBlocBloc>().barndName = newValue;
+                      context.read<CategoryBlocBloc>().add(
+                            GetSeries(
+                              brandName: newValue!,
+                              categoryType: context
+                                  .read<CategoryBlocBloc>()
+                                  .categoryType!,
+                            ),
+                          );
+                    }
                   },
+                  // onChanged: (newValue) {
+                  //   context.read<CategoryBlocBloc>().barndName = newValue;
+                  //   context.read<CategoryBlocBloc>().add(
+                  //         GetSeries(
+                  //           brandName: newValue!,
+                  //           categoryType:
+                  //               context.read<CategoryBlocBloc>().categoryType!,
+                  //         ),
+                  //       );
+                  // },
                   value: context.read<CategoryBlocBloc>().barndName,
-                  items: state.filteredBrands?.map((brand) {
-                    return DropdownMenuItem<String>(
-                      value: brand.brandName,
-                      child: Text(brand.brandName!),
-                    );
-                  }).toList(),
+                  items: [
+                    const DropdownMenuItem<String>(
+                      value: 'All Series',
+                      child: Text('All Series'),
+                    ),
+                    if (state.filteredBrands != null)
+                      for (var brand in state.filteredBrands!)
+                        DropdownMenuItem<String>(
+                          value: brand.brandName,
+                          child: Text(brand.brandName!),
+                        ),
+                  ],
                 );
               },
             ),

@@ -15,6 +15,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 
+final navigatorKey = GlobalKey<NavigatorState>();
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations(
@@ -45,6 +46,7 @@ class Beachdu extends StatelessWidget {
         BlocProvider(create: (context) => getIt<PlaceOrderBloc>()),
       ],
       child: MaterialApp(
+        navigatorKey: navigatorKey,
         debugShowCheckedModeBanner: false,
         initialRoute: Routes.initial,
         onGenerateRoute: RouteGenerator().onGenerateRoute,

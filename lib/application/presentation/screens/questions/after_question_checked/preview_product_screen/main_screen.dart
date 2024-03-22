@@ -18,9 +18,9 @@ class ScreenProductPreview extends StatelessWidget {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async {
-        secondtabScreensNotifier.value = 1;
+        secondtabScreensNotifier.value = 0;
         secondtabScreensNotifier.notifyListeners();
-        context.read<QuestionTabBloc>().add(const ResetTabSelection());
+        // context.read<QuestionTabBloc>().add(const ResetTabSelection());
         return false;
       },
       child: Scaffold(

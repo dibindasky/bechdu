@@ -86,7 +86,7 @@ class _GridTileQuestionState extends State<GridTileQuestion> {
               decoration: BoxDecoration(
                   border: Border.all(
                       color: widget.selected ? kGreenPrimary : kBlack,
-                      width: widget.selected ? 3 : 1),
+                      width: widget.selected ? 4 : 1),
                   borderRadius: kRadius10),
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -101,7 +101,9 @@ class _GridTileQuestionState extends State<GridTileQuestion> {
                     ),
                     Text(
                       widget.option.description ?? '',
-                      style: textHeadBold1,
+                      style: textHeadBold1.copyWith(
+                        color: widget.selected ? kGreenPrimary : kBlack,
+                      ),
                       textAlign: TextAlign.center,
                       maxLines: 2,
                     ),

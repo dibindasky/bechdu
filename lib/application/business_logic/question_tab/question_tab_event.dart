@@ -28,6 +28,7 @@ class QuestionTabEvent with _$QuestionTabEvent {
   const factory QuestionTabEvent.changeIndex({required int index}) =
       ChangeIndex;
   const factory QuestionTabEvent.getBasePrice({
+    required PickupQuestionModel pickupQuestionModel,
     required AbandendOrderRequestModel abandendOrderRequestModel,
   }) = GetBasePrice;
   const factory QuestionTabEvent.abandentOrder({

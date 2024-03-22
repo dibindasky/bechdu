@@ -8,9 +8,7 @@ import 'package:beachdu/application/presentation/utils/snackbar/snackbar.dart';
 import 'package:beachdu/domain/model/location/city_update_request_model/city_update_request_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:iconsax/iconsax.dart';
 import 'package:lottie/lottie.dart';
 
 class ScreenLocations extends StatelessWidget {
@@ -78,7 +76,7 @@ class ScreenLocations extends StatelessWidget {
                         prefix: const Padding(
                           padding: EdgeInsets.only(left: 8.0),
                           child: Icon(
-                            Iconsax.search_favorite,
+                            Icons.search,
                             color: kWhite,
                             size: 18,
                           ),

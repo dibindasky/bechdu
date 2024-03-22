@@ -76,6 +76,7 @@ class OTPScreen extends StatelessWidget {
 
                   context.read<QuestionTabBloc>().add(
                         GetBasePrice(
+                          pickupQuestionModel: pickepQuestionModel,
                           abandendOrderRequestModel: abandendOrderRequestModel,
                         ),
                       );

@@ -3,7 +3,6 @@ import 'package:beachdu/application/presentation/screens/product_selection/searc
 import 'package:beachdu/application/presentation/screens/product_selection/series_list/series_container.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
-import 'package:beachdu/application/presentation/utils/loading_indicators/loading_indicator.dart';
 import 'package:beachdu/application/presentation/utils/skeltons/skelton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -22,47 +21,30 @@ class SeriesSelectionBuilder extends StatelessWidget {
             itemCount: 15,
             height: 200,
           );
+        } else if (state.filteredSeries == null) {
+          return Lottie.asset(emptyLottie);
         }
-        if (state.hasError) {
-          return SizedBox(
-            height: sHeight,
-            child: const Center(
-              child: Center(child: LoadingAnimation(width: 30)),
+        final seriesList = state.filteredSeries!;
+        return Column(
+          children: [
+            const SeriesSearchField(),
+            kHeight20,
+            GridView.builder(
+              itemCount: seriesList.length,
+              physics: const NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                crossAxisSpacing: 10,
+                mainAxisSpacing: 10,
+                childAspectRatio: 1 / .3,
+              ),
+              itemBuilder: (context, index) {
+                return SeriesContainer(index: index);
+              },
             ),
-          );
-        } else {
-          if (state.filteredSeries != null &&
-              state.filteredSeries!.isNotEmpty) {
-            final seriesList = state.filteredSeries!;
-            return Column(
-              children: [
-                const SeriesSearchField(),
-                kHeight20,
-                seriesList.isEmpty
-                    ? Center(
-                        child: Lottie.asset(emptyLottie),
-                      )
-                    : GridView.builder(
-                        itemCount: seriesList.length,
-                        physics: const NeverScrollableScrollPhysics(),
-                        shrinkWrap: true,
-                        gridDelegate:
-                            const SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 2,
-                          crossAxisSpacing: 10,
-                          mainAxisSpacing: 10,
-                          childAspectRatio: 1 / .3,
-                        ),
-                        itemBuilder: (context, index) {
-                          return SeriesContainer(index: index);
-                        },
-                      ),
-              ],
-            );
-          } else {
-            return const Skeleton(crossAxisCount: 2, itemCount: 10, height: 0);
-          }
-        }
+          ],
+        );
       },
     );
   }

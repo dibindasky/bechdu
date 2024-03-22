@@ -1,22 +1,17 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'dart:developer';
-
 import 'package:beachdu/application/business_logic/auth/auth_bloc.dart';
 import 'package:beachdu/application/business_logic/brands_bloc/category_bloc_bloc.dart';
 import 'package:beachdu/application/business_logic/question_tab/question_tab_bloc.dart';
 import 'package:beachdu/application/presentation/routes/routes.dart';
 import 'package:beachdu/application/presentation/screens/product_selection/product_screen.dart';
-import 'package:beachdu/application/presentation/screens/questions/question_tabs/question_anwer_sesstion/answer_session.dart';
-import 'package:beachdu/application/presentation/screens/questions/tabs/requote_tabs.dart';
 import 'package:beachdu/application/presentation/screens/questions/tabs/answer_index_changer.dart';
+import 'package:beachdu/application/presentation/screens/questions/tabs/requote_tabs.dart';
 import 'package:beachdu/application/presentation/screens/questions/tabs/requote_answer_session.dart';
-import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
-import 'package:beachdu/application/presentation/utils/custom_button.dart';
 import 'package:beachdu/application/presentation/utils/enums/type_display.dart';
 import 'package:beachdu/application/presentation/utils/loading_indicators/loading_indicator.dart';
-import 'package:beachdu/application/presentation/utils/snackbar/snackbar.dart';
 import 'package:beachdu/application/presentation/widgets/top_image.dart';
 import 'package:beachdu/data/secure_storage/secure_fire_store.dart';
 import 'package:beachdu/domain/model/order_model/abandend_order_request_model/abandend_order_request_model.dart';
@@ -24,7 +19,6 @@ import 'package:beachdu/domain/model/order_model/abandend_order_request_model/pr
 import 'package:beachdu/domain/model/pickup_question_model/pickup_question_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:lottie/lottie.dart';
 
 class QuestionTabs extends StatelessWidget {
   const QuestionTabs({super.key});
@@ -52,25 +46,21 @@ class QuestionTabs extends StatelessWidget {
               builder: (context, questionTabBloc) {
                 if (questionTabBloc.isLoading) {
                   return const LoadingAnimation(width: 50);
-                } else {
-                  if (questionTabBloc.getQuestionModel == null) {
-                    return Center(child: Lottie.asset(emptyLottie));
-                  } else {
-                    return const Column(
-                      children: [
-                        TopImage(fromWhere: FromWhere.questionScreen),
-                        kHeight10,
-                        RequoteTabs(),
-                        //RequoteTabs(),
-                        kHeight20,
-                        RequoteAnswerSessio(),
-                        kHeight10,
-                        AnswerIndexChanger(),
-                        kHeight20,
-                      ],
-                    );
-                  }
+                } else if (questionTabBloc.getQuestionModel == null) {
+                  return const LoadingAnimation(width: 50);
                 }
+                return const Column(
+                  children: [
+                    TopImage(fromWhere: FromWhere.questionScreen),
+                    kHeight10,
+                    RequoteTabs(),
+                    kHeight20,
+                    RequoteAnswerSessio(),
+                    kHeight10,
+                    AnswerIndexChanger(),
+                    kHeight10,
+                  ],
+                );
               },
             ),
           ),
@@ -129,122 +119,122 @@ class QuestionTabs extends StatelessWidget {
 
     context.read<QuestionTabBloc>().add(
           GetBasePrice(
-            //pickupQuestionModel: pickepQuestionModel,
+            pickupQuestionModel: pickepQuestionModel,
             abandendOrderRequestModel: abandendOrderRequestModel,
           ),
         );
   }
 }
 // Column(
-//                       children: [
-//                         const TopImage(fromWhere: FromWhere.questionScreen),
-//                         kHeight10,
-//                         const RequoteTabs(),
-//                         kHeight20,
-//                         const RequoteAnswerSessio(),
-//                         kHeight10,
-                        // BlocBuilder<AuthBloc, AuthState>(
-                        //   builder: (context, state) {
-                        //     return CustomButton(
-                        //       onPressed: () async {
-                        //         final currentSection =
-                        //             questionTabBloc.getQuestionModel!.sections![
-                        //                 questionTabBloc.selectedTabIndex];
-                        //         final criteria = currentSection.criteria;
-                        //         if (questionTabBloc.selectedTabIndex ==
-                        //             questionTabBloc.getQuestionModel!.sections!
-                        //                     .length -
-                        //                 1) {
-                        //           if (criteria == 'all') {
-                        //             if (questionTabBloc.answerCount ==
-                        //                 currentSection.options!.length) {
-                        //               await loginOrNot(
-                        //                   context, questionTabBloc, state);
-                        //             } else {
-                        //               showSnack(
-                        //                   context: context,
-                        //                   message: 'Select all options',
-                        //                   color: kRed);
-                        //             }
-                        //           } else if (criteria == 'some') {
-                        //             if (questionTabBloc.answerCount >= 1) {
-                        //               await loginOrNot(
-                        //                   context, questionTabBloc, state);
-                        //             } else {
-                        //               showSnack(
-                        //                 context: context,
-                        //                 message: 'Select at least one option',
-                        //                 color: kRed,
-                        //               );
-                        //             }
-                        //           } else if (criteria == 'one') {
-                        //             if (questionTabBloc.answerCount == 1) {
-                        //               await loginOrNot(
-                        //                   context, questionTabBloc, state);
-                        //             } else {
-                        //               showSnack(
-                        //                 context: context,
-                        //                 message: 'Select only one option',
-                        //                 color: kRed,
-                        //               );
-                        //             }
-                        //           } else {
-                        //             await loginOrNot(
-                        //               context,
-                        //               questionTabBloc,
-                        //               state,
-                        //             );
-                        //           }
-                        //         }
-                        //         if (criteria == 'all') {
-                        //           if (questionTabBloc.answerCount ==
-                        //               currentSection.options!.length) {
-                        //             context
-                        //                 .read<QuestionTabBloc>()
-                        //                 .add(const TabChange());
-                        //           } else {
-                        //             showSnack(
-                        //                 context: context,
-                        //                 message: 'Select all options',
-                        //                 color: kRed);
-                        //           }
-                        //         } else if (criteria == 'some') {
-                        //           if (questionTabBloc.answerCount >= 1) {
-                        //             context
-                        //                 .read<QuestionTabBloc>()
-                        //                 .add(const TabChange());
-                        //           } else {
-                        //             showSnack(
-                        //                 context: context,
-                        //                 message: 'Select at least one option',
-                        //                 color: kRed);
-                        //           }
-                        //         } else if (criteria == 'one') {
-                        //           if (questionTabBloc.answerCount == 1) {
-                        //             context
-                        //                 .read<QuestionTabBloc>()
-                        //                 .add(const TabChange());
-                        //           } else {
-                        //             showSnack(
-                        //                 context: context,
-                        //                 message: 'Select atleast one option',
-                        //                 color: kRed);
-                        //           }
-                        //         } else {
-                        //           context
-                        //               .read<QuestionTabBloc>()
-                        //               .add(const TabChange());
-                        //         }
-                        //       },
-                        //       text: questionTabBloc.selectedTabIndex !=
-                        //               questionTabBloc.getQuestionModel!
-                        //                       .sections!.length -
-                        //                   1
-                        //           ? 'Continue'
-                        //           : 'Proceed',
-                        //     );
-                        //   },
-                        // ),
-                      //  kHeight10,
-                     // ],
-                   // );
+//children: [
+//  const TopImage(fromWhere: FromWhere.questionScreen),
+//  kHeight10,
+//  const RequoteTabs(),
+//  kHeight20,
+//  const RequoteAnswerSessio(),
+//  kHeight10,
+// BlocBuilder<AuthBloc, AuthState>(
+//   builder: (context, state) {
+//     return CustomButton(
+//       onPressed: () async {
+//         final currentSection =
+//             questionTabBloc.getQuestionModel!.sections![
+//                 questionTabBloc.selectedTabIndex];
+//         final criteria = currentSection.criteria;
+//         if (questionTabBloc.selectedTabIndex ==
+//             questionTabBloc.getQuestionModel!.sections!
+//                     .length -
+//                 1) {
+//           if (criteria == 'all') {
+//             if (questionTabBloc.answerCount ==
+//                 currentSection.options!.length) {
+//               await loginOrNot(
+//                   context, questionTabBloc, state);
+//             } else {
+//               showSnack(
+//                   context: context,
+//                   message: 'Select all options',
+//                   color: kRed);
+//             }
+//           } else if (criteria == 'some') {
+//             if (questionTabBloc.answerCount >= 1) {
+//               await loginOrNot(
+//                   context, questionTabBloc, state);
+//             } else {
+//               showSnack(
+//                 context: context,
+//                 message: 'Select at least one option',
+//                 color: kRed,
+//               );
+//             }
+//           } else if (criteria == 'one') {
+//             if (questionTabBloc.answerCount == 1) {
+//               await loginOrNot(
+//                   context, questionTabBloc, state);
+//             } else {
+//               showSnack(
+//                 context: context,
+//                 message: 'Select only one option',
+//                 color: kRed,
+//               );
+//             }
+//           } else {
+//             await loginOrNot(
+//               context,
+//               questionTabBloc,
+//               state,
+//             );
+//           }
+//         }
+//         if (criteria == 'all') {
+//           if (questionTabBloc.answerCount ==
+//               currentSection.options!.length) {
+//             context
+//                 .read<QuestionTabBloc>()
+//                 .add(const TabChange());
+//           } else {
+//             showSnack(
+//                 context: context,
+//                 message: 'Select all options',
+//                 color: kRed);
+//           }
+//         } else if (criteria == 'some') {
+//           if (questionTabBloc.answerCount >= 1) {
+//             context
+//                 .read<QuestionTabBloc>()
+//                 .add(const TabChange());
+//           } else {
+//             showSnack(
+//                 context: context,
+//                 message: 'Select at least one option',
+//                 color: kRed);
+//           }
+//         } else if (criteria == 'one') {
+//           if (questionTabBloc.answerCount == 1) {
+//             context
+//                 .read<QuestionTabBloc>()
+//                 .add(const TabChange());
+//           } else {
+//             showSnack(
+//                 context: context,
+//                 message: 'Select atleast one option',
+//                 color: kRed);
+//           }
+//         } else {
+//           context
+//               .read<QuestionTabBloc>()
+//               .add(const TabChange());
+//         }
+//       },
+//       text: questionTabBloc.selectedTabIndex !=
+//               questionTabBloc.getQuestionModel!
+//                       .sections!.length -
+//                   1
+//           ? 'Continue'
+//           : 'Proceed',
+//     );
+//   },
+// ),
+//  kHeight10,
+// ],
+// );
