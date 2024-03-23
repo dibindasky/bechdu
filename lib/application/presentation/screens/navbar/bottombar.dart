@@ -43,9 +43,6 @@ class ScreenBottomNavigation extends StatelessWidget {
                     enableFeedback: false,
                     onTap: (value) {
                       context.read<NavbarCubit>().changeNavigationIndex(value);
-                      context
-                          .read<QuestionTabBloc>()
-                          .add(const ResetTabSelection());
                     },
                     unselectedItemColor: kWhite,
                     showUnselectedLabels: true,

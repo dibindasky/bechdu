@@ -18,7 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$LocationEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() locationPick,
+    required TResult Function(bool isLoad) locationPick,
     required TResult Function(String searchQuery) locationSearch,
     required TResult Function(CityUpdateRequestModel cityUpdateRequestModel)
         locationUpdate,
@@ -34,7 +34,7 @@ mixin _$LocationEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? locationPick,
+    TResult? Function(bool isLoad)? locationPick,
     TResult? Function(String searchQuery)? locationSearch,
     TResult? Function(CityUpdateRequestModel cityUpdateRequestModel)?
         locationUpdate,
@@ -49,7 +49,7 @@ mixin _$LocationEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? locationPick,
+    TResult Function(bool isLoad)? locationPick,
     TResult Function(String searchQuery)? locationSearch,
     TResult Function(CityUpdateRequestModel cityUpdateRequestModel)?
         locationUpdate,
@@ -128,6 +128,8 @@ abstract class _$$LocationPickImplCopyWith<$Res> {
   factory _$$LocationPickImplCopyWith(
           _$LocationPickImpl value, $Res Function(_$LocationPickImpl) then) =
       __$$LocationPickImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({bool isLoad});
 }
 
 /// @nodoc
@@ -137,31 +139,55 @@ class __$$LocationPickImplCopyWithImpl<$Res>
   __$$LocationPickImplCopyWithImpl(
       _$LocationPickImpl _value, $Res Function(_$LocationPickImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? isLoad = null,
+  }) {
+    return _then(_$LocationPickImpl(
+      isLoad: null == isLoad
+          ? _value.isLoad
+          : isLoad // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$LocationPickImpl implements LocationPick {
-  const _$LocationPickImpl();
+  const _$LocationPickImpl({required this.isLoad});
+
+  @override
+  final bool isLoad;
 
   @override
   String toString() {
-    return 'LocationEvent.locationPick()';
+    return 'LocationEvent.locationPick(isLoad: $isLoad)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$LocationPickImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$LocationPickImpl &&
+            (identical(other.isLoad, isLoad) || other.isLoad == isLoad));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, isLoad);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$LocationPickImplCopyWith<_$LocationPickImpl> get copyWith =>
+      __$$LocationPickImplCopyWithImpl<_$LocationPickImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() locationPick,
+    required TResult Function(bool isLoad) locationPick,
     required TResult Function(String searchQuery) locationSearch,
     required TResult Function(CityUpdateRequestModel cityUpdateRequestModel)
         locationUpdate,
@@ -174,13 +200,13 @@ class _$LocationPickImpl implements LocationPick {
     required TResult Function() clear,
     required TResult Function() locationSkipEvent,
   }) {
-    return locationPick();
+    return locationPick(isLoad);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? locationPick,
+    TResult? Function(bool isLoad)? locationPick,
     TResult? Function(String searchQuery)? locationSearch,
     TResult? Function(CityUpdateRequestModel cityUpdateRequestModel)?
         locationUpdate,
@@ -192,13 +218,13 @@ class _$LocationPickImpl implements LocationPick {
     TResult? Function()? clear,
     TResult? Function()? locationSkipEvent,
   }) {
-    return locationPick?.call();
+    return locationPick?.call(isLoad);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? locationPick,
+    TResult Function(bool isLoad)? locationPick,
     TResult Function(String searchQuery)? locationSearch,
     TResult Function(CityUpdateRequestModel cityUpdateRequestModel)?
         locationUpdate,
@@ -212,7 +238,7 @@ class _$LocationPickImpl implements LocationPick {
     required TResult orElse(),
   }) {
     if (locationPick != null) {
-      return locationPick();
+      return locationPick(isLoad);
     }
     return orElse();
   }
@@ -271,7 +297,12 @@ class _$LocationPickImpl implements LocationPick {
 }
 
 abstract class LocationPick implements LocationEvent {
-  const factory LocationPick() = _$LocationPickImpl;
+  const factory LocationPick({required final bool isLoad}) = _$LocationPickImpl;
+
+  bool get isLoad;
+  @JsonKey(ignore: true)
+  _$$LocationPickImplCopyWith<_$LocationPickImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -340,7 +371,7 @@ class _$LocationSearchImpl implements LocationSearch {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() locationPick,
+    required TResult Function(bool isLoad) locationPick,
     required TResult Function(String searchQuery) locationSearch,
     required TResult Function(CityUpdateRequestModel cityUpdateRequestModel)
         locationUpdate,
@@ -359,7 +390,7 @@ class _$LocationSearchImpl implements LocationSearch {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? locationPick,
+    TResult? Function(bool isLoad)? locationPick,
     TResult? Function(String searchQuery)? locationSearch,
     TResult? Function(CityUpdateRequestModel cityUpdateRequestModel)?
         locationUpdate,
@@ -377,7 +408,7 @@ class _$LocationSearchImpl implements LocationSearch {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? locationPick,
+    TResult Function(bool isLoad)? locationPick,
     TResult Function(String searchQuery)? locationSearch,
     TResult Function(CityUpdateRequestModel cityUpdateRequestModel)?
         locationUpdate,
@@ -525,7 +556,7 @@ class _$LocationUpdateImpl implements LocationUpdate {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() locationPick,
+    required TResult Function(bool isLoad) locationPick,
     required TResult Function(String searchQuery) locationSearch,
     required TResult Function(CityUpdateRequestModel cityUpdateRequestModel)
         locationUpdate,
@@ -544,7 +575,7 @@ class _$LocationUpdateImpl implements LocationUpdate {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? locationPick,
+    TResult? Function(bool isLoad)? locationPick,
     TResult? Function(String searchQuery)? locationSearch,
     TResult? Function(CityUpdateRequestModel cityUpdateRequestModel)?
         locationUpdate,
@@ -562,7 +593,7 @@ class _$LocationUpdateImpl implements LocationUpdate {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? locationPick,
+    TResult Function(bool isLoad)? locationPick,
     TResult Function(String searchQuery)? locationSearch,
     TResult Function(CityUpdateRequestModel cityUpdateRequestModel)?
         locationUpdate,
@@ -710,7 +741,7 @@ class _$PinCodePickImpl implements PinCodePick {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() locationPick,
+    required TResult Function(bool isLoad) locationPick,
     required TResult Function(String searchQuery) locationSearch,
     required TResult Function(CityUpdateRequestModel cityUpdateRequestModel)
         locationUpdate,
@@ -729,7 +760,7 @@ class _$PinCodePickImpl implements PinCodePick {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? locationPick,
+    TResult? Function(bool isLoad)? locationPick,
     TResult? Function(String searchQuery)? locationSearch,
     TResult? Function(CityUpdateRequestModel cityUpdateRequestModel)?
         locationUpdate,
@@ -747,7 +778,7 @@ class _$PinCodePickImpl implements PinCodePick {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? locationPick,
+    TResult Function(bool isLoad)? locationPick,
     TResult Function(String searchQuery)? locationSearch,
     TResult Function(CityUpdateRequestModel cityUpdateRequestModel)?
         locationUpdate,
@@ -894,7 +925,7 @@ class _$PincodeSearchImpl implements PincodeSearch {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() locationPick,
+    required TResult Function(bool isLoad) locationPick,
     required TResult Function(String searchQuery) locationSearch,
     required TResult Function(CityUpdateRequestModel cityUpdateRequestModel)
         locationUpdate,
@@ -913,7 +944,7 @@ class _$PincodeSearchImpl implements PincodeSearch {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? locationPick,
+    TResult? Function(bool isLoad)? locationPick,
     TResult? Function(String searchQuery)? locationSearch,
     TResult? Function(CityUpdateRequestModel cityUpdateRequestModel)?
         locationUpdate,
@@ -931,7 +962,7 @@ class _$PincodeSearchImpl implements PincodeSearch {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? locationPick,
+    TResult Function(bool isLoad)? locationPick,
     TResult Function(String searchQuery)? locationSearch,
     TResult Function(CityUpdateRequestModel cityUpdateRequestModel)?
         locationUpdate,
@@ -1079,7 +1110,7 @@ class _$PincodeUpdateImpl implements PincodeUpdate {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() locationPick,
+    required TResult Function(bool isLoad) locationPick,
     required TResult Function(String searchQuery) locationSearch,
     required TResult Function(CityUpdateRequestModel cityUpdateRequestModel)
         locationUpdate,
@@ -1098,7 +1129,7 @@ class _$PincodeUpdateImpl implements PincodeUpdate {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? locationPick,
+    TResult? Function(bool isLoad)? locationPick,
     TResult? Function(String searchQuery)? locationSearch,
     TResult? Function(CityUpdateRequestModel cityUpdateRequestModel)?
         locationUpdate,
@@ -1116,7 +1147,7 @@ class _$PincodeUpdateImpl implements PincodeUpdate {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? locationPick,
+    TResult Function(bool isLoad)? locationPick,
     TResult Function(String searchQuery)? locationSearch,
     TResult Function(CityUpdateRequestModel cityUpdateRequestModel)?
         locationUpdate,
@@ -1264,7 +1295,7 @@ class _$SetPicondeSecureImpl implements SetPicondeSecure {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() locationPick,
+    required TResult Function(bool isLoad) locationPick,
     required TResult Function(String searchQuery) locationSearch,
     required TResult Function(CityUpdateRequestModel cityUpdateRequestModel)
         locationUpdate,
@@ -1283,7 +1314,7 @@ class _$SetPicondeSecureImpl implements SetPicondeSecure {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? locationPick,
+    TResult? Function(bool isLoad)? locationPick,
     TResult? Function(String searchQuery)? locationSearch,
     TResult? Function(CityUpdateRequestModel cityUpdateRequestModel)?
         locationUpdate,
@@ -1301,7 +1332,7 @@ class _$SetPicondeSecureImpl implements SetPicondeSecure {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? locationPick,
+    TResult Function(bool isLoad)? locationPick,
     TResult Function(String searchQuery)? locationSearch,
     TResult Function(CityUpdateRequestModel cityUpdateRequestModel)?
         locationUpdate,
@@ -1421,7 +1452,7 @@ class _$ClearImpl implements Clear {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() locationPick,
+    required TResult Function(bool isLoad) locationPick,
     required TResult Function(String searchQuery) locationSearch,
     required TResult Function(CityUpdateRequestModel cityUpdateRequestModel)
         locationUpdate,
@@ -1440,7 +1471,7 @@ class _$ClearImpl implements Clear {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? locationPick,
+    TResult? Function(bool isLoad)? locationPick,
     TResult? Function(String searchQuery)? locationSearch,
     TResult? Function(CityUpdateRequestModel cityUpdateRequestModel)?
         locationUpdate,
@@ -1458,7 +1489,7 @@ class _$ClearImpl implements Clear {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? locationPick,
+    TResult Function(bool isLoad)? locationPick,
     TResult Function(String searchQuery)? locationSearch,
     TResult Function(CityUpdateRequestModel cityUpdateRequestModel)?
         locationUpdate,
@@ -1572,7 +1603,7 @@ class _$LocationSkipEventImpl implements LocationSkipEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() locationPick,
+    required TResult Function(bool isLoad) locationPick,
     required TResult Function(String searchQuery) locationSearch,
     required TResult Function(CityUpdateRequestModel cityUpdateRequestModel)
         locationUpdate,
@@ -1591,7 +1622,7 @@ class _$LocationSkipEventImpl implements LocationSkipEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? locationPick,
+    TResult? Function(bool isLoad)? locationPick,
     TResult? Function(String searchQuery)? locationSearch,
     TResult? Function(CityUpdateRequestModel cityUpdateRequestModel)?
         locationUpdate,
@@ -1609,7 +1640,7 @@ class _$LocationSkipEventImpl implements LocationSkipEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? locationPick,
+    TResult Function(bool isLoad)? locationPick,
     TResult Function(String searchQuery)? locationSearch,
     TResult Function(CityUpdateRequestModel cityUpdateRequestModel)?
         locationUpdate,

@@ -50,14 +50,6 @@ class _ScreenHomeState extends State<ScreenHome> {
         }
       });
     }
-
-    context.read<LocationBloc>().add(const LocationEvent.locationPick());
-    context.read<HomeBloc>().add(const HomeEvent.homePageBanners());
-    context.read<HomeBloc>().add(const HomeEvent.getBestSellingProducts());
-    context
-        .read<CategoryBlocBloc>()
-        .add(const CategoryBlocEvent.getSingleCategoryBrands());
-    context.read<HomeBloc>().add(const HomeEvent.getAllCategory());
   }
 
   @override
@@ -68,6 +60,23 @@ class _ScreenHomeState extends State<ScreenHome> {
 
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      context
+          .read<LocationBloc>()
+          .add(const LocationEvent.locationPick(isLoad: false));
+      context
+          .read<HomeBloc>()
+          .add(const HomeEvent.homePageBanners(isLoad: false));
+      context
+          .read<HomeBloc>()
+          .add(const HomeEvent.getBestSellingProducts(isLoad: false));
+      context
+          .read<CategoryBlocBloc>()
+          .add(const CategoryBlocEvent.getSingleCategoryBrands(isLoad: false));
+      context
+          .read<HomeBloc>()
+          .add(const HomeEvent.getAllCategory(isLoad: false));
+    });
     return GestureDetector(
       onTap: () {
         FocusScopeNode focusScopeNode = FocusScope.of(context);
@@ -91,15 +100,19 @@ class _ScreenHomeState extends State<ScreenHome> {
               onRefresh: () async {
                 context
                     .read<LocationBloc>()
-                    .add(const LocationEvent.locationPick());
-                context.read<HomeBloc>().add(const HomeEvent.homePageBanners());
+                    .add(const LocationEvent.locationPick(isLoad: true));
                 context
                     .read<HomeBloc>()
-                    .add(const HomeEvent.getBestSellingProducts());
+                    .add(const HomeEvent.homePageBanners(isLoad: true));
                 context
-                    .read<CategoryBlocBloc>()
-                    .add(const GetSingleCategoryBrands());
-                context.read<HomeBloc>().add(const HomeEvent.getAllCategory());
+                    .read<HomeBloc>()
+                    .add(const HomeEvent.getBestSellingProducts(isLoad: true));
+                context.read<CategoryBlocBloc>().add(
+                    const CategoryBlocEvent.getSingleCategoryBrands(
+                        isLoad: true));
+                context
+                    .read<HomeBloc>()
+                    .add(const HomeEvent.getAllCategory(isLoad: true));
                 await Future.delayed(const Duration(seconds: 2));
               },
               child: SingleChildScrollView(

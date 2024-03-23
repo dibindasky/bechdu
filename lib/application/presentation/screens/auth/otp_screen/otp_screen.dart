@@ -44,7 +44,7 @@ class OTPScreen extends StatelessWidget {
               if (state.hasError) {
                 showSnack(
                   context: context,
-                  message: state.message ?? errorMessage,
+                  message: errorMessage,
                   color: kRed,
                 );
               }

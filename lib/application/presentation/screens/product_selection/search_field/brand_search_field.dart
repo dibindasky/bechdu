@@ -28,6 +28,7 @@ class BrandSearchField extends StatelessWidget {
                   onChanged: (newValue) {
                     context.read<CategoryBlocBloc>().add(
                           GetSingleCategoryBrands(
+                            isLoad: true,
                             categoryType: newValue,
                           ),
                         );

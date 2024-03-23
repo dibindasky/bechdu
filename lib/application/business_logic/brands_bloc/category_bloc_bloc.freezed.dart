@@ -19,7 +19,8 @@ mixin _$CategoryBlocEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getAllCategory,
-    required TResult Function(String? categoryType) getSingleCategoryBrands,
+    required TResult Function(bool isLoad, String? categoryType)
+        getSingleCategoryBrands,
     required TResult Function(String searchQuery) brandSearch,
     required TResult Function(String searchQuery) seriesSearch,
     required TResult Function(
@@ -39,7 +40,8 @@ mixin _$CategoryBlocEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getAllCategory,
-    TResult? Function(String? categoryType)? getSingleCategoryBrands,
+    TResult? Function(bool isLoad, String? categoryType)?
+        getSingleCategoryBrands,
     TResult? Function(String searchQuery)? brandSearch,
     TResult? Function(String searchQuery)? seriesSearch,
     TResult? Function(String categoryType, String brandName, String seriesName)?
@@ -57,7 +59,8 @@ mixin _$CategoryBlocEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getAllCategory,
-    TResult Function(String? categoryType)? getSingleCategoryBrands,
+    TResult Function(bool isLoad, String? categoryType)?
+        getSingleCategoryBrands,
     TResult Function(String searchQuery)? brandSearch,
     TResult Function(String searchQuery)? seriesSearch,
     TResult Function(String categoryType, String brandName, String seriesName)?
@@ -185,7 +188,8 @@ class _$GetAllCategoryImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getAllCategory,
-    required TResult Function(String? categoryType) getSingleCategoryBrands,
+    required TResult Function(bool isLoad, String? categoryType)
+        getSingleCategoryBrands,
     required TResult Function(String searchQuery) brandSearch,
     required TResult Function(String searchQuery) seriesSearch,
     required TResult Function(
@@ -208,7 +212,8 @@ class _$GetAllCategoryImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getAllCategory,
-    TResult? Function(String? categoryType)? getSingleCategoryBrands,
+    TResult? Function(bool isLoad, String? categoryType)?
+        getSingleCategoryBrands,
     TResult? Function(String searchQuery)? brandSearch,
     TResult? Function(String searchQuery)? seriesSearch,
     TResult? Function(String categoryType, String brandName, String seriesName)?
@@ -229,7 +234,8 @@ class _$GetAllCategoryImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getAllCategory,
-    TResult Function(String? categoryType)? getSingleCategoryBrands,
+    TResult Function(bool isLoad, String? categoryType)?
+        getSingleCategoryBrands,
     TResult Function(String searchQuery)? brandSearch,
     TResult Function(String searchQuery)? seriesSearch,
     TResult Function(String categoryType, String brandName, String seriesName)?
@@ -318,7 +324,7 @@ abstract class _$$GetSingleCategoryBrandsImplCopyWith<$Res> {
           $Res Function(_$GetSingleCategoryBrandsImpl) then) =
       __$$GetSingleCategoryBrandsImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String? categoryType});
+  $Res call({bool isLoad, String? categoryType});
 }
 
 /// @nodoc
@@ -333,9 +339,14 @@ class __$$GetSingleCategoryBrandsImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? isLoad = null,
     Object? categoryType = freezed,
   }) {
     return _then(_$GetSingleCategoryBrandsImpl(
+      isLoad: null == isLoad
+          ? _value.isLoad
+          : isLoad // ignore: cast_nullable_to_non_nullable
+              as bool,
       categoryType: freezed == categoryType
           ? _value.categoryType
           : categoryType // ignore: cast_nullable_to_non_nullable
@@ -349,14 +360,17 @@ class __$$GetSingleCategoryBrandsImplCopyWithImpl<$Res>
 class _$GetSingleCategoryBrandsImpl
     with DiagnosticableTreeMixin
     implements GetSingleCategoryBrands {
-  const _$GetSingleCategoryBrandsImpl({this.categoryType});
+  const _$GetSingleCategoryBrandsImpl(
+      {required this.isLoad, this.categoryType});
 
+  @override
+  final bool isLoad;
   @override
   final String? categoryType;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'CategoryBlocEvent.getSingleCategoryBrands(categoryType: $categoryType)';
+    return 'CategoryBlocEvent.getSingleCategoryBrands(isLoad: $isLoad, categoryType: $categoryType)';
   }
 
   @override
@@ -365,6 +379,7 @@ class _$GetSingleCategoryBrandsImpl
     properties
       ..add(DiagnosticsProperty(
           'type', 'CategoryBlocEvent.getSingleCategoryBrands'))
+      ..add(DiagnosticsProperty('isLoad', isLoad))
       ..add(DiagnosticsProperty('categoryType', categoryType));
   }
 
@@ -373,12 +388,13 @@ class _$GetSingleCategoryBrandsImpl
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetSingleCategoryBrandsImpl &&
+            (identical(other.isLoad, isLoad) || other.isLoad == isLoad) &&
             (identical(other.categoryType, categoryType) ||
                 other.categoryType == categoryType));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, categoryType);
+  int get hashCode => Object.hash(runtimeType, isLoad, categoryType);
 
   @JsonKey(ignore: true)
   @override
@@ -391,7 +407,8 @@ class _$GetSingleCategoryBrandsImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getAllCategory,
-    required TResult Function(String? categoryType) getSingleCategoryBrands,
+    required TResult Function(bool isLoad, String? categoryType)
+        getSingleCategoryBrands,
     required TResult Function(String searchQuery) brandSearch,
     required TResult Function(String searchQuery) seriesSearch,
     required TResult Function(
@@ -407,14 +424,15 @@ class _$GetSingleCategoryBrandsImpl
             String seriesName, String model)
         getVarients,
   }) {
-    return getSingleCategoryBrands(categoryType);
+    return getSingleCategoryBrands(isLoad, categoryType);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getAllCategory,
-    TResult? Function(String? categoryType)? getSingleCategoryBrands,
+    TResult? Function(bool isLoad, String? categoryType)?
+        getSingleCategoryBrands,
     TResult? Function(String searchQuery)? brandSearch,
     TResult? Function(String searchQuery)? seriesSearch,
     TResult? Function(String categoryType, String brandName, String seriesName)?
@@ -428,14 +446,15 @@ class _$GetSingleCategoryBrandsImpl
             String model)?
         getVarients,
   }) {
-    return getSingleCategoryBrands?.call(categoryType);
+    return getSingleCategoryBrands?.call(isLoad, categoryType);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getAllCategory,
-    TResult Function(String? categoryType)? getSingleCategoryBrands,
+    TResult Function(bool isLoad, String? categoryType)?
+        getSingleCategoryBrands,
     TResult Function(String searchQuery)? brandSearch,
     TResult Function(String searchQuery)? seriesSearch,
     TResult Function(String categoryType, String brandName, String seriesName)?
@@ -451,7 +470,7 @@ class _$GetSingleCategoryBrandsImpl
     required TResult orElse(),
   }) {
     if (getSingleCategoryBrands != null) {
-      return getSingleCategoryBrands(categoryType);
+      return getSingleCategoryBrands(isLoad, categoryType);
     }
     return orElse();
   }
@@ -514,9 +533,11 @@ class _$GetSingleCategoryBrandsImpl
 }
 
 abstract class GetSingleCategoryBrands implements CategoryBlocEvent {
-  const factory GetSingleCategoryBrands({final String? categoryType}) =
-      _$GetSingleCategoryBrandsImpl;
+  const factory GetSingleCategoryBrands(
+      {required final bool isLoad,
+      final String? categoryType}) = _$GetSingleCategoryBrandsImpl;
 
+  bool get isLoad;
   String? get categoryType;
   @JsonKey(ignore: true)
   _$$GetSingleCategoryBrandsImplCopyWith<_$GetSingleCategoryBrandsImpl>
@@ -597,7 +618,8 @@ class _$BrandSearchImpl with DiagnosticableTreeMixin implements BrandSearch {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getAllCategory,
-    required TResult Function(String? categoryType) getSingleCategoryBrands,
+    required TResult Function(bool isLoad, String? categoryType)
+        getSingleCategoryBrands,
     required TResult Function(String searchQuery) brandSearch,
     required TResult Function(String searchQuery) seriesSearch,
     required TResult Function(
@@ -620,7 +642,8 @@ class _$BrandSearchImpl with DiagnosticableTreeMixin implements BrandSearch {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getAllCategory,
-    TResult? Function(String? categoryType)? getSingleCategoryBrands,
+    TResult? Function(bool isLoad, String? categoryType)?
+        getSingleCategoryBrands,
     TResult? Function(String searchQuery)? brandSearch,
     TResult? Function(String searchQuery)? seriesSearch,
     TResult? Function(String categoryType, String brandName, String seriesName)?
@@ -641,7 +664,8 @@ class _$BrandSearchImpl with DiagnosticableTreeMixin implements BrandSearch {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getAllCategory,
-    TResult Function(String? categoryType)? getSingleCategoryBrands,
+    TResult Function(bool isLoad, String? categoryType)?
+        getSingleCategoryBrands,
     TResult Function(String searchQuery)? brandSearch,
     TResult Function(String searchQuery)? seriesSearch,
     TResult Function(String categoryType, String brandName, String seriesName)?
@@ -803,7 +827,8 @@ class _$SeriesSearchImpl with DiagnosticableTreeMixin implements SeriesSearch {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getAllCategory,
-    required TResult Function(String? categoryType) getSingleCategoryBrands,
+    required TResult Function(bool isLoad, String? categoryType)
+        getSingleCategoryBrands,
     required TResult Function(String searchQuery) brandSearch,
     required TResult Function(String searchQuery) seriesSearch,
     required TResult Function(
@@ -826,7 +851,8 @@ class _$SeriesSearchImpl with DiagnosticableTreeMixin implements SeriesSearch {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getAllCategory,
-    TResult? Function(String? categoryType)? getSingleCategoryBrands,
+    TResult? Function(bool isLoad, String? categoryType)?
+        getSingleCategoryBrands,
     TResult? Function(String searchQuery)? brandSearch,
     TResult? Function(String searchQuery)? seriesSearch,
     TResult? Function(String categoryType, String brandName, String seriesName)?
@@ -847,7 +873,8 @@ class _$SeriesSearchImpl with DiagnosticableTreeMixin implements SeriesSearch {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getAllCategory,
-    TResult Function(String? categoryType)? getSingleCategoryBrands,
+    TResult Function(bool isLoad, String? categoryType)?
+        getSingleCategoryBrands,
     TResult Function(String searchQuery)? brandSearch,
     TResult Function(String searchQuery)? seriesSearch,
     TResult Function(String categoryType, String brandName, String seriesName)?
@@ -1033,7 +1060,8 @@ class _$GetProductsImpl with DiagnosticableTreeMixin implements GetProducts {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getAllCategory,
-    required TResult Function(String? categoryType) getSingleCategoryBrands,
+    required TResult Function(bool isLoad, String? categoryType)
+        getSingleCategoryBrands,
     required TResult Function(String searchQuery) brandSearch,
     required TResult Function(String searchQuery) seriesSearch,
     required TResult Function(
@@ -1056,7 +1084,8 @@ class _$GetProductsImpl with DiagnosticableTreeMixin implements GetProducts {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getAllCategory,
-    TResult? Function(String? categoryType)? getSingleCategoryBrands,
+    TResult? Function(bool isLoad, String? categoryType)?
+        getSingleCategoryBrands,
     TResult? Function(String searchQuery)? brandSearch,
     TResult? Function(String searchQuery)? seriesSearch,
     TResult? Function(String categoryType, String brandName, String seriesName)?
@@ -1077,7 +1106,8 @@ class _$GetProductsImpl with DiagnosticableTreeMixin implements GetProducts {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getAllCategory,
-    TResult Function(String? categoryType)? getSingleCategoryBrands,
+    TResult Function(bool isLoad, String? categoryType)?
+        getSingleCategoryBrands,
     TResult Function(String searchQuery)? brandSearch,
     TResult Function(String searchQuery)? seriesSearch,
     TResult Function(String categoryType, String brandName, String seriesName)?
@@ -1245,7 +1275,8 @@ class _$ProductSearchImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getAllCategory,
-    required TResult Function(String? categoryType) getSingleCategoryBrands,
+    required TResult Function(bool isLoad, String? categoryType)
+        getSingleCategoryBrands,
     required TResult Function(String searchQuery) brandSearch,
     required TResult Function(String searchQuery) seriesSearch,
     required TResult Function(
@@ -1268,7 +1299,8 @@ class _$ProductSearchImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getAllCategory,
-    TResult? Function(String? categoryType)? getSingleCategoryBrands,
+    TResult? Function(bool isLoad, String? categoryType)?
+        getSingleCategoryBrands,
     TResult? Function(String searchQuery)? brandSearch,
     TResult? Function(String searchQuery)? seriesSearch,
     TResult? Function(String categoryType, String brandName, String seriesName)?
@@ -1289,7 +1321,8 @@ class _$ProductSearchImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getAllCategory,
-    TResult Function(String? categoryType)? getSingleCategoryBrands,
+    TResult Function(bool isLoad, String? categoryType)?
+        getSingleCategoryBrands,
     TResult Function(String searchQuery)? brandSearch,
     TResult Function(String searchQuery)? seriesSearch,
     TResult Function(String categoryType, String brandName, String seriesName)?
@@ -1461,7 +1494,8 @@ class _$GetSeriesImpl with DiagnosticableTreeMixin implements GetSeries {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getAllCategory,
-    required TResult Function(String? categoryType) getSingleCategoryBrands,
+    required TResult Function(bool isLoad, String? categoryType)
+        getSingleCategoryBrands,
     required TResult Function(String searchQuery) brandSearch,
     required TResult Function(String searchQuery) seriesSearch,
     required TResult Function(
@@ -1484,7 +1518,8 @@ class _$GetSeriesImpl with DiagnosticableTreeMixin implements GetSeries {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getAllCategory,
-    TResult? Function(String? categoryType)? getSingleCategoryBrands,
+    TResult? Function(bool isLoad, String? categoryType)?
+        getSingleCategoryBrands,
     TResult? Function(String searchQuery)? brandSearch,
     TResult? Function(String searchQuery)? seriesSearch,
     TResult? Function(String categoryType, String brandName, String seriesName)?
@@ -1505,7 +1540,8 @@ class _$GetSeriesImpl with DiagnosticableTreeMixin implements GetSeries {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getAllCategory,
-    TResult Function(String? categoryType)? getSingleCategoryBrands,
+    TResult Function(bool isLoad, String? categoryType)?
+        getSingleCategoryBrands,
     TResult Function(String searchQuery)? brandSearch,
     TResult Function(String searchQuery)? seriesSearch,
     TResult Function(String categoryType, String brandName, String seriesName)?
@@ -1679,7 +1715,8 @@ class _$ProductUpdateImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getAllCategory,
-    required TResult Function(String? categoryType) getSingleCategoryBrands,
+    required TResult Function(bool isLoad, String? categoryType)
+        getSingleCategoryBrands,
     required TResult Function(String searchQuery) brandSearch,
     required TResult Function(String searchQuery) seriesSearch,
     required TResult Function(
@@ -1702,7 +1739,8 @@ class _$ProductUpdateImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getAllCategory,
-    TResult? Function(String? categoryType)? getSingleCategoryBrands,
+    TResult? Function(bool isLoad, String? categoryType)?
+        getSingleCategoryBrands,
     TResult? Function(String searchQuery)? brandSearch,
     TResult? Function(String searchQuery)? seriesSearch,
     TResult? Function(String categoryType, String brandName, String seriesName)?
@@ -1723,7 +1761,8 @@ class _$ProductUpdateImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getAllCategory,
-    TResult Function(String? categoryType)? getSingleCategoryBrands,
+    TResult Function(bool isLoad, String? categoryType)?
+        getSingleCategoryBrands,
     TResult Function(String searchQuery)? brandSearch,
     TResult Function(String searchQuery)? seriesSearch,
     TResult Function(String categoryType, String brandName, String seriesName)?
@@ -1910,7 +1949,8 @@ class _$GetModelsImpl with DiagnosticableTreeMixin implements GetModels {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getAllCategory,
-    required TResult Function(String? categoryType) getSingleCategoryBrands,
+    required TResult Function(bool isLoad, String? categoryType)
+        getSingleCategoryBrands,
     required TResult Function(String searchQuery) brandSearch,
     required TResult Function(String searchQuery) seriesSearch,
     required TResult Function(
@@ -1933,7 +1973,8 @@ class _$GetModelsImpl with DiagnosticableTreeMixin implements GetModels {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getAllCategory,
-    TResult? Function(String? categoryType)? getSingleCategoryBrands,
+    TResult? Function(bool isLoad, String? categoryType)?
+        getSingleCategoryBrands,
     TResult? Function(String searchQuery)? brandSearch,
     TResult? Function(String searchQuery)? seriesSearch,
     TResult? Function(String categoryType, String brandName, String seriesName)?
@@ -1954,7 +1995,8 @@ class _$GetModelsImpl with DiagnosticableTreeMixin implements GetModels {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getAllCategory,
-    TResult Function(String? categoryType)? getSingleCategoryBrands,
+    TResult Function(bool isLoad, String? categoryType)?
+        getSingleCategoryBrands,
     TResult Function(String searchQuery)? brandSearch,
     TResult Function(String searchQuery)? seriesSearch,
     TResult Function(String categoryType, String brandName, String seriesName)?
@@ -2155,7 +2197,8 @@ class _$GetVarientsImpl with DiagnosticableTreeMixin implements GetVarients {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getAllCategory,
-    required TResult Function(String? categoryType) getSingleCategoryBrands,
+    required TResult Function(bool isLoad, String? categoryType)
+        getSingleCategoryBrands,
     required TResult Function(String searchQuery) brandSearch,
     required TResult Function(String searchQuery) seriesSearch,
     required TResult Function(
@@ -2178,7 +2221,8 @@ class _$GetVarientsImpl with DiagnosticableTreeMixin implements GetVarients {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getAllCategory,
-    TResult? Function(String? categoryType)? getSingleCategoryBrands,
+    TResult? Function(bool isLoad, String? categoryType)?
+        getSingleCategoryBrands,
     TResult? Function(String searchQuery)? brandSearch,
     TResult? Function(String searchQuery)? seriesSearch,
     TResult? Function(String categoryType, String brandName, String seriesName)?
@@ -2199,7 +2243,8 @@ class _$GetVarientsImpl with DiagnosticableTreeMixin implements GetVarients {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getAllCategory,
-    TResult Function(String? categoryType)? getSingleCategoryBrands,
+    TResult Function(bool isLoad, String? categoryType)?
+        getSingleCategoryBrands,
     TResult Function(String searchQuery)? brandSearch,
     TResult Function(String searchQuery)? seriesSearch,
     TResult Function(String categoryType, String brandName, String seriesName)?

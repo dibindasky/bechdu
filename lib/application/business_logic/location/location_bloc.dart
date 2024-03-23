@@ -43,6 +43,7 @@ class LocationBloc extends Bloc<LocationEvent, LocationState> {
   }
 
   FutureOr<void> locationLoad(LocationPick event, emit) async {
+    if (state.cityUpdateResponceModel != null && event.isLoad == false) return;
     final loginStatus = await SecureSotrage.getlLogin();
     emit(state.copyWith(isLoading: true, hasError: false));
     final data = await locationRepo.locationPick();

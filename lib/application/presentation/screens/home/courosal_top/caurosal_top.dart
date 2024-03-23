@@ -60,6 +60,7 @@ class _CaurosalViewHomePageOffersState
                             context
                                 .read<CategoryBlocBloc>()
                                 .add(GetSingleCategoryBrands(
+                                  isLoad: true,
                                   categoryType: data[index].mobileLink,
                                 ));
 

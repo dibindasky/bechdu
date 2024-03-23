@@ -18,10 +18,10 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$HomeEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getAllCategory,
+    required TResult Function(bool isLoad) getAllCategory,
     required TResult Function(String category) selectedactegory,
-    required TResult Function() homePageBanners,
-    required TResult Function() getBestSellingProducts,
+    required TResult Function(bool isLoad) homePageBanners,
+    required TResult Function(bool isLoad) getBestSellingProducts,
     required TResult Function(SearchParamModel searchParamModel)
         globalPrductSearch,
     required TResult Function() nextPage,
@@ -29,20 +29,20 @@ mixin _$HomeEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getAllCategory,
+    TResult? Function(bool isLoad)? getAllCategory,
     TResult? Function(String category)? selectedactegory,
-    TResult? Function()? homePageBanners,
-    TResult? Function()? getBestSellingProducts,
+    TResult? Function(bool isLoad)? homePageBanners,
+    TResult? Function(bool isLoad)? getBestSellingProducts,
     TResult? Function(SearchParamModel searchParamModel)? globalPrductSearch,
     TResult? Function()? nextPage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getAllCategory,
+    TResult Function(bool isLoad)? getAllCategory,
     TResult Function(String category)? selectedactegory,
-    TResult Function()? homePageBanners,
-    TResult Function()? getBestSellingProducts,
+    TResult Function(bool isLoad)? homePageBanners,
+    TResult Function(bool isLoad)? getBestSellingProducts,
     TResult Function(SearchParamModel searchParamModel)? globalPrductSearch,
     TResult Function()? nextPage,
     required TResult orElse(),
@@ -104,6 +104,8 @@ abstract class _$$GetAllCategoryImplCopyWith<$Res> {
   factory _$$GetAllCategoryImplCopyWith(_$GetAllCategoryImpl value,
           $Res Function(_$GetAllCategoryImpl) then) =
       __$$GetAllCategoryImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({bool isLoad});
 }
 
 /// @nodoc
@@ -113,67 +115,92 @@ class __$$GetAllCategoryImplCopyWithImpl<$Res>
   __$$GetAllCategoryImplCopyWithImpl(
       _$GetAllCategoryImpl _value, $Res Function(_$GetAllCategoryImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? isLoad = null,
+  }) {
+    return _then(_$GetAllCategoryImpl(
+      isLoad: null == isLoad
+          ? _value.isLoad
+          : isLoad // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$GetAllCategoryImpl implements GetAllCategory {
-  const _$GetAllCategoryImpl();
+  const _$GetAllCategoryImpl({required this.isLoad});
+
+  @override
+  final bool isLoad;
 
   @override
   String toString() {
-    return 'HomeEvent.getAllCategory()';
+    return 'HomeEvent.getAllCategory(isLoad: $isLoad)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$GetAllCategoryImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$GetAllCategoryImpl &&
+            (identical(other.isLoad, isLoad) || other.isLoad == isLoad));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, isLoad);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetAllCategoryImplCopyWith<_$GetAllCategoryImpl> get copyWith =>
+      __$$GetAllCategoryImplCopyWithImpl<_$GetAllCategoryImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getAllCategory,
+    required TResult Function(bool isLoad) getAllCategory,
     required TResult Function(String category) selectedactegory,
-    required TResult Function() homePageBanners,
-    required TResult Function() getBestSellingProducts,
+    required TResult Function(bool isLoad) homePageBanners,
+    required TResult Function(bool isLoad) getBestSellingProducts,
     required TResult Function(SearchParamModel searchParamModel)
         globalPrductSearch,
     required TResult Function() nextPage,
   }) {
-    return getAllCategory();
+    return getAllCategory(isLoad);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getAllCategory,
+    TResult? Function(bool isLoad)? getAllCategory,
     TResult? Function(String category)? selectedactegory,
-    TResult? Function()? homePageBanners,
-    TResult? Function()? getBestSellingProducts,
+    TResult? Function(bool isLoad)? homePageBanners,
+    TResult? Function(bool isLoad)? getBestSellingProducts,
     TResult? Function(SearchParamModel searchParamModel)? globalPrductSearch,
     TResult? Function()? nextPage,
   }) {
-    return getAllCategory?.call();
+    return getAllCategory?.call(isLoad);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getAllCategory,
+    TResult Function(bool isLoad)? getAllCategory,
     TResult Function(String category)? selectedactegory,
-    TResult Function()? homePageBanners,
-    TResult Function()? getBestSellingProducts,
+    TResult Function(bool isLoad)? homePageBanners,
+    TResult Function(bool isLoad)? getBestSellingProducts,
     TResult Function(SearchParamModel searchParamModel)? globalPrductSearch,
     TResult Function()? nextPage,
     required TResult orElse(),
   }) {
     if (getAllCategory != null) {
-      return getAllCategory();
+      return getAllCategory(isLoad);
     }
     return orElse();
   }
@@ -224,7 +251,13 @@ class _$GetAllCategoryImpl implements GetAllCategory {
 }
 
 abstract class GetAllCategory implements HomeEvent {
-  const factory GetAllCategory() = _$GetAllCategoryImpl;
+  const factory GetAllCategory({required final bool isLoad}) =
+      _$GetAllCategoryImpl;
+
+  bool get isLoad;
+  @JsonKey(ignore: true)
+  _$$GetAllCategoryImplCopyWith<_$GetAllCategoryImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -293,10 +326,10 @@ class _$SelectedactegoryImpl implements Selectedactegory {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getAllCategory,
+    required TResult Function(bool isLoad) getAllCategory,
     required TResult Function(String category) selectedactegory,
-    required TResult Function() homePageBanners,
-    required TResult Function() getBestSellingProducts,
+    required TResult Function(bool isLoad) homePageBanners,
+    required TResult Function(bool isLoad) getBestSellingProducts,
     required TResult Function(SearchParamModel searchParamModel)
         globalPrductSearch,
     required TResult Function() nextPage,
@@ -307,10 +340,10 @@ class _$SelectedactegoryImpl implements Selectedactegory {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getAllCategory,
+    TResult? Function(bool isLoad)? getAllCategory,
     TResult? Function(String category)? selectedactegory,
-    TResult? Function()? homePageBanners,
-    TResult? Function()? getBestSellingProducts,
+    TResult? Function(bool isLoad)? homePageBanners,
+    TResult? Function(bool isLoad)? getBestSellingProducts,
     TResult? Function(SearchParamModel searchParamModel)? globalPrductSearch,
     TResult? Function()? nextPage,
   }) {
@@ -320,10 +353,10 @@ class _$SelectedactegoryImpl implements Selectedactegory {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getAllCategory,
+    TResult Function(bool isLoad)? getAllCategory,
     TResult Function(String category)? selectedactegory,
-    TResult Function()? homePageBanners,
-    TResult Function()? getBestSellingProducts,
+    TResult Function(bool isLoad)? homePageBanners,
+    TResult Function(bool isLoad)? getBestSellingProducts,
     TResult Function(SearchParamModel searchParamModel)? globalPrductSearch,
     TResult Function()? nextPage,
     required TResult orElse(),
@@ -394,6 +427,8 @@ abstract class _$$HomePageBannersImplCopyWith<$Res> {
   factory _$$HomePageBannersImplCopyWith(_$HomePageBannersImpl value,
           $Res Function(_$HomePageBannersImpl) then) =
       __$$HomePageBannersImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({bool isLoad});
 }
 
 /// @nodoc
@@ -403,67 +438,92 @@ class __$$HomePageBannersImplCopyWithImpl<$Res>
   __$$HomePageBannersImplCopyWithImpl(
       _$HomePageBannersImpl _value, $Res Function(_$HomePageBannersImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? isLoad = null,
+  }) {
+    return _then(_$HomePageBannersImpl(
+      isLoad: null == isLoad
+          ? _value.isLoad
+          : isLoad // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$HomePageBannersImpl implements HomePageBanners {
-  const _$HomePageBannersImpl();
+  const _$HomePageBannersImpl({required this.isLoad});
+
+  @override
+  final bool isLoad;
 
   @override
   String toString() {
-    return 'HomeEvent.homePageBanners()';
+    return 'HomeEvent.homePageBanners(isLoad: $isLoad)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$HomePageBannersImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$HomePageBannersImpl &&
+            (identical(other.isLoad, isLoad) || other.isLoad == isLoad));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, isLoad);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$HomePageBannersImplCopyWith<_$HomePageBannersImpl> get copyWith =>
+      __$$HomePageBannersImplCopyWithImpl<_$HomePageBannersImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getAllCategory,
+    required TResult Function(bool isLoad) getAllCategory,
     required TResult Function(String category) selectedactegory,
-    required TResult Function() homePageBanners,
-    required TResult Function() getBestSellingProducts,
+    required TResult Function(bool isLoad) homePageBanners,
+    required TResult Function(bool isLoad) getBestSellingProducts,
     required TResult Function(SearchParamModel searchParamModel)
         globalPrductSearch,
     required TResult Function() nextPage,
   }) {
-    return homePageBanners();
+    return homePageBanners(isLoad);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getAllCategory,
+    TResult? Function(bool isLoad)? getAllCategory,
     TResult? Function(String category)? selectedactegory,
-    TResult? Function()? homePageBanners,
-    TResult? Function()? getBestSellingProducts,
+    TResult? Function(bool isLoad)? homePageBanners,
+    TResult? Function(bool isLoad)? getBestSellingProducts,
     TResult? Function(SearchParamModel searchParamModel)? globalPrductSearch,
     TResult? Function()? nextPage,
   }) {
-    return homePageBanners?.call();
+    return homePageBanners?.call(isLoad);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getAllCategory,
+    TResult Function(bool isLoad)? getAllCategory,
     TResult Function(String category)? selectedactegory,
-    TResult Function()? homePageBanners,
-    TResult Function()? getBestSellingProducts,
+    TResult Function(bool isLoad)? homePageBanners,
+    TResult Function(bool isLoad)? getBestSellingProducts,
     TResult Function(SearchParamModel searchParamModel)? globalPrductSearch,
     TResult Function()? nextPage,
     required TResult orElse(),
   }) {
     if (homePageBanners != null) {
-      return homePageBanners();
+      return homePageBanners(isLoad);
     }
     return orElse();
   }
@@ -514,7 +574,13 @@ class _$HomePageBannersImpl implements HomePageBanners {
 }
 
 abstract class HomePageBanners implements HomeEvent {
-  const factory HomePageBanners() = _$HomePageBannersImpl;
+  const factory HomePageBanners({required final bool isLoad}) =
+      _$HomePageBannersImpl;
+
+  bool get isLoad;
+  @JsonKey(ignore: true)
+  _$$HomePageBannersImplCopyWith<_$HomePageBannersImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -523,6 +589,8 @@ abstract class _$$GetBestSellingProductsImplCopyWith<$Res> {
           _$GetBestSellingProductsImpl value,
           $Res Function(_$GetBestSellingProductsImpl) then) =
       __$$GetBestSellingProductsImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({bool isLoad});
 }
 
 /// @nodoc
@@ -533,68 +601,92 @@ class __$$GetBestSellingProductsImplCopyWithImpl<$Res>
       _$GetBestSellingProductsImpl _value,
       $Res Function(_$GetBestSellingProductsImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? isLoad = null,
+  }) {
+    return _then(_$GetBestSellingProductsImpl(
+      isLoad: null == isLoad
+          ? _value.isLoad
+          : isLoad // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$GetBestSellingProductsImpl implements GetBestSellingProducts {
-  const _$GetBestSellingProductsImpl();
+  const _$GetBestSellingProductsImpl({required this.isLoad});
+
+  @override
+  final bool isLoad;
 
   @override
   String toString() {
-    return 'HomeEvent.getBestSellingProducts()';
+    return 'HomeEvent.getBestSellingProducts(isLoad: $isLoad)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$GetBestSellingProductsImpl);
+            other is _$GetBestSellingProductsImpl &&
+            (identical(other.isLoad, isLoad) || other.isLoad == isLoad));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, isLoad);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetBestSellingProductsImplCopyWith<_$GetBestSellingProductsImpl>
+      get copyWith => __$$GetBestSellingProductsImplCopyWithImpl<
+          _$GetBestSellingProductsImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getAllCategory,
+    required TResult Function(bool isLoad) getAllCategory,
     required TResult Function(String category) selectedactegory,
-    required TResult Function() homePageBanners,
-    required TResult Function() getBestSellingProducts,
+    required TResult Function(bool isLoad) homePageBanners,
+    required TResult Function(bool isLoad) getBestSellingProducts,
     required TResult Function(SearchParamModel searchParamModel)
         globalPrductSearch,
     required TResult Function() nextPage,
   }) {
-    return getBestSellingProducts();
+    return getBestSellingProducts(isLoad);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getAllCategory,
+    TResult? Function(bool isLoad)? getAllCategory,
     TResult? Function(String category)? selectedactegory,
-    TResult? Function()? homePageBanners,
-    TResult? Function()? getBestSellingProducts,
+    TResult? Function(bool isLoad)? homePageBanners,
+    TResult? Function(bool isLoad)? getBestSellingProducts,
     TResult? Function(SearchParamModel searchParamModel)? globalPrductSearch,
     TResult? Function()? nextPage,
   }) {
-    return getBestSellingProducts?.call();
+    return getBestSellingProducts?.call(isLoad);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getAllCategory,
+    TResult Function(bool isLoad)? getAllCategory,
     TResult Function(String category)? selectedactegory,
-    TResult Function()? homePageBanners,
-    TResult Function()? getBestSellingProducts,
+    TResult Function(bool isLoad)? homePageBanners,
+    TResult Function(bool isLoad)? getBestSellingProducts,
     TResult Function(SearchParamModel searchParamModel)? globalPrductSearch,
     TResult Function()? nextPage,
     required TResult orElse(),
   }) {
     if (getBestSellingProducts != null) {
-      return getBestSellingProducts();
+      return getBestSellingProducts(isLoad);
     }
     return orElse();
   }
@@ -645,7 +737,13 @@ class _$GetBestSellingProductsImpl implements GetBestSellingProducts {
 }
 
 abstract class GetBestSellingProducts implements HomeEvent {
-  const factory GetBestSellingProducts() = _$GetBestSellingProductsImpl;
+  const factory GetBestSellingProducts({required final bool isLoad}) =
+      _$GetBestSellingProductsImpl;
+
+  bool get isLoad;
+  @JsonKey(ignore: true)
+  _$$GetBestSellingProductsImplCopyWith<_$GetBestSellingProductsImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -714,10 +812,10 @@ class _$GlobalPrductSearchImpl implements GlobalPrductSearch {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getAllCategory,
+    required TResult Function(bool isLoad) getAllCategory,
     required TResult Function(String category) selectedactegory,
-    required TResult Function() homePageBanners,
-    required TResult Function() getBestSellingProducts,
+    required TResult Function(bool isLoad) homePageBanners,
+    required TResult Function(bool isLoad) getBestSellingProducts,
     required TResult Function(SearchParamModel searchParamModel)
         globalPrductSearch,
     required TResult Function() nextPage,
@@ -728,10 +826,10 @@ class _$GlobalPrductSearchImpl implements GlobalPrductSearch {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getAllCategory,
+    TResult? Function(bool isLoad)? getAllCategory,
     TResult? Function(String category)? selectedactegory,
-    TResult? Function()? homePageBanners,
-    TResult? Function()? getBestSellingProducts,
+    TResult? Function(bool isLoad)? homePageBanners,
+    TResult? Function(bool isLoad)? getBestSellingProducts,
     TResult? Function(SearchParamModel searchParamModel)? globalPrductSearch,
     TResult? Function()? nextPage,
   }) {
@@ -741,10 +839,10 @@ class _$GlobalPrductSearchImpl implements GlobalPrductSearch {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getAllCategory,
+    TResult Function(bool isLoad)? getAllCategory,
     TResult Function(String category)? selectedactegory,
-    TResult Function()? homePageBanners,
-    TResult Function()? getBestSellingProducts,
+    TResult Function(bool isLoad)? homePageBanners,
+    TResult Function(bool isLoad)? getBestSellingProducts,
     TResult Function(SearchParamModel searchParamModel)? globalPrductSearch,
     TResult Function()? nextPage,
     required TResult orElse(),
@@ -849,10 +947,10 @@ class _$NextPageImpl implements NextPage {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getAllCategory,
+    required TResult Function(bool isLoad) getAllCategory,
     required TResult Function(String category) selectedactegory,
-    required TResult Function() homePageBanners,
-    required TResult Function() getBestSellingProducts,
+    required TResult Function(bool isLoad) homePageBanners,
+    required TResult Function(bool isLoad) getBestSellingProducts,
     required TResult Function(SearchParamModel searchParamModel)
         globalPrductSearch,
     required TResult Function() nextPage,
@@ -863,10 +961,10 @@ class _$NextPageImpl implements NextPage {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getAllCategory,
+    TResult? Function(bool isLoad)? getAllCategory,
     TResult? Function(String category)? selectedactegory,
-    TResult? Function()? homePageBanners,
-    TResult? Function()? getBestSellingProducts,
+    TResult? Function(bool isLoad)? homePageBanners,
+    TResult? Function(bool isLoad)? getBestSellingProducts,
     TResult? Function(SearchParamModel searchParamModel)? globalPrductSearch,
     TResult? Function()? nextPage,
   }) {
@@ -876,10 +974,10 @@ class _$NextPageImpl implements NextPage {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getAllCategory,
+    TResult Function(bool isLoad)? getAllCategory,
     TResult Function(String category)? selectedactegory,
-    TResult Function()? homePageBanners,
-    TResult Function()? getBestSellingProducts,
+    TResult Function(bool isLoad)? homePageBanners,
+    TResult Function(bool isLoad)? getBestSellingProducts,
     TResult Function(SearchParamModel searchParamModel)? globalPrductSearch,
     TResult Function()? nextPage,
     required TResult orElse(),

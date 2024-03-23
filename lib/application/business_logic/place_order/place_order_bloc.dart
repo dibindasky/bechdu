@@ -274,10 +274,10 @@ class PlaceOrderBloc extends Bloc<PlaceOrderEvent, PlaceOrderState> {
   }
 
   FutureOr<void> removeAllFeildData(RemoveAllFieldData event, emit) {
-    nameController.text = '';
-    emailController.text = '';
-    numberController.text = '';
-    additionalNumberController.text = '';
+    // nameController.text = '';
+    // emailController.text = '';
+    // numberController.text = '';
+    // additionalNumberController.text = '';
     promocodeController.text = '';
     upiIdController.text = '';
   }

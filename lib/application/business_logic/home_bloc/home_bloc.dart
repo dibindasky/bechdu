@@ -87,7 +87,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
   FutureOr<void> getBestSellingProducts(
       GetBestSellingProducts event, emit) async {
-    if (state.bestSellingProductsResponceModel != null) return;
+    if (state.bestSellingProductsResponceModel != null && event.isLoad == false)
+      return;
     emit(state.copyWith(isLoading: true, hasError: false));
     final data = await homeRepository.getBestSellingProducts();
 
@@ -109,7 +110,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   }
 
   FutureOr<void> homePageBanners(HomePageBanners event, emit) async {
-    if (state.homeBannerResponceModel != null) return;
+    if (state.homeBannerResponceModel != null && event.isLoad == false) return;
     emit(state.copyWith(isLoading: true, hasError: false));
     final data = await homeRepository.getbanners();
     data.fold(
@@ -138,7 +139,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     GetAllCategory event,
     Emitter<HomeState> emit,
   ) async {
-    if (state.getCategoryResponceModel != null) return;
+    if (state.getCategoryResponceModel != null && event.isLoad == false) return;
     emit(state.copyWith(isLoading: true, hasError: false));
     final data = await homeRepository.getAllCategory();
     data.fold(

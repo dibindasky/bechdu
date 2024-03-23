@@ -130,6 +130,7 @@ class _UserInfoFieldsState extends State<UserInfoFields> {
               //Additional Mobile Number field
               context.read<ProfileBloc>().isVisible
                   ? TTextFormField(
+                      maxlegth: 10,
                       validator: (value) {
                         if (value != null && value.isNotEmpty) {
                           if (value.length != 10 ||

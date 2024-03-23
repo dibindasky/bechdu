@@ -110,6 +110,7 @@ class _PersonalDetailsState extends State<PersonalDetails> {
               ),
             ),
             TTextFormField(
+              maxlegth: 10,
               validator: (value) {
                 if (value != null && value.isNotEmpty) {
                   if (value.length != 10 || !isValidPhoneNumber(value)) {

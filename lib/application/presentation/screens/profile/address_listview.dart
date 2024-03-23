@@ -9,7 +9,6 @@ import 'package:beachdu/application/presentation/utils/loading_indicators/loadin
 import 'package:beachdu/domain/model/order_model/order_placed_request_model/promo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../../../domain/model/order_model/order_placed_request_model/user.dart';
 
 class AddressListView extends StatefulWidget {
@@ -31,7 +30,7 @@ class _AddressListViewState extends State<AddressListView> {
     return BlocBuilder<ProfileBloc, ProfileState>(
       builder: (context, state) {
         if (state.isLoading) {
-          return const LoadingAnimation(width: 30);
+          return LoadingAnimation(width: 30);
         }
         if (state.hasError) {
           return IconButton(

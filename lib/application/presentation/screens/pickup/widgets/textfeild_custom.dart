@@ -66,11 +66,9 @@ class TTextFormField extends StatelessWidget {
                   return 'Phone number should have exactly 10 digits';
                 }
               }
-
               if (text == 'Enter UPI id' && !isValidUPI(value)) {
                 return 'Please enter a UPI id';
               }
-
               return null;
             },
         controller: controller,

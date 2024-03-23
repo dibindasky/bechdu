@@ -89,7 +89,7 @@ class _GlobalProductSearchState extends State<GlobalProductSearch> {
                   ),
                   itemBuilder: (context, index) {
                     if (state.loadMore && index == state.products!.length) {
-                      return const Center(child: LoadingAnimation(width: 100));
+                      return Center(child: LoadingAnimation(width: 100));
                     }
                     String url =
                         "${ApiEndPoints.baseUrlImagePath}${Uri.encodeComponent(

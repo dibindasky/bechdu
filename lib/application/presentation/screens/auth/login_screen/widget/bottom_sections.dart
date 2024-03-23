@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 import 'package:beachdu/application/business_logic/auth/auth_bloc.dart';
 import 'package:beachdu/application/presentation/routes/routes.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
@@ -73,12 +74,14 @@ class BottomSections extends StatelessWidget {
                 context: context,
                 message: state.message ?? 'OTP Send Successfully',
               );
+              navigate(context);
             }
           },
           builder: (context, state) {
             return ElevatedButtonLong(
               wdth: sWidth * .7,
               onPressed: () {
+                log('ontap');
                 login(context);
               },
               text: state.load ? 'Redirecting' : 'Get OTP',
@@ -115,19 +118,8 @@ class BottomSections extends StatelessWidget {
           color: kRed,
         );
       } else {
-        Timer(const Duration(microseconds: 500), () {
-          //Login event calling
-          LoginModel loginModel = LoginModel(mobileNumber: phoneNumber);
-          context
-              .read<AuthBloc>()
-              .add(AuthEvent.otpSend(loginModel: loginModel));
-
-          Navigator.pushReplacementNamed(
-            context,
-            Routes.otpVerification,
-            arguments: loginWay,
-          );
-        });
+        LoginModel loginModel = LoginModel(mobileNumber: phoneNumber);
+        context.read<AuthBloc>().add(AuthEvent.otpSend(loginModel: loginModel));
       }
     } else {
       showSnack(
@@ -136,5 +128,15 @@ class BottomSections extends StatelessWidget {
         color: kRed,
       );
     }
+  }
+
+  navigate(BuildContext context) {
+    //Login event calling
+
+    Navigator.pushReplacementNamed(
+      context,
+      Routes.otpVerification,
+      arguments: loginWay,
+    );
   }
 }

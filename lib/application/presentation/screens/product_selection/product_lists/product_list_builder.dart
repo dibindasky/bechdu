@@ -8,7 +8,6 @@ import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/application/presentation/utils/skeltons/skelton.dart';
 import 'package:beachdu/domain/model/get_products_respoce_model/product.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
 
@@ -70,20 +69,23 @@ class ProductListViewBuilder extends StatelessWidget {
                 ),
               ),
               Positioned(
-                  top: 0,
-                  right: 10,
-                  bottom: 0,
-                  child: InkWell(
-                    onTap: () {
-                      brandSeriesProductValueNotifier.value = 1;
-                      brandSeriesProductValueNotifier.notifyListeners();
-                    },
-                    child: const Icon(
-                      size: 19,
-                      Icons.clear,
-                      color: kRed,
-                    ),
-                  ))
+                top: 0,
+                right: 10,
+                bottom: 0,
+                child: InkWell(
+                  onTap: () {
+                    brandSeriesProductValueNotifier.value = 1;
+                    brandSeriesProductValueNotifier.notifyListeners();
+                    context.read<CategoryBlocBloc>().modelFilter = null;
+                    context.read<CategoryBlocBloc>().varientFilter = null;
+                  },
+                  child: const Icon(
+                    size: 19,
+                    Icons.clear,
+                    color: kRed,
+                  ),
+                ),
+              ),
             ],
           ),
           kHeight20,

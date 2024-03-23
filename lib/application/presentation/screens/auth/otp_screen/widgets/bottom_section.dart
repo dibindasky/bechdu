@@ -90,7 +90,7 @@ class _BottomSectionState extends State<BottomSection> {
           ],
         ),
         if (!_canResend)
-         const Row(
+          const Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text('Please wait for '),
@@ -100,7 +100,7 @@ class _BottomSectionState extends State<BottomSection> {
               Text(' before resending OTP')
             ],
           ),
-       const SizedBox(height: 50),
+        const SizedBox(height: 50),
         kHeight50,
         widget.loginWay == LoginWay.fromProfile ||
                 widget.loginWay == LoginWay.fromQuestionPick
@@ -178,7 +178,7 @@ class _BottomSectionState extends State<BottomSection> {
                       );
                     }
                   },
-                  text: state.isLoading ? 'Verifying' : 'Submit',
+                  text: state.isLoading ? 'Loading...' : 'Submit',
                 );
               },
             );

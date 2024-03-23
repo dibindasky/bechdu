@@ -6,6 +6,7 @@ class QuestionTabState with _$QuestionTabState {
     required bool isLoading,
     required bool hasError,
     required bool done,
+    required bool lastChecking,
     String? message,
     Product? product,
     String? category,
@@ -25,6 +26,7 @@ class QuestionTabState with _$QuestionTabState {
   factory QuestionTabState.initial() => const QuestionTabState(
         isLoading: false,
         hasError: false,
+        lastChecking: false,
         done: false,
         answerCount: 0,
         selectedTabIndex: 0,

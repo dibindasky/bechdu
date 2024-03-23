@@ -44,7 +44,7 @@ class RowIconsValueListanable extends StatelessWidget {
           if (item == PickupDetailContainers.address) {
             context
                 .read<LocationBloc>()
-                .add(const LocationEvent.locationPick());
+                .add(const LocationEvent.locationPick(isLoad: true));
           }
           pickupDetailChangeNotifier.value = item;
         },

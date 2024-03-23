@@ -3,20 +3,18 @@ import 'package:flutter/material.dart';
 import 'package:loading_indicator/loading_indicator.dart';
 
 class LoadingAnimation extends StatelessWidget {
-  const LoadingAnimation({
-    super.key,
-    required this.width,
-  });
+  LoadingAnimation({super.key, required this.width, this.color});
 
   final double width;
+  Color? color;
 
   @override
   Widget build(BuildContext context) {
     return Center(
       child: SizedBox(
         width: width,
-        child: const LoadingIndicator(
-          colors: [kGreenPrimary],
+        child: LoadingIndicator(
+          colors: [color ?? kGreenPrimary],
           indicatorType: Indicator.ballPulse,
         ),
       ),

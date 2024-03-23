@@ -3,9 +3,7 @@ import 'package:beachdu/application/presentation/screens/product_selection/brand
 import 'package:beachdu/application/presentation/screens/product_selection/search_field/brand_search_field.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/application/presentation/utils/loading_indicators/loading_indicator.dart';
-import 'package:beachdu/application/presentation/utils/refresh_indicator_custom.dart';
 import 'package:beachdu/application/presentation/utils/skeltons/skelton.dart';
-import 'package:beachdu/domain/core/failure/failure.dart';
 import 'package:beachdu/domain/model/category_model/single_category_brands_responce_model/brands.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -27,7 +25,7 @@ class BrandListviewBuilder extends StatelessWidget {
         } else if (state.hasError) {
           return SizedBox(
             height: sHeight,
-            child: const Center(
+            child: Center(
               child: LoadingAnimation(width: 30),
             ),
           );

@@ -2,9 +2,11 @@ part of 'location_bloc.dart';
 
 @freezed
 class LocationEvent with _$LocationEvent {
-  const factory LocationEvent.locationPick() = LocationPick;
-  const factory LocationEvent.locationSearch({required String searchQuery}) =
-      LocationSearch;
+  const factory LocationEvent.locationPick({required bool isLoad}) =
+      LocationPick;
+  const factory LocationEvent.locationSearch({
+    required String searchQuery,
+  }) = LocationSearch;
   const factory LocationEvent.locationUpdate({
     required CityUpdateRequestModel cityUpdateRequestModel,
   }) = LocationUpdate;

@@ -9,6 +9,7 @@ import 'package:beachdu/application/presentation/screens/product_selection/produ
 import 'package:beachdu/application/presentation/screens/questions/tabs/answer_index_changer.dart';
 import 'package:beachdu/application/presentation/screens/questions/tabs/requote_tabs.dart';
 import 'package:beachdu/application/presentation/screens/questions/tabs/requote_answer_session.dart';
+import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/application/presentation/utils/enums/type_display.dart';
 import 'package:beachdu/application/presentation/utils/loading_indicators/loading_indicator.dart';
@@ -45,9 +46,9 @@ class QuestionTabs extends StatelessWidget {
             child: BlocBuilder<QuestionTabBloc, QuestionTabState>(
               builder: (context, questionTabBloc) {
                 if (questionTabBloc.isLoading) {
-                  return const LoadingAnimation(width: 50);
+                  return LoadingAnimation(width: 50);
                 } else if (questionTabBloc.getQuestionModel == null) {
-                  return const LoadingAnimation(width: 50);
+                  return const CircularProgressIndicator(color: kGreenPrimary);
                 }
                 return const Column(
                   children: [
@@ -125,116 +126,3 @@ class QuestionTabs extends StatelessWidget {
         );
   }
 }
-// Column(
-//children: [
-//  const TopImage(fromWhere: FromWhere.questionScreen),
-//  kHeight10,
-//  const RequoteTabs(),
-//  kHeight20,
-//  const RequoteAnswerSessio(),
-//  kHeight10,
-// BlocBuilder<AuthBloc, AuthState>(
-//   builder: (context, state) {
-//     return CustomButton(
-//       onPressed: () async {
-//         final currentSection =
-//             questionTabBloc.getQuestionModel!.sections![
-//                 questionTabBloc.selectedTabIndex];
-//         final criteria = currentSection.criteria;
-//         if (questionTabBloc.selectedTabIndex ==
-//             questionTabBloc.getQuestionModel!.sections!
-//                     .length -
-//                 1) {
-//           if (criteria == 'all') {
-//             if (questionTabBloc.answerCount ==
-//                 currentSection.options!.length) {
-//               await loginOrNot(
-//                   context, questionTabBloc, state);
-//             } else {
-//               showSnack(
-//                   context: context,
-//                   message: 'Select all options',
-//                   color: kRed);
-//             }
-//           } else if (criteria == 'some') {
-//             if (questionTabBloc.answerCount >= 1) {
-//               await loginOrNot(
-//                   context, questionTabBloc, state);
-//             } else {
-//               showSnack(
-//                 context: context,
-//                 message: 'Select at least one option',
-//                 color: kRed,
-//               );
-//             }
-//           } else if (criteria == 'one') {
-//             if (questionTabBloc.answerCount == 1) {
-//               await loginOrNot(
-//                   context, questionTabBloc, state);
-//             } else {
-//               showSnack(
-//                 context: context,
-//                 message: 'Select only one option',
-//                 color: kRed,
-//               );
-//             }
-//           } else {
-//             await loginOrNot(
-//               context,
-//               questionTabBloc,
-//               state,
-//             );
-//           }
-//         }
-//         if (criteria == 'all') {
-//           if (questionTabBloc.answerCount ==
-//               currentSection.options!.length) {
-//             context
-//                 .read<QuestionTabBloc>()
-//                 .add(const TabChange());
-//           } else {
-//             showSnack(
-//                 context: context,
-//                 message: 'Select all options',
-//                 color: kRed);
-//           }
-//         } else if (criteria == 'some') {
-//           if (questionTabBloc.answerCount >= 1) {
-//             context
-//                 .read<QuestionTabBloc>()
-//                 .add(const TabChange());
-//           } else {
-//             showSnack(
-//                 context: context,
-//                 message: 'Select at least one option',
-//                 color: kRed);
-//           }
-//         } else if (criteria == 'one') {
-//           if (questionTabBloc.answerCount == 1) {
-//             context
-//                 .read<QuestionTabBloc>()
-//                 .add(const TabChange());
-//           } else {
-//             showSnack(
-//                 context: context,
-//                 message: 'Select atleast one option',
-//                 color: kRed);
-//           }
-//         } else {
-//           context
-//               .read<QuestionTabBloc>()
-//               .add(const TabChange());
-//         }
-//       },
-//       text: questionTabBloc.selectedTabIndex !=
-//               questionTabBloc.getQuestionModel!
-//                       .sections!.length -
-//                   1
-//           ? 'Continue'
-//           : 'Proceed',
-//     );
-//   },
-// ),
-//  kHeight10,
-// ],
-// );

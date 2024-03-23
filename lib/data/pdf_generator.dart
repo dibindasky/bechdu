@@ -1,9 +1,8 @@
 import 'dart:convert';
-import 'dart:developer';
 import 'dart:io';
-import 'package:dio/dio.dart';
-import 'package:downloads_path_provider_28/downloads_path_provider_28.dart';
+import 'package:flutter/services.dart';
 import 'package:open_file/open_file.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 Future<bool> takePermission() async {
@@ -20,24 +19,25 @@ Future<bool> takePermission() async {
 
 Future<void> pdfGenerator(String base64String) async {
   try {
-    var dir = await DownloadsPathProvider.downloadsDirectory;
+    var dir =
+        await getExternalStorageDirectory(); // Use getExternalStorageDirectory() instead of DownloadsPathProvider
     if (dir != null) {
-      String savename = "file.pdf";
-      String savePath = dir.path + "/$savename";
-      log(savePath);
-      try {
-        var bytes = base64Decode(base64String.replaceAll("\n", ''));
+      String savePath =
+          '${dir.path}/file.pdf'; // Simplify the savePath generation
+      print('Saving PDF to: $savePath');
 
-        final file = File(savePath);
-        await file.writeAsBytes(bytes);
-        print('PDF Path: ${file.path}');
-        await OpenFile.open(file.path);
-      } on DioException catch (e) {
-        log(e.message.toString());
-      }
+      var bytes = base64.decode(base64String.replaceAll(
+          "\n", '')); // Use base64.decode instead of base64Decode
+
+      final file = File(savePath);
+      await file.writeAsBytes(bytes);
+      print('PDF Path: ${file.path}');
+      await OpenFile.open(file.path);
     } else {
-      log("No permission to read and write.");
+      print("No permission to read and write.");
     }
+  } on PlatformException catch (e) {
+    print('Platform Exception: ${e.message}');
   } catch (e) {
     print('Error generating PDF: $e');
   }

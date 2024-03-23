@@ -207,35 +207,41 @@ class QuestionTabBloc extends Bloc<QuestionTabEvent, QuestionTabState> {
         state.selectedAnswers[state.sections![state.selectedTabIndex].heading]!
                 .length !=
             state.sections![state.selectedTabIndex].options!.length) {
-      emit(state.copyWith(message: 'must choose all options', hasError: true));
+      emit(state.copyWith(
+        message: 'must choose all options',
+        hasError: true,
+        lastChecking: true,
+      ));
     } else if (state.sections![state.selectedTabIndex].criteria == 'one' &&
         state.selectedAnswers[state.sections![state.selectedTabIndex].heading]!
                 .length !=
             1) {
-      emit(state.copyWith(message: 'must choose one option', hasError: true));
+      emit(state.copyWith(
+          message: 'must choose one option',
+          hasError: true,
+          lastChecking: true));
     } else if (state.sections![state.selectedTabIndex].criteria == 'some' &&
         state.selectedAnswers[state.sections![state.selectedTabIndex].heading]!
             .isEmpty) {
-      emit(
-          state.copyWith(message: 'select atleast one option', hasError: true));
+      emit(state.copyWith(
+        message: 'select atleast one option',
+        hasError: true,
+        lastChecking: true,
+      ));
     } else if (state.selectedTabIndex != state.sections!.length - 1) {
       emit(state.copyWith(
-          message: null, hasError: false, selectedTabIndex: event.index));
+        message: null,
+        hasError: false,
+        selectedTabIndex: event.index,
+        lastChecking: true,
+      ));
+    } else if (state.selectedTabIndex == state.sections!.length - 1) {
+      emit(state.copyWith(
+        message: null,
+        hasError: false,
+        lastChecking: false,
+      ));
     }
-    //else if (state.selectedTabIndex == state.sections!.length - 1) {
-    //   final login = await SecureSotrage.getlLogin();
-    //   if (login == true) {
-    //     // ProductDetails productDetails=ProductDetails(name: ,slug: ,options: ,price: ,);
-    //     // AbandendOrderRequestModel abandendOrderRequestModel =
-    //     //AbandendOrderRequestModel(productDetails: productDetails);
-    //     // add(
-    //     //   QuestionTabEvent.getBasePrice(
-    //     //       abandendOrderRequestModel: abandendOrderRequestModel),
-    //     // );
-    //     // secondtabScreensNotifier.value = 2;
-    //     // secondtabScreensNotifier.notifyListeners();
-    //   }
-    //}
   }
 
   FutureOr<void> getQuestions(GetQuestions event, emit) async {
@@ -263,6 +269,7 @@ class QuestionTabBloc extends Bloc<QuestionTabEvent, QuestionTabState> {
         isLoading: false,
         selectedAnswers: map,
         hasError: false,
+        lastChecking: true,
         getQuestionModel: r,
         product: event.product,
       ));
@@ -315,6 +322,7 @@ class QuestionTabBloc extends Bloc<QuestionTabEvent, QuestionTabState> {
       emit(state.copyWith(
         hasError: false,
         isLoading: false,
+        lastChecking: true,
         basePriceModelResponce: successResponce,
         selectedOption: newList,
       ));
@@ -347,9 +355,14 @@ class QuestionTabBloc extends Bloc<QuestionTabEvent, QuestionTabState> {
     final number = await SecureSotrage.getNumber();
     final location = await SecureSotrage.getSelectedLocation();
     final pincode = await SecureSotrage.getSelectedPincode();
+    List<SelectedOption> list = [];
+    for (var element in state.sections!) {
+      list.addAll(state.selectedAnswers[element.heading]!);
+    }
     event.abandendOrderRequestModel.abendendOrderUser!.phone = number;
     event.abandendOrderRequestModel.abendendOrderUser!.city = location;
     event.abandendOrderRequestModel.abendendOrderUser!.pincode = pincode;
+    event.abandendOrderRequestModel.productDetails!.options = list;
     final data = await questionRepo.abandendOrder(
       abandendOrderRequestModel: event.abandendOrderRequestModel,
     );
@@ -370,7 +383,7 @@ class QuestionTabBloc extends Bloc<QuestionTabEvent, QuestionTabState> {
           abandendOrderResponceModel: abandendOrderResponceModel,
         ),
       );
-      log('abandentOrder forth');
+      log('abandentOrder complete');
     });
   }
 }

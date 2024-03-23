@@ -3423,6 +3423,7 @@ mixin _$QuestionTabState {
   bool get isLoading => throw _privateConstructorUsedError;
   bool get hasError => throw _privateConstructorUsedError;
   bool get done => throw _privateConstructorUsedError;
+  bool get lastChecking => throw _privateConstructorUsedError;
   String? get message => throw _privateConstructorUsedError;
   Product? get product => throw _privateConstructorUsedError;
   String? get category => throw _privateConstructorUsedError;
@@ -3457,6 +3458,7 @@ abstract class $QuestionTabStateCopyWith<$Res> {
       {bool isLoading,
       bool hasError,
       bool done,
+      bool lastChecking,
       String? message,
       Product? product,
       String? category,
@@ -3489,6 +3491,7 @@ class _$QuestionTabStateCopyWithImpl<$Res, $Val extends QuestionTabState>
     Object? isLoading = null,
     Object? hasError = null,
     Object? done = null,
+    Object? lastChecking = null,
     Object? message = freezed,
     Object? product = freezed,
     Object? category = freezed,
@@ -3516,6 +3519,10 @@ class _$QuestionTabStateCopyWithImpl<$Res, $Val extends QuestionTabState>
       done: null == done
           ? _value.done
           : done // ignore: cast_nullable_to_non_nullable
+              as bool,
+      lastChecking: null == lastChecking
+          ? _value.lastChecking
+          : lastChecking // ignore: cast_nullable_to_non_nullable
               as bool,
       message: freezed == message
           ? _value.message
@@ -3589,6 +3596,7 @@ abstract class _$$InitialImplCopyWith<$Res>
       {bool isLoading,
       bool hasError,
       bool done,
+      bool lastChecking,
       String? message,
       Product? product,
       String? category,
@@ -3619,6 +3627,7 @@ class __$$InitialImplCopyWithImpl<$Res>
     Object? isLoading = null,
     Object? hasError = null,
     Object? done = null,
+    Object? lastChecking = null,
     Object? message = freezed,
     Object? product = freezed,
     Object? category = freezed,
@@ -3646,6 +3655,10 @@ class __$$InitialImplCopyWithImpl<$Res>
       done: null == done
           ? _value.done
           : done // ignore: cast_nullable_to_non_nullable
+              as bool,
+      lastChecking: null == lastChecking
+          ? _value.lastChecking
+          : lastChecking // ignore: cast_nullable_to_non_nullable
               as bool,
       message: freezed == message
           ? _value.message
@@ -3714,6 +3727,7 @@ class _$InitialImpl implements _Initial {
       {required this.isLoading,
       required this.hasError,
       required this.done,
+      required this.lastChecking,
       this.message,
       this.product,
       this.category,
@@ -3739,6 +3753,8 @@ class _$InitialImpl implements _Initial {
   final bool hasError;
   @override
   final bool done;
+  @override
+  final bool lastChecking;
   @override
   final String? message;
   @override
@@ -3797,7 +3813,7 @@ class _$InitialImpl implements _Initial {
 
   @override
   String toString() {
-    return 'QuestionTabState(isLoading: $isLoading, hasError: $hasError, done: $done, message: $message, product: $product, category: $category, slug: $slug, answerCount: $answerCount, basePriceModelResponce: $basePriceModelResponce, selectedOption: $selectedOption, getQuestionModel: $getQuestionModel, newList: $newList, getProductsResponceModel: $getProductsResponceModel, selectedTabIndex: $selectedTabIndex, abandendOrderResponceModel: $abandendOrderResponceModel, sections: $sections, selectedAnswers: $selectedAnswers)';
+    return 'QuestionTabState(isLoading: $isLoading, hasError: $hasError, done: $done, lastChecking: $lastChecking, message: $message, product: $product, category: $category, slug: $slug, answerCount: $answerCount, basePriceModelResponce: $basePriceModelResponce, selectedOption: $selectedOption, getQuestionModel: $getQuestionModel, newList: $newList, getProductsResponceModel: $getProductsResponceModel, selectedTabIndex: $selectedTabIndex, abandendOrderResponceModel: $abandendOrderResponceModel, sections: $sections, selectedAnswers: $selectedAnswers)';
   }
 
   @override
@@ -3810,6 +3826,8 @@ class _$InitialImpl implements _Initial {
             (identical(other.hasError, hasError) ||
                 other.hasError == hasError) &&
             (identical(other.done, done) || other.done == done) &&
+            (identical(other.lastChecking, lastChecking) ||
+                other.lastChecking == lastChecking) &&
             (identical(other.message, message) || other.message == message) &&
             (identical(other.product, product) || other.product == product) &&
             (identical(other.category, category) ||
@@ -3844,6 +3862,7 @@ class _$InitialImpl implements _Initial {
       isLoading,
       hasError,
       done,
+      lastChecking,
       message,
       product,
       category,
@@ -3871,6 +3890,7 @@ abstract class _Initial implements QuestionTabState {
           {required final bool isLoading,
           required final bool hasError,
           required final bool done,
+          required final bool lastChecking,
           final String? message,
           final Product? product,
           final String? category,
@@ -3893,6 +3913,8 @@ abstract class _Initial implements QuestionTabState {
   bool get hasError;
   @override
   bool get done;
+  @override
+  bool get lastChecking;
   @override
   String? get message;
   @override

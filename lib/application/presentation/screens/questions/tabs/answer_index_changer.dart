@@ -1,8 +1,4 @@
 // ignore_for_file: use_build_context_synchronously
-
-import 'dart:developer';
-
-import 'package:beachdu/application/business_logic/auth/auth_bloc.dart';
 import 'package:beachdu/application/business_logic/brands_bloc/category_bloc_bloc.dart';
 import 'package:beachdu/application/business_logic/question_tab/question_tab_bloc.dart';
 import 'package:beachdu/application/presentation/routes/routes.dart';
@@ -25,17 +21,18 @@ class AnswerIndexChanger extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        BlocBuilder<QuestionTabBloc, QuestionTabState>(
+        BlocConsumer<QuestionTabBloc, QuestionTabState>(
+          listener: (context, state) {
+            if (state.lastChecking == false) {
+              loginOrNot(context, state);
+            }
+          },
           builder: (context, state) {
             return StatusColoredBox(
               onTap: () {
                 context.read<QuestionTabBloc>().add(
                     QuestionTabEvent.changeIndex(
                         index: state.selectedTabIndex + 1));
-                if (state.selectedTabIndex == state.sections!.length - 1 &&
-                    state.hasError == false) {
-                  loginOrNot(context, state);
-                }
               },
               text: 'Continue',
               color: kGreenPrimary,

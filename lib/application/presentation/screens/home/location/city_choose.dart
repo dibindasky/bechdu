@@ -16,11 +16,6 @@ class ScreenLocations extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      context
-          .read<LocationBloc>()
-          .add(const LocationEvent.locationSearch(searchQuery: ''));
-    });
     return GestureDetector(
       onTap: () {
         FocusScopeNode focusScopeNode = FocusScope.of(context);
@@ -40,7 +35,7 @@ class ScreenLocations extends StatelessWidget {
             child: BlocBuilder<LocationBloc, LocationState>(
               builder: (context, state) {
                 if (state.isLoading) {
-                  return const Align(
+                  return Align(
                     alignment: Alignment.center,
                     child: LoadingAnimation(width: 50),
                   );
@@ -106,93 +101,85 @@ class ScreenLocations extends StatelessWidget {
                               return const Center(
                                 child: Text('Some error'),
                               );
-                            } else {
-                              if (state.filteredLocations == null ||
-                                  state.filteredLocations!.isEmpty) {
-                                return Center(
-                                  child: Lottie.asset(emptyLottie),
-                                );
-                              } else {
-                                return GridView.builder(
-                                  itemCount: state.filteredLocations!.length,
-                                  physics: const NeverScrollableScrollPhysics(),
-                                  shrinkWrap: true,
-                                  gridDelegate:
-                                      const SliverGridDelegateWithFixedCrossAxisCount(
-                                    crossAxisCount: 3,
-                                    mainAxisSpacing: 10,
-                                    crossAxisSpacing: 10,
-                                    childAspectRatio: 1 / .4,
-                                  ),
-                                  itemBuilder: (context, index) {
-                                    return GestureDetector(
-                                      onTap: () {
-                                        //Pincode load event
-                                        context.read<LocationBloc>().add(
-                                              LocationEvent.pinCodePick(
-                                                cityName: state
-                                                    .filteredLocations![index],
-                                              ),
-                                            );
-
-                                        //picked location update even
-                                        CityUpdateRequestModel
-                                            cityUpdateRequestModel =
-                                            CityUpdateRequestModel(
-                                          city: state.filteredLocations![index],
-                                        );
-                                        context.read<LocationBloc>().add(
-                                              LocationEvent.locationUpdate(
-                                                cityUpdateRequestModel:
-                                                    cityUpdateRequestModel,
-                                              ),
-                                            );
-
-                                        //Navigating to pincode screen
-                                        Navigator.of(context)
-                                            .pushReplacementNamed(
-                                          Routes.pincode,
-                                          arguments:
-                                              state.filteredLocations![index],
-                                        );
-                                      },
-                                      child: ClipRRect(
-                                        borderRadius: kRadius5,
-                                        child: ColoredBox(
-                                          color: kWhiteextra,
-                                          child: FittedBox(
-                                            child: Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.spaceEvenly,
-                                              children: [
-                                                kWidth5,
-                                                CircleAvatar(
-                                                  backgroundColor:
-                                                      Colors.green[50],
-                                                  radius: 7,
-                                                  child: const CircleAvatar(
-                                                    backgroundColor:
-                                                        Colors.lightGreen,
-                                                    radius: 3,
-                                                  ),
-                                                ),
-                                                const SizedBox(width: 3),
-                                                Text(
-                                                  state.filteredLocations![
-                                                      index],
-                                                  style: textHeadSemiBold1,
-                                                ),
-                                                kWidth10,
-                                              ],
-                                            ),
+                            } else if (state.filteredLocations == null ||
+                                state.filteredLocations!.isEmpty) {
+                              return Center(
+                                child: Lottie.asset(emptyLottie),
+                              );
+                            }
+                            return GridView.builder(
+                              itemCount: state.filteredLocations!.length,
+                              physics: const NeverScrollableScrollPhysics(),
+                              shrinkWrap: true,
+                              gridDelegate:
+                                  const SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 3,
+                                mainAxisSpacing: 10,
+                                crossAxisSpacing: 10,
+                                childAspectRatio: 1 / .4,
+                              ),
+                              itemBuilder: (context, index) {
+                                return GestureDetector(
+                                  onTap: () {
+                                    //Pincode load event
+                                    context.read<LocationBloc>().add(
+                                          LocationEvent.pinCodePick(
+                                            cityName:
+                                                state.filteredLocations![index],
                                           ),
-                                        ),
-                                      ),
+                                        );
+
+                                    //picked location update even
+                                    CityUpdateRequestModel
+                                        cityUpdateRequestModel =
+                                        CityUpdateRequestModel(
+                                      city: state.filteredLocations![index],
+                                    );
+                                    context.read<LocationBloc>().add(
+                                          LocationEvent.locationUpdate(
+                                            cityUpdateRequestModel:
+                                                cityUpdateRequestModel,
+                                          ),
+                                        );
+
+                                    //Navigating to pincode screen
+                                    Navigator.of(context).pushReplacementNamed(
+                                      Routes.pincode,
+                                      arguments:
+                                          state.filteredLocations![index],
                                     );
                                   },
+                                  child: ClipRRect(
+                                    borderRadius: kRadius5,
+                                    child: ColoredBox(
+                                      color: kWhiteextra,
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceEvenly,
+                                        children: [
+                                          kWidth5,
+                                          CircleAvatar(
+                                            backgroundColor: Colors.green[50],
+                                            radius: 7,
+                                            child: const CircleAvatar(
+                                              backgroundColor:
+                                                  Colors.lightGreen,
+                                              radius: 3,
+                                            ),
+                                          ),
+                                          const SizedBox(width: 3),
+                                          Text(
+                                            "${state.filteredLocations![index]} faqfqnc qeh f",
+                                            style: textHeadSemiBold1,
+                                          ),
+                                          kWidth10,
+                                        ],
+                                      ),
+                                    ),
+                                  ),
                                 );
-                              }
-                            }
+                              },
+                            );
                           },
                         ),
                       ),

@@ -3,6 +3,7 @@ import 'package:beachdu/application/presentation/screens/product_selection/produ
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/application/presentation/utils/enums/type_display.dart';
+import 'package:beachdu/application/presentation/utils/loading_indicators/loading_indicator.dart';
 import 'package:beachdu/domain/core/api_endpoints/api_endpoints.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -61,10 +62,10 @@ class TopImage extends StatelessWidget {
                         SizedBox(
                           height: fromWhere == FromWhere.checkoutAndPickupScreen
                               ? sWidth * .38
-                              : sWidth * .26,
+                              : sWidth * .27,
                           width: fromWhere == FromWhere.checkoutAndPickupScreen
                               ? sWidth * .34
-                              : sWidth * .25,
+                              : sWidth * .23,
                           child: Image.network(
                             url,
                             fit: BoxFit.fill,
@@ -109,8 +110,9 @@ class TopImage extends StatelessWidget {
                               BlocBuilder<QuestionTabBloc, QuestionTabState>(
                                 builder: (context, state) {
                                   if (state.isLoading) {
-                                    return const Center(
-                                      child: CircularProgressIndicator(
+                                    return Center(
+                                      child: LoadingAnimation(
+                                        width: 40,
                                         color: kWhite,
                                       ),
                                     );

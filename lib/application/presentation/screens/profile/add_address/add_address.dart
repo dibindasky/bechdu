@@ -14,7 +14,9 @@ class AddAddressScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     WidgetsBinding.instance.addPostFrameCallback(
       (timeStamp) {
-        context.read<LocationBloc>().add(const LocationEvent.locationPick());
+        context
+            .read<LocationBloc>()
+            .add(const LocationEvent.locationPick(isLoad: false));
       },
     );
     return GestureDetector(

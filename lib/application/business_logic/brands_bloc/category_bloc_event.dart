@@ -4,6 +4,7 @@ part of 'category_bloc_bloc.dart';
 class CategoryBlocEvent with _$CategoryBlocEvent {
   const factory CategoryBlocEvent.getAllCategory() = GetAllCategory;
   const factory CategoryBlocEvent.getSingleCategoryBrands({
+    required bool isLoad,
     String? categoryType,
   }) = GetSingleCategoryBrands;
   const factory CategoryBlocEvent.brandSearch({

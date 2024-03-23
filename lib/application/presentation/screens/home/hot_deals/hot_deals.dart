@@ -59,6 +59,7 @@ class HotDealsSession extends StatelessWidget {
                           context
                               .read<CategoryBlocBloc>()
                               .add(GetSingleCategoryBrands(
+                                isLoad: true,
                                 categoryType: data[index].mobileLink,
                               ));
 

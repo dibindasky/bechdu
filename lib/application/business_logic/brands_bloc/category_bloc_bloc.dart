@@ -95,7 +95,9 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
     GetSingleCategoryBrands event,
     Emitter<CategoryBlocState> emit,
   ) async {
-    //if (state.getSingleCategoryResponce != null) return;
+    if (state.getSingleCategoryResponce != null && event.isLoad == false) {
+      return;
+    }
     emit(state.copyWith(isLoading: true, hasError: false));
     final data = await brandsRepository.getSingleCategoryBrands(
         categoryType: event.categoryType ?? 'mobile');
