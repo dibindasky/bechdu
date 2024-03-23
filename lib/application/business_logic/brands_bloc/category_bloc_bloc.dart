@@ -98,6 +98,7 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
     if (state.getSingleCategoryResponce != null && event.isLoad == false) {
       return;
     }
+
     emit(state.copyWith(isLoading: true, hasError: false));
     final data = await brandsRepository.getSingleCategoryBrands(
         categoryType: event.categoryType ?? 'mobile');
@@ -219,10 +220,14 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
         hasError: true,
       ));
     }, (getModelSuccess) {
+      List<String> models = [];
+      models.clear();
+      models.insert(0, 'All');
+      models.addAll(getModelSuccess);
       emit(state.copyWith(
         hasError: false,
         isLoading: false,
-        models: getModelSuccess,
+        models: models,
         allItems: updatedItems,
         varients: [],
       ));
@@ -250,10 +255,14 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
         hasError: true,
       ));
     }, (getVarientsSuccess) {
+      List<String> varients = [];
+      varients.insert(0, 'All');
+      varients.addAll(getVarientsSuccess);
+      log('${varients}');
       emit(state.copyWith(
         hasError: false,
         isLoading: false,
-        varients: getVarientsSuccess,
+        varients: varients,
       ));
     });
   }

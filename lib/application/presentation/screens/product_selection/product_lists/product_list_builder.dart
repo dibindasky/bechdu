@@ -8,6 +8,7 @@ import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/application/presentation/utils/skeltons/skelton.dart';
 import 'package:beachdu/domain/model/get_products_respoce_model/product.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
 
@@ -41,52 +42,32 @@ class ProductListViewBuilder extends StatelessWidget {
           kHeight10,
           Text('Showing All Products', style: textHeadBold1),
           kHeight10,
-          Stack(
-            children: [
-              SizedBox(
-                width: sWidth / 2.3,
-                height: 40,
-                child: ClipRRect(
-                  borderRadius: kRadius10,
-                  child: ColoredBox(
-                    color: kBlueLight,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 10,
-                      ),
-                      child: Align(
-                        alignment: Alignment.center,
-                        child: Text(
-                          '${context.read<CategoryBlocBloc>().seriesName}',
-                          style: textHeadBold1.copyWith(
-                            color: kWhite,
-                          ),
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ),
+          SizedBox(
+            width: sWidth / 2.2,
+            child: Card(
+              color: kWhite,
+              child: Row(
+                children: [
+                  kWidth5,
+                  FittedBox(
+                    child: Text(
+                      '${context.read<CategoryBlocBloc>().seriesName?.replaceAll('Samsung', '')}',
+                      style:
+                          textHeadInter.copyWith(color: kBlack, fontSize: 14),
                     ),
                   ),
-                ),
+                  IconButton(
+                    onPressed: () {
+                      brandSeriesProductValueNotifier.value = 1;
+                      brandSeriesProductValueNotifier.notifyListeners();
+                      context.read<CategoryBlocBloc>().modelFilter = null;
+                      context.read<CategoryBlocBloc>().varientFilter = null;
+                    },
+                    icon: const Icon(Icons.clear),
+                  )
+                ],
               ),
-              Positioned(
-                top: 0,
-                right: 10,
-                bottom: 0,
-                child: InkWell(
-                  onTap: () {
-                    brandSeriesProductValueNotifier.value = 1;
-                    brandSeriesProductValueNotifier.notifyListeners();
-                    context.read<CategoryBlocBloc>().modelFilter = null;
-                    context.read<CategoryBlocBloc>().varientFilter = null;
-                  },
-                  child: const Icon(
-                    size: 19,
-                    Icons.clear,
-                    color: kRed,
-                  ),
-                ),
-              ),
-            ],
+            ),
           ),
           kHeight20,
           product.isEmpty

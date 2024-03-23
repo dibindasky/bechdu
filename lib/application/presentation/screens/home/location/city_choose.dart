@@ -8,6 +8,7 @@ import 'package:beachdu/application/presentation/utils/snackbar/snackbar.dart';
 import 'package:beachdu/domain/model/location/city_update_request_model/city_update_request_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
 
@@ -89,7 +90,7 @@ class ScreenLocations extends StatelessWidget {
                       Expanded(
                         child: BlocConsumer<LocationBloc, LocationState>(
                           listener: (context, state) {
-                            if (state.cityUpdateResponceModel != null) {
+                            if (state.pincodeResponceModel != null) {
                               showSnack(
                                 context: context,
                                 message: state.message!,
@@ -97,14 +98,18 @@ class ScreenLocations extends StatelessWidget {
                             }
                           },
                           builder: (context, state) {
-                            if (state.hasError) {
-                              return const Center(
-                                child: Text('Some error'),
+                            if (state.isLoading) {
+                              return SizedBox(
+                                height: sHeight,
+                                child: LoadingAnimation(width: 30),
                               );
                             } else if (state.filteredLocations == null ||
                                 state.filteredLocations!.isEmpty) {
-                              return Center(
-                                child: Lottie.asset(emptyLottie),
+                              return SizedBox(
+                                height: sHeight,
+                                child: Center(
+                                  child: Lottie.asset(emptyLottie),
+                                ),
                               );
                             }
                             return GridView.builder(
@@ -149,32 +154,32 @@ class ScreenLocations extends StatelessWidget {
                                           state.filteredLocations![index],
                                     );
                                   },
-                                  child: ClipRRect(
-                                    borderRadius: kRadius5,
-                                    child: ColoredBox(
-                                      color: kWhiteextra,
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceEvenly,
-                                        children: [
-                                          kWidth5,
-                                          CircleAvatar(
-                                            backgroundColor: Colors.green[50],
-                                            radius: 7,
-                                            child: const CircleAvatar(
-                                              backgroundColor:
-                                                  Colors.lightGreen,
-                                              radius: 3,
-                                            ),
+                                  child: Card(
+                                    color: kWhiteextra,
+                                    elevation: 2,
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceEvenly,
+                                      children: [
+                                        kWidth5,
+                                        CircleAvatar(
+                                          backgroundColor: Colors.green[50],
+                                          radius: 7,
+                                          child: const CircleAvatar(
+                                            backgroundColor: Colors.lightGreen,
+                                            radius: 3,
                                           ),
-                                          const SizedBox(width: 3),
-                                          Text(
-                                            "${state.filteredLocations![index]} faqfqnc qeh f",
-                                            style: textHeadSemiBold1,
+                                        ),
+                                        const SizedBox(width: 2),
+                                        Text(
+                                          "${state.filteredLocations![index]} ",
+                                          style: textHeadSemiBold1.copyWith(
+                                            fontSize: 12,
                                           ),
-                                          kWidth10,
-                                        ],
-                                      ),
+                                          overflow: TextOverflow.ellipsis,
+                                        ),
+                                        kWidth10,
+                                      ],
                                     ),
                                   ),
                                 );

@@ -178,7 +178,7 @@ class _BottomSectionState extends State<BottomSection> {
                       );
                     }
                   },
-                  text: state.isLoading ? 'Loading...' : 'Submit',
+                  text: state.isLoading ? 'Loading...!' : 'Submit',
                 );
               },
             );

@@ -26,7 +26,7 @@ class LocationService implements LocationRepo {
       //log('locationPick retVal $retVal');
       return Right(retVal);
     } on DioException catch (e) {
-      return Left(Failure(message: e.response?.data['error'] ?? errorMessage));
+      return Left(Failure(message: '$e'));
     } catch (e) {
       return Left(Failure(message: e.toString()));
     }
