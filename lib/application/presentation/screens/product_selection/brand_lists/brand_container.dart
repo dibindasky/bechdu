@@ -28,7 +28,6 @@ class BrandContainer extends StatelessWidget {
             base64String.replaceFirst(RegExp(r'data:image/[^;]+;base64,'), '');
         return InkWell(
           onTap: () {
-            context.read<QuestionTabBloc>().newList.clear();
             final categoryType =
                 context.read<CategoryBlocBloc>().categoryType ?? 'mobile';
 

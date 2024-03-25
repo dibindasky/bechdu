@@ -51,39 +51,37 @@ class OTPScreen extends StatelessWidget {
               if (state.otpVerifyResponceModel != null) {
                 showSnack(context: context, message: 'Login Successfully');
                 loginOrSignup(context);
-                if (state.otpVerifyResponceModel != null) {
-                  log('condition pick in condition');
-                  PickupQuestionModel pickepQuestionModel = PickupQuestionModel(
-                    categoryType: context.read<CategoryBlocBloc>().categoryType,
-                    productSlug: context.read<CategoryBlocBloc>().slug,
-                    selectedOptions:
-                        context.read<QuestionTabBloc>().state.selectedOption,
-                  );
+                log('condition pick in condition');
+                PickupQuestionModel pickepQuestionModel = PickupQuestionModel(
+                  categoryType: context.read<CategoryBlocBloc>().categoryType,
+                  productSlug: context.read<CategoryBlocBloc>().slug,
+                  selectedOptions:
+                      context.read<QuestionTabBloc>().state.selectedOption,
+                );
 
-                  //Product name Concatination
-                  final verient = context.read<CategoryBlocBloc>().verient;
-                  final model = context.read<CategoryBlocBloc>().model;
-                  final name = '$verient $model';
+                //Product name Concatination
+                final verient = context.read<CategoryBlocBloc>().verient;
+                final model = context.read<CategoryBlocBloc>().model;
+                final name = '$verient $model';
 
-                  ProductDetails productDetails = ProductDetails(
-                    slug: context.read<CategoryBlocBloc>().slug,
-                    name: name,
-                    options: context.read<QuestionTabBloc>().newList,
-                  );
+                ProductDetails productDetails = ProductDetails(
+                  slug: context.read<CategoryBlocBloc>().slug,
+                  name: name,
+                  options: context.read<QuestionTabBloc>().selectedOptions,
+                );
 
-                  AbandendOrderRequestModel abandendOrderRequestModel =
-                      AbandendOrderRequestModel(productDetails: productDetails);
+                AbandendOrderRequestModel abandendOrderRequestModel =
+                    AbandendOrderRequestModel(productDetails: productDetails);
 
-                  context.read<QuestionTabBloc>().add(
-                        GetBasePrice(
-                          pickupQuestionModel: pickepQuestionModel,
-                          abandendOrderRequestModel: abandendOrderRequestModel,
-                        ),
-                      );
-                }
-                context.read<AuthBloc>().phoneNumberController.clear();
-                context.read<AuthBloc>().otpController.clear();
+                context.read<QuestionTabBloc>().add(
+                      GetBasePrice(
+                        pickupQuestionModel: pickepQuestionModel,
+                        abandendOrderRequestModel: abandendOrderRequestModel,
+                      ),
+                    );
               }
+              context.read<AuthBloc>().phoneNumberController.clear();
+              context.read<AuthBloc>().otpController.clear();
             },
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),

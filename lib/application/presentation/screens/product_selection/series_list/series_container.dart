@@ -57,7 +57,7 @@ class SeriesContainer extends StatelessWidget {
                     alignment: Alignment.center,
                     child: Text(
                       maxLines: 4,
-                      state.filteredSeries![index],
+                      state.filteredSeries![index].replaceAll('Samsung ', ''),
                       style: textHeadBold1.copyWith(
                         color: kWhite,
                       ),

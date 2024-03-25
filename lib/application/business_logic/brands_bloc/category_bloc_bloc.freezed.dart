@@ -35,6 +35,7 @@ mixin _$CategoryBlocEvent {
     required TResult Function(String categoryType, String brandName,
             String seriesName, String model)
         getVarients,
+    required TResult Function() clear,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -54,6 +55,7 @@ mixin _$CategoryBlocEvent {
     TResult? Function(String categoryType, String brandName, String seriesName,
             String model)?
         getVarients,
+    TResult? Function()? clear,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -73,6 +75,7 @@ mixin _$CategoryBlocEvent {
     TResult Function(String categoryType, String brandName, String seriesName,
             String model)?
         getVarients,
+    TResult Function()? clear,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -89,6 +92,7 @@ mixin _$CategoryBlocEvent {
     required TResult Function(ProductUpdate value) productUpdate,
     required TResult Function(GetModels value) getModels,
     required TResult Function(GetVarients value) getVarients,
+    required TResult Function(Clear value) clear,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -103,6 +107,7 @@ mixin _$CategoryBlocEvent {
     TResult? Function(ProductUpdate value)? productUpdate,
     TResult? Function(GetModels value)? getModels,
     TResult? Function(GetVarients value)? getVarients,
+    TResult? Function(Clear value)? clear,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -117,6 +122,7 @@ mixin _$CategoryBlocEvent {
     TResult Function(ProductUpdate value)? productUpdate,
     TResult Function(GetModels value)? getModels,
     TResult Function(GetVarients value)? getVarients,
+    TResult Function(Clear value)? clear,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -204,6 +210,7 @@ class _$GetAllCategoryImpl
     required TResult Function(String categoryType, String brandName,
             String seriesName, String model)
         getVarients,
+    required TResult Function() clear,
   }) {
     return getAllCategory();
   }
@@ -226,6 +233,7 @@ class _$GetAllCategoryImpl
     TResult? Function(String categoryType, String brandName, String seriesName,
             String model)?
         getVarients,
+    TResult? Function()? clear,
   }) {
     return getAllCategory?.call();
   }
@@ -248,6 +256,7 @@ class _$GetAllCategoryImpl
     TResult Function(String categoryType, String brandName, String seriesName,
             String model)?
         getVarients,
+    TResult Function()? clear,
     required TResult orElse(),
   }) {
     if (getAllCategory != null) {
@@ -270,6 +279,7 @@ class _$GetAllCategoryImpl
     required TResult Function(ProductUpdate value) productUpdate,
     required TResult Function(GetModels value) getModels,
     required TResult Function(GetVarients value) getVarients,
+    required TResult Function(Clear value) clear,
   }) {
     return getAllCategory(this);
   }
@@ -287,6 +297,7 @@ class _$GetAllCategoryImpl
     TResult? Function(ProductUpdate value)? productUpdate,
     TResult? Function(GetModels value)? getModels,
     TResult? Function(GetVarients value)? getVarients,
+    TResult? Function(Clear value)? clear,
   }) {
     return getAllCategory?.call(this);
   }
@@ -304,6 +315,7 @@ class _$GetAllCategoryImpl
     TResult Function(ProductUpdate value)? productUpdate,
     TResult Function(GetModels value)? getModels,
     TResult Function(GetVarients value)? getVarients,
+    TResult Function(Clear value)? clear,
     required TResult orElse(),
   }) {
     if (getAllCategory != null) {
@@ -423,6 +435,7 @@ class _$GetSingleCategoryBrandsImpl
     required TResult Function(String categoryType, String brandName,
             String seriesName, String model)
         getVarients,
+    required TResult Function() clear,
   }) {
     return getSingleCategoryBrands(isLoad, categoryType);
   }
@@ -445,6 +458,7 @@ class _$GetSingleCategoryBrandsImpl
     TResult? Function(String categoryType, String brandName, String seriesName,
             String model)?
         getVarients,
+    TResult? Function()? clear,
   }) {
     return getSingleCategoryBrands?.call(isLoad, categoryType);
   }
@@ -467,6 +481,7 @@ class _$GetSingleCategoryBrandsImpl
     TResult Function(String categoryType, String brandName, String seriesName,
             String model)?
         getVarients,
+    TResult Function()? clear,
     required TResult orElse(),
   }) {
     if (getSingleCategoryBrands != null) {
@@ -489,6 +504,7 @@ class _$GetSingleCategoryBrandsImpl
     required TResult Function(ProductUpdate value) productUpdate,
     required TResult Function(GetModels value) getModels,
     required TResult Function(GetVarients value) getVarients,
+    required TResult Function(Clear value) clear,
   }) {
     return getSingleCategoryBrands(this);
   }
@@ -506,6 +522,7 @@ class _$GetSingleCategoryBrandsImpl
     TResult? Function(ProductUpdate value)? productUpdate,
     TResult? Function(GetModels value)? getModels,
     TResult? Function(GetVarients value)? getVarients,
+    TResult? Function(Clear value)? clear,
   }) {
     return getSingleCategoryBrands?.call(this);
   }
@@ -523,6 +540,7 @@ class _$GetSingleCategoryBrandsImpl
     TResult Function(ProductUpdate value)? productUpdate,
     TResult Function(GetModels value)? getModels,
     TResult Function(GetVarients value)? getVarients,
+    TResult Function(Clear value)? clear,
     required TResult orElse(),
   }) {
     if (getSingleCategoryBrands != null) {
@@ -634,6 +652,7 @@ class _$BrandSearchImpl with DiagnosticableTreeMixin implements BrandSearch {
     required TResult Function(String categoryType, String brandName,
             String seriesName, String model)
         getVarients,
+    required TResult Function() clear,
   }) {
     return brandSearch(searchQuery);
   }
@@ -656,6 +675,7 @@ class _$BrandSearchImpl with DiagnosticableTreeMixin implements BrandSearch {
     TResult? Function(String categoryType, String brandName, String seriesName,
             String model)?
         getVarients,
+    TResult? Function()? clear,
   }) {
     return brandSearch?.call(searchQuery);
   }
@@ -678,6 +698,7 @@ class _$BrandSearchImpl with DiagnosticableTreeMixin implements BrandSearch {
     TResult Function(String categoryType, String brandName, String seriesName,
             String model)?
         getVarients,
+    TResult Function()? clear,
     required TResult orElse(),
   }) {
     if (brandSearch != null) {
@@ -700,6 +721,7 @@ class _$BrandSearchImpl with DiagnosticableTreeMixin implements BrandSearch {
     required TResult Function(ProductUpdate value) productUpdate,
     required TResult Function(GetModels value) getModels,
     required TResult Function(GetVarients value) getVarients,
+    required TResult Function(Clear value) clear,
   }) {
     return brandSearch(this);
   }
@@ -717,6 +739,7 @@ class _$BrandSearchImpl with DiagnosticableTreeMixin implements BrandSearch {
     TResult? Function(ProductUpdate value)? productUpdate,
     TResult? Function(GetModels value)? getModels,
     TResult? Function(GetVarients value)? getVarients,
+    TResult? Function(Clear value)? clear,
   }) {
     return brandSearch?.call(this);
   }
@@ -734,6 +757,7 @@ class _$BrandSearchImpl with DiagnosticableTreeMixin implements BrandSearch {
     TResult Function(ProductUpdate value)? productUpdate,
     TResult Function(GetModels value)? getModels,
     TResult Function(GetVarients value)? getVarients,
+    TResult Function(Clear value)? clear,
     required TResult orElse(),
   }) {
     if (brandSearch != null) {
@@ -843,6 +867,7 @@ class _$SeriesSearchImpl with DiagnosticableTreeMixin implements SeriesSearch {
     required TResult Function(String categoryType, String brandName,
             String seriesName, String model)
         getVarients,
+    required TResult Function() clear,
   }) {
     return seriesSearch(searchQuery);
   }
@@ -865,6 +890,7 @@ class _$SeriesSearchImpl with DiagnosticableTreeMixin implements SeriesSearch {
     TResult? Function(String categoryType, String brandName, String seriesName,
             String model)?
         getVarients,
+    TResult? Function()? clear,
   }) {
     return seriesSearch?.call(searchQuery);
   }
@@ -887,6 +913,7 @@ class _$SeriesSearchImpl with DiagnosticableTreeMixin implements SeriesSearch {
     TResult Function(String categoryType, String brandName, String seriesName,
             String model)?
         getVarients,
+    TResult Function()? clear,
     required TResult orElse(),
   }) {
     if (seriesSearch != null) {
@@ -909,6 +936,7 @@ class _$SeriesSearchImpl with DiagnosticableTreeMixin implements SeriesSearch {
     required TResult Function(ProductUpdate value) productUpdate,
     required TResult Function(GetModels value) getModels,
     required TResult Function(GetVarients value) getVarients,
+    required TResult Function(Clear value) clear,
   }) {
     return seriesSearch(this);
   }
@@ -926,6 +954,7 @@ class _$SeriesSearchImpl with DiagnosticableTreeMixin implements SeriesSearch {
     TResult? Function(ProductUpdate value)? productUpdate,
     TResult? Function(GetModels value)? getModels,
     TResult? Function(GetVarients value)? getVarients,
+    TResult? Function(Clear value)? clear,
   }) {
     return seriesSearch?.call(this);
   }
@@ -943,6 +972,7 @@ class _$SeriesSearchImpl with DiagnosticableTreeMixin implements SeriesSearch {
     TResult Function(ProductUpdate value)? productUpdate,
     TResult Function(GetModels value)? getModels,
     TResult Function(GetVarients value)? getVarients,
+    TResult Function(Clear value)? clear,
     required TResult orElse(),
   }) {
     if (seriesSearch != null) {
@@ -1076,6 +1106,7 @@ class _$GetProductsImpl with DiagnosticableTreeMixin implements GetProducts {
     required TResult Function(String categoryType, String brandName,
             String seriesName, String model)
         getVarients,
+    required TResult Function() clear,
   }) {
     return getProducts(categoryType, brandName, seriesName);
   }
@@ -1098,6 +1129,7 @@ class _$GetProductsImpl with DiagnosticableTreeMixin implements GetProducts {
     TResult? Function(String categoryType, String brandName, String seriesName,
             String model)?
         getVarients,
+    TResult? Function()? clear,
   }) {
     return getProducts?.call(categoryType, brandName, seriesName);
   }
@@ -1120,6 +1152,7 @@ class _$GetProductsImpl with DiagnosticableTreeMixin implements GetProducts {
     TResult Function(String categoryType, String brandName, String seriesName,
             String model)?
         getVarients,
+    TResult Function()? clear,
     required TResult orElse(),
   }) {
     if (getProducts != null) {
@@ -1142,6 +1175,7 @@ class _$GetProductsImpl with DiagnosticableTreeMixin implements GetProducts {
     required TResult Function(ProductUpdate value) productUpdate,
     required TResult Function(GetModels value) getModels,
     required TResult Function(GetVarients value) getVarients,
+    required TResult Function(Clear value) clear,
   }) {
     return getProducts(this);
   }
@@ -1159,6 +1193,7 @@ class _$GetProductsImpl with DiagnosticableTreeMixin implements GetProducts {
     TResult? Function(ProductUpdate value)? productUpdate,
     TResult? Function(GetModels value)? getModels,
     TResult? Function(GetVarients value)? getVarients,
+    TResult? Function(Clear value)? clear,
   }) {
     return getProducts?.call(this);
   }
@@ -1176,6 +1211,7 @@ class _$GetProductsImpl with DiagnosticableTreeMixin implements GetProducts {
     TResult Function(ProductUpdate value)? productUpdate,
     TResult Function(GetModels value)? getModels,
     TResult Function(GetVarients value)? getVarients,
+    TResult Function(Clear value)? clear,
     required TResult orElse(),
   }) {
     if (getProducts != null) {
@@ -1291,6 +1327,7 @@ class _$ProductSearchImpl
     required TResult Function(String categoryType, String brandName,
             String seriesName, String model)
         getVarients,
+    required TResult Function() clear,
   }) {
     return productSearch(searchQuery);
   }
@@ -1313,6 +1350,7 @@ class _$ProductSearchImpl
     TResult? Function(String categoryType, String brandName, String seriesName,
             String model)?
         getVarients,
+    TResult? Function()? clear,
   }) {
     return productSearch?.call(searchQuery);
   }
@@ -1335,6 +1373,7 @@ class _$ProductSearchImpl
     TResult Function(String categoryType, String brandName, String seriesName,
             String model)?
         getVarients,
+    TResult Function()? clear,
     required TResult orElse(),
   }) {
     if (productSearch != null) {
@@ -1357,6 +1396,7 @@ class _$ProductSearchImpl
     required TResult Function(ProductUpdate value) productUpdate,
     required TResult Function(GetModels value) getModels,
     required TResult Function(GetVarients value) getVarients,
+    required TResult Function(Clear value) clear,
   }) {
     return productSearch(this);
   }
@@ -1374,6 +1414,7 @@ class _$ProductSearchImpl
     TResult? Function(ProductUpdate value)? productUpdate,
     TResult? Function(GetModels value)? getModels,
     TResult? Function(GetVarients value)? getVarients,
+    TResult? Function(Clear value)? clear,
   }) {
     return productSearch?.call(this);
   }
@@ -1391,6 +1432,7 @@ class _$ProductSearchImpl
     TResult Function(ProductUpdate value)? productUpdate,
     TResult Function(GetModels value)? getModels,
     TResult Function(GetVarients value)? getVarients,
+    TResult Function(Clear value)? clear,
     required TResult orElse(),
   }) {
     if (productSearch != null) {
@@ -1510,6 +1552,7 @@ class _$GetSeriesImpl with DiagnosticableTreeMixin implements GetSeries {
     required TResult Function(String categoryType, String brandName,
             String seriesName, String model)
         getVarients,
+    required TResult Function() clear,
   }) {
     return getSeries(brandName, categoryType);
   }
@@ -1532,6 +1575,7 @@ class _$GetSeriesImpl with DiagnosticableTreeMixin implements GetSeries {
     TResult? Function(String categoryType, String brandName, String seriesName,
             String model)?
         getVarients,
+    TResult? Function()? clear,
   }) {
     return getSeries?.call(brandName, categoryType);
   }
@@ -1554,6 +1598,7 @@ class _$GetSeriesImpl with DiagnosticableTreeMixin implements GetSeries {
     TResult Function(String categoryType, String brandName, String seriesName,
             String model)?
         getVarients,
+    TResult Function()? clear,
     required TResult orElse(),
   }) {
     if (getSeries != null) {
@@ -1576,6 +1621,7 @@ class _$GetSeriesImpl with DiagnosticableTreeMixin implements GetSeries {
     required TResult Function(ProductUpdate value) productUpdate,
     required TResult Function(GetModels value) getModels,
     required TResult Function(GetVarients value) getVarients,
+    required TResult Function(Clear value) clear,
   }) {
     return getSeries(this);
   }
@@ -1593,6 +1639,7 @@ class _$GetSeriesImpl with DiagnosticableTreeMixin implements GetSeries {
     TResult? Function(ProductUpdate value)? productUpdate,
     TResult? Function(GetModels value)? getModels,
     TResult? Function(GetVarients value)? getVarients,
+    TResult? Function(Clear value)? clear,
   }) {
     return getSeries?.call(this);
   }
@@ -1610,6 +1657,7 @@ class _$GetSeriesImpl with DiagnosticableTreeMixin implements GetSeries {
     TResult Function(ProductUpdate value)? productUpdate,
     TResult Function(GetModels value)? getModels,
     TResult Function(GetVarients value)? getVarients,
+    TResult Function(Clear value)? clear,
     required TResult orElse(),
   }) {
     if (getSeries != null) {
@@ -1731,6 +1779,7 @@ class _$ProductUpdateImpl
     required TResult Function(String categoryType, String brandName,
             String seriesName, String model)
         getVarients,
+    required TResult Function() clear,
   }) {
     return productUpdate(model, varinet);
   }
@@ -1753,6 +1802,7 @@ class _$ProductUpdateImpl
     TResult? Function(String categoryType, String brandName, String seriesName,
             String model)?
         getVarients,
+    TResult? Function()? clear,
   }) {
     return productUpdate?.call(model, varinet);
   }
@@ -1775,6 +1825,7 @@ class _$ProductUpdateImpl
     TResult Function(String categoryType, String brandName, String seriesName,
             String model)?
         getVarients,
+    TResult Function()? clear,
     required TResult orElse(),
   }) {
     if (productUpdate != null) {
@@ -1797,6 +1848,7 @@ class _$ProductUpdateImpl
     required TResult Function(ProductUpdate value) productUpdate,
     required TResult Function(GetModels value) getModels,
     required TResult Function(GetVarients value) getVarients,
+    required TResult Function(Clear value) clear,
   }) {
     return productUpdate(this);
   }
@@ -1814,6 +1866,7 @@ class _$ProductUpdateImpl
     TResult? Function(ProductUpdate value)? productUpdate,
     TResult? Function(GetModels value)? getModels,
     TResult? Function(GetVarients value)? getVarients,
+    TResult? Function(Clear value)? clear,
   }) {
     return productUpdate?.call(this);
   }
@@ -1831,6 +1884,7 @@ class _$ProductUpdateImpl
     TResult Function(ProductUpdate value)? productUpdate,
     TResult Function(GetModels value)? getModels,
     TResult Function(GetVarients value)? getVarients,
+    TResult Function(Clear value)? clear,
     required TResult orElse(),
   }) {
     if (productUpdate != null) {
@@ -1965,6 +2019,7 @@ class _$GetModelsImpl with DiagnosticableTreeMixin implements GetModels {
     required TResult Function(String categoryType, String brandName,
             String seriesName, String model)
         getVarients,
+    required TResult Function() clear,
   }) {
     return getModels(categoryType, brandName, seriesName);
   }
@@ -1987,6 +2042,7 @@ class _$GetModelsImpl with DiagnosticableTreeMixin implements GetModels {
     TResult? Function(String categoryType, String brandName, String seriesName,
             String model)?
         getVarients,
+    TResult? Function()? clear,
   }) {
     return getModels?.call(categoryType, brandName, seriesName);
   }
@@ -2009,6 +2065,7 @@ class _$GetModelsImpl with DiagnosticableTreeMixin implements GetModels {
     TResult Function(String categoryType, String brandName, String seriesName,
             String model)?
         getVarients,
+    TResult Function()? clear,
     required TResult orElse(),
   }) {
     if (getModels != null) {
@@ -2031,6 +2088,7 @@ class _$GetModelsImpl with DiagnosticableTreeMixin implements GetModels {
     required TResult Function(ProductUpdate value) productUpdate,
     required TResult Function(GetModels value) getModels,
     required TResult Function(GetVarients value) getVarients,
+    required TResult Function(Clear value) clear,
   }) {
     return getModels(this);
   }
@@ -2048,6 +2106,7 @@ class _$GetModelsImpl with DiagnosticableTreeMixin implements GetModels {
     TResult? Function(ProductUpdate value)? productUpdate,
     TResult? Function(GetModels value)? getModels,
     TResult? Function(GetVarients value)? getVarients,
+    TResult? Function(Clear value)? clear,
   }) {
     return getModels?.call(this);
   }
@@ -2065,6 +2124,7 @@ class _$GetModelsImpl with DiagnosticableTreeMixin implements GetModels {
     TResult Function(ProductUpdate value)? productUpdate,
     TResult Function(GetModels value)? getModels,
     TResult Function(GetVarients value)? getVarients,
+    TResult Function(Clear value)? clear,
     required TResult orElse(),
   }) {
     if (getModels != null) {
@@ -2213,6 +2273,7 @@ class _$GetVarientsImpl with DiagnosticableTreeMixin implements GetVarients {
     required TResult Function(String categoryType, String brandName,
             String seriesName, String model)
         getVarients,
+    required TResult Function() clear,
   }) {
     return getVarients(categoryType, brandName, seriesName, model);
   }
@@ -2235,6 +2296,7 @@ class _$GetVarientsImpl with DiagnosticableTreeMixin implements GetVarients {
     TResult? Function(String categoryType, String brandName, String seriesName,
             String model)?
         getVarients,
+    TResult? Function()? clear,
   }) {
     return getVarients?.call(categoryType, brandName, seriesName, model);
   }
@@ -2257,6 +2319,7 @@ class _$GetVarientsImpl with DiagnosticableTreeMixin implements GetVarients {
     TResult Function(String categoryType, String brandName, String seriesName,
             String model)?
         getVarients,
+    TResult Function()? clear,
     required TResult orElse(),
   }) {
     if (getVarients != null) {
@@ -2279,6 +2342,7 @@ class _$GetVarientsImpl with DiagnosticableTreeMixin implements GetVarients {
     required TResult Function(ProductUpdate value) productUpdate,
     required TResult Function(GetModels value) getModels,
     required TResult Function(GetVarients value) getVarients,
+    required TResult Function(Clear value) clear,
   }) {
     return getVarients(this);
   }
@@ -2296,6 +2360,7 @@ class _$GetVarientsImpl with DiagnosticableTreeMixin implements GetVarients {
     TResult? Function(ProductUpdate value)? productUpdate,
     TResult? Function(GetModels value)? getModels,
     TResult? Function(GetVarients value)? getVarients,
+    TResult? Function(Clear value)? clear,
   }) {
     return getVarients?.call(this);
   }
@@ -2313,6 +2378,7 @@ class _$GetVarientsImpl with DiagnosticableTreeMixin implements GetVarients {
     TResult Function(ProductUpdate value)? productUpdate,
     TResult Function(GetModels value)? getModels,
     TResult Function(GetVarients value)? getVarients,
+    TResult Function(Clear value)? clear,
     required TResult orElse(),
   }) {
     if (getVarients != null) {
@@ -2336,6 +2402,186 @@ abstract class GetVarients implements CategoryBlocEvent {
   @JsonKey(ignore: true)
   _$$GetVarientsImplCopyWith<_$GetVarientsImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ClearImplCopyWith<$Res> {
+  factory _$$ClearImplCopyWith(
+          _$ClearImpl value, $Res Function(_$ClearImpl) then) =
+      __$$ClearImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ClearImplCopyWithImpl<$Res>
+    extends _$CategoryBlocEventCopyWithImpl<$Res, _$ClearImpl>
+    implements _$$ClearImplCopyWith<$Res> {
+  __$$ClearImplCopyWithImpl(
+      _$ClearImpl _value, $Res Function(_$ClearImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$ClearImpl with DiagnosticableTreeMixin implements Clear {
+  const _$ClearImpl();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'CategoryBlocEvent.clear()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'CategoryBlocEvent.clear'));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$ClearImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getAllCategory,
+    required TResult Function(bool isLoad, String? categoryType)
+        getSingleCategoryBrands,
+    required TResult Function(String searchQuery) brandSearch,
+    required TResult Function(String searchQuery) seriesSearch,
+    required TResult Function(
+            String categoryType, String brandName, String seriesName)
+        getProducts,
+    required TResult Function(String searchQuery) productSearch,
+    required TResult Function(String brandName, String categoryType) getSeries,
+    required TResult Function(String? model, String? varinet) productUpdate,
+    required TResult Function(
+            String categoryType, String brandName, String seriesName)
+        getModels,
+    required TResult Function(String categoryType, String brandName,
+            String seriesName, String model)
+        getVarients,
+    required TResult Function() clear,
+  }) {
+    return clear();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getAllCategory,
+    TResult? Function(bool isLoad, String? categoryType)?
+        getSingleCategoryBrands,
+    TResult? Function(String searchQuery)? brandSearch,
+    TResult? Function(String searchQuery)? seriesSearch,
+    TResult? Function(String categoryType, String brandName, String seriesName)?
+        getProducts,
+    TResult? Function(String searchQuery)? productSearch,
+    TResult? Function(String brandName, String categoryType)? getSeries,
+    TResult? Function(String? model, String? varinet)? productUpdate,
+    TResult? Function(String categoryType, String brandName, String seriesName)?
+        getModels,
+    TResult? Function(String categoryType, String brandName, String seriesName,
+            String model)?
+        getVarients,
+    TResult? Function()? clear,
+  }) {
+    return clear?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getAllCategory,
+    TResult Function(bool isLoad, String? categoryType)?
+        getSingleCategoryBrands,
+    TResult Function(String searchQuery)? brandSearch,
+    TResult Function(String searchQuery)? seriesSearch,
+    TResult Function(String categoryType, String brandName, String seriesName)?
+        getProducts,
+    TResult Function(String searchQuery)? productSearch,
+    TResult Function(String brandName, String categoryType)? getSeries,
+    TResult Function(String? model, String? varinet)? productUpdate,
+    TResult Function(String categoryType, String brandName, String seriesName)?
+        getModels,
+    TResult Function(String categoryType, String brandName, String seriesName,
+            String model)?
+        getVarients,
+    TResult Function()? clear,
+    required TResult orElse(),
+  }) {
+    if (clear != null) {
+      return clear();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GetAllCategory value) getAllCategory,
+    required TResult Function(GetSingleCategoryBrands value)
+        getSingleCategoryBrands,
+    required TResult Function(BrandSearch value) brandSearch,
+    required TResult Function(SeriesSearch value) seriesSearch,
+    required TResult Function(GetProducts value) getProducts,
+    required TResult Function(ProductSearch value) productSearch,
+    required TResult Function(GetSeries value) getSeries,
+    required TResult Function(ProductUpdate value) productUpdate,
+    required TResult Function(GetModels value) getModels,
+    required TResult Function(GetVarients value) getVarients,
+    required TResult Function(Clear value) clear,
+  }) {
+    return clear(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetAllCategory value)? getAllCategory,
+    TResult? Function(GetSingleCategoryBrands value)? getSingleCategoryBrands,
+    TResult? Function(BrandSearch value)? brandSearch,
+    TResult? Function(SeriesSearch value)? seriesSearch,
+    TResult? Function(GetProducts value)? getProducts,
+    TResult? Function(ProductSearch value)? productSearch,
+    TResult? Function(GetSeries value)? getSeries,
+    TResult? Function(ProductUpdate value)? productUpdate,
+    TResult? Function(GetModels value)? getModels,
+    TResult? Function(GetVarients value)? getVarients,
+    TResult? Function(Clear value)? clear,
+  }) {
+    return clear?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetAllCategory value)? getAllCategory,
+    TResult Function(GetSingleCategoryBrands value)? getSingleCategoryBrands,
+    TResult Function(BrandSearch value)? brandSearch,
+    TResult Function(SeriesSearch value)? seriesSearch,
+    TResult Function(GetProducts value)? getProducts,
+    TResult Function(ProductSearch value)? productSearch,
+    TResult Function(GetSeries value)? getSeries,
+    TResult Function(ProductUpdate value)? productUpdate,
+    TResult Function(GetModels value)? getModels,
+    TResult Function(GetVarients value)? getVarients,
+    TResult Function(Clear value)? clear,
+    required TResult orElse(),
+  }) {
+    if (clear != null) {
+      return clear(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Clear implements CategoryBlocEvent {
+  const factory Clear() = _$ClearImpl;
 }
 
 /// @nodoc

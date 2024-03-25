@@ -97,7 +97,6 @@ class _GlobalProductSearchState extends State<GlobalProductSearch> {
                     )}";
                     return GestureDetector(
                       onTap: () {
-                        context.read<QuestionTabBloc>().newList.clear();
                         context
                             .read<QuestionTabBloc>()
                             .add(QuestionTabEvent.getQuestions(

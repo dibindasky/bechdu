@@ -48,7 +48,7 @@ class _UserInfoFieldsState extends State<UserInfoFields> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              '${profile.user != null && profile.user!.user != null && profile.user!.user!.name != null ? profile.user!.user!.name : 'Enter name'}',
+                              '${profile.user != null && profile.user!.user != null && profile.user!.user!.name != null && profile.user!.user!.name!.isNotEmpty ? profile.user!.user!.name : 'Enter name'}',
                               style: textHeadMedium1,
                             ),
                             TextButton(
@@ -84,7 +84,7 @@ class _UserInfoFieldsState extends State<UserInfoFields> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              '${profile.user != null && profile.user!.user != null && profile.user!.user!.email != null ? profile.user!.user!.email : 'Enter email'}',
+                              '${profile.user != null && profile.user!.user != null && profile.user!.user!.email != null && profile.user!.user!.email!.isNotEmpty ? profile.user!.user!.email : 'Enter email'}',
                               style: textHeadMedium1,
                             ),
                             TextButton(
@@ -152,7 +152,7 @@ class _UserInfoFieldsState extends State<UserInfoFields> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              '${profile.user != null && profile.user!.user != null && profile.user!.user!.addPhone != null ? profile.user!.user!.addPhone : 'Enter your Additional number'}',
+                              '${profile.user != null && profile.user!.user != null && profile.user!.user!.addPhone != null && profile.user!.user!.addPhone!.isNotEmpty ? profile.user!.user!.addPhone : 'Enter your Additional number'}',
                               style: textHeadMedium1,
                             ),
                             TextButton(

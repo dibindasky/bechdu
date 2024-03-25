@@ -25,6 +25,7 @@ mixin _$HomeEvent {
     required TResult Function(SearchParamModel searchParamModel)
         globalPrductSearch,
     required TResult Function() nextPage,
+    required TResult Function() clear,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -35,6 +36,7 @@ mixin _$HomeEvent {
     TResult? Function(bool isLoad)? getBestSellingProducts,
     TResult? Function(SearchParamModel searchParamModel)? globalPrductSearch,
     TResult? Function()? nextPage,
+    TResult? Function()? clear,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -45,6 +47,7 @@ mixin _$HomeEvent {
     TResult Function(bool isLoad)? getBestSellingProducts,
     TResult Function(SearchParamModel searchParamModel)? globalPrductSearch,
     TResult Function()? nextPage,
+    TResult Function()? clear,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -57,6 +60,7 @@ mixin _$HomeEvent {
         getBestSellingProducts,
     required TResult Function(GlobalPrductSearch value) globalPrductSearch,
     required TResult Function(NextPage value) nextPage,
+    required TResult Function(Clear value) clear,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -67,6 +71,7 @@ mixin _$HomeEvent {
     TResult? Function(GetBestSellingProducts value)? getBestSellingProducts,
     TResult? Function(GlobalPrductSearch value)? globalPrductSearch,
     TResult? Function(NextPage value)? nextPage,
+    TResult? Function(Clear value)? clear,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -77,6 +82,7 @@ mixin _$HomeEvent {
     TResult Function(GetBestSellingProducts value)? getBestSellingProducts,
     TResult Function(GlobalPrductSearch value)? globalPrductSearch,
     TResult Function(NextPage value)? nextPage,
+    TResult Function(Clear value)? clear,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -171,6 +177,7 @@ class _$GetAllCategoryImpl implements GetAllCategory {
     required TResult Function(SearchParamModel searchParamModel)
         globalPrductSearch,
     required TResult Function() nextPage,
+    required TResult Function() clear,
   }) {
     return getAllCategory(isLoad);
   }
@@ -184,6 +191,7 @@ class _$GetAllCategoryImpl implements GetAllCategory {
     TResult? Function(bool isLoad)? getBestSellingProducts,
     TResult? Function(SearchParamModel searchParamModel)? globalPrductSearch,
     TResult? Function()? nextPage,
+    TResult? Function()? clear,
   }) {
     return getAllCategory?.call(isLoad);
   }
@@ -197,6 +205,7 @@ class _$GetAllCategoryImpl implements GetAllCategory {
     TResult Function(bool isLoad)? getBestSellingProducts,
     TResult Function(SearchParamModel searchParamModel)? globalPrductSearch,
     TResult Function()? nextPage,
+    TResult Function()? clear,
     required TResult orElse(),
   }) {
     if (getAllCategory != null) {
@@ -215,6 +224,7 @@ class _$GetAllCategoryImpl implements GetAllCategory {
         getBestSellingProducts,
     required TResult Function(GlobalPrductSearch value) globalPrductSearch,
     required TResult Function(NextPage value) nextPage,
+    required TResult Function(Clear value) clear,
   }) {
     return getAllCategory(this);
   }
@@ -228,6 +238,7 @@ class _$GetAllCategoryImpl implements GetAllCategory {
     TResult? Function(GetBestSellingProducts value)? getBestSellingProducts,
     TResult? Function(GlobalPrductSearch value)? globalPrductSearch,
     TResult? Function(NextPage value)? nextPage,
+    TResult? Function(Clear value)? clear,
   }) {
     return getAllCategory?.call(this);
   }
@@ -241,6 +252,7 @@ class _$GetAllCategoryImpl implements GetAllCategory {
     TResult Function(GetBestSellingProducts value)? getBestSellingProducts,
     TResult Function(GlobalPrductSearch value)? globalPrductSearch,
     TResult Function(NextPage value)? nextPage,
+    TResult Function(Clear value)? clear,
     required TResult orElse(),
   }) {
     if (getAllCategory != null) {
@@ -333,6 +345,7 @@ class _$SelectedactegoryImpl implements Selectedactegory {
     required TResult Function(SearchParamModel searchParamModel)
         globalPrductSearch,
     required TResult Function() nextPage,
+    required TResult Function() clear,
   }) {
     return selectedactegory(category);
   }
@@ -346,6 +359,7 @@ class _$SelectedactegoryImpl implements Selectedactegory {
     TResult? Function(bool isLoad)? getBestSellingProducts,
     TResult? Function(SearchParamModel searchParamModel)? globalPrductSearch,
     TResult? Function()? nextPage,
+    TResult? Function()? clear,
   }) {
     return selectedactegory?.call(category);
   }
@@ -359,6 +373,7 @@ class _$SelectedactegoryImpl implements Selectedactegory {
     TResult Function(bool isLoad)? getBestSellingProducts,
     TResult Function(SearchParamModel searchParamModel)? globalPrductSearch,
     TResult Function()? nextPage,
+    TResult Function()? clear,
     required TResult orElse(),
   }) {
     if (selectedactegory != null) {
@@ -377,6 +392,7 @@ class _$SelectedactegoryImpl implements Selectedactegory {
         getBestSellingProducts,
     required TResult Function(GlobalPrductSearch value) globalPrductSearch,
     required TResult Function(NextPage value) nextPage,
+    required TResult Function(Clear value) clear,
   }) {
     return selectedactegory(this);
   }
@@ -390,6 +406,7 @@ class _$SelectedactegoryImpl implements Selectedactegory {
     TResult? Function(GetBestSellingProducts value)? getBestSellingProducts,
     TResult? Function(GlobalPrductSearch value)? globalPrductSearch,
     TResult? Function(NextPage value)? nextPage,
+    TResult? Function(Clear value)? clear,
   }) {
     return selectedactegory?.call(this);
   }
@@ -403,6 +420,7 @@ class _$SelectedactegoryImpl implements Selectedactegory {
     TResult Function(GetBestSellingProducts value)? getBestSellingProducts,
     TResult Function(GlobalPrductSearch value)? globalPrductSearch,
     TResult Function(NextPage value)? nextPage,
+    TResult Function(Clear value)? clear,
     required TResult orElse(),
   }) {
     if (selectedactegory != null) {
@@ -494,6 +512,7 @@ class _$HomePageBannersImpl implements HomePageBanners {
     required TResult Function(SearchParamModel searchParamModel)
         globalPrductSearch,
     required TResult Function() nextPage,
+    required TResult Function() clear,
   }) {
     return homePageBanners(isLoad);
   }
@@ -507,6 +526,7 @@ class _$HomePageBannersImpl implements HomePageBanners {
     TResult? Function(bool isLoad)? getBestSellingProducts,
     TResult? Function(SearchParamModel searchParamModel)? globalPrductSearch,
     TResult? Function()? nextPage,
+    TResult? Function()? clear,
   }) {
     return homePageBanners?.call(isLoad);
   }
@@ -520,6 +540,7 @@ class _$HomePageBannersImpl implements HomePageBanners {
     TResult Function(bool isLoad)? getBestSellingProducts,
     TResult Function(SearchParamModel searchParamModel)? globalPrductSearch,
     TResult Function()? nextPage,
+    TResult Function()? clear,
     required TResult orElse(),
   }) {
     if (homePageBanners != null) {
@@ -538,6 +559,7 @@ class _$HomePageBannersImpl implements HomePageBanners {
         getBestSellingProducts,
     required TResult Function(GlobalPrductSearch value) globalPrductSearch,
     required TResult Function(NextPage value) nextPage,
+    required TResult Function(Clear value) clear,
   }) {
     return homePageBanners(this);
   }
@@ -551,6 +573,7 @@ class _$HomePageBannersImpl implements HomePageBanners {
     TResult? Function(GetBestSellingProducts value)? getBestSellingProducts,
     TResult? Function(GlobalPrductSearch value)? globalPrductSearch,
     TResult? Function(NextPage value)? nextPage,
+    TResult? Function(Clear value)? clear,
   }) {
     return homePageBanners?.call(this);
   }
@@ -564,6 +587,7 @@ class _$HomePageBannersImpl implements HomePageBanners {
     TResult Function(GetBestSellingProducts value)? getBestSellingProducts,
     TResult Function(GlobalPrductSearch value)? globalPrductSearch,
     TResult Function(NextPage value)? nextPage,
+    TResult Function(Clear value)? clear,
     required TResult orElse(),
   }) {
     if (homePageBanners != null) {
@@ -657,6 +681,7 @@ class _$GetBestSellingProductsImpl implements GetBestSellingProducts {
     required TResult Function(SearchParamModel searchParamModel)
         globalPrductSearch,
     required TResult Function() nextPage,
+    required TResult Function() clear,
   }) {
     return getBestSellingProducts(isLoad);
   }
@@ -670,6 +695,7 @@ class _$GetBestSellingProductsImpl implements GetBestSellingProducts {
     TResult? Function(bool isLoad)? getBestSellingProducts,
     TResult? Function(SearchParamModel searchParamModel)? globalPrductSearch,
     TResult? Function()? nextPage,
+    TResult? Function()? clear,
   }) {
     return getBestSellingProducts?.call(isLoad);
   }
@@ -683,6 +709,7 @@ class _$GetBestSellingProductsImpl implements GetBestSellingProducts {
     TResult Function(bool isLoad)? getBestSellingProducts,
     TResult Function(SearchParamModel searchParamModel)? globalPrductSearch,
     TResult Function()? nextPage,
+    TResult Function()? clear,
     required TResult orElse(),
   }) {
     if (getBestSellingProducts != null) {
@@ -701,6 +728,7 @@ class _$GetBestSellingProductsImpl implements GetBestSellingProducts {
         getBestSellingProducts,
     required TResult Function(GlobalPrductSearch value) globalPrductSearch,
     required TResult Function(NextPage value) nextPage,
+    required TResult Function(Clear value) clear,
   }) {
     return getBestSellingProducts(this);
   }
@@ -714,6 +742,7 @@ class _$GetBestSellingProductsImpl implements GetBestSellingProducts {
     TResult? Function(GetBestSellingProducts value)? getBestSellingProducts,
     TResult? Function(GlobalPrductSearch value)? globalPrductSearch,
     TResult? Function(NextPage value)? nextPage,
+    TResult? Function(Clear value)? clear,
   }) {
     return getBestSellingProducts?.call(this);
   }
@@ -727,6 +756,7 @@ class _$GetBestSellingProductsImpl implements GetBestSellingProducts {
     TResult Function(GetBestSellingProducts value)? getBestSellingProducts,
     TResult Function(GlobalPrductSearch value)? globalPrductSearch,
     TResult Function(NextPage value)? nextPage,
+    TResult Function(Clear value)? clear,
     required TResult orElse(),
   }) {
     if (getBestSellingProducts != null) {
@@ -819,6 +849,7 @@ class _$GlobalPrductSearchImpl implements GlobalPrductSearch {
     required TResult Function(SearchParamModel searchParamModel)
         globalPrductSearch,
     required TResult Function() nextPage,
+    required TResult Function() clear,
   }) {
     return globalPrductSearch(searchParamModel);
   }
@@ -832,6 +863,7 @@ class _$GlobalPrductSearchImpl implements GlobalPrductSearch {
     TResult? Function(bool isLoad)? getBestSellingProducts,
     TResult? Function(SearchParamModel searchParamModel)? globalPrductSearch,
     TResult? Function()? nextPage,
+    TResult? Function()? clear,
   }) {
     return globalPrductSearch?.call(searchParamModel);
   }
@@ -845,6 +877,7 @@ class _$GlobalPrductSearchImpl implements GlobalPrductSearch {
     TResult Function(bool isLoad)? getBestSellingProducts,
     TResult Function(SearchParamModel searchParamModel)? globalPrductSearch,
     TResult Function()? nextPage,
+    TResult Function()? clear,
     required TResult orElse(),
   }) {
     if (globalPrductSearch != null) {
@@ -863,6 +896,7 @@ class _$GlobalPrductSearchImpl implements GlobalPrductSearch {
         getBestSellingProducts,
     required TResult Function(GlobalPrductSearch value) globalPrductSearch,
     required TResult Function(NextPage value) nextPage,
+    required TResult Function(Clear value) clear,
   }) {
     return globalPrductSearch(this);
   }
@@ -876,6 +910,7 @@ class _$GlobalPrductSearchImpl implements GlobalPrductSearch {
     TResult? Function(GetBestSellingProducts value)? getBestSellingProducts,
     TResult? Function(GlobalPrductSearch value)? globalPrductSearch,
     TResult? Function(NextPage value)? nextPage,
+    TResult? Function(Clear value)? clear,
   }) {
     return globalPrductSearch?.call(this);
   }
@@ -889,6 +924,7 @@ class _$GlobalPrductSearchImpl implements GlobalPrductSearch {
     TResult Function(GetBestSellingProducts value)? getBestSellingProducts,
     TResult Function(GlobalPrductSearch value)? globalPrductSearch,
     TResult Function(NextPage value)? nextPage,
+    TResult Function(Clear value)? clear,
     required TResult orElse(),
   }) {
     if (globalPrductSearch != null) {
@@ -954,6 +990,7 @@ class _$NextPageImpl implements NextPage {
     required TResult Function(SearchParamModel searchParamModel)
         globalPrductSearch,
     required TResult Function() nextPage,
+    required TResult Function() clear,
   }) {
     return nextPage();
   }
@@ -967,6 +1004,7 @@ class _$NextPageImpl implements NextPage {
     TResult? Function(bool isLoad)? getBestSellingProducts,
     TResult? Function(SearchParamModel searchParamModel)? globalPrductSearch,
     TResult? Function()? nextPage,
+    TResult? Function()? clear,
   }) {
     return nextPage?.call();
   }
@@ -980,6 +1018,7 @@ class _$NextPageImpl implements NextPage {
     TResult Function(bool isLoad)? getBestSellingProducts,
     TResult Function(SearchParamModel searchParamModel)? globalPrductSearch,
     TResult Function()? nextPage,
+    TResult Function()? clear,
     required TResult orElse(),
   }) {
     if (nextPage != null) {
@@ -998,6 +1037,7 @@ class _$NextPageImpl implements NextPage {
         getBestSellingProducts,
     required TResult Function(GlobalPrductSearch value) globalPrductSearch,
     required TResult Function(NextPage value) nextPage,
+    required TResult Function(Clear value) clear,
   }) {
     return nextPage(this);
   }
@@ -1011,6 +1051,7 @@ class _$NextPageImpl implements NextPage {
     TResult? Function(GetBestSellingProducts value)? getBestSellingProducts,
     TResult? Function(GlobalPrductSearch value)? globalPrductSearch,
     TResult? Function(NextPage value)? nextPage,
+    TResult? Function(Clear value)? clear,
   }) {
     return nextPage?.call(this);
   }
@@ -1024,6 +1065,7 @@ class _$NextPageImpl implements NextPage {
     TResult Function(GetBestSellingProducts value)? getBestSellingProducts,
     TResult Function(GlobalPrductSearch value)? globalPrductSearch,
     TResult Function(NextPage value)? nextPage,
+    TResult Function(Clear value)? clear,
     required TResult orElse(),
   }) {
     if (nextPage != null) {
@@ -1035,6 +1077,140 @@ class _$NextPageImpl implements NextPage {
 
 abstract class NextPage implements HomeEvent {
   const factory NextPage() = _$NextPageImpl;
+}
+
+/// @nodoc
+abstract class _$$ClearImplCopyWith<$Res> {
+  factory _$$ClearImplCopyWith(
+          _$ClearImpl value, $Res Function(_$ClearImpl) then) =
+      __$$ClearImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ClearImplCopyWithImpl<$Res>
+    extends _$HomeEventCopyWithImpl<$Res, _$ClearImpl>
+    implements _$$ClearImplCopyWith<$Res> {
+  __$$ClearImplCopyWithImpl(
+      _$ClearImpl _value, $Res Function(_$ClearImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$ClearImpl implements Clear {
+  const _$ClearImpl();
+
+  @override
+  String toString() {
+    return 'HomeEvent.clear()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$ClearImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(bool isLoad) getAllCategory,
+    required TResult Function(String category) selectedactegory,
+    required TResult Function(bool isLoad) homePageBanners,
+    required TResult Function(bool isLoad) getBestSellingProducts,
+    required TResult Function(SearchParamModel searchParamModel)
+        globalPrductSearch,
+    required TResult Function() nextPage,
+    required TResult Function() clear,
+  }) {
+    return clear();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(bool isLoad)? getAllCategory,
+    TResult? Function(String category)? selectedactegory,
+    TResult? Function(bool isLoad)? homePageBanners,
+    TResult? Function(bool isLoad)? getBestSellingProducts,
+    TResult? Function(SearchParamModel searchParamModel)? globalPrductSearch,
+    TResult? Function()? nextPage,
+    TResult? Function()? clear,
+  }) {
+    return clear?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(bool isLoad)? getAllCategory,
+    TResult Function(String category)? selectedactegory,
+    TResult Function(bool isLoad)? homePageBanners,
+    TResult Function(bool isLoad)? getBestSellingProducts,
+    TResult Function(SearchParamModel searchParamModel)? globalPrductSearch,
+    TResult Function()? nextPage,
+    TResult Function()? clear,
+    required TResult orElse(),
+  }) {
+    if (clear != null) {
+      return clear();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GetAllCategory value) getAllCategory,
+    required TResult Function(Selectedactegory value) selectedactegory,
+    required TResult Function(HomePageBanners value) homePageBanners,
+    required TResult Function(GetBestSellingProducts value)
+        getBestSellingProducts,
+    required TResult Function(GlobalPrductSearch value) globalPrductSearch,
+    required TResult Function(NextPage value) nextPage,
+    required TResult Function(Clear value) clear,
+  }) {
+    return clear(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetAllCategory value)? getAllCategory,
+    TResult? Function(Selectedactegory value)? selectedactegory,
+    TResult? Function(HomePageBanners value)? homePageBanners,
+    TResult? Function(GetBestSellingProducts value)? getBestSellingProducts,
+    TResult? Function(GlobalPrductSearch value)? globalPrductSearch,
+    TResult? Function(NextPage value)? nextPage,
+    TResult? Function(Clear value)? clear,
+  }) {
+    return clear?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetAllCategory value)? getAllCategory,
+    TResult Function(Selectedactegory value)? selectedactegory,
+    TResult Function(HomePageBanners value)? homePageBanners,
+    TResult Function(GetBestSellingProducts value)? getBestSellingProducts,
+    TResult Function(GlobalPrductSearch value)? globalPrductSearch,
+    TResult Function(NextPage value)? nextPage,
+    TResult Function(Clear value)? clear,
+    required TResult orElse(),
+  }) {
+    if (clear != null) {
+      return clear(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Clear implements HomeEvent {
+  const factory Clear() = _$ClearImpl;
 }
 
 /// @nodoc

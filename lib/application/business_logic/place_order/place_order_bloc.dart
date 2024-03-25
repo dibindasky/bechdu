@@ -54,6 +54,11 @@ class PlaceOrderBloc extends Bloc<PlaceOrderEvent, PlaceOrderState> {
     on<UserNumber>(userNumber);
     on<RemoveAllFieldData>(removeAllFeildData);
     on<InvoiceDownload>(invoiceDownLoad);
+    on<Clear>(clear);
+  }
+
+  FutureOr<void> clear(Clear event, emit) {
+    emit(PlaceOrderState.initial());
   }
 
   FutureOr<void> invoiceDownLoad(InvoiceDownload event, emit) async {
@@ -238,7 +243,7 @@ class PlaceOrderBloc extends Bloc<PlaceOrderEvent, PlaceOrderState> {
         state.copyWith(
           hasError: false,
           isLoading: false,
-          message: orderPlacingSuccess.message,
+          orderPlacedResponceModel: orderPlacingSuccess,
         ),
       );
       add(const PlaceOrderEvent.getOrders());

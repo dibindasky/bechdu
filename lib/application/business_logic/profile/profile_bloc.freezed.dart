@@ -28,6 +28,7 @@ mixin _$ProfileEvent {
     required TResult Function(LoginModel? loginModel) getDeletionOtp,
     required TResult Function(OtpVerifyRequestModel otpVerifyRequestModel)
         deleteAccount,
+    required TResult Function() clear,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -40,6 +41,7 @@ mixin _$ProfileEvent {
     TResult? Function(LoginModel? loginModel)? getDeletionOtp,
     TResult? Function(OtpVerifyRequestModel otpVerifyRequestModel)?
         deleteAccount,
+    TResult? Function()? clear,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -52,6 +54,7 @@ mixin _$ProfileEvent {
     TResult Function(LoginModel? loginModel)? getDeletionOtp,
     TResult Function(OtpVerifyRequestModel otpVerifyRequestModel)?
         deleteAccount,
+    TResult Function()? clear,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -63,6 +66,7 @@ mixin _$ProfileEvent {
     required TResult Function(UpdateUser value) updateUser,
     required TResult Function(GetDeletionOtp value) getDeletionOtp,
     required TResult Function(DeleteAccount value) deleteAccount,
+    required TResult Function(Clear value) clear,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -73,6 +77,7 @@ mixin _$ProfileEvent {
     TResult? Function(UpdateUser value)? updateUser,
     TResult? Function(GetDeletionOtp value)? getDeletionOtp,
     TResult? Function(DeleteAccount value)? deleteAccount,
+    TResult? Function(Clear value)? clear,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -83,6 +88,7 @@ mixin _$ProfileEvent {
     TResult Function(UpdateUser value)? updateUser,
     TResult Function(GetDeletionOtp value)? getDeletionOtp,
     TResult Function(DeleteAccount value)? deleteAccount,
+    TResult Function(Clear value)? clear,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -183,6 +189,7 @@ class _$AddAddressImpl implements AddAddress {
     required TResult Function(LoginModel? loginModel) getDeletionOtp,
     required TResult Function(OtpVerifyRequestModel otpVerifyRequestModel)
         deleteAccount,
+    required TResult Function() clear,
   }) {
     return addAddress(addressCreationRequestModel);
   }
@@ -198,6 +205,7 @@ class _$AddAddressImpl implements AddAddress {
     TResult? Function(LoginModel? loginModel)? getDeletionOtp,
     TResult? Function(OtpVerifyRequestModel otpVerifyRequestModel)?
         deleteAccount,
+    TResult? Function()? clear,
   }) {
     return addAddress?.call(addressCreationRequestModel);
   }
@@ -213,6 +221,7 @@ class _$AddAddressImpl implements AddAddress {
     TResult Function(LoginModel? loginModel)? getDeletionOtp,
     TResult Function(OtpVerifyRequestModel otpVerifyRequestModel)?
         deleteAccount,
+    TResult Function()? clear,
     required TResult orElse(),
   }) {
     if (addAddress != null) {
@@ -230,6 +239,7 @@ class _$AddAddressImpl implements AddAddress {
     required TResult Function(UpdateUser value) updateUser,
     required TResult Function(GetDeletionOtp value) getDeletionOtp,
     required TResult Function(DeleteAccount value) deleteAccount,
+    required TResult Function(Clear value) clear,
   }) {
     return addAddress(this);
   }
@@ -243,6 +253,7 @@ class _$AddAddressImpl implements AddAddress {
     TResult? Function(UpdateUser value)? updateUser,
     TResult? Function(GetDeletionOtp value)? getDeletionOtp,
     TResult? Function(DeleteAccount value)? deleteAccount,
+    TResult? Function(Clear value)? clear,
   }) {
     return addAddress?.call(this);
   }
@@ -256,6 +267,7 @@ class _$AddAddressImpl implements AddAddress {
     TResult Function(UpdateUser value)? updateUser,
     TResult Function(GetDeletionOtp value)? getDeletionOtp,
     TResult Function(DeleteAccount value)? deleteAccount,
+    TResult Function(Clear value)? clear,
     required TResult orElse(),
   }) {
     if (addAddress != null) {
@@ -350,6 +362,7 @@ class _$DeleteAddressImpl implements DeleteAddress {
     required TResult Function(LoginModel? loginModel) getDeletionOtp,
     required TResult Function(OtpVerifyRequestModel otpVerifyRequestModel)
         deleteAccount,
+    required TResult Function() clear,
   }) {
     return deleteAddress(index);
   }
@@ -365,6 +378,7 @@ class _$DeleteAddressImpl implements DeleteAddress {
     TResult? Function(LoginModel? loginModel)? getDeletionOtp,
     TResult? Function(OtpVerifyRequestModel otpVerifyRequestModel)?
         deleteAccount,
+    TResult? Function()? clear,
   }) {
     return deleteAddress?.call(index);
   }
@@ -380,6 +394,7 @@ class _$DeleteAddressImpl implements DeleteAddress {
     TResult Function(LoginModel? loginModel)? getDeletionOtp,
     TResult Function(OtpVerifyRequestModel otpVerifyRequestModel)?
         deleteAccount,
+    TResult Function()? clear,
     required TResult orElse(),
   }) {
     if (deleteAddress != null) {
@@ -397,6 +412,7 @@ class _$DeleteAddressImpl implements DeleteAddress {
     required TResult Function(UpdateUser value) updateUser,
     required TResult Function(GetDeletionOtp value) getDeletionOtp,
     required TResult Function(DeleteAccount value) deleteAccount,
+    required TResult Function(Clear value) clear,
   }) {
     return deleteAddress(this);
   }
@@ -410,6 +426,7 @@ class _$DeleteAddressImpl implements DeleteAddress {
     TResult? Function(UpdateUser value)? updateUser,
     TResult? Function(GetDeletionOtp value)? getDeletionOtp,
     TResult? Function(DeleteAccount value)? deleteAccount,
+    TResult? Function(Clear value)? clear,
   }) {
     return deleteAddress?.call(this);
   }
@@ -423,6 +440,7 @@ class _$DeleteAddressImpl implements DeleteAddress {
     TResult Function(UpdateUser value)? updateUser,
     TResult Function(GetDeletionOtp value)? getDeletionOtp,
     TResult Function(DeleteAccount value)? deleteAccount,
+    TResult Function(Clear value)? clear,
     required TResult orElse(),
   }) {
     if (deleteAddress != null) {
@@ -515,6 +533,7 @@ class _$GetUserInfoImpl implements GetUserInfo {
     required TResult Function(LoginModel? loginModel) getDeletionOtp,
     required TResult Function(OtpVerifyRequestModel otpVerifyRequestModel)
         deleteAccount,
+    required TResult Function() clear,
   }) {
     return getUserInfo(isLoad);
   }
@@ -530,6 +549,7 @@ class _$GetUserInfoImpl implements GetUserInfo {
     TResult? Function(LoginModel? loginModel)? getDeletionOtp,
     TResult? Function(OtpVerifyRequestModel otpVerifyRequestModel)?
         deleteAccount,
+    TResult? Function()? clear,
   }) {
     return getUserInfo?.call(isLoad);
   }
@@ -545,6 +565,7 @@ class _$GetUserInfoImpl implements GetUserInfo {
     TResult Function(LoginModel? loginModel)? getDeletionOtp,
     TResult Function(OtpVerifyRequestModel otpVerifyRequestModel)?
         deleteAccount,
+    TResult Function()? clear,
     required TResult orElse(),
   }) {
     if (getUserInfo != null) {
@@ -562,6 +583,7 @@ class _$GetUserInfoImpl implements GetUserInfo {
     required TResult Function(UpdateUser value) updateUser,
     required TResult Function(GetDeletionOtp value) getDeletionOtp,
     required TResult Function(DeleteAccount value) deleteAccount,
+    required TResult Function(Clear value) clear,
   }) {
     return getUserInfo(this);
   }
@@ -575,6 +597,7 @@ class _$GetUserInfoImpl implements GetUserInfo {
     TResult? Function(UpdateUser value)? updateUser,
     TResult? Function(GetDeletionOtp value)? getDeletionOtp,
     TResult? Function(DeleteAccount value)? deleteAccount,
+    TResult? Function(Clear value)? clear,
   }) {
     return getUserInfo?.call(this);
   }
@@ -588,6 +611,7 @@ class _$GetUserInfoImpl implements GetUserInfo {
     TResult Function(UpdateUser value)? updateUser,
     TResult Function(GetDeletionOtp value)? getDeletionOtp,
     TResult Function(DeleteAccount value)? deleteAccount,
+    TResult Function(Clear value)? clear,
     required TResult orElse(),
   }) {
     if (getUserInfo != null) {
@@ -681,6 +705,7 @@ class _$UpdateUserImpl implements UpdateUser {
     required TResult Function(LoginModel? loginModel) getDeletionOtp,
     required TResult Function(OtpVerifyRequestModel otpVerifyRequestModel)
         deleteAccount,
+    required TResult Function() clear,
   }) {
     return updateUser(userInfoRequestModel);
   }
@@ -696,6 +721,7 @@ class _$UpdateUserImpl implements UpdateUser {
     TResult? Function(LoginModel? loginModel)? getDeletionOtp,
     TResult? Function(OtpVerifyRequestModel otpVerifyRequestModel)?
         deleteAccount,
+    TResult? Function()? clear,
   }) {
     return updateUser?.call(userInfoRequestModel);
   }
@@ -711,6 +737,7 @@ class _$UpdateUserImpl implements UpdateUser {
     TResult Function(LoginModel? loginModel)? getDeletionOtp,
     TResult Function(OtpVerifyRequestModel otpVerifyRequestModel)?
         deleteAccount,
+    TResult Function()? clear,
     required TResult orElse(),
   }) {
     if (updateUser != null) {
@@ -728,6 +755,7 @@ class _$UpdateUserImpl implements UpdateUser {
     required TResult Function(UpdateUser value) updateUser,
     required TResult Function(GetDeletionOtp value) getDeletionOtp,
     required TResult Function(DeleteAccount value) deleteAccount,
+    required TResult Function(Clear value) clear,
   }) {
     return updateUser(this);
   }
@@ -741,6 +769,7 @@ class _$UpdateUserImpl implements UpdateUser {
     TResult? Function(UpdateUser value)? updateUser,
     TResult? Function(GetDeletionOtp value)? getDeletionOtp,
     TResult? Function(DeleteAccount value)? deleteAccount,
+    TResult? Function(Clear value)? clear,
   }) {
     return updateUser?.call(this);
   }
@@ -754,6 +783,7 @@ class _$UpdateUserImpl implements UpdateUser {
     TResult Function(UpdateUser value)? updateUser,
     TResult Function(GetDeletionOtp value)? getDeletionOtp,
     TResult Function(DeleteAccount value)? deleteAccount,
+    TResult Function(Clear value)? clear,
     required TResult orElse(),
   }) {
     if (updateUser != null) {
@@ -850,6 +880,7 @@ class _$GetDeletionOtpImpl implements GetDeletionOtp {
     required TResult Function(LoginModel? loginModel) getDeletionOtp,
     required TResult Function(OtpVerifyRequestModel otpVerifyRequestModel)
         deleteAccount,
+    required TResult Function() clear,
   }) {
     return getDeletionOtp(loginModel);
   }
@@ -865,6 +896,7 @@ class _$GetDeletionOtpImpl implements GetDeletionOtp {
     TResult? Function(LoginModel? loginModel)? getDeletionOtp,
     TResult? Function(OtpVerifyRequestModel otpVerifyRequestModel)?
         deleteAccount,
+    TResult? Function()? clear,
   }) {
     return getDeletionOtp?.call(loginModel);
   }
@@ -880,6 +912,7 @@ class _$GetDeletionOtpImpl implements GetDeletionOtp {
     TResult Function(LoginModel? loginModel)? getDeletionOtp,
     TResult Function(OtpVerifyRequestModel otpVerifyRequestModel)?
         deleteAccount,
+    TResult Function()? clear,
     required TResult orElse(),
   }) {
     if (getDeletionOtp != null) {
@@ -897,6 +930,7 @@ class _$GetDeletionOtpImpl implements GetDeletionOtp {
     required TResult Function(UpdateUser value) updateUser,
     required TResult Function(GetDeletionOtp value) getDeletionOtp,
     required TResult Function(DeleteAccount value) deleteAccount,
+    required TResult Function(Clear value) clear,
   }) {
     return getDeletionOtp(this);
   }
@@ -910,6 +944,7 @@ class _$GetDeletionOtpImpl implements GetDeletionOtp {
     TResult? Function(UpdateUser value)? updateUser,
     TResult? Function(GetDeletionOtp value)? getDeletionOtp,
     TResult? Function(DeleteAccount value)? deleteAccount,
+    TResult? Function(Clear value)? clear,
   }) {
     return getDeletionOtp?.call(this);
   }
@@ -923,6 +958,7 @@ class _$GetDeletionOtpImpl implements GetDeletionOtp {
     TResult Function(UpdateUser value)? updateUser,
     TResult Function(GetDeletionOtp value)? getDeletionOtp,
     TResult Function(DeleteAccount value)? deleteAccount,
+    TResult Function(Clear value)? clear,
     required TResult orElse(),
   }) {
     if (getDeletionOtp != null) {
@@ -1017,6 +1053,7 @@ class _$DeleteAccountImpl implements DeleteAccount {
     required TResult Function(LoginModel? loginModel) getDeletionOtp,
     required TResult Function(OtpVerifyRequestModel otpVerifyRequestModel)
         deleteAccount,
+    required TResult Function() clear,
   }) {
     return deleteAccount(otpVerifyRequestModel);
   }
@@ -1032,6 +1069,7 @@ class _$DeleteAccountImpl implements DeleteAccount {
     TResult? Function(LoginModel? loginModel)? getDeletionOtp,
     TResult? Function(OtpVerifyRequestModel otpVerifyRequestModel)?
         deleteAccount,
+    TResult? Function()? clear,
   }) {
     return deleteAccount?.call(otpVerifyRequestModel);
   }
@@ -1047,6 +1085,7 @@ class _$DeleteAccountImpl implements DeleteAccount {
     TResult Function(LoginModel? loginModel)? getDeletionOtp,
     TResult Function(OtpVerifyRequestModel otpVerifyRequestModel)?
         deleteAccount,
+    TResult Function()? clear,
     required TResult orElse(),
   }) {
     if (deleteAccount != null) {
@@ -1064,6 +1103,7 @@ class _$DeleteAccountImpl implements DeleteAccount {
     required TResult Function(UpdateUser value) updateUser,
     required TResult Function(GetDeletionOtp value) getDeletionOtp,
     required TResult Function(DeleteAccount value) deleteAccount,
+    required TResult Function(Clear value) clear,
   }) {
     return deleteAccount(this);
   }
@@ -1077,6 +1117,7 @@ class _$DeleteAccountImpl implements DeleteAccount {
     TResult? Function(UpdateUser value)? updateUser,
     TResult? Function(GetDeletionOtp value)? getDeletionOtp,
     TResult? Function(DeleteAccount value)? deleteAccount,
+    TResult? Function(Clear value)? clear,
   }) {
     return deleteAccount?.call(this);
   }
@@ -1090,6 +1131,7 @@ class _$DeleteAccountImpl implements DeleteAccount {
     TResult Function(UpdateUser value)? updateUser,
     TResult Function(GetDeletionOtp value)? getDeletionOtp,
     TResult Function(DeleteAccount value)? deleteAccount,
+    TResult Function(Clear value)? clear,
     required TResult orElse(),
   }) {
     if (deleteAccount != null) {
@@ -1108,6 +1150,146 @@ abstract class DeleteAccount implements ProfileEvent {
   @JsonKey(ignore: true)
   _$$DeleteAccountImplCopyWith<_$DeleteAccountImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ClearImplCopyWith<$Res> {
+  factory _$$ClearImplCopyWith(
+          _$ClearImpl value, $Res Function(_$ClearImpl) then) =
+      __$$ClearImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ClearImplCopyWithImpl<$Res>
+    extends _$ProfileEventCopyWithImpl<$Res, _$ClearImpl>
+    implements _$$ClearImplCopyWith<$Res> {
+  __$$ClearImplCopyWithImpl(
+      _$ClearImpl _value, $Res Function(_$ClearImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$ClearImpl implements Clear {
+  const _$ClearImpl();
+
+  @override
+  String toString() {
+    return 'ProfileEvent.clear()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$ClearImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            AddressCreationRequestModel addressCreationRequestModel)
+        addAddress,
+    required TResult Function(int index) deleteAddress,
+    required TResult Function(bool isLoad) getUserInfo,
+    required TResult Function(UserInfoRequestModel userInfoRequestModel)
+        updateUser,
+    required TResult Function(LoginModel? loginModel) getDeletionOtp,
+    required TResult Function(OtpVerifyRequestModel otpVerifyRequestModel)
+        deleteAccount,
+    required TResult Function() clear,
+  }) {
+    return clear();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(AddressCreationRequestModel addressCreationRequestModel)?
+        addAddress,
+    TResult? Function(int index)? deleteAddress,
+    TResult? Function(bool isLoad)? getUserInfo,
+    TResult? Function(UserInfoRequestModel userInfoRequestModel)? updateUser,
+    TResult? Function(LoginModel? loginModel)? getDeletionOtp,
+    TResult? Function(OtpVerifyRequestModel otpVerifyRequestModel)?
+        deleteAccount,
+    TResult? Function()? clear,
+  }) {
+    return clear?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(AddressCreationRequestModel addressCreationRequestModel)?
+        addAddress,
+    TResult Function(int index)? deleteAddress,
+    TResult Function(bool isLoad)? getUserInfo,
+    TResult Function(UserInfoRequestModel userInfoRequestModel)? updateUser,
+    TResult Function(LoginModel? loginModel)? getDeletionOtp,
+    TResult Function(OtpVerifyRequestModel otpVerifyRequestModel)?
+        deleteAccount,
+    TResult Function()? clear,
+    required TResult orElse(),
+  }) {
+    if (clear != null) {
+      return clear();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(AddAddress value) addAddress,
+    required TResult Function(DeleteAddress value) deleteAddress,
+    required TResult Function(GetUserInfo value) getUserInfo,
+    required TResult Function(UpdateUser value) updateUser,
+    required TResult Function(GetDeletionOtp value) getDeletionOtp,
+    required TResult Function(DeleteAccount value) deleteAccount,
+    required TResult Function(Clear value) clear,
+  }) {
+    return clear(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(AddAddress value)? addAddress,
+    TResult? Function(DeleteAddress value)? deleteAddress,
+    TResult? Function(GetUserInfo value)? getUserInfo,
+    TResult? Function(UpdateUser value)? updateUser,
+    TResult? Function(GetDeletionOtp value)? getDeletionOtp,
+    TResult? Function(DeleteAccount value)? deleteAccount,
+    TResult? Function(Clear value)? clear,
+  }) {
+    return clear?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AddAddress value)? addAddress,
+    TResult Function(DeleteAddress value)? deleteAddress,
+    TResult Function(GetUserInfo value)? getUserInfo,
+    TResult Function(UpdateUser value)? updateUser,
+    TResult Function(GetDeletionOtp value)? getDeletionOtp,
+    TResult Function(DeleteAccount value)? deleteAccount,
+    TResult Function(Clear value)? clear,
+    required TResult orElse(),
+  }) {
+    if (clear != null) {
+      return clear(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Clear implements ProfileEvent {
+  const factory Clear() = _$ClearImpl;
 }
 
 /// @nodoc

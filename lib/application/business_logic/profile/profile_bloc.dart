@@ -39,6 +39,11 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     on<UpdateUser>(updateuser);
     on<GetDeletionOtp>(getDeletionOtp);
     on<DeleteAccount>(deleteAccount);
+    on<Clear>(clear);
+  }
+
+  FutureOr<void> clear(Clear event, emit) {
+    emit(ProfileState.initail());
   }
 
   FutureOr<void> getDeletionOtp(GetDeletionOtp event, emit) async {
@@ -58,7 +63,8 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   }
 
   FutureOr<void> deleteAccount(DeleteAccount event, emit) async {
-    emit(state.copyWith(hasError: false, isLoading: false));
+    emit(state.copyWith(
+        hasError: false, isLoading: true, address: state.address));
     final number = await SecureSotrage.getNumber();
     event.otpVerifyRequestModel.phone = number;
     final data = await profileRepo.deletAcocunt(
@@ -70,12 +76,12 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
                 hasError: true,
                 isLoading: false,
               ),
-            ), (successOtpSend) async {
+            ), (deleteSuccess) async {
       emit(
         state.copyWith(
           isLoading: false,
           hasError: false,
-          message: successOtpSend.message,
+          deleteAccountResponceModel: deleteSuccess,
         ),
       );
     });

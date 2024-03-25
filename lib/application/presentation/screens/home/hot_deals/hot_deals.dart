@@ -55,7 +55,6 @@ class HotDealsSession extends StatelessWidget {
                           : const Color.fromARGB(255, 255, 114, 105);
                       return GestureDetector(
                         onTap: () {
-                          context.read<QuestionTabBloc>().newList.clear();
                           context
                               .read<CategoryBlocBloc>()
                               .add(GetSingleCategoryBrands(

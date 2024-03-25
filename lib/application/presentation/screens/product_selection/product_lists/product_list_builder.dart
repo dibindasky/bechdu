@@ -42,33 +42,33 @@ class ProductListViewBuilder extends StatelessWidget {
           kHeight10,
           Text('Showing All Products', style: textHeadBold1),
           kHeight10,
-          SizedBox(
-            width: sWidth / 2.2,
-            child: Card(
-              color: kWhite,
-              child: Row(
-                children: [
-                  kWidth5,
-                  FittedBox(
-                    child: Text(
-                      '${context.read<CategoryBlocBloc>().seriesName?.replaceAll('Samsung', '')}',
-                      style:
-                          textHeadInter.copyWith(color: kBlack, fontSize: 14),
-                    ),
-                  ),
-                  IconButton(
-                    onPressed: () {
-                      brandSeriesProductValueNotifier.value = 1;
-                      brandSeriesProductValueNotifier.notifyListeners();
-                      context.read<CategoryBlocBloc>().modelFilter = null;
-                      context.read<CategoryBlocBloc>().varientFilter = null;
-                    },
-                    icon: const Icon(Icons.clear),
-                  )
-                ],
-              ),
-            ),
-          ),
+          // SizedBox(
+          //   width: sWidth / 2.2,
+          //   child: Card(
+          //     color: kWhite,
+          //     child: Row(
+          //       children: [
+          //         kWidth5,
+          //         FittedBox(
+          //           child: Text(
+          //             '${context.read<CategoryBlocBloc>().seriesName?.replaceAll('Samsung', '')}',
+          //             style:
+          //                 textHeadInter.copyWith(color: kBlack, fontSize: 14),
+          //           ),
+          //         ),
+          //         IconButton(
+          //           onPressed: () {
+          //             brandSeriesProductValueNotifier.value = 1;
+          //             brandSeriesProductValueNotifier.notifyListeners();
+          //             context.read<CategoryBlocBloc>().modelFilter = null;
+          //             context.read<CategoryBlocBloc>().varientFilter = null;
+          //           },
+          //           icon: const Icon(Icons.clear),
+          //         )
+          //       ],
+          //     ),
+          //   ),
+          // ),
           kHeight20,
           product.isEmpty
               ? Center(child: Lottie.asset(emptyLottie))

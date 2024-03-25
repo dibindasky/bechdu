@@ -22,7 +22,7 @@ class _AnimatedGrowShrinkContainerState
     super.initState();
     _controller =
         AnimationController(vsync: this, duration: const Duration(seconds: 1));
-    _scaleAnimation = Tween<double>(begin: 1.0, end: 0.8).animate(_controller)
+    _scaleAnimation = Tween<double>(begin: .85, end: 0.9).animate(_controller)
       ..addListener(() => setState(() {}));
     _controller.repeat(
       reverse: true,

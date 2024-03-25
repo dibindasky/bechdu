@@ -152,7 +152,6 @@ class LocationBloc extends Bloc<LocationEvent, LocationState> {
   }
 
   FutureOr<void> clear(Clear event, emit) {
-    pincode = null;
-    location = null;
+    emit(LocationState.initial());
   }
 }

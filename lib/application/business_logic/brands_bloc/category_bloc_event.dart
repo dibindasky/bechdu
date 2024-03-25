@@ -40,4 +40,5 @@ class CategoryBlocEvent with _$CategoryBlocEvent {
     required String seriesName,
     required String model,
   }) = GetVarients;
+  const factory CategoryBlocEvent.clear() = Clear;
 }

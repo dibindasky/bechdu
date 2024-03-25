@@ -24,13 +24,12 @@ class QuestionTabBloc extends Bloc<QuestionTabEvent, QuestionTabState> {
   final QuestionRepo questionRepo;
   int answerdCount = 0;
   num basePrice = 0;
-  List<SelectedOption> newList = [];
+  List<SelectedOption> selectedOptions = [];
   List<SelectedOption> updatedList = [];
 
   QuestionTabBloc(this.questionRepo) : super(QuestionTabState.initial()) {
     on<TabChange>(tabChange);
     on<TabMinus>(tabMinus);
-    on<ResetTabSelection>(resetTabSelection);
     on<GetQuestions>(getQuestions);
     on<MarkedQuestions>(markedQuestions);
     on<ChangeIndex>(changeIndex);
@@ -38,9 +37,12 @@ class QuestionTabBloc extends Bloc<QuestionTabEvent, QuestionTabState> {
     on<AbandentOrder>(abandentOrder);
     on<YesOrNo>(yesOrNo);
     on<MarkAnswer>(markAnswer);
-    on<ClearOneSection>((event, emit) {});
-    on<ClearNewOPtionList>(clearOptionList);
     on<GoBackIndex>(goBackIndex);
+    on<Clear>(clear);
+  }
+
+  FutureOr<void> clear(Clear event, emit) {
+    emit(QuestionTabState.initial());
   }
 
   FutureOr<void> markAnswer(MarkAnswer event, emit) {
@@ -97,10 +99,6 @@ class QuestionTabBloc extends Bloc<QuestionTabEvent, QuestionTabState> {
         selectedTabIndex: state.selectedTabIndex - 1,
       ));
     }
-  }
-
-  FutureOr<void> clearOptionList(ClearNewOPtionList event, emit) {
-    newList.clear();
   }
 
   FutureOr<void> yesOrNo(YesOrNo event, emit) async {
@@ -181,19 +179,7 @@ class QuestionTabBloc extends Bloc<QuestionTabEvent, QuestionTabState> {
     ));
   }
 
-  FutureOr<void> resetTabSelection(ResetTabSelection event, emit) {
-    answerdCount = 0;
-    updatedList.clear();
-    log('answerdCount when resset tab $answerdCount');
-    log('updatedList count when resset tab ${updatedList.length}');
-    log('New List of SelectedOPtion wen tab chngae ${newList.length}');
-    emit(state.copyWith(selectedTabIndex: 0));
-  }
-
   FutureOr<void> tabChange(TabChange event, emit) {
-    answerdCount = 0;
-    log('New List of SelectedOPtion wen tab chngae ${newList.length}');
-    log('answerdCount when tab change $answerdCount');
     if (state.selectedTabIndex < state.getQuestionModel!.sections!.length - 1) {
       emit(state.copyWith(
         answerCount: answerdCount,
@@ -324,7 +310,6 @@ class QuestionTabBloc extends Bloc<QuestionTabEvent, QuestionTabState> {
         isLoading: false,
         lastChecking: true,
         basePriceModelResponce: successResponce,
-        selectedOption: newList,
       ));
       if (successResponce.basePrice != null) {
         log('getBasePrice forth');
@@ -339,7 +324,9 @@ class QuestionTabBloc extends Bloc<QuestionTabEvent, QuestionTabState> {
         );
         log('User datas bloc $phone $city $pincode');
         event.abandendOrderRequestModel.abendendOrderUser = abendendOrderUser;
-        event.abandendOrderRequestModel.productDetails!.price = '$basePrice';
+        event.abandendOrderRequestModel.productDetails?.price = '$basePrice';
+        event.abandendOrderRequestModel.productDetails?.options =
+            selectedOptions;
 
         log('getBasePrice fiffth');
         add(QuestionTabEvent.abandentOrder(
@@ -355,14 +342,14 @@ class QuestionTabBloc extends Bloc<QuestionTabEvent, QuestionTabState> {
     final number = await SecureSotrage.getNumber();
     final location = await SecureSotrage.getSelectedLocation();
     final pincode = await SecureSotrage.getSelectedPincode();
-    List<SelectedOption> list = [];
+
     for (var element in state.sections!) {
-      list.addAll(state.selectedAnswers[element.heading]!);
+      selectedOptions.addAll(state.selectedAnswers[element.heading]!);
     }
     event.abandendOrderRequestModel.abendendOrderUser!.phone = number;
     event.abandendOrderRequestModel.abendendOrderUser!.city = location;
     event.abandendOrderRequestModel.abendendOrderUser!.pincode = pincode;
-    event.abandendOrderRequestModel.productDetails!.options = list;
+    event.abandendOrderRequestModel.productDetails!.options = selectedOptions;
     final data = await questionRepo.abandendOrder(
       abandendOrderRequestModel: event.abandendOrderRequestModel,
     );

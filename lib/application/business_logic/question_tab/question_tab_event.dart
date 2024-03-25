@@ -35,4 +35,5 @@ class QuestionTabEvent with _$QuestionTabEvent {
     required AbandendOrderRequestModel abandendOrderRequestModel,
   }) = AbandentOrder;
   const factory QuestionTabEvent.clearNewOPtionList() = ClearNewOPtionList;
+  const factory QuestionTabEvent.clear() = Clear;
 }

@@ -17,7 +17,6 @@ import 'package:injectable/injectable.dart';
 @LazySingleton(as: ProfileRepo)
 @singleton
 class AddressService implements ProfileRepo {
-  final Dio _dio = Dio(BaseOptions(baseUrl: ApiEndPoints.baseUrl));
   final ApiService _apiService;
 
   AddressService(this._apiService);
@@ -66,6 +65,7 @@ class AddressService implements ProfileRepo {
       final responce = await _apiService.get(
           addHeader: true,
           ApiEndPoints.getUserInfo.replaceFirst('{number}', number));
+
       return Right(UserInfo.fromJson(responce.data));
     } on DioException catch (e) {
       return Left(Failure(message: e.message));
@@ -103,6 +103,7 @@ class AddressService implements ProfileRepo {
         ApiEndPoints.deleteAccount,
         data: otpVerifyRequestModel.toJson(),
       );
+      log('deletAcocunt data ${responce.data}');
       return Right(DeleteAccountResponceModel.fromJson(responce.data));
     } on DioException catch (e) {
       return Left(Failure(message: e.message));

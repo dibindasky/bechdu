@@ -62,7 +62,6 @@ class WhatToSellWidget extends StatelessWidget {
                           RegExp(r'data:image/[^;]+;base64,'), '');
                       return InkWell(
                         onTap: () {
-                          context.read<QuestionTabBloc>().newList.clear();
                           context
                               .read<CategoryBlocBloc>()
                               .add(GetSingleCategoryBrands(

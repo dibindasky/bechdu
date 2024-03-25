@@ -38,6 +38,11 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
     on<SeriesSearch>(seriesSearch);
     on<GetModels>(getModels);
     on<GetVarients>(getVarients);
+    on<Clear>(clear);
+  }
+
+  FutureOr<void> clear(Clear event, emit) {
+    emit(CategoryBlocState.intial());
   }
 
   FutureOr<void> seriesSearch(
@@ -151,7 +156,7 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
       ));
     }, (getproducts) {
       productList = getproducts.products ?? [];
-      log('mode DATA BLOC$modelFilter');
+      log('mode DATA BLOC $modelFilter');
       if (modelFilter != null) {
         log('mode DATA $modelFilter');
         productList = productList
@@ -163,6 +168,9 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
             .where((product) => product.variant == varientFilter)
             .toList();
       }
+      // if (modelFilter == null && varientFilter == null) {
+      //   productList = List.from(productList);
+      // }
       emit(state.copyWith(
         isLoading: false,
         hasError: false,

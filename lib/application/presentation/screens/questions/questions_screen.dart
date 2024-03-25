@@ -48,7 +48,8 @@ class QuestionTabs extends StatelessWidget {
                 if (questionTabBloc.isLoading) {
                   return LoadingAnimation(width: 50);
                 } else if (questionTabBloc.getQuestionModel == null) {
-                  return const CircularProgressIndicator(color: kGreenPrimary);
+                  return const Center(
+                      child: CircularProgressIndicator(color: kGreenPrimary));
                 }
                 return const Column(
                   children: [

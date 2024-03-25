@@ -69,15 +69,16 @@ class _GridTileQuestionState extends State<GridTileQuestion> {
       builder: (context, state) {
         return InkWell(
           onTap: () {
-            context.read<QuestionTabBloc>().add(QuestionTabEvent.markAnswer(
-                selectedOption: SelectedOption(
-                    description: widget.option.description,
-                    type: widget.option.type,
-                    value: null,
-                    heading: state.sections![state.selectedTabIndex].heading)));
-            // setState(() {
-            //   selected = !selected;
-            // });
+            context.read<QuestionTabBloc>().add(
+                  QuestionTabEvent.markAnswer(
+                    selectedOption: SelectedOption(
+                      description: widget.option.description,
+                      type: widget.option.type,
+                      value: null,
+                      heading: state.sections![state.selectedTabIndex].heading,
+                    ),
+                  ),
+                );
             widget.onTap();
           },
           child: ClipRRect(

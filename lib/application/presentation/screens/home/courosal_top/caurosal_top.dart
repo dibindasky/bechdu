@@ -56,7 +56,6 @@ class _CaurosalViewHomePageOffersState
                             data[index].heading!.replaceAll('<br/>', '');
                         return InkWell(
                           onTap: () {
-                            context.read<QuestionTabBloc>().newList.clear();
                             context
                                 .read<CategoryBlocBloc>()
                                 .add(GetSingleCategoryBrands(

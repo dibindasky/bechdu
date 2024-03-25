@@ -22,7 +22,7 @@ class _ScreenProductSelectionProductFindDropdownGridViewState
   TextEditingController varientController = TextEditingController();
   bool containerOpenArrow1 = false;
   bool containerOpenArrow2 = false;
-
+  bool dropDownOn = false;
   Color textColor = kBlack;
 
   @override
@@ -32,288 +32,321 @@ class _ScreenProductSelectionProductFindDropdownGridViewState
         return Row(
           children: [
             Expanded(
-              child: CustomDropdown(
-                selectedOption: context.read<CategoryBlocBloc>().modelFilter,
-                onChanged: (value) {
-                  if (value == 'All') {
-                    context.read<CategoryBlocBloc>().add(
-                          CategoryBlocEvent.getProducts(
-                            seriesName:
-                                context.read<CategoryBlocBloc>().seriesName!,
-                            categoryType:
-                                context.read<CategoryBlocBloc>().categoryType!,
-                            brandName:
-                                context.read<CategoryBlocBloc>().barndName!,
+              child:
+                  //  CustomDropdown(
+                  //   selectedOption: context.read<CategoryBlocBloc>().modelFilter,
+                  //   onChanged: (value) {
+                  //     if (value == 'All') {
+                  //       context.read<CategoryBlocBloc>().add(
+                  //             CategoryBlocEvent.getProducts(
+                  //               seriesName:
+                  //                   context.read<CategoryBlocBloc>().seriesName!,
+                  //               categoryType:
+                  //                   context.read<CategoryBlocBloc>().categoryType!,
+                  //               brandName:
+                  //                   context.read<CategoryBlocBloc>().barndName!,
+                  //             ),
+                  //           );
+                  //       context.read<CategoryBlocBloc>().varientFilter = null;
+                  //     } else if (context.read<CategoryBlocBloc>().modelFilter !=
+                  //         value) {
+                  //       context.read<CategoryBlocBloc>().varientFilter = null;
+                  //     }
+                  //     context.read<CategoryBlocBloc>().modelFilter = value;
+                  //     context.read<CategoryBlocBloc>().add(
+                  //           GetVarients(
+                  //             brandName:
+                  //                 context.read<CategoryBlocBloc>().barndName!,
+                  //             categoryType:
+                  //                 context.read<CategoryBlocBloc>().categoryType!,
+                  //             seriesName:
+                  //                 context.read<CategoryBlocBloc>().seriesName!,
+                  //             model: value,
+                  //           ),
+                  //         );
+                  //     context.read<CategoryBlocBloc>().add(
+                  //           CategoryBlocEvent.getProducts(
+                  //             seriesName:
+                  //                 context.read<CategoryBlocBloc>().seriesName!,
+                  //             categoryType:
+                  //                 context.read<CategoryBlocBloc>().categoryType!,
+                  //             brandName:
+                  //                 context.read<CategoryBlocBloc>().barndName!,
+                  //           ),
+                  //         );
+                  //     log('model bloc veriable ${context.read<CategoryBlocBloc>().modelFilter}');
+                  //     log('model $value');
+                  //   },
+                  //   options: state.models!,
+                  // ),
+                  Container(
+                height: 40,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: BlocBuilder<CategoryBlocBloc, CategoryBlocState>(
+                  builder: (context, state) {
+                    return DropdownButtonHideUnderline(
+                      child: DropdownButton2<String>(
+                        iconStyleData: IconStyleData(
+                            icon: containerOpenArrow1
+                                ? Icon(
+                                    Icons.arrow_drop_up_sharp,
+                                    color:
+                                        containerOpenArrow1 ? kWhite : kBlack,
+                                  )
+                                : Icon(
+                                    Icons.arrow_drop_down_outlined,
+                                    color:
+                                        containerOpenArrow1 ? kWhite : kBlack,
+                                  )),
+                        buttonStyleData: ButtonStyleData(
+                          decoration: BoxDecoration(
+                            color: containerOpenArrow1 ? kBluePrimary : kWhite,
+                            border: Border.all(
+                              color: textFieldBorderColor,
+                            ),
+                            borderRadius: kRadius5,
                           ),
-                        );
-                    context.read<CategoryBlocBloc>().varientFilter = null;
-                  } else if (context.read<CategoryBlocBloc>().modelFilter !=
-                      value) {
-                    context.read<CategoryBlocBloc>().varientFilter = null;
-                  }
-                  context.read<CategoryBlocBloc>().modelFilter = value;
-                  context.read<CategoryBlocBloc>().add(
-                        GetVarients(
-                          brandName:
-                              context.read<CategoryBlocBloc>().barndName!,
-                          categoryType:
-                              context.read<CategoryBlocBloc>().categoryType!,
-                          seriesName:
-                              context.read<CategoryBlocBloc>().seriesName!,
-                          model: value,
+                          elevation: 0,
+                          padding: const EdgeInsets.symmetric(horizontal: 16),
+                          height: 40,
+                          width: 0,
                         ),
-                      );
-                  context.read<CategoryBlocBloc>().add(
-                        CategoryBlocEvent.getProducts(
-                          seriesName:
-                              context.read<CategoryBlocBloc>().seriesName!,
-                          categoryType:
-                              context.read<CategoryBlocBloc>().categoryType!,
-                          brandName:
-                              context.read<CategoryBlocBloc>().barndName!,
+                        hint: Text(
+                          'Model',
+                          style: textHeadInter.copyWith(color: klightgrey),
                         ),
-                      );
-                  log('model bloc veriable ${context.read<CategoryBlocBloc>().modelFilter}');
-                  log('model $value');
-                },
-                options: state.models!,
+                        isExpanded: true,
+                        items: state.models?.map<DropdownMenuItem<String>>(
+                          (model) {
+                            return DropdownMenuItem<String>(
+                              value: model,
+                              child: FittedBox(
+                                child: Text(
+                                  model.replaceAll('Samsung ', ''),
+                                  style: textHeadSemiBold1.copyWith(
+                                    color:
+                                        containerOpenArrow1 ? kWhite : kBlack,
+                                    fontSize: sWidth * 0.036,
+                                  ),
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ),
+                            );
+                          },
+                        ).toList(),
+                        onChanged: (value) {
+                          if (value == 'All') {
+                            context.read<CategoryBlocBloc>().add(
+                                  CategoryBlocEvent.getProducts(
+                                    seriesName: context
+                                        .read<CategoryBlocBloc>()
+                                        .seriesName!,
+                                    categoryType: context
+                                        .read<CategoryBlocBloc>()
+                                        .categoryType!,
+                                    brandName: context
+                                        .read<CategoryBlocBloc>()
+                                        .barndName!,
+                                  ),
+                                );
+                            context.read<CategoryBlocBloc>().modelFilter = null;
+                            context.read<CategoryBlocBloc>().varientFilter =
+                                null;
+                          } else if (context
+                                  .read<CategoryBlocBloc>()
+                                  .modelFilter !=
+                              value) {
+                            context.read<CategoryBlocBloc>().varientFilter =
+                                null;
+                          }
+                          context.read<CategoryBlocBloc>().modelFilter = value;
+                          context.read<CategoryBlocBloc>().add(
+                                GetVarients(
+                                  brandName: context
+                                      .read<CategoryBlocBloc>()
+                                      .barndName!,
+                                  categoryType: context
+                                      .read<CategoryBlocBloc>()
+                                      .categoryType!,
+                                  seriesName: context
+                                      .read<CategoryBlocBloc>()
+                                      .seriesName!,
+                                  model: value!,
+                                ),
+                              );
+                          context.read<CategoryBlocBloc>().add(
+                                CategoryBlocEvent.getProducts(
+                                  seriesName: context
+                                      .read<CategoryBlocBloc>()
+                                      .seriesName!,
+                                  categoryType: context
+                                      .read<CategoryBlocBloc>()
+                                      .categoryType!,
+                                  brandName: context
+                                      .read<CategoryBlocBloc>()
+                                      .barndName!,
+                                ),
+                              );
+                          log('model bloc veriable ${context.read<CategoryBlocBloc>().modelFilter}');
+                          log('model $value');
+                        },
+                        value: context.read<CategoryBlocBloc>().modelFilter,
+                        dropdownStyleData: DropdownStyleData(
+                          decoration: BoxDecoration(
+                            borderRadius: kRadius5,
+                            color: kBlueLight,
+                          ),
+                          offset: const Offset(0, -5),
+                          maxHeight: 250,
+                        ),
+                        menuItemStyleData: const MenuItemStyleData(
+                          height: 40,
+                        ),
+                        dropdownSearchData: dropdownSearchData(
+                            controller: modelController, data: 'model'),
+                        onMenuStateChange: (isOpen) {
+                          if (!isOpen) {
+                            varientController.clear();
+                            setState(() {
+                              containerOpenArrow1 = false;
+                            });
+                          } else {
+                            setState(() {
+                              textColor = kWhite;
+                              containerOpenArrow1 = true;
+                            });
+                          }
+                        },
+                      ),
+                    );
+                  },
+                ),
               ),
-              // Container(
-              //   height: 40,
-              //   width: double.infinity,
-              //   decoration: BoxDecoration(
-              //     borderRadius: BorderRadius.circular(8),
-              //   ),
-              //   child: BlocBuilder<CategoryBlocBloc, CategoryBlocState>(
-              //     builder: (context, state) {
-              //       return DropdownButtonHideUnderline(
-              //         child: DropdownButton2<String>(
-              //           iconStyleData: IconStyleData(
-              //               icon: containerOpenArrow2
-              //                   ? const Icon(
-              //                       Icons.arrow_drop_up_sharp,
-              //                     )
-              //                   : const Icon(Icons.arrow_drop_down_outlined)),
-              //           buttonStyleData: ButtonStyleData(
-              //             decoration: BoxDecoration(
-              //               color: containerOpenArrow1 ? kBlueLight : kWhite,
-              //               border: Border.all(
-              //                 color: textFieldBorderColor,
-              //               ),
-              //               borderRadius: kRadius5,
-              //             ),
-              //           ),
-              //           hint: Text(
-              //             'Model',
-              //             style: textHeadInter.copyWith(color: klightgrey),
-              //           ),
-              //           isExpanded: true,
-              //           items: state.models?.map<DropdownMenuItem<String>>(
-              //             (model) {
-              //               return DropdownMenuItem<String>(
-              //                 value: model,
-              //                 child: FittedBox(
-              //                   child: Text(
-              //                     model.replaceAll('Samsung', ''),
-              //                     style: textHeadSemiBold1.copyWith(
-              //                       color: kBlack,
-              //                       fontSize: sWidth * 0.036,
-              //                     ),
-              //                     overflow: TextOverflow.ellipsis,
-              //                   ),
-              //                 ),
-              //               );
-              //             },
-              //           ).toList(),
-              //           onChanged: (value) {
-              //             if (context.read<CategoryBlocBloc>().modelFilter !=
-              //                 value) {
-              //               context.read<CategoryBlocBloc>().varientFilter =
-              //                   null;
-              //             }
-              //             context.read<CategoryBlocBloc>().modelFilter = value;
-              //             context.read<CategoryBlocBloc>().add(
-              //                   GetVarients(
-              //                     brandName: context
-              //                         .read<CategoryBlocBloc>()
-              //                         .barndName!,
-              //                     categoryType: context
-              //                         .read<CategoryBlocBloc>()
-              //                         .categoryType!,
-              //                     seriesName: context
-              //                         .read<CategoryBlocBloc>()
-              //                         .seriesName!,
-              //                     model: value!,
-              //                   ),
-              //                 );
-              //             context.read<CategoryBlocBloc>().add(
-              //                   CategoryBlocEvent.getProducts(
-              //                     seriesName: context
-              //                         .read<CategoryBlocBloc>()
-              //                         .seriesName!,
-              //                     categoryType: context
-              //                         .read<CategoryBlocBloc>()
-              //                         .categoryType!,
-              //                     brandName: context
-              //                         .read<CategoryBlocBloc>()
-              //                         .barndName!,
-              //                   ),
-              //                 );
-              //             log('model bloc veriable ${context.read<CategoryBlocBloc>().modelFilter}');
-              //             log('model $value');
-              //           },
-              //           value: context.read<CategoryBlocBloc>().modelFilter,
-              //           dropdownStyleData: DropdownStyleData(
-              //             decoration: BoxDecoration(
-              //               borderRadius: kRadius5,
-              //               color: kBlueLight,
-              //             ),
-              //             offset: const Offset(0, -5),
-              //             maxHeight: 250,
-              //           ),
-              //           menuItemStyleData: const MenuItemStyleData(
-              //             height: 40,
-              //           ),
-              //           dropdownSearchData: dropdownSearchData(
-              //               controller: modelController, data: 'model'),
-              //           onMenuStateChange: (isOpen) {
-              //             if (!isOpen) {
-              //               modelController.clear();
-              //             }
-              //             setState(() {
-              //               containerOpenArrow1 = isOpen;
-              //             });
-              //           },
-              //         ),
-              //       );
-              //     },
-              //   ),
-              // ),
             ),
             kWidth10,
             kWidth5,
             Expanded(
-              child: CustomDropdown(
-                selectedOption: context.read<CategoryBlocBloc>().varientFilter,
-                onChanged: (value) {
-                  context.read<CategoryBlocBloc>().varientFilter = value;
-                  context.read<CategoryBlocBloc>().add(
-                        CategoryBlocEvent.getProducts(
-                          seriesName:
-                              context.read<CategoryBlocBloc>().seriesName!,
-                          categoryType:
-                              context.read<CategoryBlocBloc>().categoryType!,
-                          brandName:
-                              context.read<CategoryBlocBloc>().barndName!,
-                        ),
-                      );
-                },
-                options: state.varients!,
+                // child: CustomDropdown(
+                //   selectedOption: context.read<CategoryBlocBloc>().varientFilter,
+                //   onChanged: (value) {
+                //     context.read<CategoryBlocBloc>().varientFilter = value;
+                //     context.read<CategoryBlocBloc>().add(
+                //           CategoryBlocEvent.getProducts(
+                //             seriesName:
+                //                 context.read<CategoryBlocBloc>().seriesName!,
+                //             categoryType:
+                //                 context.read<CategoryBlocBloc>().categoryType!,
+                //             brandName:
+                //                 context.read<CategoryBlocBloc>().barndName!,
+                //           ),
+                //         );
+                //   },
+                //   options: state.varients!,
+                // ),
+                child: Container(
+              height: 40,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8),
               ),
-              // child: ,
-              //     child: Container(
-              //   height: 40,
-              //   width: double.infinity,
-              //   decoration: BoxDecoration(
-              //     borderRadius: BorderRadius.circular(8),
-              //   ),
-              //   child: BlocBuilder<CategoryBlocBloc, CategoryBlocState>(
-              //     builder: (context, state) {
-              //       return DropdownButtonHideUnderline(
-              //         child: DropdownButton2<String>(
-              //           iconStyleData: IconStyleData(
-              //               icon: containerOpenArrow1
-              //                   ? const Icon(
-              //                       Icons.arrow_drop_up_sharp,
-              //                       color: kWhite,
-              //                     )
-              //                   : const Icon(Icons.arrow_drop_down_outlined)),
-              //           buttonStyleData: ButtonStyleData(
-              //             decoration: BoxDecoration(
-              //               color: containerOpenArrow1 ? kBluePrimary : null,
-              //               border: Border.all(
-              //                 color: textFieldBorderColor,
-              //               ),
-              //               borderRadius: kRadius5,
-              //             ),
-              //             elevation: 0,
-              //             padding: const EdgeInsets.symmetric(horizontal: 16),
-              //             height: 40,
-              //             width: 0,
-              //           ),
-              //           hint: Text(
-              //             'Varient',
-              //             style: textHeadInter.copyWith(color: klightgrey),
-              //           ),
-              //           isExpanded: true,
-              //           items: state.varients?.map<DropdownMenuItem<String>>(
-              //             (varient) {
-              //               return DropdownMenuItem<String>(
-              //                 value: varient,
-              //                 child: Text(
-              //                   varient,
-              //                   style: textHeadSemiBold1.copyWith(
-              //                     fontSize: sWidth * 0.04,
-              //                     // color:
-              //                     //     isVariantDropdownOpen ? kWhite : kBlack
-              //                   ),
-              //                 ),
-              //               );
-              //             },
-              //           ).toList(),
-              //           onChanged: (value) {
-              //             context.read<CategoryBlocBloc>().varientFilter = value;
-              //             context.read<CategoryBlocBloc>().add(
-              //                   CategoryBlocEvent.getProducts(
-              //                     seriesName: context
-              //                         .read<CategoryBlocBloc>()
-              //                         .seriesName!,
-              //                     categoryType: context
-              //                         .read<CategoryBlocBloc>()
-              //                         .categoryType!,
-              //                     brandName:
-              //                         context.read<CategoryBlocBloc>().barndName!,
-              //                   ),
-              //                 );
-              //           },
-              //           value: context.read<CategoryBlocBloc>().varientFilter,
-              //           dropdownStyleData: DropdownStyleData(
-              //             decoration: BoxDecoration(
-              //               borderRadius: kRadius5,
-              //               color: kBlueLight,
-              //             ),
-              //             offset: const Offset(0, -5),
-              //             maxHeight: 250,
-              //           ),
-              //           menuItemStyleData: const MenuItemStyleData(
-              //             height: 40,
-              //           ),
-              //           dropdownSearchData: dropdownSearchData(
-              //               controller: varientController, data: 'varient'),
-              //           onMenuStateChange: (isOpen) {
-              //             if (!isOpen) {
-              //               varientController.clear();
-              //               setState(() {
-              //                 //  isVariantDropdownOpen = false;
-              //                 //textColor = kBlack;
-              //                 //contsinerColor = kBluePrimary;
-              //                 containerOpenArrow1 = false;
-              //               });
-              //             } else {
-              //               setState(() {
-              //                 // isVariantDropdownOpen = true;
-              //                 textColor = kWhite;
-              //                 //  ontsinerColor = kWhite;
-              //                 containerOpenArrow1 = true;
-              //               });
-              //             }
-              //           },
-              //         ),
-              //       );
-              //     },
-              //   ),
-              // )
-            )
+              child: BlocBuilder<CategoryBlocBloc, CategoryBlocState>(
+                builder: (context, state) {
+                  return DropdownButtonHideUnderline(
+                    child: DropdownButton2<String>(
+                      iconStyleData: IconStyleData(
+                          icon: containerOpenArrow2
+                              ? Icon(
+                                  Icons.arrow_drop_up_sharp,
+                                  color: containerOpenArrow2 ? kWhite : kBlack,
+                                )
+                              : Icon(
+                                  Icons.arrow_drop_down_outlined,
+                                  color: containerOpenArrow2 ? kWhite : kBlack,
+                                )),
+                      buttonStyleData: ButtonStyleData(
+                        decoration: BoxDecoration(
+                          color: containerOpenArrow2 ? kBluePrimary : kWhite,
+                          border: Border.all(
+                            color: textFieldBorderColor,
+                          ),
+                          borderRadius: kRadius5,
+                        ),
+                        elevation: 0,
+                        padding: const EdgeInsets.symmetric(horizontal: 16),
+                        height: 40,
+                        width: 0,
+                      ),
+                      hint: Text(
+                        'Varient',
+                        style: textHeadInter.copyWith(color: klightgrey),
+                      ),
+                      isExpanded: true,
+                      items: state.varients?.map<DropdownMenuItem<String>>(
+                        (varient) {
+                          return DropdownMenuItem<String>(
+                            value: varient,
+                            child: Text(
+                              varient,
+                              style: textHeadSemiBold1.copyWith(
+                                  fontSize: sWidth * 0.04,
+                                  color: containerOpenArrow2 ? kWhite : kBlack),
+                            ),
+                          );
+                        },
+                      ).toList(),
+                      onChanged: (value) {
+                        context.read<CategoryBlocBloc>().varientFilter = value;
+                        context.read<CategoryBlocBloc>().add(
+                              CategoryBlocEvent.getProducts(
+                                seriesName: context
+                                    .read<CategoryBlocBloc>()
+                                    .seriesName!,
+                                categoryType: context
+                                    .read<CategoryBlocBloc>()
+                                    .categoryType!,
+                                brandName:
+                                    context.read<CategoryBlocBloc>().barndName!,
+                              ),
+                            );
+                      },
+                      value: context.read<CategoryBlocBloc>().varientFilter,
+                      dropdownStyleData: DropdownStyleData(
+                        decoration: BoxDecoration(
+                          borderRadius: kRadius5,
+                          color: kBlueLight,
+                        ),
+                        offset: const Offset(0, -5),
+                        maxHeight: 250,
+                      ),
+                      menuItemStyleData: const MenuItemStyleData(
+                        height: 40,
+                      ),
+                      dropdownSearchData: dropdownSearchData(
+                          controller: varientController, data: 'varient'),
+                      onMenuStateChange: (isOpen) {
+                        if (!isOpen) {
+                          varientController.clear();
+                          setState(() {
+                            containerOpenArrow2 = false;
+
+                            dropDownOn = false;
+                          });
+                        } else {
+                          setState(() {
+                            textColor = kWhite;
+                            dropDownOn = true;
+                            containerOpenArrow2 = true;
+                          });
+                        }
+                      },
+                    ),
+                  );
+                },
+              ),
+            ))
           ],
         );
       },
@@ -338,8 +371,8 @@ class _ScreenProductSelectionProductFindDropdownGridViewState
         height: 50,
         child: TextFormField(
           style: const TextStyle(color: kWhite),
-          expands: true,
-          maxLines: null,
+          // expands: true,
+          //maxLines: null,
           controller: controller,
           decoration: InputDecoration(
             counterStyle: const TextStyle(color: kWhite),
@@ -354,7 +387,7 @@ class _ScreenProductSelectionProductFindDropdownGridViewState
                 color: kWhite,
               ),
             ),
-            isDense: true,
+            //isDense: true,
             hintText: 'Search',
             hintStyle: textHeadMedium1.copyWith(color: kWhite),
           ),

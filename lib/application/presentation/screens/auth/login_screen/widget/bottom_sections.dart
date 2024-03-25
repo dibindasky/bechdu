@@ -7,6 +7,7 @@ import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/application/presentation/utils/enums/type_display.dart';
 import 'package:beachdu/application/presentation/utils/snackbar/snackbar.dart';
 import 'package:beachdu/application/presentation/widgets/custom_elevated_button.dart';
+import 'package:beachdu/domain/core/failure/failure.dart';
 import 'package:beachdu/domain/model/login/login_model/login_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -69,11 +70,19 @@ class BottomSections extends StatelessWidget {
         kHeight50,
         BlocConsumer<AuthBloc, AuthState>(
           listener: (context, state) {
+            if (state.hasError) {
+              showSnack(
+                context: context,
+                message: errorMessage,
+                color: kRed,
+              );
+            }
             if (state.otpSendResponceModel != null) {
               showSnack(
                 context: context,
                 message: state.message ?? 'OTP Send Successfully',
               );
+
               navigate(context);
             }
           },

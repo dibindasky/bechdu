@@ -77,7 +77,8 @@ class ScreenPinCodes extends StatelessWidget {
                       },
                       builder: (context, state) {
                         if (state.isLoading) {
-                          return Center(
+                          return Align(
+                            alignment: Alignment.center,
                             child: LoadingAnimation(width: 50),
                           );
                         }

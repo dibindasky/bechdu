@@ -43,4 +43,5 @@ class PlaceOrderEvent with _$PlaceOrderEvent {
     required bool isLoad,
     required String orderId,
   }) = InvoiceDownload;
+  const factory PlaceOrderEvent.clear() = Clear;
 }

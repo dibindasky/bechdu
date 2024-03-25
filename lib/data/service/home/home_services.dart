@@ -53,7 +53,7 @@ class HomeServices implements HomeRepository {
     try {
       final responce =
           await _apiService.get(ApiEndPoints.getBestSellingProducts);
-      log('getBestSellingProducts data ${responce.toString()}');
+      // log('getBestSellingProducts data ${responce.toString()}');
       return Right(BestSellingProductsResponceModel.fromJson(responce.data));
     } on DioException catch (e) {
       return Left(Failure(message: e.response?.data['error'] ?? errorMessage));

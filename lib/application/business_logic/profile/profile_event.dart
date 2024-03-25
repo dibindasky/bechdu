@@ -17,4 +17,5 @@ class ProfileEvent with _$ProfileEvent {
   const factory ProfileEvent.deleteAccount({
     required OtpVerifyRequestModel otpVerifyRequestModel,
   }) = DeleteAccount;
+  const factory ProfileEvent.clear() = Clear;
 }

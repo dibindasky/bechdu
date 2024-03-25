@@ -56,10 +56,6 @@ class AnswerIndexChanger extends StatelessWidget {
         Routes.signInOrLogin,
         arguments: LoginWay.fromQuestionPick,
       );
-      // if (authState.otpVerifyResponceModel != null) {
-      //   log('Question pick in condition');
-      //   pickeQuestionModelEventDataPass(context, questionTabBloc);
-      // }
     } else {
       pickeQuestionModelEventDataPass(context, questionTabBloc);
     }
@@ -87,7 +83,6 @@ class AnswerIndexChanger extends StatelessWidget {
     ProductDetails productDetails = ProductDetails(
       slug: context.read<CategoryBlocBloc>().slug,
       name: name,
-      options: questionBlocState.selectedOption,
     );
 
     AbandendOrderRequestModel abandendOrderRequestModel =

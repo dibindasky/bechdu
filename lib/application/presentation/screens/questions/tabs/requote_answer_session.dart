@@ -18,9 +18,10 @@ class RequoteAnswerSessio extends StatelessWidget {
       listener: (context, state) {
         if (state.message != null) {
           showSnack(
-              context: context,
-              message: state.message!,
-              color: state.hasError ? kRed : kGreenPrimary);
+            context: context,
+            message: state.message!,
+            color: state.hasError ? kRed : kGreenPrimary,
+          );
         }
       },
       buildWhen: (previous, current) =>

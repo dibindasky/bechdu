@@ -85,7 +85,7 @@ class TopImage extends StatelessWidget {
                                 child: Row(
                                   children: [
                                     Text(
-                                      '${questiontabBloc.product!.model}',
+                                      '${questiontabBloc.product!.model?.replaceAll('Samsung ', '')}',
                                       style: textHeadBold1.copyWith(
                                         fontSize: sWidth * .043,
                                         color: kWhite,
@@ -148,10 +148,6 @@ class TopImage extends StatelessWidget {
                                             ),
                                             TextButton(
                                               onPressed: () {
-                                                context
-                                                    .read<QuestionTabBloc>()
-                                                    .newList
-                                                    .clear();
                                                 secondtabScreensNotifier.value =
                                                     1;
                                                 secondtabScreensNotifier
@@ -184,7 +180,8 @@ class TopImage extends StatelessWidget {
                             if (fromWhere ==
                                     FromWhere.checkoutAndPickupScreen ||
                                 fromWhere == FromWhere.pickupScreen)
-                              Text('${questiontabBloc.product!.model}',
+                              Text(
+                                  '${questiontabBloc.product!.model?.replaceAll('Samsung ', '')}',
                                   style: textHeadBold1.copyWith(
                                       color: kWhite, fontSize: sWidth * .05),
                                   overflow: TextOverflow.ellipsis),

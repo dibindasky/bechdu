@@ -31,6 +31,11 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     on<GetBestSellingProducts>(getBestSellingProducts);
     on<GlobalPrductSearch>(globalProductSearch);
     on<NextPage>(nextPage);
+    on<Clear>(clear);
+  }
+
+  FutureOr<void> clear(Clear event, emit) {
+    emit(HomeState.initial());
   }
 
   FutureOr<void> nextPage(NextPage event, emit) async {
