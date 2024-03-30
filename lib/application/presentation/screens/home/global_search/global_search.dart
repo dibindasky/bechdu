@@ -38,7 +38,7 @@ class _GlobalProductSearchState extends State<GlobalProductSearch> {
 
   @override
   void dispose() {
-    widget.scrollController!.dispose();
+    widget.scrollController?.dispose();
     super.dispose();
   }
 

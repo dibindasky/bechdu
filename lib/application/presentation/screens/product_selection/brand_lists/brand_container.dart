@@ -45,7 +45,7 @@ class BrandContainer extends StatelessWidget {
             brandSeriesProductValueNotifier.value = 1;
             brandSeriesProductValueNotifier.notifyListeners();
 
-            // Reset question tab
+            // Tab reset question answer
             context.read<QuestionTabBloc>().add(const ResetTabSelection());
           },
           child: Material(

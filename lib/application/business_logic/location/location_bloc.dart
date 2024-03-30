@@ -34,7 +34,7 @@ class LocationBloc extends Bloc<LocationEvent, LocationState> {
   }
 
   FutureOr<void> locationSkipEvent(LocationSkipEvent event, emit) {
-    SecureSotrage.setlocatioSkipdBool();
+    SecureSotrage.setlocationSkipdBool();
   }
 
   FutureOr<void> setPincodeSecure(SetPicondeSecure event, emit) async {
@@ -133,7 +133,7 @@ class LocationBloc extends Bloc<LocationEvent, LocationState> {
 
   FutureOr<void> pincodeUpdate(PincodeUpdate event, emit) async {
     final loginStatus = await SecureSotrage.getlLogin();
-    if (loginStatus == false) return;
+    //if (loginStatus == false) return;
     final data = await locationRepo.pincodeUpdation(
       pincodeUpdateRequestModel: event.pincodeUpdateRequestModel,
     );

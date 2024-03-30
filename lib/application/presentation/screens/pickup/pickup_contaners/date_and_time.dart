@@ -1,5 +1,8 @@
+import 'dart:developer';
+
 import 'package:beachdu/application/business_logic/brands_bloc/category_bloc_bloc.dart';
 import 'package:beachdu/application/business_logic/place_order/place_order_bloc.dart';
+import 'package:beachdu/application/business_logic/profile/profile_bloc.dart';
 import 'package:beachdu/application/business_logic/question_tab/question_tab_bloc.dart';
 import 'package:beachdu/application/presentation/screens/pickup/pickup_screen.dart';
 import 'package:beachdu/application/presentation/screens/product_selection/product_screen.dart';
@@ -9,6 +12,7 @@ import 'package:beachdu/application/presentation/utils/custom_button.dart';
 import 'package:beachdu/application/presentation/utils/snackbar/snackbar.dart';
 import 'package:beachdu/domain/model/order_model/order_placed_request_model/pick_up_details.dart';
 import 'package:beachdu/domain/model/order_model/order_placed_request_model/product_details.dart';
+import 'package:beachdu/domain/model/order_model/order_placed_request_model/promo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -33,17 +37,15 @@ class _DateOrTimeState extends State<DateOrTime> {
     return BlocConsumer<PlaceOrderBloc, PlaceOrderState>(
       listener: (context, state) {
         if (state.orderPlacedResponceModel != null) {
-          if (state.orderPlacedResponceModel != null) {
-            secondtabScreensNotifier.value = 5;
-            secondtabScreensNotifier.notifyListeners();
-            pickupDetailChangeNotifier.value =
-                PickupDetailContainers.personalDetails;
-            pickupDetailChangeNotifier.notifyListeners();
-            context
-                .read<PlaceOrderBloc>()
-                .add(const PlaceOrderEvent.removeAppliedPromo());
-            showSnack(context: context, message: 'Order placed Successfully');
-          }
+          secondtabScreensNotifier.value = 5;
+          secondtabScreensNotifier.notifyListeners();
+          pickupDetailChangeNotifier.value =
+              PickupDetailContainers.personalDetails;
+          pickupDetailChangeNotifier.notifyListeners();
+          context
+              .read<PlaceOrderBloc>()
+              .add(const PlaceOrderEvent.removeAppliedPromo());
+          showSnack(context: context, message: 'Order placed Successfully');
         }
       },
       builder: (context, state) {
@@ -154,50 +156,98 @@ class _DateOrTimeState extends State<DateOrTime> {
             ),
             CustomButton(
               onPressed: () {
-                if (selectedTime != null && selectedDate != null) {
-                  //PickeDate and time assinning
-                  PickUpDetails pickUpDetails =
-                      PickUpDetails(time: selectedTime, date: selectedDate);
-                  context.read<PlaceOrderBloc>().add(
-                        PlaceOrderEvent.pickupDetailsPick(
-                          pickUpDetails: pickUpDetails,
-                        ),
-                      );
-
-                  //Product name concatination
-                  final verient = context.read<CategoryBlocBloc>().verient;
-                  final model = context.read<CategoryBlocBloc>().model;
-                  final name = '$model $verient';
-
-                  //ProductDetails object creation and value assigining
-                  ProductDetails productDetails = ProductDetails(
-                    category: context.read<CategoryBlocBloc>().categoryType,
-                    slug: context.read<CategoryBlocBloc>().slug,
-                    image: context.read<CategoryBlocBloc>().productImage,
-                    name: name,
-                    price: context.read<QuestionTabBloc>().basePrice.toString(),
-                    options: context.read<QuestionTabBloc>().selectedOptions,
-                  );
-
-                  context
-                      .read<PlaceOrderBloc>()
-                      .add(PlaceOrderEvent.productDetailsPick(
-                        productDetails: productDetails,
-                      ));
-
-                  //OrderPlacing event
-                  context
-                      .read<PlaceOrderBloc>()
-                      .add(const PlaceOrderEvent.orderPlacing());
-                } else {
+                final namecontroller =
+                    context.read<ProfileBloc>().profileNameController.text;
+                final emailcontroller =
+                    context.read<ProfileBloc>().profileEmailController.text;
+                if (namecontroller.isEmpty && emailcontroller.isEmpty) {
                   showSnack(
                     context: context,
-                    message: 'Please select Date and Time',
+                    message: 'Personal Details is empty',
                     color: kRed,
                   );
+                  return;
                 }
+
+                if (context.read<ProfileBloc>().state.selectedAddressIndex ==
+                    -1) {
+                  showSnack(
+                    context: context,
+                    message: 'Select your address',
+                    color: kRed,
+                  );
+                  return;
+                }
+                if (selectedTime == null && selectedDate == null) {
+                  showSnack(
+                    context: context,
+                    message: 'Select date and time',
+                    color: kRed,
+                  );
+                  return;
+                }
+                Promo promo = Promo(
+                    code: context
+                                .read<PlaceOrderBloc>()
+                                .state
+                                .promoCodeResponceModel !=
+                            null
+                        ? context
+                            .read<PlaceOrderBloc>()
+                            .promocodeController
+                            .text
+                        : '',
+                    price: context
+                                .read<PlaceOrderBloc>()
+                                .state
+                                .promoCodeResponceModel !=
+                            null
+                        ? context
+                            .read<PlaceOrderBloc>()
+                            .state
+                            .promoCodeResponceModel!
+                            .value
+                            .toString()
+                        : '');
+                //PickeDate and time assinning
+                PickUpDetails pickUpDetails =
+                    PickUpDetails(time: selectedTime, date: selectedDate);
+                context.read<PlaceOrderBloc>().add(
+                      PlaceOrderEvent.pickupDetailsPick(
+                        pickUpDetails: pickUpDetails,
+                        promo: promo,
+                      ),
+                    );
+
+                //Product name concatination
+                final verient = context.read<CategoryBlocBloc>().verient;
+                final model = context.read<CategoryBlocBloc>().model;
+                final name = '$model $verient';
+
+                //ProductDetails object creation and value assigining
+                ProductDetails productDetails = ProductDetails(
+                  category: context.read<CategoryBlocBloc>().categoryType,
+                  slug: context.read<CategoryBlocBloc>().slug,
+                  image: context.read<CategoryBlocBloc>().productImage,
+                  name: name,
+                  price: context.read<QuestionTabBloc>().basePrice.toString(),
+                  options: context.read<QuestionTabBloc>().selectedOptions,
+                );
+
+                log('Selected options place order ${context.read<QuestionTabBloc>().selectedOptions}');
+
+                context
+                    .read<PlaceOrderBloc>()
+                    .add(PlaceOrderEvent.productDetailsPick(
+                      productDetails: productDetails,
+                    ));
+
+                //OrderPlacing event
+                context
+                    .read<PlaceOrderBloc>()
+                    .add(const PlaceOrderEvent.orderPlacing());
               },
-              text: state.isLoading ? 'Processing...' : 'Place Order',
+              text: state.isLoading ? 'Please wait...' : 'Place Order',
               backgroundColor: kBluePrimary,
             ),
           ],

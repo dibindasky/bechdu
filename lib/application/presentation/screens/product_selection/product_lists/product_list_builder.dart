@@ -32,7 +32,7 @@ class ProductListViewBuilder extends StatelessWidget {
           height: 200,
         );
       }
-      List<Product> product = categoryState.filteredProducts ?? [];
+      List<Product> product = categoryState.filteredProducts!;
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

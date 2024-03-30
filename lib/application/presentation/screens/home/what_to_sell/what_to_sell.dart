@@ -51,9 +51,10 @@ class WhatToSellWidget extends StatelessWidget {
                   return GridView.builder(
                     padding: const EdgeInsets.all(0),
                     itemCount: state.getCategoryResponceModel!.category!.length,
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
                       childAspectRatio: 1 / 1,
-                      crossAxisCount: data.length,
+                      crossAxisCount: 4,
                     ),
                     shrinkWrap: true,
                     itemBuilder: (context, index) {

@@ -44,7 +44,7 @@ class SecureSotrage {
     return TokenModel(accessToken: accessToken, refershToken: refreshToken);
   }
 
-  static Future<void> setlocatioSkipdBool() async {
+  static Future<void> setlocationSkipdBool() async {
     log("setlocatioSkipdBool ==>>");
     await onBoardVistedSecure.write(key: setlocatioSkipd, value: '1');
   }

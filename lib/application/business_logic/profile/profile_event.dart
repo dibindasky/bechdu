@@ -8,6 +8,9 @@ class ProfileEvent with _$ProfileEvent {
   const factory ProfileEvent.deleteAddress({
     required int index,
   }) = DeleteAddress;
+  const factory ProfileEvent.selecteAddress({
+    required int selectedadress,
+  }) = SelecteAddress;
   const factory ProfileEvent.getUserInfo({required bool isLoad}) = GetUserInfo;
   const factory ProfileEvent.updateUser({
     required UserInfoRequestModel userInfoRequestModel,

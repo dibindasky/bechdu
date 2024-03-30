@@ -23,13 +23,10 @@ mixin _$QuestionTabEvent {
     required TResult Function() resetTabSelection,
     required TResult Function(String categoryType, Product product)
         getQuestions,
-    required TResult Function(int answerCount) getAnswerCount,
     required TResult Function(int index) goBackIndex,
     required TResult Function(SelectedOption selectedOption) markAnswer,
     required TResult Function() clearOneSection,
-    required TResult Function(SelectedOption selectedOption) markedQuestions,
     required TResult Function(SelectedOption selectedOption) yesOrNo,
-    required TResult Function(int countQuestionNumber) countQuestionNumber,
     required TResult Function(int index) changeIndex,
     required TResult Function(PickupQuestionModel pickupQuestionModel,
             AbandendOrderRequestModel abandendOrderRequestModel)
@@ -47,13 +44,10 @@ mixin _$QuestionTabEvent {
     TResult? Function(int index)? tabMinus,
     TResult? Function()? resetTabSelection,
     TResult? Function(String categoryType, Product product)? getQuestions,
-    TResult? Function(int answerCount)? getAnswerCount,
     TResult? Function(int index)? goBackIndex,
     TResult? Function(SelectedOption selectedOption)? markAnswer,
     TResult? Function()? clearOneSection,
-    TResult? Function(SelectedOption selectedOption)? markedQuestions,
     TResult? Function(SelectedOption selectedOption)? yesOrNo,
-    TResult? Function(int countQuestionNumber)? countQuestionNumber,
     TResult? Function(int index)? changeIndex,
     TResult? Function(PickupQuestionModel pickupQuestionModel,
             AbandendOrderRequestModel abandendOrderRequestModel)?
@@ -70,13 +64,10 @@ mixin _$QuestionTabEvent {
     TResult Function(int index)? tabMinus,
     TResult Function()? resetTabSelection,
     TResult Function(String categoryType, Product product)? getQuestions,
-    TResult Function(int answerCount)? getAnswerCount,
     TResult Function(int index)? goBackIndex,
     TResult Function(SelectedOption selectedOption)? markAnswer,
     TResult Function()? clearOneSection,
-    TResult Function(SelectedOption selectedOption)? markedQuestions,
     TResult Function(SelectedOption selectedOption)? yesOrNo,
-    TResult Function(int countQuestionNumber)? countQuestionNumber,
     TResult Function(int index)? changeIndex,
     TResult Function(PickupQuestionModel pickupQuestionModel,
             AbandendOrderRequestModel abandendOrderRequestModel)?
@@ -94,13 +85,10 @@ mixin _$QuestionTabEvent {
     required TResult Function(TabMinus value) tabMinus,
     required TResult Function(ResetTabSelection value) resetTabSelection,
     required TResult Function(GetQuestions value) getQuestions,
-    required TResult Function(GetAnswerCount value) getAnswerCount,
     required TResult Function(GoBackIndex value) goBackIndex,
     required TResult Function(MarkAnswer value) markAnswer,
     required TResult Function(ClearOneSection value) clearOneSection,
-    required TResult Function(MarkedQuestions value) markedQuestions,
     required TResult Function(YesOrNo value) yesOrNo,
-    required TResult Function(CountQuestionNumber value) countQuestionNumber,
     required TResult Function(ChangeIndex value) changeIndex,
     required TResult Function(GetBasePrice value) getBasePrice,
     required TResult Function(AbandentOrder value) abandentOrder,
@@ -114,13 +102,10 @@ mixin _$QuestionTabEvent {
     TResult? Function(TabMinus value)? tabMinus,
     TResult? Function(ResetTabSelection value)? resetTabSelection,
     TResult? Function(GetQuestions value)? getQuestions,
-    TResult? Function(GetAnswerCount value)? getAnswerCount,
     TResult? Function(GoBackIndex value)? goBackIndex,
     TResult? Function(MarkAnswer value)? markAnswer,
     TResult? Function(ClearOneSection value)? clearOneSection,
-    TResult? Function(MarkedQuestions value)? markedQuestions,
     TResult? Function(YesOrNo value)? yesOrNo,
-    TResult? Function(CountQuestionNumber value)? countQuestionNumber,
     TResult? Function(ChangeIndex value)? changeIndex,
     TResult? Function(GetBasePrice value)? getBasePrice,
     TResult? Function(AbandentOrder value)? abandentOrder,
@@ -134,13 +119,10 @@ mixin _$QuestionTabEvent {
     TResult Function(TabMinus value)? tabMinus,
     TResult Function(ResetTabSelection value)? resetTabSelection,
     TResult Function(GetQuestions value)? getQuestions,
-    TResult Function(GetAnswerCount value)? getAnswerCount,
     TResult Function(GoBackIndex value)? goBackIndex,
     TResult Function(MarkAnswer value)? markAnswer,
     TResult Function(ClearOneSection value)? clearOneSection,
-    TResult Function(MarkedQuestions value)? markedQuestions,
     TResult Function(YesOrNo value)? yesOrNo,
-    TResult Function(CountQuestionNumber value)? countQuestionNumber,
     TResult Function(ChangeIndex value)? changeIndex,
     TResult Function(GetBasePrice value)? getBasePrice,
     TResult Function(AbandentOrder value)? abandentOrder,
@@ -212,13 +194,10 @@ class _$TabChangeImpl implements TabChange {
     required TResult Function() resetTabSelection,
     required TResult Function(String categoryType, Product product)
         getQuestions,
-    required TResult Function(int answerCount) getAnswerCount,
     required TResult Function(int index) goBackIndex,
     required TResult Function(SelectedOption selectedOption) markAnswer,
     required TResult Function() clearOneSection,
-    required TResult Function(SelectedOption selectedOption) markedQuestions,
     required TResult Function(SelectedOption selectedOption) yesOrNo,
-    required TResult Function(int countQuestionNumber) countQuestionNumber,
     required TResult Function(int index) changeIndex,
     required TResult Function(PickupQuestionModel pickupQuestionModel,
             AbandendOrderRequestModel abandendOrderRequestModel)
@@ -239,13 +218,10 @@ class _$TabChangeImpl implements TabChange {
     TResult? Function(int index)? tabMinus,
     TResult? Function()? resetTabSelection,
     TResult? Function(String categoryType, Product product)? getQuestions,
-    TResult? Function(int answerCount)? getAnswerCount,
     TResult? Function(int index)? goBackIndex,
     TResult? Function(SelectedOption selectedOption)? markAnswer,
     TResult? Function()? clearOneSection,
-    TResult? Function(SelectedOption selectedOption)? markedQuestions,
     TResult? Function(SelectedOption selectedOption)? yesOrNo,
-    TResult? Function(int countQuestionNumber)? countQuestionNumber,
     TResult? Function(int index)? changeIndex,
     TResult? Function(PickupQuestionModel pickupQuestionModel,
             AbandendOrderRequestModel abandendOrderRequestModel)?
@@ -265,13 +241,10 @@ class _$TabChangeImpl implements TabChange {
     TResult Function(int index)? tabMinus,
     TResult Function()? resetTabSelection,
     TResult Function(String categoryType, Product product)? getQuestions,
-    TResult Function(int answerCount)? getAnswerCount,
     TResult Function(int index)? goBackIndex,
     TResult Function(SelectedOption selectedOption)? markAnswer,
     TResult Function()? clearOneSection,
-    TResult Function(SelectedOption selectedOption)? markedQuestions,
     TResult Function(SelectedOption selectedOption)? yesOrNo,
-    TResult Function(int countQuestionNumber)? countQuestionNumber,
     TResult Function(int index)? changeIndex,
     TResult Function(PickupQuestionModel pickupQuestionModel,
             AbandendOrderRequestModel abandendOrderRequestModel)?
@@ -295,13 +268,10 @@ class _$TabChangeImpl implements TabChange {
     required TResult Function(TabMinus value) tabMinus,
     required TResult Function(ResetTabSelection value) resetTabSelection,
     required TResult Function(GetQuestions value) getQuestions,
-    required TResult Function(GetAnswerCount value) getAnswerCount,
     required TResult Function(GoBackIndex value) goBackIndex,
     required TResult Function(MarkAnswer value) markAnswer,
     required TResult Function(ClearOneSection value) clearOneSection,
-    required TResult Function(MarkedQuestions value) markedQuestions,
     required TResult Function(YesOrNo value) yesOrNo,
-    required TResult Function(CountQuestionNumber value) countQuestionNumber,
     required TResult Function(ChangeIndex value) changeIndex,
     required TResult Function(GetBasePrice value) getBasePrice,
     required TResult Function(AbandentOrder value) abandentOrder,
@@ -318,13 +288,10 @@ class _$TabChangeImpl implements TabChange {
     TResult? Function(TabMinus value)? tabMinus,
     TResult? Function(ResetTabSelection value)? resetTabSelection,
     TResult? Function(GetQuestions value)? getQuestions,
-    TResult? Function(GetAnswerCount value)? getAnswerCount,
     TResult? Function(GoBackIndex value)? goBackIndex,
     TResult? Function(MarkAnswer value)? markAnswer,
     TResult? Function(ClearOneSection value)? clearOneSection,
-    TResult? Function(MarkedQuestions value)? markedQuestions,
     TResult? Function(YesOrNo value)? yesOrNo,
-    TResult? Function(CountQuestionNumber value)? countQuestionNumber,
     TResult? Function(ChangeIndex value)? changeIndex,
     TResult? Function(GetBasePrice value)? getBasePrice,
     TResult? Function(AbandentOrder value)? abandentOrder,
@@ -341,13 +308,10 @@ class _$TabChangeImpl implements TabChange {
     TResult Function(TabMinus value)? tabMinus,
     TResult Function(ResetTabSelection value)? resetTabSelection,
     TResult Function(GetQuestions value)? getQuestions,
-    TResult Function(GetAnswerCount value)? getAnswerCount,
     TResult Function(GoBackIndex value)? goBackIndex,
     TResult Function(MarkAnswer value)? markAnswer,
     TResult Function(ClearOneSection value)? clearOneSection,
-    TResult Function(MarkedQuestions value)? markedQuestions,
     TResult Function(YesOrNo value)? yesOrNo,
-    TResult Function(CountQuestionNumber value)? countQuestionNumber,
     TResult Function(ChangeIndex value)? changeIndex,
     TResult Function(GetBasePrice value)? getBasePrice,
     TResult Function(AbandentOrder value)? abandentOrder,
@@ -435,13 +399,10 @@ class _$TabMinusImpl implements TabMinus {
     required TResult Function() resetTabSelection,
     required TResult Function(String categoryType, Product product)
         getQuestions,
-    required TResult Function(int answerCount) getAnswerCount,
     required TResult Function(int index) goBackIndex,
     required TResult Function(SelectedOption selectedOption) markAnswer,
     required TResult Function() clearOneSection,
-    required TResult Function(SelectedOption selectedOption) markedQuestions,
     required TResult Function(SelectedOption selectedOption) yesOrNo,
-    required TResult Function(int countQuestionNumber) countQuestionNumber,
     required TResult Function(int index) changeIndex,
     required TResult Function(PickupQuestionModel pickupQuestionModel,
             AbandendOrderRequestModel abandendOrderRequestModel)
@@ -462,13 +423,10 @@ class _$TabMinusImpl implements TabMinus {
     TResult? Function(int index)? tabMinus,
     TResult? Function()? resetTabSelection,
     TResult? Function(String categoryType, Product product)? getQuestions,
-    TResult? Function(int answerCount)? getAnswerCount,
     TResult? Function(int index)? goBackIndex,
     TResult? Function(SelectedOption selectedOption)? markAnswer,
     TResult? Function()? clearOneSection,
-    TResult? Function(SelectedOption selectedOption)? markedQuestions,
     TResult? Function(SelectedOption selectedOption)? yesOrNo,
-    TResult? Function(int countQuestionNumber)? countQuestionNumber,
     TResult? Function(int index)? changeIndex,
     TResult? Function(PickupQuestionModel pickupQuestionModel,
             AbandendOrderRequestModel abandendOrderRequestModel)?
@@ -488,13 +446,10 @@ class _$TabMinusImpl implements TabMinus {
     TResult Function(int index)? tabMinus,
     TResult Function()? resetTabSelection,
     TResult Function(String categoryType, Product product)? getQuestions,
-    TResult Function(int answerCount)? getAnswerCount,
     TResult Function(int index)? goBackIndex,
     TResult Function(SelectedOption selectedOption)? markAnswer,
     TResult Function()? clearOneSection,
-    TResult Function(SelectedOption selectedOption)? markedQuestions,
     TResult Function(SelectedOption selectedOption)? yesOrNo,
-    TResult Function(int countQuestionNumber)? countQuestionNumber,
     TResult Function(int index)? changeIndex,
     TResult Function(PickupQuestionModel pickupQuestionModel,
             AbandendOrderRequestModel abandendOrderRequestModel)?
@@ -518,13 +473,10 @@ class _$TabMinusImpl implements TabMinus {
     required TResult Function(TabMinus value) tabMinus,
     required TResult Function(ResetTabSelection value) resetTabSelection,
     required TResult Function(GetQuestions value) getQuestions,
-    required TResult Function(GetAnswerCount value) getAnswerCount,
     required TResult Function(GoBackIndex value) goBackIndex,
     required TResult Function(MarkAnswer value) markAnswer,
     required TResult Function(ClearOneSection value) clearOneSection,
-    required TResult Function(MarkedQuestions value) markedQuestions,
     required TResult Function(YesOrNo value) yesOrNo,
-    required TResult Function(CountQuestionNumber value) countQuestionNumber,
     required TResult Function(ChangeIndex value) changeIndex,
     required TResult Function(GetBasePrice value) getBasePrice,
     required TResult Function(AbandentOrder value) abandentOrder,
@@ -541,13 +493,10 @@ class _$TabMinusImpl implements TabMinus {
     TResult? Function(TabMinus value)? tabMinus,
     TResult? Function(ResetTabSelection value)? resetTabSelection,
     TResult? Function(GetQuestions value)? getQuestions,
-    TResult? Function(GetAnswerCount value)? getAnswerCount,
     TResult? Function(GoBackIndex value)? goBackIndex,
     TResult? Function(MarkAnswer value)? markAnswer,
     TResult? Function(ClearOneSection value)? clearOneSection,
-    TResult? Function(MarkedQuestions value)? markedQuestions,
     TResult? Function(YesOrNo value)? yesOrNo,
-    TResult? Function(CountQuestionNumber value)? countQuestionNumber,
     TResult? Function(ChangeIndex value)? changeIndex,
     TResult? Function(GetBasePrice value)? getBasePrice,
     TResult? Function(AbandentOrder value)? abandentOrder,
@@ -564,13 +513,10 @@ class _$TabMinusImpl implements TabMinus {
     TResult Function(TabMinus value)? tabMinus,
     TResult Function(ResetTabSelection value)? resetTabSelection,
     TResult Function(GetQuestions value)? getQuestions,
-    TResult Function(GetAnswerCount value)? getAnswerCount,
     TResult Function(GoBackIndex value)? goBackIndex,
     TResult Function(MarkAnswer value)? markAnswer,
     TResult Function(ClearOneSection value)? clearOneSection,
-    TResult Function(MarkedQuestions value)? markedQuestions,
     TResult Function(YesOrNo value)? yesOrNo,
-    TResult Function(CountQuestionNumber value)? countQuestionNumber,
     TResult Function(ChangeIndex value)? changeIndex,
     TResult Function(GetBasePrice value)? getBasePrice,
     TResult Function(AbandentOrder value)? abandentOrder,
@@ -637,13 +583,10 @@ class _$ResetTabSelectionImpl implements ResetTabSelection {
     required TResult Function() resetTabSelection,
     required TResult Function(String categoryType, Product product)
         getQuestions,
-    required TResult Function(int answerCount) getAnswerCount,
     required TResult Function(int index) goBackIndex,
     required TResult Function(SelectedOption selectedOption) markAnswer,
     required TResult Function() clearOneSection,
-    required TResult Function(SelectedOption selectedOption) markedQuestions,
     required TResult Function(SelectedOption selectedOption) yesOrNo,
-    required TResult Function(int countQuestionNumber) countQuestionNumber,
     required TResult Function(int index) changeIndex,
     required TResult Function(PickupQuestionModel pickupQuestionModel,
             AbandendOrderRequestModel abandendOrderRequestModel)
@@ -664,13 +607,10 @@ class _$ResetTabSelectionImpl implements ResetTabSelection {
     TResult? Function(int index)? tabMinus,
     TResult? Function()? resetTabSelection,
     TResult? Function(String categoryType, Product product)? getQuestions,
-    TResult? Function(int answerCount)? getAnswerCount,
     TResult? Function(int index)? goBackIndex,
     TResult? Function(SelectedOption selectedOption)? markAnswer,
     TResult? Function()? clearOneSection,
-    TResult? Function(SelectedOption selectedOption)? markedQuestions,
     TResult? Function(SelectedOption selectedOption)? yesOrNo,
-    TResult? Function(int countQuestionNumber)? countQuestionNumber,
     TResult? Function(int index)? changeIndex,
     TResult? Function(PickupQuestionModel pickupQuestionModel,
             AbandendOrderRequestModel abandendOrderRequestModel)?
@@ -690,13 +630,10 @@ class _$ResetTabSelectionImpl implements ResetTabSelection {
     TResult Function(int index)? tabMinus,
     TResult Function()? resetTabSelection,
     TResult Function(String categoryType, Product product)? getQuestions,
-    TResult Function(int answerCount)? getAnswerCount,
     TResult Function(int index)? goBackIndex,
     TResult Function(SelectedOption selectedOption)? markAnswer,
     TResult Function()? clearOneSection,
-    TResult Function(SelectedOption selectedOption)? markedQuestions,
     TResult Function(SelectedOption selectedOption)? yesOrNo,
-    TResult Function(int countQuestionNumber)? countQuestionNumber,
     TResult Function(int index)? changeIndex,
     TResult Function(PickupQuestionModel pickupQuestionModel,
             AbandendOrderRequestModel abandendOrderRequestModel)?
@@ -720,13 +657,10 @@ class _$ResetTabSelectionImpl implements ResetTabSelection {
     required TResult Function(TabMinus value) tabMinus,
     required TResult Function(ResetTabSelection value) resetTabSelection,
     required TResult Function(GetQuestions value) getQuestions,
-    required TResult Function(GetAnswerCount value) getAnswerCount,
     required TResult Function(GoBackIndex value) goBackIndex,
     required TResult Function(MarkAnswer value) markAnswer,
     required TResult Function(ClearOneSection value) clearOneSection,
-    required TResult Function(MarkedQuestions value) markedQuestions,
     required TResult Function(YesOrNo value) yesOrNo,
-    required TResult Function(CountQuestionNumber value) countQuestionNumber,
     required TResult Function(ChangeIndex value) changeIndex,
     required TResult Function(GetBasePrice value) getBasePrice,
     required TResult Function(AbandentOrder value) abandentOrder,
@@ -743,13 +677,10 @@ class _$ResetTabSelectionImpl implements ResetTabSelection {
     TResult? Function(TabMinus value)? tabMinus,
     TResult? Function(ResetTabSelection value)? resetTabSelection,
     TResult? Function(GetQuestions value)? getQuestions,
-    TResult? Function(GetAnswerCount value)? getAnswerCount,
     TResult? Function(GoBackIndex value)? goBackIndex,
     TResult? Function(MarkAnswer value)? markAnswer,
     TResult? Function(ClearOneSection value)? clearOneSection,
-    TResult? Function(MarkedQuestions value)? markedQuestions,
     TResult? Function(YesOrNo value)? yesOrNo,
-    TResult? Function(CountQuestionNumber value)? countQuestionNumber,
     TResult? Function(ChangeIndex value)? changeIndex,
     TResult? Function(GetBasePrice value)? getBasePrice,
     TResult? Function(AbandentOrder value)? abandentOrder,
@@ -766,13 +697,10 @@ class _$ResetTabSelectionImpl implements ResetTabSelection {
     TResult Function(TabMinus value)? tabMinus,
     TResult Function(ResetTabSelection value)? resetTabSelection,
     TResult Function(GetQuestions value)? getQuestions,
-    TResult Function(GetAnswerCount value)? getAnswerCount,
     TResult Function(GoBackIndex value)? goBackIndex,
     TResult Function(MarkAnswer value)? markAnswer,
     TResult Function(ClearOneSection value)? clearOneSection,
-    TResult Function(MarkedQuestions value)? markedQuestions,
     TResult Function(YesOrNo value)? yesOrNo,
-    TResult Function(CountQuestionNumber value)? countQuestionNumber,
     TResult Function(ChangeIndex value)? changeIndex,
     TResult Function(GetBasePrice value)? getBasePrice,
     TResult Function(AbandentOrder value)? abandentOrder,
@@ -869,13 +797,10 @@ class _$GetQuestionsImpl implements GetQuestions {
     required TResult Function() resetTabSelection,
     required TResult Function(String categoryType, Product product)
         getQuestions,
-    required TResult Function(int answerCount) getAnswerCount,
     required TResult Function(int index) goBackIndex,
     required TResult Function(SelectedOption selectedOption) markAnswer,
     required TResult Function() clearOneSection,
-    required TResult Function(SelectedOption selectedOption) markedQuestions,
     required TResult Function(SelectedOption selectedOption) yesOrNo,
-    required TResult Function(int countQuestionNumber) countQuestionNumber,
     required TResult Function(int index) changeIndex,
     required TResult Function(PickupQuestionModel pickupQuestionModel,
             AbandendOrderRequestModel abandendOrderRequestModel)
@@ -896,13 +821,10 @@ class _$GetQuestionsImpl implements GetQuestions {
     TResult? Function(int index)? tabMinus,
     TResult? Function()? resetTabSelection,
     TResult? Function(String categoryType, Product product)? getQuestions,
-    TResult? Function(int answerCount)? getAnswerCount,
     TResult? Function(int index)? goBackIndex,
     TResult? Function(SelectedOption selectedOption)? markAnswer,
     TResult? Function()? clearOneSection,
-    TResult? Function(SelectedOption selectedOption)? markedQuestions,
     TResult? Function(SelectedOption selectedOption)? yesOrNo,
-    TResult? Function(int countQuestionNumber)? countQuestionNumber,
     TResult? Function(int index)? changeIndex,
     TResult? Function(PickupQuestionModel pickupQuestionModel,
             AbandendOrderRequestModel abandendOrderRequestModel)?
@@ -922,13 +844,10 @@ class _$GetQuestionsImpl implements GetQuestions {
     TResult Function(int index)? tabMinus,
     TResult Function()? resetTabSelection,
     TResult Function(String categoryType, Product product)? getQuestions,
-    TResult Function(int answerCount)? getAnswerCount,
     TResult Function(int index)? goBackIndex,
     TResult Function(SelectedOption selectedOption)? markAnswer,
     TResult Function()? clearOneSection,
-    TResult Function(SelectedOption selectedOption)? markedQuestions,
     TResult Function(SelectedOption selectedOption)? yesOrNo,
-    TResult Function(int countQuestionNumber)? countQuestionNumber,
     TResult Function(int index)? changeIndex,
     TResult Function(PickupQuestionModel pickupQuestionModel,
             AbandendOrderRequestModel abandendOrderRequestModel)?
@@ -952,13 +871,10 @@ class _$GetQuestionsImpl implements GetQuestions {
     required TResult Function(TabMinus value) tabMinus,
     required TResult Function(ResetTabSelection value) resetTabSelection,
     required TResult Function(GetQuestions value) getQuestions,
-    required TResult Function(GetAnswerCount value) getAnswerCount,
     required TResult Function(GoBackIndex value) goBackIndex,
     required TResult Function(MarkAnswer value) markAnswer,
     required TResult Function(ClearOneSection value) clearOneSection,
-    required TResult Function(MarkedQuestions value) markedQuestions,
     required TResult Function(YesOrNo value) yesOrNo,
-    required TResult Function(CountQuestionNumber value) countQuestionNumber,
     required TResult Function(ChangeIndex value) changeIndex,
     required TResult Function(GetBasePrice value) getBasePrice,
     required TResult Function(AbandentOrder value) abandentOrder,
@@ -975,13 +891,10 @@ class _$GetQuestionsImpl implements GetQuestions {
     TResult? Function(TabMinus value)? tabMinus,
     TResult? Function(ResetTabSelection value)? resetTabSelection,
     TResult? Function(GetQuestions value)? getQuestions,
-    TResult? Function(GetAnswerCount value)? getAnswerCount,
     TResult? Function(GoBackIndex value)? goBackIndex,
     TResult? Function(MarkAnswer value)? markAnswer,
     TResult? Function(ClearOneSection value)? clearOneSection,
-    TResult? Function(MarkedQuestions value)? markedQuestions,
     TResult? Function(YesOrNo value)? yesOrNo,
-    TResult? Function(CountQuestionNumber value)? countQuestionNumber,
     TResult? Function(ChangeIndex value)? changeIndex,
     TResult? Function(GetBasePrice value)? getBasePrice,
     TResult? Function(AbandentOrder value)? abandentOrder,
@@ -998,13 +911,10 @@ class _$GetQuestionsImpl implements GetQuestions {
     TResult Function(TabMinus value)? tabMinus,
     TResult Function(ResetTabSelection value)? resetTabSelection,
     TResult Function(GetQuestions value)? getQuestions,
-    TResult Function(GetAnswerCount value)? getAnswerCount,
     TResult Function(GoBackIndex value)? goBackIndex,
     TResult Function(MarkAnswer value)? markAnswer,
     TResult Function(ClearOneSection value)? clearOneSection,
-    TResult Function(MarkedQuestions value)? markedQuestions,
     TResult Function(YesOrNo value)? yesOrNo,
-    TResult Function(CountQuestionNumber value)? countQuestionNumber,
     TResult Function(ChangeIndex value)? changeIndex,
     TResult Function(GetBasePrice value)? getBasePrice,
     TResult Function(AbandentOrder value)? abandentOrder,
@@ -1028,237 +938,6 @@ abstract class GetQuestions implements QuestionTabEvent {
   Product get product;
   @JsonKey(ignore: true)
   _$$GetQuestionsImplCopyWith<_$GetQuestionsImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$GetAnswerCountImplCopyWith<$Res> {
-  factory _$$GetAnswerCountImplCopyWith(_$GetAnswerCountImpl value,
-          $Res Function(_$GetAnswerCountImpl) then) =
-      __$$GetAnswerCountImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({int answerCount});
-}
-
-/// @nodoc
-class __$$GetAnswerCountImplCopyWithImpl<$Res>
-    extends _$QuestionTabEventCopyWithImpl<$Res, _$GetAnswerCountImpl>
-    implements _$$GetAnswerCountImplCopyWith<$Res> {
-  __$$GetAnswerCountImplCopyWithImpl(
-      _$GetAnswerCountImpl _value, $Res Function(_$GetAnswerCountImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? answerCount = null,
-  }) {
-    return _then(_$GetAnswerCountImpl(
-      answerCount: null == answerCount
-          ? _value.answerCount
-          : answerCount // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$GetAnswerCountImpl implements GetAnswerCount {
-  const _$GetAnswerCountImpl({required this.answerCount});
-
-  @override
-  final int answerCount;
-
-  @override
-  String toString() {
-    return 'QuestionTabEvent.getAnswerCount(answerCount: $answerCount)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$GetAnswerCountImpl &&
-            (identical(other.answerCount, answerCount) ||
-                other.answerCount == answerCount));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, answerCount);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$GetAnswerCountImplCopyWith<_$GetAnswerCountImpl> get copyWith =>
-      __$$GetAnswerCountImplCopyWithImpl<_$GetAnswerCountImpl>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() tabChange,
-    required TResult Function(int index) tabMinus,
-    required TResult Function() resetTabSelection,
-    required TResult Function(String categoryType, Product product)
-        getQuestions,
-    required TResult Function(int answerCount) getAnswerCount,
-    required TResult Function(int index) goBackIndex,
-    required TResult Function(SelectedOption selectedOption) markAnswer,
-    required TResult Function() clearOneSection,
-    required TResult Function(SelectedOption selectedOption) markedQuestions,
-    required TResult Function(SelectedOption selectedOption) yesOrNo,
-    required TResult Function(int countQuestionNumber) countQuestionNumber,
-    required TResult Function(int index) changeIndex,
-    required TResult Function(PickupQuestionModel pickupQuestionModel,
-            AbandendOrderRequestModel abandendOrderRequestModel)
-        getBasePrice,
-    required TResult Function(
-            AbandendOrderRequestModel abandendOrderRequestModel)
-        abandentOrder,
-    required TResult Function() clearNewOPtionList,
-    required TResult Function() clear,
-  }) {
-    return getAnswerCount(answerCount);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? tabChange,
-    TResult? Function(int index)? tabMinus,
-    TResult? Function()? resetTabSelection,
-    TResult? Function(String categoryType, Product product)? getQuestions,
-    TResult? Function(int answerCount)? getAnswerCount,
-    TResult? Function(int index)? goBackIndex,
-    TResult? Function(SelectedOption selectedOption)? markAnswer,
-    TResult? Function()? clearOneSection,
-    TResult? Function(SelectedOption selectedOption)? markedQuestions,
-    TResult? Function(SelectedOption selectedOption)? yesOrNo,
-    TResult? Function(int countQuestionNumber)? countQuestionNumber,
-    TResult? Function(int index)? changeIndex,
-    TResult? Function(PickupQuestionModel pickupQuestionModel,
-            AbandendOrderRequestModel abandendOrderRequestModel)?
-        getBasePrice,
-    TResult? Function(AbandendOrderRequestModel abandendOrderRequestModel)?
-        abandentOrder,
-    TResult? Function()? clearNewOPtionList,
-    TResult? Function()? clear,
-  }) {
-    return getAnswerCount?.call(answerCount);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? tabChange,
-    TResult Function(int index)? tabMinus,
-    TResult Function()? resetTabSelection,
-    TResult Function(String categoryType, Product product)? getQuestions,
-    TResult Function(int answerCount)? getAnswerCount,
-    TResult Function(int index)? goBackIndex,
-    TResult Function(SelectedOption selectedOption)? markAnswer,
-    TResult Function()? clearOneSection,
-    TResult Function(SelectedOption selectedOption)? markedQuestions,
-    TResult Function(SelectedOption selectedOption)? yesOrNo,
-    TResult Function(int countQuestionNumber)? countQuestionNumber,
-    TResult Function(int index)? changeIndex,
-    TResult Function(PickupQuestionModel pickupQuestionModel,
-            AbandendOrderRequestModel abandendOrderRequestModel)?
-        getBasePrice,
-    TResult Function(AbandendOrderRequestModel abandendOrderRequestModel)?
-        abandentOrder,
-    TResult Function()? clearNewOPtionList,
-    TResult Function()? clear,
-    required TResult orElse(),
-  }) {
-    if (getAnswerCount != null) {
-      return getAnswerCount(answerCount);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(TabChange value) tabChange,
-    required TResult Function(TabMinus value) tabMinus,
-    required TResult Function(ResetTabSelection value) resetTabSelection,
-    required TResult Function(GetQuestions value) getQuestions,
-    required TResult Function(GetAnswerCount value) getAnswerCount,
-    required TResult Function(GoBackIndex value) goBackIndex,
-    required TResult Function(MarkAnswer value) markAnswer,
-    required TResult Function(ClearOneSection value) clearOneSection,
-    required TResult Function(MarkedQuestions value) markedQuestions,
-    required TResult Function(YesOrNo value) yesOrNo,
-    required TResult Function(CountQuestionNumber value) countQuestionNumber,
-    required TResult Function(ChangeIndex value) changeIndex,
-    required TResult Function(GetBasePrice value) getBasePrice,
-    required TResult Function(AbandentOrder value) abandentOrder,
-    required TResult Function(ClearNewOPtionList value) clearNewOPtionList,
-    required TResult Function(Clear value) clear,
-  }) {
-    return getAnswerCount(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(TabChange value)? tabChange,
-    TResult? Function(TabMinus value)? tabMinus,
-    TResult? Function(ResetTabSelection value)? resetTabSelection,
-    TResult? Function(GetQuestions value)? getQuestions,
-    TResult? Function(GetAnswerCount value)? getAnswerCount,
-    TResult? Function(GoBackIndex value)? goBackIndex,
-    TResult? Function(MarkAnswer value)? markAnswer,
-    TResult? Function(ClearOneSection value)? clearOneSection,
-    TResult? Function(MarkedQuestions value)? markedQuestions,
-    TResult? Function(YesOrNo value)? yesOrNo,
-    TResult? Function(CountQuestionNumber value)? countQuestionNumber,
-    TResult? Function(ChangeIndex value)? changeIndex,
-    TResult? Function(GetBasePrice value)? getBasePrice,
-    TResult? Function(AbandentOrder value)? abandentOrder,
-    TResult? Function(ClearNewOPtionList value)? clearNewOPtionList,
-    TResult? Function(Clear value)? clear,
-  }) {
-    return getAnswerCount?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(TabChange value)? tabChange,
-    TResult Function(TabMinus value)? tabMinus,
-    TResult Function(ResetTabSelection value)? resetTabSelection,
-    TResult Function(GetQuestions value)? getQuestions,
-    TResult Function(GetAnswerCount value)? getAnswerCount,
-    TResult Function(GoBackIndex value)? goBackIndex,
-    TResult Function(MarkAnswer value)? markAnswer,
-    TResult Function(ClearOneSection value)? clearOneSection,
-    TResult Function(MarkedQuestions value)? markedQuestions,
-    TResult Function(YesOrNo value)? yesOrNo,
-    TResult Function(CountQuestionNumber value)? countQuestionNumber,
-    TResult Function(ChangeIndex value)? changeIndex,
-    TResult Function(GetBasePrice value)? getBasePrice,
-    TResult Function(AbandentOrder value)? abandentOrder,
-    TResult Function(ClearNewOPtionList value)? clearNewOPtionList,
-    TResult Function(Clear value)? clear,
-    required TResult orElse(),
-  }) {
-    if (getAnswerCount != null) {
-      return getAnswerCount(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class GetAnswerCount implements QuestionTabEvent {
-  const factory GetAnswerCount({required final int answerCount}) =
-      _$GetAnswerCountImpl;
-
-  int get answerCount;
-  @JsonKey(ignore: true)
-  _$$GetAnswerCountImplCopyWith<_$GetAnswerCountImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1331,13 +1010,10 @@ class _$GoBackIndexImpl implements GoBackIndex {
     required TResult Function() resetTabSelection,
     required TResult Function(String categoryType, Product product)
         getQuestions,
-    required TResult Function(int answerCount) getAnswerCount,
     required TResult Function(int index) goBackIndex,
     required TResult Function(SelectedOption selectedOption) markAnswer,
     required TResult Function() clearOneSection,
-    required TResult Function(SelectedOption selectedOption) markedQuestions,
     required TResult Function(SelectedOption selectedOption) yesOrNo,
-    required TResult Function(int countQuestionNumber) countQuestionNumber,
     required TResult Function(int index) changeIndex,
     required TResult Function(PickupQuestionModel pickupQuestionModel,
             AbandendOrderRequestModel abandendOrderRequestModel)
@@ -1358,13 +1034,10 @@ class _$GoBackIndexImpl implements GoBackIndex {
     TResult? Function(int index)? tabMinus,
     TResult? Function()? resetTabSelection,
     TResult? Function(String categoryType, Product product)? getQuestions,
-    TResult? Function(int answerCount)? getAnswerCount,
     TResult? Function(int index)? goBackIndex,
     TResult? Function(SelectedOption selectedOption)? markAnswer,
     TResult? Function()? clearOneSection,
-    TResult? Function(SelectedOption selectedOption)? markedQuestions,
     TResult? Function(SelectedOption selectedOption)? yesOrNo,
-    TResult? Function(int countQuestionNumber)? countQuestionNumber,
     TResult? Function(int index)? changeIndex,
     TResult? Function(PickupQuestionModel pickupQuestionModel,
             AbandendOrderRequestModel abandendOrderRequestModel)?
@@ -1384,13 +1057,10 @@ class _$GoBackIndexImpl implements GoBackIndex {
     TResult Function(int index)? tabMinus,
     TResult Function()? resetTabSelection,
     TResult Function(String categoryType, Product product)? getQuestions,
-    TResult Function(int answerCount)? getAnswerCount,
     TResult Function(int index)? goBackIndex,
     TResult Function(SelectedOption selectedOption)? markAnswer,
     TResult Function()? clearOneSection,
-    TResult Function(SelectedOption selectedOption)? markedQuestions,
     TResult Function(SelectedOption selectedOption)? yesOrNo,
-    TResult Function(int countQuestionNumber)? countQuestionNumber,
     TResult Function(int index)? changeIndex,
     TResult Function(PickupQuestionModel pickupQuestionModel,
             AbandendOrderRequestModel abandendOrderRequestModel)?
@@ -1414,13 +1084,10 @@ class _$GoBackIndexImpl implements GoBackIndex {
     required TResult Function(TabMinus value) tabMinus,
     required TResult Function(ResetTabSelection value) resetTabSelection,
     required TResult Function(GetQuestions value) getQuestions,
-    required TResult Function(GetAnswerCount value) getAnswerCount,
     required TResult Function(GoBackIndex value) goBackIndex,
     required TResult Function(MarkAnswer value) markAnswer,
     required TResult Function(ClearOneSection value) clearOneSection,
-    required TResult Function(MarkedQuestions value) markedQuestions,
     required TResult Function(YesOrNo value) yesOrNo,
-    required TResult Function(CountQuestionNumber value) countQuestionNumber,
     required TResult Function(ChangeIndex value) changeIndex,
     required TResult Function(GetBasePrice value) getBasePrice,
     required TResult Function(AbandentOrder value) abandentOrder,
@@ -1437,13 +1104,10 @@ class _$GoBackIndexImpl implements GoBackIndex {
     TResult? Function(TabMinus value)? tabMinus,
     TResult? Function(ResetTabSelection value)? resetTabSelection,
     TResult? Function(GetQuestions value)? getQuestions,
-    TResult? Function(GetAnswerCount value)? getAnswerCount,
     TResult? Function(GoBackIndex value)? goBackIndex,
     TResult? Function(MarkAnswer value)? markAnswer,
     TResult? Function(ClearOneSection value)? clearOneSection,
-    TResult? Function(MarkedQuestions value)? markedQuestions,
     TResult? Function(YesOrNo value)? yesOrNo,
-    TResult? Function(CountQuestionNumber value)? countQuestionNumber,
     TResult? Function(ChangeIndex value)? changeIndex,
     TResult? Function(GetBasePrice value)? getBasePrice,
     TResult? Function(AbandentOrder value)? abandentOrder,
@@ -1460,13 +1124,10 @@ class _$GoBackIndexImpl implements GoBackIndex {
     TResult Function(TabMinus value)? tabMinus,
     TResult Function(ResetTabSelection value)? resetTabSelection,
     TResult Function(GetQuestions value)? getQuestions,
-    TResult Function(GetAnswerCount value)? getAnswerCount,
     TResult Function(GoBackIndex value)? goBackIndex,
     TResult Function(MarkAnswer value)? markAnswer,
     TResult Function(ClearOneSection value)? clearOneSection,
-    TResult Function(MarkedQuestions value)? markedQuestions,
     TResult Function(YesOrNo value)? yesOrNo,
-    TResult Function(CountQuestionNumber value)? countQuestionNumber,
     TResult Function(ChangeIndex value)? changeIndex,
     TResult Function(GetBasePrice value)? getBasePrice,
     TResult Function(AbandentOrder value)? abandentOrder,
@@ -1560,13 +1221,10 @@ class _$MarkAnswerImpl implements MarkAnswer {
     required TResult Function() resetTabSelection,
     required TResult Function(String categoryType, Product product)
         getQuestions,
-    required TResult Function(int answerCount) getAnswerCount,
     required TResult Function(int index) goBackIndex,
     required TResult Function(SelectedOption selectedOption) markAnswer,
     required TResult Function() clearOneSection,
-    required TResult Function(SelectedOption selectedOption) markedQuestions,
     required TResult Function(SelectedOption selectedOption) yesOrNo,
-    required TResult Function(int countQuestionNumber) countQuestionNumber,
     required TResult Function(int index) changeIndex,
     required TResult Function(PickupQuestionModel pickupQuestionModel,
             AbandendOrderRequestModel abandendOrderRequestModel)
@@ -1587,13 +1245,10 @@ class _$MarkAnswerImpl implements MarkAnswer {
     TResult? Function(int index)? tabMinus,
     TResult? Function()? resetTabSelection,
     TResult? Function(String categoryType, Product product)? getQuestions,
-    TResult? Function(int answerCount)? getAnswerCount,
     TResult? Function(int index)? goBackIndex,
     TResult? Function(SelectedOption selectedOption)? markAnswer,
     TResult? Function()? clearOneSection,
-    TResult? Function(SelectedOption selectedOption)? markedQuestions,
     TResult? Function(SelectedOption selectedOption)? yesOrNo,
-    TResult? Function(int countQuestionNumber)? countQuestionNumber,
     TResult? Function(int index)? changeIndex,
     TResult? Function(PickupQuestionModel pickupQuestionModel,
             AbandendOrderRequestModel abandendOrderRequestModel)?
@@ -1613,13 +1268,10 @@ class _$MarkAnswerImpl implements MarkAnswer {
     TResult Function(int index)? tabMinus,
     TResult Function()? resetTabSelection,
     TResult Function(String categoryType, Product product)? getQuestions,
-    TResult Function(int answerCount)? getAnswerCount,
     TResult Function(int index)? goBackIndex,
     TResult Function(SelectedOption selectedOption)? markAnswer,
     TResult Function()? clearOneSection,
-    TResult Function(SelectedOption selectedOption)? markedQuestions,
     TResult Function(SelectedOption selectedOption)? yesOrNo,
-    TResult Function(int countQuestionNumber)? countQuestionNumber,
     TResult Function(int index)? changeIndex,
     TResult Function(PickupQuestionModel pickupQuestionModel,
             AbandendOrderRequestModel abandendOrderRequestModel)?
@@ -1643,13 +1295,10 @@ class _$MarkAnswerImpl implements MarkAnswer {
     required TResult Function(TabMinus value) tabMinus,
     required TResult Function(ResetTabSelection value) resetTabSelection,
     required TResult Function(GetQuestions value) getQuestions,
-    required TResult Function(GetAnswerCount value) getAnswerCount,
     required TResult Function(GoBackIndex value) goBackIndex,
     required TResult Function(MarkAnswer value) markAnswer,
     required TResult Function(ClearOneSection value) clearOneSection,
-    required TResult Function(MarkedQuestions value) markedQuestions,
     required TResult Function(YesOrNo value) yesOrNo,
-    required TResult Function(CountQuestionNumber value) countQuestionNumber,
     required TResult Function(ChangeIndex value) changeIndex,
     required TResult Function(GetBasePrice value) getBasePrice,
     required TResult Function(AbandentOrder value) abandentOrder,
@@ -1666,13 +1315,10 @@ class _$MarkAnswerImpl implements MarkAnswer {
     TResult? Function(TabMinus value)? tabMinus,
     TResult? Function(ResetTabSelection value)? resetTabSelection,
     TResult? Function(GetQuestions value)? getQuestions,
-    TResult? Function(GetAnswerCount value)? getAnswerCount,
     TResult? Function(GoBackIndex value)? goBackIndex,
     TResult? Function(MarkAnswer value)? markAnswer,
     TResult? Function(ClearOneSection value)? clearOneSection,
-    TResult? Function(MarkedQuestions value)? markedQuestions,
     TResult? Function(YesOrNo value)? yesOrNo,
-    TResult? Function(CountQuestionNumber value)? countQuestionNumber,
     TResult? Function(ChangeIndex value)? changeIndex,
     TResult? Function(GetBasePrice value)? getBasePrice,
     TResult? Function(AbandentOrder value)? abandentOrder,
@@ -1689,13 +1335,10 @@ class _$MarkAnswerImpl implements MarkAnswer {
     TResult Function(TabMinus value)? tabMinus,
     TResult Function(ResetTabSelection value)? resetTabSelection,
     TResult Function(GetQuestions value)? getQuestions,
-    TResult Function(GetAnswerCount value)? getAnswerCount,
     TResult Function(GoBackIndex value)? goBackIndex,
     TResult Function(MarkAnswer value)? markAnswer,
     TResult Function(ClearOneSection value)? clearOneSection,
-    TResult Function(MarkedQuestions value)? markedQuestions,
     TResult Function(YesOrNo value)? yesOrNo,
-    TResult Function(CountQuestionNumber value)? countQuestionNumber,
     TResult Function(ChangeIndex value)? changeIndex,
     TResult Function(GetBasePrice value)? getBasePrice,
     TResult Function(AbandentOrder value)? abandentOrder,
@@ -1763,13 +1406,10 @@ class _$ClearOneSectionImpl implements ClearOneSection {
     required TResult Function() resetTabSelection,
     required TResult Function(String categoryType, Product product)
         getQuestions,
-    required TResult Function(int answerCount) getAnswerCount,
     required TResult Function(int index) goBackIndex,
     required TResult Function(SelectedOption selectedOption) markAnswer,
     required TResult Function() clearOneSection,
-    required TResult Function(SelectedOption selectedOption) markedQuestions,
     required TResult Function(SelectedOption selectedOption) yesOrNo,
-    required TResult Function(int countQuestionNumber) countQuestionNumber,
     required TResult Function(int index) changeIndex,
     required TResult Function(PickupQuestionModel pickupQuestionModel,
             AbandendOrderRequestModel abandendOrderRequestModel)
@@ -1790,13 +1430,10 @@ class _$ClearOneSectionImpl implements ClearOneSection {
     TResult? Function(int index)? tabMinus,
     TResult? Function()? resetTabSelection,
     TResult? Function(String categoryType, Product product)? getQuestions,
-    TResult? Function(int answerCount)? getAnswerCount,
     TResult? Function(int index)? goBackIndex,
     TResult? Function(SelectedOption selectedOption)? markAnswer,
     TResult? Function()? clearOneSection,
-    TResult? Function(SelectedOption selectedOption)? markedQuestions,
     TResult? Function(SelectedOption selectedOption)? yesOrNo,
-    TResult? Function(int countQuestionNumber)? countQuestionNumber,
     TResult? Function(int index)? changeIndex,
     TResult? Function(PickupQuestionModel pickupQuestionModel,
             AbandendOrderRequestModel abandendOrderRequestModel)?
@@ -1816,13 +1453,10 @@ class _$ClearOneSectionImpl implements ClearOneSection {
     TResult Function(int index)? tabMinus,
     TResult Function()? resetTabSelection,
     TResult Function(String categoryType, Product product)? getQuestions,
-    TResult Function(int answerCount)? getAnswerCount,
     TResult Function(int index)? goBackIndex,
     TResult Function(SelectedOption selectedOption)? markAnswer,
     TResult Function()? clearOneSection,
-    TResult Function(SelectedOption selectedOption)? markedQuestions,
     TResult Function(SelectedOption selectedOption)? yesOrNo,
-    TResult Function(int countQuestionNumber)? countQuestionNumber,
     TResult Function(int index)? changeIndex,
     TResult Function(PickupQuestionModel pickupQuestionModel,
             AbandendOrderRequestModel abandendOrderRequestModel)?
@@ -1846,13 +1480,10 @@ class _$ClearOneSectionImpl implements ClearOneSection {
     required TResult Function(TabMinus value) tabMinus,
     required TResult Function(ResetTabSelection value) resetTabSelection,
     required TResult Function(GetQuestions value) getQuestions,
-    required TResult Function(GetAnswerCount value) getAnswerCount,
     required TResult Function(GoBackIndex value) goBackIndex,
     required TResult Function(MarkAnswer value) markAnswer,
     required TResult Function(ClearOneSection value) clearOneSection,
-    required TResult Function(MarkedQuestions value) markedQuestions,
     required TResult Function(YesOrNo value) yesOrNo,
-    required TResult Function(CountQuestionNumber value) countQuestionNumber,
     required TResult Function(ChangeIndex value) changeIndex,
     required TResult Function(GetBasePrice value) getBasePrice,
     required TResult Function(AbandentOrder value) abandentOrder,
@@ -1869,13 +1500,10 @@ class _$ClearOneSectionImpl implements ClearOneSection {
     TResult? Function(TabMinus value)? tabMinus,
     TResult? Function(ResetTabSelection value)? resetTabSelection,
     TResult? Function(GetQuestions value)? getQuestions,
-    TResult? Function(GetAnswerCount value)? getAnswerCount,
     TResult? Function(GoBackIndex value)? goBackIndex,
     TResult? Function(MarkAnswer value)? markAnswer,
     TResult? Function(ClearOneSection value)? clearOneSection,
-    TResult? Function(MarkedQuestions value)? markedQuestions,
     TResult? Function(YesOrNo value)? yesOrNo,
-    TResult? Function(CountQuestionNumber value)? countQuestionNumber,
     TResult? Function(ChangeIndex value)? changeIndex,
     TResult? Function(GetBasePrice value)? getBasePrice,
     TResult? Function(AbandentOrder value)? abandentOrder,
@@ -1892,13 +1520,10 @@ class _$ClearOneSectionImpl implements ClearOneSection {
     TResult Function(TabMinus value)? tabMinus,
     TResult Function(ResetTabSelection value)? resetTabSelection,
     TResult Function(GetQuestions value)? getQuestions,
-    TResult Function(GetAnswerCount value)? getAnswerCount,
     TResult Function(GoBackIndex value)? goBackIndex,
     TResult Function(MarkAnswer value)? markAnswer,
     TResult Function(ClearOneSection value)? clearOneSection,
-    TResult Function(MarkedQuestions value)? markedQuestions,
     TResult Function(YesOrNo value)? yesOrNo,
-    TResult Function(CountQuestionNumber value)? countQuestionNumber,
     TResult Function(ChangeIndex value)? changeIndex,
     TResult Function(GetBasePrice value)? getBasePrice,
     TResult Function(AbandentOrder value)? abandentOrder,
@@ -1915,237 +1540,6 @@ class _$ClearOneSectionImpl implements ClearOneSection {
 
 abstract class ClearOneSection implements QuestionTabEvent {
   const factory ClearOneSection() = _$ClearOneSectionImpl;
-}
-
-/// @nodoc
-abstract class _$$MarkedQuestionsImplCopyWith<$Res> {
-  factory _$$MarkedQuestionsImplCopyWith(_$MarkedQuestionsImpl value,
-          $Res Function(_$MarkedQuestionsImpl) then) =
-      __$$MarkedQuestionsImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({SelectedOption selectedOption});
-}
-
-/// @nodoc
-class __$$MarkedQuestionsImplCopyWithImpl<$Res>
-    extends _$QuestionTabEventCopyWithImpl<$Res, _$MarkedQuestionsImpl>
-    implements _$$MarkedQuestionsImplCopyWith<$Res> {
-  __$$MarkedQuestionsImplCopyWithImpl(
-      _$MarkedQuestionsImpl _value, $Res Function(_$MarkedQuestionsImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? selectedOption = null,
-  }) {
-    return _then(_$MarkedQuestionsImpl(
-      selectedOption: null == selectedOption
-          ? _value.selectedOption
-          : selectedOption // ignore: cast_nullable_to_non_nullable
-              as SelectedOption,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$MarkedQuestionsImpl implements MarkedQuestions {
-  const _$MarkedQuestionsImpl({required this.selectedOption});
-
-  @override
-  final SelectedOption selectedOption;
-
-  @override
-  String toString() {
-    return 'QuestionTabEvent.markedQuestions(selectedOption: $selectedOption)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$MarkedQuestionsImpl &&
-            (identical(other.selectedOption, selectedOption) ||
-                other.selectedOption == selectedOption));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, selectedOption);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$MarkedQuestionsImplCopyWith<_$MarkedQuestionsImpl> get copyWith =>
-      __$$MarkedQuestionsImplCopyWithImpl<_$MarkedQuestionsImpl>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() tabChange,
-    required TResult Function(int index) tabMinus,
-    required TResult Function() resetTabSelection,
-    required TResult Function(String categoryType, Product product)
-        getQuestions,
-    required TResult Function(int answerCount) getAnswerCount,
-    required TResult Function(int index) goBackIndex,
-    required TResult Function(SelectedOption selectedOption) markAnswer,
-    required TResult Function() clearOneSection,
-    required TResult Function(SelectedOption selectedOption) markedQuestions,
-    required TResult Function(SelectedOption selectedOption) yesOrNo,
-    required TResult Function(int countQuestionNumber) countQuestionNumber,
-    required TResult Function(int index) changeIndex,
-    required TResult Function(PickupQuestionModel pickupQuestionModel,
-            AbandendOrderRequestModel abandendOrderRequestModel)
-        getBasePrice,
-    required TResult Function(
-            AbandendOrderRequestModel abandendOrderRequestModel)
-        abandentOrder,
-    required TResult Function() clearNewOPtionList,
-    required TResult Function() clear,
-  }) {
-    return markedQuestions(selectedOption);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? tabChange,
-    TResult? Function(int index)? tabMinus,
-    TResult? Function()? resetTabSelection,
-    TResult? Function(String categoryType, Product product)? getQuestions,
-    TResult? Function(int answerCount)? getAnswerCount,
-    TResult? Function(int index)? goBackIndex,
-    TResult? Function(SelectedOption selectedOption)? markAnswer,
-    TResult? Function()? clearOneSection,
-    TResult? Function(SelectedOption selectedOption)? markedQuestions,
-    TResult? Function(SelectedOption selectedOption)? yesOrNo,
-    TResult? Function(int countQuestionNumber)? countQuestionNumber,
-    TResult? Function(int index)? changeIndex,
-    TResult? Function(PickupQuestionModel pickupQuestionModel,
-            AbandendOrderRequestModel abandendOrderRequestModel)?
-        getBasePrice,
-    TResult? Function(AbandendOrderRequestModel abandendOrderRequestModel)?
-        abandentOrder,
-    TResult? Function()? clearNewOPtionList,
-    TResult? Function()? clear,
-  }) {
-    return markedQuestions?.call(selectedOption);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? tabChange,
-    TResult Function(int index)? tabMinus,
-    TResult Function()? resetTabSelection,
-    TResult Function(String categoryType, Product product)? getQuestions,
-    TResult Function(int answerCount)? getAnswerCount,
-    TResult Function(int index)? goBackIndex,
-    TResult Function(SelectedOption selectedOption)? markAnswer,
-    TResult Function()? clearOneSection,
-    TResult Function(SelectedOption selectedOption)? markedQuestions,
-    TResult Function(SelectedOption selectedOption)? yesOrNo,
-    TResult Function(int countQuestionNumber)? countQuestionNumber,
-    TResult Function(int index)? changeIndex,
-    TResult Function(PickupQuestionModel pickupQuestionModel,
-            AbandendOrderRequestModel abandendOrderRequestModel)?
-        getBasePrice,
-    TResult Function(AbandendOrderRequestModel abandendOrderRequestModel)?
-        abandentOrder,
-    TResult Function()? clearNewOPtionList,
-    TResult Function()? clear,
-    required TResult orElse(),
-  }) {
-    if (markedQuestions != null) {
-      return markedQuestions(selectedOption);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(TabChange value) tabChange,
-    required TResult Function(TabMinus value) tabMinus,
-    required TResult Function(ResetTabSelection value) resetTabSelection,
-    required TResult Function(GetQuestions value) getQuestions,
-    required TResult Function(GetAnswerCount value) getAnswerCount,
-    required TResult Function(GoBackIndex value) goBackIndex,
-    required TResult Function(MarkAnswer value) markAnswer,
-    required TResult Function(ClearOneSection value) clearOneSection,
-    required TResult Function(MarkedQuestions value) markedQuestions,
-    required TResult Function(YesOrNo value) yesOrNo,
-    required TResult Function(CountQuestionNumber value) countQuestionNumber,
-    required TResult Function(ChangeIndex value) changeIndex,
-    required TResult Function(GetBasePrice value) getBasePrice,
-    required TResult Function(AbandentOrder value) abandentOrder,
-    required TResult Function(ClearNewOPtionList value) clearNewOPtionList,
-    required TResult Function(Clear value) clear,
-  }) {
-    return markedQuestions(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(TabChange value)? tabChange,
-    TResult? Function(TabMinus value)? tabMinus,
-    TResult? Function(ResetTabSelection value)? resetTabSelection,
-    TResult? Function(GetQuestions value)? getQuestions,
-    TResult? Function(GetAnswerCount value)? getAnswerCount,
-    TResult? Function(GoBackIndex value)? goBackIndex,
-    TResult? Function(MarkAnswer value)? markAnswer,
-    TResult? Function(ClearOneSection value)? clearOneSection,
-    TResult? Function(MarkedQuestions value)? markedQuestions,
-    TResult? Function(YesOrNo value)? yesOrNo,
-    TResult? Function(CountQuestionNumber value)? countQuestionNumber,
-    TResult? Function(ChangeIndex value)? changeIndex,
-    TResult? Function(GetBasePrice value)? getBasePrice,
-    TResult? Function(AbandentOrder value)? abandentOrder,
-    TResult? Function(ClearNewOPtionList value)? clearNewOPtionList,
-    TResult? Function(Clear value)? clear,
-  }) {
-    return markedQuestions?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(TabChange value)? tabChange,
-    TResult Function(TabMinus value)? tabMinus,
-    TResult Function(ResetTabSelection value)? resetTabSelection,
-    TResult Function(GetQuestions value)? getQuestions,
-    TResult Function(GetAnswerCount value)? getAnswerCount,
-    TResult Function(GoBackIndex value)? goBackIndex,
-    TResult Function(MarkAnswer value)? markAnswer,
-    TResult Function(ClearOneSection value)? clearOneSection,
-    TResult Function(MarkedQuestions value)? markedQuestions,
-    TResult Function(YesOrNo value)? yesOrNo,
-    TResult Function(CountQuestionNumber value)? countQuestionNumber,
-    TResult Function(ChangeIndex value)? changeIndex,
-    TResult Function(GetBasePrice value)? getBasePrice,
-    TResult Function(AbandentOrder value)? abandentOrder,
-    TResult Function(ClearNewOPtionList value)? clearNewOPtionList,
-    TResult Function(Clear value)? clear,
-    required TResult orElse(),
-  }) {
-    if (markedQuestions != null) {
-      return markedQuestions(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class MarkedQuestions implements QuestionTabEvent {
-  const factory MarkedQuestions(
-      {required final SelectedOption selectedOption}) = _$MarkedQuestionsImpl;
-
-  SelectedOption get selectedOption;
-  @JsonKey(ignore: true)
-  _$$MarkedQuestionsImplCopyWith<_$MarkedQuestionsImpl> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -2218,13 +1612,10 @@ class _$YesOrNoImpl implements YesOrNo {
     required TResult Function() resetTabSelection,
     required TResult Function(String categoryType, Product product)
         getQuestions,
-    required TResult Function(int answerCount) getAnswerCount,
     required TResult Function(int index) goBackIndex,
     required TResult Function(SelectedOption selectedOption) markAnswer,
     required TResult Function() clearOneSection,
-    required TResult Function(SelectedOption selectedOption) markedQuestions,
     required TResult Function(SelectedOption selectedOption) yesOrNo,
-    required TResult Function(int countQuestionNumber) countQuestionNumber,
     required TResult Function(int index) changeIndex,
     required TResult Function(PickupQuestionModel pickupQuestionModel,
             AbandendOrderRequestModel abandendOrderRequestModel)
@@ -2245,13 +1636,10 @@ class _$YesOrNoImpl implements YesOrNo {
     TResult? Function(int index)? tabMinus,
     TResult? Function()? resetTabSelection,
     TResult? Function(String categoryType, Product product)? getQuestions,
-    TResult? Function(int answerCount)? getAnswerCount,
     TResult? Function(int index)? goBackIndex,
     TResult? Function(SelectedOption selectedOption)? markAnswer,
     TResult? Function()? clearOneSection,
-    TResult? Function(SelectedOption selectedOption)? markedQuestions,
     TResult? Function(SelectedOption selectedOption)? yesOrNo,
-    TResult? Function(int countQuestionNumber)? countQuestionNumber,
     TResult? Function(int index)? changeIndex,
     TResult? Function(PickupQuestionModel pickupQuestionModel,
             AbandendOrderRequestModel abandendOrderRequestModel)?
@@ -2271,13 +1659,10 @@ class _$YesOrNoImpl implements YesOrNo {
     TResult Function(int index)? tabMinus,
     TResult Function()? resetTabSelection,
     TResult Function(String categoryType, Product product)? getQuestions,
-    TResult Function(int answerCount)? getAnswerCount,
     TResult Function(int index)? goBackIndex,
     TResult Function(SelectedOption selectedOption)? markAnswer,
     TResult Function()? clearOneSection,
-    TResult Function(SelectedOption selectedOption)? markedQuestions,
     TResult Function(SelectedOption selectedOption)? yesOrNo,
-    TResult Function(int countQuestionNumber)? countQuestionNumber,
     TResult Function(int index)? changeIndex,
     TResult Function(PickupQuestionModel pickupQuestionModel,
             AbandendOrderRequestModel abandendOrderRequestModel)?
@@ -2301,13 +1686,10 @@ class _$YesOrNoImpl implements YesOrNo {
     required TResult Function(TabMinus value) tabMinus,
     required TResult Function(ResetTabSelection value) resetTabSelection,
     required TResult Function(GetQuestions value) getQuestions,
-    required TResult Function(GetAnswerCount value) getAnswerCount,
     required TResult Function(GoBackIndex value) goBackIndex,
     required TResult Function(MarkAnswer value) markAnswer,
     required TResult Function(ClearOneSection value) clearOneSection,
-    required TResult Function(MarkedQuestions value) markedQuestions,
     required TResult Function(YesOrNo value) yesOrNo,
-    required TResult Function(CountQuestionNumber value) countQuestionNumber,
     required TResult Function(ChangeIndex value) changeIndex,
     required TResult Function(GetBasePrice value) getBasePrice,
     required TResult Function(AbandentOrder value) abandentOrder,
@@ -2324,13 +1706,10 @@ class _$YesOrNoImpl implements YesOrNo {
     TResult? Function(TabMinus value)? tabMinus,
     TResult? Function(ResetTabSelection value)? resetTabSelection,
     TResult? Function(GetQuestions value)? getQuestions,
-    TResult? Function(GetAnswerCount value)? getAnswerCount,
     TResult? Function(GoBackIndex value)? goBackIndex,
     TResult? Function(MarkAnswer value)? markAnswer,
     TResult? Function(ClearOneSection value)? clearOneSection,
-    TResult? Function(MarkedQuestions value)? markedQuestions,
     TResult? Function(YesOrNo value)? yesOrNo,
-    TResult? Function(CountQuestionNumber value)? countQuestionNumber,
     TResult? Function(ChangeIndex value)? changeIndex,
     TResult? Function(GetBasePrice value)? getBasePrice,
     TResult? Function(AbandentOrder value)? abandentOrder,
@@ -2347,13 +1726,10 @@ class _$YesOrNoImpl implements YesOrNo {
     TResult Function(TabMinus value)? tabMinus,
     TResult Function(ResetTabSelection value)? resetTabSelection,
     TResult Function(GetQuestions value)? getQuestions,
-    TResult Function(GetAnswerCount value)? getAnswerCount,
     TResult Function(GoBackIndex value)? goBackIndex,
     TResult Function(MarkAnswer value)? markAnswer,
     TResult Function(ClearOneSection value)? clearOneSection,
-    TResult Function(MarkedQuestions value)? markedQuestions,
     TResult Function(YesOrNo value)? yesOrNo,
-    TResult Function(CountQuestionNumber value)? countQuestionNumber,
     TResult Function(ChangeIndex value)? changeIndex,
     TResult Function(GetBasePrice value)? getBasePrice,
     TResult Function(AbandentOrder value)? abandentOrder,
@@ -2375,237 +1751,6 @@ abstract class YesOrNo implements QuestionTabEvent {
   SelectedOption get selectedOption;
   @JsonKey(ignore: true)
   _$$YesOrNoImplCopyWith<_$YesOrNoImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$CountQuestionNumberImplCopyWith<$Res> {
-  factory _$$CountQuestionNumberImplCopyWith(_$CountQuestionNumberImpl value,
-          $Res Function(_$CountQuestionNumberImpl) then) =
-      __$$CountQuestionNumberImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({int countQuestionNumber});
-}
-
-/// @nodoc
-class __$$CountQuestionNumberImplCopyWithImpl<$Res>
-    extends _$QuestionTabEventCopyWithImpl<$Res, _$CountQuestionNumberImpl>
-    implements _$$CountQuestionNumberImplCopyWith<$Res> {
-  __$$CountQuestionNumberImplCopyWithImpl(_$CountQuestionNumberImpl _value,
-      $Res Function(_$CountQuestionNumberImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? countQuestionNumber = null,
-  }) {
-    return _then(_$CountQuestionNumberImpl(
-      countQuestionNumber: null == countQuestionNumber
-          ? _value.countQuestionNumber
-          : countQuestionNumber // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$CountQuestionNumberImpl implements CountQuestionNumber {
-  const _$CountQuestionNumberImpl({required this.countQuestionNumber});
-
-  @override
-  final int countQuestionNumber;
-
-  @override
-  String toString() {
-    return 'QuestionTabEvent.countQuestionNumber(countQuestionNumber: $countQuestionNumber)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$CountQuestionNumberImpl &&
-            (identical(other.countQuestionNumber, countQuestionNumber) ||
-                other.countQuestionNumber == countQuestionNumber));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, countQuestionNumber);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$CountQuestionNumberImplCopyWith<_$CountQuestionNumberImpl> get copyWith =>
-      __$$CountQuestionNumberImplCopyWithImpl<_$CountQuestionNumberImpl>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() tabChange,
-    required TResult Function(int index) tabMinus,
-    required TResult Function() resetTabSelection,
-    required TResult Function(String categoryType, Product product)
-        getQuestions,
-    required TResult Function(int answerCount) getAnswerCount,
-    required TResult Function(int index) goBackIndex,
-    required TResult Function(SelectedOption selectedOption) markAnswer,
-    required TResult Function() clearOneSection,
-    required TResult Function(SelectedOption selectedOption) markedQuestions,
-    required TResult Function(SelectedOption selectedOption) yesOrNo,
-    required TResult Function(int countQuestionNumber) countQuestionNumber,
-    required TResult Function(int index) changeIndex,
-    required TResult Function(PickupQuestionModel pickupQuestionModel,
-            AbandendOrderRequestModel abandendOrderRequestModel)
-        getBasePrice,
-    required TResult Function(
-            AbandendOrderRequestModel abandendOrderRequestModel)
-        abandentOrder,
-    required TResult Function() clearNewOPtionList,
-    required TResult Function() clear,
-  }) {
-    return countQuestionNumber(this.countQuestionNumber);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? tabChange,
-    TResult? Function(int index)? tabMinus,
-    TResult? Function()? resetTabSelection,
-    TResult? Function(String categoryType, Product product)? getQuestions,
-    TResult? Function(int answerCount)? getAnswerCount,
-    TResult? Function(int index)? goBackIndex,
-    TResult? Function(SelectedOption selectedOption)? markAnswer,
-    TResult? Function()? clearOneSection,
-    TResult? Function(SelectedOption selectedOption)? markedQuestions,
-    TResult? Function(SelectedOption selectedOption)? yesOrNo,
-    TResult? Function(int countQuestionNumber)? countQuestionNumber,
-    TResult? Function(int index)? changeIndex,
-    TResult? Function(PickupQuestionModel pickupQuestionModel,
-            AbandendOrderRequestModel abandendOrderRequestModel)?
-        getBasePrice,
-    TResult? Function(AbandendOrderRequestModel abandendOrderRequestModel)?
-        abandentOrder,
-    TResult? Function()? clearNewOPtionList,
-    TResult? Function()? clear,
-  }) {
-    return countQuestionNumber?.call(this.countQuestionNumber);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? tabChange,
-    TResult Function(int index)? tabMinus,
-    TResult Function()? resetTabSelection,
-    TResult Function(String categoryType, Product product)? getQuestions,
-    TResult Function(int answerCount)? getAnswerCount,
-    TResult Function(int index)? goBackIndex,
-    TResult Function(SelectedOption selectedOption)? markAnswer,
-    TResult Function()? clearOneSection,
-    TResult Function(SelectedOption selectedOption)? markedQuestions,
-    TResult Function(SelectedOption selectedOption)? yesOrNo,
-    TResult Function(int countQuestionNumber)? countQuestionNumber,
-    TResult Function(int index)? changeIndex,
-    TResult Function(PickupQuestionModel pickupQuestionModel,
-            AbandendOrderRequestModel abandendOrderRequestModel)?
-        getBasePrice,
-    TResult Function(AbandendOrderRequestModel abandendOrderRequestModel)?
-        abandentOrder,
-    TResult Function()? clearNewOPtionList,
-    TResult Function()? clear,
-    required TResult orElse(),
-  }) {
-    if (countQuestionNumber != null) {
-      return countQuestionNumber(this.countQuestionNumber);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(TabChange value) tabChange,
-    required TResult Function(TabMinus value) tabMinus,
-    required TResult Function(ResetTabSelection value) resetTabSelection,
-    required TResult Function(GetQuestions value) getQuestions,
-    required TResult Function(GetAnswerCount value) getAnswerCount,
-    required TResult Function(GoBackIndex value) goBackIndex,
-    required TResult Function(MarkAnswer value) markAnswer,
-    required TResult Function(ClearOneSection value) clearOneSection,
-    required TResult Function(MarkedQuestions value) markedQuestions,
-    required TResult Function(YesOrNo value) yesOrNo,
-    required TResult Function(CountQuestionNumber value) countQuestionNumber,
-    required TResult Function(ChangeIndex value) changeIndex,
-    required TResult Function(GetBasePrice value) getBasePrice,
-    required TResult Function(AbandentOrder value) abandentOrder,
-    required TResult Function(ClearNewOPtionList value) clearNewOPtionList,
-    required TResult Function(Clear value) clear,
-  }) {
-    return countQuestionNumber(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(TabChange value)? tabChange,
-    TResult? Function(TabMinus value)? tabMinus,
-    TResult? Function(ResetTabSelection value)? resetTabSelection,
-    TResult? Function(GetQuestions value)? getQuestions,
-    TResult? Function(GetAnswerCount value)? getAnswerCount,
-    TResult? Function(GoBackIndex value)? goBackIndex,
-    TResult? Function(MarkAnswer value)? markAnswer,
-    TResult? Function(ClearOneSection value)? clearOneSection,
-    TResult? Function(MarkedQuestions value)? markedQuestions,
-    TResult? Function(YesOrNo value)? yesOrNo,
-    TResult? Function(CountQuestionNumber value)? countQuestionNumber,
-    TResult? Function(ChangeIndex value)? changeIndex,
-    TResult? Function(GetBasePrice value)? getBasePrice,
-    TResult? Function(AbandentOrder value)? abandentOrder,
-    TResult? Function(ClearNewOPtionList value)? clearNewOPtionList,
-    TResult? Function(Clear value)? clear,
-  }) {
-    return countQuestionNumber?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(TabChange value)? tabChange,
-    TResult Function(TabMinus value)? tabMinus,
-    TResult Function(ResetTabSelection value)? resetTabSelection,
-    TResult Function(GetQuestions value)? getQuestions,
-    TResult Function(GetAnswerCount value)? getAnswerCount,
-    TResult Function(GoBackIndex value)? goBackIndex,
-    TResult Function(MarkAnswer value)? markAnswer,
-    TResult Function(ClearOneSection value)? clearOneSection,
-    TResult Function(MarkedQuestions value)? markedQuestions,
-    TResult Function(YesOrNo value)? yesOrNo,
-    TResult Function(CountQuestionNumber value)? countQuestionNumber,
-    TResult Function(ChangeIndex value)? changeIndex,
-    TResult Function(GetBasePrice value)? getBasePrice,
-    TResult Function(AbandentOrder value)? abandentOrder,
-    TResult Function(ClearNewOPtionList value)? clearNewOPtionList,
-    TResult Function(Clear value)? clear,
-    required TResult orElse(),
-  }) {
-    if (countQuestionNumber != null) {
-      return countQuestionNumber(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class CountQuestionNumber implements QuestionTabEvent {
-  const factory CountQuestionNumber({required final int countQuestionNumber}) =
-      _$CountQuestionNumberImpl;
-
-  int get countQuestionNumber;
-  @JsonKey(ignore: true)
-  _$$CountQuestionNumberImplCopyWith<_$CountQuestionNumberImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -2678,13 +1823,10 @@ class _$ChangeIndexImpl implements ChangeIndex {
     required TResult Function() resetTabSelection,
     required TResult Function(String categoryType, Product product)
         getQuestions,
-    required TResult Function(int answerCount) getAnswerCount,
     required TResult Function(int index) goBackIndex,
     required TResult Function(SelectedOption selectedOption) markAnswer,
     required TResult Function() clearOneSection,
-    required TResult Function(SelectedOption selectedOption) markedQuestions,
     required TResult Function(SelectedOption selectedOption) yesOrNo,
-    required TResult Function(int countQuestionNumber) countQuestionNumber,
     required TResult Function(int index) changeIndex,
     required TResult Function(PickupQuestionModel pickupQuestionModel,
             AbandendOrderRequestModel abandendOrderRequestModel)
@@ -2705,13 +1847,10 @@ class _$ChangeIndexImpl implements ChangeIndex {
     TResult? Function(int index)? tabMinus,
     TResult? Function()? resetTabSelection,
     TResult? Function(String categoryType, Product product)? getQuestions,
-    TResult? Function(int answerCount)? getAnswerCount,
     TResult? Function(int index)? goBackIndex,
     TResult? Function(SelectedOption selectedOption)? markAnswer,
     TResult? Function()? clearOneSection,
-    TResult? Function(SelectedOption selectedOption)? markedQuestions,
     TResult? Function(SelectedOption selectedOption)? yesOrNo,
-    TResult? Function(int countQuestionNumber)? countQuestionNumber,
     TResult? Function(int index)? changeIndex,
     TResult? Function(PickupQuestionModel pickupQuestionModel,
             AbandendOrderRequestModel abandendOrderRequestModel)?
@@ -2731,13 +1870,10 @@ class _$ChangeIndexImpl implements ChangeIndex {
     TResult Function(int index)? tabMinus,
     TResult Function()? resetTabSelection,
     TResult Function(String categoryType, Product product)? getQuestions,
-    TResult Function(int answerCount)? getAnswerCount,
     TResult Function(int index)? goBackIndex,
     TResult Function(SelectedOption selectedOption)? markAnswer,
     TResult Function()? clearOneSection,
-    TResult Function(SelectedOption selectedOption)? markedQuestions,
     TResult Function(SelectedOption selectedOption)? yesOrNo,
-    TResult Function(int countQuestionNumber)? countQuestionNumber,
     TResult Function(int index)? changeIndex,
     TResult Function(PickupQuestionModel pickupQuestionModel,
             AbandendOrderRequestModel abandendOrderRequestModel)?
@@ -2761,13 +1897,10 @@ class _$ChangeIndexImpl implements ChangeIndex {
     required TResult Function(TabMinus value) tabMinus,
     required TResult Function(ResetTabSelection value) resetTabSelection,
     required TResult Function(GetQuestions value) getQuestions,
-    required TResult Function(GetAnswerCount value) getAnswerCount,
     required TResult Function(GoBackIndex value) goBackIndex,
     required TResult Function(MarkAnswer value) markAnswer,
     required TResult Function(ClearOneSection value) clearOneSection,
-    required TResult Function(MarkedQuestions value) markedQuestions,
     required TResult Function(YesOrNo value) yesOrNo,
-    required TResult Function(CountQuestionNumber value) countQuestionNumber,
     required TResult Function(ChangeIndex value) changeIndex,
     required TResult Function(GetBasePrice value) getBasePrice,
     required TResult Function(AbandentOrder value) abandentOrder,
@@ -2784,13 +1917,10 @@ class _$ChangeIndexImpl implements ChangeIndex {
     TResult? Function(TabMinus value)? tabMinus,
     TResult? Function(ResetTabSelection value)? resetTabSelection,
     TResult? Function(GetQuestions value)? getQuestions,
-    TResult? Function(GetAnswerCount value)? getAnswerCount,
     TResult? Function(GoBackIndex value)? goBackIndex,
     TResult? Function(MarkAnswer value)? markAnswer,
     TResult? Function(ClearOneSection value)? clearOneSection,
-    TResult? Function(MarkedQuestions value)? markedQuestions,
     TResult? Function(YesOrNo value)? yesOrNo,
-    TResult? Function(CountQuestionNumber value)? countQuestionNumber,
     TResult? Function(ChangeIndex value)? changeIndex,
     TResult? Function(GetBasePrice value)? getBasePrice,
     TResult? Function(AbandentOrder value)? abandentOrder,
@@ -2807,13 +1937,10 @@ class _$ChangeIndexImpl implements ChangeIndex {
     TResult Function(TabMinus value)? tabMinus,
     TResult Function(ResetTabSelection value)? resetTabSelection,
     TResult Function(GetQuestions value)? getQuestions,
-    TResult Function(GetAnswerCount value)? getAnswerCount,
     TResult Function(GoBackIndex value)? goBackIndex,
     TResult Function(MarkAnswer value)? markAnswer,
     TResult Function(ClearOneSection value)? clearOneSection,
-    TResult Function(MarkedQuestions value)? markedQuestions,
     TResult Function(YesOrNo value)? yesOrNo,
-    TResult Function(CountQuestionNumber value)? countQuestionNumber,
     TResult Function(ChangeIndex value)? changeIndex,
     TResult Function(GetBasePrice value)? getBasePrice,
     TResult Function(AbandentOrder value)? abandentOrder,
@@ -2922,13 +2049,10 @@ class _$GetBasePriceImpl implements GetBasePrice {
     required TResult Function() resetTabSelection,
     required TResult Function(String categoryType, Product product)
         getQuestions,
-    required TResult Function(int answerCount) getAnswerCount,
     required TResult Function(int index) goBackIndex,
     required TResult Function(SelectedOption selectedOption) markAnswer,
     required TResult Function() clearOneSection,
-    required TResult Function(SelectedOption selectedOption) markedQuestions,
     required TResult Function(SelectedOption selectedOption) yesOrNo,
-    required TResult Function(int countQuestionNumber) countQuestionNumber,
     required TResult Function(int index) changeIndex,
     required TResult Function(PickupQuestionModel pickupQuestionModel,
             AbandendOrderRequestModel abandendOrderRequestModel)
@@ -2949,13 +2073,10 @@ class _$GetBasePriceImpl implements GetBasePrice {
     TResult? Function(int index)? tabMinus,
     TResult? Function()? resetTabSelection,
     TResult? Function(String categoryType, Product product)? getQuestions,
-    TResult? Function(int answerCount)? getAnswerCount,
     TResult? Function(int index)? goBackIndex,
     TResult? Function(SelectedOption selectedOption)? markAnswer,
     TResult? Function()? clearOneSection,
-    TResult? Function(SelectedOption selectedOption)? markedQuestions,
     TResult? Function(SelectedOption selectedOption)? yesOrNo,
-    TResult? Function(int countQuestionNumber)? countQuestionNumber,
     TResult? Function(int index)? changeIndex,
     TResult? Function(PickupQuestionModel pickupQuestionModel,
             AbandendOrderRequestModel abandendOrderRequestModel)?
@@ -2975,13 +2096,10 @@ class _$GetBasePriceImpl implements GetBasePrice {
     TResult Function(int index)? tabMinus,
     TResult Function()? resetTabSelection,
     TResult Function(String categoryType, Product product)? getQuestions,
-    TResult Function(int answerCount)? getAnswerCount,
     TResult Function(int index)? goBackIndex,
     TResult Function(SelectedOption selectedOption)? markAnswer,
     TResult Function()? clearOneSection,
-    TResult Function(SelectedOption selectedOption)? markedQuestions,
     TResult Function(SelectedOption selectedOption)? yesOrNo,
-    TResult Function(int countQuestionNumber)? countQuestionNumber,
     TResult Function(int index)? changeIndex,
     TResult Function(PickupQuestionModel pickupQuestionModel,
             AbandendOrderRequestModel abandendOrderRequestModel)?
@@ -3005,13 +2123,10 @@ class _$GetBasePriceImpl implements GetBasePrice {
     required TResult Function(TabMinus value) tabMinus,
     required TResult Function(ResetTabSelection value) resetTabSelection,
     required TResult Function(GetQuestions value) getQuestions,
-    required TResult Function(GetAnswerCount value) getAnswerCount,
     required TResult Function(GoBackIndex value) goBackIndex,
     required TResult Function(MarkAnswer value) markAnswer,
     required TResult Function(ClearOneSection value) clearOneSection,
-    required TResult Function(MarkedQuestions value) markedQuestions,
     required TResult Function(YesOrNo value) yesOrNo,
-    required TResult Function(CountQuestionNumber value) countQuestionNumber,
     required TResult Function(ChangeIndex value) changeIndex,
     required TResult Function(GetBasePrice value) getBasePrice,
     required TResult Function(AbandentOrder value) abandentOrder,
@@ -3028,13 +2143,10 @@ class _$GetBasePriceImpl implements GetBasePrice {
     TResult? Function(TabMinus value)? tabMinus,
     TResult? Function(ResetTabSelection value)? resetTabSelection,
     TResult? Function(GetQuestions value)? getQuestions,
-    TResult? Function(GetAnswerCount value)? getAnswerCount,
     TResult? Function(GoBackIndex value)? goBackIndex,
     TResult? Function(MarkAnswer value)? markAnswer,
     TResult? Function(ClearOneSection value)? clearOneSection,
-    TResult? Function(MarkedQuestions value)? markedQuestions,
     TResult? Function(YesOrNo value)? yesOrNo,
-    TResult? Function(CountQuestionNumber value)? countQuestionNumber,
     TResult? Function(ChangeIndex value)? changeIndex,
     TResult? Function(GetBasePrice value)? getBasePrice,
     TResult? Function(AbandentOrder value)? abandentOrder,
@@ -3051,13 +2163,10 @@ class _$GetBasePriceImpl implements GetBasePrice {
     TResult Function(TabMinus value)? tabMinus,
     TResult Function(ResetTabSelection value)? resetTabSelection,
     TResult Function(GetQuestions value)? getQuestions,
-    TResult Function(GetAnswerCount value)? getAnswerCount,
     TResult Function(GoBackIndex value)? goBackIndex,
     TResult Function(MarkAnswer value)? markAnswer,
     TResult Function(ClearOneSection value)? clearOneSection,
-    TResult Function(MarkedQuestions value)? markedQuestions,
     TResult Function(YesOrNo value)? yesOrNo,
-    TResult Function(CountQuestionNumber value)? countQuestionNumber,
     TResult Function(ChangeIndex value)? changeIndex,
     TResult Function(GetBasePrice value)? getBasePrice,
     TResult Function(AbandentOrder value)? abandentOrder,
@@ -3156,13 +2265,10 @@ class _$AbandentOrderImpl implements AbandentOrder {
     required TResult Function() resetTabSelection,
     required TResult Function(String categoryType, Product product)
         getQuestions,
-    required TResult Function(int answerCount) getAnswerCount,
     required TResult Function(int index) goBackIndex,
     required TResult Function(SelectedOption selectedOption) markAnswer,
     required TResult Function() clearOneSection,
-    required TResult Function(SelectedOption selectedOption) markedQuestions,
     required TResult Function(SelectedOption selectedOption) yesOrNo,
-    required TResult Function(int countQuestionNumber) countQuestionNumber,
     required TResult Function(int index) changeIndex,
     required TResult Function(PickupQuestionModel pickupQuestionModel,
             AbandendOrderRequestModel abandendOrderRequestModel)
@@ -3183,13 +2289,10 @@ class _$AbandentOrderImpl implements AbandentOrder {
     TResult? Function(int index)? tabMinus,
     TResult? Function()? resetTabSelection,
     TResult? Function(String categoryType, Product product)? getQuestions,
-    TResult? Function(int answerCount)? getAnswerCount,
     TResult? Function(int index)? goBackIndex,
     TResult? Function(SelectedOption selectedOption)? markAnswer,
     TResult? Function()? clearOneSection,
-    TResult? Function(SelectedOption selectedOption)? markedQuestions,
     TResult? Function(SelectedOption selectedOption)? yesOrNo,
-    TResult? Function(int countQuestionNumber)? countQuestionNumber,
     TResult? Function(int index)? changeIndex,
     TResult? Function(PickupQuestionModel pickupQuestionModel,
             AbandendOrderRequestModel abandendOrderRequestModel)?
@@ -3209,13 +2312,10 @@ class _$AbandentOrderImpl implements AbandentOrder {
     TResult Function(int index)? tabMinus,
     TResult Function()? resetTabSelection,
     TResult Function(String categoryType, Product product)? getQuestions,
-    TResult Function(int answerCount)? getAnswerCount,
     TResult Function(int index)? goBackIndex,
     TResult Function(SelectedOption selectedOption)? markAnswer,
     TResult Function()? clearOneSection,
-    TResult Function(SelectedOption selectedOption)? markedQuestions,
     TResult Function(SelectedOption selectedOption)? yesOrNo,
-    TResult Function(int countQuestionNumber)? countQuestionNumber,
     TResult Function(int index)? changeIndex,
     TResult Function(PickupQuestionModel pickupQuestionModel,
             AbandendOrderRequestModel abandendOrderRequestModel)?
@@ -3239,13 +2339,10 @@ class _$AbandentOrderImpl implements AbandentOrder {
     required TResult Function(TabMinus value) tabMinus,
     required TResult Function(ResetTabSelection value) resetTabSelection,
     required TResult Function(GetQuestions value) getQuestions,
-    required TResult Function(GetAnswerCount value) getAnswerCount,
     required TResult Function(GoBackIndex value) goBackIndex,
     required TResult Function(MarkAnswer value) markAnswer,
     required TResult Function(ClearOneSection value) clearOneSection,
-    required TResult Function(MarkedQuestions value) markedQuestions,
     required TResult Function(YesOrNo value) yesOrNo,
-    required TResult Function(CountQuestionNumber value) countQuestionNumber,
     required TResult Function(ChangeIndex value) changeIndex,
     required TResult Function(GetBasePrice value) getBasePrice,
     required TResult Function(AbandentOrder value) abandentOrder,
@@ -3262,13 +2359,10 @@ class _$AbandentOrderImpl implements AbandentOrder {
     TResult? Function(TabMinus value)? tabMinus,
     TResult? Function(ResetTabSelection value)? resetTabSelection,
     TResult? Function(GetQuestions value)? getQuestions,
-    TResult? Function(GetAnswerCount value)? getAnswerCount,
     TResult? Function(GoBackIndex value)? goBackIndex,
     TResult? Function(MarkAnswer value)? markAnswer,
     TResult? Function(ClearOneSection value)? clearOneSection,
-    TResult? Function(MarkedQuestions value)? markedQuestions,
     TResult? Function(YesOrNo value)? yesOrNo,
-    TResult? Function(CountQuestionNumber value)? countQuestionNumber,
     TResult? Function(ChangeIndex value)? changeIndex,
     TResult? Function(GetBasePrice value)? getBasePrice,
     TResult? Function(AbandentOrder value)? abandentOrder,
@@ -3285,13 +2379,10 @@ class _$AbandentOrderImpl implements AbandentOrder {
     TResult Function(TabMinus value)? tabMinus,
     TResult Function(ResetTabSelection value)? resetTabSelection,
     TResult Function(GetQuestions value)? getQuestions,
-    TResult Function(GetAnswerCount value)? getAnswerCount,
     TResult Function(GoBackIndex value)? goBackIndex,
     TResult Function(MarkAnswer value)? markAnswer,
     TResult Function(ClearOneSection value)? clearOneSection,
-    TResult Function(MarkedQuestions value)? markedQuestions,
     TResult Function(YesOrNo value)? yesOrNo,
-    TResult Function(CountQuestionNumber value)? countQuestionNumber,
     TResult Function(ChangeIndex value)? changeIndex,
     TResult Function(GetBasePrice value)? getBasePrice,
     TResult Function(AbandentOrder value)? abandentOrder,
@@ -3360,13 +2451,10 @@ class _$ClearNewOPtionListImpl implements ClearNewOPtionList {
     required TResult Function() resetTabSelection,
     required TResult Function(String categoryType, Product product)
         getQuestions,
-    required TResult Function(int answerCount) getAnswerCount,
     required TResult Function(int index) goBackIndex,
     required TResult Function(SelectedOption selectedOption) markAnswer,
     required TResult Function() clearOneSection,
-    required TResult Function(SelectedOption selectedOption) markedQuestions,
     required TResult Function(SelectedOption selectedOption) yesOrNo,
-    required TResult Function(int countQuestionNumber) countQuestionNumber,
     required TResult Function(int index) changeIndex,
     required TResult Function(PickupQuestionModel pickupQuestionModel,
             AbandendOrderRequestModel abandendOrderRequestModel)
@@ -3387,13 +2475,10 @@ class _$ClearNewOPtionListImpl implements ClearNewOPtionList {
     TResult? Function(int index)? tabMinus,
     TResult? Function()? resetTabSelection,
     TResult? Function(String categoryType, Product product)? getQuestions,
-    TResult? Function(int answerCount)? getAnswerCount,
     TResult? Function(int index)? goBackIndex,
     TResult? Function(SelectedOption selectedOption)? markAnswer,
     TResult? Function()? clearOneSection,
-    TResult? Function(SelectedOption selectedOption)? markedQuestions,
     TResult? Function(SelectedOption selectedOption)? yesOrNo,
-    TResult? Function(int countQuestionNumber)? countQuestionNumber,
     TResult? Function(int index)? changeIndex,
     TResult? Function(PickupQuestionModel pickupQuestionModel,
             AbandendOrderRequestModel abandendOrderRequestModel)?
@@ -3413,13 +2498,10 @@ class _$ClearNewOPtionListImpl implements ClearNewOPtionList {
     TResult Function(int index)? tabMinus,
     TResult Function()? resetTabSelection,
     TResult Function(String categoryType, Product product)? getQuestions,
-    TResult Function(int answerCount)? getAnswerCount,
     TResult Function(int index)? goBackIndex,
     TResult Function(SelectedOption selectedOption)? markAnswer,
     TResult Function()? clearOneSection,
-    TResult Function(SelectedOption selectedOption)? markedQuestions,
     TResult Function(SelectedOption selectedOption)? yesOrNo,
-    TResult Function(int countQuestionNumber)? countQuestionNumber,
     TResult Function(int index)? changeIndex,
     TResult Function(PickupQuestionModel pickupQuestionModel,
             AbandendOrderRequestModel abandendOrderRequestModel)?
@@ -3443,13 +2525,10 @@ class _$ClearNewOPtionListImpl implements ClearNewOPtionList {
     required TResult Function(TabMinus value) tabMinus,
     required TResult Function(ResetTabSelection value) resetTabSelection,
     required TResult Function(GetQuestions value) getQuestions,
-    required TResult Function(GetAnswerCount value) getAnswerCount,
     required TResult Function(GoBackIndex value) goBackIndex,
     required TResult Function(MarkAnswer value) markAnswer,
     required TResult Function(ClearOneSection value) clearOneSection,
-    required TResult Function(MarkedQuestions value) markedQuestions,
     required TResult Function(YesOrNo value) yesOrNo,
-    required TResult Function(CountQuestionNumber value) countQuestionNumber,
     required TResult Function(ChangeIndex value) changeIndex,
     required TResult Function(GetBasePrice value) getBasePrice,
     required TResult Function(AbandentOrder value) abandentOrder,
@@ -3466,13 +2545,10 @@ class _$ClearNewOPtionListImpl implements ClearNewOPtionList {
     TResult? Function(TabMinus value)? tabMinus,
     TResult? Function(ResetTabSelection value)? resetTabSelection,
     TResult? Function(GetQuestions value)? getQuestions,
-    TResult? Function(GetAnswerCount value)? getAnswerCount,
     TResult? Function(GoBackIndex value)? goBackIndex,
     TResult? Function(MarkAnswer value)? markAnswer,
     TResult? Function(ClearOneSection value)? clearOneSection,
-    TResult? Function(MarkedQuestions value)? markedQuestions,
     TResult? Function(YesOrNo value)? yesOrNo,
-    TResult? Function(CountQuestionNumber value)? countQuestionNumber,
     TResult? Function(ChangeIndex value)? changeIndex,
     TResult? Function(GetBasePrice value)? getBasePrice,
     TResult? Function(AbandentOrder value)? abandentOrder,
@@ -3489,13 +2565,10 @@ class _$ClearNewOPtionListImpl implements ClearNewOPtionList {
     TResult Function(TabMinus value)? tabMinus,
     TResult Function(ResetTabSelection value)? resetTabSelection,
     TResult Function(GetQuestions value)? getQuestions,
-    TResult Function(GetAnswerCount value)? getAnswerCount,
     TResult Function(GoBackIndex value)? goBackIndex,
     TResult Function(MarkAnswer value)? markAnswer,
     TResult Function(ClearOneSection value)? clearOneSection,
-    TResult Function(MarkedQuestions value)? markedQuestions,
     TResult Function(YesOrNo value)? yesOrNo,
-    TResult Function(CountQuestionNumber value)? countQuestionNumber,
     TResult Function(ChangeIndex value)? changeIndex,
     TResult Function(GetBasePrice value)? getBasePrice,
     TResult Function(AbandentOrder value)? abandentOrder,
@@ -3557,13 +2630,10 @@ class _$ClearImpl implements Clear {
     required TResult Function() resetTabSelection,
     required TResult Function(String categoryType, Product product)
         getQuestions,
-    required TResult Function(int answerCount) getAnswerCount,
     required TResult Function(int index) goBackIndex,
     required TResult Function(SelectedOption selectedOption) markAnswer,
     required TResult Function() clearOneSection,
-    required TResult Function(SelectedOption selectedOption) markedQuestions,
     required TResult Function(SelectedOption selectedOption) yesOrNo,
-    required TResult Function(int countQuestionNumber) countQuestionNumber,
     required TResult Function(int index) changeIndex,
     required TResult Function(PickupQuestionModel pickupQuestionModel,
             AbandendOrderRequestModel abandendOrderRequestModel)
@@ -3584,13 +2654,10 @@ class _$ClearImpl implements Clear {
     TResult? Function(int index)? tabMinus,
     TResult? Function()? resetTabSelection,
     TResult? Function(String categoryType, Product product)? getQuestions,
-    TResult? Function(int answerCount)? getAnswerCount,
     TResult? Function(int index)? goBackIndex,
     TResult? Function(SelectedOption selectedOption)? markAnswer,
     TResult? Function()? clearOneSection,
-    TResult? Function(SelectedOption selectedOption)? markedQuestions,
     TResult? Function(SelectedOption selectedOption)? yesOrNo,
-    TResult? Function(int countQuestionNumber)? countQuestionNumber,
     TResult? Function(int index)? changeIndex,
     TResult? Function(PickupQuestionModel pickupQuestionModel,
             AbandendOrderRequestModel abandendOrderRequestModel)?
@@ -3610,13 +2677,10 @@ class _$ClearImpl implements Clear {
     TResult Function(int index)? tabMinus,
     TResult Function()? resetTabSelection,
     TResult Function(String categoryType, Product product)? getQuestions,
-    TResult Function(int answerCount)? getAnswerCount,
     TResult Function(int index)? goBackIndex,
     TResult Function(SelectedOption selectedOption)? markAnswer,
     TResult Function()? clearOneSection,
-    TResult Function(SelectedOption selectedOption)? markedQuestions,
     TResult Function(SelectedOption selectedOption)? yesOrNo,
-    TResult Function(int countQuestionNumber)? countQuestionNumber,
     TResult Function(int index)? changeIndex,
     TResult Function(PickupQuestionModel pickupQuestionModel,
             AbandendOrderRequestModel abandendOrderRequestModel)?
@@ -3640,13 +2704,10 @@ class _$ClearImpl implements Clear {
     required TResult Function(TabMinus value) tabMinus,
     required TResult Function(ResetTabSelection value) resetTabSelection,
     required TResult Function(GetQuestions value) getQuestions,
-    required TResult Function(GetAnswerCount value) getAnswerCount,
     required TResult Function(GoBackIndex value) goBackIndex,
     required TResult Function(MarkAnswer value) markAnswer,
     required TResult Function(ClearOneSection value) clearOneSection,
-    required TResult Function(MarkedQuestions value) markedQuestions,
     required TResult Function(YesOrNo value) yesOrNo,
-    required TResult Function(CountQuestionNumber value) countQuestionNumber,
     required TResult Function(ChangeIndex value) changeIndex,
     required TResult Function(GetBasePrice value) getBasePrice,
     required TResult Function(AbandentOrder value) abandentOrder,
@@ -3663,13 +2724,10 @@ class _$ClearImpl implements Clear {
     TResult? Function(TabMinus value)? tabMinus,
     TResult? Function(ResetTabSelection value)? resetTabSelection,
     TResult? Function(GetQuestions value)? getQuestions,
-    TResult? Function(GetAnswerCount value)? getAnswerCount,
     TResult? Function(GoBackIndex value)? goBackIndex,
     TResult? Function(MarkAnswer value)? markAnswer,
     TResult? Function(ClearOneSection value)? clearOneSection,
-    TResult? Function(MarkedQuestions value)? markedQuestions,
     TResult? Function(YesOrNo value)? yesOrNo,
-    TResult? Function(CountQuestionNumber value)? countQuestionNumber,
     TResult? Function(ChangeIndex value)? changeIndex,
     TResult? Function(GetBasePrice value)? getBasePrice,
     TResult? Function(AbandentOrder value)? abandentOrder,
@@ -3686,13 +2744,10 @@ class _$ClearImpl implements Clear {
     TResult Function(TabMinus value)? tabMinus,
     TResult Function(ResetTabSelection value)? resetTabSelection,
     TResult Function(GetQuestions value)? getQuestions,
-    TResult Function(GetAnswerCount value)? getAnswerCount,
     TResult Function(GoBackIndex value)? goBackIndex,
     TResult Function(MarkAnswer value)? markAnswer,
     TResult Function(ClearOneSection value)? clearOneSection,
-    TResult Function(MarkedQuestions value)? markedQuestions,
     TResult Function(YesOrNo value)? yesOrNo,
-    TResult Function(CountQuestionNumber value)? countQuestionNumber,
     TResult Function(ChangeIndex value)? changeIndex,
     TResult Function(GetBasePrice value)? getBasePrice,
     TResult Function(AbandentOrder value)? abandentOrder,
@@ -3726,7 +2781,6 @@ mixin _$QuestionTabState {
       throw _privateConstructorUsedError;
   List<SelectedOption> get selectedOption => throw _privateConstructorUsedError;
   GetQuestionModel? get getQuestionModel => throw _privateConstructorUsedError;
-  List<SelectedOption>? get newList => throw _privateConstructorUsedError;
   GetProductsRespoceModel? get getProductsResponceModel =>
       throw _privateConstructorUsedError;
   int get selectedTabIndex => throw _privateConstructorUsedError;
@@ -3760,7 +2814,6 @@ abstract class $QuestionTabStateCopyWith<$Res> {
       GetBasePriceModelResponce? basePriceModelResponce,
       List<SelectedOption> selectedOption,
       GetQuestionModel? getQuestionModel,
-      List<SelectedOption>? newList,
       GetProductsRespoceModel? getProductsResponceModel,
       int selectedTabIndex,
       AbandendOrderResponceModel? abandendOrderResponceModel,
@@ -3793,7 +2846,6 @@ class _$QuestionTabStateCopyWithImpl<$Res, $Val extends QuestionTabState>
     Object? basePriceModelResponce = freezed,
     Object? selectedOption = null,
     Object? getQuestionModel = freezed,
-    Object? newList = freezed,
     Object? getProductsResponceModel = freezed,
     Object? selectedTabIndex = null,
     Object? abandendOrderResponceModel = freezed,
@@ -3849,10 +2901,6 @@ class _$QuestionTabStateCopyWithImpl<$Res, $Val extends QuestionTabState>
           ? _value.getQuestionModel
           : getQuestionModel // ignore: cast_nullable_to_non_nullable
               as GetQuestionModel?,
-      newList: freezed == newList
-          ? _value.newList
-          : newList // ignore: cast_nullable_to_non_nullable
-              as List<SelectedOption>?,
       getProductsResponceModel: freezed == getProductsResponceModel
           ? _value.getProductsResponceModel
           : getProductsResponceModel // ignore: cast_nullable_to_non_nullable
@@ -3898,7 +2946,6 @@ abstract class _$$InitialImplCopyWith<$Res>
       GetBasePriceModelResponce? basePriceModelResponce,
       List<SelectedOption> selectedOption,
       GetQuestionModel? getQuestionModel,
-      List<SelectedOption>? newList,
       GetProductsRespoceModel? getProductsResponceModel,
       int selectedTabIndex,
       AbandendOrderResponceModel? abandendOrderResponceModel,
@@ -3929,7 +2976,6 @@ class __$$InitialImplCopyWithImpl<$Res>
     Object? basePriceModelResponce = freezed,
     Object? selectedOption = null,
     Object? getQuestionModel = freezed,
-    Object? newList = freezed,
     Object? getProductsResponceModel = freezed,
     Object? selectedTabIndex = null,
     Object? abandendOrderResponceModel = freezed,
@@ -3985,10 +3031,6 @@ class __$$InitialImplCopyWithImpl<$Res>
           ? _value.getQuestionModel
           : getQuestionModel // ignore: cast_nullable_to_non_nullable
               as GetQuestionModel?,
-      newList: freezed == newList
-          ? _value._newList
-          : newList // ignore: cast_nullable_to_non_nullable
-              as List<SelectedOption>?,
       getProductsResponceModel: freezed == getProductsResponceModel
           ? _value.getProductsResponceModel
           : getProductsResponceModel // ignore: cast_nullable_to_non_nullable
@@ -4029,14 +3071,12 @@ class _$InitialImpl implements _Initial {
       this.basePriceModelResponce,
       required final List<SelectedOption> selectedOption,
       this.getQuestionModel,
-      final List<SelectedOption>? newList,
       this.getProductsResponceModel,
       required this.selectedTabIndex,
       this.abandendOrderResponceModel,
       final List<Section>? sections,
       required final Map<String, List<SelectedOption>> selectedAnswers})
       : _selectedOption = selectedOption,
-        _newList = newList,
         _sections = sections,
         _selectedAnswers = selectedAnswers;
 
@@ -4070,16 +3110,6 @@ class _$InitialImpl implements _Initial {
 
   @override
   final GetQuestionModel? getQuestionModel;
-  final List<SelectedOption>? _newList;
-  @override
-  List<SelectedOption>? get newList {
-    final value = _newList;
-    if (value == null) return null;
-    if (_newList is EqualUnmodifiableListView) return _newList;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
   @override
   final GetProductsRespoceModel? getProductsResponceModel;
   @override
@@ -4106,7 +3136,7 @@ class _$InitialImpl implements _Initial {
 
   @override
   String toString() {
-    return 'QuestionTabState(isLoading: $isLoading, hasError: $hasError, done: $done, lastChecking: $lastChecking, message: $message, product: $product, category: $category, slug: $slug, answerCount: $answerCount, basePriceModelResponce: $basePriceModelResponce, selectedOption: $selectedOption, getQuestionModel: $getQuestionModel, newList: $newList, getProductsResponceModel: $getProductsResponceModel, selectedTabIndex: $selectedTabIndex, abandendOrderResponceModel: $abandendOrderResponceModel, sections: $sections, selectedAnswers: $selectedAnswers)';
+    return 'QuestionTabState(isLoading: $isLoading, hasError: $hasError, done: $done, lastChecking: $lastChecking, message: $message, product: $product, category: $category, slug: $slug, answerCount: $answerCount, basePriceModelResponce: $basePriceModelResponce, selectedOption: $selectedOption, getQuestionModel: $getQuestionModel, getProductsResponceModel: $getProductsResponceModel, selectedTabIndex: $selectedTabIndex, abandendOrderResponceModel: $abandendOrderResponceModel, sections: $sections, selectedAnswers: $selectedAnswers)';
   }
 
   @override
@@ -4134,7 +3164,6 @@ class _$InitialImpl implements _Initial {
                 .equals(other._selectedOption, _selectedOption) &&
             (identical(other.getQuestionModel, getQuestionModel) ||
                 other.getQuestionModel == getQuestionModel) &&
-            const DeepCollectionEquality().equals(other._newList, _newList) &&
             (identical(
                     other.getProductsResponceModel, getProductsResponceModel) ||
                 other.getProductsResponceModel == getProductsResponceModel) &&
@@ -4164,7 +3193,6 @@ class _$InitialImpl implements _Initial {
       basePriceModelResponce,
       const DeepCollectionEquality().hash(_selectedOption),
       getQuestionModel,
-      const DeepCollectionEquality().hash(_newList),
       getProductsResponceModel,
       selectedTabIndex,
       abandendOrderResponceModel,
@@ -4192,7 +3220,6 @@ abstract class _Initial implements QuestionTabState {
           final GetBasePriceModelResponce? basePriceModelResponce,
           required final List<SelectedOption> selectedOption,
           final GetQuestionModel? getQuestionModel,
-          final List<SelectedOption>? newList,
           final GetProductsRespoceModel? getProductsResponceModel,
           required final int selectedTabIndex,
           final AbandendOrderResponceModel? abandendOrderResponceModel,
@@ -4224,8 +3251,6 @@ abstract class _Initial implements QuestionTabState {
   List<SelectedOption> get selectedOption;
   @override
   GetQuestionModel? get getQuestionModel;
-  @override
-  List<SelectedOption>? get newList;
   @override
   GetProductsRespoceModel? get getProductsResponceModel;
   @override

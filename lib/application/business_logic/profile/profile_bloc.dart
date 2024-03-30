@@ -35,11 +35,16 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   ProfileBloc(this.profileRepo, this.authRepo) : super(ProfileState.initail()) {
     on<AddAddress>(addAddress);
     on<DeleteAddress>(deleteAddress);
+    on<SelecteAddress>(selecteAddress);
     on<GetUserInfo>(getUserInfo);
     on<UpdateUser>(updateuser);
     on<GetDeletionOtp>(getDeletionOtp);
     on<DeleteAccount>(deleteAccount);
     on<Clear>(clear);
+  }
+
+  FutureOr<void> selecteAddress(SelecteAddress event, emit) {
+    emit(state.copyWith(selectedAddressIndex: event.selectedadress));
   }
 
   FutureOr<void> clear(Clear event, emit) {

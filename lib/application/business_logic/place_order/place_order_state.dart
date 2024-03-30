@@ -6,6 +6,7 @@ class PlaceOrderState with _$PlaceOrderState {
     required bool isLoading,
     required bool hasError,
     required bool loginStatus,
+    required String selectedRadio,
     String? message,
     PromoCodeResponceModel? promoCodeResponceModel,
     OrderPlacedResponceModel? orderPlacedResponceModel,
@@ -27,12 +28,14 @@ class PlaceOrderState with _$PlaceOrderState {
     required bool downloaded,
     File? data,
     String? invoice,
+    List<String>? addressList,
   }) = _Initial;
 
   factory PlaceOrderState.initial() => PlaceOrderState(
         isLoading: false,
         hasError: false,
         loginStatus: false,
+        selectedRadio: 'cash',
         downloaded: false,
         downloading: false,
         orderPlacedRequestModel: OrderPlacedRequestModel(),

@@ -23,7 +23,7 @@ class AnswerIndexChanger extends StatelessWidget {
       children: [
         BlocConsumer<QuestionTabBloc, QuestionTabState>(
           listener: (context, state) {
-            if (state.lastChecking == false) {
+            if (state.lastChecking == true) {
               loginOrNot(context, state);
             }
           },
@@ -72,7 +72,6 @@ class AnswerIndexChanger extends StatelessWidget {
     PickupQuestionModel pickepQuestionModel = PickupQuestionModel(
       categoryType: context.read<CategoryBlocBloc>().categoryType,
       productSlug: context.read<CategoryBlocBloc>().slug,
-      selectedOptions: context.read<QuestionTabBloc>().state.selectedOption,
     );
 
     //Product name Concatination

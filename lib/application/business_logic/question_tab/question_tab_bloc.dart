@@ -31,7 +31,7 @@ class QuestionTabBloc extends Bloc<QuestionTabEvent, QuestionTabState> {
     on<TabChange>(tabChange);
     on<TabMinus>(tabMinus);
     on<GetQuestions>(getQuestions);
-    on<MarkedQuestions>(markedQuestions);
+    on<ResetTabSelection>(resetTabSelection);
     on<ChangeIndex>(changeIndex);
     on<GetBasePrice>(getBasePrice);
     on<AbandentOrder>(abandentOrder);
@@ -39,6 +39,10 @@ class QuestionTabBloc extends Bloc<QuestionTabEvent, QuestionTabState> {
     on<MarkAnswer>(markAnswer);
     on<GoBackIndex>(goBackIndex);
     on<Clear>(clear);
+  }
+
+  FutureOr<void> resetTabSelection(ResetTabSelection event, emit) {
+    emit(state.copyWith(selectedTabIndex: 0));
   }
 
   FutureOr<void> clear(Clear event, emit) {
@@ -102,7 +106,6 @@ class QuestionTabBloc extends Bloc<QuestionTabEvent, QuestionTabState> {
   }
 
   FutureOr<void> yesOrNo(YesOrNo event, emit) async {
-    print(event.selectedOption.toJson());
     var map = Map<String, List<SelectedOption>>.from(state.selectedAnswers);
     List<SelectedOption> list =
         map[state.sections![state.selectedTabIndex].heading!]!;
@@ -130,52 +133,10 @@ class QuestionTabBloc extends Bloc<QuestionTabEvent, QuestionTabState> {
       }
     }
     map[state.sections![state.selectedTabIndex].heading!] = list;
-    print(map);
-    if (list.isNotEmpty) {
-      print(list.last.value);
-    }
     return emit(state.copyWith(
       message: null,
       selectedAnswers: map,
       hasError: false,
-    ));
-  }
-
-  FutureOr<void> markedQuestions(MarkedQuestions event, emit) {
-    bool isYesorNo = false;
-    bool other = false;
-    for (var i in state.selectedOption) {
-      if (i.description == event.selectedOption.description) {
-        log('find');
-        if (i.value != null && i.value == event.selectedOption.value) {
-          log('find 1');
-          isYesorNo = true;
-        }
-        updatedList.remove(i);
-        other = true;
-        answerdCount--;
-        break;
-      }
-      if (i.selectioType == 'one') {
-        updatedList.remove(i);
-        answerdCount--;
-        break;
-      }
-    }
-    if (event.selectedOption.value != null && !isYesorNo) {
-      log('find 3');
-      updatedList.add(event.selectedOption);
-      answerdCount++;
-    } else if (!isYesorNo && event.selectedOption.value == null && !other) {
-      log('find 4');
-      updatedList.add(event.selectedOption);
-      answerdCount++;
-    }
-    log('Answer count $answerdCount');
-    log('updatedList count ${updatedList.length}');
-    emit(state.copyWith(
-      selectedOption: updatedList,
-      answerCount: answerdCount,
     ));
   }
 
@@ -194,45 +155,50 @@ class QuestionTabBloc extends Bloc<QuestionTabEvent, QuestionTabState> {
                 .length !=
             state.sections![state.selectedTabIndex].options!.length) {
       emit(state.copyWith(
-        message: 'must choose all options',
+        message: 'Must select all options',
         hasError: true,
-        lastChecking: true,
+        lastChecking: false,
       ));
     } else if (state.sections![state.selectedTabIndex].criteria == 'one' &&
         state.selectedAnswers[state.sections![state.selectedTabIndex].heading]!
                 .length !=
             1) {
       emit(state.copyWith(
-          message: 'must choose one option',
-          hasError: true,
-          lastChecking: true));
+        message: 'Must select one option',
+        hasError: true,
+        lastChecking: false,
+      ));
     } else if (state.sections![state.selectedTabIndex].criteria == 'some' &&
         state.selectedAnswers[state.sections![state.selectedTabIndex].heading]!
             .isEmpty) {
       emit(state.copyWith(
-        message: 'select atleast one option',
+        message: 'Select atleast one option',
         hasError: true,
-        lastChecking: true,
+        lastChecking: false,
       ));
     } else if (state.selectedTabIndex != state.sections!.length - 1) {
       emit(state.copyWith(
         message: null,
         hasError: false,
         selectedTabIndex: event.index,
-        lastChecking: true,
+        lastChecking: false,
       ));
     } else if (state.selectedTabIndex == state.sections!.length - 1) {
       emit(state.copyWith(
         message: null,
         hasError: false,
-        lastChecking: false,
+        lastChecking: true,
       ));
     }
   }
 
   FutureOr<void> getQuestions(GetQuestions event, emit) async {
     emit(state.copyWith(
-        isLoading: true, sections: null, message: null, hasError: false));
+        isLoading: true,
+        sections: null,
+        message: null,
+        hasError: false,
+        lastChecking: false));
     final result = await questionRepo.getQuestions(
       categoryType: event.categoryType,
     );
@@ -255,45 +221,28 @@ class QuestionTabBloc extends Bloc<QuestionTabEvent, QuestionTabState> {
         isLoading: false,
         selectedAnswers: map,
         hasError: false,
-        lastChecking: true,
+        lastChecking: false,
         getQuestionModel: r,
         product: event.product,
       ));
     });
   }
 
-  FutureOr<void> getQuestion(GetQuestions event, emit) async {
-    emit(state.copyWith(isLoading: true, hasError: false));
-    final data = await questionRepo.getQuestions(
-      categoryType: event.categoryType,
-    );
-    data.fold((failure) {
-      emit(state.copyWith(
-        isLoading: false,
-        hasError: true,
-        message: failure.message,
-      ));
-    }, (getQuestions) {
-      emit(state.copyWith(
-        isLoading: false,
-        hasError: false,
-        getQuestionModel: getQuestions,
-        product: event.product,
-      ));
-    });
-  }
-
   FutureOr<void> getBasePrice(GetBasePrice event, emit) async {
-    emit(state.copyWith(isLoading: true, hasError: false));
+    emit(state.copyWith(
+      isLoading: true,
+      hasError: false,
+      lastChecking: false,
+    ));
     List<SelectedOption> list = [];
     for (var element in state.sections!) {
       list.addAll(state.selectedAnswers[element.heading]!);
     }
     for (var element in list) {
-      print(element.toJson());
+      log('selected datas baseprice ${element.toJson()}');
     }
     log('getBasePrice one');
-
+    event.pickupQuestionModel.selectedOptions = list;
     final data = await questionRepo.getBasePrice(
       pickeQuestionModel: event.pickupQuestionModel,
     );
@@ -308,7 +257,7 @@ class QuestionTabBloc extends Bloc<QuestionTabEvent, QuestionTabState> {
       emit(state.copyWith(
         hasError: false,
         isLoading: false,
-        lastChecking: true,
+        lastChecking: false,
         basePriceModelResponce: successResponce,
       ));
       if (successResponce.basePrice != null) {
@@ -325,8 +274,6 @@ class QuestionTabBloc extends Bloc<QuestionTabEvent, QuestionTabState> {
         log('User datas bloc $phone $city $pincode');
         event.abandendOrderRequestModel.abendendOrderUser = abendendOrderUser;
         event.abandendOrderRequestModel.productDetails?.price = '$basePrice';
-        event.abandendOrderRequestModel.productDetails?.options =
-            selectedOptions;
 
         log('getBasePrice fiffth');
         add(QuestionTabEvent.abandentOrder(
@@ -338,18 +285,22 @@ class QuestionTabBloc extends Bloc<QuestionTabEvent, QuestionTabState> {
 
   FutureOr<void> abandentOrder(AbandentOrder event, emit) async {
     emit(state.copyWith(isLoading: true, hasError: false));
+    List<SelectedOption> list = [];
+
+    for (var element in state.sections!) {
+      list.addAll(state.selectedAnswers[element.heading]!);
+      selectedOptions.addAll(state.selectedAnswers[element.heading]!);
+    }
+
     log('abandentOrder first');
     final number = await SecureSotrage.getNumber();
     final location = await SecureSotrage.getSelectedLocation();
     final pincode = await SecureSotrage.getSelectedPincode();
 
-    for (var element in state.sections!) {
-      selectedOptions.addAll(state.selectedAnswers[element.heading]!);
-    }
     event.abandendOrderRequestModel.abendendOrderUser!.phone = number;
     event.abandendOrderRequestModel.abendendOrderUser!.city = location;
     event.abandendOrderRequestModel.abendendOrderUser!.pincode = pincode;
-    event.abandendOrderRequestModel.productDetails!.options = selectedOptions;
+    event.abandendOrderRequestModel.productDetails!.options = list;
     final data = await questionRepo.abandendOrder(
       abandendOrderRequestModel: event.abandendOrderRequestModel,
     );

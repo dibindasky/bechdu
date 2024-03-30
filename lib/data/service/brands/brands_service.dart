@@ -28,7 +28,7 @@ class BrandsService implements BrandsRepository {
           responseData.map((item) => Brands.fromJson(item)).toList();
       return Right(SingleCategoryBrandsResponceModel(brands: brandsList));
     } on DioException catch (e) {
-      return Left(Failure(message: e.response?.data['error'] ?? errorMessage));
+      return Left(Failure(message: e.message ?? errorMessage));
     } catch (e) {
       return Left(Failure(message: e.toString()));
     }
@@ -53,7 +53,7 @@ class BrandsService implements BrandsRepository {
       );
       return Right(GetProductsRespoceModel.fromJson(responce.data));
     } on DioException catch (e) {
-      return Left(Failure(message: e.response?.data['error'] ?? errorMessage));
+      return Left(Failure(message: e.message ?? errorMessage));
     } catch (e) {
       return Left(Failure(message: errorMessage));
     }
@@ -71,7 +71,7 @@ class BrandsService implements BrandsRepository {
       final retVal = data.map((e) => e.toString()).toList();
       return Right(retVal);
     } on DioException catch (e) {
-      return Left(Failure(message: e.response?.data['error'] ?? errorMessage));
+      return Left(Failure(message: e.message ?? errorMessage));
     } catch (e) {
       return Left(Failure(message: errorMessage));
     }
@@ -90,7 +90,7 @@ class BrandsService implements BrandsRepository {
       final retVal = data.map((e) => e.toString()).toList();
       return Right(retVal);
     } on DioException catch (e) {
-      return Left(Failure(message: e.response?.data['error'] ?? errorMessage));
+      return Left(Failure(message: e.message ?? errorMessage));
     } catch (e) {
       return Left(Failure(message: errorMessage));
     }
@@ -106,12 +106,11 @@ class BrandsService implements BrandsRepository {
     try {
       final responce = await _apiService.get(
           '${ApiEndPoints.getVarients}$categoryType/$brandName/$seriesName/$model');
-
       final data = responce.data as List<dynamic>;
       final retVal = data.map((e) => e.toString()).toList();
       return Right(retVal);
     } on DioException catch (e) {
-      return Left(Failure(message: e.message));
+      return Left(Failure(message: e.message ?? errorMessage));
     } catch (e) {
       return Left(Failure(message: errorMessage));
     }

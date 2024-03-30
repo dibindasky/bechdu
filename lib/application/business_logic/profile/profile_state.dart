@@ -5,6 +5,7 @@ class ProfileState with _$ProfileState {
   const factory ProfileState({
     required bool isLoading,
     required bool hasError,
+    required int selectedAddressIndex,
     String? message,
     required List<String> address,
     AddressCreationResponceModel? addressCreationResponceModel,
@@ -14,6 +15,7 @@ class ProfileState with _$ProfileState {
   factory ProfileState.initail() => const ProfileState(
         isLoading: false,
         hasError: false,
+        selectedAddressIndex: -1,
         address: [],
       );
 }

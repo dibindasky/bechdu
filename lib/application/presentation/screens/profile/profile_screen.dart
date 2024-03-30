@@ -225,65 +225,78 @@ class ScreenProfile extends StatelessWidget {
                           kHeight20,
                           GestureDetector(
                             onTap: () {
-                              context
-                                  .read<ProfileBloc>()
-                                  .add(const ProfileEvent.getDeletionOtp());
                               showConfirmationDialog(
-                                noButton: true,
-                                operationButtonName: 'Delete',
-                                content: SizedBox(
-                                    height: 50, child: PinEnterField()),
+                                heading:
+                                    'Are you sure to delete your account permanantly',
+                                operationButtonName: 'Sure',
                                 context,
-                                heading: 'Enter Your Account deletion OTP',
                                 onPressed: () {
-                                  final otp = context
+                                  context
                                       .read<AuthBloc>()
                                       .otpController
-                                      .text
-                                      .replaceAll(' ', '');
-                                  RegExp phoneNumberRegExp =
-                                      RegExp(r'^[0-9]+$');
-                                  if (phoneNumberRegExp.hasMatch(otp)) {
-                                    if (otp.isEmpty) {
-                                      showSnack(
-                                        context: context,
-                                        message: 'Enter your otp here',
-                                        color: kRed,
-                                      );
-                                    } else if (otp.length < 4) {
-                                      showSnack(
-                                        context: context,
-                                        message:
-                                            'OTP number should keep 4 digits',
-                                        color: kRed,
-                                      );
-                                    } else {
-                                      //Login event calling
-                                      OtpVerifyRequestModel
-                                          otpVerifyRequestModel =
-                                          OtpVerifyRequestModel(
-                                        otp: otp,
-                                        phone: context
-                                            .read<AuthBloc>()
-                                            .phoneNumberController
-                                            .text
-                                            .replaceAll(' ', ''),
-                                      );
-                                      context.read<ProfileBloc>().add(
-                                            ProfileEvent.deleteAccount(
-                                              otpVerifyRequestModel:
-                                                  otpVerifyRequestModel,
-                                            ),
+                                      .clear();
+                                  Navigator.pop(context);
+                                  context
+                                      .read<ProfileBloc>()
+                                      .add(const ProfileEvent.getDeletionOtp());
+                                  showConfirmationDialog(
+                                    noButton: true,
+                                    operationButtonName: 'Delete',
+                                    content: SizedBox(
+                                        height: 50, child: PinEnterField()),
+                                    context,
+                                    heading: 'Enter Your Account deletion OTP',
+                                    onPressed: () {
+                                      final otp = context
+                                          .read<AuthBloc>()
+                                          .otpController
+                                          .text
+                                          .replaceAll(' ', '');
+                                      RegExp phoneNumberRegExp =
+                                          RegExp(r'^[0-9]+$');
+                                      if (phoneNumberRegExp.hasMatch(otp)) {
+                                        if (otp.isEmpty) {
+                                          showSnack(
+                                            context: context,
+                                            message: 'Enter your otp here',
+                                            color: kRed,
                                           );
-                                      Navigator.pop(context);
-                                    }
-                                  } else {
-                                    showSnack(
-                                      context: context,
-                                      message: 'Not a OTP number: $otp',
-                                      color: kRed,
-                                    );
-                                  }
+                                        } else if (otp.length < 4) {
+                                          showSnack(
+                                            context: context,
+                                            message:
+                                                'OTP number should keep 4 digits',
+                                            color: kRed,
+                                          );
+                                        } else {
+                                          //Login event calling
+                                          OtpVerifyRequestModel
+                                              otpVerifyRequestModel =
+                                              OtpVerifyRequestModel(
+                                            otp: otp,
+                                            phone: context
+                                                .read<AuthBloc>()
+                                                .phoneNumberController
+                                                .text
+                                                .replaceAll(' ', ''),
+                                          );
+                                          context.read<ProfileBloc>().add(
+                                                ProfileEvent.deleteAccount(
+                                                  otpVerifyRequestModel:
+                                                      otpVerifyRequestModel,
+                                                ),
+                                              );
+                                          Navigator.pop(context);
+                                        }
+                                      } else {
+                                        showSnack(
+                                          context: context,
+                                          message: 'Not a OTP number: $otp',
+                                          color: kRed,
+                                        );
+                                      }
+                                    },
+                                  );
                                 },
                               );
                             },
@@ -328,10 +341,11 @@ class ScreenProfile extends StatelessWidget {
     context.read<LocationBloc>().add(const LocationEvent.clear());
     context.read<HomeBloc>().add(const HomeEvent.clear());
     context.read<CategoryBlocBloc>().add(const CategoryBlocEvent.clear());
-    Navigator.pushReplacementNamed(
+    Navigator.pushNamedAndRemoveUntil(
       context,
       Routes.signInOrLogin,
       arguments: LoginWay.fromInitial,
+      (route) => false,
     ).then((value) {
       context.read<NavbarCubit>().changeNavigationIndex(0);
       secondtabScreensNotifier.value = 0;

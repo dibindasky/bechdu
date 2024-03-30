@@ -4,7 +4,6 @@ import 'dart:io';
 import 'package:beachdu/data/pdf_generator.dart';
 import 'package:beachdu/data/secure_storage/secure_fire_store.dart';
 import 'package:beachdu/domain/model/date_tome_responce_model/date_tome_responce_model.dart';
-import 'package:beachdu/domain/model/order_model/abandend_order_request_model/abandend_order_request_model.dart';
 import 'package:beachdu/domain/model/order_model/get_all_order_responce_model/get_all_order_responce_model.dart';
 import 'package:beachdu/domain/model/order_model/order_cancelation_request_model/order_cancelation_request_model.dart';
 import 'package:beachdu/domain/model/order_model/order_cancelation_responce_model/order_cancelation_responce_model.dart';
@@ -49,12 +48,18 @@ class PlaceOrderBloc extends Bloc<PlaceOrderEvent, PlaceOrderState> {
     on<OrderCancel>(orderCancel);
     on<ProductDetailsPick>(productDetailsPick);
     on<AddressPick>(addressPick);
+    on<SelectedRadio>(selectedRadio);
+
     on<PaymentOption>(paymentOption);
     on<PickupDetailsPick>(pickupDetailsPick);
     on<UserNumber>(userNumber);
     on<RemoveAllFieldData>(removeAllFeildData);
     on<InvoiceDownload>(invoiceDownLoad);
     on<Clear>(clear);
+  }
+
+  FutureOr<void> selectedRadio(SelectedRadio event, emit) {
+    emit(state.copyWith(selectedRadio: event.selectedRadio));
   }
 
   FutureOr<void> clear(Clear event, emit) {
@@ -188,9 +193,14 @@ class PlaceOrderBloc extends Bloc<PlaceOrderEvent, PlaceOrderState> {
   }
 
   FutureOr<void> pickupDetailsPick(PickupDetailsPick event, emit) {
+    OrderPlacedRequestModel updatedModel =
+        state.orderPlacedRequestModel.copyWith(
+      pickUpDetails: event.pickUpDetails,
+      promo: event.promo,
+    );
     state.orderPlacedRequestModel.pickUpDetails = event.pickUpDetails;
     emit(state.copyWith(
-      orderPlacedRequestModel: state.orderPlacedRequestModel,
+      orderPlacedRequestModel: updatedModel,
     ));
   }
 
@@ -203,10 +213,7 @@ class PlaceOrderBloc extends Bloc<PlaceOrderEvent, PlaceOrderState> {
 
   FutureOr<void> addressPick(AddressPick event, emit) {
     OrderPlacedRequestModel updatedModel =
-        state.orderPlacedRequestModel.copyWith(
-      user: event.user,
-      promo: event.promo,
-    );
+        state.orderPlacedRequestModel.copyWith(user: event.user);
 
     log('addressPick event bloc event.user ${event.user.address}');
     log('addressPick event bloc state.orderPlacedRequestModel.user ${state.orderPlacedRequestModel.user?.address}');
@@ -218,7 +225,11 @@ class PlaceOrderBloc extends Bloc<PlaceOrderEvent, PlaceOrderState> {
 
   FutureOr<void> orderPlacing(OrderPlacing event, emit) async {
     final number = await SecureSotrage.getNumber();
-    state.orderPlacedRequestModel.user!.phone = number;
+    if (state.orderPlacedRequestModel.user != null) {
+      state.orderPlacedRequestModel.user!.phone = number;
+    } else {
+      log('orderPlacing user is null');
+    }
     emit(state.copyWith(isLoading: true, hasError: false));
     var orderModel = state.orderPlacedRequestModel;
 
@@ -265,7 +276,7 @@ class PlaceOrderBloc extends Bloc<PlaceOrderEvent, PlaceOrderState> {
         message: falure.message,
       ));
 
-      log('falure $falure');
+      log('failure $falure');
     }, (promoCodeResponceModel) async {
       value = promoCodeResponceModel.value!;
       emit(

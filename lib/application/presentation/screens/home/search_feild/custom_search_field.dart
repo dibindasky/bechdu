@@ -23,7 +23,7 @@ class CustomSearchFieldHome extends StatelessWidget {
           Container(
             decoration:
                 BoxDecoration(borderRadius: kRadius10, color: klightwhite),
-            width: sWidth * 0.79,
+            width: sWidth * 0.7,
             child: TextField(
               controller:
                   context.read<HomeBloc>().globalProductSearchController,

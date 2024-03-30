@@ -31,9 +31,9 @@ class SeriesContainer extends StatelessWidget {
                   ),
                 );
             context.read<CategoryBlocBloc>().seriesName = seriesList[index];
-            context.read<CategoryBlocBloc>().seriesName = null;
+            //context.read<CategoryBlocBloc>().seriesName = null;
 
-            // call Model event
+            //Call Model event
             context.read<CategoryBlocBloc>().add(
                   CategoryBlocEvent.getModels(
                     categoryType:

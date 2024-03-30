@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:beachdu/application/business_logic/brands_bloc/category_bloc_bloc.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
@@ -119,13 +117,24 @@ class _ScreenProductSelectionProductFindDropdownGridViewState
                           style: textHeadInter.copyWith(color: klightgrey),
                         ),
                         isExpanded: true,
-                        items: state.models?.map<DropdownMenuItem<String>>(
-                          (model) {
-                            return DropdownMenuItem<String>(
-                              value: model,
-                              child: FittedBox(
+                        items: [
+                          // DropdownMenuItem<String>(
+                          //   value: 'All',
+                          //   child: Text(
+                          //     'All',
+                          //     style: textHeadSemiBold1.copyWith(
+                          //       color: containerOpenArrow1 ? kWhite : kBlack,
+                          //       fontSize: sWidth * 0.036,
+                          //     ),
+                          //     overflow: TextOverflow.ellipsis,
+                          //   ),
+                          // ),
+                          if (state.models != null)
+                            for (var brand in state.models!)
+                              DropdownMenuItem<String>(
+                                value: brand,
                                 child: Text(
-                                  model.replaceAll('Samsung ', ''),
+                                  brand.replaceAll('Samsung ', ''),
                                   style: textHeadSemiBold1.copyWith(
                                     color:
                                         containerOpenArrow1 ? kWhite : kBlack,
@@ -134,54 +143,41 @@ class _ScreenProductSelectionProductFindDropdownGridViewState
                                   overflow: TextOverflow.ellipsis,
                                 ),
                               ),
-                            );
-                          },
-                        ).toList(),
+                        ],
                         onChanged: (value) {
-                          if (value == 'All') {
-                            context.read<CategoryBlocBloc>().add(
-                                  CategoryBlocEvent.getProducts(
-                                    seriesName: context
-                                        .read<CategoryBlocBloc>()
-                                        .seriesName!,
-                                    categoryType: context
-                                        .read<CategoryBlocBloc>()
-                                        .categoryType!,
-                                    brandName: context
-                                        .read<CategoryBlocBloc>()
-                                        .barndName!,
-                                  ),
-                                );
-                            context.read<CategoryBlocBloc>().modelFilter = null;
-                            context.read<CategoryBlocBloc>().varientFilter =
-                                null;
-                          } else if (context
-                                  .read<CategoryBlocBloc>()
-                                  .modelFilter !=
+                          // if (value == 'All') {
+                          //   context.read<CategoryBlocBloc>().modelFilter ==
+                          //       null;
+                          //   context.read<CategoryBlocBloc>().state.varients ==
+                          //       [];
+                          //   context.read<CategoryBlocBloc>().add(
+                          //         CategoryBlocEvent.getProducts(
+                          //           seriesName: context
+                          //                   .read<CategoryBlocBloc>()
+                          //                   .seriesName ??
+                          //               'noo series',
+                          //           categoryType: context
+                          //               .read<CategoryBlocBloc>()
+                          //               .categoryType!,
+                          //           brandName: context
+                          //               .read<CategoryBlocBloc>()
+                          //               .barndName!,
+                          //         ),
+                          //       );
+                          // }
+                          if (context.read<CategoryBlocBloc>().modelFilter !=
                               value) {
                             context.read<CategoryBlocBloc>().varientFilter =
                                 null;
                           }
                           context.read<CategoryBlocBloc>().modelFilter = value;
-                          context.read<CategoryBlocBloc>().add(
-                                GetVarients(
-                                  brandName: context
-                                      .read<CategoryBlocBloc>()
-                                      .barndName!,
-                                  categoryType: context
-                                      .read<CategoryBlocBloc>()
-                                      .categoryType!,
-                                  seriesName: context
-                                      .read<CategoryBlocBloc>()
-                                      .seriesName!,
-                                  model: value!,
-                                ),
-                              );
+
                           context.read<CategoryBlocBloc>().add(
                                 CategoryBlocEvent.getProducts(
                                   seriesName: context
-                                      .read<CategoryBlocBloc>()
-                                      .seriesName!,
+                                          .read<CategoryBlocBloc>()
+                                          .seriesName ??
+                                      'noo series',
                                   categoryType: context
                                       .read<CategoryBlocBloc>()
                                       .categoryType!,
@@ -190,8 +186,21 @@ class _ScreenProductSelectionProductFindDropdownGridViewState
                                       .barndName!,
                                 ),
                               );
-                          log('model bloc veriable ${context.read<CategoryBlocBloc>().modelFilter}');
-                          log('model $value');
+
+                          // if (value != 'All') {
+                          context.read<CategoryBlocBloc>().add(
+                              CategoryBlocEvent.getVarients(
+                                  categoryType: context
+                                      .read<CategoryBlocBloc>()
+                                      .categoryType!,
+                                  brandName: context
+                                      .read<CategoryBlocBloc>()
+                                      .barndName!,
+                                  seriesName: context
+                                      .read<CategoryBlocBloc>()
+                                      .seriesName!,
+                                  model: value!));
+                          // }
                         },
                         value: context.read<CategoryBlocBloc>().modelFilter,
                         dropdownStyleData: DropdownStyleData(
@@ -331,7 +340,6 @@ class _ScreenProductSelectionProductFindDropdownGridViewState
                           varientController.clear();
                           setState(() {
                             containerOpenArrow2 = false;
-
                             dropDownOn = false;
                           });
                         } else {

@@ -1,7 +1,6 @@
 import 'package:beachdu/application/business_logic/brands_bloc/category_bloc_bloc.dart';
 import 'package:beachdu/application/presentation/screens/product_selection/search_field/series_search.dart';
 import 'package:beachdu/application/presentation/screens/product_selection/series_list/series_container.dart';
-import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/application/presentation/utils/skeltons/skelton.dart';
 import 'package:flutter/material.dart';
@@ -24,25 +23,29 @@ class SeriesSelectionBuilder extends StatelessWidget {
         } else if (state.filteredSeries == null) {
           return Lottie.asset(emptyLottie);
         }
+
         final seriesList = state.filteredSeries!;
         return Column(
           children: [
             const SeriesSearchField(),
             kHeight20,
-            GridView.builder(
-              itemCount: seriesList.length,
-              physics: const NeverScrollableScrollPhysics(),
-              shrinkWrap: true,
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                crossAxisSpacing: 10,
-                mainAxisSpacing: 10,
-                childAspectRatio: 1 / .3,
-              ),
-              itemBuilder: (context, index) {
-                return SeriesContainer(index: index);
-              },
-            ),
+            seriesList.isEmpty
+                ? Center(child: Lottie.asset(emptyLottie))
+                : GridView.builder(
+                    itemCount: seriesList.length,
+                    physics: const NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 10,
+                      mainAxisSpacing: 10,
+                      childAspectRatio: 1 / .3,
+                    ),
+                    itemBuilder: (context, index) {
+                      return SeriesContainer(index: index);
+                    },
+                  ),
           ],
         );
       },

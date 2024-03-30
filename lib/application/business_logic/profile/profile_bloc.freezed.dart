@@ -22,6 +22,7 @@ mixin _$ProfileEvent {
             AddressCreationRequestModel addressCreationRequestModel)
         addAddress,
     required TResult Function(int index) deleteAddress,
+    required TResult Function(int selectedadress) selecteAddress,
     required TResult Function(bool isLoad) getUserInfo,
     required TResult Function(UserInfoRequestModel userInfoRequestModel)
         updateUser,
@@ -36,6 +37,7 @@ mixin _$ProfileEvent {
     TResult? Function(AddressCreationRequestModel addressCreationRequestModel)?
         addAddress,
     TResult? Function(int index)? deleteAddress,
+    TResult? Function(int selectedadress)? selecteAddress,
     TResult? Function(bool isLoad)? getUserInfo,
     TResult? Function(UserInfoRequestModel userInfoRequestModel)? updateUser,
     TResult? Function(LoginModel? loginModel)? getDeletionOtp,
@@ -49,6 +51,7 @@ mixin _$ProfileEvent {
     TResult Function(AddressCreationRequestModel addressCreationRequestModel)?
         addAddress,
     TResult Function(int index)? deleteAddress,
+    TResult Function(int selectedadress)? selecteAddress,
     TResult Function(bool isLoad)? getUserInfo,
     TResult Function(UserInfoRequestModel userInfoRequestModel)? updateUser,
     TResult Function(LoginModel? loginModel)? getDeletionOtp,
@@ -62,6 +65,7 @@ mixin _$ProfileEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(AddAddress value) addAddress,
     required TResult Function(DeleteAddress value) deleteAddress,
+    required TResult Function(SelecteAddress value) selecteAddress,
     required TResult Function(GetUserInfo value) getUserInfo,
     required TResult Function(UpdateUser value) updateUser,
     required TResult Function(GetDeletionOtp value) getDeletionOtp,
@@ -73,6 +77,7 @@ mixin _$ProfileEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(AddAddress value)? addAddress,
     TResult? Function(DeleteAddress value)? deleteAddress,
+    TResult? Function(SelecteAddress value)? selecteAddress,
     TResult? Function(GetUserInfo value)? getUserInfo,
     TResult? Function(UpdateUser value)? updateUser,
     TResult? Function(GetDeletionOtp value)? getDeletionOtp,
@@ -84,6 +89,7 @@ mixin _$ProfileEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AddAddress value)? addAddress,
     TResult Function(DeleteAddress value)? deleteAddress,
+    TResult Function(SelecteAddress value)? selecteAddress,
     TResult Function(GetUserInfo value)? getUserInfo,
     TResult Function(UpdateUser value)? updateUser,
     TResult Function(GetDeletionOtp value)? getDeletionOtp,
@@ -183,6 +189,7 @@ class _$AddAddressImpl implements AddAddress {
             AddressCreationRequestModel addressCreationRequestModel)
         addAddress,
     required TResult Function(int index) deleteAddress,
+    required TResult Function(int selectedadress) selecteAddress,
     required TResult Function(bool isLoad) getUserInfo,
     required TResult Function(UserInfoRequestModel userInfoRequestModel)
         updateUser,
@@ -200,6 +207,7 @@ class _$AddAddressImpl implements AddAddress {
     TResult? Function(AddressCreationRequestModel addressCreationRequestModel)?
         addAddress,
     TResult? Function(int index)? deleteAddress,
+    TResult? Function(int selectedadress)? selecteAddress,
     TResult? Function(bool isLoad)? getUserInfo,
     TResult? Function(UserInfoRequestModel userInfoRequestModel)? updateUser,
     TResult? Function(LoginModel? loginModel)? getDeletionOtp,
@@ -216,6 +224,7 @@ class _$AddAddressImpl implements AddAddress {
     TResult Function(AddressCreationRequestModel addressCreationRequestModel)?
         addAddress,
     TResult Function(int index)? deleteAddress,
+    TResult Function(int selectedadress)? selecteAddress,
     TResult Function(bool isLoad)? getUserInfo,
     TResult Function(UserInfoRequestModel userInfoRequestModel)? updateUser,
     TResult Function(LoginModel? loginModel)? getDeletionOtp,
@@ -235,6 +244,7 @@ class _$AddAddressImpl implements AddAddress {
   TResult map<TResult extends Object?>({
     required TResult Function(AddAddress value) addAddress,
     required TResult Function(DeleteAddress value) deleteAddress,
+    required TResult Function(SelecteAddress value) selecteAddress,
     required TResult Function(GetUserInfo value) getUserInfo,
     required TResult Function(UpdateUser value) updateUser,
     required TResult Function(GetDeletionOtp value) getDeletionOtp,
@@ -249,6 +259,7 @@ class _$AddAddressImpl implements AddAddress {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(AddAddress value)? addAddress,
     TResult? Function(DeleteAddress value)? deleteAddress,
+    TResult? Function(SelecteAddress value)? selecteAddress,
     TResult? Function(GetUserInfo value)? getUserInfo,
     TResult? Function(UpdateUser value)? updateUser,
     TResult? Function(GetDeletionOtp value)? getDeletionOtp,
@@ -263,6 +274,7 @@ class _$AddAddressImpl implements AddAddress {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AddAddress value)? addAddress,
     TResult Function(DeleteAddress value)? deleteAddress,
+    TResult Function(SelecteAddress value)? selecteAddress,
     TResult Function(GetUserInfo value)? getUserInfo,
     TResult Function(UpdateUser value)? updateUser,
     TResult Function(GetDeletionOtp value)? getDeletionOtp,
@@ -356,6 +368,7 @@ class _$DeleteAddressImpl implements DeleteAddress {
             AddressCreationRequestModel addressCreationRequestModel)
         addAddress,
     required TResult Function(int index) deleteAddress,
+    required TResult Function(int selectedadress) selecteAddress,
     required TResult Function(bool isLoad) getUserInfo,
     required TResult Function(UserInfoRequestModel userInfoRequestModel)
         updateUser,
@@ -373,6 +386,7 @@ class _$DeleteAddressImpl implements DeleteAddress {
     TResult? Function(AddressCreationRequestModel addressCreationRequestModel)?
         addAddress,
     TResult? Function(int index)? deleteAddress,
+    TResult? Function(int selectedadress)? selecteAddress,
     TResult? Function(bool isLoad)? getUserInfo,
     TResult? Function(UserInfoRequestModel userInfoRequestModel)? updateUser,
     TResult? Function(LoginModel? loginModel)? getDeletionOtp,
@@ -389,6 +403,7 @@ class _$DeleteAddressImpl implements DeleteAddress {
     TResult Function(AddressCreationRequestModel addressCreationRequestModel)?
         addAddress,
     TResult Function(int index)? deleteAddress,
+    TResult Function(int selectedadress)? selecteAddress,
     TResult Function(bool isLoad)? getUserInfo,
     TResult Function(UserInfoRequestModel userInfoRequestModel)? updateUser,
     TResult Function(LoginModel? loginModel)? getDeletionOtp,
@@ -408,6 +423,7 @@ class _$DeleteAddressImpl implements DeleteAddress {
   TResult map<TResult extends Object?>({
     required TResult Function(AddAddress value) addAddress,
     required TResult Function(DeleteAddress value) deleteAddress,
+    required TResult Function(SelecteAddress value) selecteAddress,
     required TResult Function(GetUserInfo value) getUserInfo,
     required TResult Function(UpdateUser value) updateUser,
     required TResult Function(GetDeletionOtp value) getDeletionOtp,
@@ -422,6 +438,7 @@ class _$DeleteAddressImpl implements DeleteAddress {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(AddAddress value)? addAddress,
     TResult? Function(DeleteAddress value)? deleteAddress,
+    TResult? Function(SelecteAddress value)? selecteAddress,
     TResult? Function(GetUserInfo value)? getUserInfo,
     TResult? Function(UpdateUser value)? updateUser,
     TResult? Function(GetDeletionOtp value)? getDeletionOtp,
@@ -436,6 +453,7 @@ class _$DeleteAddressImpl implements DeleteAddress {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AddAddress value)? addAddress,
     TResult Function(DeleteAddress value)? deleteAddress,
+    TResult Function(SelecteAddress value)? selecteAddress,
     TResult Function(GetUserInfo value)? getUserInfo,
     TResult Function(UpdateUser value)? updateUser,
     TResult Function(GetDeletionOtp value)? getDeletionOtp,
@@ -456,6 +474,186 @@ abstract class DeleteAddress implements ProfileEvent {
   int get index;
   @JsonKey(ignore: true)
   _$$DeleteAddressImplCopyWith<_$DeleteAddressImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SelecteAddressImplCopyWith<$Res> {
+  factory _$$SelecteAddressImplCopyWith(_$SelecteAddressImpl value,
+          $Res Function(_$SelecteAddressImpl) then) =
+      __$$SelecteAddressImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int selectedadress});
+}
+
+/// @nodoc
+class __$$SelecteAddressImplCopyWithImpl<$Res>
+    extends _$ProfileEventCopyWithImpl<$Res, _$SelecteAddressImpl>
+    implements _$$SelecteAddressImplCopyWith<$Res> {
+  __$$SelecteAddressImplCopyWithImpl(
+      _$SelecteAddressImpl _value, $Res Function(_$SelecteAddressImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? selectedadress = null,
+  }) {
+    return _then(_$SelecteAddressImpl(
+      selectedadress: null == selectedadress
+          ? _value.selectedadress
+          : selectedadress // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SelecteAddressImpl implements SelecteAddress {
+  const _$SelecteAddressImpl({required this.selectedadress});
+
+  @override
+  final int selectedadress;
+
+  @override
+  String toString() {
+    return 'ProfileEvent.selecteAddress(selectedadress: $selectedadress)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SelecteAddressImpl &&
+            (identical(other.selectedadress, selectedadress) ||
+                other.selectedadress == selectedadress));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, selectedadress);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SelecteAddressImplCopyWith<_$SelecteAddressImpl> get copyWith =>
+      __$$SelecteAddressImplCopyWithImpl<_$SelecteAddressImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            AddressCreationRequestModel addressCreationRequestModel)
+        addAddress,
+    required TResult Function(int index) deleteAddress,
+    required TResult Function(int selectedadress) selecteAddress,
+    required TResult Function(bool isLoad) getUserInfo,
+    required TResult Function(UserInfoRequestModel userInfoRequestModel)
+        updateUser,
+    required TResult Function(LoginModel? loginModel) getDeletionOtp,
+    required TResult Function(OtpVerifyRequestModel otpVerifyRequestModel)
+        deleteAccount,
+    required TResult Function() clear,
+  }) {
+    return selecteAddress(selectedadress);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(AddressCreationRequestModel addressCreationRequestModel)?
+        addAddress,
+    TResult? Function(int index)? deleteAddress,
+    TResult? Function(int selectedadress)? selecteAddress,
+    TResult? Function(bool isLoad)? getUserInfo,
+    TResult? Function(UserInfoRequestModel userInfoRequestModel)? updateUser,
+    TResult? Function(LoginModel? loginModel)? getDeletionOtp,
+    TResult? Function(OtpVerifyRequestModel otpVerifyRequestModel)?
+        deleteAccount,
+    TResult? Function()? clear,
+  }) {
+    return selecteAddress?.call(selectedadress);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(AddressCreationRequestModel addressCreationRequestModel)?
+        addAddress,
+    TResult Function(int index)? deleteAddress,
+    TResult Function(int selectedadress)? selecteAddress,
+    TResult Function(bool isLoad)? getUserInfo,
+    TResult Function(UserInfoRequestModel userInfoRequestModel)? updateUser,
+    TResult Function(LoginModel? loginModel)? getDeletionOtp,
+    TResult Function(OtpVerifyRequestModel otpVerifyRequestModel)?
+        deleteAccount,
+    TResult Function()? clear,
+    required TResult orElse(),
+  }) {
+    if (selecteAddress != null) {
+      return selecteAddress(selectedadress);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(AddAddress value) addAddress,
+    required TResult Function(DeleteAddress value) deleteAddress,
+    required TResult Function(SelecteAddress value) selecteAddress,
+    required TResult Function(GetUserInfo value) getUserInfo,
+    required TResult Function(UpdateUser value) updateUser,
+    required TResult Function(GetDeletionOtp value) getDeletionOtp,
+    required TResult Function(DeleteAccount value) deleteAccount,
+    required TResult Function(Clear value) clear,
+  }) {
+    return selecteAddress(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(AddAddress value)? addAddress,
+    TResult? Function(DeleteAddress value)? deleteAddress,
+    TResult? Function(SelecteAddress value)? selecteAddress,
+    TResult? Function(GetUserInfo value)? getUserInfo,
+    TResult? Function(UpdateUser value)? updateUser,
+    TResult? Function(GetDeletionOtp value)? getDeletionOtp,
+    TResult? Function(DeleteAccount value)? deleteAccount,
+    TResult? Function(Clear value)? clear,
+  }) {
+    return selecteAddress?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AddAddress value)? addAddress,
+    TResult Function(DeleteAddress value)? deleteAddress,
+    TResult Function(SelecteAddress value)? selecteAddress,
+    TResult Function(GetUserInfo value)? getUserInfo,
+    TResult Function(UpdateUser value)? updateUser,
+    TResult Function(GetDeletionOtp value)? getDeletionOtp,
+    TResult Function(DeleteAccount value)? deleteAccount,
+    TResult Function(Clear value)? clear,
+    required TResult orElse(),
+  }) {
+    if (selecteAddress != null) {
+      return selecteAddress(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SelecteAddress implements ProfileEvent {
+  const factory SelecteAddress({required final int selectedadress}) =
+      _$SelecteAddressImpl;
+
+  int get selectedadress;
+  @JsonKey(ignore: true)
+  _$$SelecteAddressImplCopyWith<_$SelecteAddressImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -527,6 +725,7 @@ class _$GetUserInfoImpl implements GetUserInfo {
             AddressCreationRequestModel addressCreationRequestModel)
         addAddress,
     required TResult Function(int index) deleteAddress,
+    required TResult Function(int selectedadress) selecteAddress,
     required TResult Function(bool isLoad) getUserInfo,
     required TResult Function(UserInfoRequestModel userInfoRequestModel)
         updateUser,
@@ -544,6 +743,7 @@ class _$GetUserInfoImpl implements GetUserInfo {
     TResult? Function(AddressCreationRequestModel addressCreationRequestModel)?
         addAddress,
     TResult? Function(int index)? deleteAddress,
+    TResult? Function(int selectedadress)? selecteAddress,
     TResult? Function(bool isLoad)? getUserInfo,
     TResult? Function(UserInfoRequestModel userInfoRequestModel)? updateUser,
     TResult? Function(LoginModel? loginModel)? getDeletionOtp,
@@ -560,6 +760,7 @@ class _$GetUserInfoImpl implements GetUserInfo {
     TResult Function(AddressCreationRequestModel addressCreationRequestModel)?
         addAddress,
     TResult Function(int index)? deleteAddress,
+    TResult Function(int selectedadress)? selecteAddress,
     TResult Function(bool isLoad)? getUserInfo,
     TResult Function(UserInfoRequestModel userInfoRequestModel)? updateUser,
     TResult Function(LoginModel? loginModel)? getDeletionOtp,
@@ -579,6 +780,7 @@ class _$GetUserInfoImpl implements GetUserInfo {
   TResult map<TResult extends Object?>({
     required TResult Function(AddAddress value) addAddress,
     required TResult Function(DeleteAddress value) deleteAddress,
+    required TResult Function(SelecteAddress value) selecteAddress,
     required TResult Function(GetUserInfo value) getUserInfo,
     required TResult Function(UpdateUser value) updateUser,
     required TResult Function(GetDeletionOtp value) getDeletionOtp,
@@ -593,6 +795,7 @@ class _$GetUserInfoImpl implements GetUserInfo {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(AddAddress value)? addAddress,
     TResult? Function(DeleteAddress value)? deleteAddress,
+    TResult? Function(SelecteAddress value)? selecteAddress,
     TResult? Function(GetUserInfo value)? getUserInfo,
     TResult? Function(UpdateUser value)? updateUser,
     TResult? Function(GetDeletionOtp value)? getDeletionOtp,
@@ -607,6 +810,7 @@ class _$GetUserInfoImpl implements GetUserInfo {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AddAddress value)? addAddress,
     TResult Function(DeleteAddress value)? deleteAddress,
+    TResult Function(SelecteAddress value)? selecteAddress,
     TResult Function(GetUserInfo value)? getUserInfo,
     TResult Function(UpdateUser value)? updateUser,
     TResult Function(GetDeletionOtp value)? getDeletionOtp,
@@ -699,6 +903,7 @@ class _$UpdateUserImpl implements UpdateUser {
             AddressCreationRequestModel addressCreationRequestModel)
         addAddress,
     required TResult Function(int index) deleteAddress,
+    required TResult Function(int selectedadress) selecteAddress,
     required TResult Function(bool isLoad) getUserInfo,
     required TResult Function(UserInfoRequestModel userInfoRequestModel)
         updateUser,
@@ -716,6 +921,7 @@ class _$UpdateUserImpl implements UpdateUser {
     TResult? Function(AddressCreationRequestModel addressCreationRequestModel)?
         addAddress,
     TResult? Function(int index)? deleteAddress,
+    TResult? Function(int selectedadress)? selecteAddress,
     TResult? Function(bool isLoad)? getUserInfo,
     TResult? Function(UserInfoRequestModel userInfoRequestModel)? updateUser,
     TResult? Function(LoginModel? loginModel)? getDeletionOtp,
@@ -732,6 +938,7 @@ class _$UpdateUserImpl implements UpdateUser {
     TResult Function(AddressCreationRequestModel addressCreationRequestModel)?
         addAddress,
     TResult Function(int index)? deleteAddress,
+    TResult Function(int selectedadress)? selecteAddress,
     TResult Function(bool isLoad)? getUserInfo,
     TResult Function(UserInfoRequestModel userInfoRequestModel)? updateUser,
     TResult Function(LoginModel? loginModel)? getDeletionOtp,
@@ -751,6 +958,7 @@ class _$UpdateUserImpl implements UpdateUser {
   TResult map<TResult extends Object?>({
     required TResult Function(AddAddress value) addAddress,
     required TResult Function(DeleteAddress value) deleteAddress,
+    required TResult Function(SelecteAddress value) selecteAddress,
     required TResult Function(GetUserInfo value) getUserInfo,
     required TResult Function(UpdateUser value) updateUser,
     required TResult Function(GetDeletionOtp value) getDeletionOtp,
@@ -765,6 +973,7 @@ class _$UpdateUserImpl implements UpdateUser {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(AddAddress value)? addAddress,
     TResult? Function(DeleteAddress value)? deleteAddress,
+    TResult? Function(SelecteAddress value)? selecteAddress,
     TResult? Function(GetUserInfo value)? getUserInfo,
     TResult? Function(UpdateUser value)? updateUser,
     TResult? Function(GetDeletionOtp value)? getDeletionOtp,
@@ -779,6 +988,7 @@ class _$UpdateUserImpl implements UpdateUser {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AddAddress value)? addAddress,
     TResult Function(DeleteAddress value)? deleteAddress,
+    TResult Function(SelecteAddress value)? selecteAddress,
     TResult Function(GetUserInfo value)? getUserInfo,
     TResult Function(UpdateUser value)? updateUser,
     TResult Function(GetDeletionOtp value)? getDeletionOtp,
@@ -874,6 +1084,7 @@ class _$GetDeletionOtpImpl implements GetDeletionOtp {
             AddressCreationRequestModel addressCreationRequestModel)
         addAddress,
     required TResult Function(int index) deleteAddress,
+    required TResult Function(int selectedadress) selecteAddress,
     required TResult Function(bool isLoad) getUserInfo,
     required TResult Function(UserInfoRequestModel userInfoRequestModel)
         updateUser,
@@ -891,6 +1102,7 @@ class _$GetDeletionOtpImpl implements GetDeletionOtp {
     TResult? Function(AddressCreationRequestModel addressCreationRequestModel)?
         addAddress,
     TResult? Function(int index)? deleteAddress,
+    TResult? Function(int selectedadress)? selecteAddress,
     TResult? Function(bool isLoad)? getUserInfo,
     TResult? Function(UserInfoRequestModel userInfoRequestModel)? updateUser,
     TResult? Function(LoginModel? loginModel)? getDeletionOtp,
@@ -907,6 +1119,7 @@ class _$GetDeletionOtpImpl implements GetDeletionOtp {
     TResult Function(AddressCreationRequestModel addressCreationRequestModel)?
         addAddress,
     TResult Function(int index)? deleteAddress,
+    TResult Function(int selectedadress)? selecteAddress,
     TResult Function(bool isLoad)? getUserInfo,
     TResult Function(UserInfoRequestModel userInfoRequestModel)? updateUser,
     TResult Function(LoginModel? loginModel)? getDeletionOtp,
@@ -926,6 +1139,7 @@ class _$GetDeletionOtpImpl implements GetDeletionOtp {
   TResult map<TResult extends Object?>({
     required TResult Function(AddAddress value) addAddress,
     required TResult Function(DeleteAddress value) deleteAddress,
+    required TResult Function(SelecteAddress value) selecteAddress,
     required TResult Function(GetUserInfo value) getUserInfo,
     required TResult Function(UpdateUser value) updateUser,
     required TResult Function(GetDeletionOtp value) getDeletionOtp,
@@ -940,6 +1154,7 @@ class _$GetDeletionOtpImpl implements GetDeletionOtp {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(AddAddress value)? addAddress,
     TResult? Function(DeleteAddress value)? deleteAddress,
+    TResult? Function(SelecteAddress value)? selecteAddress,
     TResult? Function(GetUserInfo value)? getUserInfo,
     TResult? Function(UpdateUser value)? updateUser,
     TResult? Function(GetDeletionOtp value)? getDeletionOtp,
@@ -954,6 +1169,7 @@ class _$GetDeletionOtpImpl implements GetDeletionOtp {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AddAddress value)? addAddress,
     TResult Function(DeleteAddress value)? deleteAddress,
+    TResult Function(SelecteAddress value)? selecteAddress,
     TResult Function(GetUserInfo value)? getUserInfo,
     TResult Function(UpdateUser value)? updateUser,
     TResult Function(GetDeletionOtp value)? getDeletionOtp,
@@ -1047,6 +1263,7 @@ class _$DeleteAccountImpl implements DeleteAccount {
             AddressCreationRequestModel addressCreationRequestModel)
         addAddress,
     required TResult Function(int index) deleteAddress,
+    required TResult Function(int selectedadress) selecteAddress,
     required TResult Function(bool isLoad) getUserInfo,
     required TResult Function(UserInfoRequestModel userInfoRequestModel)
         updateUser,
@@ -1064,6 +1281,7 @@ class _$DeleteAccountImpl implements DeleteAccount {
     TResult? Function(AddressCreationRequestModel addressCreationRequestModel)?
         addAddress,
     TResult? Function(int index)? deleteAddress,
+    TResult? Function(int selectedadress)? selecteAddress,
     TResult? Function(bool isLoad)? getUserInfo,
     TResult? Function(UserInfoRequestModel userInfoRequestModel)? updateUser,
     TResult? Function(LoginModel? loginModel)? getDeletionOtp,
@@ -1080,6 +1298,7 @@ class _$DeleteAccountImpl implements DeleteAccount {
     TResult Function(AddressCreationRequestModel addressCreationRequestModel)?
         addAddress,
     TResult Function(int index)? deleteAddress,
+    TResult Function(int selectedadress)? selecteAddress,
     TResult Function(bool isLoad)? getUserInfo,
     TResult Function(UserInfoRequestModel userInfoRequestModel)? updateUser,
     TResult Function(LoginModel? loginModel)? getDeletionOtp,
@@ -1099,6 +1318,7 @@ class _$DeleteAccountImpl implements DeleteAccount {
   TResult map<TResult extends Object?>({
     required TResult Function(AddAddress value) addAddress,
     required TResult Function(DeleteAddress value) deleteAddress,
+    required TResult Function(SelecteAddress value) selecteAddress,
     required TResult Function(GetUserInfo value) getUserInfo,
     required TResult Function(UpdateUser value) updateUser,
     required TResult Function(GetDeletionOtp value) getDeletionOtp,
@@ -1113,6 +1333,7 @@ class _$DeleteAccountImpl implements DeleteAccount {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(AddAddress value)? addAddress,
     TResult? Function(DeleteAddress value)? deleteAddress,
+    TResult? Function(SelecteAddress value)? selecteAddress,
     TResult? Function(GetUserInfo value)? getUserInfo,
     TResult? Function(UpdateUser value)? updateUser,
     TResult? Function(GetDeletionOtp value)? getDeletionOtp,
@@ -1127,6 +1348,7 @@ class _$DeleteAccountImpl implements DeleteAccount {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AddAddress value)? addAddress,
     TResult Function(DeleteAddress value)? deleteAddress,
+    TResult Function(SelecteAddress value)? selecteAddress,
     TResult Function(GetUserInfo value)? getUserInfo,
     TResult Function(UpdateUser value)? updateUser,
     TResult Function(GetDeletionOtp value)? getDeletionOtp,
@@ -1194,6 +1416,7 @@ class _$ClearImpl implements Clear {
             AddressCreationRequestModel addressCreationRequestModel)
         addAddress,
     required TResult Function(int index) deleteAddress,
+    required TResult Function(int selectedadress) selecteAddress,
     required TResult Function(bool isLoad) getUserInfo,
     required TResult Function(UserInfoRequestModel userInfoRequestModel)
         updateUser,
@@ -1211,6 +1434,7 @@ class _$ClearImpl implements Clear {
     TResult? Function(AddressCreationRequestModel addressCreationRequestModel)?
         addAddress,
     TResult? Function(int index)? deleteAddress,
+    TResult? Function(int selectedadress)? selecteAddress,
     TResult? Function(bool isLoad)? getUserInfo,
     TResult? Function(UserInfoRequestModel userInfoRequestModel)? updateUser,
     TResult? Function(LoginModel? loginModel)? getDeletionOtp,
@@ -1227,6 +1451,7 @@ class _$ClearImpl implements Clear {
     TResult Function(AddressCreationRequestModel addressCreationRequestModel)?
         addAddress,
     TResult Function(int index)? deleteAddress,
+    TResult Function(int selectedadress)? selecteAddress,
     TResult Function(bool isLoad)? getUserInfo,
     TResult Function(UserInfoRequestModel userInfoRequestModel)? updateUser,
     TResult Function(LoginModel? loginModel)? getDeletionOtp,
@@ -1246,6 +1471,7 @@ class _$ClearImpl implements Clear {
   TResult map<TResult extends Object?>({
     required TResult Function(AddAddress value) addAddress,
     required TResult Function(DeleteAddress value) deleteAddress,
+    required TResult Function(SelecteAddress value) selecteAddress,
     required TResult Function(GetUserInfo value) getUserInfo,
     required TResult Function(UpdateUser value) updateUser,
     required TResult Function(GetDeletionOtp value) getDeletionOtp,
@@ -1260,6 +1486,7 @@ class _$ClearImpl implements Clear {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(AddAddress value)? addAddress,
     TResult? Function(DeleteAddress value)? deleteAddress,
+    TResult? Function(SelecteAddress value)? selecteAddress,
     TResult? Function(GetUserInfo value)? getUserInfo,
     TResult? Function(UpdateUser value)? updateUser,
     TResult? Function(GetDeletionOtp value)? getDeletionOtp,
@@ -1274,6 +1501,7 @@ class _$ClearImpl implements Clear {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AddAddress value)? addAddress,
     TResult Function(DeleteAddress value)? deleteAddress,
+    TResult Function(SelecteAddress value)? selecteAddress,
     TResult Function(GetUserInfo value)? getUserInfo,
     TResult Function(UpdateUser value)? updateUser,
     TResult Function(GetDeletionOtp value)? getDeletionOtp,
@@ -1296,6 +1524,7 @@ abstract class Clear implements ProfileEvent {
 mixin _$ProfileState {
   bool get isLoading => throw _privateConstructorUsedError;
   bool get hasError => throw _privateConstructorUsedError;
+  int get selectedAddressIndex => throw _privateConstructorUsedError;
   String? get message => throw _privateConstructorUsedError;
   List<String> get address => throw _privateConstructorUsedError;
   AddressCreationResponceModel? get addressCreationResponceModel =>
@@ -1318,6 +1547,7 @@ abstract class $ProfileStateCopyWith<$Res> {
   $Res call(
       {bool isLoading,
       bool hasError,
+      int selectedAddressIndex,
       String? message,
       List<String> address,
       AddressCreationResponceModel? addressCreationResponceModel,
@@ -1340,6 +1570,7 @@ class _$ProfileStateCopyWithImpl<$Res, $Val extends ProfileState>
   $Res call({
     Object? isLoading = null,
     Object? hasError = null,
+    Object? selectedAddressIndex = null,
     Object? message = freezed,
     Object? address = null,
     Object? addressCreationResponceModel = freezed,
@@ -1355,6 +1586,10 @@ class _$ProfileStateCopyWithImpl<$Res, $Val extends ProfileState>
           ? _value.hasError
           : hasError // ignore: cast_nullable_to_non_nullable
               as bool,
+      selectedAddressIndex: null == selectedAddressIndex
+          ? _value.selectedAddressIndex
+          : selectedAddressIndex // ignore: cast_nullable_to_non_nullable
+              as int,
       message: freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -1390,6 +1625,7 @@ abstract class _$$InitialImplCopyWith<$Res>
   $Res call(
       {bool isLoading,
       bool hasError,
+      int selectedAddressIndex,
       String? message,
       List<String> address,
       AddressCreationResponceModel? addressCreationResponceModel,
@@ -1410,6 +1646,7 @@ class __$$InitialImplCopyWithImpl<$Res>
   $Res call({
     Object? isLoading = null,
     Object? hasError = null,
+    Object? selectedAddressIndex = null,
     Object? message = freezed,
     Object? address = null,
     Object? addressCreationResponceModel = freezed,
@@ -1425,6 +1662,10 @@ class __$$InitialImplCopyWithImpl<$Res>
           ? _value.hasError
           : hasError // ignore: cast_nullable_to_non_nullable
               as bool,
+      selectedAddressIndex: null == selectedAddressIndex
+          ? _value.selectedAddressIndex
+          : selectedAddressIndex // ignore: cast_nullable_to_non_nullable
+              as int,
       message: freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -1455,6 +1696,7 @@ class _$InitialImpl implements _Initial {
   const _$InitialImpl(
       {required this.isLoading,
       required this.hasError,
+      required this.selectedAddressIndex,
       this.message,
       required final List<String> address,
       this.addressCreationResponceModel,
@@ -1466,6 +1708,8 @@ class _$InitialImpl implements _Initial {
   final bool isLoading;
   @override
   final bool hasError;
+  @override
+  final int selectedAddressIndex;
   @override
   final String? message;
   final List<String> _address;
@@ -1485,7 +1729,7 @@ class _$InitialImpl implements _Initial {
 
   @override
   String toString() {
-    return 'ProfileState(isLoading: $isLoading, hasError: $hasError, message: $message, address: $address, addressCreationResponceModel: $addressCreationResponceModel, user: $user, deleteAccountResponceModel: $deleteAccountResponceModel)';
+    return 'ProfileState(isLoading: $isLoading, hasError: $hasError, selectedAddressIndex: $selectedAddressIndex, message: $message, address: $address, addressCreationResponceModel: $addressCreationResponceModel, user: $user, deleteAccountResponceModel: $deleteAccountResponceModel)';
   }
 
   @override
@@ -1497,6 +1741,8 @@ class _$InitialImpl implements _Initial {
                 other.isLoading == isLoading) &&
             (identical(other.hasError, hasError) ||
                 other.hasError == hasError) &&
+            (identical(other.selectedAddressIndex, selectedAddressIndex) ||
+                other.selectedAddressIndex == selectedAddressIndex) &&
             (identical(other.message, message) || other.message == message) &&
             const DeepCollectionEquality().equals(other._address, _address) &&
             (identical(other.addressCreationResponceModel,
@@ -1515,6 +1761,7 @@ class _$InitialImpl implements _Initial {
       runtimeType,
       isLoading,
       hasError,
+      selectedAddressIndex,
       message,
       const DeepCollectionEquality().hash(_address),
       addressCreationResponceModel,
@@ -1532,6 +1779,7 @@ abstract class _Initial implements ProfileState {
   const factory _Initial(
           {required final bool isLoading,
           required final bool hasError,
+          required final int selectedAddressIndex,
           final String? message,
           required final List<String> address,
           final AddressCreationResponceModel? addressCreationResponceModel,
@@ -1543,6 +1791,8 @@ abstract class _Initial implements ProfileState {
   bool get isLoading;
   @override
   bool get hasError;
+  @override
+  int get selectedAddressIndex;
   @override
   String? get message;
   @override

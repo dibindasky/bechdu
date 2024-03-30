@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:beachdu/application/business_logic/brands_bloc/category_bloc_bloc.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
@@ -11,6 +13,7 @@ class SeriesSearchField extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       onChanged: (value) {
+        log(value);
         context
             .read<CategoryBlocBloc>()
             .add(CategoryBlocEvent.seriesSearch(searchQuery: value));
@@ -25,43 +28,18 @@ class SeriesSearchField extends StatelessWidget {
               builder: (context, state) {
                 return DropdownButton<String>(
                   onChanged: (newValue) {
-                    // Handle dropdown change
-                    if (newValue == 'All Series') {
-                      // Dispatch an event to fetch all series
-                      context.read<CategoryBlocBloc>().add(GetSeries(
+                    // Dispatch an event to fetch series for a specific brand
+                    context.read<CategoryBlocBloc>().barndName = newValue;
+                    context.read<CategoryBlocBloc>().add(
+                          GetSeries(
                             brandName: newValue!,
                             categoryType:
                                 context.read<CategoryBlocBloc>().categoryType!,
-                          ));
-                    } else {
-                      // Dispatch an event to fetch series for a specific brand
-                      context.read<CategoryBlocBloc>().barndName = newValue;
-                      context.read<CategoryBlocBloc>().add(
-                            GetSeries(
-                              brandName: newValue!,
-                              categoryType: context
-                                  .read<CategoryBlocBloc>()
-                                  .categoryType!,
-                            ),
-                          );
-                    }
+                          ),
+                        );
                   },
-                  // onChanged: (newValue) {
-                  //   context.read<CategoryBlocBloc>().barndName = newValue;
-                  //   context.read<CategoryBlocBloc>().add(
-                  //         GetSeries(
-                  //           brandName: newValue!,
-                  //           categoryType:
-                  //               context.read<CategoryBlocBloc>().categoryType!,
-                  //         ),
-                  //       );
-                  // },
                   value: context.read<CategoryBlocBloc>().barndName,
                   items: [
-                    const DropdownMenuItem<String>(
-                      value: 'All Series',
-                      child: Text('All Series'),
-                    ),
                     if (state.filteredBrands != null)
                       for (var brand in state.filteredBrands!)
                         DropdownMenuItem<String>(

@@ -14,7 +14,7 @@ class DataValueListanableContainers extends StatelessWidget {
       valueListenable: pickupDetailChangeNotifier,
       builder: (context, value, child) {
         if (value == PickupDetailContainers.personalDetails) {
-          return PersonalDetails();
+          return const PersonalDetails();
         }
         if (value == PickupDetailContainers.address) {
           return const StreetAddress();

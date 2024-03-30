@@ -50,6 +50,12 @@ class FinalProductPriceDetaails extends StatelessWidget {
                   color: kRed,
                 );
               }
+              if (state.promoCodeResponceModel != null) {
+                showSnack(
+                  context: context,
+                  message: 'Promocode Applied succssfully',
+                );
+              }
             },
             builder: (context, state) {
               return TextFormField(

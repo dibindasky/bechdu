@@ -9,22 +9,14 @@ class QuestionTabEvent with _$QuestionTabEvent {
     required String categoryType,
     required Product product,
   }) = GetQuestions;
-  const factory QuestionTabEvent.getAnswerCount({
-    required int answerCount,
-  }) = GetAnswerCount;
   const factory QuestionTabEvent.goBackIndex({required int index}) =
       GoBackIndex;
   const factory QuestionTabEvent.markAnswer(
       {required SelectedOption selectedOption}) = MarkAnswer;
   const factory QuestionTabEvent.clearOneSection() = ClearOneSection;
-  const factory QuestionTabEvent.markedQuestions(
-      {required SelectedOption selectedOption}) = MarkedQuestions;
   const factory QuestionTabEvent.yesOrNo({
     required SelectedOption selectedOption,
   }) = YesOrNo;
-  const factory QuestionTabEvent.countQuestionNumber({
-    required int countQuestionNumber,
-  }) = CountQuestionNumber;
   const factory QuestionTabEvent.changeIndex({required int index}) =
       ChangeIndex;
   const factory QuestionTabEvent.getBasePrice({

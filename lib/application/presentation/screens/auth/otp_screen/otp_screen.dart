@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'dart:developer';
 import 'package:beachdu/application/business_logic/auth/auth_bloc.dart';
 import 'package:beachdu/application/business_logic/brands_bloc/category_bloc_bloc.dart';
@@ -55,8 +54,6 @@ class OTPScreen extends StatelessWidget {
                 PickupQuestionModel pickepQuestionModel = PickupQuestionModel(
                   categoryType: context.read<CategoryBlocBloc>().categoryType,
                   productSlug: context.read<CategoryBlocBloc>().slug,
-                  selectedOptions:
-                      context.read<QuestionTabBloc>().state.selectedOption,
                 );
 
                 //Product name Concatination
@@ -67,7 +64,6 @@ class OTPScreen extends StatelessWidget {
                 ProductDetails productDetails = ProductDetails(
                   slug: context.read<CategoryBlocBloc>().slug,
                   name: name,
-                  options: context.read<QuestionTabBloc>().selectedOptions,
                 );
 
                 AbandendOrderRequestModel abandendOrderRequestModel =
@@ -101,14 +97,12 @@ class OTPScreen extends StatelessWidget {
   }
 
   loginOrSignup(BuildContext context) {
-    Timer(const Duration(microseconds: 500), () {
-      if (loginWay == LoginWay.fromQuestionPick) {
-        secondtabScreensNotifier.value = 2;
-        secondtabScreensNotifier.notifyListeners();
-        Navigator.pop(context);
-      } else {
-        Navigator.pushReplacementNamed(context, Routes.bottomBar);
-      }
-    });
+    if (loginWay == LoginWay.fromQuestionPick) {
+      secondtabScreensNotifier.value = 2;
+      secondtabScreensNotifier.notifyListeners();
+      Navigator.pop(context);
+    } else {
+      Navigator.pushReplacementNamed(context, Routes.bottomBar);
+    }
   }
 }

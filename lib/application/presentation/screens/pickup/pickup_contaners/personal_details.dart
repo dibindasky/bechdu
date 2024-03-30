@@ -21,33 +21,30 @@ class _PersonalDetailsState extends State<PersonalDetails> {
 
   @override
   void initState() {
+    context.read<PlaceOrderBloc>().add(const PlaceOrderEvent.userNumber());
+    PickupDetailContainers.personalDetails;
+    context
+        .read<ProfileBloc>()
+        .add(const ProfileEvent.getUserInfo(isLoad: true));
+    context.read<PlaceOrderBloc>().nameController.text =
+        context.read<PlaceOrderBloc>().nameController.text.isEmpty
+            ? context.read<ProfileBloc>().profileNameController.text
+            : context.read<PlaceOrderBloc>().nameController.text;
+    context.read<PlaceOrderBloc>().emailController.text =
+        context.read<PlaceOrderBloc>().emailController.text.isEmpty
+            ? context.read<ProfileBloc>().profileEmailController.text
+            : context.read<PlaceOrderBloc>().emailController.text;
+    context.read<PlaceOrderBloc>().additionalNumberController.text =
+        context.read<PlaceOrderBloc>().additionalNumberController.text.isEmpty
+            ? context.read<ProfileBloc>().profileAddPhoneController.text
+            : context.read<PlaceOrderBloc>().additionalNumberController.text;
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    WidgetsBinding.instance.addPostFrameCallback(
-      (timeStamp) {
-        context
-            .read<ProfileBloc>()
-            .add(const ProfileEvent.getUserInfo(isLoad: true));
-        context.read<PlaceOrderBloc>().nameController.text =
-            context.read<PlaceOrderBloc>().nameController.text.isEmpty
-                ? context.read<ProfileBloc>().profileNameController.text
-                : context.read<PlaceOrderBloc>().nameController.text;
-        context.read<PlaceOrderBloc>().emailController.text =
-            context.read<PlaceOrderBloc>().emailController.text.isEmpty
-                ? context.read<ProfileBloc>().profileEmailController.text
-                : context.read<PlaceOrderBloc>().emailController.text;
-        context.read<PlaceOrderBloc>().additionalNumberController.text = context
-                .read<PlaceOrderBloc>()
-                .additionalNumberController
-                .text
-                .isEmpty
-            ? context.read<ProfileBloc>().profileAddPhoneController.text
-            : context.read<PlaceOrderBloc>().additionalNumberController.text;
-        context.read<PlaceOrderBloc>().add(const PlaceOrderEvent.userNumber());
-      },
+    WidgetsBinding.instance.addPersistentFrameCallback(
+      (timeStamp) {},
     );
     return SizedBox(
       child: Form(

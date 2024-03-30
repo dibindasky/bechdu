@@ -5,9 +5,7 @@ class PlaceOrderEvent with _$PlaceOrderEvent {
   const factory PlaceOrderEvent.getPromoCode({
     required PromoCodeRequestModel promoCodeRequestModel,
   }) = GetPromoCode;
-  const factory PlaceOrderEvent.abandendOrder({
-    required AbandendOrderRequestModel abandendOrderRequestModel,
-  }) = AbandendOrder;
+
   const factory PlaceOrderEvent.getDatetime() = GetDatetime;
   const factory PlaceOrderEvent.orderPlacing() = OrderPlacing;
   const factory PlaceOrderEvent.getOrders({bool? isLoad}) = GetOrders;
@@ -15,7 +13,6 @@ class PlaceOrderEvent with _$PlaceOrderEvent {
     required OrderCancelationRequestModel orderCancelationRequestModel,
     required String orderId,
   }) = OrderCancel;
-
   const factory PlaceOrderEvent.productDetailsPick({
     required ProductDetails productDetails,
   }) = ProductDetailsPick;
@@ -24,7 +21,6 @@ class PlaceOrderEvent with _$PlaceOrderEvent {
   }) = PromoCodePick;
   const factory PlaceOrderEvent.addressPick({
     required User user,
-    required Promo promo,
   }) = AddressPick;
   const factory PlaceOrderEvent.paymentOption({
     required Payment payment,
@@ -35,6 +31,7 @@ class PlaceOrderEvent with _$PlaceOrderEvent {
   const factory PlaceOrderEvent.removeAppliedPromo() = RemoveAppliedPromo;
   const factory PlaceOrderEvent.pickupDetailsPick({
     required PickUpDetails pickUpDetails,
+    required Promo promo,
   }) = PickupDetailsPick;
   const factory PlaceOrderEvent.userNumber() = UserNumber;
   const factory PlaceOrderEvent.removeAllFieldData() = RemoveAllFieldData;
@@ -44,4 +41,6 @@ class PlaceOrderEvent with _$PlaceOrderEvent {
     required String orderId,
   }) = InvoiceDownload;
   const factory PlaceOrderEvent.clear() = Clear;
+  const factory PlaceOrderEvent.selectedRadio({required String selectedRadio}) =
+      SelectedRadio;
 }

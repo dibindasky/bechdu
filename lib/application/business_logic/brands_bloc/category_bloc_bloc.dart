@@ -4,6 +4,7 @@ import 'package:beachdu/domain/model/category_model/single_category_brands_respo
 import 'package:beachdu/domain/model/category_model/single_category_brands_responce_model/single_category_brands_responce_model.dart';
 import 'package:beachdu/domain/model/get_products_respoce_model/get_products_respoce_model.dart';
 import 'package:beachdu/domain/model/get_products_respoce_model/product.dart';
+import 'package:beachdu/domain/model/get_series_responce_model/series.dart';
 import 'package:beachdu/domain/repository/brands_repo.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/foundation.dart';
@@ -25,6 +26,7 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
   String? productImage;
   List<Brands> brandsList = [];
   List<Product> productList = [];
+  List<String> seriesList = [];
   List<List<String>> updatedItems = [];
   String? modelFilter;
   String? varientFilter;
@@ -43,19 +45,6 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
 
   FutureOr<void> clear(Clear event, emit) {
     emit(CategoryBlocState.intial());
-  }
-
-  FutureOr<void> seriesSearch(
-    SeriesSearch event,
-    Emitter<CategoryBlocState> emit,
-  ) {
-    final String searchQuery =
-        event.searchQuery.toLowerCase().trim().replaceAll(' ', '');
-    final List<String> filteredSeries = series.where((item) {
-      final String series = item.toLowerCase().trim().replaceAll(' ', '');
-      return series.contains(searchQuery);
-    }).toList();
-    emit(state.copyWith(filteredSeries: filteredSeries));
   }
 
   FutureOr<void> productSearch(
@@ -94,6 +83,23 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
     emit(state.copyWith(
       filteredBrands: filteredBrands,
     ));
+    //log(filteredBrands.toString());
+  }
+
+  FutureOr<void> seriesSearch(
+    SeriesSearch event,
+    Emitter<CategoryBlocState> emit,
+  ) {
+    final String searchQuery =
+        event.searchQuery.toLowerCase().trim().replaceAll(' ', '');
+    final List<String> filteredSeries = seriesList.where((item) {
+      final String series = item.toLowerCase().trim().replaceAll(' ', '');
+      return series.contains(searchQuery);
+    }).toList();
+    emit(
+      state.copyWith(filteredSeries: filteredSeries),
+    );
+    // log(filteredSeries.toString());
   }
 
   FutureOr<void> getSingleCategoryBrands(
@@ -149,6 +155,7 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
 
     barndName = event.brandName;
     seriesName = event.seriesName;
+    log('seriesName $seriesName');
     data.fold((failure) {
       emit(state.copyWith(
         isLoading: false,
@@ -156,9 +163,8 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
       ));
     }, (getproducts) {
       productList = getproducts.products ?? [];
-      log('mode DATA BLOC $modelFilter');
+
       if (modelFilter != null) {
-        log('mode DATA $modelFilter');
         productList = productList
             .where((product) => product.model == modelFilter)
             .toList();
@@ -168,9 +174,6 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
             .where((product) => product.variant == varientFilter)
             .toList();
       }
-      // if (modelFilter == null && varientFilter == null) {
-      //   productList = List.from(productList);
-      // }
       emit(state.copyWith(
         isLoading: false,
         hasError: false,
@@ -199,12 +202,12 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
         hasError: true,
       ));
     }, (getSeriesSuccess) {
-      series.clear();
-      series.addAll(getSeriesSuccess);
+      seriesList.clear();
+      seriesList.addAll(getSeriesSuccess);
       emit(state.copyWith(
         hasError: false,
         isLoading: false,
-        filteredSeries: getSeriesSuccess,
+        filteredSeries: seriesList,
         varients: [],
       ));
     });
@@ -230,7 +233,6 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
     }, (getModelSuccess) {
       List<String> models = [];
       models.clear();
-      models.insert(0, 'All');
       models.addAll(getModelSuccess);
       emit(state.copyWith(
         hasError: false,
@@ -263,14 +265,10 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
         hasError: true,
       ));
     }, (getVarientsSuccess) {
-      List<String> varients = [];
-      varients.insert(0, 'All');
-      varients.addAll(getVarientsSuccess);
-      log('${varients}');
       emit(state.copyWith(
         hasError: false,
         isLoading: false,
-        varients: varients,
+        varients: getVarientsSuccess,
       ));
     });
   }

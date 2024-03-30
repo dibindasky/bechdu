@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:beachdu/data/service/api_service.dart';
 import 'package:beachdu/domain/core/api_endpoints/api_endpoints.dart';
 import 'package:beachdu/domain/core/failure/failure.dart';
@@ -31,7 +30,7 @@ class HomeServices implements HomeRepository {
     } on DioException catch (e) {
       return Left(Failure(message: e.message ?? errorMessage));
     } catch (e) {
-      return Left(Failure(message: '$errorMessage getAllCategory'));
+      return Left(Failure(message: '$errorMessage Get All category error'));
     }
   }
 
@@ -53,10 +52,9 @@ class HomeServices implements HomeRepository {
     try {
       final responce =
           await _apiService.get(ApiEndPoints.getBestSellingProducts);
-      // log('getBestSellingProducts data ${responce.toString()}');
       return Right(BestSellingProductsResponceModel.fromJson(responce.data));
     } on DioException catch (e) {
-      return Left(Failure(message: e.response?.data['error'] ?? errorMessage));
+      return Left(Failure(message: e.message ?? errorMessage));
     } catch (e) {
       return Left(Failure(message: errorMessage));
     }
@@ -71,10 +69,9 @@ class HomeServices implements HomeRepository {
         ApiEndPoints.globalProductSearch,
         queryParameters: searchParamModel.toJson(),
       );
-
       return Right(SearchResponceModel.fromJson(responce.data));
     } on DioException catch (e) {
-      return Left(Failure(message: e.response?.data['error'] ?? errorMessage));
+      return Left(Failure(message: e.message ?? errorMessage));
     } catch (e) {
       return Left(Failure(message: errorMessage));
     }

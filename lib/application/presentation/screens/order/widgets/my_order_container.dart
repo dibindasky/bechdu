@@ -22,7 +22,18 @@ class MyOrderContainer extends StatelessWidget {
       builder: (context, state) {
         final data = state.getAllOrderResponceModel!.orders![index];
         final type = data.payment?.type!;
-
+        String productPrice = '';
+        String promoPrice = '';
+        int finalPrice = 0;
+        if (data.productDetails != null && data.productDetails!.price != null) {
+          productPrice = data.productDetails!.price!;
+        }
+        if (data.promo != null && data.promo!.price != null) {
+          promoPrice = data.promo!.price!;
+        }
+        int productPriceInt = int.tryParse(productPrice) ?? 0;
+        int promoPriceInt = int.tryParse(promoPrice) ?? 0;
+        finalPrice = productPriceInt + promoPriceInt;
         return Container(
           decoration: BoxDecoration(
             color: kWhite,
@@ -52,7 +63,7 @@ class MyOrderContainer extends StatelessWidget {
                         style: textHeadMedium1,
                       ),
                       Text(
-                        "₹ ${data.productDetails!.price}",
+                        "₹ $finalPrice",
                         style: textHeadBold1,
                       ),
                     ],

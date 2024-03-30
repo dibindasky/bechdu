@@ -53,7 +53,7 @@ class PlaceOrderService implements PlaceOrderRepo {
       );
       return Right(OrderPlacedResponceModel.fromJson(responce.data));
     } on DioException catch (e) {
-      return Left(Failure(message: e.response?.data['error'] ?? errorMessage));
+      return Left(Failure(message: e.message ?? errorMessage));
     } catch (e) {
       return Left(Failure(message: errorMessage));
     }
@@ -86,7 +86,7 @@ class PlaceOrderService implements PlaceOrderRepo {
       );
       return Right(OrderCancelationResponceModel.fromJson(responce.data));
     } on DioException catch (e) {
-      return Left(Failure(message: e.response?.data['error'] ?? errorMessage));
+      return Left(Failure(message: e.message ?? errorMessage));
     } catch (e) {
       return Left(Failure(message: errorMessage));
     }
@@ -101,7 +101,7 @@ class PlaceOrderService implements PlaceOrderRepo {
       return Right(DateTomeResponceModel.fromJson(responce.data));
     } on DioException catch (e) {
       log('getDateTime DioException $e');
-      return Left(Failure(message: e.response?.data['error'] ?? errorMessage));
+      return Left(Failure(message: e.message ?? errorMessage));
     } catch (e) {
       log('getDateTime catch $e');
       return Left(Failure(message: errorMessage));
