@@ -221,7 +221,6 @@ class PlaceOrderBloc extends Bloc<PlaceOrderEvent, PlaceOrderState> {
 
     log('addressPick event bloc event.user ${event.user.address}');
     log('addressPick event bloc state.orderPlacedRequestModel.user ${state.orderPlacedRequestModel.user?.address}');
-
     emit(state.copyWith(
       orderPlacedRequestModel: updatedModel,
     ));

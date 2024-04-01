@@ -46,6 +46,7 @@ class PlaceOrderService implements PlaceOrderRepo {
     required OrderPlacedRequestModel orderPlacedRequestModel,
   }) async {
     try {
+      log('before ${orderPlacedRequestModel.toJson()}');
       final responce = await _apiService.post(
         addHeader: true,
         ApiEndPoints.orderPlacing,

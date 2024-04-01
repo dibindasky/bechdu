@@ -64,27 +64,6 @@ class _AddressListViewState extends State<AddressListView> {
                     );
 
                 // Address pick request user object creation
-
-                String email =
-                    context.read<PlaceOrderBloc>().emailController.text;
-                String name =
-                    context.read<PlaceOrderBloc>().nameController.text;
-                String addPhone = context
-                    .read<PlaceOrderBloc>()
-                    .additionalNumberController
-                    .text;
-
-                User user = User(
-                  address: state.address[state.selectedAddressIndex],
-                  email: email,
-                  name: name,
-                  addPhone: addPhone.isEmpty ? '' : addPhone,
-                );
-
-                log('Picked addrs ${user.address}');
-                context
-                    .read<PlaceOrderBloc>()
-                    .add(PlaceOrderEvent.addressPick(user: user));
               },
               child: Material(
                 elevation: 1.4,
