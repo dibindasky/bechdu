@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:beachdu/application/business_logic/question_tab/question_tab_bloc.dart';
 import 'package:beachdu/application/presentation/screens/product_selection/product_screen.dart';
 import 'package:beachdu/application/presentation/screens/questions/after_question_checked/preview_product_screen/expansion_tile.dart';
@@ -82,11 +84,18 @@ class ScreenProductPreview extends StatelessWidget {
                 ),
                 kHeight40,
                 kHeight40,
-                CustomButton(
-                  text: 'Continue',
-                  onPressed: () {
-                    secondtabScreensNotifier.value = 3;
-                    secondtabScreensNotifier.notifyListeners();
+                BlocBuilder<QuestionTabBloc, QuestionTabState>(
+                  builder: (context, state) {
+                    return CustomButton(
+                      text: 'Continue',
+                      onPressed: () {
+                        log('tap');
+                        if (state.basePriceModelResponce != null) {
+                          secondtabScreensNotifier.value = 3;
+                          secondtabScreensNotifier.notifyListeners();
+                        }
+                      },
+                    );
                   },
                 ),
                 kHeight10

@@ -79,6 +79,12 @@ class _StreetAddressState extends State<StreetAddress> {
                         message: 'Please create atleast one address',
                         color: kRed,
                       );
+                    } else if (state.selectedAddressIndex == -1) {
+                      showSnack(
+                        context: context,
+                        message: 'Please select one address',
+                        color: kRed,
+                      );
                     } else {
                       String email =
                           context.read<PlaceOrderBloc>().emailController.text;
@@ -95,9 +101,7 @@ class _StreetAddressState extends State<StreetAddress> {
                         name: name,
                         addPhone: addPhone.isEmpty ? '' : addPhone,
                       );
-
                       log('address ${user.toJson()}');
-
                       log('Picked addrs ${user.address}');
                       context
                           .read<PlaceOrderBloc>()
