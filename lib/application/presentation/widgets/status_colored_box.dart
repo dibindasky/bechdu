@@ -29,7 +29,7 @@ class StatusColoredBox extends StatelessWidget {
           color: color,
           child: Padding(
             padding:
-                EdgeInsets.symmetric(horizontal: 35, vertical: verticalPadding),
+                EdgeInsets.symmetric(horizontal: 40, vertical: verticalPadding),
             child: Center(
               child: FittedBox(
                 child: Text(

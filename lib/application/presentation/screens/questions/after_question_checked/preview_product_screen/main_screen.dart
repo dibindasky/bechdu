@@ -1,5 +1,4 @@
 import 'dart:developer';
-
 import 'package:beachdu/application/business_logic/question_tab/question_tab_bloc.dart';
 import 'package:beachdu/application/presentation/screens/product_selection/product_screen.dart';
 import 'package:beachdu/application/presentation/screens/questions/after_question_checked/preview_product_screen/expansion_tile.dart';
@@ -7,14 +6,13 @@ import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/application/presentation/utils/custom_button.dart';
 import 'package:beachdu/application/presentation/utils/enums/type_display.dart';
+import 'package:beachdu/application/presentation/utils/snackbar/snackbar.dart';
 import 'package:beachdu/application/presentation/widgets/top_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ScreenProductPreview extends StatelessWidget {
-  const ScreenProductPreview({
-    super.key,
-  });
+  const ScreenProductPreview({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -89,10 +87,15 @@ class ScreenProductPreview extends StatelessWidget {
                     return CustomButton(
                       text: 'Continue',
                       onPressed: () {
-                        log('tap');
                         if (state.basePriceModelResponce != null) {
                           secondtabScreensNotifier.value = 3;
                           secondtabScreensNotifier.notifyListeners();
+                        } else {
+                          showSnack(
+                            context: context,
+                            message: 'Please wait some seconds',
+                            color: kRed,
+                          );
                         }
                       },
                     );

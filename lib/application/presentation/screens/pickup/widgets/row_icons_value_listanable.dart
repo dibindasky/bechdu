@@ -1,5 +1,4 @@
 import 'dart:developer';
-
 import 'package:beachdu/application/business_logic/location/location_bloc.dart';
 import 'package:beachdu/application/presentation/screens/pickup/pickup_screen.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
@@ -59,22 +58,6 @@ class RowIconsValueListanable extends StatelessWidget {
               .add(const LocationEvent.locationPick(isLoad: true));
         }
         pickupDetailChangeNotifier.value = item;
-
-        //  if (item == PickupDetailContainers.personalDetails) {
-        //   if (validatePersonalDetails(context)) {
-        //     context
-        //         .read<LocationBloc>()
-        //         .add(const LocationEvent.locationPick(isLoad: true));
-        //   }
-        // } else if (item == PickupDetailContainers.address) {
-        //   // ... (validate and handle address screen)
-        // } else if (item == PickupDetailContainers.cashOrUPI) {
-        //   // ... (validate and handle cash/UPI screen)
-        // } else if (item == PickupDetailContainers.dateSelect) {
-        //   // ... (validate and handle date selection screen)
-        // } else {
-        //   pickupDetailChangeNotifier.value = item;
-        //}
       },
       child: CircleAvatar(
         backgroundColor: isSelected ? kGreenPrimary : kBlueLight,
