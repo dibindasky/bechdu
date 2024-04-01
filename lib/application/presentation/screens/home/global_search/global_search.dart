@@ -1,6 +1,7 @@
 import 'package:beachdu/application/business_logic/brands_bloc/category_bloc_bloc.dart';
 import 'package:beachdu/application/business_logic/home_bloc/home_bloc.dart';
 import 'package:beachdu/application/business_logic/navbar/navbar_cubit.dart';
+import 'package:beachdu/application/business_logic/place_order/place_order_bloc.dart';
 import 'package:beachdu/application/business_logic/question_tab/question_tab_bloc.dart';
 import 'package:beachdu/application/presentation/screens/product_selection/product_screen.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
@@ -26,12 +27,7 @@ class _GlobalProductSearchState extends State<GlobalProductSearch> {
   @override
   void initState() {
     if (widget.scrollController != null) {
-      widget.scrollController!.addListener(() {
-        widget.scrollController!.animateTo(.1,
-            duration: const Duration(milliseconds: 500),
-            curve: Curves.fastEaseInToSlowEaseOut);
-        _scrollCallBack();
-      });
+      _scrollCallBack();
     }
     super.initState();
   }
@@ -131,6 +127,9 @@ class _GlobalProductSearchState extends State<GlobalProductSearch> {
                         secondtabScreensNotifier.notifyListeners();
                         brandSeriesProductValueNotifier.value = 0;
                         brandSeriesProductValueNotifier.notifyListeners();
+                        context
+                            .read<PlaceOrderBloc>()
+                            .add(const PlaceOrderEvent.removeAllFieldData());
                       },
                       child: Container(
                         padding: const EdgeInsets.all(10),

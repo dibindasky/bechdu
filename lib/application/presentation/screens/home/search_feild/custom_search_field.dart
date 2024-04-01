@@ -5,7 +5,6 @@ import 'package:beachdu/application/presentation/screens/home/home_screen.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/application/presentation/utils/debouncer.dart';
-import 'package:beachdu/domain/model/search_model/search_param_model/search_param_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -57,7 +56,7 @@ class CustomSearchFieldHome extends StatelessWidget {
                   debouncer.run(() {
                     context.read<HomeBloc>().add(
                           HomeEvent.globalPrductSearch(
-                            searchParamModel: SearchParamModel(search: value),
+                            searchQuery: value,
                           ),
                         );
                     log('event call search UI $value');

@@ -101,7 +101,7 @@ class _BottomSectionState extends State<BottomSection> {
             ],
           ),
         const SizedBox(height: 50),
-        kHeight50,
+        kHeight20,
         widget.loginWay == LoginWay.fromProfile ||
                 widget.loginWay == LoginWay.fromQuestionPick
             ? kHeight20
@@ -125,7 +125,7 @@ class _BottomSectionState extends State<BottomSection> {
                   ),
                 ),
               ),
-        kHeight50,
+        kHeight20,
         BlocBuilder<QuestionTabBloc, QuestionTabState>(
           builder: (context, questionBlo) {
             return BlocBuilder<AuthBloc, AuthState>(

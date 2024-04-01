@@ -22,8 +22,7 @@ mixin _$HomeEvent {
     required TResult Function(String category) selectedactegory,
     required TResult Function(bool isLoad) homePageBanners,
     required TResult Function(bool isLoad) getBestSellingProducts,
-    required TResult Function(SearchParamModel searchParamModel)
-        globalPrductSearch,
+    required TResult Function(String searchQuery) globalPrductSearch,
     required TResult Function() nextPage,
     required TResult Function() clear,
   }) =>
@@ -34,7 +33,7 @@ mixin _$HomeEvent {
     TResult? Function(String category)? selectedactegory,
     TResult? Function(bool isLoad)? homePageBanners,
     TResult? Function(bool isLoad)? getBestSellingProducts,
-    TResult? Function(SearchParamModel searchParamModel)? globalPrductSearch,
+    TResult? Function(String searchQuery)? globalPrductSearch,
     TResult? Function()? nextPage,
     TResult? Function()? clear,
   }) =>
@@ -45,7 +44,7 @@ mixin _$HomeEvent {
     TResult Function(String category)? selectedactegory,
     TResult Function(bool isLoad)? homePageBanners,
     TResult Function(bool isLoad)? getBestSellingProducts,
-    TResult Function(SearchParamModel searchParamModel)? globalPrductSearch,
+    TResult Function(String searchQuery)? globalPrductSearch,
     TResult Function()? nextPage,
     TResult Function()? clear,
     required TResult orElse(),
@@ -174,8 +173,7 @@ class _$GetAllCategoryImpl implements GetAllCategory {
     required TResult Function(String category) selectedactegory,
     required TResult Function(bool isLoad) homePageBanners,
     required TResult Function(bool isLoad) getBestSellingProducts,
-    required TResult Function(SearchParamModel searchParamModel)
-        globalPrductSearch,
+    required TResult Function(String searchQuery) globalPrductSearch,
     required TResult Function() nextPage,
     required TResult Function() clear,
   }) {
@@ -189,7 +187,7 @@ class _$GetAllCategoryImpl implements GetAllCategory {
     TResult? Function(String category)? selectedactegory,
     TResult? Function(bool isLoad)? homePageBanners,
     TResult? Function(bool isLoad)? getBestSellingProducts,
-    TResult? Function(SearchParamModel searchParamModel)? globalPrductSearch,
+    TResult? Function(String searchQuery)? globalPrductSearch,
     TResult? Function()? nextPage,
     TResult? Function()? clear,
   }) {
@@ -203,7 +201,7 @@ class _$GetAllCategoryImpl implements GetAllCategory {
     TResult Function(String category)? selectedactegory,
     TResult Function(bool isLoad)? homePageBanners,
     TResult Function(bool isLoad)? getBestSellingProducts,
-    TResult Function(SearchParamModel searchParamModel)? globalPrductSearch,
+    TResult Function(String searchQuery)? globalPrductSearch,
     TResult Function()? nextPage,
     TResult Function()? clear,
     required TResult orElse(),
@@ -342,8 +340,7 @@ class _$SelectedactegoryImpl implements Selectedactegory {
     required TResult Function(String category) selectedactegory,
     required TResult Function(bool isLoad) homePageBanners,
     required TResult Function(bool isLoad) getBestSellingProducts,
-    required TResult Function(SearchParamModel searchParamModel)
-        globalPrductSearch,
+    required TResult Function(String searchQuery) globalPrductSearch,
     required TResult Function() nextPage,
     required TResult Function() clear,
   }) {
@@ -357,7 +354,7 @@ class _$SelectedactegoryImpl implements Selectedactegory {
     TResult? Function(String category)? selectedactegory,
     TResult? Function(bool isLoad)? homePageBanners,
     TResult? Function(bool isLoad)? getBestSellingProducts,
-    TResult? Function(SearchParamModel searchParamModel)? globalPrductSearch,
+    TResult? Function(String searchQuery)? globalPrductSearch,
     TResult? Function()? nextPage,
     TResult? Function()? clear,
   }) {
@@ -371,7 +368,7 @@ class _$SelectedactegoryImpl implements Selectedactegory {
     TResult Function(String category)? selectedactegory,
     TResult Function(bool isLoad)? homePageBanners,
     TResult Function(bool isLoad)? getBestSellingProducts,
-    TResult Function(SearchParamModel searchParamModel)? globalPrductSearch,
+    TResult Function(String searchQuery)? globalPrductSearch,
     TResult Function()? nextPage,
     TResult Function()? clear,
     required TResult orElse(),
@@ -509,8 +506,7 @@ class _$HomePageBannersImpl implements HomePageBanners {
     required TResult Function(String category) selectedactegory,
     required TResult Function(bool isLoad) homePageBanners,
     required TResult Function(bool isLoad) getBestSellingProducts,
-    required TResult Function(SearchParamModel searchParamModel)
-        globalPrductSearch,
+    required TResult Function(String searchQuery) globalPrductSearch,
     required TResult Function() nextPage,
     required TResult Function() clear,
   }) {
@@ -524,7 +520,7 @@ class _$HomePageBannersImpl implements HomePageBanners {
     TResult? Function(String category)? selectedactegory,
     TResult? Function(bool isLoad)? homePageBanners,
     TResult? Function(bool isLoad)? getBestSellingProducts,
-    TResult? Function(SearchParamModel searchParamModel)? globalPrductSearch,
+    TResult? Function(String searchQuery)? globalPrductSearch,
     TResult? Function()? nextPage,
     TResult? Function()? clear,
   }) {
@@ -538,7 +534,7 @@ class _$HomePageBannersImpl implements HomePageBanners {
     TResult Function(String category)? selectedactegory,
     TResult Function(bool isLoad)? homePageBanners,
     TResult Function(bool isLoad)? getBestSellingProducts,
-    TResult Function(SearchParamModel searchParamModel)? globalPrductSearch,
+    TResult Function(String searchQuery)? globalPrductSearch,
     TResult Function()? nextPage,
     TResult Function()? clear,
     required TResult orElse(),
@@ -678,8 +674,7 @@ class _$GetBestSellingProductsImpl implements GetBestSellingProducts {
     required TResult Function(String category) selectedactegory,
     required TResult Function(bool isLoad) homePageBanners,
     required TResult Function(bool isLoad) getBestSellingProducts,
-    required TResult Function(SearchParamModel searchParamModel)
-        globalPrductSearch,
+    required TResult Function(String searchQuery) globalPrductSearch,
     required TResult Function() nextPage,
     required TResult Function() clear,
   }) {
@@ -693,7 +688,7 @@ class _$GetBestSellingProductsImpl implements GetBestSellingProducts {
     TResult? Function(String category)? selectedactegory,
     TResult? Function(bool isLoad)? homePageBanners,
     TResult? Function(bool isLoad)? getBestSellingProducts,
-    TResult? Function(SearchParamModel searchParamModel)? globalPrductSearch,
+    TResult? Function(String searchQuery)? globalPrductSearch,
     TResult? Function()? nextPage,
     TResult? Function()? clear,
   }) {
@@ -707,7 +702,7 @@ class _$GetBestSellingProductsImpl implements GetBestSellingProducts {
     TResult Function(String category)? selectedactegory,
     TResult Function(bool isLoad)? homePageBanners,
     TResult Function(bool isLoad)? getBestSellingProducts,
-    TResult Function(SearchParamModel searchParamModel)? globalPrductSearch,
+    TResult Function(String searchQuery)? globalPrductSearch,
     TResult Function()? nextPage,
     TResult Function()? clear,
     required TResult orElse(),
@@ -782,7 +777,7 @@ abstract class _$$GlobalPrductSearchImplCopyWith<$Res> {
           $Res Function(_$GlobalPrductSearchImpl) then) =
       __$$GlobalPrductSearchImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({SearchParamModel searchParamModel});
+  $Res call({String searchQuery});
 }
 
 /// @nodoc
@@ -796,13 +791,13 @@ class __$$GlobalPrductSearchImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? searchParamModel = null,
+    Object? searchQuery = null,
   }) {
     return _then(_$GlobalPrductSearchImpl(
-      searchParamModel: null == searchParamModel
-          ? _value.searchParamModel
-          : searchParamModel // ignore: cast_nullable_to_non_nullable
-              as SearchParamModel,
+      searchQuery: null == searchQuery
+          ? _value.searchQuery
+          : searchQuery // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -810,14 +805,14 @@ class __$$GlobalPrductSearchImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$GlobalPrductSearchImpl implements GlobalPrductSearch {
-  const _$GlobalPrductSearchImpl({required this.searchParamModel});
+  const _$GlobalPrductSearchImpl({required this.searchQuery});
 
   @override
-  final SearchParamModel searchParamModel;
+  final String searchQuery;
 
   @override
   String toString() {
-    return 'HomeEvent.globalPrductSearch(searchParamModel: $searchParamModel)';
+    return 'HomeEvent.globalPrductSearch(searchQuery: $searchQuery)';
   }
 
   @override
@@ -825,12 +820,12 @@ class _$GlobalPrductSearchImpl implements GlobalPrductSearch {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GlobalPrductSearchImpl &&
-            (identical(other.searchParamModel, searchParamModel) ||
-                other.searchParamModel == searchParamModel));
+            (identical(other.searchQuery, searchQuery) ||
+                other.searchQuery == searchQuery));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, searchParamModel);
+  int get hashCode => Object.hash(runtimeType, searchQuery);
 
   @JsonKey(ignore: true)
   @override
@@ -846,12 +841,11 @@ class _$GlobalPrductSearchImpl implements GlobalPrductSearch {
     required TResult Function(String category) selectedactegory,
     required TResult Function(bool isLoad) homePageBanners,
     required TResult Function(bool isLoad) getBestSellingProducts,
-    required TResult Function(SearchParamModel searchParamModel)
-        globalPrductSearch,
+    required TResult Function(String searchQuery) globalPrductSearch,
     required TResult Function() nextPage,
     required TResult Function() clear,
   }) {
-    return globalPrductSearch(searchParamModel);
+    return globalPrductSearch(searchQuery);
   }
 
   @override
@@ -861,11 +855,11 @@ class _$GlobalPrductSearchImpl implements GlobalPrductSearch {
     TResult? Function(String category)? selectedactegory,
     TResult? Function(bool isLoad)? homePageBanners,
     TResult? Function(bool isLoad)? getBestSellingProducts,
-    TResult? Function(SearchParamModel searchParamModel)? globalPrductSearch,
+    TResult? Function(String searchQuery)? globalPrductSearch,
     TResult? Function()? nextPage,
     TResult? Function()? clear,
   }) {
-    return globalPrductSearch?.call(searchParamModel);
+    return globalPrductSearch?.call(searchQuery);
   }
 
   @override
@@ -875,13 +869,13 @@ class _$GlobalPrductSearchImpl implements GlobalPrductSearch {
     TResult Function(String category)? selectedactegory,
     TResult Function(bool isLoad)? homePageBanners,
     TResult Function(bool isLoad)? getBestSellingProducts,
-    TResult Function(SearchParamModel searchParamModel)? globalPrductSearch,
+    TResult Function(String searchQuery)? globalPrductSearch,
     TResult Function()? nextPage,
     TResult Function()? clear,
     required TResult orElse(),
   }) {
     if (globalPrductSearch != null) {
-      return globalPrductSearch(searchParamModel);
+      return globalPrductSearch(searchQuery);
     }
     return orElse();
   }
@@ -935,11 +929,10 @@ class _$GlobalPrductSearchImpl implements GlobalPrductSearch {
 }
 
 abstract class GlobalPrductSearch implements HomeEvent {
-  const factory GlobalPrductSearch(
-          {required final SearchParamModel searchParamModel}) =
+  const factory GlobalPrductSearch({required final String searchQuery}) =
       _$GlobalPrductSearchImpl;
 
-  SearchParamModel get searchParamModel;
+  String get searchQuery;
   @JsonKey(ignore: true)
   _$$GlobalPrductSearchImplCopyWith<_$GlobalPrductSearchImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -987,8 +980,7 @@ class _$NextPageImpl implements NextPage {
     required TResult Function(String category) selectedactegory,
     required TResult Function(bool isLoad) homePageBanners,
     required TResult Function(bool isLoad) getBestSellingProducts,
-    required TResult Function(SearchParamModel searchParamModel)
-        globalPrductSearch,
+    required TResult Function(String searchQuery) globalPrductSearch,
     required TResult Function() nextPage,
     required TResult Function() clear,
   }) {
@@ -1002,7 +994,7 @@ class _$NextPageImpl implements NextPage {
     TResult? Function(String category)? selectedactegory,
     TResult? Function(bool isLoad)? homePageBanners,
     TResult? Function(bool isLoad)? getBestSellingProducts,
-    TResult? Function(SearchParamModel searchParamModel)? globalPrductSearch,
+    TResult? Function(String searchQuery)? globalPrductSearch,
     TResult? Function()? nextPage,
     TResult? Function()? clear,
   }) {
@@ -1016,7 +1008,7 @@ class _$NextPageImpl implements NextPage {
     TResult Function(String category)? selectedactegory,
     TResult Function(bool isLoad)? homePageBanners,
     TResult Function(bool isLoad)? getBestSellingProducts,
-    TResult Function(SearchParamModel searchParamModel)? globalPrductSearch,
+    TResult Function(String searchQuery)? globalPrductSearch,
     TResult Function()? nextPage,
     TResult Function()? clear,
     required TResult orElse(),
@@ -1121,8 +1113,7 @@ class _$ClearImpl implements Clear {
     required TResult Function(String category) selectedactegory,
     required TResult Function(bool isLoad) homePageBanners,
     required TResult Function(bool isLoad) getBestSellingProducts,
-    required TResult Function(SearchParamModel searchParamModel)
-        globalPrductSearch,
+    required TResult Function(String searchQuery) globalPrductSearch,
     required TResult Function() nextPage,
     required TResult Function() clear,
   }) {
@@ -1136,7 +1127,7 @@ class _$ClearImpl implements Clear {
     TResult? Function(String category)? selectedactegory,
     TResult? Function(bool isLoad)? homePageBanners,
     TResult? Function(bool isLoad)? getBestSellingProducts,
-    TResult? Function(SearchParamModel searchParamModel)? globalPrductSearch,
+    TResult? Function(String searchQuery)? globalPrductSearch,
     TResult? Function()? nextPage,
     TResult? Function()? clear,
   }) {
@@ -1150,7 +1141,7 @@ class _$ClearImpl implements Clear {
     TResult Function(String category)? selectedactegory,
     TResult Function(bool isLoad)? homePageBanners,
     TResult Function(bool isLoad)? getBestSellingProducts,
-    TResult Function(SearchParamModel searchParamModel)? globalPrductSearch,
+    TResult Function(String searchQuery)? globalPrductSearch,
     TResult Function()? nextPage,
     TResult Function()? clear,
     required TResult orElse(),

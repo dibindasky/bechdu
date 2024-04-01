@@ -165,6 +165,7 @@ class _ScreenProductSelectionProductFindDropdownGridViewState
                           //         ),
                           //       );
                           // }
+
                           if (context.read<CategoryBlocBloc>().modelFilter !=
                               value) {
                             context.read<CategoryBlocBloc>().varientFilter =

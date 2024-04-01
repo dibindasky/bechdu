@@ -38,7 +38,7 @@ class _YesOrNoListMakerState extends State<YesOrNoListMaker> {
                           .toList();
                       final selection =
                           answers.isEmpty ? null : answers.first.value;
-                      print('selection $index => $selection');
+                      // print('selection $index => $selection');
                       return YesOrNoTile(
                         onTap: () => setState(() {}),
                         state: state,

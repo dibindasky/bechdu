@@ -1,5 +1,7 @@
 import 'package:beachdu/application/business_logic/brands_bloc/category_bloc_bloc.dart';
 import 'package:beachdu/application/business_logic/navbar/navbar_cubit.dart';
+import 'package:beachdu/application/business_logic/place_order/place_order_bloc.dart';
+import 'package:beachdu/application/business_logic/profile/profile_bloc.dart';
 import 'package:beachdu/application/presentation/screens/pickup/pickup_screen.dart';
 import 'package:beachdu/application/presentation/screens/product_selection/brand_lists/brand_list_builder.dart';
 import 'package:beachdu/application/presentation/screens/product_selection/product_lists/product_list_builder.dart';
@@ -29,11 +31,45 @@ List<Widget> brandAndSeriesPoductList = [
   const ProductListViewBuilder(),
 ];
 
-class SecondTabvaluelistanableBBuilder extends StatelessWidget {
+class SecondTabvaluelistanableBBuilder extends StatefulWidget {
   const SecondTabvaluelistanableBBuilder({super.key});
 
   @override
+  State<SecondTabvaluelistanableBBuilder> createState() =>
+      _SecondTabvaluelistanableBBuilderState();
+}
+
+class _SecondTabvaluelistanableBBuilderState
+    extends State<SecondTabvaluelistanableBBuilder> {
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback(
+      (timeStamp) {
+        context
+            .read<ProfileBloc>()
+            .add(const ProfileEvent.getUserInfo(isLoad: true));
+        context.read<PlaceOrderBloc>().nameController.text =
+            context.read<PlaceOrderBloc>().nameController.text.isEmpty
+                ? context.read<ProfileBloc>().profileNameController.text
+                : context.read<PlaceOrderBloc>().nameController.text;
+        context.read<PlaceOrderBloc>().emailController.text =
+            context.read<PlaceOrderBloc>().emailController.text.isEmpty
+                ? context.read<ProfileBloc>().profileEmailController.text
+                : context.read<PlaceOrderBloc>().emailController.text;
+        context.read<PlaceOrderBloc>().additionalNumberController.text = context
+                .read<PlaceOrderBloc>()
+                .additionalNumberController
+                .text
+                .isEmpty
+            ? context.read<ProfileBloc>().profileAddPhoneController.text
+            : context.read<PlaceOrderBloc>().additionalNumberController.text;
+      },
+    );
     return ValueListenableBuilder(
       valueListenable: secondtabScreensNotifier,
       builder: (context, value, child) {

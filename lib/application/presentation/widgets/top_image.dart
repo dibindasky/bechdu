@@ -58,14 +58,14 @@ class TopImage extends StatelessWidget {
                         fromWhere == FromWhere.pickupScreen ||
                                 fromWhere == FromWhere.checkoutAndPickupScreen
                             ? kWidth20
-                            : kWidth10,
+                            : kEmpty,
                         SizedBox(
                           height: fromWhere == FromWhere.checkoutAndPickupScreen
                               ? sWidth * .38
                               : sWidth * .27,
                           width: fromWhere == FromWhere.checkoutAndPickupScreen
                               ? sWidth * .34
-                              : sWidth * .23,
+                              : sWidth * .27,
                           child: Image.network(
                             url,
                             fit: BoxFit.fill,
@@ -116,65 +116,63 @@ class TopImage extends StatelessWidget {
                                         color: kWhite,
                                       ),
                                     );
-                                  } else {
-                                    return Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        questiontabBloc
-                                                    .basePriceModelResponce !=
-                                                null
-                                            ? Text(
-                                                '₹ ${questiontabBloc.basePriceModelResponce!.basePrice}',
-                                                style: textHeadBoldBig.copyWith(
-                                                  color: kWhite,
-                                                ),
-                                              )
-                                            : Text(
-                                                '₹ 0',
-                                                style: textHeadBoldBig.copyWith(
-                                                  color: kWhite,
-                                                ),
-                                              ),
-                                        Row(
-                                          children: [
-                                            Text(
-                                              'Not Satisfied with our price ?',
-                                              overflow: TextOverflow.ellipsis,
-                                              style: textHeadMedium1.copyWith(
-                                                color: kWhite,
-                                                fontSize: sWidth * .025,
-                                              ),
-                                            ),
-                                            TextButton(
-                                              onPressed: () {
-                                                secondtabScreensNotifier.value =
-                                                    1;
-                                                secondtabScreensNotifier
-                                                    .notifyListeners();
-                                                context
-                                                    .read<QuestionTabBloc>()
-                                                    .add(
-                                                        const ResetTabSelection());
-                                              },
-                                              child: Text(
-                                                'Recalculate',
-                                                overflow: TextOverflow.ellipsis,
-                                                style: textHeadInter.copyWith(
-                                                  fontSize: sWidth * .030,
-                                                  color: kWhite,
-                                                  fontWeight: FontWeight.w600,
-                                                  decoration:
-                                                      TextDecoration.underline,
-                                                  decorationColor: kWhite,
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        )
-                                      ],
-                                    );
                                   }
+                                  return Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      questiontabBloc.basePriceModelResponce !=
+                                              null
+                                          ? Text(
+                                              '₹ ${questiontabBloc.basePriceModelResponce!.basePrice}',
+                                              style: textHeadBoldBig.copyWith(
+                                                color: kWhite,
+                                              ),
+                                            )
+                                          : Text(
+                                              '₹ 0',
+                                              style: textHeadBoldBig.copyWith(
+                                                color: kWhite,
+                                              ),
+                                            ),
+                                      Row(
+                                        children: [
+                                          Text(
+                                            'Not Satisfied with our price ?',
+                                            overflow: TextOverflow.ellipsis,
+                                            style: textHeadMedium1.copyWith(
+                                              color: kWhite,
+                                              fontSize: sWidth * .025,
+                                            ),
+                                          ),
+                                          TextButton(
+                                            onPressed: () {
+                                              secondtabScreensNotifier.value =
+                                                  1;
+                                              secondtabScreensNotifier
+                                                  .notifyListeners();
+                                              context
+                                                  .read<QuestionTabBloc>()
+                                                  .add(
+                                                      const ResetTabSelection());
+                                            },
+                                            child: Text(
+                                              'Recalculate',
+                                              overflow: TextOverflow.ellipsis,
+                                              style: textHeadInter.copyWith(
+                                                fontSize: sWidth * .030,
+                                                color: kWhite,
+                                                fontWeight: FontWeight.w600,
+                                                decoration:
+                                                    TextDecoration.underline,
+                                                decorationColor: kWhite,
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      )
+                                    ],
+                                  );
                                 },
                               ),
                             if (fromWhere ==

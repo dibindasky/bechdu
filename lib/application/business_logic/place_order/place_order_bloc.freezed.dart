@@ -42,6 +42,7 @@ mixin _$PlaceOrderEvent {
     required TResult Function(bool isLoad, String orderId) invoiceDownload,
     required TResult Function() clear,
     required TResult Function(String selectedRadio) selectedRadio,
+    required TResult Function() orderResponceNull,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -68,6 +69,7 @@ mixin _$PlaceOrderEvent {
     TResult? Function(bool isLoad, String orderId)? invoiceDownload,
     TResult? Function()? clear,
     TResult? Function(String selectedRadio)? selectedRadio,
+    TResult? Function()? orderResponceNull,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -93,6 +95,7 @@ mixin _$PlaceOrderEvent {
     TResult Function(bool isLoad, String orderId)? invoiceDownload,
     TResult Function()? clear,
     TResult Function(String selectedRadio)? selectedRadio,
+    TResult Function()? orderResponceNull,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -116,6 +119,7 @@ mixin _$PlaceOrderEvent {
     required TResult Function(InvoiceDownload value) invoiceDownload,
     required TResult Function(Clear value) clear,
     required TResult Function(SelectedRadio value) selectedRadio,
+    required TResult Function(OrderResponceNull value) orderResponceNull,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -138,6 +142,7 @@ mixin _$PlaceOrderEvent {
     TResult? Function(InvoiceDownload value)? invoiceDownload,
     TResult? Function(Clear value)? clear,
     TResult? Function(SelectedRadio value)? selectedRadio,
+    TResult? Function(OrderResponceNull value)? orderResponceNull,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -160,6 +165,7 @@ mixin _$PlaceOrderEvent {
     TResult Function(InvoiceDownload value)? invoiceDownload,
     TResult Function(Clear value)? clear,
     TResult Function(SelectedRadio value)? selectedRadio,
+    TResult Function(OrderResponceNull value)? orderResponceNull,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -272,6 +278,7 @@ class _$GetPromoCodeImpl implements GetPromoCode {
     required TResult Function(bool isLoad, String orderId) invoiceDownload,
     required TResult Function() clear,
     required TResult Function(String selectedRadio) selectedRadio,
+    required TResult Function() orderResponceNull,
   }) {
     return getPromoCode(promoCodeRequestModel);
   }
@@ -301,6 +308,7 @@ class _$GetPromoCodeImpl implements GetPromoCode {
     TResult? Function(bool isLoad, String orderId)? invoiceDownload,
     TResult? Function()? clear,
     TResult? Function(String selectedRadio)? selectedRadio,
+    TResult? Function()? orderResponceNull,
   }) {
     return getPromoCode?.call(promoCodeRequestModel);
   }
@@ -329,6 +337,7 @@ class _$GetPromoCodeImpl implements GetPromoCode {
     TResult Function(bool isLoad, String orderId)? invoiceDownload,
     TResult Function()? clear,
     TResult Function(String selectedRadio)? selectedRadio,
+    TResult Function()? orderResponceNull,
     required TResult orElse(),
   }) {
     if (getPromoCode != null) {
@@ -358,6 +367,7 @@ class _$GetPromoCodeImpl implements GetPromoCode {
     required TResult Function(InvoiceDownload value) invoiceDownload,
     required TResult Function(Clear value) clear,
     required TResult Function(SelectedRadio value) selectedRadio,
+    required TResult Function(OrderResponceNull value) orderResponceNull,
   }) {
     return getPromoCode(this);
   }
@@ -383,6 +393,7 @@ class _$GetPromoCodeImpl implements GetPromoCode {
     TResult? Function(InvoiceDownload value)? invoiceDownload,
     TResult? Function(Clear value)? clear,
     TResult? Function(SelectedRadio value)? selectedRadio,
+    TResult? Function(OrderResponceNull value)? orderResponceNull,
   }) {
     return getPromoCode?.call(this);
   }
@@ -408,6 +419,7 @@ class _$GetPromoCodeImpl implements GetPromoCode {
     TResult Function(InvoiceDownload value)? invoiceDownload,
     TResult Function(Clear value)? clear,
     TResult Function(SelectedRadio value)? selectedRadio,
+    TResult Function(OrderResponceNull value)? orderResponceNull,
     required TResult orElse(),
   }) {
     if (getPromoCode != null) {
@@ -490,6 +502,7 @@ class _$GetDatetimeImpl implements GetDatetime {
     required TResult Function(bool isLoad, String orderId) invoiceDownload,
     required TResult Function() clear,
     required TResult Function(String selectedRadio) selectedRadio,
+    required TResult Function() orderResponceNull,
   }) {
     return getDatetime();
   }
@@ -519,6 +532,7 @@ class _$GetDatetimeImpl implements GetDatetime {
     TResult? Function(bool isLoad, String orderId)? invoiceDownload,
     TResult? Function()? clear,
     TResult? Function(String selectedRadio)? selectedRadio,
+    TResult? Function()? orderResponceNull,
   }) {
     return getDatetime?.call();
   }
@@ -547,6 +561,7 @@ class _$GetDatetimeImpl implements GetDatetime {
     TResult Function(bool isLoad, String orderId)? invoiceDownload,
     TResult Function()? clear,
     TResult Function(String selectedRadio)? selectedRadio,
+    TResult Function()? orderResponceNull,
     required TResult orElse(),
   }) {
     if (getDatetime != null) {
@@ -576,6 +591,7 @@ class _$GetDatetimeImpl implements GetDatetime {
     required TResult Function(InvoiceDownload value) invoiceDownload,
     required TResult Function(Clear value) clear,
     required TResult Function(SelectedRadio value) selectedRadio,
+    required TResult Function(OrderResponceNull value) orderResponceNull,
   }) {
     return getDatetime(this);
   }
@@ -601,6 +617,7 @@ class _$GetDatetimeImpl implements GetDatetime {
     TResult? Function(InvoiceDownload value)? invoiceDownload,
     TResult? Function(Clear value)? clear,
     TResult? Function(SelectedRadio value)? selectedRadio,
+    TResult? Function(OrderResponceNull value)? orderResponceNull,
   }) {
     return getDatetime?.call(this);
   }
@@ -626,6 +643,7 @@ class _$GetDatetimeImpl implements GetDatetime {
     TResult Function(InvoiceDownload value)? invoiceDownload,
     TResult Function(Clear value)? clear,
     TResult Function(SelectedRadio value)? selectedRadio,
+    TResult Function(OrderResponceNull value)? orderResponceNull,
     required TResult orElse(),
   }) {
     if (getDatetime != null) {
@@ -701,6 +719,7 @@ class _$OrderPlacingImpl implements OrderPlacing {
     required TResult Function(bool isLoad, String orderId) invoiceDownload,
     required TResult Function() clear,
     required TResult Function(String selectedRadio) selectedRadio,
+    required TResult Function() orderResponceNull,
   }) {
     return orderPlacing();
   }
@@ -730,6 +749,7 @@ class _$OrderPlacingImpl implements OrderPlacing {
     TResult? Function(bool isLoad, String orderId)? invoiceDownload,
     TResult? Function()? clear,
     TResult? Function(String selectedRadio)? selectedRadio,
+    TResult? Function()? orderResponceNull,
   }) {
     return orderPlacing?.call();
   }
@@ -758,6 +778,7 @@ class _$OrderPlacingImpl implements OrderPlacing {
     TResult Function(bool isLoad, String orderId)? invoiceDownload,
     TResult Function()? clear,
     TResult Function(String selectedRadio)? selectedRadio,
+    TResult Function()? orderResponceNull,
     required TResult orElse(),
   }) {
     if (orderPlacing != null) {
@@ -787,6 +808,7 @@ class _$OrderPlacingImpl implements OrderPlacing {
     required TResult Function(InvoiceDownload value) invoiceDownload,
     required TResult Function(Clear value) clear,
     required TResult Function(SelectedRadio value) selectedRadio,
+    required TResult Function(OrderResponceNull value) orderResponceNull,
   }) {
     return orderPlacing(this);
   }
@@ -812,6 +834,7 @@ class _$OrderPlacingImpl implements OrderPlacing {
     TResult? Function(InvoiceDownload value)? invoiceDownload,
     TResult? Function(Clear value)? clear,
     TResult? Function(SelectedRadio value)? selectedRadio,
+    TResult? Function(OrderResponceNull value)? orderResponceNull,
   }) {
     return orderPlacing?.call(this);
   }
@@ -837,6 +860,7 @@ class _$OrderPlacingImpl implements OrderPlacing {
     TResult Function(InvoiceDownload value)? invoiceDownload,
     TResult Function(Clear value)? clear,
     TResult Function(SelectedRadio value)? selectedRadio,
+    TResult Function(OrderResponceNull value)? orderResponceNull,
     required TResult orElse(),
   }) {
     if (orderPlacing != null) {
@@ -938,6 +962,7 @@ class _$GetOrdersImpl implements GetOrders {
     required TResult Function(bool isLoad, String orderId) invoiceDownload,
     required TResult Function() clear,
     required TResult Function(String selectedRadio) selectedRadio,
+    required TResult Function() orderResponceNull,
   }) {
     return getOrders(isLoad);
   }
@@ -967,6 +992,7 @@ class _$GetOrdersImpl implements GetOrders {
     TResult? Function(bool isLoad, String orderId)? invoiceDownload,
     TResult? Function()? clear,
     TResult? Function(String selectedRadio)? selectedRadio,
+    TResult? Function()? orderResponceNull,
   }) {
     return getOrders?.call(isLoad);
   }
@@ -995,6 +1021,7 @@ class _$GetOrdersImpl implements GetOrders {
     TResult Function(bool isLoad, String orderId)? invoiceDownload,
     TResult Function()? clear,
     TResult Function(String selectedRadio)? selectedRadio,
+    TResult Function()? orderResponceNull,
     required TResult orElse(),
   }) {
     if (getOrders != null) {
@@ -1024,6 +1051,7 @@ class _$GetOrdersImpl implements GetOrders {
     required TResult Function(InvoiceDownload value) invoiceDownload,
     required TResult Function(Clear value) clear,
     required TResult Function(SelectedRadio value) selectedRadio,
+    required TResult Function(OrderResponceNull value) orderResponceNull,
   }) {
     return getOrders(this);
   }
@@ -1049,6 +1077,7 @@ class _$GetOrdersImpl implements GetOrders {
     TResult? Function(InvoiceDownload value)? invoiceDownload,
     TResult? Function(Clear value)? clear,
     TResult? Function(SelectedRadio value)? selectedRadio,
+    TResult? Function(OrderResponceNull value)? orderResponceNull,
   }) {
     return getOrders?.call(this);
   }
@@ -1074,6 +1103,7 @@ class _$GetOrdersImpl implements GetOrders {
     TResult Function(InvoiceDownload value)? invoiceDownload,
     TResult Function(Clear value)? clear,
     TResult Function(SelectedRadio value)? selectedRadio,
+    TResult Function(OrderResponceNull value)? orderResponceNull,
     required TResult orElse(),
   }) {
     if (getOrders != null) {
@@ -1195,6 +1225,7 @@ class _$OrderCancelImpl implements OrderCancel {
     required TResult Function(bool isLoad, String orderId) invoiceDownload,
     required TResult Function() clear,
     required TResult Function(String selectedRadio) selectedRadio,
+    required TResult Function() orderResponceNull,
   }) {
     return orderCancel(orderCancelationRequestModel, orderId);
   }
@@ -1224,6 +1255,7 @@ class _$OrderCancelImpl implements OrderCancel {
     TResult? Function(bool isLoad, String orderId)? invoiceDownload,
     TResult? Function()? clear,
     TResult? Function(String selectedRadio)? selectedRadio,
+    TResult? Function()? orderResponceNull,
   }) {
     return orderCancel?.call(orderCancelationRequestModel, orderId);
   }
@@ -1252,6 +1284,7 @@ class _$OrderCancelImpl implements OrderCancel {
     TResult Function(bool isLoad, String orderId)? invoiceDownload,
     TResult Function()? clear,
     TResult Function(String selectedRadio)? selectedRadio,
+    TResult Function()? orderResponceNull,
     required TResult orElse(),
   }) {
     if (orderCancel != null) {
@@ -1281,6 +1314,7 @@ class _$OrderCancelImpl implements OrderCancel {
     required TResult Function(InvoiceDownload value) invoiceDownload,
     required TResult Function(Clear value) clear,
     required TResult Function(SelectedRadio value) selectedRadio,
+    required TResult Function(OrderResponceNull value) orderResponceNull,
   }) {
     return orderCancel(this);
   }
@@ -1306,6 +1340,7 @@ class _$OrderCancelImpl implements OrderCancel {
     TResult? Function(InvoiceDownload value)? invoiceDownload,
     TResult? Function(Clear value)? clear,
     TResult? Function(SelectedRadio value)? selectedRadio,
+    TResult? Function(OrderResponceNull value)? orderResponceNull,
   }) {
     return orderCancel?.call(this);
   }
@@ -1331,6 +1366,7 @@ class _$OrderCancelImpl implements OrderCancel {
     TResult Function(InvoiceDownload value)? invoiceDownload,
     TResult Function(Clear value)? clear,
     TResult Function(SelectedRadio value)? selectedRadio,
+    TResult Function(OrderResponceNull value)? orderResponceNull,
     required TResult orElse(),
   }) {
     if (orderCancel != null) {
@@ -1442,6 +1478,7 @@ class _$ProductDetailsPickImpl implements ProductDetailsPick {
     required TResult Function(bool isLoad, String orderId) invoiceDownload,
     required TResult Function() clear,
     required TResult Function(String selectedRadio) selectedRadio,
+    required TResult Function() orderResponceNull,
   }) {
     return productDetailsPick(productDetails);
   }
@@ -1471,6 +1508,7 @@ class _$ProductDetailsPickImpl implements ProductDetailsPick {
     TResult? Function(bool isLoad, String orderId)? invoiceDownload,
     TResult? Function()? clear,
     TResult? Function(String selectedRadio)? selectedRadio,
+    TResult? Function()? orderResponceNull,
   }) {
     return productDetailsPick?.call(productDetails);
   }
@@ -1499,6 +1537,7 @@ class _$ProductDetailsPickImpl implements ProductDetailsPick {
     TResult Function(bool isLoad, String orderId)? invoiceDownload,
     TResult Function()? clear,
     TResult Function(String selectedRadio)? selectedRadio,
+    TResult Function()? orderResponceNull,
     required TResult orElse(),
   }) {
     if (productDetailsPick != null) {
@@ -1528,6 +1567,7 @@ class _$ProductDetailsPickImpl implements ProductDetailsPick {
     required TResult Function(InvoiceDownload value) invoiceDownload,
     required TResult Function(Clear value) clear,
     required TResult Function(SelectedRadio value) selectedRadio,
+    required TResult Function(OrderResponceNull value) orderResponceNull,
   }) {
     return productDetailsPick(this);
   }
@@ -1553,6 +1593,7 @@ class _$ProductDetailsPickImpl implements ProductDetailsPick {
     TResult? Function(InvoiceDownload value)? invoiceDownload,
     TResult? Function(Clear value)? clear,
     TResult? Function(SelectedRadio value)? selectedRadio,
+    TResult? Function(OrderResponceNull value)? orderResponceNull,
   }) {
     return productDetailsPick?.call(this);
   }
@@ -1578,6 +1619,7 @@ class _$ProductDetailsPickImpl implements ProductDetailsPick {
     TResult Function(InvoiceDownload value)? invoiceDownload,
     TResult Function(Clear value)? clear,
     TResult Function(SelectedRadio value)? selectedRadio,
+    TResult Function(OrderResponceNull value)? orderResponceNull,
     required TResult orElse(),
   }) {
     if (productDetailsPick != null) {
@@ -1686,6 +1728,7 @@ class _$PromoCodePickImpl implements PromoCodePick {
     required TResult Function(bool isLoad, String orderId) invoiceDownload,
     required TResult Function() clear,
     required TResult Function(String selectedRadio) selectedRadio,
+    required TResult Function() orderResponceNull,
   }) {
     return promoCodePick(promo);
   }
@@ -1715,6 +1758,7 @@ class _$PromoCodePickImpl implements PromoCodePick {
     TResult? Function(bool isLoad, String orderId)? invoiceDownload,
     TResult? Function()? clear,
     TResult? Function(String selectedRadio)? selectedRadio,
+    TResult? Function()? orderResponceNull,
   }) {
     return promoCodePick?.call(promo);
   }
@@ -1743,6 +1787,7 @@ class _$PromoCodePickImpl implements PromoCodePick {
     TResult Function(bool isLoad, String orderId)? invoiceDownload,
     TResult Function()? clear,
     TResult Function(String selectedRadio)? selectedRadio,
+    TResult Function()? orderResponceNull,
     required TResult orElse(),
   }) {
     if (promoCodePick != null) {
@@ -1772,6 +1817,7 @@ class _$PromoCodePickImpl implements PromoCodePick {
     required TResult Function(InvoiceDownload value) invoiceDownload,
     required TResult Function(Clear value) clear,
     required TResult Function(SelectedRadio value) selectedRadio,
+    required TResult Function(OrderResponceNull value) orderResponceNull,
   }) {
     return promoCodePick(this);
   }
@@ -1797,6 +1843,7 @@ class _$PromoCodePickImpl implements PromoCodePick {
     TResult? Function(InvoiceDownload value)? invoiceDownload,
     TResult? Function(Clear value)? clear,
     TResult? Function(SelectedRadio value)? selectedRadio,
+    TResult? Function(OrderResponceNull value)? orderResponceNull,
   }) {
     return promoCodePick?.call(this);
   }
@@ -1822,6 +1869,7 @@ class _$PromoCodePickImpl implements PromoCodePick {
     TResult Function(InvoiceDownload value)? invoiceDownload,
     TResult Function(Clear value)? clear,
     TResult Function(SelectedRadio value)? selectedRadio,
+    TResult Function(OrderResponceNull value)? orderResponceNull,
     required TResult orElse(),
   }) {
     if (promoCodePick != null) {
@@ -1929,6 +1977,7 @@ class _$AddressPickImpl implements AddressPick {
     required TResult Function(bool isLoad, String orderId) invoiceDownload,
     required TResult Function() clear,
     required TResult Function(String selectedRadio) selectedRadio,
+    required TResult Function() orderResponceNull,
   }) {
     return addressPick(user);
   }
@@ -1958,6 +2007,7 @@ class _$AddressPickImpl implements AddressPick {
     TResult? Function(bool isLoad, String orderId)? invoiceDownload,
     TResult? Function()? clear,
     TResult? Function(String selectedRadio)? selectedRadio,
+    TResult? Function()? orderResponceNull,
   }) {
     return addressPick?.call(user);
   }
@@ -1986,6 +2036,7 @@ class _$AddressPickImpl implements AddressPick {
     TResult Function(bool isLoad, String orderId)? invoiceDownload,
     TResult Function()? clear,
     TResult Function(String selectedRadio)? selectedRadio,
+    TResult Function()? orderResponceNull,
     required TResult orElse(),
   }) {
     if (addressPick != null) {
@@ -2015,6 +2066,7 @@ class _$AddressPickImpl implements AddressPick {
     required TResult Function(InvoiceDownload value) invoiceDownload,
     required TResult Function(Clear value) clear,
     required TResult Function(SelectedRadio value) selectedRadio,
+    required TResult Function(OrderResponceNull value) orderResponceNull,
   }) {
     return addressPick(this);
   }
@@ -2040,6 +2092,7 @@ class _$AddressPickImpl implements AddressPick {
     TResult? Function(InvoiceDownload value)? invoiceDownload,
     TResult? Function(Clear value)? clear,
     TResult? Function(SelectedRadio value)? selectedRadio,
+    TResult? Function(OrderResponceNull value)? orderResponceNull,
   }) {
     return addressPick?.call(this);
   }
@@ -2065,6 +2118,7 @@ class _$AddressPickImpl implements AddressPick {
     TResult Function(InvoiceDownload value)? invoiceDownload,
     TResult Function(Clear value)? clear,
     TResult Function(SelectedRadio value)? selectedRadio,
+    TResult Function(OrderResponceNull value)? orderResponceNull,
     required TResult orElse(),
   }) {
     if (addressPick != null) {
@@ -2171,6 +2225,7 @@ class _$PaymentOptionImpl implements PaymentOption {
     required TResult Function(bool isLoad, String orderId) invoiceDownload,
     required TResult Function() clear,
     required TResult Function(String selectedRadio) selectedRadio,
+    required TResult Function() orderResponceNull,
   }) {
     return paymentOption(payment);
   }
@@ -2200,6 +2255,7 @@ class _$PaymentOptionImpl implements PaymentOption {
     TResult? Function(bool isLoad, String orderId)? invoiceDownload,
     TResult? Function()? clear,
     TResult? Function(String selectedRadio)? selectedRadio,
+    TResult? Function()? orderResponceNull,
   }) {
     return paymentOption?.call(payment);
   }
@@ -2228,6 +2284,7 @@ class _$PaymentOptionImpl implements PaymentOption {
     TResult Function(bool isLoad, String orderId)? invoiceDownload,
     TResult Function()? clear,
     TResult Function(String selectedRadio)? selectedRadio,
+    TResult Function()? orderResponceNull,
     required TResult orElse(),
   }) {
     if (paymentOption != null) {
@@ -2257,6 +2314,7 @@ class _$PaymentOptionImpl implements PaymentOption {
     required TResult Function(InvoiceDownload value) invoiceDownload,
     required TResult Function(Clear value) clear,
     required TResult Function(SelectedRadio value) selectedRadio,
+    required TResult Function(OrderResponceNull value) orderResponceNull,
   }) {
     return paymentOption(this);
   }
@@ -2282,6 +2340,7 @@ class _$PaymentOptionImpl implements PaymentOption {
     TResult? Function(InvoiceDownload value)? invoiceDownload,
     TResult? Function(Clear value)? clear,
     TResult? Function(SelectedRadio value)? selectedRadio,
+    TResult? Function(OrderResponceNull value)? orderResponceNull,
   }) {
     return paymentOption?.call(this);
   }
@@ -2307,6 +2366,7 @@ class _$PaymentOptionImpl implements PaymentOption {
     TResult Function(InvoiceDownload value)? invoiceDownload,
     TResult Function(Clear value)? clear,
     TResult Function(SelectedRadio value)? selectedRadio,
+    TResult Function(OrderResponceNull value)? orderResponceNull,
     required TResult orElse(),
   }) {
     if (paymentOption != null) {
@@ -2424,6 +2484,7 @@ class _$SelectedOptionEventImpl implements SelectedOptionEvent {
     required TResult Function(bool isLoad, String orderId) invoiceDownload,
     required TResult Function() clear,
     required TResult Function(String selectedRadio) selectedRadio,
+    required TResult Function() orderResponceNull,
   }) {
     return selectedOptionEvent(selectedOption);
   }
@@ -2453,6 +2514,7 @@ class _$SelectedOptionEventImpl implements SelectedOptionEvent {
     TResult? Function(bool isLoad, String orderId)? invoiceDownload,
     TResult? Function()? clear,
     TResult? Function(String selectedRadio)? selectedRadio,
+    TResult? Function()? orderResponceNull,
   }) {
     return selectedOptionEvent?.call(selectedOption);
   }
@@ -2481,6 +2543,7 @@ class _$SelectedOptionEventImpl implements SelectedOptionEvent {
     TResult Function(bool isLoad, String orderId)? invoiceDownload,
     TResult Function()? clear,
     TResult Function(String selectedRadio)? selectedRadio,
+    TResult Function()? orderResponceNull,
     required TResult orElse(),
   }) {
     if (selectedOptionEvent != null) {
@@ -2510,6 +2573,7 @@ class _$SelectedOptionEventImpl implements SelectedOptionEvent {
     required TResult Function(InvoiceDownload value) invoiceDownload,
     required TResult Function(Clear value) clear,
     required TResult Function(SelectedRadio value) selectedRadio,
+    required TResult Function(OrderResponceNull value) orderResponceNull,
   }) {
     return selectedOptionEvent(this);
   }
@@ -2535,6 +2599,7 @@ class _$SelectedOptionEventImpl implements SelectedOptionEvent {
     TResult? Function(InvoiceDownload value)? invoiceDownload,
     TResult? Function(Clear value)? clear,
     TResult? Function(SelectedRadio value)? selectedRadio,
+    TResult? Function(OrderResponceNull value)? orderResponceNull,
   }) {
     return selectedOptionEvent?.call(this);
   }
@@ -2560,6 +2625,7 @@ class _$SelectedOptionEventImpl implements SelectedOptionEvent {
     TResult Function(InvoiceDownload value)? invoiceDownload,
     TResult Function(Clear value)? clear,
     TResult Function(SelectedRadio value)? selectedRadio,
+    TResult Function(OrderResponceNull value)? orderResponceNull,
     required TResult orElse(),
   }) {
     if (selectedOptionEvent != null) {
@@ -2642,6 +2708,7 @@ class _$RemoveAppliedPromoImpl implements RemoveAppliedPromo {
     required TResult Function(bool isLoad, String orderId) invoiceDownload,
     required TResult Function() clear,
     required TResult Function(String selectedRadio) selectedRadio,
+    required TResult Function() orderResponceNull,
   }) {
     return removeAppliedPromo();
   }
@@ -2671,6 +2738,7 @@ class _$RemoveAppliedPromoImpl implements RemoveAppliedPromo {
     TResult? Function(bool isLoad, String orderId)? invoiceDownload,
     TResult? Function()? clear,
     TResult? Function(String selectedRadio)? selectedRadio,
+    TResult? Function()? orderResponceNull,
   }) {
     return removeAppliedPromo?.call();
   }
@@ -2699,6 +2767,7 @@ class _$RemoveAppliedPromoImpl implements RemoveAppliedPromo {
     TResult Function(bool isLoad, String orderId)? invoiceDownload,
     TResult Function()? clear,
     TResult Function(String selectedRadio)? selectedRadio,
+    TResult Function()? orderResponceNull,
     required TResult orElse(),
   }) {
     if (removeAppliedPromo != null) {
@@ -2728,6 +2797,7 @@ class _$RemoveAppliedPromoImpl implements RemoveAppliedPromo {
     required TResult Function(InvoiceDownload value) invoiceDownload,
     required TResult Function(Clear value) clear,
     required TResult Function(SelectedRadio value) selectedRadio,
+    required TResult Function(OrderResponceNull value) orderResponceNull,
   }) {
     return removeAppliedPromo(this);
   }
@@ -2753,6 +2823,7 @@ class _$RemoveAppliedPromoImpl implements RemoveAppliedPromo {
     TResult? Function(InvoiceDownload value)? invoiceDownload,
     TResult? Function(Clear value)? clear,
     TResult? Function(SelectedRadio value)? selectedRadio,
+    TResult? Function(OrderResponceNull value)? orderResponceNull,
   }) {
     return removeAppliedPromo?.call(this);
   }
@@ -2778,6 +2849,7 @@ class _$RemoveAppliedPromoImpl implements RemoveAppliedPromo {
     TResult Function(InvoiceDownload value)? invoiceDownload,
     TResult Function(Clear value)? clear,
     TResult Function(SelectedRadio value)? selectedRadio,
+    TResult Function(OrderResponceNull value)? orderResponceNull,
     required TResult orElse(),
   }) {
     if (removeAppliedPromo != null) {
@@ -2890,6 +2962,7 @@ class _$PickupDetailsPickImpl implements PickupDetailsPick {
     required TResult Function(bool isLoad, String orderId) invoiceDownload,
     required TResult Function() clear,
     required TResult Function(String selectedRadio) selectedRadio,
+    required TResult Function() orderResponceNull,
   }) {
     return pickupDetailsPick(pickUpDetails, promo);
   }
@@ -2919,6 +2992,7 @@ class _$PickupDetailsPickImpl implements PickupDetailsPick {
     TResult? Function(bool isLoad, String orderId)? invoiceDownload,
     TResult? Function()? clear,
     TResult? Function(String selectedRadio)? selectedRadio,
+    TResult? Function()? orderResponceNull,
   }) {
     return pickupDetailsPick?.call(pickUpDetails, promo);
   }
@@ -2947,6 +3021,7 @@ class _$PickupDetailsPickImpl implements PickupDetailsPick {
     TResult Function(bool isLoad, String orderId)? invoiceDownload,
     TResult Function()? clear,
     TResult Function(String selectedRadio)? selectedRadio,
+    TResult Function()? orderResponceNull,
     required TResult orElse(),
   }) {
     if (pickupDetailsPick != null) {
@@ -2976,6 +3051,7 @@ class _$PickupDetailsPickImpl implements PickupDetailsPick {
     required TResult Function(InvoiceDownload value) invoiceDownload,
     required TResult Function(Clear value) clear,
     required TResult Function(SelectedRadio value) selectedRadio,
+    required TResult Function(OrderResponceNull value) orderResponceNull,
   }) {
     return pickupDetailsPick(this);
   }
@@ -3001,6 +3077,7 @@ class _$PickupDetailsPickImpl implements PickupDetailsPick {
     TResult? Function(InvoiceDownload value)? invoiceDownload,
     TResult? Function(Clear value)? clear,
     TResult? Function(SelectedRadio value)? selectedRadio,
+    TResult? Function(OrderResponceNull value)? orderResponceNull,
   }) {
     return pickupDetailsPick?.call(this);
   }
@@ -3026,6 +3103,7 @@ class _$PickupDetailsPickImpl implements PickupDetailsPick {
     TResult Function(InvoiceDownload value)? invoiceDownload,
     TResult Function(Clear value)? clear,
     TResult Function(SelectedRadio value)? selectedRadio,
+    TResult Function(OrderResponceNull value)? orderResponceNull,
     required TResult orElse(),
   }) {
     if (pickupDetailsPick != null) {
@@ -3109,6 +3187,7 @@ class _$UserNumberImpl implements UserNumber {
     required TResult Function(bool isLoad, String orderId) invoiceDownload,
     required TResult Function() clear,
     required TResult Function(String selectedRadio) selectedRadio,
+    required TResult Function() orderResponceNull,
   }) {
     return userNumber();
   }
@@ -3138,6 +3217,7 @@ class _$UserNumberImpl implements UserNumber {
     TResult? Function(bool isLoad, String orderId)? invoiceDownload,
     TResult? Function()? clear,
     TResult? Function(String selectedRadio)? selectedRadio,
+    TResult? Function()? orderResponceNull,
   }) {
     return userNumber?.call();
   }
@@ -3166,6 +3246,7 @@ class _$UserNumberImpl implements UserNumber {
     TResult Function(bool isLoad, String orderId)? invoiceDownload,
     TResult Function()? clear,
     TResult Function(String selectedRadio)? selectedRadio,
+    TResult Function()? orderResponceNull,
     required TResult orElse(),
   }) {
     if (userNumber != null) {
@@ -3195,6 +3276,7 @@ class _$UserNumberImpl implements UserNumber {
     required TResult Function(InvoiceDownload value) invoiceDownload,
     required TResult Function(Clear value) clear,
     required TResult Function(SelectedRadio value) selectedRadio,
+    required TResult Function(OrderResponceNull value) orderResponceNull,
   }) {
     return userNumber(this);
   }
@@ -3220,6 +3302,7 @@ class _$UserNumberImpl implements UserNumber {
     TResult? Function(InvoiceDownload value)? invoiceDownload,
     TResult? Function(Clear value)? clear,
     TResult? Function(SelectedRadio value)? selectedRadio,
+    TResult? Function(OrderResponceNull value)? orderResponceNull,
   }) {
     return userNumber?.call(this);
   }
@@ -3245,6 +3328,7 @@ class _$UserNumberImpl implements UserNumber {
     TResult Function(InvoiceDownload value)? invoiceDownload,
     TResult Function(Clear value)? clear,
     TResult Function(SelectedRadio value)? selectedRadio,
+    TResult Function(OrderResponceNull value)? orderResponceNull,
     required TResult orElse(),
   }) {
     if (userNumber != null) {
@@ -3320,6 +3404,7 @@ class _$RemoveAllFieldDataImpl implements RemoveAllFieldData {
     required TResult Function(bool isLoad, String orderId) invoiceDownload,
     required TResult Function() clear,
     required TResult Function(String selectedRadio) selectedRadio,
+    required TResult Function() orderResponceNull,
   }) {
     return removeAllFieldData();
   }
@@ -3349,6 +3434,7 @@ class _$RemoveAllFieldDataImpl implements RemoveAllFieldData {
     TResult? Function(bool isLoad, String orderId)? invoiceDownload,
     TResult? Function()? clear,
     TResult? Function(String selectedRadio)? selectedRadio,
+    TResult? Function()? orderResponceNull,
   }) {
     return removeAllFieldData?.call();
   }
@@ -3377,6 +3463,7 @@ class _$RemoveAllFieldDataImpl implements RemoveAllFieldData {
     TResult Function(bool isLoad, String orderId)? invoiceDownload,
     TResult Function()? clear,
     TResult Function(String selectedRadio)? selectedRadio,
+    TResult Function()? orderResponceNull,
     required TResult orElse(),
   }) {
     if (removeAllFieldData != null) {
@@ -3406,6 +3493,7 @@ class _$RemoveAllFieldDataImpl implements RemoveAllFieldData {
     required TResult Function(InvoiceDownload value) invoiceDownload,
     required TResult Function(Clear value) clear,
     required TResult Function(SelectedRadio value) selectedRadio,
+    required TResult Function(OrderResponceNull value) orderResponceNull,
   }) {
     return removeAllFieldData(this);
   }
@@ -3431,6 +3519,7 @@ class _$RemoveAllFieldDataImpl implements RemoveAllFieldData {
     TResult? Function(InvoiceDownload value)? invoiceDownload,
     TResult? Function(Clear value)? clear,
     TResult? Function(SelectedRadio value)? selectedRadio,
+    TResult? Function(OrderResponceNull value)? orderResponceNull,
   }) {
     return removeAllFieldData?.call(this);
   }
@@ -3456,6 +3545,7 @@ class _$RemoveAllFieldDataImpl implements RemoveAllFieldData {
     TResult Function(InvoiceDownload value)? invoiceDownload,
     TResult Function(Clear value)? clear,
     TResult Function(SelectedRadio value)? selectedRadio,
+    TResult Function(OrderResponceNull value)? orderResponceNull,
     required TResult orElse(),
   }) {
     if (removeAllFieldData != null) {
@@ -3531,6 +3621,7 @@ class _$PromoCodeSuccessImpl implements PromoCodeSuccess {
     required TResult Function(bool isLoad, String orderId) invoiceDownload,
     required TResult Function() clear,
     required TResult Function(String selectedRadio) selectedRadio,
+    required TResult Function() orderResponceNull,
   }) {
     return promoCodeSuccess();
   }
@@ -3560,6 +3651,7 @@ class _$PromoCodeSuccessImpl implements PromoCodeSuccess {
     TResult? Function(bool isLoad, String orderId)? invoiceDownload,
     TResult? Function()? clear,
     TResult? Function(String selectedRadio)? selectedRadio,
+    TResult? Function()? orderResponceNull,
   }) {
     return promoCodeSuccess?.call();
   }
@@ -3588,6 +3680,7 @@ class _$PromoCodeSuccessImpl implements PromoCodeSuccess {
     TResult Function(bool isLoad, String orderId)? invoiceDownload,
     TResult Function()? clear,
     TResult Function(String selectedRadio)? selectedRadio,
+    TResult Function()? orderResponceNull,
     required TResult orElse(),
   }) {
     if (promoCodeSuccess != null) {
@@ -3617,6 +3710,7 @@ class _$PromoCodeSuccessImpl implements PromoCodeSuccess {
     required TResult Function(InvoiceDownload value) invoiceDownload,
     required TResult Function(Clear value) clear,
     required TResult Function(SelectedRadio value) selectedRadio,
+    required TResult Function(OrderResponceNull value) orderResponceNull,
   }) {
     return promoCodeSuccess(this);
   }
@@ -3642,6 +3736,7 @@ class _$PromoCodeSuccessImpl implements PromoCodeSuccess {
     TResult? Function(InvoiceDownload value)? invoiceDownload,
     TResult? Function(Clear value)? clear,
     TResult? Function(SelectedRadio value)? selectedRadio,
+    TResult? Function(OrderResponceNull value)? orderResponceNull,
   }) {
     return promoCodeSuccess?.call(this);
   }
@@ -3667,6 +3762,7 @@ class _$PromoCodeSuccessImpl implements PromoCodeSuccess {
     TResult Function(InvoiceDownload value)? invoiceDownload,
     TResult Function(Clear value)? clear,
     TResult Function(SelectedRadio value)? selectedRadio,
+    TResult Function(OrderResponceNull value)? orderResponceNull,
     required TResult orElse(),
   }) {
     if (promoCodeSuccess != null) {
@@ -3777,6 +3873,7 @@ class _$InvoiceDownloadImpl implements InvoiceDownload {
     required TResult Function(bool isLoad, String orderId) invoiceDownload,
     required TResult Function() clear,
     required TResult Function(String selectedRadio) selectedRadio,
+    required TResult Function() orderResponceNull,
   }) {
     return invoiceDownload(isLoad, orderId);
   }
@@ -3806,6 +3903,7 @@ class _$InvoiceDownloadImpl implements InvoiceDownload {
     TResult? Function(bool isLoad, String orderId)? invoiceDownload,
     TResult? Function()? clear,
     TResult? Function(String selectedRadio)? selectedRadio,
+    TResult? Function()? orderResponceNull,
   }) {
     return invoiceDownload?.call(isLoad, orderId);
   }
@@ -3834,6 +3932,7 @@ class _$InvoiceDownloadImpl implements InvoiceDownload {
     TResult Function(bool isLoad, String orderId)? invoiceDownload,
     TResult Function()? clear,
     TResult Function(String selectedRadio)? selectedRadio,
+    TResult Function()? orderResponceNull,
     required TResult orElse(),
   }) {
     if (invoiceDownload != null) {
@@ -3863,6 +3962,7 @@ class _$InvoiceDownloadImpl implements InvoiceDownload {
     required TResult Function(InvoiceDownload value) invoiceDownload,
     required TResult Function(Clear value) clear,
     required TResult Function(SelectedRadio value) selectedRadio,
+    required TResult Function(OrderResponceNull value) orderResponceNull,
   }) {
     return invoiceDownload(this);
   }
@@ -3888,6 +3988,7 @@ class _$InvoiceDownloadImpl implements InvoiceDownload {
     TResult? Function(InvoiceDownload value)? invoiceDownload,
     TResult? Function(Clear value)? clear,
     TResult? Function(SelectedRadio value)? selectedRadio,
+    TResult? Function(OrderResponceNull value)? orderResponceNull,
   }) {
     return invoiceDownload?.call(this);
   }
@@ -3913,6 +4014,7 @@ class _$InvoiceDownloadImpl implements InvoiceDownload {
     TResult Function(InvoiceDownload value)? invoiceDownload,
     TResult Function(Clear value)? clear,
     TResult Function(SelectedRadio value)? selectedRadio,
+    TResult Function(OrderResponceNull value)? orderResponceNull,
     required TResult orElse(),
   }) {
     if (invoiceDownload != null) {
@@ -3996,6 +4098,7 @@ class _$ClearImpl implements Clear {
     required TResult Function(bool isLoad, String orderId) invoiceDownload,
     required TResult Function() clear,
     required TResult Function(String selectedRadio) selectedRadio,
+    required TResult Function() orderResponceNull,
   }) {
     return clear();
   }
@@ -4025,6 +4128,7 @@ class _$ClearImpl implements Clear {
     TResult? Function(bool isLoad, String orderId)? invoiceDownload,
     TResult? Function()? clear,
     TResult? Function(String selectedRadio)? selectedRadio,
+    TResult? Function()? orderResponceNull,
   }) {
     return clear?.call();
   }
@@ -4053,6 +4157,7 @@ class _$ClearImpl implements Clear {
     TResult Function(bool isLoad, String orderId)? invoiceDownload,
     TResult Function()? clear,
     TResult Function(String selectedRadio)? selectedRadio,
+    TResult Function()? orderResponceNull,
     required TResult orElse(),
   }) {
     if (clear != null) {
@@ -4082,6 +4187,7 @@ class _$ClearImpl implements Clear {
     required TResult Function(InvoiceDownload value) invoiceDownload,
     required TResult Function(Clear value) clear,
     required TResult Function(SelectedRadio value) selectedRadio,
+    required TResult Function(OrderResponceNull value) orderResponceNull,
   }) {
     return clear(this);
   }
@@ -4107,6 +4213,7 @@ class _$ClearImpl implements Clear {
     TResult? Function(InvoiceDownload value)? invoiceDownload,
     TResult? Function(Clear value)? clear,
     TResult? Function(SelectedRadio value)? selectedRadio,
+    TResult? Function(OrderResponceNull value)? orderResponceNull,
   }) {
     return clear?.call(this);
   }
@@ -4132,6 +4239,7 @@ class _$ClearImpl implements Clear {
     TResult Function(InvoiceDownload value)? invoiceDownload,
     TResult Function(Clear value)? clear,
     TResult Function(SelectedRadio value)? selectedRadio,
+    TResult Function(OrderResponceNull value)? orderResponceNull,
     required TResult orElse(),
   }) {
     if (clear != null) {
@@ -4234,6 +4342,7 @@ class _$SelectedRadioImpl implements SelectedRadio {
     required TResult Function(bool isLoad, String orderId) invoiceDownload,
     required TResult Function() clear,
     required TResult Function(String selectedRadio) selectedRadio,
+    required TResult Function() orderResponceNull,
   }) {
     return selectedRadio(this.selectedRadio);
   }
@@ -4263,6 +4372,7 @@ class _$SelectedRadioImpl implements SelectedRadio {
     TResult? Function(bool isLoad, String orderId)? invoiceDownload,
     TResult? Function()? clear,
     TResult? Function(String selectedRadio)? selectedRadio,
+    TResult? Function()? orderResponceNull,
   }) {
     return selectedRadio?.call(this.selectedRadio);
   }
@@ -4291,6 +4401,7 @@ class _$SelectedRadioImpl implements SelectedRadio {
     TResult Function(bool isLoad, String orderId)? invoiceDownload,
     TResult Function()? clear,
     TResult Function(String selectedRadio)? selectedRadio,
+    TResult Function()? orderResponceNull,
     required TResult orElse(),
   }) {
     if (selectedRadio != null) {
@@ -4320,6 +4431,7 @@ class _$SelectedRadioImpl implements SelectedRadio {
     required TResult Function(InvoiceDownload value) invoiceDownload,
     required TResult Function(Clear value) clear,
     required TResult Function(SelectedRadio value) selectedRadio,
+    required TResult Function(OrderResponceNull value) orderResponceNull,
   }) {
     return selectedRadio(this);
   }
@@ -4345,6 +4457,7 @@ class _$SelectedRadioImpl implements SelectedRadio {
     TResult? Function(InvoiceDownload value)? invoiceDownload,
     TResult? Function(Clear value)? clear,
     TResult? Function(SelectedRadio value)? selectedRadio,
+    TResult? Function(OrderResponceNull value)? orderResponceNull,
   }) {
     return selectedRadio?.call(this);
   }
@@ -4370,6 +4483,7 @@ class _$SelectedRadioImpl implements SelectedRadio {
     TResult Function(InvoiceDownload value)? invoiceDownload,
     TResult Function(Clear value)? clear,
     TResult Function(SelectedRadio value)? selectedRadio,
+    TResult Function(OrderResponceNull value)? orderResponceNull,
     required TResult orElse(),
   }) {
     if (selectedRadio != null) {
@@ -4387,6 +4501,223 @@ abstract class SelectedRadio implements PlaceOrderEvent {
   @JsonKey(ignore: true)
   _$$SelectedRadioImplCopyWith<_$SelectedRadioImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$OrderResponceNullImplCopyWith<$Res> {
+  factory _$$OrderResponceNullImplCopyWith(_$OrderResponceNullImpl value,
+          $Res Function(_$OrderResponceNullImpl) then) =
+      __$$OrderResponceNullImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$OrderResponceNullImplCopyWithImpl<$Res>
+    extends _$PlaceOrderEventCopyWithImpl<$Res, _$OrderResponceNullImpl>
+    implements _$$OrderResponceNullImplCopyWith<$Res> {
+  __$$OrderResponceNullImplCopyWithImpl(_$OrderResponceNullImpl _value,
+      $Res Function(_$OrderResponceNullImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$OrderResponceNullImpl implements OrderResponceNull {
+  const _$OrderResponceNullImpl();
+
+  @override
+  String toString() {
+    return 'PlaceOrderEvent.orderResponceNull()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$OrderResponceNullImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(PromoCodeRequestModel promoCodeRequestModel)
+        getPromoCode,
+    required TResult Function() getDatetime,
+    required TResult Function() orderPlacing,
+    required TResult Function(bool? isLoad) getOrders,
+    required TResult Function(
+            OrderCancelationRequestModel orderCancelationRequestModel,
+            String orderId)
+        orderCancel,
+    required TResult Function(ProductDetails productDetails) productDetailsPick,
+    required TResult Function(Promo promo) promoCodePick,
+    required TResult Function(User user) addressPick,
+    required TResult Function(Payment payment) paymentOption,
+    required TResult Function(List<SelectedOption> selectedOption)
+        selectedOptionEvent,
+    required TResult Function() removeAppliedPromo,
+    required TResult Function(PickUpDetails pickUpDetails, Promo promo)
+        pickupDetailsPick,
+    required TResult Function() userNumber,
+    required TResult Function() removeAllFieldData,
+    required TResult Function() promoCodeSuccess,
+    required TResult Function(bool isLoad, String orderId) invoiceDownload,
+    required TResult Function() clear,
+    required TResult Function(String selectedRadio) selectedRadio,
+    required TResult Function() orderResponceNull,
+  }) {
+    return orderResponceNull();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(PromoCodeRequestModel promoCodeRequestModel)?
+        getPromoCode,
+    TResult? Function()? getDatetime,
+    TResult? Function()? orderPlacing,
+    TResult? Function(bool? isLoad)? getOrders,
+    TResult? Function(OrderCancelationRequestModel orderCancelationRequestModel,
+            String orderId)?
+        orderCancel,
+    TResult? Function(ProductDetails productDetails)? productDetailsPick,
+    TResult? Function(Promo promo)? promoCodePick,
+    TResult? Function(User user)? addressPick,
+    TResult? Function(Payment payment)? paymentOption,
+    TResult? Function(List<SelectedOption> selectedOption)? selectedOptionEvent,
+    TResult? Function()? removeAppliedPromo,
+    TResult? Function(PickUpDetails pickUpDetails, Promo promo)?
+        pickupDetailsPick,
+    TResult? Function()? userNumber,
+    TResult? Function()? removeAllFieldData,
+    TResult? Function()? promoCodeSuccess,
+    TResult? Function(bool isLoad, String orderId)? invoiceDownload,
+    TResult? Function()? clear,
+    TResult? Function(String selectedRadio)? selectedRadio,
+    TResult? Function()? orderResponceNull,
+  }) {
+    return orderResponceNull?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(PromoCodeRequestModel promoCodeRequestModel)? getPromoCode,
+    TResult Function()? getDatetime,
+    TResult Function()? orderPlacing,
+    TResult Function(bool? isLoad)? getOrders,
+    TResult Function(OrderCancelationRequestModel orderCancelationRequestModel,
+            String orderId)?
+        orderCancel,
+    TResult Function(ProductDetails productDetails)? productDetailsPick,
+    TResult Function(Promo promo)? promoCodePick,
+    TResult Function(User user)? addressPick,
+    TResult Function(Payment payment)? paymentOption,
+    TResult Function(List<SelectedOption> selectedOption)? selectedOptionEvent,
+    TResult Function()? removeAppliedPromo,
+    TResult Function(PickUpDetails pickUpDetails, Promo promo)?
+        pickupDetailsPick,
+    TResult Function()? userNumber,
+    TResult Function()? removeAllFieldData,
+    TResult Function()? promoCodeSuccess,
+    TResult Function(bool isLoad, String orderId)? invoiceDownload,
+    TResult Function()? clear,
+    TResult Function(String selectedRadio)? selectedRadio,
+    TResult Function()? orderResponceNull,
+    required TResult orElse(),
+  }) {
+    if (orderResponceNull != null) {
+      return orderResponceNull();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GetPromoCode value) getPromoCode,
+    required TResult Function(GetDatetime value) getDatetime,
+    required TResult Function(OrderPlacing value) orderPlacing,
+    required TResult Function(GetOrders value) getOrders,
+    required TResult Function(OrderCancel value) orderCancel,
+    required TResult Function(ProductDetailsPick value) productDetailsPick,
+    required TResult Function(PromoCodePick value) promoCodePick,
+    required TResult Function(AddressPick value) addressPick,
+    required TResult Function(PaymentOption value) paymentOption,
+    required TResult Function(SelectedOptionEvent value) selectedOptionEvent,
+    required TResult Function(RemoveAppliedPromo value) removeAppliedPromo,
+    required TResult Function(PickupDetailsPick value) pickupDetailsPick,
+    required TResult Function(UserNumber value) userNumber,
+    required TResult Function(RemoveAllFieldData value) removeAllFieldData,
+    required TResult Function(PromoCodeSuccess value) promoCodeSuccess,
+    required TResult Function(InvoiceDownload value) invoiceDownload,
+    required TResult Function(Clear value) clear,
+    required TResult Function(SelectedRadio value) selectedRadio,
+    required TResult Function(OrderResponceNull value) orderResponceNull,
+  }) {
+    return orderResponceNull(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetPromoCode value)? getPromoCode,
+    TResult? Function(GetDatetime value)? getDatetime,
+    TResult? Function(OrderPlacing value)? orderPlacing,
+    TResult? Function(GetOrders value)? getOrders,
+    TResult? Function(OrderCancel value)? orderCancel,
+    TResult? Function(ProductDetailsPick value)? productDetailsPick,
+    TResult? Function(PromoCodePick value)? promoCodePick,
+    TResult? Function(AddressPick value)? addressPick,
+    TResult? Function(PaymentOption value)? paymentOption,
+    TResult? Function(SelectedOptionEvent value)? selectedOptionEvent,
+    TResult? Function(RemoveAppliedPromo value)? removeAppliedPromo,
+    TResult? Function(PickupDetailsPick value)? pickupDetailsPick,
+    TResult? Function(UserNumber value)? userNumber,
+    TResult? Function(RemoveAllFieldData value)? removeAllFieldData,
+    TResult? Function(PromoCodeSuccess value)? promoCodeSuccess,
+    TResult? Function(InvoiceDownload value)? invoiceDownload,
+    TResult? Function(Clear value)? clear,
+    TResult? Function(SelectedRadio value)? selectedRadio,
+    TResult? Function(OrderResponceNull value)? orderResponceNull,
+  }) {
+    return orderResponceNull?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetPromoCode value)? getPromoCode,
+    TResult Function(GetDatetime value)? getDatetime,
+    TResult Function(OrderPlacing value)? orderPlacing,
+    TResult Function(GetOrders value)? getOrders,
+    TResult Function(OrderCancel value)? orderCancel,
+    TResult Function(ProductDetailsPick value)? productDetailsPick,
+    TResult Function(PromoCodePick value)? promoCodePick,
+    TResult Function(AddressPick value)? addressPick,
+    TResult Function(PaymentOption value)? paymentOption,
+    TResult Function(SelectedOptionEvent value)? selectedOptionEvent,
+    TResult Function(RemoveAppliedPromo value)? removeAppliedPromo,
+    TResult Function(PickupDetailsPick value)? pickupDetailsPick,
+    TResult Function(UserNumber value)? userNumber,
+    TResult Function(RemoveAllFieldData value)? removeAllFieldData,
+    TResult Function(PromoCodeSuccess value)? promoCodeSuccess,
+    TResult Function(InvoiceDownload value)? invoiceDownload,
+    TResult Function(Clear value)? clear,
+    TResult Function(SelectedRadio value)? selectedRadio,
+    TResult Function(OrderResponceNull value)? orderResponceNull,
+    required TResult orElse(),
+  }) {
+    if (orderResponceNull != null) {
+      return orderResponceNull(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class OrderResponceNull implements PlaceOrderEvent {
+  const factory OrderResponceNull() = _$OrderResponceNullImpl;
 }
 
 /// @nodoc

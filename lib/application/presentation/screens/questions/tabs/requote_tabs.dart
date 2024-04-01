@@ -51,9 +51,10 @@ class RequoteTabs extends StatelessWidget {
                             child: Text(
                               state.sections![index].heading ?? '',
                               style: textHeadSemiBold1.copyWith(
-                                  color: index == state.selectedTabIndex
-                                      ? kWhite
-                                      : kBlack),
+                                color: index == state.selectedTabIndex
+                                    ? kWhite
+                                    : kBlack,
+                              ),
                             ),
                           ),
                         ),

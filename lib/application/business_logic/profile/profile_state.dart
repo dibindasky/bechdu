@@ -15,7 +15,7 @@ class ProfileState with _$ProfileState {
   factory ProfileState.initail() => const ProfileState(
         isLoading: false,
         hasError: false,
-        selectedAddressIndex: -1,
+        selectedAddressIndex: 0,
         address: [],
       );
 }

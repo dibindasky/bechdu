@@ -11,7 +11,7 @@ class HomeEvent with _$HomeEvent {
   const factory HomeEvent.getBestSellingProducts({required bool isLoad}) =
       GetBestSellingProducts;
   const factory HomeEvent.globalPrductSearch({
-    required SearchParamModel searchParamModel,
+    required String searchQuery,
   }) = GlobalPrductSearch;
   const factory HomeEvent.nextPage() = NextPage;
   const factory HomeEvent.clear() = Clear;

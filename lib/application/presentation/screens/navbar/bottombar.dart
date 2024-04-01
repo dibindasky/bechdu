@@ -1,4 +1,5 @@
 import 'package:beachdu/application/business_logic/navbar/navbar_cubit.dart';
+import 'package:beachdu/application/business_logic/place_order/place_order_bloc.dart';
 import 'package:beachdu/application/business_logic/question_tab/question_tab_bloc.dart';
 import 'package:beachdu/application/presentation/screens/home/home_screen.dart';
 import 'package:beachdu/application/presentation/screens/order/my_orders_screen.dart';
@@ -43,6 +44,9 @@ class ScreenBottomNavigation extends StatelessWidget {
                     enableFeedback: false,
                     onTap: (value) {
                       context.read<NavbarCubit>().changeNavigationIndex(value);
+                      context
+                          .read<PlaceOrderBloc>()
+                          .add(const PlaceOrderEvent.orderResponceNull());
                     },
                     unselectedItemColor: kWhite,
                     showUnselectedLabels: true,

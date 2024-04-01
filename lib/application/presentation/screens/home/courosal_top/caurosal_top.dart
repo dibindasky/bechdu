@@ -4,6 +4,7 @@ import 'dart:developer';
 import 'package:beachdu/application/business_logic/brands_bloc/category_bloc_bloc.dart';
 import 'package:beachdu/application/business_logic/home_bloc/home_bloc.dart';
 import 'package:beachdu/application/business_logic/navbar/navbar_cubit.dart';
+import 'package:beachdu/application/business_logic/place_order/place_order_bloc.dart';
 import 'package:beachdu/application/business_logic/question_tab/question_tab_bloc.dart';
 import 'package:beachdu/application/presentation/screens/product_selection/product_screen.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
@@ -74,6 +75,8 @@ class _CaurosalViewHomePageOffersState
                             brandSeriesProductValueNotifier.notifyListeners();
                             secondtabScreensNotifier.value = 0;
                             secondtabScreensNotifier.notifyListeners();
+                            context.read<PlaceOrderBloc>().add(
+                                const PlaceOrderEvent.removeAllFieldData());
                           },
                           child: Container(
                             margin: const EdgeInsets.only(left: 4, right: 4),

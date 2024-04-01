@@ -54,104 +54,103 @@ class _AddressListViewState extends State<AddressListView> {
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
           itemBuilder: (context, index) {
-            return BlocBuilder<ProfileBloc, ProfileState>(
-              builder: (context, profileState) {
-                return InkWell(
-                  onTap: () {
-                    context.read<ProfileBloc>().add(
-                          ProfileEvent.selecteAddress(
-                            selectedadress: index,
-                          ),
-                        );
-
-                    // Address pick request user object creation
-                    User user = User();
-                    String email =
-                        context.read<PlaceOrderBloc>().emailController.text;
-                    String name =
-                        context.read<PlaceOrderBloc>().nameController.text;
-                    String addPhone = context
-                        .read<PlaceOrderBloc>()
-                        .additionalNumberController
-                        .text;
-                    user = user.copyWith(
-                      address: state.address[state.selectedAddressIndex],
-                      email: email,
-                      name: name,
-                      addPhone: addPhone.isEmpty ? '' : addPhone,
+            return InkWell(
+              onTap: () {
+                log('$index');
+                context.read<ProfileBloc>().add(
+                      ProfileEvent.selecteAddress(
+                        selectedadress: index,
+                      ),
                     );
-                    log('Picked addrs ${user.address}');
-                    context
-                        .read<PlaceOrderBloc>()
-                        .add(PlaceOrderEvent.addressPick(user: user));
-                  },
-                  child: Material(
-                    elevation: 1,
-                    child: ClipRRect(
-                      borderRadius: kRadius10,
-                      child: ColoredBox(
-                        color: profileState.selectedAddressIndex == index
-                            ? klightgrey
-                            : kWhite,
-                        child: Padding(
-                          padding: const EdgeInsets.all(12),
-                          child: Row(
-                            children: [
-                              const CircleAvatar(
-                                radius: 17,
-                                child: Icon(
-                                  Icons.location_pin,
-                                  color: kGreenPrimary,
-                                ),
-                              ),
-                              kWidth10,
-                              Expanded(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      state.address[index],
-                                      style: textHeadMedium1,
-                                      textAlign: TextAlign.start,
-                                      maxLines: 3,
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              widget.isFromProfile
-                                  ? InkWell(
-                                      onTap: () {
-                                        showConfirmationDialog(
-                                          context,
-                                          heading:
-                                              'Do you want to delete this address',
-                                          onPressed: () {
-                                            Navigator.of(context).pop();
-                                            context.read<ProfileBloc>().add(
-                                                  ProfileEvent.deleteAddress(
-                                                    index: index,
-                                                  ),
-                                                );
-                                          },
-                                        );
-                                      },
-                                      child: const CircleAvatar(
-                                        radius: 17,
-                                        child: Icon(
-                                          Icons.delete,
-                                          color: kRed,
-                                        ),
-                                      ),
-                                    )
-                                  : kEmpty,
-                            ],
+
+                // Address pick request user object creation
+
+                String email =
+                    context.read<PlaceOrderBloc>().emailController.text;
+                String name =
+                    context.read<PlaceOrderBloc>().nameController.text;
+                String addPhone = context
+                    .read<PlaceOrderBloc>()
+                    .additionalNumberController
+                    .text;
+
+                User user = User(
+                  address: state.address[state.selectedAddressIndex],
+                  email: email,
+                  name: name,
+                  addPhone: addPhone.isEmpty ? '' : addPhone,
+                );
+
+                log('Picked addrs ${user.address}');
+                context
+                    .read<PlaceOrderBloc>()
+                    .add(PlaceOrderEvent.addressPick(user: user));
+              },
+              child: Material(
+                elevation: 1.4,
+                child: ClipRRect(
+                  borderRadius: kRadius10,
+                  child: ColoredBox(
+                    color: state.selectedAddressIndex == index
+                        ? klightgrey
+                        : kWhite,
+                    child: Padding(
+                      padding: const EdgeInsets.all(12),
+                      child: Row(
+                        children: [
+                          const CircleAvatar(
+                            radius: 17,
+                            child: Icon(
+                              Icons.location_pin,
+                              color: kGreenPrimary,
+                            ),
                           ),
-                        ),
+                          kWidth10,
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  state.address[index],
+                                  style: textHeadMedium1,
+                                  textAlign: TextAlign.start,
+                                  maxLines: 3,
+                                ),
+                              ],
+                            ),
+                          ),
+                          widget.isFromProfile
+                              ? InkWell(
+                                  onTap: () {
+                                    showConfirmationDialog(
+                                      context,
+                                      heading:
+                                          'Do you want to delete this address',
+                                      onPressed: () {
+                                        Navigator.of(context).pop();
+                                        context.read<ProfileBloc>().add(
+                                              ProfileEvent.deleteAddress(
+                                                index: index,
+                                              ),
+                                            );
+                                      },
+                                    );
+                                  },
+                                  child: const CircleAvatar(
+                                    radius: 17,
+                                    child: Icon(
+                                      Icons.delete,
+                                      color: kRed,
+                                    ),
+                                  ),
+                                )
+                              : kEmpty,
+                        ],
                       ),
                     ),
                   ),
-                );
-              },
+                ),
+              ),
             );
           },
         );

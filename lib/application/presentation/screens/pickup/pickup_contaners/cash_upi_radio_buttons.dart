@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:beachdu/application/presentation/screens/pickup/pickup_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -124,6 +126,9 @@ class CashOrUPI extends StatelessWidget {
   ) {
     return GestureDetector(
       onTap: () {
+        if (value == 'cash') {
+          context.read<PlaceOrderBloc>().upiIdController.clear();
+        }
         onChanged(value);
       },
       child: Container(

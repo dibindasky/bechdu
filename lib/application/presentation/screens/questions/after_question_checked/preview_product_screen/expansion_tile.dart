@@ -24,7 +24,6 @@ class ExpansionTileCustom extends StatelessWidget {
             color: kGreenPrimary,
             size: 17,
           ),
-          backgroundColor: klightwhite,
           maintainState: true,
           shape: const BeveledRectangleBorder(),
           title: Text(

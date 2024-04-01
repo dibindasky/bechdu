@@ -98,7 +98,7 @@ class FinalProductPriceDetaails extends StatelessWidget {
                       builder: (context, state) {
                         if (state.promoCodeResponceModel == null) {
                           return Text(
-                            state.isLoading ? 'Applying' : 'Apply',
+                            state.isLoading ? 'Applying...' : 'Apply',
                             style: textHeadRegular1,
                           );
                         } else {

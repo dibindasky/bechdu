@@ -31,7 +31,6 @@ class PlaceOrderBloc extends Bloc<PlaceOrderEvent, PlaceOrderState> {
   final PlaceOrderRepo placeOrderRepo;
   int value = 0;
   String? number;
-
   TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController numberController = TextEditingController();
@@ -44,18 +43,23 @@ class PlaceOrderBloc extends Bloc<PlaceOrderEvent, PlaceOrderState> {
     on<RemoveAppliedPromo>(removeAppliedPromo);
     on<GetDatetime>(getDateTime);
     on<OrderPlacing>(orderPlacing);
+    on<OrderResponceNull>(orderResponceNull);
     on<GetOrders>(getOrders);
     on<OrderCancel>(orderCancel);
     on<ProductDetailsPick>(productDetailsPick);
     on<AddressPick>(addressPick);
     on<SelectedRadio>(selectedRadio);
-
     on<PaymentOption>(paymentOption);
     on<PickupDetailsPick>(pickupDetailsPick);
     on<UserNumber>(userNumber);
     on<RemoveAllFieldData>(removeAllFeildData);
     on<InvoiceDownload>(invoiceDownLoad);
     on<Clear>(clear);
+  }
+
+  FutureOr<void> orderResponceNull(OrderResponceNull event, emit) {
+    log('${state.orderPlacedResponceModel}');
+    emit(state.copyWith(orderPlacedResponceModel: null));
   }
 
   FutureOr<void> selectedRadio(SelectedRadio event, emit) {
@@ -249,7 +253,7 @@ class PlaceOrderBloc extends Bloc<PlaceOrderEvent, PlaceOrderState> {
         isLoading: false,
         message: falure.message,
       ));
-    }, (orderPlacingSuccess) async {
+    }, (orderPlacingSuccess) {
       emit(
         state.copyWith(
           hasError: false,

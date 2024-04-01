@@ -14,6 +14,7 @@ class SuuccessOrderPlaced extends StatelessWidget {
       (timeStamp) {
         Future.delayed(const Duration(seconds: 10)).then((value) {
           context.read<NavbarCubit>().changeNavigationIndex(2);
+
           secondtabScreensNotifier.value = 0;
           secondtabScreensNotifier.notifyListeners();
         });

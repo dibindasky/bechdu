@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:beachdu/application/business_logic/brands_bloc/category_bloc_bloc.dart';
+import 'package:beachdu/application/business_logic/place_order/place_order_bloc.dart';
 import 'package:beachdu/application/business_logic/question_tab/question_tab_bloc.dart';
 import 'package:beachdu/application/presentation/screens/product_selection/product_screen.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
@@ -47,6 +48,7 @@ class BrandContainer extends StatelessWidget {
 
             // Tab reset question answer
             context.read<QuestionTabBloc>().add(const ResetTabSelection());
+            context.read<PlaceOrderBloc>().upiIdController.clear();
           },
           child: Material(
             elevation: 1,

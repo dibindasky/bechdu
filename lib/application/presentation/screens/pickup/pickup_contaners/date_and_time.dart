@@ -10,6 +10,7 @@ import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/application/presentation/utils/custom_button.dart';
 import 'package:beachdu/application/presentation/utils/snackbar/snackbar.dart';
+import 'package:beachdu/application/presentation/utils/validators.dart';
 import 'package:beachdu/domain/model/order_model/order_placed_request_model/pick_up_details.dart';
 import 'package:beachdu/domain/model/order_model/order_placed_request_model/product_details.dart';
 import 'package:beachdu/domain/model/order_model/order_placed_request_model/promo.dart';
@@ -157,9 +158,9 @@ class _DateOrTimeState extends State<DateOrTime> {
             CustomButton(
               onPressed: () {
                 final namecontroller =
-                    context.read<ProfileBloc>().profileNameController.text;
+                    context.read<PlaceOrderBloc>().nameController.text;
                 final emailcontroller =
-                    context.read<ProfileBloc>().profileEmailController.text;
+                    context.read<PlaceOrderBloc>().emailController.text;
                 if (namecontroller.isEmpty && emailcontroller.isEmpty) {
                   showSnack(
                     context: context,
@@ -169,15 +170,19 @@ class _DateOrTimeState extends State<DateOrTime> {
                   return;
                 }
 
-                if (context.read<ProfileBloc>().state.selectedAddressIndex ==
-                    -1) {
-                  showSnack(
-                    context: context,
-                    message: 'Select your address',
-                    color: kRed,
-                  );
-                  return;
+                if (state.selectedRadio == 'upi') {
+                  final upiId =
+                      context.read<PlaceOrderBloc>().upiIdController.text;
+                  if (upiId.isEmpty && !isValidUPI(upiId)) {
+                    showSnack(
+                      context: context,
+                      message: 'UPI ID is not valid',
+                      color: kRed,
+                    );
+                    return;
+                  }
                 }
+
                 if (selectedTime == null && selectedDate == null) {
                   showSnack(
                     context: context,

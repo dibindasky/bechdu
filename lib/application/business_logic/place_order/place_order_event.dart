@@ -43,4 +43,5 @@ class PlaceOrderEvent with _$PlaceOrderEvent {
   const factory PlaceOrderEvent.clear() = Clear;
   const factory PlaceOrderEvent.selectedRadio({required String selectedRadio}) =
       SelectedRadio;
+  const factory PlaceOrderEvent.orderResponceNull() = OrderResponceNull;
 }

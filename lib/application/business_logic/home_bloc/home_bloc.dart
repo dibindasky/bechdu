@@ -19,8 +19,7 @@ part 'home_bloc.freezed.dart';
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
   final HomeRepository homeRepository;
   String? slug;
-  int pageNumber = 1;
-  bool isScrollLoading = false;
+  int globalProduct = 1;
   List<Product> productList = [];
 
   TextEditingController globalProductSearchController = TextEditingController();
@@ -42,7 +41,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     emit(state.copyWith(loadMore: true));
     final data = await homeRepository.globalProductSearch(
         searchParamModel: SearchParamModel(
-      page: ++pageNumber,
+      page: ++globalProduct,
     ));
     data.fold(
       (failure) => emit(
@@ -65,11 +64,14 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
   FutureOr<void> globalProductSearch(GlobalPrductSearch event, emit) async {
     emit(state.copyWith(isLoading: true, hasError: false));
-    pageNumber = 1;
-    event.searchParamModel.page = pageNumber;
-    event.searchParamModel.pageSize = 11;
+    globalProduct = 1;
+
     final data = await homeRepository.globalProductSearch(
-      searchParamModel: event.searchParamModel,
+      searchParamModel: SearchParamModel(
+        page: globalProduct,
+        pageSize: 20,
+        search: event.searchQuery,
+      ),
     );
 
     data.fold(
@@ -92,8 +94,10 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
   FutureOr<void> getBestSellingProducts(
       GetBestSellingProducts event, emit) async {
-    if (state.bestSellingProductsResponceModel != null && event.isLoad == false)
+    if (state.bestSellingProductsResponceModel != null &&
+        event.isLoad == false) {
       return;
+    }
     emit(state.copyWith(isLoading: true, hasError: false));
     final data = await homeRepository.getBestSellingProducts();
 
