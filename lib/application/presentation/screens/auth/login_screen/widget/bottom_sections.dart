@@ -1,6 +1,12 @@
 import 'dart:async';
 import 'dart:developer';
 import 'package:beachdu/application/business_logic/auth/auth_bloc.dart';
+import 'package:beachdu/application/business_logic/brands_bloc/category_bloc_bloc.dart';
+import 'package:beachdu/application/business_logic/home_bloc/home_bloc.dart';
+import 'package:beachdu/application/business_logic/location/location_bloc.dart';
+import 'package:beachdu/application/business_logic/place_order/place_order_bloc.dart';
+import 'package:beachdu/application/business_logic/profile/profile_bloc.dart';
+import 'package:beachdu/application/business_logic/question_tab/question_tab_bloc.dart';
 import 'package:beachdu/application/presentation/routes/routes.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
@@ -52,6 +58,20 @@ class BottomSections extends StatelessWidget {
                 alignment: Alignment.center,
                 child: TextButton(
                   onPressed: () {
+                    context.read<ProfileBloc>().add(const ProfileEvent.clear());
+                    context
+                        .read<QuestionTabBloc>()
+                        .add(const QuestionTabEvent.clear());
+                    context
+                        .read<PlaceOrderBloc>()
+                        .add(const PlaceOrderEvent.clear());
+                    context
+                        .read<LocationBloc>()
+                        .add(const LocationEvent.clear());
+                    context.read<HomeBloc>().add(const HomeEvent.clear());
+                    context
+                        .read<CategoryBlocBloc>()
+                        .add(const CategoryBlocEvent.clear());
                     Navigator.of(context)
                         .pushReplacementNamed(Routes.bottomBar);
                   },

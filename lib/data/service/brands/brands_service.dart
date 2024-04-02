@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:beachdu/data/service/api_service.dart';
 import 'package:beachdu/domain/core/api_endpoints/api_endpoints.dart';
 import 'package:beachdu/domain/core/failure/failure.dart';
@@ -112,6 +114,25 @@ class BrandsService implements BrandsRepository {
     } on DioException catch (e) {
       return Left(Failure(message: e.message ?? errorMessage));
     } catch (e) {
+      return Left(Failure(message: errorMessage));
+    }
+  }
+
+  @override
+  Future<Either<Failure, GetProductsRespoceModel>>
+      getProductsBasedOnCategoryAndBrand({
+    required String categoryType,
+    required String brandName,
+  }) async {
+    try {
+      final responce = await _apiService
+          .get('${ApiEndPoints.getProducts}$categoryType/$brandName');
+      return Right(GetProductsRespoceModel.fromJson(responce.data));
+    } on DioException catch (e) {
+      log('getProductsBasedOnCategoryAndBrand DioException $e');
+      return Left(Failure(message: e.message ?? errorMessage));
+    } catch (e) {
+      log('getProductsBasedOnCategoryAndBrand catch');
       return Left(Failure(message: errorMessage));
     }
   }

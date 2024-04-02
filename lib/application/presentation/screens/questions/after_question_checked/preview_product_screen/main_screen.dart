@@ -65,7 +65,8 @@ class ScreenProductPreview extends StatelessWidget {
                         builder: (context, state) {
                           return ListView.builder(
                             scrollDirection: Axis.vertical,
-                            itemCount: state.getQuestionModel!.sections!.length,
+                            itemCount:
+                                state.getQuestionModel?.sections?.length ?? 0,
                             shrinkWrap: true,
                             physics: const NeverScrollableScrollPhysics(),
                             itemBuilder: (context, index) {

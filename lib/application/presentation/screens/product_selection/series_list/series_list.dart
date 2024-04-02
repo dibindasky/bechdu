@@ -1,6 +1,8 @@
 import 'package:beachdu/application/business_logic/brands_bloc/category_bloc_bloc.dart';
+import 'package:beachdu/application/presentation/screens/product_selection/product_screen.dart';
 import 'package:beachdu/application/presentation/screens/product_selection/search_field/series_search.dart';
 import 'package:beachdu/application/presentation/screens/product_selection/series_list/series_container.dart';
+import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/application/presentation/utils/skeltons/skelton.dart';
 import 'package:flutter/material.dart';
@@ -32,7 +34,7 @@ class SeriesSelectionBuilder extends StatelessWidget {
             seriesList.isEmpty
                 ? Center(child: Lottie.asset(emptyLottie))
                 : GridView.builder(
-                    itemCount: seriesList.length,
+                    itemCount: seriesList.length + 1,
                     physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
                     gridDelegate:
@@ -43,7 +45,52 @@ class SeriesSelectionBuilder extends StatelessWidget {
                       childAspectRatio: 1 / .3,
                     ),
                     itemBuilder: (context, index) {
-                      return SeriesContainer(index: index);
+                      return index == 0
+                          ? GestureDetector(
+                              onTap: () {
+                                brandSeriesProductValueNotifier.value = 2;
+                                brandSeriesProductValueNotifier
+                                    .notifyListeners();
+                                context.read<CategoryBlocBloc>().add(
+                                      CategoryBlocEvent
+                                          .getProductbasedOnCategoryAndBrand(
+                                        category: context
+                                            .read<CategoryBlocBloc>()
+                                            .categoryType!,
+                                        brand: context
+                                            .read<CategoryBlocBloc>()
+                                            .barndName!,
+                                      ),
+                                    );
+                              },
+                              child: SizedBox(
+                                height: 40,
+                                child: ClipRRect(
+                                  borderRadius: kRadius10,
+                                  child: ColoredBox(
+                                    color: kBlueLight,
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                        horizontal: 10,
+                                      ),
+                                      child: Align(
+                                        alignment: Alignment.center,
+                                        child: Text(
+                                          maxLines: 4,
+                                          "All product"
+                                              .replaceAll('Samsung ', ''),
+                                          style: textHeadBold1.copyWith(
+                                            color: kWhite,
+                                          ),
+                                          overflow: TextOverflow.ellipsis,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            )
+                          : SeriesContainer(index: index - 1);
                     },
                   ),
           ],

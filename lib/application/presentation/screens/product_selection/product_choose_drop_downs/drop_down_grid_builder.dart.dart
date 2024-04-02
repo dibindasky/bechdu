@@ -118,17 +118,17 @@ class _ScreenProductSelectionProductFindDropdownGridViewState
                         ),
                         isExpanded: true,
                         items: [
-                          // DropdownMenuItem<String>(
-                          //   value: 'All',
-                          //   child: Text(
-                          //     'All',
-                          //     style: textHeadSemiBold1.copyWith(
-                          //       color: containerOpenArrow1 ? kWhite : kBlack,
-                          //       fontSize: sWidth * 0.036,
-                          //     ),
-                          //     overflow: TextOverflow.ellipsis,
-                          //   ),
-                          // ),
+                          DropdownMenuItem<String>(
+                            value: 'All',
+                            child: Text(
+                              'All',
+                              style: textHeadSemiBold1.copyWith(
+                                color: containerOpenArrow1 ? kWhite : kBlack,
+                                fontSize: sWidth * 0.036,
+                              ),
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
                           if (state.models != null)
                             for (var brand in state.models!)
                               DropdownMenuItem<String>(
@@ -145,26 +145,26 @@ class _ScreenProductSelectionProductFindDropdownGridViewState
                               ),
                         ],
                         onChanged: (value) {
-                          // if (value == 'All') {
-                          //   context.read<CategoryBlocBloc>().modelFilter ==
-                          //       null;
-                          //   context.read<CategoryBlocBloc>().state.varients ==
-                          //       [];
-                          //   context.read<CategoryBlocBloc>().add(
-                          //         CategoryBlocEvent.getProducts(
-                          //           seriesName: context
-                          //                   .read<CategoryBlocBloc>()
-                          //                   .seriesName ??
-                          //               'noo series',
-                          //           categoryType: context
-                          //               .read<CategoryBlocBloc>()
-                          //               .categoryType!,
-                          //           brandName: context
-                          //               .read<CategoryBlocBloc>()
-                          //               .barndName!,
-                          //         ),
-                          //       );
-                          // }
+                          if (value == 'All') {
+                            // context.read<CategoryBlocBloc>().varientFilter ==
+                            //     null;
+                            // context.read<CategoryBlocBloc>().state.varients ==
+                            //     [];
+                            // context.read<CategoryBlocBloc>().add(
+                            //       CategoryBlocEvent.getProducts(
+                            //         seriesName: context
+                            //                 .read<CategoryBlocBloc>()
+                            //                 .seriesName ??
+                            //             'noo series',
+                            //         categoryType: context
+                            //             .read<CategoryBlocBloc>()
+                            //             .categoryType!,
+                            //         brandName: context
+                            //             .read<CategoryBlocBloc>()
+                            //             .barndName!,
+                            //       ),
+                            //     );
+                          }
 
                           if (context.read<CategoryBlocBloc>().modelFilter !=
                               value) {
@@ -173,35 +173,37 @@ class _ScreenProductSelectionProductFindDropdownGridViewState
                           }
                           context.read<CategoryBlocBloc>().modelFilter = value;
 
-                          context.read<CategoryBlocBloc>().add(
-                                CategoryBlocEvent.getProducts(
-                                  seriesName: context
-                                          .read<CategoryBlocBloc>()
-                                          .seriesName ??
-                                      'noo series',
-                                  categoryType: context
-                                      .read<CategoryBlocBloc>()
-                                      .categoryType!,
-                                  brandName: context
-                                      .read<CategoryBlocBloc>()
-                                      .barndName!,
-                                ),
-                              );
-
-                          // if (value != 'All') {
-                          context.read<CategoryBlocBloc>().add(
-                              CategoryBlocEvent.getVarients(
-                                  categoryType: context
-                                      .read<CategoryBlocBloc>()
-                                      .categoryType!,
-                                  brandName: context
-                                      .read<CategoryBlocBloc>()
-                                      .barndName!,
-                                  seriesName: context
-                                      .read<CategoryBlocBloc>()
-                                      .seriesName!,
-                                  model: value!));
-                          // }
+                          if (context.read<CategoryBlocBloc>().seriesName !=
+                              null) {
+                            context.read<CategoryBlocBloc>().add(
+                                  CategoryBlocEvent.getProducts(
+                                    seriesName: context
+                                            .read<CategoryBlocBloc>()
+                                            .seriesName ??
+                                        'noo series',
+                                    categoryType: context
+                                        .read<CategoryBlocBloc>()
+                                        .categoryType!,
+                                    brandName: context
+                                        .read<CategoryBlocBloc>()
+                                        .barndName!,
+                                  ),
+                                );
+                          }
+                          if (value != 'All') {
+                            context.read<CategoryBlocBloc>().add(
+                                CategoryBlocEvent.getVarients(
+                                    categoryType: context
+                                        .read<CategoryBlocBloc>()
+                                        .categoryType!,
+                                    brandName: context
+                                        .read<CategoryBlocBloc>()
+                                        .barndName!,
+                                    seriesName: context
+                                        .read<CategoryBlocBloc>()
+                                        .seriesName!,
+                                    model: value!));
+                          }
                         },
                         value: context.read<CategoryBlocBloc>().modelFilter,
                         dropdownStyleData: DropdownStyleData(
@@ -335,7 +337,9 @@ class _ScreenProductSelectionProductFindDropdownGridViewState
                         height: 40,
                       ),
                       dropdownSearchData: dropdownSearchData(
-                          controller: varientController, data: 'varient'),
+                        controller: varientController,
+                        data: 'varient',
+                      ),
                       onMenuStateChange: (isOpen) {
                         if (!isOpen) {
                           varientController.clear();

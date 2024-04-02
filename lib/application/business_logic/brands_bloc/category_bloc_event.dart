@@ -25,10 +25,10 @@ class CategoryBlocEvent with _$CategoryBlocEvent {
     required String brandName,
     required String categoryType,
   }) = GetSeries;
-  const factory CategoryBlocEvent.productUpdate({
-    String? model,
-    String? varinet,
-  }) = ProductUpdate;
+  const factory CategoryBlocEvent.getProductbasedOnCategoryAndBrand({
+    required String category,
+    required String brand,
+  }) = GetProductbasedOnCategoryAndBrand;
   const factory CategoryBlocEvent.getModels({
     required String categoryType,
     required String brandName,

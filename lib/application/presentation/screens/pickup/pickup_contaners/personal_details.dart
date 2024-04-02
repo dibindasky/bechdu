@@ -1,4 +1,5 @@
 import 'package:beachdu/application/business_logic/place_order/place_order_bloc.dart';
+import 'package:beachdu/application/business_logic/profile/profile_bloc.dart';
 import 'package:beachdu/application/presentation/screens/pickup/pickup_screen.dart';
 import 'package:beachdu/application/presentation/screens/pickup/widgets/textfeild_custom.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
@@ -27,6 +28,28 @@ class _PersonalDetailsState extends State<PersonalDetails> {
 
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPersistentFrameCallback(
+      (timeStamp) {
+        context
+            .read<ProfileBloc>()
+            .add(const ProfileEvent.getUserInfo(isLoad: true));
+        context.read<PlaceOrderBloc>().nameController.text =
+            context.read<PlaceOrderBloc>().nameController.text.isEmpty
+                ? context.read<ProfileBloc>().profileNameController.text
+                : context.read<PlaceOrderBloc>().nameController.text;
+        context.read<PlaceOrderBloc>().emailController.text =
+            context.read<PlaceOrderBloc>().emailController.text.isEmpty
+                ? context.read<ProfileBloc>().profileEmailController.text
+                : context.read<PlaceOrderBloc>().emailController.text;
+        context.read<PlaceOrderBloc>().additionalNumberController.text = context
+                .read<PlaceOrderBloc>()
+                .additionalNumberController
+                .text
+                .isEmpty
+            ? context.read<ProfileBloc>().profileAddPhoneController.text
+            : context.read<PlaceOrderBloc>().additionalNumberController.text;
+      },
+    );
     return SizedBox(
       child: Form(
         key: _formKey,
@@ -38,6 +61,7 @@ class _PersonalDetailsState extends State<PersonalDetails> {
               style: textHeadMedium1.copyWith(fontSize: sWidth * .033),
             ),
             TTextFormField(
+              inputType: TextInputType.name,
               controller: context.read<PlaceOrderBloc>().nameController,
               text: 'Enter name',
             ),

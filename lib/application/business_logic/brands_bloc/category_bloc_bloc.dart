@@ -4,7 +4,6 @@ import 'package:beachdu/domain/model/category_model/single_category_brands_respo
 import 'package:beachdu/domain/model/category_model/single_category_brands_responce_model/single_category_brands_responce_model.dart';
 import 'package:beachdu/domain/model/get_products_respoce_model/get_products_respoce_model.dart';
 import 'package:beachdu/domain/model/get_products_respoce_model/product.dart';
-import 'package:beachdu/domain/model/get_series_responce_model/series.dart';
 import 'package:beachdu/domain/repository/brands_repo.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/foundation.dart';
@@ -36,11 +35,37 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
     on<BrandSearch>(brandSearch);
     on<GetProducts>(getProducts);
     on<ProductSearch>(productSearch);
+    on<GetProductbasedOnCategoryAndBrand>(getProductbasedOnCategoryAndBrand);
     on<GetSeries>(getSeries);
     on<SeriesSearch>(seriesSearch);
     on<GetModels>(getModels);
     on<GetVarients>(getVarients);
     on<Clear>(clear);
+  }
+
+  FutureOr<void> getProductbasedOnCategoryAndBrand(
+      GetProductbasedOnCategoryAndBrand event, emit) async {
+    emit(state.copyWith(isLoading: true, hasError: true, message: null));
+    final data = await brandsRepository.getProductsBasedOnCategoryAndBrand(
+        categoryType: event.category, brandName: event.brand);
+    data.fold(
+        (l) => emit(state.copyWith(
+              isLoading: false,
+              hasError: true,
+            )), (r) {
+      emit(state.copyWith(
+        isLoading: false,
+        hasError: false,
+        filteredProducts: r.products,
+      ));
+      add(
+        CategoryBlocEvent.getModels(
+          categoryType: categoryType!,
+          brandName: barndName!,
+          seriesName: seriesName!,
+        ),
+      );
+    });
   }
 
   FutureOr<void> clear(Clear event, emit) {
@@ -163,12 +188,18 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
       ));
     }, (getproducts) {
       productList = getproducts.products ?? [];
-
-      if (modelFilter != null) {
+      if (modelFilter == 'All') {
+        productList = getproducts.products ?? [];
+      }
+      if (modelFilter != null && modelFilter != 'All') {
         productList = productList
             .where((product) => product.model == modelFilter)
             .toList();
       }
+      // if (varientFilter == 'All') {
+      //   log('All');
+      //   productList = getproducts.products ?? [];
+      // }
       if (varientFilter != null) {
         productList = productList
             .where((product) => product.variant == varientFilter)
@@ -180,6 +211,13 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
         getProductsResponceModel: getproducts,
         filteredProducts: productList,
       ));
+      add(
+        CategoryBlocEvent.getModels(
+          categoryType: categoryType!,
+          brandName: barndName!,
+          seriesName: seriesName!,
+        ),
+      );
     });
   }
 
@@ -241,16 +279,22 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
         allItems: updatedItems,
         varients: [],
       ));
+      if (modelFilter != null) {
+        add(CategoryBlocEvent.getVarients(
+          brandName: event.brandName,
+          categoryType: event.categoryType,
+          seriesName: event.seriesName,
+          model: modelFilter!,
+        ));
+      }
     });
   }
 
   FutureOr<void> getVarients(GetVarients event, emit) async {
     emit(state.copyWith(
-      isLoading: true,
       hasError: false,
       message: null,
     ));
-
     final data = await brandsRepository.getVarients(
       brandName: event.brandName,
       categoryType: event.categoryType,
@@ -258,16 +302,13 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
       model: event.model,
     );
     modelFilter = event.model;
-
     data.fold((failure) {
       emit(state.copyWith(
-        isLoading: false,
         hasError: true,
       ));
     }, (getVarientsSuccess) {
       emit(state.copyWith(
         hasError: false,
-        isLoading: false,
         varients: getVarientsSuccess,
       ));
     });

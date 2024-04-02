@@ -34,14 +34,14 @@ class SeriesContainer extends StatelessWidget {
             //context.read<CategoryBlocBloc>().seriesName = null;
 
             //Call Model event
-            context.read<CategoryBlocBloc>().add(
-                  CategoryBlocEvent.getModels(
-                    categoryType:
-                        context.read<CategoryBlocBloc>().categoryType!,
-                    brandName: context.read<CategoryBlocBloc>().barndName!,
-                    seriesName: seriesList[index],
-                  ),
-                );
+            // context.read<CategoryBlocBloc>().add(
+            //       CategoryBlocEvent.getModels(
+            //         categoryType:
+            //             context.read<CategoryBlocBloc>().categoryType!,
+            //         brandName: context.read<CategoryBlocBloc>().barndName!,
+            //         seriesName: seriesList[index],
+            //       ),
+            //     );
           },
           child: SizedBox(
             height: 40,

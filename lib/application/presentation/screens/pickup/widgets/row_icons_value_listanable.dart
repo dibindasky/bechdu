@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:beachdu/application/business_logic/location/location_bloc.dart';
 import 'package:beachdu/application/presentation/screens/pickup/pickup_screen.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
@@ -6,9 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class RowIconsValueListanable extends StatelessWidget {
-  const RowIconsValueListanable({
-    super.key,
-  });
+  const RowIconsValueListanable({super.key});
 
   @override
   Widget build(BuildContext context) {
