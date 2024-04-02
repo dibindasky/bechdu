@@ -211,13 +211,15 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
         getProductsResponceModel: getproducts,
         filteredProducts: productList,
       ));
-      add(
-        CategoryBlocEvent.getModels(
-          categoryType: categoryType!,
-          brandName: barndName!,
-          seriesName: seriesName!,
-        ),
-      );
+      if (modelFilter != 'All') {
+        add(
+          CategoryBlocEvent.getModels(
+            categoryType: categoryType!,
+            brandName: barndName!,
+            seriesName: seriesName!,
+          ),
+        );
+      }
     });
   }
 

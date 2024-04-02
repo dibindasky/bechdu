@@ -57,9 +57,7 @@ class BrandListviewBuilder extends StatelessWidget {
                       mainAxisSpacing: 10,
                     ),
                     itemBuilder: (context, index) {
-                      return BrandContainer(
-                        index: index,
-                      );
+                      return BrandContainer(index: index);
                     },
                   ),
           ],

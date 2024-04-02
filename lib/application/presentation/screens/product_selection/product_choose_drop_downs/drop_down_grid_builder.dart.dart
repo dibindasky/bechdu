@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:beachdu/application/business_logic/brands_bloc/category_bloc_bloc.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
@@ -145,27 +147,6 @@ class _ScreenProductSelectionProductFindDropdownGridViewState
                               ),
                         ],
                         onChanged: (value) {
-                          if (value == 'All') {
-                            // context.read<CategoryBlocBloc>().varientFilter ==
-                            //     null;
-                            // context.read<CategoryBlocBloc>().state.varients ==
-                            //     [];
-                            // context.read<CategoryBlocBloc>().add(
-                            //       CategoryBlocEvent.getProducts(
-                            //         seriesName: context
-                            //                 .read<CategoryBlocBloc>()
-                            //                 .seriesName ??
-                            //             'noo series',
-                            //         categoryType: context
-                            //             .read<CategoryBlocBloc>()
-                            //             .categoryType!,
-                            //         brandName: context
-                            //             .read<CategoryBlocBloc>()
-                            //             .barndName!,
-                            //       ),
-                            //     );
-                          }
-
                           if (context.read<CategoryBlocBloc>().modelFilter !=
                               value) {
                             context.read<CategoryBlocBloc>().varientFilter =
@@ -192,7 +173,7 @@ class _ScreenProductSelectionProductFindDropdownGridViewState
                           }
                           if (value != 'All') {
                             context.read<CategoryBlocBloc>().add(
-                                CategoryBlocEvent.getVarients(
+                                  CategoryBlocEvent.getVarients(
                                     categoryType: context
                                         .read<CategoryBlocBloc>()
                                         .categoryType!,
@@ -202,7 +183,9 @@ class _ScreenProductSelectionProductFindDropdownGridViewState
                                     seriesName: context
                                         .read<CategoryBlocBloc>()
                                         .seriesName!,
-                                    model: value!));
+                                    model: value!,
+                                  ),
+                                );
                           }
                         },
                         value: context.read<CategoryBlocBloc>().modelFilter,

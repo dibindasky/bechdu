@@ -1,9 +1,7 @@
 import 'package:beachdu/application/business_logic/brands_bloc/category_bloc_bloc.dart';
 import 'package:beachdu/application/presentation/screens/product_selection/product_choose_drop_downs/drop_down_grid_builder.dart.dart';
 import 'package:beachdu/application/presentation/screens/product_selection/product_lists/product_container.dart';
-import 'package:beachdu/application/presentation/screens/product_selection/product_screen.dart';
 import 'package:beachdu/application/presentation/screens/product_selection/search_field/product_serch_field.dart';
-import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/application/presentation/utils/skeltons/skelton.dart';
 import 'package:beachdu/domain/model/get_products_respoce_model/product.dart';
@@ -38,7 +36,9 @@ class ProductListViewBuilder extends StatelessWidget {
         children: [
           const ProductSearchField(),
           kHeight20,
-          const ScreenProductSelectionProductFindDropdownGridView(),
+          context.read<CategoryBlocBloc>().seriesName == null
+              ? kEmpty
+              : const ScreenProductSelectionProductFindDropdownGridView(),
           kHeight10,
           Text('Showing All Products', style: textHeadBold1),
           kHeight10,
