@@ -1,4 +1,5 @@
 import 'package:beachdu/application/business_logic/question_tab/question_tab_bloc.dart';
+import 'package:beachdu/application/presentation/screens/questions/tabs/answer_index_changer.dart';
 import 'package:beachdu/application/presentation/screens/questions/tabs/image_seletion_tile.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/domain/model/get_question_model/question.dart';
@@ -27,11 +28,11 @@ class _ImageGridMakerState extends State<ImageGridMaker> {
                 shrinkWrap: true,
                 itemCount: widget.list.length,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    childAspectRatio:
-                        widget.list.length <= 4 ? 1 / 1.3 : 1 / 1.5,
-                    mainAxisSpacing: 20,
-                    crossAxisSpacing: 20,
-                    crossAxisCount: widget.list.length <= 4 ? 2 : 3),
+                  childAspectRatio: widget.list.length <= 4 ? 1 / 1.2 : 1 / 1.5,
+                  mainAxisSpacing: 20,
+                  crossAxisSpacing: 20,
+                  crossAxisCount: widget.list.length <= 4 ? 2 : 3,
+                ),
                 physics: const NeverScrollableScrollPhysics(),
                 itemBuilder: (context, index) {
                   return BlocBuilder<QuestionTabBloc, QuestionTabState>(
@@ -54,9 +55,9 @@ class _ImageGridMakerState extends State<ImageGridMaker> {
                 },
               ),
             ),
-            kHeight30,
-            // const AnswerIndexChanger(),
-            kHeight30
+            kHeight20,
+            const AnswerIndexChanger(),
+            kHeight20
           ],
         ),
       ),

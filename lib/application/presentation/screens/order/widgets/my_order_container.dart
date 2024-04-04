@@ -59,7 +59,7 @@ class MyOrderContainer extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        '${data.productDetails!.name}',
+                        '${data.productDetails!.name?.replaceFirst('Samsung ', '')}',
                         style: textHeadMedium1,
                       ),
                       Text(

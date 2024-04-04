@@ -58,7 +58,7 @@ class _GridOptionMakerState extends State<GridOptionMaker> {
                   },
                 ),
                 kHeight30,
-                // const AnswerIndexChanger(),
+                const AnswerIndexChanger(),
                 kHeight30
               ],
             ),
