@@ -92,7 +92,7 @@ class TopImage extends StatelessWidget {
                                         overflow: TextOverflow.ellipsis,
                                       ),
                                     ),
-                                    kWidth10,
+                                    kWidth5,
                                     Text(
                                       '${questiontabBloc.product!.variant}',
                                       style: textHeadMedium1.copyWith(

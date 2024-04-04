@@ -11,16 +11,13 @@ class CategoryBlocState with _$CategoryBlocState {
     SingleCategoryBrandsResponceModel? getSingleCategoryResponce,
     GetProductsRespoceModel? getProductsResponceModel,
     List<String>? models,
-    List<String>? varients,
+    required List<String> varients,
     List<Brands>? filteredBrands,
     List<String>? filteredSeries,
     List<Product>? filteredProducts,
-    List<List<String>>? allItems,
     String? selectedModel,
     String? selctedVerient,
   }) = _Initial;
-  factory CategoryBlocState.intial() => const CategoryBlocState(
-        isLoading: false,
-        hasError: false,
-      );
+  factory CategoryBlocState.intial() =>
+      const CategoryBlocState(isLoading: false, hasError: false, varients: []);
 }

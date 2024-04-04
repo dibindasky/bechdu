@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:beachdu/data/service/api_service.dart';
 import 'package:beachdu/domain/core/api_endpoints/api_endpoints.dart';
 import 'package:beachdu/domain/core/failure/failure.dart';
@@ -36,6 +38,7 @@ class QuestionService implements QuestionRepo {
     required PickupQuestionModel pickeQuestionModel,
   }) async {
     try {
+      log('getBasePrice rqust data ${pickeQuestionModel.toJson()}');
       final response = await _apiService.post(ApiEndPoints.getBasePrice,
           data: pickeQuestionModel.toJson());
       return Right(GetBasePriceModelResponce.fromJson(response.data));
@@ -51,6 +54,7 @@ class QuestionService implements QuestionRepo {
     required AbandendOrderRequestModel abandendOrderRequestModel,
   }) async {
     try {
+      log('abandendOrder rqust data ${abandendOrderRequestModel.toJson()}');
       final responce = await _apiService.post(
         addHeader: true,
         ApiEndPoints.abandendOrder,

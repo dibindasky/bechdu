@@ -1,4 +1,5 @@
 import 'package:beachdu/application/business_logic/navbar/navbar_cubit.dart';
+import 'package:beachdu/application/business_logic/place_order/place_order_bloc.dart';
 import 'package:beachdu/application/presentation/screens/product_selection/product_screen.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/application/presentation/utils/custom_button.dart';
@@ -38,6 +39,9 @@ class SuuccessOrderPlaced extends StatelessWidget {
             kHeight30,
             CustomButton(
               onPressed: () {
+                context
+                    .read<PlaceOrderBloc>()
+                    .add(const PlaceOrderEvent.orderResponceNull());
                 context.read<NavbarCubit>().changeNavigationIndex(2);
                 secondtabScreensNotifier.value = 0;
                 secondtabScreensNotifier.notifyListeners();

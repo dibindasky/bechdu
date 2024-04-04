@@ -278,8 +278,6 @@ class PlaceOrderBloc extends Bloc<PlaceOrderEvent, PlaceOrderState> {
         isLoading: false,
         message: falure.message,
       ));
-
-      log('failure $falure');
     }, (promoCodeResponceModel) async {
       value = promoCodeResponceModel.value!;
       emit(
@@ -293,10 +291,6 @@ class PlaceOrderBloc extends Bloc<PlaceOrderEvent, PlaceOrderState> {
   }
 
   FutureOr<void> removeAllFeildData(RemoveAllFieldData event, emit) {
-    // nameController.text = '';
-    // emailController.text = '';
-    // numberController.text = '';
-    // additionalNumberController.text = '';
     promocodeController.text = '';
     upiIdController.text = '';
   }

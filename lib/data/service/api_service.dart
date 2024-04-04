@@ -47,10 +47,7 @@ class ApiService {
         _dio.options.headers['content-Type'] = 'application/json';
       }
       log('api uri ==>get  ${_dio.options.baseUrl + url}');
-      addHeader
-          ? log(
-              'accessToken ==> $addHeader  ${_dio.options.headers['authorization']}')
-          : log('');
+
       final response =
           await _dio.get(url, data: data, queryParameters: queryParameters);
       return response;

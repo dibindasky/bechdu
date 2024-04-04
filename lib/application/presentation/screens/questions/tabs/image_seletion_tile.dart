@@ -10,11 +10,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class GridTileQuestion extends StatefulWidget {
-  const GridTileQuestion(
-      {super.key,
-      required this.option,
-      required this.onTap,
-      required this.selected});
+  const GridTileQuestion({
+    super.key,
+    required this.option,
+    required this.onTap,
+    required this.selected,
+  });
 
   final Question option;
   final VoidCallback onTap;
@@ -90,12 +91,12 @@ class _GridTileQuestionState extends State<GridTileQuestion> {
                       width: widget.selected ? 4 : 1),
                   borderRadius: kRadius10),
               child: Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.symmetric(horizontal: 10),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     AspectRatio(
-                      aspectRatio: 1,
+                      aspectRatio: 1.4,
                       child: FittedBox(
                         child: Image.memory(imageBytes!),
                       ),
@@ -106,7 +107,7 @@ class _GridTileQuestionState extends State<GridTileQuestion> {
                         color: widget.selected ? kGreenPrimary : kBlack,
                       ),
                       textAlign: TextAlign.center,
-                      maxLines: 2,
+                      maxLines: 3,
                     ),
                   ],
                 ),

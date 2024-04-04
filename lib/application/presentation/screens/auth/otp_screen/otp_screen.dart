@@ -42,56 +42,37 @@ class OTPScreen extends StatelessWidget {
             automaticallyImplyLeading: false,
             toolbarHeight: 100,
           ),
-          body: BlocListener<AuthBloc, AuthState>(
+          body: BlocListener<QuestionTabBloc, QuestionTabState>(
             listener: (context, state) {
-              if (state.hasError) {
-                showSnack(
-                  context: context,
-                  message: errorMessage,
-                  color: kRed,
-                );
+              if (state.lastChecking == true) {
+                func(context);
               }
-              if (state.otpVerifyResponceModel != null) {
-                showSnack(context: context, message: 'Login Successfully');
-                loginOrSignup(context);
-                log('condition pick in condition');
-                PickupQuestionModel pickepQuestionModel = PickupQuestionModel(
-                  categoryType: context.read<CategoryBlocBloc>().categoryType,
-                  productSlug: context.read<CategoryBlocBloc>().slug,
-                );
-
-                //Product name Concatination
-                final verient = context.read<CategoryBlocBloc>().verient;
-                final model = context.read<CategoryBlocBloc>().model;
-                final name = '$verient $model';
-
-                ProductDetails productDetails = ProductDetails(
-                  slug: context.read<CategoryBlocBloc>().slug,
-                  name: name,
-                );
-
-                AbandendOrderRequestModel abandendOrderRequestModel =
-                    AbandendOrderRequestModel(productDetails: productDetails);
-
-                context.read<QuestionTabBloc>().add(
-                      GetBasePrice(
-                        pickupQuestionModel: pickepQuestionModel,
-                        abandendOrderRequestModel: abandendOrderRequestModel,
-                      ),
-                    );
-              }
-              context.read<AuthBloc>().phoneNumberController.clear();
-              context.read<AuthBloc>().otpController.clear();
             },
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: ListView(
-                children: [
-                  const LogoToCountDownSection(),
-                  kHeight50,
-                  PinEnterField(),
-                  BottomSection(loginWay: loginWay),
-                ],
+            child: BlocListener<AuthBloc, AuthState>(
+              listener: (context, state) {
+                if (state.hasError) {
+                  showSnack(
+                    context: context,
+                    message: errorMessage,
+                    color: kRed,
+                  );
+                }
+                if (state.otpVerifyResponceModel != null) {
+                  showSnack(context: context, message: 'Login Successfully');
+                  loginOrSignup(context);
+                  log('condition pick in condition');
+                }
+              },
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: ListView(
+                  children: [
+                    const LogoToCountDownSection(),
+                    kHeight50,
+                    PinEnterField(),
+                    BottomSection(loginWay: loginWay),
+                  ],
+                ),
               ),
             ),
           ),
@@ -114,5 +95,34 @@ class OTPScreen extends StatelessWidget {
     } else {
       Navigator.pushReplacementNamed(context, Routes.bottomBar);
     }
+  }
+
+  Future<void> func(BuildContext context) async {
+    PickupQuestionModel pickepQuestionModel = PickupQuestionModel(
+      categoryType: context.read<CategoryBlocBloc>().categoryType,
+      productSlug: context.read<CategoryBlocBloc>().slug,
+      selectedOptions: context.read<QuestionTabBloc>().selectedOptions,
+    );
+
+    //Product name Concatination
+    final verient = context.read<CategoryBlocBloc>().verient;
+    final model = context.read<CategoryBlocBloc>().model;
+    final name = '$verient $model';
+
+    ProductDetails productDetails = ProductDetails(
+      slug: context.read<CategoryBlocBloc>().slug,
+      name: name,
+      options: context.read<QuestionTabBloc>().selectedOptions,
+    );
+
+    AbandendOrderRequestModel abandendOrderRequestModel =
+        AbandendOrderRequestModel(productDetails: productDetails);
+
+    context.read<QuestionTabBloc>().add(
+          GetBasePrice(
+            pickupQuestionModel: pickepQuestionModel,
+            abandendOrderRequestModel: abandendOrderRequestModel,
+          ),
+        );
   }
 }

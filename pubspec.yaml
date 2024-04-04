@@ -59,6 +59,7 @@ dependencies:
   downloads_path_provider_28: any
   pdf_render: ^1.4.6
   open_file: ^3.3.2
+  url_launcher: ^6.2.5
 
 
 dev_dependencies:

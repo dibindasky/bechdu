@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:beachdu/data/service/api_service.dart';
 import 'package:beachdu/domain/core/api_endpoints/api_endpoints.dart';
 import 'package:beachdu/domain/core/failure/failure.dart';
@@ -22,6 +24,7 @@ class AuthService implements AuthRepo {
     required LoginModel loginModel,
   }) async {
     try {
+      log('${loginModel.toJson()}');
       final responce = await _apiService.post(
         ApiEndPoints.sendOTP,
         data: loginModel.toJson(),

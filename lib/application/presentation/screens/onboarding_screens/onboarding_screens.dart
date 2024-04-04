@@ -188,6 +188,8 @@ class _BechDuUserOnBoardingScreensState
               selectedIndex == 2
                   ? CustomButton(
                       onPressed: () {
+                        context.read<AuthBloc>().phoneNumberController.clear();
+                        context.read<AuthBloc>().otpController.clear();
                         context
                             .read<AuthBloc>()
                             .add(const AuthEvent.onBoardBool());

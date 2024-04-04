@@ -24,7 +24,7 @@ class AnswerIndexChanger extends StatelessWidget {
         BlocConsumer<QuestionTabBloc, QuestionTabState>(
           listener: (context, state) {
             if (state.lastChecking == true) {
-              loginOrNot(context, state);
+              loginOrNot(context);
             }
           },
           builder: (context, state) {
@@ -45,11 +45,9 @@ class AnswerIndexChanger extends StatelessWidget {
     );
   }
 
-  Future<void> loginOrNot(
-    BuildContext context,
-    QuestionTabState questionTabBloc,
-    //AuthState authState,
-  ) async {
+  Future<void> loginOrNot(BuildContext context
+      //AuthState authState,
+      ) async {
     final login = await SecureSotrage.getlLogin();
     if (!login) {
       Navigator.of(context).pushNamed(
@@ -57,13 +55,12 @@ class AnswerIndexChanger extends StatelessWidget {
         arguments: LoginWay.fromQuestionPick,
       );
     } else {
-      pickeQuestionModelEventDataPass(context, questionTabBloc);
+      pickeQuestionModelEventDataPass(context);
     }
   }
 
   void pickeQuestionModelEventDataPass(
     BuildContext context,
-    QuestionTabState questionBlocState,
   ) {
     secondtabScreensNotifier.value = 2;
     secondtabScreensNotifier.notifyListeners();

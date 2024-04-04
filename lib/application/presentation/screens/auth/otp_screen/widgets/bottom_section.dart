@@ -1,3 +1,5 @@
+import 'package:beachdu/domain/model/login/otp_verify_request_model/otp_verify_request_model.dart';
+import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:beachdu/application/business_logic/auth/auth_bloc.dart';
 import 'package:beachdu/application/business_logic/question_tab/question_tab_bloc.dart';
@@ -9,12 +11,10 @@ import 'package:beachdu/application/presentation/utils/enums/type_display.dart';
 import 'package:beachdu/application/presentation/utils/snackbar/snackbar.dart';
 import 'package:beachdu/application/presentation/widgets/custom_elevated_button.dart';
 import 'package:beachdu/domain/model/login/login_model/login_model.dart';
-import 'package:beachdu/domain/model/login/otp_verify_request_model/otp_verify_request_model.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class BottomSection extends StatefulWidget {
-  const BottomSection({super.key, required this.loginWay});
+  const BottomSection({Key? key, required this.loginWay}) : super(key: key);
 
   final LoginWay loginWay;
 
@@ -23,24 +23,37 @@ class BottomSection extends StatefulWidget {
 }
 
 class _BottomSectionState extends State<BottomSection> {
-  bool canResend = true;
-  Color klightgrey = Colors.grey;
-  bool _canResend = true;
-
+  late Timer _timer;
+  bool _canResend = false;
   Color resendButtonColor = Colors.grey;
+
+  @override
+  void initState() {
+    super.initState();
+    startCountdown();
+  }
+
+  @override
+  void dispose() {
+    _timer.cancel();
+    super.dispose();
+  }
+
+  void startCountdown() {
+    _timer = Timer(const Duration(seconds: 30), () {
+      setState(() {
+        _canResend = true;
+        resendButtonColor = Colors.black;
+      });
+    });
+  }
 
   void _startResendCooldown() {
     setState(() {
       _canResend = false;
       resendButtonColor = Colors.grey;
     });
-
-    Timer(const Duration(seconds: 30), () {
-      setState(() {
-        _canResend = true;
-        resendButtonColor = Colors.black;
-      });
-    });
+    startCountdown();
   }
 
   @override
@@ -59,27 +72,25 @@ class _BottomSectionState extends State<BottomSection> {
               onPressed: _canResend
                   ? () {
                       _startResendCooldown();
-                      Future.delayed(const Duration(seconds: 30)).then(
-                        (value) {
-                          final phoneNumber = context
-                              .read<AuthBloc>()
-                              .phoneNumberController
-                              .text
-                              .replaceAll(' ', '');
-                          LoginModel loginModel = LoginModel(
-                            mobileNumber: phoneNumber,
+
+                      final phoneNumber = context
+                          .read<AuthBloc>()
+                          .phoneNumberController
+                          .text
+                          .replaceAll(' ', '');
+                      LoginModel loginModel = LoginModel(
+                        mobileNumber: phoneNumber,
+                      );
+                      context.read<AuthBloc>().add(
+                            AuthEvent.otpSend(loginModel: loginModel),
                           );
-                          context.read<AuthBloc>().add(
-                                AuthEvent.otpSend(loginModel: loginModel),
-                              );
-                          Navigator.pushReplacementNamed(
-                            context,
-                            Routes.otpVerification,
-                            arguments: widget.loginWay,
-                          );
-                        },
+                      Navigator.pushReplacementNamed(
+                        context,
+                        Routes.otpVerification,
+                        arguments: widget.loginWay,
                       );
                       showSnack(context: context, message: 'OTP Re-sended');
+                      // Your resend logic here...
                     }
                   : null,
               child: Text(
@@ -94,14 +105,11 @@ class _BottomSectionState extends State<BottomSection> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text('Please wait for '),
-              CountdownTimer(
-                duration: Duration(seconds: 30),
-              ),
+              CountdownTimer(duration: Duration(seconds: 30)),
               Text(' before resending OTP')
             ],
           ),
         const SizedBox(height: 50),
-        kHeight20,
         widget.loginWay == LoginWay.fromProfile ||
                 widget.loginWay == LoginWay.fromQuestionPick
             ? kHeight20
@@ -109,9 +117,10 @@ class _BottomSectionState extends State<BottomSection> {
                 alignment: Alignment.center,
                 child: TextButton(
                   onPressed: () {
+                    context.read<AuthBloc>().phoneNumberController.clear();
+                    context.read<AuthBloc>().otpController.clear();
                     Navigator.of(context)
                         .pushReplacementNamed(Routes.bottomBar);
-                    context.read<AuthBloc>().phoneNumberController.clear();
                   },
                   child: Text(
                     'Skip for now',

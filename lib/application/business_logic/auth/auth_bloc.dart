@@ -98,6 +98,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
   FutureOr<void> logOut(LogOut event, emit) async {
     await SecureSotrage.clearLogin();
+    await SecureSotrage.setOnboardBool();
     emit(AuthState.initail());
   }
 }

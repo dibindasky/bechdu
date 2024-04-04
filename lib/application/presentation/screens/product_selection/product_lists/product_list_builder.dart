@@ -36,9 +36,7 @@ class ProductListViewBuilder extends StatelessWidget {
         children: [
           const ProductSearchField(),
           kHeight20,
-          context.read<CategoryBlocBloc>().seriesName == null
-              ? kEmpty
-              : const ScreenProductSelectionProductFindDropdownGridView(),
+          const ScreenProductSelectionProductFindDropdownGridView(),
           kHeight10,
           Text('Showing All Products', style: textHeadBold1),
           kHeight10,

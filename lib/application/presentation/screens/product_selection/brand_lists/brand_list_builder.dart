@@ -9,8 +9,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
 
-class BrandListviewBuilder extends StatelessWidget {
+class BrandListviewBuilder extends StatefulWidget {
   const BrandListviewBuilder({super.key});
+
+  @override
+  State<BrandListviewBuilder> createState() => _BrandListviewBuilderState();
+}
+
+class _BrandListviewBuilderState extends State<BrandListviewBuilder> {
+  @override
+  void initState() {
+    // context
+    //     .read<CategoryBlocBloc>()
+    //     .add(const CategoryBlocEvent.getSingleCategoryBrands(isLoad: false));
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

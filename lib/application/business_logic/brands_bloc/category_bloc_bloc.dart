@@ -26,7 +26,6 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
   List<Brands> brandsList = [];
   List<Product> productList = [];
   List<String> seriesList = [];
-  List<List<String>> updatedItems = [];
   String? modelFilter;
   String? varientFilter;
   List<String> series = [];
@@ -189,6 +188,7 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
     }, (getproducts) {
       productList = getproducts.products ?? [];
       if (modelFilter == 'All') {
+        // varientFilter == '';
         productList = getproducts.products ?? [];
       }
       if (modelFilter != null && modelFilter != 'All') {
@@ -278,7 +278,6 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
         hasError: false,
         isLoading: false,
         models: models,
-        allItems: updatedItems,
         varients: [],
       ));
       if (modelFilter != null) {

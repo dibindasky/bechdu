@@ -90,7 +90,7 @@ class QuestionTabBloc extends Bloc<QuestionTabEvent, QuestionTabState> {
           message: null, hasError: false, selectedTabIndex: event.index));
     } else {
       emit(state.copyWith(
-        message: 'you can go back to the previous step only',
+        message: 'You can go back to the previous step only',
         hasError: true,
       ));
     }
@@ -237,6 +237,7 @@ class QuestionTabBloc extends Bloc<QuestionTabEvent, QuestionTabState> {
     List<SelectedOption> list = [];
     for (var element in state.sections!) {
       list.addAll(state.selectedAnswers[element.heading]!);
+      selectedOptions.addAll(state.selectedAnswers[element.heading]!);
     }
     for (var element in list) {
       log('selected datas baseprice ${element.toJson()}');
@@ -289,7 +290,6 @@ class QuestionTabBloc extends Bloc<QuestionTabEvent, QuestionTabState> {
 
     for (var element in state.sections!) {
       list.addAll(state.selectedAnswers[element.heading]!);
-      selectedOptions.addAll(state.selectedAnswers[element.heading]!);
     }
 
     log('abandentOrder first');

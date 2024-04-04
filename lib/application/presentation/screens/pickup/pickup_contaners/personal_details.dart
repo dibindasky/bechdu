@@ -43,13 +43,6 @@ class _PersonalDetailsState extends State<PersonalDetails> {
 
   @override
   Widget build(BuildContext context) {
-    WidgetsBinding.instance.addPersistentFrameCallback(
-      (timeStamp) {
-        // context
-        //     .read<ProfileBloc>()
-        //     .add(const ProfileEvent.getUserInfo(isLoad: true));
-      },
-    );
     return SizedBox(
       child: Form(
         key: _formKey,

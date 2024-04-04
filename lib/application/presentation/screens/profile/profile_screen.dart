@@ -341,17 +341,16 @@ class ScreenProfile extends StatelessWidget {
     context.read<LocationBloc>().add(const LocationEvent.clear());
     context.read<HomeBloc>().add(const HomeEvent.clear());
     context.read<CategoryBlocBloc>().add(const CategoryBlocEvent.clear());
+    context.read<NavbarCubit>().changeNavigationIndex(0);
+    secondtabScreensNotifier.value = 0;
+    secondtabScreensNotifier.notifyListeners();
+    brandSeriesProductValueNotifier.value = 0;
+    brandSeriesProductValueNotifier.notifyListeners();
     Navigator.pushNamedAndRemoveUntil(
       context,
       Routes.signInOrLogin,
       arguments: LoginWay.fromInitial,
       (route) => false,
-    ).then((value) {
-      context.read<NavbarCubit>().changeNavigationIndex(0);
-      secondtabScreensNotifier.value = 0;
-      secondtabScreensNotifier.notifyListeners();
-      brandSeriesProductValueNotifier.value = 0;
-      brandSeriesProductValueNotifier.notifyListeners();
-    });
+    );
   }
 }

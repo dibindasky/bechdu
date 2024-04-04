@@ -43,30 +43,23 @@ class _SecondTabvaluelistanableBBuilderState
     extends State<SecondTabvaluelistanableBBuilder> {
   @override
   void initState() {
+    context.read<PlaceOrderBloc>().nameController.text =
+        context.read<PlaceOrderBloc>().nameController.text.isEmpty
+            ? context.read<ProfileBloc>().profileNameController.text
+            : context.read<PlaceOrderBloc>().nameController.text;
+    context.read<PlaceOrderBloc>().emailController.text =
+        context.read<PlaceOrderBloc>().emailController.text.isEmpty
+            ? context.read<ProfileBloc>().profileEmailController.text
+            : context.read<PlaceOrderBloc>().emailController.text;
+    context.read<PlaceOrderBloc>().additionalNumberController.text =
+        context.read<PlaceOrderBloc>().additionalNumberController.text.isEmpty
+            ? context.read<ProfileBloc>().profileAddPhoneController.text
+            : context.read<PlaceOrderBloc>().additionalNumberController.text;
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    WidgetsBinding.instance.addPostFrameCallback(
-      (timeStamp) {
-        context.read<PlaceOrderBloc>().nameController.text =
-            context.read<PlaceOrderBloc>().nameController.text.isEmpty
-                ? context.read<ProfileBloc>().profileNameController.text
-                : context.read<PlaceOrderBloc>().nameController.text;
-        context.read<PlaceOrderBloc>().emailController.text =
-            context.read<PlaceOrderBloc>().emailController.text.isEmpty
-                ? context.read<ProfileBloc>().profileEmailController.text
-                : context.read<PlaceOrderBloc>().emailController.text;
-        context.read<PlaceOrderBloc>().additionalNumberController.text = context
-                .read<PlaceOrderBloc>()
-                .additionalNumberController
-                .text
-                .isEmpty
-            ? context.read<ProfileBloc>().profileAddPhoneController.text
-            : context.read<PlaceOrderBloc>().additionalNumberController.text;
-      },
-    );
     return ValueListenableBuilder(
       valueListenable: secondtabScreensNotifier,
       builder: (context, value, child) {

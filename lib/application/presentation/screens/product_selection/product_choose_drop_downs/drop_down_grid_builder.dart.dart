@@ -94,16 +94,16 @@ class _ScreenProductSelectionProductFindDropdownGridViewState
                                 ? Icon(
                                     Icons.arrow_drop_up_sharp,
                                     color:
-                                        containerOpenArrow1 ? kWhite : kBlack,
+                                        !containerOpenArrow1 ? kWhite : kWhite,
                                   )
                                 : Icon(
                                     Icons.arrow_drop_down_outlined,
                                     color:
-                                        containerOpenArrow1 ? kWhite : kBlack,
+                                        containerOpenArrow1 ? kWhite : kWhite,
                                   )),
                         buttonStyleData: ButtonStyleData(
                           decoration: BoxDecoration(
-                            color: containerOpenArrow1 ? kBluePrimary : kWhite,
+                            color: kBlueLight,
                             border: Border.all(
                               color: textFieldBorderColor,
                             ),
@@ -116,7 +116,7 @@ class _ScreenProductSelectionProductFindDropdownGridViewState
                         ),
                         hint: Text(
                           'Model',
-                          style: textHeadInter.copyWith(color: klightgrey),
+                          style: textHeadInter.copyWith(color: kWhite),
                         ),
                         isExpanded: true,
                         items: [
@@ -125,7 +125,7 @@ class _ScreenProductSelectionProductFindDropdownGridViewState
                             child: Text(
                               'All',
                               style: textHeadSemiBold1.copyWith(
-                                color: containerOpenArrow1 ? kWhite : kBlack,
+                                color: kWhite,
                                 fontSize: sWidth * 0.036,
                               ),
                               overflow: TextOverflow.ellipsis,
@@ -138,8 +138,7 @@ class _ScreenProductSelectionProductFindDropdownGridViewState
                                 child: Text(
                                   brand.replaceAll('Samsung ', ''),
                                   style: textHeadSemiBold1.copyWith(
-                                    color:
-                                        containerOpenArrow1 ? kWhite : kBlack,
+                                    color: kWhite,
                                     fontSize: sWidth * 0.036,
                                   ),
                                   overflow: TextOverflow.ellipsis,
@@ -147,13 +146,16 @@ class _ScreenProductSelectionProductFindDropdownGridViewState
                               ),
                         ],
                         onChanged: (value) {
+                          if (value == "All") {
+                            context.read<CategoryBlocBloc>().varientFilter =
+                                null;
+                          }
                           if (context.read<CategoryBlocBloc>().modelFilter !=
                               value) {
                             context.read<CategoryBlocBloc>().varientFilter =
                                 null;
                           }
                           context.read<CategoryBlocBloc>().modelFilter = value;
-
                           if (context.read<CategoryBlocBloc>().seriesName !=
                               null) {
                             context.read<CategoryBlocBloc>().add(
@@ -224,23 +226,6 @@ class _ScreenProductSelectionProductFindDropdownGridViewState
             kWidth10,
             kWidth5,
             Expanded(
-                // child: CustomDropdown(
-                //   selectedOption: context.read<CategoryBlocBloc>().varientFilter,
-                //   onChanged: (value) {
-                //     context.read<CategoryBlocBloc>().varientFilter = value;
-                //     context.read<CategoryBlocBloc>().add(
-                //           CategoryBlocEvent.getProducts(
-                //             seriesName:
-                //                 context.read<CategoryBlocBloc>().seriesName!,
-                //             categoryType:
-                //                 context.read<CategoryBlocBloc>().categoryType!,
-                //             brandName:
-                //                 context.read<CategoryBlocBloc>().barndName!,
-                //           ),
-                //         );
-                //   },
-                //   options: state.varients!,
-                // ),
                 child: Container(
               height: 40,
               width: double.infinity,
@@ -255,15 +240,15 @@ class _ScreenProductSelectionProductFindDropdownGridViewState
                           icon: containerOpenArrow2
                               ? Icon(
                                   Icons.arrow_drop_up_sharp,
-                                  color: containerOpenArrow2 ? kWhite : kBlack,
+                                  color: !containerOpenArrow2 ? kWhite : kWhite,
                                 )
                               : Icon(
                                   Icons.arrow_drop_down_outlined,
-                                  color: containerOpenArrow2 ? kWhite : kBlack,
+                                  color: containerOpenArrow2 ? kWhite : kWhite,
                                 )),
                       buttonStyleData: ButtonStyleData(
                         decoration: BoxDecoration(
-                          color: containerOpenArrow2 ? kBluePrimary : kWhite,
+                          color: kBlueLight,
                           border: Border.all(
                             color: textFieldBorderColor,
                           ),
@@ -276,24 +261,25 @@ class _ScreenProductSelectionProductFindDropdownGridViewState
                       ),
                       hint: Text(
                         'Varient',
-                        style: textHeadInter.copyWith(color: klightgrey),
+                        style: textHeadInter.copyWith(color: kWhite),
                       ),
                       isExpanded: true,
-                      items: state.varients?.map<DropdownMenuItem<String>>(
+                      items: state.varients.map<DropdownMenuItem<String>>(
                         (varient) {
                           return DropdownMenuItem<String>(
                             value: varient,
                             child: Text(
                               varient,
                               style: textHeadSemiBold1.copyWith(
-                                  fontSize: sWidth * 0.04,
-                                  color: containerOpenArrow2 ? kWhite : kBlack),
+                                  fontSize: sWidth * 0.04, color: kWhite),
                             ),
                           );
                         },
                       ).toList(),
                       onChanged: (value) {
                         context.read<CategoryBlocBloc>().varientFilter = value;
+                        log('varientFilter$value');
+                        log('varientFilter   ${context.read<CategoryBlocBloc>().varientFilter}');
                         context.read<CategoryBlocBloc>().add(
                               CategoryBlocEvent.getProducts(
                                 seriesName: context
