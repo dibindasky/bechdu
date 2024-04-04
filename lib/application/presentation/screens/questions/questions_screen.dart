@@ -49,8 +49,8 @@ class QuestionTabs extends StatelessWidget {
                     kHeight20,
                     RequoteAnswerSessio(),
                     //kHeight10,
-                    //AnswerIndexChanger(),
-                    kHeight10,
+                    AnswerIndexChanger(),
+                    kHeight20,
                   ],
                 );
               },

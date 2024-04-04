@@ -56,8 +56,8 @@ class _ImageGridMakerState extends State<ImageGridMaker> {
               ),
             ),
             kHeight20,
-            const AnswerIndexChanger(),
-            kHeight20
+            // const AnswerIndexChanger(),
+            // kHeight20
           ],
         ),
       ),
