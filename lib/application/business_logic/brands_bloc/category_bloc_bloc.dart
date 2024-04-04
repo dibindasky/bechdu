@@ -107,7 +107,6 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
     emit(state.copyWith(
       filteredBrands: filteredBrands,
     ));
-    //log(filteredBrands.toString());
   }
 
   FutureOr<void> seriesSearch(
@@ -186,6 +185,7 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
         hasError: true,
       ));
     }, (getproducts) {
+      log('getProducts prod leng bloc >>>>=== : ${getproducts.products?.length}');
       productList = getproducts.products ?? [];
       if (modelFilter == 'All') {
         // varientFilter == '';
@@ -234,14 +234,13 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
       categoryType: event.categoryType,
     );
 
-    log('getSeries bloc categoryType >>>>=== : ${event.categoryType}');
-    log('getSeries bloc brandName >>>>=== : ${event.brandName}');
     data.fold((failure) {
       emit(state.copyWith(
         isLoading: false,
         hasError: true,
       ));
     }, (getSeriesSuccess) {
+      log('getSeries length bloc >>>>=== : ${getSeriesSuccess.length}');
       seriesList.clear();
       seriesList.addAll(getSeriesSuccess);
       emit(state.copyWith(
@@ -257,20 +256,20 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
     emit(state.copyWith(
       isLoading: true,
       hasError: false,
-      message: null,
     ));
     final data = await brandsRepository.getModles(
       brandName: event.brandName,
       categoryType: event.categoryType,
       seriesName: event.seriesName,
     );
-    varientFilter = null;
+    // varientFilter = null;
     data.fold((failure) {
       emit(state.copyWith(
         isLoading: false,
         hasError: true,
       ));
     }, (getModelSuccess) {
+      log('getModelSuccess bloc ${getModelSuccess.length}');
       List<String> models = [];
       models.clear();
       models.addAll(getModelSuccess);
