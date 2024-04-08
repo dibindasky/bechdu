@@ -24,8 +24,9 @@ class QuestionTabBloc extends Bloc<QuestionTabEvent, QuestionTabState> {
   final QuestionRepo questionRepo;
   int answerdCount = 0;
   num basePrice = 0;
+  Product? product;
+  List<Section>? sections;
   List<SelectedOption> selectedOptions = [];
-  List<SelectedOption> updatedList = [];
 
   QuestionTabBloc(this.questionRepo) : super(QuestionTabState.initial()) {
     on<TabChange>(tabChange);
@@ -76,8 +77,11 @@ class QuestionTabBloc extends Bloc<QuestionTabEvent, QuestionTabState> {
     if (list.isNotEmpty) {
       print(list.first.value);
     }
-    return emit(
-        state.copyWith(message: null, selectedAnswers: map, hasError: false));
+    return emit(state.copyWith(
+      message: null,
+      selectedAnswers: map,
+      hasError: false,
+    ));
   }
 
   FutureOr<void> goBackIndex(GoBackIndex event, emit) async {
@@ -194,11 +198,12 @@ class QuestionTabBloc extends Bloc<QuestionTabEvent, QuestionTabState> {
 
   FutureOr<void> getQuestions(GetQuestions event, emit) async {
     emit(state.copyWith(
-        isLoading: true,
-        sections: null,
-        message: null,
-        hasError: false,
-        lastChecking: false));
+      isLoading: true,
+      sections: null,
+      message: null,
+      hasError: false,
+      lastChecking: false,
+    ));
     final result = await questionRepo.getQuestions(
       categoryType: event.categoryType,
     );
@@ -207,7 +212,9 @@ class QuestionTabBloc extends Bloc<QuestionTabEvent, QuestionTabState> {
               hasError: true,
               message: l.message,
               isLoading: false,
+              lastChecking: false,
             )), (r) {
+      product = event.product;
       Map<String, List<SelectedOption>> map = {};
       if (r.sections != null) {
         for (var element in r.sections!.toList()) {
@@ -216,7 +223,7 @@ class QuestionTabBloc extends Bloc<QuestionTabEvent, QuestionTabState> {
           }
         }
       }
-      return emit(state.copyWith(
+      emit(state.copyWith(
         sections: r.sections,
         isLoading: false,
         selectedAnswers: map,
@@ -234,16 +241,12 @@ class QuestionTabBloc extends Bloc<QuestionTabEvent, QuestionTabState> {
       hasError: false,
       lastChecking: false,
     ));
-    List<SelectedOption> list = [];
+    selectedOptions.clear();
     for (var element in state.sections!) {
-      list.addAll(state.selectedAnswers[element.heading]!);
       selectedOptions.addAll(state.selectedAnswers[element.heading]!);
     }
-    for (var element in list) {
-      log('selected datas baseprice ${element.toJson()}');
-    }
     log('getBasePrice one');
-    event.pickupQuestionModel.selectedOptions = list;
+    event.pickupQuestionModel.selectedOptions = selectedOptions;
     final data = await questionRepo.getBasePrice(
       pickeQuestionModel: event.pickupQuestionModel,
     );
@@ -254,16 +257,28 @@ class QuestionTabBloc extends Bloc<QuestionTabEvent, QuestionTabState> {
         isLoading: false,
       ));
     }, (successResponce) async {
+      // Product? product;
+      // if (state.getProductsResponceModel != null &&
+      //     state.getProductsResponceModel!.products != null) {
+      //   for (var element in state.getProductsResponceModel!.products!) {
+      //     product = element;
+      //   }
+      // }
       log('getBasePrice third');
       emit(state.copyWith(
         hasError: false,
         isLoading: false,
         lastChecking: false,
         basePriceModelResponce: successResponce,
+        product: event.product,
+        sections: state.sections,
       ));
+      log('Sections state sections ${state.sections?.toList()}');
+      log('Product detail getBasePrice bloc ${state.product?.toJson()}');
       if (successResponce.basePrice != null) {
         log('getBasePrice forth');
         basePrice = successResponce.basePrice!;
+        log('baseprice ${successResponce.basePrice}');
         final phone = await SecureSotrage.getNumber();
         final city = await SecureSotrage.getSelectedLocation();
         final pincode = await SecureSotrage.getSelectedPincode();
@@ -275,7 +290,8 @@ class QuestionTabBloc extends Bloc<QuestionTabEvent, QuestionTabState> {
         log('User datas bloc $phone $city $pincode');
         event.abandendOrderRequestModel.abendendOrderUser = abendendOrderUser;
         event.abandendOrderRequestModel.productDetails?.price = '$basePrice';
-
+        event.abandendOrderRequestModel.productDetails?.options =
+            selectedOptions;
         log('getBasePrice fiffth');
         add(QuestionTabEvent.abandentOrder(
             abandendOrderRequestModel: event.abandendOrderRequestModel));
@@ -285,22 +301,14 @@ class QuestionTabBloc extends Bloc<QuestionTabEvent, QuestionTabState> {
   }
 
   FutureOr<void> abandentOrder(AbandentOrder event, emit) async {
-    emit(state.copyWith(isLoading: true, hasError: false));
-    List<SelectedOption> list = [];
-
-    for (var element in state.sections!) {
-      list.addAll(state.selectedAnswers[element.heading]!);
-    }
-
     log('abandentOrder first');
-    final number = await SecureSotrage.getNumber();
-    final location = await SecureSotrage.getSelectedLocation();
-    final pincode = await SecureSotrage.getSelectedPincode();
-
-    event.abandendOrderRequestModel.abendendOrderUser!.phone = number;
-    event.abandendOrderRequestModel.abendendOrderUser!.city = location;
-    event.abandendOrderRequestModel.abendendOrderUser!.pincode = pincode;
-    event.abandendOrderRequestModel.productDetails!.options = list;
+    // final number = await SecureSotrage.getNumber();
+    // final location = await SecureSotrage.getSelectedLocation();
+    // final pincode = await SecureSotrage.getSelectedPincode();
+    // event.abandendOrderRequestModel.abendendOrderUser!.phone = number;
+    // event.abandendOrderRequestModel.abendendOrderUser!.city = location;
+    // event.abandendOrderRequestModel.abendendOrderUser!.pincode = pincode;
+    // event.abandendOrderRequestModel.productDetails!.options = selectedOptions;
     final data = await questionRepo.abandendOrder(
       abandendOrderRequestModel: event.abandendOrderRequestModel,
     );
@@ -310,14 +318,12 @@ class QuestionTabBloc extends Bloc<QuestionTabEvent, QuestionTabState> {
     data.fold((falure) {
       emit(state.copyWith(
         hasError: true,
-        isLoading: false,
       ));
     }, (abandendOrderResponceModel) async {
       log('abandentOrder third');
       emit(
         state.copyWith(
           hasError: false,
-          isLoading: false,
           abandendOrderResponceModel: abandendOrderResponceModel,
         ),
       );

@@ -6,6 +6,7 @@ import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/application/presentation/utils/custom_button.dart';
 import 'package:beachdu/application/presentation/utils/enums/type_display.dart';
+import 'package:beachdu/application/presentation/utils/loading_indicators/loading_indicator.dart';
 import 'package:beachdu/application/presentation/utils/snackbar/snackbar.dart';
 import 'package:beachdu/application/presentation/widgets/top_image.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +21,6 @@ class ScreenProductPreview extends StatelessWidget {
       onWillPop: () async {
         secondtabScreensNotifier.value = 0;
         secondtabScreensNotifier.notifyListeners();
-        // context.read<QuestionTabBloc>().add(const ResetTabSelection());
         return false;
       },
       child: Scaffold(
@@ -46,39 +46,47 @@ class ScreenProductPreview extends StatelessWidget {
                     border: Border.all(color: kBlack),
                     borderRadius: kRadius10,
                   ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const TopImage(
-                        fromWhere: FromWhere.recalculateWithAmount,
-                      ),
-                      kHeight20,
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 20),
-                        child: Text(
-                          'Device Diagnosis',
-                          style: textHeadBold1.copyWith(fontSize: 18),
-                        ),
-                      ),
-                      // kHeight20,
-                      BlocBuilder<QuestionTabBloc, QuestionTabState>(
-                        builder: (context, state) {
-                          return ListView.builder(
-                            scrollDirection: Axis.vertical,
-                            itemCount:
-                                state.getQuestionModel?.sections?.length ?? 0,
-                            shrinkWrap: true,
-                            physics: const NeverScrollableScrollPhysics(),
-                            itemBuilder: (context, index) {
-                              return ExpansionTileCustom(
-                                name: state.getQuestionModel!.sections![index]
-                                    .heading!,
-                              );
-                            },
-                          );
-                        },
-                      ),
-                    ],
+                  child: BlocBuilder<QuestionTabBloc, QuestionTabState>(
+                    builder: (context, questionTabBloc) {
+                      if (questionTabBloc.isLoading) {
+                        return Center(child: LoadingAnimation(width: 50));
+                      } else if (questionTabBloc.product == null) {
+                        return const Center(
+                          child: CircularProgressIndicator(
+                            color: kGreenPrimary,
+                          ),
+                        );
+                      }
+                      return Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const TopImage(
+                            fromWhere: FromWhere.recalculateWithAmount,
+                          ),
+                          kHeight20,
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 20),
+                            child: Text(
+                              'Device Diagnosis',
+                              style: textHeadBold1.copyWith(fontSize: 18),
+                            ),
+                          ),
+                          if (questionTabBloc.sections != null)
+                            ListView.builder(
+                              scrollDirection: Axis.vertical,
+                              itemCount: questionTabBloc.sections!.length,
+                              shrinkWrap: true,
+                              physics: const NeverScrollableScrollPhysics(),
+                              itemBuilder: (context, index) {
+                                return ExpansionTileCustom(
+                                  name:
+                                      questionTabBloc.sections![index].heading!,
+                                );
+                              },
+                            ),
+                        ],
+                      );
+                    },
                   ),
                 ),
                 kHeight40,

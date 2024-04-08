@@ -42,37 +42,30 @@ class OTPScreen extends StatelessWidget {
             automaticallyImplyLeading: false,
             toolbarHeight: 100,
           ),
-          body: BlocListener<QuestionTabBloc, QuestionTabState>(
+          body: BlocListener<AuthBloc, AuthState>(
             listener: (context, state) {
-              if (state.lastChecking == true) {
-                func(context);
+              if (state.hasError) {
+                showSnack(
+                  context: context,
+                  message: errorMessage,
+                  color: kRed,
+                );
+              }
+              if (state.otpVerifyResponceModel != null) {
+                showSnack(context: context, message: 'Login Successfully');
+                basePriceAndAbendentOrderRequest(context);
+                loginOrSignup(context);
               }
             },
-            child: BlocListener<AuthBloc, AuthState>(
-              listener: (context, state) {
-                if (state.hasError) {
-                  showSnack(
-                    context: context,
-                    message: errorMessage,
-                    color: kRed,
-                  );
-                }
-                if (state.otpVerifyResponceModel != null) {
-                  showSnack(context: context, message: 'Login Successfully');
-                  loginOrSignup(context);
-                  log('condition pick in condition');
-                }
-              },
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: ListView(
-                  children: [
-                    const LogoToCountDownSection(),
-                    kHeight50,
-                    PinEnterField(),
-                    BottomSection(loginWay: loginWay),
-                  ],
-                ),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: ListView(
+                children: [
+                  const LogoToCountDownSection(),
+                  kHeight50,
+                  PinEnterField(),
+                  BottomSection(loginWay: loginWay),
+                ],
               ),
             ),
           ),
@@ -82,12 +75,15 @@ class OTPScreen extends StatelessWidget {
   }
 
   loginOrSignup(BuildContext context) {
-    context.read<ProfileBloc>().add(const ProfileEvent.clear());
-    context.read<QuestionTabBloc>().add(const QuestionTabEvent.clear());
-    context.read<PlaceOrderBloc>().add(const PlaceOrderEvent.clear());
-    context.read<LocationBloc>().add(const LocationEvent.clear());
-    context.read<HomeBloc>().add(const HomeEvent.clear());
-    context.read<CategoryBlocBloc>().add(const CategoryBlocEvent.clear());
+    if (loginWay != LoginWay.fromQuestionPick) {
+      context.read<ProfileBloc>().add(const ProfileEvent.clear());
+      context.read<QuestionTabBloc>().add(const QuestionTabEvent.clear());
+      context.read<PlaceOrderBloc>().add(const PlaceOrderEvent.clear());
+      context.read<LocationBloc>().add(const LocationEvent.clear());
+      context.read<HomeBloc>().add(const HomeEvent.clear());
+      context.read<CategoryBlocBloc>().add(const CategoryBlocEvent.clear());
+    }
+
     if (loginWay == LoginWay.fromQuestionPick) {
       secondtabScreensNotifier.value = 2;
       secondtabScreensNotifier.notifyListeners();
@@ -97,11 +93,11 @@ class OTPScreen extends StatelessWidget {
     }
   }
 
-  Future<void> func(BuildContext context) async {
+  Future<void> basePriceAndAbendentOrderRequest(BuildContext context) async {
+    //Abended order
     PickupQuestionModel pickepQuestionModel = PickupQuestionModel(
       categoryType: context.read<CategoryBlocBloc>().categoryType,
       productSlug: context.read<CategoryBlocBloc>().slug,
-      selectedOptions: context.read<QuestionTabBloc>().selectedOptions,
     );
 
     //Product name Concatination
@@ -112,7 +108,6 @@ class OTPScreen extends StatelessWidget {
     ProductDetails productDetails = ProductDetails(
       slug: context.read<CategoryBlocBloc>().slug,
       name: name,
-      options: context.read<QuestionTabBloc>().selectedOptions,
     );
 
     AbandendOrderRequestModel abandendOrderRequestModel =
@@ -120,6 +115,7 @@ class OTPScreen extends StatelessWidget {
 
     context.read<QuestionTabBloc>().add(
           GetBasePrice(
+            product: context.read<QuestionTabBloc>().product!,
             pickupQuestionModel: pickepQuestionModel,
             abandendOrderRequestModel: abandendOrderRequestModel,
           ),

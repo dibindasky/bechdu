@@ -188,7 +188,6 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
       log('getProducts prod leng bloc >>>>=== : ${getproducts.products?.length}');
       productList = getproducts.products ?? [];
       if (modelFilter == 'All') {
-        // varientFilter == '';
         productList = getproducts.products ?? [];
       }
       if (modelFilter != null && modelFilter != 'All') {

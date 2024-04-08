@@ -12,6 +12,7 @@ class CategoryBlocState with _$CategoryBlocState {
     GetProductsRespoceModel? getProductsResponceModel,
     List<String>? models,
     required List<String> varients,
+    Product? product,
     List<Brands>? filteredBrands,
     List<String>? filteredSeries,
     List<Product>? filteredProducts,

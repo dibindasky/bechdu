@@ -27,13 +27,14 @@ class RequoteAnswerSessio extends StatelessWidget {
       buildWhen: (previous, current) =>
           previous.selectedTabIndex != current.selectedTabIndex,
       builder: (context, state) {
-        if (state.sections != null) {
+        if (state.getQuestionModel != null) {
           if (state.sections![state.selectedTabIndex].type == 'yes/no') {
             return YesOrNoListMaker(
                 list: state.sections![state.selectedTabIndex].options!);
           } else if (state.sections![state.selectedTabIndex].type == 'image') {
             return ImageGridMaker(
-                list: state.sections![state.selectedTabIndex].options!);
+              list: state.sections![state.selectedTabIndex].options!,
+            );
           } else {
             return GridOptionMaker(
                 list: state.sections![state.selectedTabIndex].options!);

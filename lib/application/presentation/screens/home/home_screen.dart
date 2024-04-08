@@ -1,6 +1,7 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'dart:async';
+import 'dart:developer';
 import 'package:beachdu/application/business_logic/brands_bloc/category_bloc_bloc.dart';
 import 'package:beachdu/application/business_logic/home_bloc/home_bloc.dart';
 import 'package:beachdu/application/business_logic/internet_connection_check/internet_connection_check_cubit.dart';
@@ -32,6 +33,7 @@ class ScreenHome extends StatefulWidget {
 
 class _ScreenHomeState extends State<ScreenHome> {
   bool locationSelected = false;
+  final ScrollController controller = ScrollController();
 
   void _checkLocationAndShowScreen() async {
     bool isLocation = await SecureSotrage.getLocationBool();
@@ -54,29 +56,43 @@ class _ScreenHomeState extends State<ScreenHome> {
 
   @override
   void initState() {
+    print('==========================================================');
+    controller.addListener(() {
+      log('Inside addListener 0ne');
+      if (controller.position.pixels == controller.position.maxScrollExtent) {
+        log('Inside addListener');
+        context.read<HomeBloc>().add(const HomeEvent.nextPage());
+      }
+    });
     _checkLocationAndShowScreen();
     super.initState();
   }
 
   @override
-  Widget build(BuildContext context) {
+  void didChangeDependencies() {
+    super.didChangeDependencies();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      context
-          .read<LocationBloc>()
-          .add(const LocationEvent.locationPick(isLoad: false));
-      context
-          .read<HomeBloc>()
-          .add(const HomeEvent.homePageBanners(isLoad: false));
-      context
-          .read<HomeBloc>()
-          .add(const HomeEvent.getBestSellingProducts(isLoad: false));
-      context
-          .read<CategoryBlocBloc>()
-          .add(const CategoryBlocEvent.getSingleCategoryBrands(isLoad: false));
-      context
-          .read<HomeBloc>()
-          .add(const HomeEvent.getAllCategory(isLoad: false));
+      if (mounted) {
+        context
+            .read<LocationBloc>()
+            .add(const LocationEvent.locationPick(isLoad: false));
+        context
+            .read<HomeBloc>()
+            .add(const HomeEvent.homePageBanners(isLoad: false));
+        context
+            .read<HomeBloc>()
+            .add(const HomeEvent.getBestSellingProducts(isLoad: false));
+        context.read<CategoryBlocBloc>().add(
+            const CategoryBlocEvent.getSingleCategoryBrands(isLoad: false));
+        context
+            .read<HomeBloc>()
+            .add(const HomeEvent.getAllCategory(isLoad: false));
+      }
     });
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
         FocusScopeNode focusScopeNode = FocusScope.of(context);
@@ -113,9 +129,11 @@ class _ScreenHomeState extends State<ScreenHome> {
                 context
                     .read<HomeBloc>()
                     .add(const HomeEvent.getAllCategory(isLoad: true));
-                await Future.delayed(const Duration(seconds: 2));
+                await Future.delayed(const Duration(seconds: 1));
               },
               child: SingleChildScrollView(
+                //  physics: NeverScrollableScrollPhysics(),
+                controller: controller,
                 child: Stack(
                   children: [
                     BlocListener<InternetConnectionCheckCubit,
@@ -131,16 +149,6 @@ class _ScreenHomeState extends State<ScreenHome> {
                       },
                       child: BlocBuilder<HomeBloc, HomeState>(
                         builder: (context, state) {
-                          if (state.hasError) {
-                            return SizedBox(
-                              height: sHeight,
-                              child: const Center(
-                                child: CircularProgressIndicator(
-                                  color: kGreenPrimary,
-                                ),
-                              ),
-                            );
-                          }
                           return Column(
                             mainAxisSize: MainAxisSize.min,
                             children: [

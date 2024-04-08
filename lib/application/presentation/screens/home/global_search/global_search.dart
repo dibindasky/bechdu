@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:beachdu/application/business_logic/brands_bloc/category_bloc_bloc.dart';
 import 'package:beachdu/application/business_logic/home_bloc/home_bloc.dart';
 import 'package:beachdu/application/business_logic/navbar/navbar_cubit.dart';
@@ -7,43 +9,40 @@ import 'package:beachdu/application/presentation/screens/product_selection/produ
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/application/presentation/utils/loading_indicators/loading_indicator.dart';
-import 'package:beachdu/application/presentation/utils/refresh_indicator_custom.dart';
 import 'package:beachdu/application/presentation/utils/skeltons/skelton.dart';
 import 'package:beachdu/domain/core/api_endpoints/api_endpoints.dart';
-import 'package:beachdu/domain/core/failure/failure.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
+import 'package:shimmer/shimmer.dart';
 
 class GlobalProductSearch extends StatefulWidget {
-  const GlobalProductSearch({super.key, this.scrollController});
-  final ScrollController? scrollController;
+  const GlobalProductSearch({super.key});
 
   @override
   State<GlobalProductSearch> createState() => _GlobalProductSearchState();
 }
 
 class _GlobalProductSearchState extends State<GlobalProductSearch> {
-  @override
-  void initState() {
-    if (widget.scrollController != null) {
-      _scrollCallBack();
-    }
-    super.initState();
-  }
+  //late ScrollController controller = ScrollController();
+  // @override
+  // void initState() {
+  //   print('==========================================================');
+  //   controller.addListener(() {
+  //     log('Inside addListener 0ne');
+  //     if (controller.position.pixels == controller.position.maxScrollExtent) {
+  //       log('Inside addListener');
+  //       context.read<HomeBloc>().add(const HomeEvent.nextPage());
+  //     }
+  //   });
+  //   super.initState();
+  // }
 
-  @override
-  void dispose() {
-    widget.scrollController?.dispose();
-    super.dispose();
-  }
-
-  _scrollCallBack() {
-    if (widget.scrollController!.position.pixels ==
-        widget.scrollController!.position.maxScrollExtent) {
-      context.read<HomeBloc>().add(const HomeEvent.nextPage());
-    }
-  }
+  // @override
+  // void dispose() {
+  //   controller.dispose();
+  //   super.dispose();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -56,14 +55,18 @@ class _GlobalProductSearchState extends State<GlobalProductSearch> {
             height: 0,
           );
         } else if (state.products == null) {
-          return RefreshIndicatorCustom(
-            message: errorMessage,
-            onRefresh: () {},
+          return const Skeleton(
+            crossAxisCount: 2,
+            itemCount: 15,
+            height: 00,
           );
         } else if (state.products!.isEmpty) {
           return Lottie.asset(emptyLottie);
         }
         final products = state.products!;
+        int length = state.loadMore
+            ? state.products!.length + (state.products!.length % 2 == 0 ? 3 : 2)
+            : state.products!.length;
         return Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Center(
@@ -71,11 +74,10 @@ class _GlobalProductSearchState extends State<GlobalProductSearch> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 GridView.builder(
-                  controller: widget.scrollController,
+                  // controller: controller,
                   physics: const NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
-                  itemCount:
-                      (state.products?.length ?? 0) + (state.loadMore ? 1 : 0),
+                  itemCount: length,
                   scrollDirection: Axis.vertical,
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
@@ -84,8 +86,17 @@ class _GlobalProductSearchState extends State<GlobalProductSearch> {
                     childAspectRatio: 1 / 1.2,
                   ),
                   itemBuilder: (context, index) {
-                    if (state.loadMore && index == state.products!.length) {
-                      return Center(child: LoadingAnimation(width: 100));
+                    if (state.loadMore && index >= state.products!.length) {
+                      return Shimmer.fromColors(
+                        baseColor: Colors.grey[300]!,
+                        highlightColor: Colors.grey[100]!,
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: klightwhite,
+                            borderRadius: kRadius5,
+                          ),
+                        ),
+                      );
                     }
                     String url =
                         "${ApiEndPoints.baseUrlImagePath}${Uri.encodeComponent(

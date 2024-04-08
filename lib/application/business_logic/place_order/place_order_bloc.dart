@@ -31,6 +31,7 @@ class PlaceOrderBloc extends Bloc<PlaceOrderEvent, PlaceOrderState> {
   final PlaceOrderRepo placeOrderRepo;
   int value = 0;
   String? number;
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController numberController = TextEditingController();

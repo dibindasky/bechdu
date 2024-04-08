@@ -4,6 +4,8 @@ import 'package:beachdu/application/presentation/screens/product_selection/searc
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/application/presentation/utils/skeltons/skelton.dart';
+import 'package:beachdu/application/presentation/utils/snackbar/snackbar.dart';
+import 'package:beachdu/domain/core/failure/failure.dart';
 import 'package:beachdu/domain/model/category_model/single_category_brands_responce_model/brands.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -19,30 +21,34 @@ class BrandListviewBuilder extends StatefulWidget {
 class _BrandListviewBuilderState extends State<BrandListviewBuilder> {
   @override
   void initState() {
-    // context
-    //     .read<CategoryBlocBloc>()
-    //     .add(const CategoryBlocEvent.getSingleCategoryBrands(isLoad: false));
+    context
+        .read<CategoryBlocBloc>()
+        .add(const CategoryBlocEvent.getSingleCategoryBrands(isLoad: false));
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<CategoryBlocBloc, CategoryBlocState>(
+    // widget's ancestor is unsafe.
+
+    // WidgetsBinding.instance.addPersistentFrameCallback(
+    //   (timeStamp) {
+    //     context.read<CategoryBlocBloc>().add(
+    //         const CategoryBlocEvent.getSingleCategoryBrands(isLoad: false));
+    //   },
+    // );
+    return BlocConsumer<CategoryBlocBloc, CategoryBlocState>(
+      listener: (context, state) {
+        if (state.hasError) {
+          showSnack(context: context, message: errorMessage);
+        }
+      },
       builder: (context, state) {
         if (state.isLoading) {
           return const Skeleton(
             crossAxisCount: 2,
             itemCount: 15,
             height: 00,
-          );
-        } else if (state.hasError) {
-          return SizedBox(
-            height: sHeight,
-            child: const Center(
-              child: CircularProgressIndicator(
-                color: kGreenPrimary,
-              ),
-            ),
           );
         } else if (state.filteredBrands == null) {
           return Lottie.asset(emptyLottie);

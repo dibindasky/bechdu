@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:beachdu/application/business_logic/brands_bloc/category_bloc_bloc.dart';
 import 'package:beachdu/application/business_logic/place_order/place_order_bloc.dart';
 import 'package:beachdu/application/business_logic/question_tab/question_tab_bloc.dart';

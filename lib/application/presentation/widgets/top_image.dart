@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'package:beachdu/application/business_logic/question_tab/question_tab_bloc.dart';
 import 'package:beachdu/application/presentation/screens/product_selection/product_screen.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
@@ -17,29 +18,15 @@ class TopImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        if (fromWhere == FromWhere.pickupScreen)
-          const Positioned(
-            top: -30,
-            right: 59,
-            child: CircleAvatar(
-              radius: 50,
-              backgroundColor: kBlueLight,
-            ),
-          ),
-        if (fromWhere == FromWhere.pickupScreen)
-          const Positioned(
-            left: 150,
-            bottom: -20,
-            child: CircleAvatar(
-              radius: 40,
-              backgroundColor: kGreenLight,
-            ),
-          ),
         BlocBuilder<QuestionTabBloc, QuestionTabState>(
           builder: (context, questiontabBloc) {
-            if (questiontabBloc.getQuestionModel != null &&
-                questiontabBloc.getQuestionModel!.sections != null) {
-              final image = questiontabBloc.product!.productImage!;
+            if (questiontabBloc.isLoading) {
+              return Center(child: LoadingAnimation(width: 40));
+            }
+            if (questiontabBloc.product != null) {
+              final product = questiontabBloc.product;
+              final image = questiontabBloc.product!.productImage ?? '';
+              log('Product Image $image');
               String url =
                   "${ApiEndPoints.baseUrlImagePath}${Uri.encodeComponent(image)}";
               return SizedBox(
@@ -85,7 +72,7 @@ class TopImage extends StatelessWidget {
                                 child: Row(
                                   children: [
                                     Text(
-                                      '${questiontabBloc.product!.model?.replaceAll('Samsung ', '')}',
+                                      '${product?.model?.replaceAll('Samsung ', '')}',
                                       style: textHeadBold1.copyWith(
                                         fontSize: sWidth * .043,
                                         color: kWhite,
@@ -94,7 +81,7 @@ class TopImage extends StatelessWidget {
                                     ),
                                     kWidth5,
                                     Text(
-                                      '${questiontabBloc.product!.variant}',
+                                      '${product!.variant}',
                                       style: textHeadMedium1.copyWith(
                                         color: kWhite,
                                         overflow: TextOverflow.ellipsis,
@@ -179,7 +166,7 @@ class TopImage extends StatelessWidget {
                                     FromWhere.checkoutAndPickupScreen ||
                                 fromWhere == FromWhere.pickupScreen)
                               Text(
-                                  '${questiontabBloc.product!.model?.replaceAll('Samsung ', '')}',
+                                  '${product!.model?.replaceAll('Samsung ', '')}',
                                   style: textHeadBold1.copyWith(
                                       color: kWhite, fontSize: sWidth * .05),
                                   overflow: TextOverflow.ellipsis),
@@ -190,7 +177,7 @@ class TopImage extends StatelessWidget {
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text('${questiontabBloc.product!.variant}',
+                                  Text('${product!.variant}',
                                       style: textHeadMedium1.copyWith(
                                           color: kWhite),
                                       overflow: TextOverflow.ellipsis),

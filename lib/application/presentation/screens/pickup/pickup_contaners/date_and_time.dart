@@ -188,6 +188,7 @@ class _DateOrTimeState extends State<DateOrTime> {
                   );
                   return;
                 }
+
                 Promo promo = Promo(
                     code: context
                                 .read<PlaceOrderBloc>()

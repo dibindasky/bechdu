@@ -11,6 +11,7 @@ class AuthState with _$AuthState {
     OtpVerifyResponceModel? otpVerifyResponceModel,
     required bool logOrNot,
     String? number,
+    Product? product,
     required bool isVisited,
   }) = _Initial;
   factory AuthState.initail() => const AuthState(

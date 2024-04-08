@@ -37,9 +37,10 @@ class QuestionTabs extends StatelessWidget {
               builder: (context, questionTabBloc) {
                 if (questionTabBloc.isLoading) {
                   return LoadingAnimation(width: 50);
-                } else if (questionTabBloc.getQuestionModel == null) {
+                } else if (questionTabBloc.product == null) {
                   return const Center(
-                      child: CircularProgressIndicator(color: kGreenPrimary));
+                    child: CircularProgressIndicator(color: kGreenPrimary),
+                  );
                 }
                 return const Column(
                   children: [
@@ -48,7 +49,7 @@ class QuestionTabs extends StatelessWidget {
                     RequoteTabs(),
                     kHeight20,
                     RequoteAnswerSessio(),
-                    //kHeight10,
+                    kHeight5,
                     AnswerIndexChanger(),
                     kHeight20,
                   ],

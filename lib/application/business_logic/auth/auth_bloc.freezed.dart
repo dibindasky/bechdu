@@ -21,7 +21,8 @@ mixin _$AuthEvent {
     required TResult Function() onBoardBool,
     required TResult Function() vistedOrNot,
     required TResult Function(LoginModel loginModel) otpSend,
-    required TResult Function(OtpVerifyRequestModel otpVerifyRequestModel)
+    required TResult Function(
+            OtpVerifyRequestModel otpVerifyRequestModel, Product? product)
         otpVeriying,
     required TResult Function() logOut,
     required TResult Function() logOrNot,
@@ -32,7 +33,9 @@ mixin _$AuthEvent {
     TResult? Function()? onBoardBool,
     TResult? Function()? vistedOrNot,
     TResult? Function(LoginModel loginModel)? otpSend,
-    TResult? Function(OtpVerifyRequestModel otpVerifyRequestModel)? otpVeriying,
+    TResult? Function(
+            OtpVerifyRequestModel otpVerifyRequestModel, Product? product)?
+        otpVeriying,
     TResult? Function()? logOut,
     TResult? Function()? logOrNot,
   }) =>
@@ -42,7 +45,9 @@ mixin _$AuthEvent {
     TResult Function()? onBoardBool,
     TResult Function()? vistedOrNot,
     TResult Function(LoginModel loginModel)? otpSend,
-    TResult Function(OtpVerifyRequestModel otpVerifyRequestModel)? otpVeriying,
+    TResult Function(
+            OtpVerifyRequestModel otpVerifyRequestModel, Product? product)?
+        otpVeriying,
     TResult Function()? logOut,
     TResult Function()? logOrNot,
     required TResult orElse(),
@@ -139,7 +144,8 @@ class _$OnBoardBoolImpl implements OnBoardBool {
     required TResult Function() onBoardBool,
     required TResult Function() vistedOrNot,
     required TResult Function(LoginModel loginModel) otpSend,
-    required TResult Function(OtpVerifyRequestModel otpVerifyRequestModel)
+    required TResult Function(
+            OtpVerifyRequestModel otpVerifyRequestModel, Product? product)
         otpVeriying,
     required TResult Function() logOut,
     required TResult Function() logOrNot,
@@ -153,7 +159,9 @@ class _$OnBoardBoolImpl implements OnBoardBool {
     TResult? Function()? onBoardBool,
     TResult? Function()? vistedOrNot,
     TResult? Function(LoginModel loginModel)? otpSend,
-    TResult? Function(OtpVerifyRequestModel otpVerifyRequestModel)? otpVeriying,
+    TResult? Function(
+            OtpVerifyRequestModel otpVerifyRequestModel, Product? product)?
+        otpVeriying,
     TResult? Function()? logOut,
     TResult? Function()? logOrNot,
   }) {
@@ -166,7 +174,9 @@ class _$OnBoardBoolImpl implements OnBoardBool {
     TResult Function()? onBoardBool,
     TResult Function()? vistedOrNot,
     TResult Function(LoginModel loginModel)? otpSend,
-    TResult Function(OtpVerifyRequestModel otpVerifyRequestModel)? otpVeriying,
+    TResult Function(
+            OtpVerifyRequestModel otpVerifyRequestModel, Product? product)?
+        otpVeriying,
     TResult Function()? logOut,
     TResult Function()? logOrNot,
     required TResult orElse(),
@@ -266,7 +276,8 @@ class _$VistedOrNotImpl implements VistedOrNot {
     required TResult Function() onBoardBool,
     required TResult Function() vistedOrNot,
     required TResult Function(LoginModel loginModel) otpSend,
-    required TResult Function(OtpVerifyRequestModel otpVerifyRequestModel)
+    required TResult Function(
+            OtpVerifyRequestModel otpVerifyRequestModel, Product? product)
         otpVeriying,
     required TResult Function() logOut,
     required TResult Function() logOrNot,
@@ -280,7 +291,9 @@ class _$VistedOrNotImpl implements VistedOrNot {
     TResult? Function()? onBoardBool,
     TResult? Function()? vistedOrNot,
     TResult? Function(LoginModel loginModel)? otpSend,
-    TResult? Function(OtpVerifyRequestModel otpVerifyRequestModel)? otpVeriying,
+    TResult? Function(
+            OtpVerifyRequestModel otpVerifyRequestModel, Product? product)?
+        otpVeriying,
     TResult? Function()? logOut,
     TResult? Function()? logOrNot,
   }) {
@@ -293,7 +306,9 @@ class _$VistedOrNotImpl implements VistedOrNot {
     TResult Function()? onBoardBool,
     TResult Function()? vistedOrNot,
     TResult Function(LoginModel loginModel)? otpSend,
-    TResult Function(OtpVerifyRequestModel otpVerifyRequestModel)? otpVeriying,
+    TResult Function(
+            OtpVerifyRequestModel otpVerifyRequestModel, Product? product)?
+        otpVeriying,
     TResult Function()? logOut,
     TResult Function()? logOrNot,
     required TResult orElse(),
@@ -420,7 +435,8 @@ class _$OtpSendImpl implements OtpSend {
     required TResult Function() onBoardBool,
     required TResult Function() vistedOrNot,
     required TResult Function(LoginModel loginModel) otpSend,
-    required TResult Function(OtpVerifyRequestModel otpVerifyRequestModel)
+    required TResult Function(
+            OtpVerifyRequestModel otpVerifyRequestModel, Product? product)
         otpVeriying,
     required TResult Function() logOut,
     required TResult Function() logOrNot,
@@ -434,7 +450,9 @@ class _$OtpSendImpl implements OtpSend {
     TResult? Function()? onBoardBool,
     TResult? Function()? vistedOrNot,
     TResult? Function(LoginModel loginModel)? otpSend,
-    TResult? Function(OtpVerifyRequestModel otpVerifyRequestModel)? otpVeriying,
+    TResult? Function(
+            OtpVerifyRequestModel otpVerifyRequestModel, Product? product)?
+        otpVeriying,
     TResult? Function()? logOut,
     TResult? Function()? logOrNot,
   }) {
@@ -447,7 +465,9 @@ class _$OtpSendImpl implements OtpSend {
     TResult Function()? onBoardBool,
     TResult Function()? vistedOrNot,
     TResult Function(LoginModel loginModel)? otpSend,
-    TResult Function(OtpVerifyRequestModel otpVerifyRequestModel)? otpVeriying,
+    TResult Function(
+            OtpVerifyRequestModel otpVerifyRequestModel, Product? product)?
+        otpVeriying,
     TResult Function()? logOut,
     TResult Function()? logOrNot,
     required TResult orElse(),
@@ -517,7 +537,7 @@ abstract class _$$OtpVeriyingImplCopyWith<$Res> {
           _$OtpVeriyingImpl value, $Res Function(_$OtpVeriyingImpl) then) =
       __$$OtpVeriyingImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({OtpVerifyRequestModel otpVerifyRequestModel});
+  $Res call({OtpVerifyRequestModel otpVerifyRequestModel, Product? product});
 }
 
 /// @nodoc
@@ -532,12 +552,17 @@ class __$$OtpVeriyingImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? otpVerifyRequestModel = null,
+    Object? product = freezed,
   }) {
     return _then(_$OtpVeriyingImpl(
       otpVerifyRequestModel: null == otpVerifyRequestModel
           ? _value.otpVerifyRequestModel
           : otpVerifyRequestModel // ignore: cast_nullable_to_non_nullable
               as OtpVerifyRequestModel,
+      product: freezed == product
+          ? _value.product
+          : product // ignore: cast_nullable_to_non_nullable
+              as Product?,
     ));
   }
 }
@@ -545,14 +570,16 @@ class __$$OtpVeriyingImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$OtpVeriyingImpl implements OtpVeriying {
-  const _$OtpVeriyingImpl({required this.otpVerifyRequestModel});
+  const _$OtpVeriyingImpl({required this.otpVerifyRequestModel, this.product});
 
   @override
   final OtpVerifyRequestModel otpVerifyRequestModel;
+  @override
+  final Product? product;
 
   @override
   String toString() {
-    return 'AuthEvent.otpVeriying(otpVerifyRequestModel: $otpVerifyRequestModel)';
+    return 'AuthEvent.otpVeriying(otpVerifyRequestModel: $otpVerifyRequestModel, product: $product)';
   }
 
   @override
@@ -561,11 +588,12 @@ class _$OtpVeriyingImpl implements OtpVeriying {
         (other.runtimeType == runtimeType &&
             other is _$OtpVeriyingImpl &&
             (identical(other.otpVerifyRequestModel, otpVerifyRequestModel) ||
-                other.otpVerifyRequestModel == otpVerifyRequestModel));
+                other.otpVerifyRequestModel == otpVerifyRequestModel) &&
+            (identical(other.product, product) || other.product == product));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, otpVerifyRequestModel);
+  int get hashCode => Object.hash(runtimeType, otpVerifyRequestModel, product);
 
   @JsonKey(ignore: true)
   @override
@@ -579,12 +607,13 @@ class _$OtpVeriyingImpl implements OtpVeriying {
     required TResult Function() onBoardBool,
     required TResult Function() vistedOrNot,
     required TResult Function(LoginModel loginModel) otpSend,
-    required TResult Function(OtpVerifyRequestModel otpVerifyRequestModel)
+    required TResult Function(
+            OtpVerifyRequestModel otpVerifyRequestModel, Product? product)
         otpVeriying,
     required TResult Function() logOut,
     required TResult Function() logOrNot,
   }) {
-    return otpVeriying(otpVerifyRequestModel);
+    return otpVeriying(otpVerifyRequestModel, product);
   }
 
   @override
@@ -593,11 +622,13 @@ class _$OtpVeriyingImpl implements OtpVeriying {
     TResult? Function()? onBoardBool,
     TResult? Function()? vistedOrNot,
     TResult? Function(LoginModel loginModel)? otpSend,
-    TResult? Function(OtpVerifyRequestModel otpVerifyRequestModel)? otpVeriying,
+    TResult? Function(
+            OtpVerifyRequestModel otpVerifyRequestModel, Product? product)?
+        otpVeriying,
     TResult? Function()? logOut,
     TResult? Function()? logOrNot,
   }) {
-    return otpVeriying?.call(otpVerifyRequestModel);
+    return otpVeriying?.call(otpVerifyRequestModel, product);
   }
 
   @override
@@ -606,13 +637,15 @@ class _$OtpVeriyingImpl implements OtpVeriying {
     TResult Function()? onBoardBool,
     TResult Function()? vistedOrNot,
     TResult Function(LoginModel loginModel)? otpSend,
-    TResult Function(OtpVerifyRequestModel otpVerifyRequestModel)? otpVeriying,
+    TResult Function(
+            OtpVerifyRequestModel otpVerifyRequestModel, Product? product)?
+        otpVeriying,
     TResult Function()? logOut,
     TResult Function()? logOrNot,
     required TResult orElse(),
   }) {
     if (otpVeriying != null) {
-      return otpVeriying(otpVerifyRequestModel);
+      return otpVeriying(otpVerifyRequestModel, product);
     }
     return orElse();
   }
@@ -663,10 +696,11 @@ class _$OtpVeriyingImpl implements OtpVeriying {
 
 abstract class OtpVeriying implements AuthEvent {
   const factory OtpVeriying(
-          {required final OtpVerifyRequestModel otpVerifyRequestModel}) =
-      _$OtpVeriyingImpl;
+      {required final OtpVerifyRequestModel otpVerifyRequestModel,
+      final Product? product}) = _$OtpVeriyingImpl;
 
   OtpVerifyRequestModel get otpVerifyRequestModel;
+  Product? get product;
   @JsonKey(ignore: true)
   _$$OtpVeriyingImplCopyWith<_$OtpVeriyingImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -713,7 +747,8 @@ class _$LogOutImpl implements LogOut {
     required TResult Function() onBoardBool,
     required TResult Function() vistedOrNot,
     required TResult Function(LoginModel loginModel) otpSend,
-    required TResult Function(OtpVerifyRequestModel otpVerifyRequestModel)
+    required TResult Function(
+            OtpVerifyRequestModel otpVerifyRequestModel, Product? product)
         otpVeriying,
     required TResult Function() logOut,
     required TResult Function() logOrNot,
@@ -727,7 +762,9 @@ class _$LogOutImpl implements LogOut {
     TResult? Function()? onBoardBool,
     TResult? Function()? vistedOrNot,
     TResult? Function(LoginModel loginModel)? otpSend,
-    TResult? Function(OtpVerifyRequestModel otpVerifyRequestModel)? otpVeriying,
+    TResult? Function(
+            OtpVerifyRequestModel otpVerifyRequestModel, Product? product)?
+        otpVeriying,
     TResult? Function()? logOut,
     TResult? Function()? logOrNot,
   }) {
@@ -740,7 +777,9 @@ class _$LogOutImpl implements LogOut {
     TResult Function()? onBoardBool,
     TResult Function()? vistedOrNot,
     TResult Function(LoginModel loginModel)? otpSend,
-    TResult Function(OtpVerifyRequestModel otpVerifyRequestModel)? otpVeriying,
+    TResult Function(
+            OtpVerifyRequestModel otpVerifyRequestModel, Product? product)?
+        otpVeriying,
     TResult Function()? logOut,
     TResult Function()? logOrNot,
     required TResult orElse(),
@@ -840,7 +879,8 @@ class _$LogOrNotImpl implements LogOrNot {
     required TResult Function() onBoardBool,
     required TResult Function() vistedOrNot,
     required TResult Function(LoginModel loginModel) otpSend,
-    required TResult Function(OtpVerifyRequestModel otpVerifyRequestModel)
+    required TResult Function(
+            OtpVerifyRequestModel otpVerifyRequestModel, Product? product)
         otpVeriying,
     required TResult Function() logOut,
     required TResult Function() logOrNot,
@@ -854,7 +894,9 @@ class _$LogOrNotImpl implements LogOrNot {
     TResult? Function()? onBoardBool,
     TResult? Function()? vistedOrNot,
     TResult? Function(LoginModel loginModel)? otpSend,
-    TResult? Function(OtpVerifyRequestModel otpVerifyRequestModel)? otpVeriying,
+    TResult? Function(
+            OtpVerifyRequestModel otpVerifyRequestModel, Product? product)?
+        otpVeriying,
     TResult? Function()? logOut,
     TResult? Function()? logOrNot,
   }) {
@@ -867,7 +909,9 @@ class _$LogOrNotImpl implements LogOrNot {
     TResult Function()? onBoardBool,
     TResult Function()? vistedOrNot,
     TResult Function(LoginModel loginModel)? otpSend,
-    TResult Function(OtpVerifyRequestModel otpVerifyRequestModel)? otpVeriying,
+    TResult Function(
+            OtpVerifyRequestModel otpVerifyRequestModel, Product? product)?
+        otpVeriying,
     TResult Function()? logOut,
     TResult Function()? logOrNot,
     required TResult orElse(),
@@ -938,6 +982,7 @@ mixin _$AuthState {
       throw _privateConstructorUsedError;
   bool get logOrNot => throw _privateConstructorUsedError;
   String? get number => throw _privateConstructorUsedError;
+  Product? get product => throw _privateConstructorUsedError;
   bool get isVisited => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -959,6 +1004,7 @@ abstract class $AuthStateCopyWith<$Res> {
       OtpVerifyResponceModel? otpVerifyResponceModel,
       bool logOrNot,
       String? number,
+      Product? product,
       bool isVisited});
 }
 
@@ -983,6 +1029,7 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
     Object? otpVerifyResponceModel = freezed,
     Object? logOrNot = null,
     Object? number = freezed,
+    Object? product = freezed,
     Object? isVisited = null,
   }) {
     return _then(_value.copyWith(
@@ -1018,6 +1065,10 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
           ? _value.number
           : number // ignore: cast_nullable_to_non_nullable
               as String?,
+      product: freezed == product
+          ? _value.product
+          : product // ignore: cast_nullable_to_non_nullable
+              as Product?,
       isVisited: null == isVisited
           ? _value.isVisited
           : isVisited // ignore: cast_nullable_to_non_nullable
@@ -1043,6 +1094,7 @@ abstract class _$$InitialImplCopyWith<$Res>
       OtpVerifyResponceModel? otpVerifyResponceModel,
       bool logOrNot,
       String? number,
+      Product? product,
       bool isVisited});
 }
 
@@ -1065,6 +1117,7 @@ class __$$InitialImplCopyWithImpl<$Res>
     Object? otpVerifyResponceModel = freezed,
     Object? logOrNot = null,
     Object? number = freezed,
+    Object? product = freezed,
     Object? isVisited = null,
   }) {
     return _then(_$InitialImpl(
@@ -1100,6 +1153,10 @@ class __$$InitialImplCopyWithImpl<$Res>
           ? _value.number
           : number // ignore: cast_nullable_to_non_nullable
               as String?,
+      product: freezed == product
+          ? _value.product
+          : product // ignore: cast_nullable_to_non_nullable
+              as Product?,
       isVisited: null == isVisited
           ? _value.isVisited
           : isVisited // ignore: cast_nullable_to_non_nullable
@@ -1120,6 +1177,7 @@ class _$InitialImpl implements _Initial {
       this.otpVerifyResponceModel,
       required this.logOrNot,
       this.number,
+      this.product,
       required this.isVisited});
 
   @override
@@ -1139,11 +1197,13 @@ class _$InitialImpl implements _Initial {
   @override
   final String? number;
   @override
+  final Product? product;
+  @override
   final bool isVisited;
 
   @override
   String toString() {
-    return 'AuthState(isLoading: $isLoading, hasError: $hasError, load: $load, message: $message, otpSendResponceModel: $otpSendResponceModel, otpVerifyResponceModel: $otpVerifyResponceModel, logOrNot: $logOrNot, number: $number, isVisited: $isVisited)';
+    return 'AuthState(isLoading: $isLoading, hasError: $hasError, load: $load, message: $message, otpSendResponceModel: $otpSendResponceModel, otpVerifyResponceModel: $otpVerifyResponceModel, logOrNot: $logOrNot, number: $number, product: $product, isVisited: $isVisited)';
   }
 
   @override
@@ -1164,6 +1224,7 @@ class _$InitialImpl implements _Initial {
             (identical(other.logOrNot, logOrNot) ||
                 other.logOrNot == logOrNot) &&
             (identical(other.number, number) || other.number == number) &&
+            (identical(other.product, product) || other.product == product) &&
             (identical(other.isVisited, isVisited) ||
                 other.isVisited == isVisited));
   }
@@ -1179,6 +1240,7 @@ class _$InitialImpl implements _Initial {
       otpVerifyResponceModel,
       logOrNot,
       number,
+      product,
       isVisited);
 
   @JsonKey(ignore: true)
@@ -1198,6 +1260,7 @@ abstract class _Initial implements AuthState {
       final OtpVerifyResponceModel? otpVerifyResponceModel,
       required final bool logOrNot,
       final String? number,
+      final Product? product,
       required final bool isVisited}) = _$InitialImpl;
 
   @override
@@ -1216,6 +1279,8 @@ abstract class _Initial implements AuthState {
   bool get logOrNot;
   @override
   String? get number;
+  @override
+  Product? get product;
   @override
   bool get isVisited;
   @override

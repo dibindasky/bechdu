@@ -40,9 +40,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   FutureOr<void> nextPage(NextPage event, emit) async {
     emit(state.copyWith(loadMore: true));
     final data = await homeRepository.globalProductSearch(
-        searchParamModel: SearchParamModel(
-      page: ++globalProduct,
-    ));
+        searchParamModel:
+            SearchParamModel(page: ++globalProduct, pageSize: 16));
     data.fold(
       (failure) => emit(
         state.copyWith(loadMore: false, hasError: true),
@@ -50,7 +49,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       (products) {
         emit(
           state.copyWith(
-            loadMore: true,
+            loadMore: false,
             hasError: false,
             products: [
               ...state.products!,
@@ -63,13 +62,13 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   }
 
   FutureOr<void> globalProductSearch(GlobalPrductSearch event, emit) async {
-    emit(state.copyWith(isLoading: true, hasError: false));
+    emit(state.copyWith(loadMore: true, hasError: false));
     globalProduct = 1;
 
     final data = await homeRepository.globalProductSearch(
       searchParamModel: SearchParamModel(
         page: globalProduct,
-        pageSize: 20,
+        pageSize: 16,
         search: event.searchQuery,
       ),
     );
@@ -77,13 +76,13 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     data.fold(
         (failure) => emit(
               state.copyWith(
-                isLoading: false,
+                loadMore: false,
                 hasError: true,
               ),
             ), (globalSearchSuccess) {
       emit(
         state.copyWith(
-          isLoading: false,
+          loadMore: false,
           hasError: false,
           searchResponceModel: globalSearchSuccess,
           products: globalSearchSuccess.product,

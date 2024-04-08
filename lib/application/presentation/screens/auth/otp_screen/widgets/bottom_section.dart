@@ -1,3 +1,4 @@
+import 'package:beachdu/application/presentation/utils/loading_indicators/loading_indicator.dart';
 import 'package:beachdu/domain/model/login/otp_verify_request_model/otp_verify_request_model.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
@@ -135,64 +136,66 @@ class _BottomSectionState extends State<BottomSection> {
                 ),
               ),
         kHeight20,
-        BlocBuilder<QuestionTabBloc, QuestionTabState>(
-          builder: (context, questionBlo) {
-            return BlocBuilder<AuthBloc, AuthState>(
-              builder: (context, state) {
-                return ElevatedButtonLong(
-                  wdth: sWidth * .7,
-                  onPressed: () {
-                    final otp = context
-                        .read<AuthBloc>()
-                        .otpController
-                        .text
-                        .replaceAll(' ', '');
-                    RegExp phoneNumberRegExp = RegExp(r'^[0-9]+$');
-                    if (phoneNumberRegExp.hasMatch(otp)) {
-                      if (otp.isEmpty) {
-                        showSnack(
-                          context: context,
-                          message: 'Enter your otp here',
-                          color: kRed,
+        BlocBuilder<AuthBloc, AuthState>(
+          builder: (context, state) {
+            if (state.isLoading) {
+              return LoadingAnimation(width: 40);
+            }
+            return ElevatedButtonLong(
+              wdth: sWidth * .7,
+              onPressed: () {
+                final otp = context
+                    .read<AuthBloc>()
+                    .otpController
+                    .text
+                    .replaceAll(' ', '');
+                RegExp phoneNumberRegExp = RegExp(r'^[0-9]+$');
+                if (phoneNumberRegExp.hasMatch(otp)) {
+                  if (otp.isEmpty) {
+                    showSnack(
+                      context: context,
+                      message: 'Enter your otp here',
+                      color: kRed,
+                    );
+                  } else if (otp.length < 4) {
+                    showSnack(
+                      context: context,
+                      message: 'OTP number should keep 4 digits',
+                      color: kRed,
+                    );
+                  } else {
+                    //Login event calling
+                    OtpVerifyRequestModel otpVerifyRequestModel =
+                        OtpVerifyRequestModel(
+                      otp: otp,
+                      phone: context
+                          .read<AuthBloc>()
+                          .phoneNumberController
+                          .text
+                          .replaceAll(' ', ''),
+                    );
+                    context.read<AuthBloc>().add(
+                          AuthEvent.otpVeriying(
+                            otpVerifyRequestModel: otpVerifyRequestModel,
+                            product:
+                                context.read<QuestionTabBloc>().state.product,
+                          ),
                         );
-                      } else if (otp.length < 4) {
-                        showSnack(
-                          context: context,
-                          message: 'OTP number should keep 4 digits',
-                          color: kRed,
-                        );
-                      } else {
-                        //Login event calling
-                        OtpVerifyRequestModel otpVerifyRequestModel =
-                            OtpVerifyRequestModel(
-                          otp: otp,
-                          phone: context
-                              .read<AuthBloc>()
-                              .phoneNumberController
-                              .text
-                              .replaceAll(' ', ''),
-                        );
-                        context.read<AuthBloc>().add(
-                              AuthEvent.otpVeriying(
-                                otpVerifyRequestModel: otpVerifyRequestModel,
-                              ),
-                            );
-                      }
-                      // context.read<AuthBloc>().phoneNumberController.clear();
-                    } else {
-                      showSnack(
-                        context: context,
-                        message: 'Not a OTP number: $otp',
-                        color: kRed,
-                      );
-                    }
-                  },
-                  text: state.isLoading ? 'Loading...!' : 'Submit',
-                );
+                  }
+                  // context.read<AuthBloc>().phoneNumberController.clear();
+                } else {
+                  showSnack(
+                    context: context,
+                    message: 'Not a OTP number: $otp',
+                    color: kRed,
+                  );
+                }
               },
+              text: 'Submit',
             );
           },
         ),
+        kHeight50,
       ],
     );
   }

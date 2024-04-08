@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:beachdu/data/secure_storage/secure_fire_store.dart';
+import 'package:beachdu/domain/model/get_products_respoce_model/product.dart';
 import 'package:beachdu/domain/model/login/login_model/login_model.dart';
 import 'package:beachdu/domain/model/login/otp_send_responce_model/otp_send_responce_model.dart';
 import 'package:beachdu/domain/model/login/otp_verify_request_model/otp_verify_request_model.dart';
@@ -83,6 +84,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           message: 'OTP verifying success',
           otpVerifyResponceModel: successNumberVerifying,
           logOrNot: true,
+          product: event.product,
         ),
       );
       await SecureSotrage.saveNumber(
@@ -97,6 +99,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   }
 
   FutureOr<void> logOut(LogOut event, emit) async {
+    phoneNumberController.clear();
+    otpController.clear();
     await SecureSotrage.clearLogin();
     await SecureSotrage.setOnboardBool();
     emit(AuthState.initail());

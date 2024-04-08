@@ -9,6 +9,7 @@ class AuthEvent with _$AuthEvent {
   }) = OtpSend;
   const factory AuthEvent.otpVeriying({
     required OtpVerifyRequestModel otpVerifyRequestModel,
+    Product? product,
   }) = OtpVeriying;
   const factory AuthEvent.logOut() = LogOut;
   const factory AuthEvent.logOrNot() = LogOrNot;

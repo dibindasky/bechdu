@@ -117,6 +117,7 @@ class BottomSections extends StatelessWidget {
             );
           },
         ),
+        kHeight50,
       ],
     );
   }

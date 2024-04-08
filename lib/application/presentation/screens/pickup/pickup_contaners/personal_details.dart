@@ -17,8 +17,6 @@ class PersonalDetails extends StatefulWidget {
 }
 
 class _PersonalDetailsState extends State<PersonalDetails> {
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-
   @override
   void initState() {
     context
@@ -45,7 +43,7 @@ class _PersonalDetailsState extends State<PersonalDetails> {
   Widget build(BuildContext context) {
     return SizedBox(
       child: Form(
-        key: _formKey,
+        key: context.read<PlaceOrderBloc>().formKey,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -124,7 +122,11 @@ class _PersonalDetailsState extends State<PersonalDetails> {
               alignment: Alignment.center,
               child: CustomButton(
                 onPressed: () {
-                  if (_formKey.currentState!.validate()) {
+                  if (context
+                      .read<PlaceOrderBloc>()
+                      .formKey
+                      .currentState!
+                      .validate()) {
                     pickupDetailChangeNotifier.value =
                         PickupDetailContainers.address;
                     pickupDetailChangeNotifier.notifyListeners();
