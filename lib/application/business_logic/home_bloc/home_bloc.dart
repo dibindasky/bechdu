@@ -20,12 +20,9 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   final HomeRepository homeRepository;
   String? slug;
   int globalProduct = 1;
-  List<Product> productList = [];
-
   TextEditingController globalProductSearchController = TextEditingController();
   HomeBloc(this.homeRepository) : super(HomeState.initial()) {
     on<GetAllCategory>(getAllcategory);
-    on<Selectedactegory>(selectedCategory);
     on<HomePageBanners>(homePageBanners);
     on<GetBestSellingProducts>(getBestSellingProducts);
     on<GlobalPrductSearch>(globalProductSearch);
@@ -52,7 +49,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
             loadMore: false,
             hasError: false,
             products: [
-              ...state.products!,
+              ...state.products ?? [],
               ...products.product!,
             ],
           ),
@@ -137,10 +134,6 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         ),
       ),
     );
-  }
-
-  FutureOr<void> selectedCategory(Selectedactegory event, emit) {
-    emit(state.copyWith(selectedCategory: event.category));
   }
 
   FutureOr<void> getAllcategory(

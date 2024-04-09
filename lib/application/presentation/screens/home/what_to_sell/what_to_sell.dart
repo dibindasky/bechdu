@@ -1,11 +1,8 @@
 import 'dart:convert';
-import 'dart:developer';
-
 import 'package:beachdu/application/business_logic/brands_bloc/category_bloc_bloc.dart';
 import 'package:beachdu/application/business_logic/home_bloc/home_bloc.dart';
 import 'package:beachdu/application/business_logic/navbar/navbar_cubit.dart';
 import 'package:beachdu/application/business_logic/place_order/place_order_bloc.dart';
-import 'package:beachdu/application/business_logic/question_tab/question_tab_bloc.dart';
 import 'package:beachdu/application/presentation/screens/product_selection/product_screen.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
@@ -63,6 +60,8 @@ class WhatToSellWidget extends StatelessWidget {
                           RegExp(r'data:image/[^;]+;base64,'), '');
                       return InkWell(
                         onTap: () {
+                          context.read<CategoryBlocBloc>().modelFilter = null;
+                          context.read<CategoryBlocBloc>().productList = [];
                           context
                               .read<CategoryBlocBloc>()
                               .add(GetSingleCategoryBrands(
@@ -72,7 +71,6 @@ class WhatToSellWidget extends StatelessWidget {
                               ));
                           context.read<CategoryBlocBloc>().categoryType =
                               data[index].categoryType!;
-                          // log('UI data[index].categoryType ===>>> : ${data[index].categoryType}');
                           context.read<NavbarCubit>().changeNavigationIndex(1);
                           brandSeriesProductValueNotifier.value = 0;
                           brandSeriesProductValueNotifier.notifyListeners();

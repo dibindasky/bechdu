@@ -66,8 +66,7 @@ class ScreenMyOrders extends StatelessWidget {
                         itemCount: 5,
                         height: 2,
                       );
-                    } else if (!authBloc.logOrNot &&
-                        state.getAllOrderResponceModel == null &&
+                    } else if (state.getAllOrderResponceModel == null &&
                         state.getAllOrderResponceModel!.orders == null) {
                       return Center(child: Lottie.asset(emptyLottie));
                     }

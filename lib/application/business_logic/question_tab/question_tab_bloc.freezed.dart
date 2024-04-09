@@ -28,9 +28,7 @@ mixin _$QuestionTabEvent {
     required TResult Function() clearOneSection,
     required TResult Function(SelectedOption selectedOption) yesOrNo,
     required TResult Function(int index) changeIndex,
-    required TResult Function(
-            Product product,
-            PickupQuestionModel pickupQuestionModel,
+    required TResult Function(PickupQuestionModel pickupQuestionModel,
             AbandendOrderRequestModel abandendOrderRequestModel)
         getBasePrice,
     required TResult Function(
@@ -51,7 +49,7 @@ mixin _$QuestionTabEvent {
     TResult? Function()? clearOneSection,
     TResult? Function(SelectedOption selectedOption)? yesOrNo,
     TResult? Function(int index)? changeIndex,
-    TResult? Function(Product product, PickupQuestionModel pickupQuestionModel,
+    TResult? Function(PickupQuestionModel pickupQuestionModel,
             AbandendOrderRequestModel abandendOrderRequestModel)?
         getBasePrice,
     TResult? Function(AbandendOrderRequestModel abandendOrderRequestModel)?
@@ -71,7 +69,7 @@ mixin _$QuestionTabEvent {
     TResult Function()? clearOneSection,
     TResult Function(SelectedOption selectedOption)? yesOrNo,
     TResult Function(int index)? changeIndex,
-    TResult Function(Product product, PickupQuestionModel pickupQuestionModel,
+    TResult Function(PickupQuestionModel pickupQuestionModel,
             AbandendOrderRequestModel abandendOrderRequestModel)?
         getBasePrice,
     TResult Function(AbandendOrderRequestModel abandendOrderRequestModel)?
@@ -201,9 +199,7 @@ class _$TabChangeImpl implements TabChange {
     required TResult Function() clearOneSection,
     required TResult Function(SelectedOption selectedOption) yesOrNo,
     required TResult Function(int index) changeIndex,
-    required TResult Function(
-            Product product,
-            PickupQuestionModel pickupQuestionModel,
+    required TResult Function(PickupQuestionModel pickupQuestionModel,
             AbandendOrderRequestModel abandendOrderRequestModel)
         getBasePrice,
     required TResult Function(
@@ -227,7 +223,7 @@ class _$TabChangeImpl implements TabChange {
     TResult? Function()? clearOneSection,
     TResult? Function(SelectedOption selectedOption)? yesOrNo,
     TResult? Function(int index)? changeIndex,
-    TResult? Function(Product product, PickupQuestionModel pickupQuestionModel,
+    TResult? Function(PickupQuestionModel pickupQuestionModel,
             AbandendOrderRequestModel abandendOrderRequestModel)?
         getBasePrice,
     TResult? Function(AbandendOrderRequestModel abandendOrderRequestModel)?
@@ -250,7 +246,7 @@ class _$TabChangeImpl implements TabChange {
     TResult Function()? clearOneSection,
     TResult Function(SelectedOption selectedOption)? yesOrNo,
     TResult Function(int index)? changeIndex,
-    TResult Function(Product product, PickupQuestionModel pickupQuestionModel,
+    TResult Function(PickupQuestionModel pickupQuestionModel,
             AbandendOrderRequestModel abandendOrderRequestModel)?
         getBasePrice,
     TResult Function(AbandendOrderRequestModel abandendOrderRequestModel)?
@@ -408,9 +404,7 @@ class _$TabMinusImpl implements TabMinus {
     required TResult Function() clearOneSection,
     required TResult Function(SelectedOption selectedOption) yesOrNo,
     required TResult Function(int index) changeIndex,
-    required TResult Function(
-            Product product,
-            PickupQuestionModel pickupQuestionModel,
+    required TResult Function(PickupQuestionModel pickupQuestionModel,
             AbandendOrderRequestModel abandendOrderRequestModel)
         getBasePrice,
     required TResult Function(
@@ -434,7 +428,7 @@ class _$TabMinusImpl implements TabMinus {
     TResult? Function()? clearOneSection,
     TResult? Function(SelectedOption selectedOption)? yesOrNo,
     TResult? Function(int index)? changeIndex,
-    TResult? Function(Product product, PickupQuestionModel pickupQuestionModel,
+    TResult? Function(PickupQuestionModel pickupQuestionModel,
             AbandendOrderRequestModel abandendOrderRequestModel)?
         getBasePrice,
     TResult? Function(AbandendOrderRequestModel abandendOrderRequestModel)?
@@ -457,7 +451,7 @@ class _$TabMinusImpl implements TabMinus {
     TResult Function()? clearOneSection,
     TResult Function(SelectedOption selectedOption)? yesOrNo,
     TResult Function(int index)? changeIndex,
-    TResult Function(Product product, PickupQuestionModel pickupQuestionModel,
+    TResult Function(PickupQuestionModel pickupQuestionModel,
             AbandendOrderRequestModel abandendOrderRequestModel)?
         getBasePrice,
     TResult Function(AbandendOrderRequestModel abandendOrderRequestModel)?
@@ -594,9 +588,7 @@ class _$ResetTabSelectionImpl implements ResetTabSelection {
     required TResult Function() clearOneSection,
     required TResult Function(SelectedOption selectedOption) yesOrNo,
     required TResult Function(int index) changeIndex,
-    required TResult Function(
-            Product product,
-            PickupQuestionModel pickupQuestionModel,
+    required TResult Function(PickupQuestionModel pickupQuestionModel,
             AbandendOrderRequestModel abandendOrderRequestModel)
         getBasePrice,
     required TResult Function(
@@ -620,7 +612,7 @@ class _$ResetTabSelectionImpl implements ResetTabSelection {
     TResult? Function()? clearOneSection,
     TResult? Function(SelectedOption selectedOption)? yesOrNo,
     TResult? Function(int index)? changeIndex,
-    TResult? Function(Product product, PickupQuestionModel pickupQuestionModel,
+    TResult? Function(PickupQuestionModel pickupQuestionModel,
             AbandendOrderRequestModel abandendOrderRequestModel)?
         getBasePrice,
     TResult? Function(AbandendOrderRequestModel abandendOrderRequestModel)?
@@ -643,7 +635,7 @@ class _$ResetTabSelectionImpl implements ResetTabSelection {
     TResult Function()? clearOneSection,
     TResult Function(SelectedOption selectedOption)? yesOrNo,
     TResult Function(int index)? changeIndex,
-    TResult Function(Product product, PickupQuestionModel pickupQuestionModel,
+    TResult Function(PickupQuestionModel pickupQuestionModel,
             AbandendOrderRequestModel abandendOrderRequestModel)?
         getBasePrice,
     TResult Function(AbandendOrderRequestModel abandendOrderRequestModel)?
@@ -810,9 +802,7 @@ class _$GetQuestionsImpl implements GetQuestions {
     required TResult Function() clearOneSection,
     required TResult Function(SelectedOption selectedOption) yesOrNo,
     required TResult Function(int index) changeIndex,
-    required TResult Function(
-            Product product,
-            PickupQuestionModel pickupQuestionModel,
+    required TResult Function(PickupQuestionModel pickupQuestionModel,
             AbandendOrderRequestModel abandendOrderRequestModel)
         getBasePrice,
     required TResult Function(
@@ -836,7 +826,7 @@ class _$GetQuestionsImpl implements GetQuestions {
     TResult? Function()? clearOneSection,
     TResult? Function(SelectedOption selectedOption)? yesOrNo,
     TResult? Function(int index)? changeIndex,
-    TResult? Function(Product product, PickupQuestionModel pickupQuestionModel,
+    TResult? Function(PickupQuestionModel pickupQuestionModel,
             AbandendOrderRequestModel abandendOrderRequestModel)?
         getBasePrice,
     TResult? Function(AbandendOrderRequestModel abandendOrderRequestModel)?
@@ -859,7 +849,7 @@ class _$GetQuestionsImpl implements GetQuestions {
     TResult Function()? clearOneSection,
     TResult Function(SelectedOption selectedOption)? yesOrNo,
     TResult Function(int index)? changeIndex,
-    TResult Function(Product product, PickupQuestionModel pickupQuestionModel,
+    TResult Function(PickupQuestionModel pickupQuestionModel,
             AbandendOrderRequestModel abandendOrderRequestModel)?
         getBasePrice,
     TResult Function(AbandendOrderRequestModel abandendOrderRequestModel)?
@@ -1025,9 +1015,7 @@ class _$GoBackIndexImpl implements GoBackIndex {
     required TResult Function() clearOneSection,
     required TResult Function(SelectedOption selectedOption) yesOrNo,
     required TResult Function(int index) changeIndex,
-    required TResult Function(
-            Product product,
-            PickupQuestionModel pickupQuestionModel,
+    required TResult Function(PickupQuestionModel pickupQuestionModel,
             AbandendOrderRequestModel abandendOrderRequestModel)
         getBasePrice,
     required TResult Function(
@@ -1051,7 +1039,7 @@ class _$GoBackIndexImpl implements GoBackIndex {
     TResult? Function()? clearOneSection,
     TResult? Function(SelectedOption selectedOption)? yesOrNo,
     TResult? Function(int index)? changeIndex,
-    TResult? Function(Product product, PickupQuestionModel pickupQuestionModel,
+    TResult? Function(PickupQuestionModel pickupQuestionModel,
             AbandendOrderRequestModel abandendOrderRequestModel)?
         getBasePrice,
     TResult? Function(AbandendOrderRequestModel abandendOrderRequestModel)?
@@ -1074,7 +1062,7 @@ class _$GoBackIndexImpl implements GoBackIndex {
     TResult Function()? clearOneSection,
     TResult Function(SelectedOption selectedOption)? yesOrNo,
     TResult Function(int index)? changeIndex,
-    TResult Function(Product product, PickupQuestionModel pickupQuestionModel,
+    TResult Function(PickupQuestionModel pickupQuestionModel,
             AbandendOrderRequestModel abandendOrderRequestModel)?
         getBasePrice,
     TResult Function(AbandendOrderRequestModel abandendOrderRequestModel)?
@@ -1238,9 +1226,7 @@ class _$MarkAnswerImpl implements MarkAnswer {
     required TResult Function() clearOneSection,
     required TResult Function(SelectedOption selectedOption) yesOrNo,
     required TResult Function(int index) changeIndex,
-    required TResult Function(
-            Product product,
-            PickupQuestionModel pickupQuestionModel,
+    required TResult Function(PickupQuestionModel pickupQuestionModel,
             AbandendOrderRequestModel abandendOrderRequestModel)
         getBasePrice,
     required TResult Function(
@@ -1264,7 +1250,7 @@ class _$MarkAnswerImpl implements MarkAnswer {
     TResult? Function()? clearOneSection,
     TResult? Function(SelectedOption selectedOption)? yesOrNo,
     TResult? Function(int index)? changeIndex,
-    TResult? Function(Product product, PickupQuestionModel pickupQuestionModel,
+    TResult? Function(PickupQuestionModel pickupQuestionModel,
             AbandendOrderRequestModel abandendOrderRequestModel)?
         getBasePrice,
     TResult? Function(AbandendOrderRequestModel abandendOrderRequestModel)?
@@ -1287,7 +1273,7 @@ class _$MarkAnswerImpl implements MarkAnswer {
     TResult Function()? clearOneSection,
     TResult Function(SelectedOption selectedOption)? yesOrNo,
     TResult Function(int index)? changeIndex,
-    TResult Function(Product product, PickupQuestionModel pickupQuestionModel,
+    TResult Function(PickupQuestionModel pickupQuestionModel,
             AbandendOrderRequestModel abandendOrderRequestModel)?
         getBasePrice,
     TResult Function(AbandendOrderRequestModel abandendOrderRequestModel)?
@@ -1425,9 +1411,7 @@ class _$ClearOneSectionImpl implements ClearOneSection {
     required TResult Function() clearOneSection,
     required TResult Function(SelectedOption selectedOption) yesOrNo,
     required TResult Function(int index) changeIndex,
-    required TResult Function(
-            Product product,
-            PickupQuestionModel pickupQuestionModel,
+    required TResult Function(PickupQuestionModel pickupQuestionModel,
             AbandendOrderRequestModel abandendOrderRequestModel)
         getBasePrice,
     required TResult Function(
@@ -1451,7 +1435,7 @@ class _$ClearOneSectionImpl implements ClearOneSection {
     TResult? Function()? clearOneSection,
     TResult? Function(SelectedOption selectedOption)? yesOrNo,
     TResult? Function(int index)? changeIndex,
-    TResult? Function(Product product, PickupQuestionModel pickupQuestionModel,
+    TResult? Function(PickupQuestionModel pickupQuestionModel,
             AbandendOrderRequestModel abandendOrderRequestModel)?
         getBasePrice,
     TResult? Function(AbandendOrderRequestModel abandendOrderRequestModel)?
@@ -1474,7 +1458,7 @@ class _$ClearOneSectionImpl implements ClearOneSection {
     TResult Function()? clearOneSection,
     TResult Function(SelectedOption selectedOption)? yesOrNo,
     TResult Function(int index)? changeIndex,
-    TResult Function(Product product, PickupQuestionModel pickupQuestionModel,
+    TResult Function(PickupQuestionModel pickupQuestionModel,
             AbandendOrderRequestModel abandendOrderRequestModel)?
         getBasePrice,
     TResult Function(AbandendOrderRequestModel abandendOrderRequestModel)?
@@ -1633,9 +1617,7 @@ class _$YesOrNoImpl implements YesOrNo {
     required TResult Function() clearOneSection,
     required TResult Function(SelectedOption selectedOption) yesOrNo,
     required TResult Function(int index) changeIndex,
-    required TResult Function(
-            Product product,
-            PickupQuestionModel pickupQuestionModel,
+    required TResult Function(PickupQuestionModel pickupQuestionModel,
             AbandendOrderRequestModel abandendOrderRequestModel)
         getBasePrice,
     required TResult Function(
@@ -1659,7 +1641,7 @@ class _$YesOrNoImpl implements YesOrNo {
     TResult? Function()? clearOneSection,
     TResult? Function(SelectedOption selectedOption)? yesOrNo,
     TResult? Function(int index)? changeIndex,
-    TResult? Function(Product product, PickupQuestionModel pickupQuestionModel,
+    TResult? Function(PickupQuestionModel pickupQuestionModel,
             AbandendOrderRequestModel abandendOrderRequestModel)?
         getBasePrice,
     TResult? Function(AbandendOrderRequestModel abandendOrderRequestModel)?
@@ -1682,7 +1664,7 @@ class _$YesOrNoImpl implements YesOrNo {
     TResult Function()? clearOneSection,
     TResult Function(SelectedOption selectedOption)? yesOrNo,
     TResult Function(int index)? changeIndex,
-    TResult Function(Product product, PickupQuestionModel pickupQuestionModel,
+    TResult Function(PickupQuestionModel pickupQuestionModel,
             AbandendOrderRequestModel abandendOrderRequestModel)?
         getBasePrice,
     TResult Function(AbandendOrderRequestModel abandendOrderRequestModel)?
@@ -1846,9 +1828,7 @@ class _$ChangeIndexImpl implements ChangeIndex {
     required TResult Function() clearOneSection,
     required TResult Function(SelectedOption selectedOption) yesOrNo,
     required TResult Function(int index) changeIndex,
-    required TResult Function(
-            Product product,
-            PickupQuestionModel pickupQuestionModel,
+    required TResult Function(PickupQuestionModel pickupQuestionModel,
             AbandendOrderRequestModel abandendOrderRequestModel)
         getBasePrice,
     required TResult Function(
@@ -1872,7 +1852,7 @@ class _$ChangeIndexImpl implements ChangeIndex {
     TResult? Function()? clearOneSection,
     TResult? Function(SelectedOption selectedOption)? yesOrNo,
     TResult? Function(int index)? changeIndex,
-    TResult? Function(Product product, PickupQuestionModel pickupQuestionModel,
+    TResult? Function(PickupQuestionModel pickupQuestionModel,
             AbandendOrderRequestModel abandendOrderRequestModel)?
         getBasePrice,
     TResult? Function(AbandendOrderRequestModel abandendOrderRequestModel)?
@@ -1895,7 +1875,7 @@ class _$ChangeIndexImpl implements ChangeIndex {
     TResult Function()? clearOneSection,
     TResult Function(SelectedOption selectedOption)? yesOrNo,
     TResult Function(int index)? changeIndex,
-    TResult Function(Product product, PickupQuestionModel pickupQuestionModel,
+    TResult Function(PickupQuestionModel pickupQuestionModel,
             AbandendOrderRequestModel abandendOrderRequestModel)?
         getBasePrice,
     TResult Function(AbandendOrderRequestModel abandendOrderRequestModel)?
@@ -1991,8 +1971,7 @@ abstract class _$$GetBasePriceImplCopyWith<$Res> {
       __$$GetBasePriceImplCopyWithImpl<$Res>;
   @useResult
   $Res call(
-      {Product product,
-      PickupQuestionModel pickupQuestionModel,
+      {PickupQuestionModel pickupQuestionModel,
       AbandendOrderRequestModel abandendOrderRequestModel});
 }
 
@@ -2007,15 +1986,10 @@ class __$$GetBasePriceImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? product = null,
     Object? pickupQuestionModel = null,
     Object? abandendOrderRequestModel = null,
   }) {
     return _then(_$GetBasePriceImpl(
-      product: null == product
-          ? _value.product
-          : product // ignore: cast_nullable_to_non_nullable
-              as Product,
       pickupQuestionModel: null == pickupQuestionModel
           ? _value.pickupQuestionModel
           : pickupQuestionModel // ignore: cast_nullable_to_non_nullable
@@ -2032,12 +2006,9 @@ class __$$GetBasePriceImplCopyWithImpl<$Res>
 
 class _$GetBasePriceImpl implements GetBasePrice {
   const _$GetBasePriceImpl(
-      {required this.product,
-      required this.pickupQuestionModel,
+      {required this.pickupQuestionModel,
       required this.abandendOrderRequestModel});
 
-  @override
-  final Product product;
   @override
   final PickupQuestionModel pickupQuestionModel;
   @override
@@ -2045,7 +2016,7 @@ class _$GetBasePriceImpl implements GetBasePrice {
 
   @override
   String toString() {
-    return 'QuestionTabEvent.getBasePrice(product: $product, pickupQuestionModel: $pickupQuestionModel, abandendOrderRequestModel: $abandendOrderRequestModel)';
+    return 'QuestionTabEvent.getBasePrice(pickupQuestionModel: $pickupQuestionModel, abandendOrderRequestModel: $abandendOrderRequestModel)';
   }
 
   @override
@@ -2053,7 +2024,6 @@ class _$GetBasePriceImpl implements GetBasePrice {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetBasePriceImpl &&
-            (identical(other.product, product) || other.product == product) &&
             (identical(other.pickupQuestionModel, pickupQuestionModel) ||
                 other.pickupQuestionModel == pickupQuestionModel) &&
             (identical(other.abandendOrderRequestModel,
@@ -2062,8 +2032,8 @@ class _$GetBasePriceImpl implements GetBasePrice {
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, product, pickupQuestionModel, abandendOrderRequestModel);
+  int get hashCode =>
+      Object.hash(runtimeType, pickupQuestionModel, abandendOrderRequestModel);
 
   @JsonKey(ignore: true)
   @override
@@ -2084,9 +2054,7 @@ class _$GetBasePriceImpl implements GetBasePrice {
     required TResult Function() clearOneSection,
     required TResult Function(SelectedOption selectedOption) yesOrNo,
     required TResult Function(int index) changeIndex,
-    required TResult Function(
-            Product product,
-            PickupQuestionModel pickupQuestionModel,
+    required TResult Function(PickupQuestionModel pickupQuestionModel,
             AbandendOrderRequestModel abandendOrderRequestModel)
         getBasePrice,
     required TResult Function(
@@ -2095,8 +2063,7 @@ class _$GetBasePriceImpl implements GetBasePrice {
     required TResult Function() clearNewOPtionList,
     required TResult Function() clear,
   }) {
-    return getBasePrice(
-        product, pickupQuestionModel, abandendOrderRequestModel);
+    return getBasePrice(pickupQuestionModel, abandendOrderRequestModel);
   }
 
   @override
@@ -2111,7 +2078,7 @@ class _$GetBasePriceImpl implements GetBasePrice {
     TResult? Function()? clearOneSection,
     TResult? Function(SelectedOption selectedOption)? yesOrNo,
     TResult? Function(int index)? changeIndex,
-    TResult? Function(Product product, PickupQuestionModel pickupQuestionModel,
+    TResult? Function(PickupQuestionModel pickupQuestionModel,
             AbandendOrderRequestModel abandendOrderRequestModel)?
         getBasePrice,
     TResult? Function(AbandendOrderRequestModel abandendOrderRequestModel)?
@@ -2119,8 +2086,7 @@ class _$GetBasePriceImpl implements GetBasePrice {
     TResult? Function()? clearNewOPtionList,
     TResult? Function()? clear,
   }) {
-    return getBasePrice?.call(
-        product, pickupQuestionModel, abandendOrderRequestModel);
+    return getBasePrice?.call(pickupQuestionModel, abandendOrderRequestModel);
   }
 
   @override
@@ -2135,7 +2101,7 @@ class _$GetBasePriceImpl implements GetBasePrice {
     TResult Function()? clearOneSection,
     TResult Function(SelectedOption selectedOption)? yesOrNo,
     TResult Function(int index)? changeIndex,
-    TResult Function(Product product, PickupQuestionModel pickupQuestionModel,
+    TResult Function(PickupQuestionModel pickupQuestionModel,
             AbandendOrderRequestModel abandendOrderRequestModel)?
         getBasePrice,
     TResult Function(AbandendOrderRequestModel abandendOrderRequestModel)?
@@ -2145,8 +2111,7 @@ class _$GetBasePriceImpl implements GetBasePrice {
     required TResult orElse(),
   }) {
     if (getBasePrice != null) {
-      return getBasePrice(
-          product, pickupQuestionModel, abandendOrderRequestModel);
+      return getBasePrice(pickupQuestionModel, abandendOrderRequestModel);
     }
     return orElse();
   }
@@ -2218,12 +2183,10 @@ class _$GetBasePriceImpl implements GetBasePrice {
 
 abstract class GetBasePrice implements QuestionTabEvent {
   const factory GetBasePrice(
-          {required final Product product,
-          required final PickupQuestionModel pickupQuestionModel,
+          {required final PickupQuestionModel pickupQuestionModel,
           required final AbandendOrderRequestModel abandendOrderRequestModel}) =
       _$GetBasePriceImpl;
 
-  Product get product;
   PickupQuestionModel get pickupQuestionModel;
   AbandendOrderRequestModel get abandendOrderRequestModel;
   @JsonKey(ignore: true)
@@ -2307,9 +2270,7 @@ class _$AbandentOrderImpl implements AbandentOrder {
     required TResult Function() clearOneSection,
     required TResult Function(SelectedOption selectedOption) yesOrNo,
     required TResult Function(int index) changeIndex,
-    required TResult Function(
-            Product product,
-            PickupQuestionModel pickupQuestionModel,
+    required TResult Function(PickupQuestionModel pickupQuestionModel,
             AbandendOrderRequestModel abandendOrderRequestModel)
         getBasePrice,
     required TResult Function(
@@ -2333,7 +2294,7 @@ class _$AbandentOrderImpl implements AbandentOrder {
     TResult? Function()? clearOneSection,
     TResult? Function(SelectedOption selectedOption)? yesOrNo,
     TResult? Function(int index)? changeIndex,
-    TResult? Function(Product product, PickupQuestionModel pickupQuestionModel,
+    TResult? Function(PickupQuestionModel pickupQuestionModel,
             AbandendOrderRequestModel abandendOrderRequestModel)?
         getBasePrice,
     TResult? Function(AbandendOrderRequestModel abandendOrderRequestModel)?
@@ -2356,7 +2317,7 @@ class _$AbandentOrderImpl implements AbandentOrder {
     TResult Function()? clearOneSection,
     TResult Function(SelectedOption selectedOption)? yesOrNo,
     TResult Function(int index)? changeIndex,
-    TResult Function(Product product, PickupQuestionModel pickupQuestionModel,
+    TResult Function(PickupQuestionModel pickupQuestionModel,
             AbandendOrderRequestModel abandendOrderRequestModel)?
         getBasePrice,
     TResult Function(AbandendOrderRequestModel abandendOrderRequestModel)?
@@ -2495,9 +2456,7 @@ class _$ClearNewOPtionListImpl implements ClearNewOPtionList {
     required TResult Function() clearOneSection,
     required TResult Function(SelectedOption selectedOption) yesOrNo,
     required TResult Function(int index) changeIndex,
-    required TResult Function(
-            Product product,
-            PickupQuestionModel pickupQuestionModel,
+    required TResult Function(PickupQuestionModel pickupQuestionModel,
             AbandendOrderRequestModel abandendOrderRequestModel)
         getBasePrice,
     required TResult Function(
@@ -2521,7 +2480,7 @@ class _$ClearNewOPtionListImpl implements ClearNewOPtionList {
     TResult? Function()? clearOneSection,
     TResult? Function(SelectedOption selectedOption)? yesOrNo,
     TResult? Function(int index)? changeIndex,
-    TResult? Function(Product product, PickupQuestionModel pickupQuestionModel,
+    TResult? Function(PickupQuestionModel pickupQuestionModel,
             AbandendOrderRequestModel abandendOrderRequestModel)?
         getBasePrice,
     TResult? Function(AbandendOrderRequestModel abandendOrderRequestModel)?
@@ -2544,7 +2503,7 @@ class _$ClearNewOPtionListImpl implements ClearNewOPtionList {
     TResult Function()? clearOneSection,
     TResult Function(SelectedOption selectedOption)? yesOrNo,
     TResult Function(int index)? changeIndex,
-    TResult Function(Product product, PickupQuestionModel pickupQuestionModel,
+    TResult Function(PickupQuestionModel pickupQuestionModel,
             AbandendOrderRequestModel abandendOrderRequestModel)?
         getBasePrice,
     TResult Function(AbandendOrderRequestModel abandendOrderRequestModel)?
@@ -2676,9 +2635,7 @@ class _$ClearImpl implements Clear {
     required TResult Function() clearOneSection,
     required TResult Function(SelectedOption selectedOption) yesOrNo,
     required TResult Function(int index) changeIndex,
-    required TResult Function(
-            Product product,
-            PickupQuestionModel pickupQuestionModel,
+    required TResult Function(PickupQuestionModel pickupQuestionModel,
             AbandendOrderRequestModel abandendOrderRequestModel)
         getBasePrice,
     required TResult Function(
@@ -2702,7 +2659,7 @@ class _$ClearImpl implements Clear {
     TResult? Function()? clearOneSection,
     TResult? Function(SelectedOption selectedOption)? yesOrNo,
     TResult? Function(int index)? changeIndex,
-    TResult? Function(Product product, PickupQuestionModel pickupQuestionModel,
+    TResult? Function(PickupQuestionModel pickupQuestionModel,
             AbandendOrderRequestModel abandendOrderRequestModel)?
         getBasePrice,
     TResult? Function(AbandendOrderRequestModel abandendOrderRequestModel)?
@@ -2725,7 +2682,7 @@ class _$ClearImpl implements Clear {
     TResult Function()? clearOneSection,
     TResult Function(SelectedOption selectedOption)? yesOrNo,
     TResult Function(int index)? changeIndex,
-    TResult Function(Product product, PickupQuestionModel pickupQuestionModel,
+    TResult Function(PickupQuestionModel pickupQuestionModel,
             AbandendOrderRequestModel abandendOrderRequestModel)?
         getBasePrice,
     TResult Function(AbandendOrderRequestModel abandendOrderRequestModel)?

@@ -20,197 +20,188 @@ class TopImage extends StatelessWidget {
       children: [
         BlocBuilder<QuestionTabBloc, QuestionTabState>(
           builder: (context, questiontabBloc) {
-            if (questiontabBloc.isLoading) {
-              return Center(child: LoadingAnimation(width: 40));
-            }
-            if (questiontabBloc.product != null) {
-              final product = questiontabBloc.product;
-              final image = questiontabBloc.product!.productImage ?? '';
-              log('Product Image $image');
-              String url =
-                  "${ApiEndPoints.baseUrlImagePath}${Uri.encodeComponent(image)}";
-              return SizedBox(
-                height: fromWhere == FromWhere.recalculateWithAmount
-                    ? sWidth * .36
-                    : fromWhere == FromWhere.checkoutAndPickupScreen
-                        ? sWidth * .6
-                        : sWidth * .34,
-                width: double.infinity,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(10),
-                  child: ColoredBox(
-                    color: kGreenPrimary,
-                    child: Row(
-                      children: [
-                        fromWhere == FromWhere.pickupScreen ||
-                                fromWhere == FromWhere.checkoutAndPickupScreen
-                            ? kWidth20
-                            : kEmpty,
-                        SizedBox(
-                          height: fromWhere == FromWhere.checkoutAndPickupScreen
-                              ? sWidth * .38
-                              : sWidth * .27,
-                          width: fromWhere == FromWhere.checkoutAndPickupScreen
-                              ? sWidth * .34
-                              : sWidth * .27,
-                          child: Image.network(
-                            url,
-                            fit: BoxFit.fill,
-                          ),
+            final product = questiontabBloc.product;
+            final image = questiontabBloc.product?.productImage;
+
+            String url =
+                "${ApiEndPoints.baseUrlImagePath}${Uri.encodeComponent(image ?? dummyImage)}";
+            return SizedBox(
+              height: fromWhere == FromWhere.recalculateWithAmount
+                  ? sWidth * .36
+                  : fromWhere == FromWhere.checkoutAndPickupScreen
+                      ? sWidth * .6
+                      : sWidth * .34,
+              width: double.infinity,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(10),
+                child: ColoredBox(
+                  color: kGreenPrimary,
+                  child: Row(
+                    children: [
+                      fromWhere == FromWhere.pickupScreen ||
+                              fromWhere == FromWhere.checkoutAndPickupScreen
+                          ? kWidth20
+                          : kEmpty,
+                      SizedBox(
+                        height: fromWhere == FromWhere.checkoutAndPickupScreen
+                            ? sWidth * .38
+                            : sWidth * .27,
+                        width: fromWhere == FromWhere.checkoutAndPickupScreen
+                            ? sWidth * .34
+                            : sWidth * .27,
+                        child: Image.network(
+                          url,
+                          fit: BoxFit.fill,
                         ),
-                        fromWhere == FromWhere.pickupScreen ||
-                                fromWhere == FromWhere.checkoutAndPickupScreen
-                            ? kEmpty
-                            : kWidth5,
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            if (fromWhere == FromWhere.questionScreen ||
-                                fromWhere == FromWhere.recalculateWithAmount)
-                              FittedBox(
-                                child: Row(
-                                  children: [
-                                    Text(
-                                      '${product?.model?.replaceAll('Samsung ', '')}',
-                                      style: textHeadBold1.copyWith(
-                                        fontSize: sWidth * .043,
-                                        color: kWhite,
-                                        overflow: TextOverflow.ellipsis,
-                                      ),
-                                    ),
-                                    kWidth5,
-                                    Text(
-                                      '${product!.variant}',
-                                      style: textHeadMedium1.copyWith(
-                                        color: kWhite,
-                                        overflow: TextOverflow.ellipsis,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            fromWhere == FromWhere.checkoutAndPickupScreen
-                                ? kHeight10
-                                : kEmpty,
-                            if (fromWhere == FromWhere.recalculateWithAmount)
-                              BlocBuilder<QuestionTabBloc, QuestionTabState>(
-                                builder: (context, state) {
-                                  if (state.isLoading) {
-                                    return Center(
-                                      child: LoadingAnimation(
-                                        width: 40,
-                                        color: kWhite,
-                                      ),
-                                    );
-                                  }
-                                  return Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      questiontabBloc.basePriceModelResponce !=
-                                              null
-                                          ? Text(
-                                              '₹ ${questiontabBloc.basePriceModelResponce!.basePrice}',
-                                              style: textHeadBoldBig.copyWith(
-                                                color: kWhite,
-                                              ),
-                                            )
-                                          : Text(
-                                              '₹ 0',
-                                              style: textHeadBoldBig.copyWith(
-                                                color: kWhite,
-                                              ),
-                                            ),
-                                      Row(
-                                        children: [
-                                          Text(
-                                            'Not Satisfied with our price ?',
-                                            overflow: TextOverflow.ellipsis,
-                                            style: textHeadMedium1.copyWith(
-                                              color: kWhite,
-                                              fontSize: sWidth * .025,
-                                            ),
-                                          ),
-                                          TextButton(
-                                            onPressed: () {
-                                              secondtabScreensNotifier.value =
-                                                  1;
-                                              secondtabScreensNotifier
-                                                  .notifyListeners();
-                                              context
-                                                  .read<QuestionTabBloc>()
-                                                  .add(
-                                                      const ResetTabSelection());
-                                            },
-                                            child: Text(
-                                              'Recalculate',
-                                              overflow: TextOverflow.ellipsis,
-                                              style: textHeadInter.copyWith(
-                                                fontSize: sWidth * .030,
-                                                color: kWhite,
-                                                fontWeight: FontWeight.w600,
-                                                decoration:
-                                                    TextDecoration.underline,
-                                                decorationColor: kWhite,
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      )
-                                    ],
-                                  );
-                                },
-                              ),
-                            if (fromWhere ==
-                                    FromWhere.checkoutAndPickupScreen ||
-                                fromWhere == FromWhere.pickupScreen)
-                              Text(
-                                  '${product!.model?.replaceAll('Samsung ', '')}',
-                                  style: textHeadBold1.copyWith(
-                                      color: kWhite, fontSize: sWidth * .05),
-                                  overflow: TextOverflow.ellipsis),
-                            kHeight5,
-                            if (fromWhere ==
-                                    FromWhere.checkoutAndPickupScreen ||
-                                fromWhere == FromWhere.pickupScreen)
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text('${product!.variant}',
-                                      style: textHeadMedium1.copyWith(
-                                          color: kWhite),
-                                      overflow: TextOverflow.ellipsis),
-                                  Text(
-                                      '₹ ${questiontabBloc.basePriceModelResponce!.basePrice}',
-                                      style: textHeadBoldBig.copyWith(
-                                        color: kWhite,
-                                      ),
-                                      overflow: TextOverflow.ellipsis)
-                                ],
-                              ),
-                            if (fromWhere == FromWhere.questionScreen)
-                              Row(
+                      ),
+                      fromWhere == FromWhere.pickupScreen ||
+                              fromWhere == FromWhere.checkoutAndPickupScreen
+                          ? kEmpty
+                          : kWidth5,
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          if (fromWhere == FromWhere.questionScreen ||
+                              fromWhere == FromWhere.recalculateWithAmount)
+                            FittedBox(
+                              child: Row(
                                 children: [
                                   Text(
-                                    'Device Diagnosis',
-                                    style:
-                                        textHeadBoldBig.copyWith(color: kWhite),
+                                    product?.model
+                                            ?.replaceAll('Samsung ', '') ??
+                                        '',
+                                    style: textHeadBold1.copyWith(
+                                      fontSize: sWidth * .04,
+                                      color: kWhite,
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                  ),
+                                  kWidth5,
+                                  Text(
+                                    product?.variant ?? '',
+                                    style: textHeadMedium1.copyWith(
+                                      color: kWhite,
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
                                   ),
                                 ],
                               ),
-                          ],
-                        ),
-                      ],
-                    ),
+                            ),
+                          fromWhere == FromWhere.checkoutAndPickupScreen
+                              ? kHeight10
+                              : kEmpty,
+                          if (fromWhere == FromWhere.recalculateWithAmount)
+                            BlocBuilder<QuestionTabBloc, QuestionTabState>(
+                              builder: (context, state) {
+                                if (state.isLoading) {
+                                  return Center(
+                                    child: LoadingAnimation(
+                                      width: 40,
+                                      color: kWhite,
+                                    ),
+                                  );
+                                }
+                                return Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    questiontabBloc.basePriceModelResponce !=
+                                            null
+                                        ? Text(
+                                            '₹ ${questiontabBloc.basePriceModelResponce!.basePrice}',
+                                            style: textHeadBoldBig.copyWith(
+                                              color: kWhite,
+                                            ),
+                                          )
+                                        : Text(
+                                            '₹ 0',
+                                            style: textHeadBoldBig.copyWith(
+                                              color: kWhite,
+                                            ),
+                                          ),
+                                    Row(
+                                      children: [
+                                        Text(
+                                          'Not Satisfied with our price ?',
+                                          overflow: TextOverflow.ellipsis,
+                                          style: textHeadMedium1.copyWith(
+                                            color: kWhite,
+                                            fontSize: sWidth * .025,
+                                          ),
+                                        ),
+                                        TextButton(
+                                          onPressed: () {
+                                            secondtabScreensNotifier.value = 1;
+                                            secondtabScreensNotifier
+                                                .notifyListeners();
+                                            context
+                                                .read<QuestionTabBloc>()
+                                                .add(const ResetTabSelection());
+                                          },
+                                          child: Text(
+                                            'Recalculate',
+                                            overflow: TextOverflow.ellipsis,
+                                            style: textHeadInter.copyWith(
+                                              fontSize: sWidth * .030,
+                                              color: kWhite,
+                                              fontWeight: FontWeight.w600,
+                                              decoration:
+                                                  TextDecoration.underline,
+                                              decorationColor: kWhite,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    )
+                                  ],
+                                );
+                              },
+                            ),
+                          if (fromWhere == FromWhere.checkoutAndPickupScreen ||
+                              fromWhere == FromWhere.pickupScreen)
+                            Text(
+                                product?.model?.replaceAll('Samsung ', '') ??
+                                    '',
+                                style: textHeadBold1.copyWith(
+                                    color: kWhite, fontSize: sWidth * .05),
+                                overflow: TextOverflow.ellipsis),
+                          kHeight5,
+                          if (fromWhere == FromWhere.checkoutAndPickupScreen ||
+                              fromWhere == FromWhere.pickupScreen)
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(product?.variant ?? '',
+                                    style:
+                                        textHeadMedium1.copyWith(color: kWhite),
+                                    overflow: TextOverflow.ellipsis),
+                                Text(
+                                  '₹ ${questiontabBloc.basePriceModelResponce!.basePrice}',
+                                  style: textHeadBoldBig.copyWith(
+                                    color: kWhite,
+                                  ),
+                                  overflow: TextOverflow.ellipsis,
+                                )
+                              ],
+                            ),
+                          if (fromWhere == FromWhere.questionScreen)
+                            Row(
+                              children: [
+                                Text(
+                                  'Device Diagnosis',
+                                  style:
+                                      textHeadBoldBig.copyWith(color: kWhite),
+                                ),
+                              ],
+                            ),
+                        ],
+                      ),
+                    ],
                   ),
                 ),
-              );
-            } else {
-              return const Icon(
-                Icons.refresh,
-              );
-            }
+              ),
+            );
+            // }
           },
         ),
       ],

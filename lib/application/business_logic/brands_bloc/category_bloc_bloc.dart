@@ -80,11 +80,14 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
     final List<Product> filteredProducts = productList.where((product) {
       final String model =
           product.model!.toLowerCase().trim().replaceAll(' ', '');
+      final String price =
+          product.estimatedPrice!.toString().trim().replaceAll(' ', '');
       final String varient =
           product.variant!.toLowerCase().trim().replaceAll(' ', '');
       final String brand =
           product.brandName!.toLowerCase().trim().replaceAll(' ', '');
       return model.contains(searchQuery) ||
+          price.contains(searchQuery) ||
           varient.contains(searchQuery) ||
           brand.contains(searchQuery);
     }).toList();
@@ -188,6 +191,9 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
       log('getProducts prod leng bloc >>>>=== : ${getproducts.products?.length}');
       productList = getproducts.products ?? [];
       if (modelFilter == 'All') {
+        emit(state.copyWith(
+          varients: [],
+        ));
         productList = getproducts.products ?? [];
       }
       if (modelFilter != null && modelFilter != 'All') {

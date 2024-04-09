@@ -19,7 +19,6 @@ mixin _$HomeEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(bool isLoad) getAllCategory,
-    required TResult Function(String category) selectedactegory,
     required TResult Function(bool isLoad) homePageBanners,
     required TResult Function(bool isLoad) getBestSellingProducts,
     required TResult Function(String searchQuery) globalPrductSearch,
@@ -30,7 +29,6 @@ mixin _$HomeEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(bool isLoad)? getAllCategory,
-    TResult? Function(String category)? selectedactegory,
     TResult? Function(bool isLoad)? homePageBanners,
     TResult? Function(bool isLoad)? getBestSellingProducts,
     TResult? Function(String searchQuery)? globalPrductSearch,
@@ -41,7 +39,6 @@ mixin _$HomeEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(bool isLoad)? getAllCategory,
-    TResult Function(String category)? selectedactegory,
     TResult Function(bool isLoad)? homePageBanners,
     TResult Function(bool isLoad)? getBestSellingProducts,
     TResult Function(String searchQuery)? globalPrductSearch,
@@ -53,7 +50,6 @@ mixin _$HomeEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(GetAllCategory value) getAllCategory,
-    required TResult Function(Selectedactegory value) selectedactegory,
     required TResult Function(HomePageBanners value) homePageBanners,
     required TResult Function(GetBestSellingProducts value)
         getBestSellingProducts,
@@ -65,7 +61,6 @@ mixin _$HomeEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(GetAllCategory value)? getAllCategory,
-    TResult? Function(Selectedactegory value)? selectedactegory,
     TResult? Function(HomePageBanners value)? homePageBanners,
     TResult? Function(GetBestSellingProducts value)? getBestSellingProducts,
     TResult? Function(GlobalPrductSearch value)? globalPrductSearch,
@@ -76,7 +71,6 @@ mixin _$HomeEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GetAllCategory value)? getAllCategory,
-    TResult Function(Selectedactegory value)? selectedactegory,
     TResult Function(HomePageBanners value)? homePageBanners,
     TResult Function(GetBestSellingProducts value)? getBestSellingProducts,
     TResult Function(GlobalPrductSearch value)? globalPrductSearch,
@@ -170,7 +164,6 @@ class _$GetAllCategoryImpl implements GetAllCategory {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(bool isLoad) getAllCategory,
-    required TResult Function(String category) selectedactegory,
     required TResult Function(bool isLoad) homePageBanners,
     required TResult Function(bool isLoad) getBestSellingProducts,
     required TResult Function(String searchQuery) globalPrductSearch,
@@ -184,7 +177,6 @@ class _$GetAllCategoryImpl implements GetAllCategory {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(bool isLoad)? getAllCategory,
-    TResult? Function(String category)? selectedactegory,
     TResult? Function(bool isLoad)? homePageBanners,
     TResult? Function(bool isLoad)? getBestSellingProducts,
     TResult? Function(String searchQuery)? globalPrductSearch,
@@ -198,7 +190,6 @@ class _$GetAllCategoryImpl implements GetAllCategory {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(bool isLoad)? getAllCategory,
-    TResult Function(String category)? selectedactegory,
     TResult Function(bool isLoad)? homePageBanners,
     TResult Function(bool isLoad)? getBestSellingProducts,
     TResult Function(String searchQuery)? globalPrductSearch,
@@ -216,7 +207,6 @@ class _$GetAllCategoryImpl implements GetAllCategory {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(GetAllCategory value) getAllCategory,
-    required TResult Function(Selectedactegory value) selectedactegory,
     required TResult Function(HomePageBanners value) homePageBanners,
     required TResult Function(GetBestSellingProducts value)
         getBestSellingProducts,
@@ -231,7 +221,6 @@ class _$GetAllCategoryImpl implements GetAllCategory {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(GetAllCategory value)? getAllCategory,
-    TResult? Function(Selectedactegory value)? selectedactegory,
     TResult? Function(HomePageBanners value)? homePageBanners,
     TResult? Function(GetBestSellingProducts value)? getBestSellingProducts,
     TResult? Function(GlobalPrductSearch value)? globalPrductSearch,
@@ -245,7 +234,6 @@ class _$GetAllCategoryImpl implements GetAllCategory {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GetAllCategory value)? getAllCategory,
-    TResult Function(Selectedactegory value)? selectedactegory,
     TResult Function(HomePageBanners value)? homePageBanners,
     TResult Function(GetBestSellingProducts value)? getBestSellingProducts,
     TResult Function(GlobalPrductSearch value)? globalPrductSearch,
@@ -267,173 +255,6 @@ abstract class GetAllCategory implements HomeEvent {
   bool get isLoad;
   @JsonKey(ignore: true)
   _$$GetAllCategoryImplCopyWith<_$GetAllCategoryImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$SelectedactegoryImplCopyWith<$Res> {
-  factory _$$SelectedactegoryImplCopyWith(_$SelectedactegoryImpl value,
-          $Res Function(_$SelectedactegoryImpl) then) =
-      __$$SelectedactegoryImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String category});
-}
-
-/// @nodoc
-class __$$SelectedactegoryImplCopyWithImpl<$Res>
-    extends _$HomeEventCopyWithImpl<$Res, _$SelectedactegoryImpl>
-    implements _$$SelectedactegoryImplCopyWith<$Res> {
-  __$$SelectedactegoryImplCopyWithImpl(_$SelectedactegoryImpl _value,
-      $Res Function(_$SelectedactegoryImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? category = null,
-  }) {
-    return _then(_$SelectedactegoryImpl(
-      category: null == category
-          ? _value.category
-          : category // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$SelectedactegoryImpl implements Selectedactegory {
-  const _$SelectedactegoryImpl({required this.category});
-
-  @override
-  final String category;
-
-  @override
-  String toString() {
-    return 'HomeEvent.selectedactegory(category: $category)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$SelectedactegoryImpl &&
-            (identical(other.category, category) ||
-                other.category == category));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, category);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$SelectedactegoryImplCopyWith<_$SelectedactegoryImpl> get copyWith =>
-      __$$SelectedactegoryImplCopyWithImpl<_$SelectedactegoryImpl>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(bool isLoad) getAllCategory,
-    required TResult Function(String category) selectedactegory,
-    required TResult Function(bool isLoad) homePageBanners,
-    required TResult Function(bool isLoad) getBestSellingProducts,
-    required TResult Function(String searchQuery) globalPrductSearch,
-    required TResult Function() nextPage,
-    required TResult Function() clear,
-  }) {
-    return selectedactegory(category);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(bool isLoad)? getAllCategory,
-    TResult? Function(String category)? selectedactegory,
-    TResult? Function(bool isLoad)? homePageBanners,
-    TResult? Function(bool isLoad)? getBestSellingProducts,
-    TResult? Function(String searchQuery)? globalPrductSearch,
-    TResult? Function()? nextPage,
-    TResult? Function()? clear,
-  }) {
-    return selectedactegory?.call(category);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(bool isLoad)? getAllCategory,
-    TResult Function(String category)? selectedactegory,
-    TResult Function(bool isLoad)? homePageBanners,
-    TResult Function(bool isLoad)? getBestSellingProducts,
-    TResult Function(String searchQuery)? globalPrductSearch,
-    TResult Function()? nextPage,
-    TResult Function()? clear,
-    required TResult orElse(),
-  }) {
-    if (selectedactegory != null) {
-      return selectedactegory(category);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(GetAllCategory value) getAllCategory,
-    required TResult Function(Selectedactegory value) selectedactegory,
-    required TResult Function(HomePageBanners value) homePageBanners,
-    required TResult Function(GetBestSellingProducts value)
-        getBestSellingProducts,
-    required TResult Function(GlobalPrductSearch value) globalPrductSearch,
-    required TResult Function(NextPage value) nextPage,
-    required TResult Function(Clear value) clear,
-  }) {
-    return selectedactegory(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(GetAllCategory value)? getAllCategory,
-    TResult? Function(Selectedactegory value)? selectedactegory,
-    TResult? Function(HomePageBanners value)? homePageBanners,
-    TResult? Function(GetBestSellingProducts value)? getBestSellingProducts,
-    TResult? Function(GlobalPrductSearch value)? globalPrductSearch,
-    TResult? Function(NextPage value)? nextPage,
-    TResult? Function(Clear value)? clear,
-  }) {
-    return selectedactegory?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(GetAllCategory value)? getAllCategory,
-    TResult Function(Selectedactegory value)? selectedactegory,
-    TResult Function(HomePageBanners value)? homePageBanners,
-    TResult Function(GetBestSellingProducts value)? getBestSellingProducts,
-    TResult Function(GlobalPrductSearch value)? globalPrductSearch,
-    TResult Function(NextPage value)? nextPage,
-    TResult Function(Clear value)? clear,
-    required TResult orElse(),
-  }) {
-    if (selectedactegory != null) {
-      return selectedactegory(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class Selectedactegory implements HomeEvent {
-  const factory Selectedactegory({required final String category}) =
-      _$SelectedactegoryImpl;
-
-  String get category;
-  @JsonKey(ignore: true)
-  _$$SelectedactegoryImplCopyWith<_$SelectedactegoryImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -503,7 +324,6 @@ class _$HomePageBannersImpl implements HomePageBanners {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(bool isLoad) getAllCategory,
-    required TResult Function(String category) selectedactegory,
     required TResult Function(bool isLoad) homePageBanners,
     required TResult Function(bool isLoad) getBestSellingProducts,
     required TResult Function(String searchQuery) globalPrductSearch,
@@ -517,7 +337,6 @@ class _$HomePageBannersImpl implements HomePageBanners {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(bool isLoad)? getAllCategory,
-    TResult? Function(String category)? selectedactegory,
     TResult? Function(bool isLoad)? homePageBanners,
     TResult? Function(bool isLoad)? getBestSellingProducts,
     TResult? Function(String searchQuery)? globalPrductSearch,
@@ -531,7 +350,6 @@ class _$HomePageBannersImpl implements HomePageBanners {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(bool isLoad)? getAllCategory,
-    TResult Function(String category)? selectedactegory,
     TResult Function(bool isLoad)? homePageBanners,
     TResult Function(bool isLoad)? getBestSellingProducts,
     TResult Function(String searchQuery)? globalPrductSearch,
@@ -549,7 +367,6 @@ class _$HomePageBannersImpl implements HomePageBanners {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(GetAllCategory value) getAllCategory,
-    required TResult Function(Selectedactegory value) selectedactegory,
     required TResult Function(HomePageBanners value) homePageBanners,
     required TResult Function(GetBestSellingProducts value)
         getBestSellingProducts,
@@ -564,7 +381,6 @@ class _$HomePageBannersImpl implements HomePageBanners {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(GetAllCategory value)? getAllCategory,
-    TResult? Function(Selectedactegory value)? selectedactegory,
     TResult? Function(HomePageBanners value)? homePageBanners,
     TResult? Function(GetBestSellingProducts value)? getBestSellingProducts,
     TResult? Function(GlobalPrductSearch value)? globalPrductSearch,
@@ -578,7 +394,6 @@ class _$HomePageBannersImpl implements HomePageBanners {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GetAllCategory value)? getAllCategory,
-    TResult Function(Selectedactegory value)? selectedactegory,
     TResult Function(HomePageBanners value)? homePageBanners,
     TResult Function(GetBestSellingProducts value)? getBestSellingProducts,
     TResult Function(GlobalPrductSearch value)? globalPrductSearch,
@@ -671,7 +486,6 @@ class _$GetBestSellingProductsImpl implements GetBestSellingProducts {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(bool isLoad) getAllCategory,
-    required TResult Function(String category) selectedactegory,
     required TResult Function(bool isLoad) homePageBanners,
     required TResult Function(bool isLoad) getBestSellingProducts,
     required TResult Function(String searchQuery) globalPrductSearch,
@@ -685,7 +499,6 @@ class _$GetBestSellingProductsImpl implements GetBestSellingProducts {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(bool isLoad)? getAllCategory,
-    TResult? Function(String category)? selectedactegory,
     TResult? Function(bool isLoad)? homePageBanners,
     TResult? Function(bool isLoad)? getBestSellingProducts,
     TResult? Function(String searchQuery)? globalPrductSearch,
@@ -699,7 +512,6 @@ class _$GetBestSellingProductsImpl implements GetBestSellingProducts {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(bool isLoad)? getAllCategory,
-    TResult Function(String category)? selectedactegory,
     TResult Function(bool isLoad)? homePageBanners,
     TResult Function(bool isLoad)? getBestSellingProducts,
     TResult Function(String searchQuery)? globalPrductSearch,
@@ -717,7 +529,6 @@ class _$GetBestSellingProductsImpl implements GetBestSellingProducts {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(GetAllCategory value) getAllCategory,
-    required TResult Function(Selectedactegory value) selectedactegory,
     required TResult Function(HomePageBanners value) homePageBanners,
     required TResult Function(GetBestSellingProducts value)
         getBestSellingProducts,
@@ -732,7 +543,6 @@ class _$GetBestSellingProductsImpl implements GetBestSellingProducts {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(GetAllCategory value)? getAllCategory,
-    TResult? Function(Selectedactegory value)? selectedactegory,
     TResult? Function(HomePageBanners value)? homePageBanners,
     TResult? Function(GetBestSellingProducts value)? getBestSellingProducts,
     TResult? Function(GlobalPrductSearch value)? globalPrductSearch,
@@ -746,7 +556,6 @@ class _$GetBestSellingProductsImpl implements GetBestSellingProducts {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GetAllCategory value)? getAllCategory,
-    TResult Function(Selectedactegory value)? selectedactegory,
     TResult Function(HomePageBanners value)? homePageBanners,
     TResult Function(GetBestSellingProducts value)? getBestSellingProducts,
     TResult Function(GlobalPrductSearch value)? globalPrductSearch,
@@ -838,7 +647,6 @@ class _$GlobalPrductSearchImpl implements GlobalPrductSearch {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(bool isLoad) getAllCategory,
-    required TResult Function(String category) selectedactegory,
     required TResult Function(bool isLoad) homePageBanners,
     required TResult Function(bool isLoad) getBestSellingProducts,
     required TResult Function(String searchQuery) globalPrductSearch,
@@ -852,7 +660,6 @@ class _$GlobalPrductSearchImpl implements GlobalPrductSearch {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(bool isLoad)? getAllCategory,
-    TResult? Function(String category)? selectedactegory,
     TResult? Function(bool isLoad)? homePageBanners,
     TResult? Function(bool isLoad)? getBestSellingProducts,
     TResult? Function(String searchQuery)? globalPrductSearch,
@@ -866,7 +673,6 @@ class _$GlobalPrductSearchImpl implements GlobalPrductSearch {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(bool isLoad)? getAllCategory,
-    TResult Function(String category)? selectedactegory,
     TResult Function(bool isLoad)? homePageBanners,
     TResult Function(bool isLoad)? getBestSellingProducts,
     TResult Function(String searchQuery)? globalPrductSearch,
@@ -884,7 +690,6 @@ class _$GlobalPrductSearchImpl implements GlobalPrductSearch {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(GetAllCategory value) getAllCategory,
-    required TResult Function(Selectedactegory value) selectedactegory,
     required TResult Function(HomePageBanners value) homePageBanners,
     required TResult Function(GetBestSellingProducts value)
         getBestSellingProducts,
@@ -899,7 +704,6 @@ class _$GlobalPrductSearchImpl implements GlobalPrductSearch {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(GetAllCategory value)? getAllCategory,
-    TResult? Function(Selectedactegory value)? selectedactegory,
     TResult? Function(HomePageBanners value)? homePageBanners,
     TResult? Function(GetBestSellingProducts value)? getBestSellingProducts,
     TResult? Function(GlobalPrductSearch value)? globalPrductSearch,
@@ -913,7 +717,6 @@ class _$GlobalPrductSearchImpl implements GlobalPrductSearch {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GetAllCategory value)? getAllCategory,
-    TResult Function(Selectedactegory value)? selectedactegory,
     TResult Function(HomePageBanners value)? homePageBanners,
     TResult Function(GetBestSellingProducts value)? getBestSellingProducts,
     TResult Function(GlobalPrductSearch value)? globalPrductSearch,
@@ -977,7 +780,6 @@ class _$NextPageImpl implements NextPage {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(bool isLoad) getAllCategory,
-    required TResult Function(String category) selectedactegory,
     required TResult Function(bool isLoad) homePageBanners,
     required TResult Function(bool isLoad) getBestSellingProducts,
     required TResult Function(String searchQuery) globalPrductSearch,
@@ -991,7 +793,6 @@ class _$NextPageImpl implements NextPage {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(bool isLoad)? getAllCategory,
-    TResult? Function(String category)? selectedactegory,
     TResult? Function(bool isLoad)? homePageBanners,
     TResult? Function(bool isLoad)? getBestSellingProducts,
     TResult? Function(String searchQuery)? globalPrductSearch,
@@ -1005,7 +806,6 @@ class _$NextPageImpl implements NextPage {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(bool isLoad)? getAllCategory,
-    TResult Function(String category)? selectedactegory,
     TResult Function(bool isLoad)? homePageBanners,
     TResult Function(bool isLoad)? getBestSellingProducts,
     TResult Function(String searchQuery)? globalPrductSearch,
@@ -1023,7 +823,6 @@ class _$NextPageImpl implements NextPage {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(GetAllCategory value) getAllCategory,
-    required TResult Function(Selectedactegory value) selectedactegory,
     required TResult Function(HomePageBanners value) homePageBanners,
     required TResult Function(GetBestSellingProducts value)
         getBestSellingProducts,
@@ -1038,7 +837,6 @@ class _$NextPageImpl implements NextPage {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(GetAllCategory value)? getAllCategory,
-    TResult? Function(Selectedactegory value)? selectedactegory,
     TResult? Function(HomePageBanners value)? homePageBanners,
     TResult? Function(GetBestSellingProducts value)? getBestSellingProducts,
     TResult? Function(GlobalPrductSearch value)? globalPrductSearch,
@@ -1052,7 +850,6 @@ class _$NextPageImpl implements NextPage {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GetAllCategory value)? getAllCategory,
-    TResult Function(Selectedactegory value)? selectedactegory,
     TResult Function(HomePageBanners value)? homePageBanners,
     TResult Function(GetBestSellingProducts value)? getBestSellingProducts,
     TResult Function(GlobalPrductSearch value)? globalPrductSearch,
@@ -1110,7 +907,6 @@ class _$ClearImpl implements Clear {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(bool isLoad) getAllCategory,
-    required TResult Function(String category) selectedactegory,
     required TResult Function(bool isLoad) homePageBanners,
     required TResult Function(bool isLoad) getBestSellingProducts,
     required TResult Function(String searchQuery) globalPrductSearch,
@@ -1124,7 +920,6 @@ class _$ClearImpl implements Clear {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(bool isLoad)? getAllCategory,
-    TResult? Function(String category)? selectedactegory,
     TResult? Function(bool isLoad)? homePageBanners,
     TResult? Function(bool isLoad)? getBestSellingProducts,
     TResult? Function(String searchQuery)? globalPrductSearch,
@@ -1138,7 +933,6 @@ class _$ClearImpl implements Clear {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(bool isLoad)? getAllCategory,
-    TResult Function(String category)? selectedactegory,
     TResult Function(bool isLoad)? homePageBanners,
     TResult Function(bool isLoad)? getBestSellingProducts,
     TResult Function(String searchQuery)? globalPrductSearch,
@@ -1156,7 +950,6 @@ class _$ClearImpl implements Clear {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(GetAllCategory value) getAllCategory,
-    required TResult Function(Selectedactegory value) selectedactegory,
     required TResult Function(HomePageBanners value) homePageBanners,
     required TResult Function(GetBestSellingProducts value)
         getBestSellingProducts,
@@ -1171,7 +964,6 @@ class _$ClearImpl implements Clear {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(GetAllCategory value)? getAllCategory,
-    TResult? Function(Selectedactegory value)? selectedactegory,
     TResult? Function(HomePageBanners value)? homePageBanners,
     TResult? Function(GetBestSellingProducts value)? getBestSellingProducts,
     TResult? Function(GlobalPrductSearch value)? globalPrductSearch,
@@ -1185,7 +977,6 @@ class _$ClearImpl implements Clear {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GetAllCategory value)? getAllCategory,
-    TResult Function(Selectedactegory value)? selectedactegory,
     TResult Function(HomePageBanners value)? homePageBanners,
     TResult Function(GetBestSellingProducts value)? getBestSellingProducts,
     TResult Function(GlobalPrductSearch value)? globalPrductSearch,

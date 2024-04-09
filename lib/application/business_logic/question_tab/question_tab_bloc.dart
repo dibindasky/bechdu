@@ -24,8 +24,7 @@ class QuestionTabBloc extends Bloc<QuestionTabEvent, QuestionTabState> {
   final QuestionRepo questionRepo;
   int answerdCount = 0;
   num basePrice = 0;
-  Product? product;
-  List<Section>? sections;
+  // Product? product;
   List<SelectedOption> selectedOptions = [];
 
   QuestionTabBloc(this.questionRepo) : super(QuestionTabState.initial()) {
@@ -214,7 +213,7 @@ class QuestionTabBloc extends Bloc<QuestionTabEvent, QuestionTabState> {
               isLoading: false,
               lastChecking: false,
             )), (r) {
-      product = event.product;
+      //product = event.product;
       Map<String, List<SelectedOption>> map = {};
       if (r.sections != null) {
         for (var element in r.sections!.toList()) {
@@ -257,20 +256,12 @@ class QuestionTabBloc extends Bloc<QuestionTabEvent, QuestionTabState> {
         isLoading: false,
       ));
     }, (successResponce) async {
-      // Product? product;
-      // if (state.getProductsResponceModel != null &&
-      //     state.getProductsResponceModel!.products != null) {
-      //   for (var element in state.getProductsResponceModel!.products!) {
-      //     product = element;
-      //   }
-      // }
       log('getBasePrice third');
       emit(state.copyWith(
         hasError: false,
         isLoading: false,
         lastChecking: false,
         basePriceModelResponce: successResponce,
-        product: event.product,
         sections: state.sections,
       ));
       log('Sections state sections ${state.sections?.toList()}');

@@ -5,6 +5,7 @@ import 'package:beachdu/application/presentation/screens/pickup/widgets/textfeil
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/application/presentation/utils/custom_button.dart';
+import 'package:beachdu/application/presentation/utils/snackbar/snackbar.dart';
 import 'package:beachdu/application/presentation/utils/validators.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -130,6 +131,12 @@ class _PersonalDetailsState extends State<PersonalDetails> {
                     pickupDetailChangeNotifier.value =
                         PickupDetailContainers.address;
                     pickupDetailChangeNotifier.notifyListeners();
+                  } else {
+                    showSnack(
+                      context: context,
+                      message: 'Plaase add missing details',
+                      color: kRed,
+                    );
                   }
                 },
                 text: 'Continue',

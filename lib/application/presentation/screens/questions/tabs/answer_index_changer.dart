@@ -1,4 +1,4 @@
-// ignore_for_file: use_build_context_synchronously
+import 'package:beachdu/application/business_logic/auth/auth_bloc.dart';
 import 'package:beachdu/application/business_logic/brands_bloc/category_bloc_bloc.dart';
 import 'package:beachdu/application/business_logic/question_tab/question_tab_bloc.dart';
 import 'package:beachdu/application/presentation/routes/routes.dart';
@@ -6,7 +6,6 @@ import 'package:beachdu/application/presentation/screens/product_selection/produ
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/enums/type_display.dart';
 import 'package:beachdu/application/presentation/widgets/status_colored_box.dart';
-import 'package:beachdu/data/secure_storage/secure_fire_store.dart';
 import 'package:beachdu/domain/model/order_model/abandend_order_request_model/abandend_order_request_model.dart';
 import 'package:beachdu/domain/model/order_model/abandend_order_request_model/product_details.dart';
 import 'package:beachdu/domain/model/pickup_question_model/pickup_question_model.dart';
@@ -21,23 +20,27 @@ class AnswerIndexChanger extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        BlocConsumer<QuestionTabBloc, QuestionTabState>(
-          listener: (context, state) {
-            if (state.lastChecking == true) {
-              loginOrNot(context);
-            }
-          },
-          builder: (context, state) {
-            return StatusColoredBox(
-              onTap: () {
-                context.read<QuestionTabBloc>().add(
-                    QuestionTabEvent.changeIndex(
-                        index: state.selectedTabIndex + 1));
+        BlocBuilder<AuthBloc, AuthState>(
+          builder: (context, authBloc) {
+            return BlocConsumer<QuestionTabBloc, QuestionTabState>(
+              listener: (context, state) {
+                if (state.lastChecking == true) {
+                  loginOrNot(context, loginOrNot: authBloc.logOrNot);
+                }
               },
-              text: 'Continue',
-              color: kGreenPrimary,
-              fontWeight: FontWeight.w700,
-              verticalPadding: 10,
+              builder: (context, state) {
+                return StatusColoredBox(
+                  onTap: () {
+                    context.read<QuestionTabBloc>().add(
+                        QuestionTabEvent.changeIndex(
+                            index: state.selectedTabIndex + 1));
+                  },
+                  text: 'Continue',
+                  color: kGreenPrimary,
+                  fontWeight: FontWeight.w700,
+                  verticalPadding: 10,
+                );
+              },
             );
           },
         ),
@@ -45,9 +48,10 @@ class AnswerIndexChanger extends StatelessWidget {
     );
   }
 
-  Future<void> loginOrNot(BuildContext context) async {
-    final login = await SecureSotrage.getlLogin();
-    if (!login) {
+  Future<void> loginOrNot(BuildContext context,
+      {required bool loginOrNot}) async {
+    //  final login = await SecureSotrage.getlLogin();
+    if (!loginOrNot) {
       Navigator.of(context).pushNamed(
         Routes.signInOrLogin,
         arguments: LoginWay.fromQuestionPick,
@@ -84,7 +88,7 @@ class AnswerIndexChanger extends StatelessWidget {
 
     context.read<QuestionTabBloc>().add(
           GetBasePrice(
-            product: context.read<QuestionTabBloc>().product!,
+            //product: context.read<QuestionTabBloc>().product!,
             pickupQuestionModel: pickepQuestionModel,
             abandendOrderRequestModel: abandendOrderRequestModel,
           ),

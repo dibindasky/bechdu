@@ -11,6 +11,7 @@ import 'package:beachdu/application/presentation/routes/routes.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/application/presentation/utils/enums/type_display.dart';
+import 'package:beachdu/application/presentation/utils/loading_indicators/loading_indicator.dart';
 import 'package:beachdu/application/presentation/utils/snackbar/snackbar.dart';
 import 'package:beachdu/application/presentation/widgets/custom_elevated_button.dart';
 import 'package:beachdu/domain/core/failure/failure.dart';
@@ -102,19 +103,20 @@ class BottomSections extends StatelessWidget {
                 context: context,
                 message: state.message ?? 'OTP Send Successfully',
               );
-
               navigate(context);
             }
           },
           builder: (context, state) {
-            return ElevatedButtonLong(
-              wdth: sWidth * .7,
-              onPressed: () {
-                log('ontap');
-                login(context);
-              },
-              text: state.load ? 'Redirecting' : 'Get OTP',
-            );
+            return state.isLoading
+                ? LoadingAnimation(width: 40)
+                : ElevatedButtonLong(
+                    wdth: sWidth * .7,
+                    onPressed: () {
+                      log('ontap');
+                      login(context);
+                    },
+                    text: 'Get OTP',
+                  );
           },
         ),
         kHeight50,

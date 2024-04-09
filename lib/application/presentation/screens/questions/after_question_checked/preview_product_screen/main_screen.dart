@@ -48,15 +48,15 @@ class ScreenProductPreview extends StatelessWidget {
                   ),
                   child: BlocBuilder<QuestionTabBloc, QuestionTabState>(
                     builder: (context, questionTabBloc) {
-                      if (questionTabBloc.isLoading) {
-                        return Center(child: LoadingAnimation(width: 50));
-                      } else if (questionTabBloc.product == null) {
-                        return const Center(
-                          child: CircularProgressIndicator(
-                            color: kGreenPrimary,
-                          ),
-                        );
-                      }
+                      // if (questionTabBloc.isLoading) {
+                      //   return Center(child: LoadingAnimation(width: 50));
+                      // } else if (questionTabBloc.product == null) {
+                      //   return const Center(
+                      //     child: CircularProgressIndicator(
+                      //       color: kGreenPrimary,
+                      //     ),
+                      //   );
+                      // }
                       return Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -71,19 +71,18 @@ class ScreenProductPreview extends StatelessWidget {
                               style: textHeadBold1.copyWith(fontSize: 18),
                             ),
                           ),
-                          if (questionTabBloc.sections != null)
-                            ListView.builder(
-                              scrollDirection: Axis.vertical,
-                              itemCount: questionTabBloc.sections!.length,
-                              shrinkWrap: true,
-                              physics: const NeverScrollableScrollPhysics(),
-                              itemBuilder: (context, index) {
-                                return ExpansionTileCustom(
-                                  name:
-                                      questionTabBloc.sections![index].heading!,
-                                );
-                              },
-                            ),
+                          // if (questionTabBloc.sections != null)
+                          ListView.builder(
+                            scrollDirection: Axis.vertical,
+                            itemCount: questionTabBloc.sections!.length,
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                            itemBuilder: (context, index) {
+                              return ExpansionTileCustom(
+                                name: questionTabBloc.sections![index].heading!,
+                              );
+                            },
+                          ),
                         ],
                       );
                     },
@@ -102,7 +101,8 @@ class ScreenProductPreview extends StatelessWidget {
                         } else {
                           showSnack(
                             context: context,
-                            message: 'Please wait some seconds',
+                            message:
+                                'Please wait a moment while we retrieve the product price.',
                             color: kRed,
                           );
                         }

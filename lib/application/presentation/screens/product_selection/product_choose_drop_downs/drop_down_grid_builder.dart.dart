@@ -277,8 +277,8 @@ class _ScreenProductSelectionProductFindDropdownGridViewState
                       ).toList(),
                       onChanged: (value) {
                         context.read<CategoryBlocBloc>().varientFilter = value;
-                        log('varientFilter$value');
-                        log('varientFilter   ${context.read<CategoryBlocBloc>().varientFilter}');
+                        // log('varientFilter$value');
+                        // log('varientFilter   ${context.read<CategoryBlocBloc>().varientFilter}');
                         context.read<CategoryBlocBloc>().add(
                               CategoryBlocEvent.getProducts(
                                 seriesName: context

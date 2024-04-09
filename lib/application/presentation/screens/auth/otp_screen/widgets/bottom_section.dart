@@ -66,14 +66,13 @@ class _BottomSectionState extends State<BottomSection> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              "I didn't receive any code. ",
+              "I didn't receive any OTP. ",
               style: textHeadMedium1,
             ),
             TextButton(
               onPressed: _canResend
                   ? () {
                       _startResendCooldown();
-
                       final phoneNumber = context
                           .read<AuthBloc>()
                           .phoneNumberController
@@ -154,7 +153,7 @@ class _BottomSectionState extends State<BottomSection> {
                   if (otp.isEmpty) {
                     showSnack(
                       context: context,
-                      message: 'Enter your otp here',
+                      message: 'Enter your OTP here',
                       color: kRed,
                     );
                   } else if (otp.length < 4) {
