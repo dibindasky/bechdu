@@ -40,7 +40,7 @@ class _BrandListviewBuilderState extends State<BrandListviewBuilder> {
     return BlocConsumer<CategoryBlocBloc, CategoryBlocState>(
       listener: (context, state) {
         if (state.hasError) {
-          showSnack(context: context, message: errorMessage);
+          //showSnack(context: context, message: errorMessage);
         }
       },
       builder: (context, state) {
@@ -51,7 +51,7 @@ class _BrandListviewBuilderState extends State<BrandListviewBuilder> {
             height: 00,
           );
         } else if (state.filteredBrands == null) {
-          return Lottie.asset(emptyLottie);
+          return Center(child: Lottie.asset(emptyLottie));
         }
         final data = state.getSingleCategoryResponce;
         final List<Brands> brands = state.filteredBrands ?? data!.brands!;

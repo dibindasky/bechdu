@@ -1,5 +1,4 @@
 import 'dart:developer';
-import 'package:beachdu/data/secure_storage/secure_fire_store.dart';
 import 'package:beachdu/data/service/api_service.dart';
 import 'package:beachdu/domain/core/api_endpoints/api_endpoints.dart';
 import 'package:beachdu/domain/core/failure/failure.dart';
@@ -22,7 +21,6 @@ import 'package:injectable/injectable.dart';
 class PlaceOrderService implements PlaceOrderRepo {
   final ApiService _apiService;
   PlaceOrderService(this._apiService);
-  final Dio _dio = Dio(BaseOptions(baseUrl: ApiEndPoints.baseUrl));
   @override
   Future<Either<Failure, PromoCodeResponceModel>> getPomoCode({
     required PromoCodeRequestModel promoCodeRequestModel,
@@ -61,11 +59,13 @@ class PlaceOrderService implements PlaceOrderRepo {
   }
 
   @override
-  Future<Either<Failure, GetAllOrderResponceModel>> getOrders() async {
+  Future<Either<Failure, GetAllOrderResponceModel>> getOrders(
+      {required String number}) async {
     try {
-      final number = await SecureSotrage.getNumber();
-      final responce = await _apiService
-          .get(ApiEndPoints.getOrders.replaceAll('{number}', number));
+      final responce = await _apiService.get(
+        ApiEndPoints.getOrders.replaceAll('{number}', number),
+        addHeader: true,
+      );
       return Right(GetAllOrderResponceModel.fromJson(responce.data));
     } on DioException catch (e) {
       return Left(Failure(message: e.message));
@@ -116,11 +116,10 @@ class PlaceOrderService implements PlaceOrderRepo {
   }) async {
     try {
       final url = ApiEndPoints.invoiceDownLoad
-          .replaceAll('{order_id}', orderId)
-          .replaceAll('{number}', number);
+          .replaceFirst('{order_id}', orderId)
+          .replaceFirst('{number}', number);
       final response = await _apiService
           .get(addHeader: true, url, data: {"orderID": orderId});
-      log('${response.data}');
       return Right(InvoiceDownloadResponceModel.fromJson(response.data));
     } on DioException catch (e) {
       return Left(Failure(message: e.message));

@@ -33,7 +33,7 @@ class BestSellingDevices extends StatelessWidget {
             aspectRatio: 1.8,
             child: BlocBuilder<HomeBloc, HomeState>(
               builder: (context, state) {
-                if (state.isLoading) {
+                if (state.bestSellingLoad) {
                   return const Skeleton(
                     crossAxisCount: 2,
                     itemCount: 2,
@@ -114,8 +114,8 @@ class BestSellingDevices extends StatelessWidget {
                                 color: textFieldBorderColor.withOpacity(0.210),
                                 child: Stack(
                                   children: [
-                                    SizedBox(
-                                      width: sWidth * 0.60,
+                                    IntrinsicHeight(
+                                      //width: sWidth * 0.60,
                                       child: Column(
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
@@ -155,7 +155,9 @@ class BestSellingDevices extends StatelessWidget {
                                                   children: [
                                                     Text(
                                                       'Up to ${items.estimatedPrice}',
-                                                      style: textHeadBold1,
+                                                      style: textHeadBold1
+                                                          .copyWith(
+                                                              fontSize: 13),
                                                     ),
                                                   ],
                                                 ),
@@ -186,12 +188,6 @@ class BestSellingDevices extends StatelessWidget {
                                         ),
                                       ),
                                     ),
-                                    // Positioned(
-                                    //   right: 20,
-                                    //   top: sWidth * 0.40,
-                                    //   child:
-                                    //       const UsersProfileStackRecomended(),
-                                    // ),
                                   ],
                                 ),
                               ),

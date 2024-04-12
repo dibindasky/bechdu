@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:beachdu/application/business_logic/brands_bloc/category_bloc_bloc.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
@@ -22,7 +21,6 @@ class _ScreenProductSelectionProductFindDropdownGridViewState
   bool containerOpenArrow1 = false;
   bool containerOpenArrow2 = false;
   bool dropDownOn = false;
-  Color textColor = kBlack;
 
   @override
   Widget build(BuildContext context) {
@@ -31,54 +29,7 @@ class _ScreenProductSelectionProductFindDropdownGridViewState
         return Row(
           children: [
             Expanded(
-              child:
-                  //  CustomDropdown(
-                  //   selectedOption: context.read<CategoryBlocBloc>().modelFilter,
-                  //   onChanged: (value) {
-                  //     if (value == 'All') {
-                  //       context.read<CategoryBlocBloc>().add(
-                  //             CategoryBlocEvent.getProducts(
-                  //               seriesName:
-                  //                   context.read<CategoryBlocBloc>().seriesName!,
-                  //               categoryType:
-                  //                   context.read<CategoryBlocBloc>().categoryType!,
-                  //               brandName:
-                  //                   context.read<CategoryBlocBloc>().barndName!,
-                  //             ),
-                  //           );
-                  //       context.read<CategoryBlocBloc>().varientFilter = null;
-                  //     } else if (context.read<CategoryBlocBloc>().modelFilter !=
-                  //         value) {
-                  //       context.read<CategoryBlocBloc>().varientFilter = null;
-                  //     }
-                  //     context.read<CategoryBlocBloc>().modelFilter = value;
-                  //     context.read<CategoryBlocBloc>().add(
-                  //           GetVarients(
-                  //             brandName:
-                  //                 context.read<CategoryBlocBloc>().barndName!,
-                  //             categoryType:
-                  //                 context.read<CategoryBlocBloc>().categoryType!,
-                  //             seriesName:
-                  //                 context.read<CategoryBlocBloc>().seriesName!,
-                  //             model: value,
-                  //           ),
-                  //         );
-                  //     context.read<CategoryBlocBloc>().add(
-                  //           CategoryBlocEvent.getProducts(
-                  //             seriesName:
-                  //                 context.read<CategoryBlocBloc>().seriesName!,
-                  //             categoryType:
-                  //                 context.read<CategoryBlocBloc>().categoryType!,
-                  //             brandName:
-                  //                 context.read<CategoryBlocBloc>().barndName!,
-                  //           ),
-                  //         );
-                  //     log('model bloc veriable ${context.read<CategoryBlocBloc>().modelFilter}');
-                  //     log('model $value');
-                  //   },
-                  //   options: state.models!,
-                  // ),
-                  Container(
+              child: Container(
                 height: 40,
                 width: double.infinity,
                 decoration: BoxDecoration(
@@ -211,7 +162,6 @@ class _ScreenProductSelectionProductFindDropdownGridViewState
                             });
                           } else {
                             setState(() {
-                              textColor = kWhite;
                               containerOpenArrow1 = true;
                             });
                           }
@@ -317,7 +267,6 @@ class _ScreenProductSelectionProductFindDropdownGridViewState
                           });
                         } else {
                           setState(() {
-                            textColor = kWhite;
                             dropDownOn = true;
                             containerOpenArrow2 = true;
                           });
@@ -352,8 +301,6 @@ class _ScreenProductSelectionProductFindDropdownGridViewState
         height: 50,
         child: TextFormField(
           style: const TextStyle(color: kWhite),
-          // expands: true,
-          //maxLines: null,
           controller: controller,
           decoration: InputDecoration(
             counterStyle: const TextStyle(color: kWhite),
@@ -368,7 +315,6 @@ class _ScreenProductSelectionProductFindDropdownGridViewState
                 color: kWhite,
               ),
             ),
-            //isDense: true,
             hintText: 'Search',
             hintStyle: textHeadMedium1.copyWith(color: kWhite),
           ),
@@ -380,144 +326,5 @@ class _ScreenProductSelectionProductFindDropdownGridViewState
             );
       },
     );
-  }
-}
-
-class CustomDropdown extends StatefulWidget {
-  final List<String> options;
-  final String? selectedOption;
-  final ValueChanged<String>? onChanged;
-
-  const CustomDropdown({
-    Key? key,
-    required this.options,
-    this.selectedOption,
-    this.onChanged,
-  }) : super(key: key);
-
-  @override
-  _CustomDropdownState createState() => _CustomDropdownState();
-}
-
-class _CustomDropdownState extends State<CustomDropdown> {
-  bool _isDropdownOpen = false;
-  late TextEditingController _searchController;
-  late List<String> _filteredOptions;
-
-  @override
-  void initState() {
-    super.initState();
-    _searchController = TextEditingController();
-    _filteredOptions = widget.options;
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        GestureDetector(
-          onTap: () {
-            setState(() {
-              _isDropdownOpen = !_isDropdownOpen;
-            });
-          },
-          child: Container(
-            decoration: BoxDecoration(
-              color: _isDropdownOpen ? kBluePrimary : kWhite,
-              border: Border.all(color: kBlack),
-              borderRadius: BorderRadius.circular(5.0),
-            ),
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  widget.selectedOption?.replaceAll('Samsung', '') ??
-                      'Select Option',
-                  style: TextStyle(
-                    overflow: TextOverflow.ellipsis,
-                    fontSize: 16.0,
-                    color: _isDropdownOpen ? kWhite : kBlack,
-                  ),
-                ),
-                Icon(
-                  _isDropdownOpen
-                      ? Icons.arrow_drop_up_outlined
-                      : Icons.arrow_drop_down,
-                  color: _isDropdownOpen ? kWhite : kBlack,
-                ),
-              ],
-            ),
-          ),
-        ),
-        if (_isDropdownOpen) ...[
-          TextFormField(
-            controller: _searchController,
-            decoration: const InputDecoration(
-              prefixIcon: Icon(Icons.search),
-              hintText: 'Search...',
-              contentPadding: EdgeInsets.all(8.0),
-            ),
-            onChanged: (value) {
-              setState(() {
-                _filteredOptions = widget.options
-                    .where((option) =>
-                        option.toLowerCase().contains(value.toLowerCase()))
-                    .toList();
-              });
-            },
-          ),
-          Container(
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.grey),
-              borderRadius: BorderRadius.circular(5.0),
-            ),
-            margin: const EdgeInsets.only(top: 4),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: _filteredOptions.map((option) {
-                return GestureDetector(
-                  onTap: () {
-                    if (widget.onChanged != null) {
-                      widget.onChanged!(option);
-                    }
-                    setState(() {
-                      _isDropdownOpen = false;
-                    });
-                  },
-                  child: Container(
-                    margin: const EdgeInsets.only(top: 4),
-                    decoration: BoxDecoration(
-                      borderRadius: kRadius5,
-                      border: Border.all(color: kBlack, width: .6),
-                      color: option == widget.selectedOption
-                          ? kWhite
-                          : kBluePrimary,
-                    ),
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 8.0, horizontal: 16.0),
-                    child: Text(
-                      option.replaceAll('Samsung', ''),
-                      style: TextStyle(
-                        overflow: TextOverflow.ellipsis,
-                        color:
-                            option == widget.selectedOption ? kBlack : kWhite,
-                      ),
-                    ),
-                  ),
-                );
-              }).toList(),
-            ),
-          ),
-        ],
-      ],
-    );
-  }
-
-  @override
-  void dispose() {
-    _searchController.dispose();
-    super.dispose();
   }
 }

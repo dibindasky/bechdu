@@ -17,7 +17,8 @@ abstract class PlaceOrderRepo {
   Future<Either<Failure, OrderPlacedResponceModel>> orderPlacing({
     required OrderPlacedRequestModel orderPlacedRequestModel,
   });
-  Future<Either<Failure, GetAllOrderResponceModel>> getOrders();
+  Future<Either<Failure, GetAllOrderResponceModel>> getOrders(
+      {required String number});
   Future<Either<Failure, OrderCancelationResponceModel>> orderCancel({
     required OrderCancelationRequestModel orderCancelationRequestModel,
     required String orderId,

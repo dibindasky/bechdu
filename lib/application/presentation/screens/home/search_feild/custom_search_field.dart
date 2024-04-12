@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:beachdu/application/business_logic/home_bloc/home_bloc.dart';
 import 'package:beachdu/application/presentation/routes/routes.dart';
 import 'package:beachdu/application/presentation/screens/home/home_screen.dart';
@@ -36,10 +35,14 @@ class CustomSearchFieldHome extends StatelessWidget {
                         .isEmpty
                     ? null
                     : IconButton(
-                        onPressed: () => context
-                            .read<HomeBloc>()
-                            .globalProductSearchController
-                            .clear(),
+                        onPressed: () {
+                          homeScreens.value == 0;
+                          homeScreens.notifyListeners();
+                          context
+                              .read<HomeBloc>()
+                              .globalProductSearchController
+                              .clear();
+                        },
                         icon: const Icon(Icons.clear),
                       ),
                 prefixIcon: const Icon(
@@ -59,7 +62,6 @@ class CustomSearchFieldHome extends StatelessWidget {
                             searchQuery: value,
                           ),
                         );
-                    log('event call search UI $value');
                   });
                 } else {
                   homeScreens.value = 0;
@@ -79,7 +81,7 @@ class CustomSearchFieldHome extends StatelessWidget {
             ),
             child: IconButton(
               icon: const Icon(
-                Icons.place,
+                Icons.place_outlined,
                 color: kBlack,
               ),
               onPressed: () {

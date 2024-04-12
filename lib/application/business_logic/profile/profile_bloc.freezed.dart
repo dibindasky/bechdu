@@ -1525,6 +1525,8 @@ mixin _$ProfileState {
   bool get isLoading => throw _privateConstructorUsedError;
   bool get hasError => throw _privateConstructorUsedError;
   int get selectedAddressIndex => throw _privateConstructorUsedError;
+  bool get deleteAccountLoading => throw _privateConstructorUsedError;
+  bool get accountDeleted => throw _privateConstructorUsedError;
   String? get message => throw _privateConstructorUsedError;
   List<String> get address => throw _privateConstructorUsedError;
   AddressCreationResponceModel? get addressCreationResponceModel =>
@@ -1548,6 +1550,8 @@ abstract class $ProfileStateCopyWith<$Res> {
       {bool isLoading,
       bool hasError,
       int selectedAddressIndex,
+      bool deleteAccountLoading,
+      bool accountDeleted,
       String? message,
       List<String> address,
       AddressCreationResponceModel? addressCreationResponceModel,
@@ -1571,6 +1575,8 @@ class _$ProfileStateCopyWithImpl<$Res, $Val extends ProfileState>
     Object? isLoading = null,
     Object? hasError = null,
     Object? selectedAddressIndex = null,
+    Object? deleteAccountLoading = null,
+    Object? accountDeleted = null,
     Object? message = freezed,
     Object? address = null,
     Object? addressCreationResponceModel = freezed,
@@ -1590,6 +1596,14 @@ class _$ProfileStateCopyWithImpl<$Res, $Val extends ProfileState>
           ? _value.selectedAddressIndex
           : selectedAddressIndex // ignore: cast_nullable_to_non_nullable
               as int,
+      deleteAccountLoading: null == deleteAccountLoading
+          ? _value.deleteAccountLoading
+          : deleteAccountLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      accountDeleted: null == accountDeleted
+          ? _value.accountDeleted
+          : accountDeleted // ignore: cast_nullable_to_non_nullable
+              as bool,
       message: freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -1626,6 +1640,8 @@ abstract class _$$InitialImplCopyWith<$Res>
       {bool isLoading,
       bool hasError,
       int selectedAddressIndex,
+      bool deleteAccountLoading,
+      bool accountDeleted,
       String? message,
       List<String> address,
       AddressCreationResponceModel? addressCreationResponceModel,
@@ -1647,6 +1663,8 @@ class __$$InitialImplCopyWithImpl<$Res>
     Object? isLoading = null,
     Object? hasError = null,
     Object? selectedAddressIndex = null,
+    Object? deleteAccountLoading = null,
+    Object? accountDeleted = null,
     Object? message = freezed,
     Object? address = null,
     Object? addressCreationResponceModel = freezed,
@@ -1666,6 +1684,14 @@ class __$$InitialImplCopyWithImpl<$Res>
           ? _value.selectedAddressIndex
           : selectedAddressIndex // ignore: cast_nullable_to_non_nullable
               as int,
+      deleteAccountLoading: null == deleteAccountLoading
+          ? _value.deleteAccountLoading
+          : deleteAccountLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      accountDeleted: null == accountDeleted
+          ? _value.accountDeleted
+          : accountDeleted // ignore: cast_nullable_to_non_nullable
+              as bool,
       message: freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -1697,6 +1723,8 @@ class _$InitialImpl implements _Initial {
       {required this.isLoading,
       required this.hasError,
       required this.selectedAddressIndex,
+      required this.deleteAccountLoading,
+      required this.accountDeleted,
       this.message,
       required final List<String> address,
       this.addressCreationResponceModel,
@@ -1710,6 +1738,10 @@ class _$InitialImpl implements _Initial {
   final bool hasError;
   @override
   final int selectedAddressIndex;
+  @override
+  final bool deleteAccountLoading;
+  @override
+  final bool accountDeleted;
   @override
   final String? message;
   final List<String> _address;
@@ -1729,7 +1761,7 @@ class _$InitialImpl implements _Initial {
 
   @override
   String toString() {
-    return 'ProfileState(isLoading: $isLoading, hasError: $hasError, selectedAddressIndex: $selectedAddressIndex, message: $message, address: $address, addressCreationResponceModel: $addressCreationResponceModel, user: $user, deleteAccountResponceModel: $deleteAccountResponceModel)';
+    return 'ProfileState(isLoading: $isLoading, hasError: $hasError, selectedAddressIndex: $selectedAddressIndex, deleteAccountLoading: $deleteAccountLoading, accountDeleted: $accountDeleted, message: $message, address: $address, addressCreationResponceModel: $addressCreationResponceModel, user: $user, deleteAccountResponceModel: $deleteAccountResponceModel)';
   }
 
   @override
@@ -1743,6 +1775,10 @@ class _$InitialImpl implements _Initial {
                 other.hasError == hasError) &&
             (identical(other.selectedAddressIndex, selectedAddressIndex) ||
                 other.selectedAddressIndex == selectedAddressIndex) &&
+            (identical(other.deleteAccountLoading, deleteAccountLoading) ||
+                other.deleteAccountLoading == deleteAccountLoading) &&
+            (identical(other.accountDeleted, accountDeleted) ||
+                other.accountDeleted == accountDeleted) &&
             (identical(other.message, message) || other.message == message) &&
             const DeepCollectionEquality().equals(other._address, _address) &&
             (identical(other.addressCreationResponceModel,
@@ -1762,6 +1798,8 @@ class _$InitialImpl implements _Initial {
       isLoading,
       hasError,
       selectedAddressIndex,
+      deleteAccountLoading,
+      accountDeleted,
       message,
       const DeepCollectionEquality().hash(_address),
       addressCreationResponceModel,
@@ -1780,6 +1818,8 @@ abstract class _Initial implements ProfileState {
           {required final bool isLoading,
           required final bool hasError,
           required final int selectedAddressIndex,
+          required final bool deleteAccountLoading,
+          required final bool accountDeleted,
           final String? message,
           required final List<String> address,
           final AddressCreationResponceModel? addressCreationResponceModel,
@@ -1793,6 +1833,10 @@ abstract class _Initial implements ProfileState {
   bool get hasError;
   @override
   int get selectedAddressIndex;
+  @override
+  bool get deleteAccountLoading;
+  @override
+  bool get accountDeleted;
   @override
   String? get message;
   @override

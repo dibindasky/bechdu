@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:beachdu/application/business_logic/question_tab/question_tab_bloc.dart';
 import 'package:beachdu/application/presentation/screens/product_selection/product_screen.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
@@ -7,6 +6,7 @@ import 'package:beachdu/application/presentation/utils/enums/type_display.dart';
 import 'package:beachdu/application/presentation/utils/loading_indicators/loading_indicator.dart';
 import 'package:beachdu/domain/core/api_endpoints/api_endpoints.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class TopImage extends StatelessWidget {
@@ -48,7 +48,7 @@ class TopImage extends StatelessWidget {
                             : sWidth * .27,
                         width: fromWhere == FromWhere.checkoutAndPickupScreen
                             ? sWidth * .34
-                            : sWidth * .27,
+                            : sWidth * .26,
                         child: Image.network(
                           url,
                           fit: BoxFit.fill,
@@ -64,10 +64,11 @@ class TopImage extends StatelessWidget {
                         children: [
                           if (fromWhere == FromWhere.questionScreen ||
                               fromWhere == FromWhere.recalculateWithAmount)
-                            FittedBox(
-                              child: Row(
-                                children: [
-                                  Text(
+                            Row(
+                              children: [
+                                SizedBox(
+                                  //width: sWidth * .327,
+                                  child: Text(
                                     product?.model
                                             ?.replaceAll('Samsung ', '') ??
                                         '',
@@ -76,17 +77,19 @@ class TopImage extends StatelessWidget {
                                       color: kWhite,
                                       overflow: TextOverflow.ellipsis,
                                     ),
+                                    maxLines: 2,
                                   ),
-                                  kWidth5,
-                                  Text(
-                                    product?.variant ?? '',
-                                    style: textHeadMedium1.copyWith(
-                                      color: kWhite,
-                                      overflow: TextOverflow.ellipsis,
-                                    ),
+                                ),
+                                kWidth5,
+                                Text(
+                                  product?.variant ?? '',
+                                  style: textHeadMedium1.copyWith(
+                                    color: kWhite,
+                                    fontSize: sWidth * .03,
+                                    overflow: TextOverflow.ellipsis,
                                   ),
-                                ],
-                              ),
+                                ),
+                              ],
                             ),
                           fromWhere == FromWhere.checkoutAndPickupScreen
                               ? kHeight10
@@ -121,12 +124,16 @@ class TopImage extends StatelessWidget {
                                           ),
                                     Row(
                                       children: [
-                                        Text(
-                                          'Not Satisfied with our price ?',
-                                          overflow: TextOverflow.ellipsis,
-                                          style: textHeadMedium1.copyWith(
-                                            color: kWhite,
-                                            fontSize: sWidth * .025,
+                                        SizedBox(
+                                          width: sWidth * .4,
+                                          child: Text(
+                                            'Not Satisfied with our price ?',
+                                            overflow: TextOverflow.ellipsis,
+                                            style: textHeadMedium1.copyWith(
+                                                color: kWhite,
+                                                overflow:
+                                                    TextOverflow.ellipsis),
+                                            maxLines: 2,
                                           ),
                                         ),
                                         TextButton(

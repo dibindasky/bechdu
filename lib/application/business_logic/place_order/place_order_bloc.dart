@@ -170,24 +170,26 @@ class PlaceOrderBloc extends Bloc<PlaceOrderEvent, PlaceOrderState> {
   FutureOr<void> getOrders(GetOrders event, emit) async {
     if (state.getAllOrderResponceModel != null && event.isLoad == false) return;
     emit(state.copyWith(isLoading: true, hasError: false));
-    final data = await placeOrderRepo.getOrders();
+    final number = await SecureSotrage.getNumber();
     final login = await SecureSotrage.getlLogin();
-    data.fold((failure) {
-      emit(state.copyWith(
-        isLoading: false,
-        hasError: true,
-        message: failure.message,
-      ));
-    }, (success) {
-      emit(
-        state.copyWith(
-          hasError: false,
+    final accessToken = await SecureSotrage.getAccessToken();
+    if (login && (accessToken != null)) {
+      final data = await placeOrderRepo.getOrders(number: number);
+      data.fold((failure) {
+        emit(state.copyWith(
           isLoading: false,
-          getAllOrderResponceModel: success,
-          loginStatus: login,
-        ),
-      );
-    });
+          hasError: true,
+        ));
+      }, (success) {
+        emit(
+          state.copyWith(
+            hasError: false,
+            isLoading: false,
+            getAllOrderResponceModel: success,
+          ),
+        );
+      });
+    }
   }
 
   FutureOr<void> productDetailsPick(ProductDetailsPick event, emit) async {

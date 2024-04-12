@@ -19,6 +19,7 @@ import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/application/presentation/utils/confirmation_daillogue/exit_app_dailogue.dart';
 import 'package:beachdu/application/presentation/utils/enums/type_display.dart';
+import 'package:beachdu/application/presentation/utils/loading_indicators/loading_indicator.dart';
 import 'package:beachdu/application/presentation/utils/snackbar/snackbar.dart';
 import 'package:beachdu/data/secure_storage/secure_fire_store.dart';
 import 'package:beachdu/domain/model/login/otp_verify_request_model/otp_verify_request_model.dart';
@@ -119,7 +120,13 @@ class ScreenProfile extends StatelessWidget {
                 return SingleChildScrollView(
                   child: BlocListener<ProfileBloc, ProfileState>(
                     listener: (context, state) {
-                      if (state.deleteAccountResponceModel != null) {
+                      if (state.hasError) {
+                        showSnack(
+                          context: context,
+                          message: state.message!,
+                        );
+                      }
+                      if (state.accountDeleted) {
                         logOut(context);
                         showSnack(
                           context: context,
@@ -269,16 +276,11 @@ class ScreenProfile extends StatelessWidget {
                                             color: kRed,
                                           );
                                         } else {
-                                          //Login event calling
+                                          //Delete account event calling
                                           OtpVerifyRequestModel
                                               otpVerifyRequestModel =
                                               OtpVerifyRequestModel(
                                             otp: otp,
-                                            phone: context
-                                                .read<AuthBloc>()
-                                                .phoneNumberController
-                                                .text
-                                                .replaceAll(' ', ''),
                                           );
                                           context.read<ProfileBloc>().add(
                                                 ProfileEvent.deleteAccount(
@@ -286,7 +288,6 @@ class ScreenProfile extends StatelessWidget {
                                                       otpVerifyRequestModel,
                                                 ),
                                               );
-                                          Navigator.pop(context);
                                         }
                                       } else {
                                         showSnack(
@@ -300,24 +301,27 @@ class ScreenProfile extends StatelessWidget {
                                 },
                               );
                             },
-                            child: Container(
-                              padding: const EdgeInsets.only(left: 10),
-                              height: 45,
-                              width: double.infinity,
-                              decoration: BoxDecoration(
-                                color: klightwhite,
-                                border: Border.all(color: klightgrey),
-                                borderRadius: kRadius10,
-                              ),
-                              child: Center(
-                                child: Text(
-                                  state.isLoading
-                                      ? 'Please wait...!'
-                                      : 'Delete account',
-                                  style: textHeadBold1,
-                                ),
-                              ),
-                            ),
+                            child: state.isLoading
+                                ? LoadingAnimation(
+                                    width: 30,
+                                    color: klightgrey,
+                                  )
+                                : Container(
+                                    padding: const EdgeInsets.only(left: 10),
+                                    height: 45,
+                                    width: double.infinity,
+                                    decoration: BoxDecoration(
+                                      color: klightwhite,
+                                      border: Border.all(color: klightgrey),
+                                      borderRadius: kRadius10,
+                                    ),
+                                    child: Center(
+                                      child: Text(
+                                        'Delete account',
+                                        style: textHeadBold1,
+                                      ),
+                                    ),
+                                  ),
                           ),
                           kHeight20,
                         ],

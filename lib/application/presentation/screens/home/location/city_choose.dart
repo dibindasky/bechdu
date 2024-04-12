@@ -8,6 +8,7 @@ import 'package:beachdu/application/presentation/utils/snackbar/snackbar.dart';
 import 'package:beachdu/domain/model/location/city_update_request_model/city_update_request_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
 
@@ -154,7 +155,7 @@ class ScreenLocations extends StatelessWidget {
                                     );
                                   },
                                   child: Card(
-                                    color: kWhiteextra.withOpacity(.9),
+                                    color: kWhiteextra.withOpacity(.8),
                                     elevation: 2,
                                     child: Row(
                                       mainAxisAlignment:
@@ -169,12 +170,11 @@ class ScreenLocations extends StatelessWidget {
                                             radius: 3,
                                           ),
                                         ),
-                                        const SizedBox(width: 2),
+                                        const SizedBox(width: 4),
                                         Text(
                                           "${state.filteredLocations![index]} ",
-                                          style: textHeadSemiBold1.copyWith(
-                                            fontSize: 12,
-                                          ),
+                                          style: textHeadSemiBold1,
+                                          maxLines: 2,
                                           overflow: TextOverflow.ellipsis,
                                         ),
                                         kWidth10,

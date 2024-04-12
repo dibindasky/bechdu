@@ -18,12 +18,10 @@ class SeriesSelectionBuilder extends StatelessWidget {
           return const Skeleton(
             crossAxisCount: 2,
             itemCount: 15,
-            height: 200,
           );
         } else if (state.filteredSeries == null) {
           return Lottie.asset(emptyLottie);
         }
-
         final seriesList = state.filteredSeries!;
         return Column(
           children: [
@@ -43,52 +41,6 @@ class SeriesSelectionBuilder extends StatelessWidget {
                       childAspectRatio: 1 / .3,
                     ),
                     itemBuilder: (context, index) {
-                      // return index == 0
-                      //     ? GestureDetector(
-                      //         onTap: () {
-                      //           brandSeriesProductValueNotifier.value = 2;
-                      //           brandSeriesProductValueNotifier
-                      //               .notifyListeners();
-                      //           context.read<CategoryBlocBloc>().add(
-                      //                 CategoryBlocEvent
-                      //                     .getProductbasedOnCategoryAndBrand(
-                      //                   category: context
-                      //                       .read<CategoryBlocBloc>()
-                      //                       .categoryType!,
-                      //                   brand: context
-                      //                       .read<CategoryBlocBloc>()
-                      //                       .barndName!,
-                      //                 ),
-                      //               );
-                      //         },
-                      //         child: SizedBox(
-                      //           height: 40,
-                      //           child: ClipRRect(
-                      //             borderRadius: kRadius10,
-                      //             child: ColoredBox(
-                      //               color: kBlueLight,
-                      //               child: Padding(
-                      //                 padding: const EdgeInsets.symmetric(
-                      //                   horizontal: 10,
-                      //                 ),
-                      //                 child: Align(
-                      //                   alignment: Alignment.center,
-                      //                   child: Text(
-                      //                     maxLines: 4,
-                      //                     "All product"
-                      //                         .replaceAll('Samsung ', ''),
-                      //                     style: textHeadBold1.copyWith(
-                      //                       color: kWhite,
-                      //                     ),
-                      //                     overflow: TextOverflow.ellipsis,
-                      //                   ),
-                      //                 ),
-                      //               ),
-                      //             ),
-                      //           ),
-                      //         ),
-                      //       )
-                      // :
                       return SeriesContainer(index: index);
                     },
                   ),

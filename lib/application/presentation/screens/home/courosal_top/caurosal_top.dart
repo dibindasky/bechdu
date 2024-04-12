@@ -33,150 +33,144 @@ class _CaurosalViewHomePageOffersState
       children: [
         BlocBuilder<HomeBloc, HomeState>(
           builder: (context, state) {
-            if (state.isLoading) {
+            if (state.bannerLoad) {
               return const Skeleton(
                 crossAxisCount: 2,
                 itemCount: 2,
-                height: 0,
+                height: 10,
               );
-            } else {
-              if (state.homeBannerResponceModel != null) {
-                return Column(
-                  children: [
-                    CarouselSlider.builder(
-                      itemCount:
-                          state.homeBannerResponceModel!.sectionOne!.length,
-                      itemBuilder: (context, index, realIndex) {
-                        final data = state.homeBannerResponceModel!.sectionOne!;
-                        String base64String = data[index].image!;
-                        base64String = base64String.replaceFirst(
-                            RegExp(r'data:image/[^;]+;base64,'), '');
-                        final heading =
-                            data[index].heading!.replaceAll('<br/>', '');
-                        return InkWell(
-                          onTap: () {
-                            context
-                                .read<CategoryBlocBloc>()
-                                .add(GetSingleCategoryBrands(
-                                  isLoad: true,
-                                  categoryType: data[index].mobileLink,
-                                ));
+            }
+            if (state.homeBannerResponceModel != null &&
+                state.homeBannerResponceModel!.sectionOne != null) {
+              return Column(
+                children: [
+                  CarouselSlider.builder(
+                    itemCount:
+                        state.homeBannerResponceModel!.sectionOne!.length,
+                    itemBuilder: (context, index, realIndex) {
+                      final data = state.homeBannerResponceModel!.sectionOne!;
+                      String base64String = data[index].image!;
+                      base64String = base64String.replaceFirst(
+                          RegExp(r'data:image/[^;]+;base64,'), '');
+                      final heading =
+                          data[index].heading!.replaceAll('<br/>', '');
+                      return InkWell(
+                        onTap: () {
+                          context
+                              .read<CategoryBlocBloc>()
+                              .add(GetSingleCategoryBrands(
+                                isLoad: true,
+                                categoryType: data[index].mobileLink,
+                              ));
 
-                            context.read<CategoryBlocBloc>().categoryType =
-                                data[index].mobileLink!;
-
-                            log('UI state.homeBannerResponceModel!.sectionOne![index].mobileLink! ===>>> : ${state.homeBannerResponceModel!.sectionOne![index].mobileLink!}');
-                            context
-                                .read<NavbarCubit>()
-                                .changeNavigationIndex(1);
-                            brandSeriesProductValueNotifier.value = 0;
-                            brandSeriesProductValueNotifier.notifyListeners();
-                            secondtabScreensNotifier.value = 0;
-                            secondtabScreensNotifier.notifyListeners();
-                            context.read<PlaceOrderBloc>().add(
-                                const PlaceOrderEvent.removeAllFieldData());
-                          },
-                          child: Container(
-                            margin: const EdgeInsets.only(left: 4, right: 4),
-                            width: sWidth,
-                            decoration: BoxDecoration(
-                              color: const Color.fromARGB(255, 69, 177, 244),
-                              borderRadius: kRadius15,
-                            ),
-                            child: Stack(
-                              children: [
-                                Positioned(
-                                  right: 10,
-                                  top: 30,
-                                  child: SizedBox(
-                                    height: 60,
-                                    width: 70,
-                                    child: Image.memory(
-                                      base64.decode(
-                                        base64String,
-                                      ),
-                                      errorBuilder:
-                                          (context, error, stackTrace) {
-                                        return const Icon(Icons.error);
-                                      },
-                                      fit: BoxFit.contain,
-                                    ),
+                          context.read<CategoryBlocBloc>().categoryType =
+                              data[index].mobileLink!;
+                          log('UI state.homeBannerResponceModel!.sectionOne![index].mobileLink! ===>>> : ${state.homeBannerResponceModel!.sectionOne![index].mobileLink!}');
+                          context.read<NavbarCubit>().changeNavigationIndex(1);
+                          brandSeriesProductValueNotifier.value = 0;
+                          brandSeriesProductValueNotifier.notifyListeners();
+                          secondtabScreensNotifier.value = 0;
+                          secondtabScreensNotifier.notifyListeners();
+                          context
+                              .read<PlaceOrderBloc>()
+                              .add(const PlaceOrderEvent.removeAllFieldData());
+                        },
+                        child: Container(
+                          margin: const EdgeInsets.only(left: 4, right: 4),
+                          width: sWidth,
+                          decoration: BoxDecoration(
+                            color: const Color.fromARGB(255, 69, 177, 244),
+                            borderRadius: kRadius15,
+                          ),
+                          child: Stack(
+                            children: [
+                              Positioned(
+                                right: 10,
+                                top: 30,
+                                child: SizedBox(
+                                  height: 60,
+                                  width: 70,
+                                  child: Image.memory(
+                                    base64.decode(base64String),
+                                    filterQuality: FilterQuality.low,
+                                    errorBuilder: (context, error, stackTrace) {
+                                      return const Icon(Icons.error);
+                                    },
+                                    fit: BoxFit.fitHeight,
                                   ),
                                 ),
-                                Positioned(
-                                  bottom: 20,
-                                  child: Container(
-                                    width: sWidth * .54,
-                                    margin: const EdgeInsets.symmetric(
-                                      horizontal: 14,
-                                    ),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      children: [
-                                        SizedBox(
-                                          width: sWidth * .6,
-                                          child: Text(
-                                            heading,
-                                            style: textHeadMedium1.copyWith(
-                                              color: kWhite,
-                                            ),
+                              ),
+                              Positioned(
+                                bottom: 20,
+                                top: 18,
+                                child: Container(
+                                  width: sWidth * .54,
+                                  margin: const EdgeInsets.symmetric(
+                                    horizontal: 14,
+                                  ),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      SizedBox(
+                                        width: sWidth * .6,
+                                        child: Text(
+                                          heading,
+                                          style: textHeadMedium1.copyWith(
+                                            color: kWhite,
                                           ),
+                                          maxLines: 3,
                                         ),
-                                        kHeight10,
-                                        ClipRRect(
-                                          borderRadius: kRadius5,
-                                          child: ColoredBox(
-                                            color: kBlueLight,
-                                            child: Padding(
-                                              padding:
-                                                  const EdgeInsets.all(5.0),
-                                              child: Text(
-                                                '${data[index].buttonText}',
-                                                style:
-                                                    textHeadSemiBold1.copyWith(
-                                                  color: kWhite,
-                                                  fontSize: 12,
-                                                ),
+                                      ),
+                                      kHeight10,
+                                      ClipRRect(
+                                        borderRadius: kRadius5,
+                                        child: ColoredBox(
+                                          color: kBlueLight,
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(5.0),
+                                            child: Text(
+                                              '${data[index].buttonText}',
+                                              style: textHeadSemiBold1.copyWith(
+                                                color: kWhite,
+                                                fontSize: 12,
                                               ),
                                             ),
                                           ),
                                         ),
-                                      ],
-                                    ),
+                                      ),
+                                    ],
                                   ),
                                 ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
-                        );
+                        ),
+                      );
+                    },
+                    options: CarouselOptions(
+                      height: 170,
+                      autoPlay: true,
+                      autoPlayAnimationDuration: const Duration(seconds: 1),
+                      enlargeStrategy: CenterPageEnlargeStrategy.height,
+                      enlargeCenterPage: true,
+                      onPageChanged: (index, reason) {
+                        setState(() {
+                          selectedIndex = index;
+                        });
                       },
-                      options: CarouselOptions(
-                        height: 170,
-                        autoPlay: true,
-                        autoPlayAnimationDuration: const Duration(seconds: 1),
-                        enlargeStrategy: CenterPageEnlargeStrategy.height,
-                        enlargeCenterPage: true,
-                        onPageChanged: (index, reason) {
-                          setState(() {
-                            selectedIndex = index;
-                          });
-                        },
-                      ),
                     ),
-                    kHeight10,
-                    buildIndicator(
-                      state.homeBannerResponceModel!.sectionOne!.length,
-                    ),
-                  ],
-                );
-              } else {
-                return const Skeleton(
-                    crossAxisCount: 2, itemCount: 2, height: 0);
-              }
+                  ),
+                  kHeight10,
+                  buildIndicator(
+                    state.homeBannerResponceModel!.sectionOne!.length,
+                  ),
+                ],
+              );
             }
+            log('CaurosalViewHomePageOffers');
+            return const SizedBox();
           },
         ),
       ],

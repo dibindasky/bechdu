@@ -31,17 +31,6 @@ class SeriesContainer extends StatelessWidget {
                   ),
                 );
             context.read<CategoryBlocBloc>().seriesName = seriesList[index];
-            //context.read<CategoryBlocBloc>().seriesName = null;
-
-            //Call Model event
-            // context.read<CategoryBlocBloc>().add(
-            //       CategoryBlocEvent.getModels(
-            //         categoryType:
-            //             context.read<CategoryBlocBloc>().categoryType!,
-            //         brandName: context.read<CategoryBlocBloc>().barndName!,
-            //         seriesName: seriesList[index],
-            //       ),
-            //     );
           },
           child: SizedBox(
             height: 40,
@@ -56,7 +45,7 @@ class SeriesContainer extends StatelessWidget {
                   child: Align(
                     alignment: Alignment.center,
                     child: Text(
-                      maxLines: 4,
+                      maxLines: 1,
                       state.filteredSeries![index].replaceAll('Samsung ', ''),
                       style: textHeadBold1.copyWith(
                         color: kWhite,

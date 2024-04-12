@@ -54,19 +54,23 @@ class MyOrderContainer extends StatelessWidget {
               kHeight10,
               Row(
                 children: [
-                  kWidth10,
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        '${data.productDetails!.name?.replaceFirst('Samsung ', '')}',
-                        style: textHeadMedium1,
-                      ),
-                      Text(
-                        "₹ $finalPrice",
-                        style: textHeadBold1,
-                      ),
-                    ],
+                  kWidth30,
+                  kWidth5,
+                  SizedBox(
+                    width: sWidth * .53,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          '${data.productDetails!.name?.replaceFirst('Samsung ', '')}',
+                          style: textHeadMedium1,
+                        ),
+                        Text(
+                          "₹ $finalPrice",
+                          style: textHeadBold1,
+                        ),
+                      ],
+                    ),
                   ),
                   const Spacer(),
                   ClipRRect(

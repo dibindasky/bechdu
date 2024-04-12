@@ -8,15 +8,17 @@ class Skeleton extends StatelessWidget {
     Key? key,
     required this.crossAxisCount,
     required this.itemCount,
-    required this.height,
+    this.height,
   }) : super(key: key);
 
   final int crossAxisCount;
   final int itemCount;
-  final double height;
+  final double? height;
 
   @override
   Widget build(BuildContext context) {
+    final double totalHeight =
+        ((itemCount / crossAxisCount).ceil() * (height ?? 10 + 10)) + 10;
     return Padding(
       padding: const EdgeInsets.all(10.0),
       child: GridView.builder(
@@ -29,13 +31,16 @@ class Skeleton extends StatelessWidget {
         ),
         itemCount: itemCount,
         itemBuilder: (context, index) {
-          return Shimmer.fromColors(
-            baseColor: Colors.grey[300]!,
-            highlightColor: Colors.grey[100]!,
-            child: Container(
-              decoration: BoxDecoration(
-                color: klightwhite,
-                borderRadius: kRadius5,
+          return SizedBox(
+            height: totalHeight,
+            child: Shimmer.fromColors(
+              baseColor: Colors.grey[300]!,
+              highlightColor: Colors.grey[100]!,
+              child: Container(
+                decoration: BoxDecoration(
+                  color: klightwhite,
+                  borderRadius: kRadius5,
+                ),
               ),
             ),
           );

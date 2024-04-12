@@ -1,5 +1,4 @@
 import 'package:beachdu/application/business_logic/question_tab/question_tab_bloc.dart';
-import 'package:beachdu/application/presentation/screens/questions/tabs/answer_index_changer.dart';
 import 'package:beachdu/application/presentation/screens/questions/tabs/image_seletion_tile.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/domain/model/get_question_model/question.dart';
@@ -16,6 +15,20 @@ class ImageGridMaker extends StatefulWidget {
 }
 
 class _ImageGridMakerState extends State<ImageGridMaker> {
+  late ScrollController _scrollController;
+
+  @override
+  void initState() {
+    super.initState();
+    _scrollController = ScrollController();
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -25,6 +38,7 @@ class _ImageGridMakerState extends State<ImageGridMaker> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: GridView.builder(
+                controller: _scrollController,
                 shrinkWrap: true,
                 itemCount: widget.list.length,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(

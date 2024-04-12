@@ -50,7 +50,6 @@ class AnswerIndexChanger extends StatelessWidget {
 
   Future<void> loginOrNot(BuildContext context,
       {required bool loginOrNot}) async {
-    //  final login = await SecureSotrage.getlLogin();
     if (!loginOrNot) {
       Navigator.of(context).pushNamed(
         Routes.signInOrLogin,
@@ -88,7 +87,6 @@ class AnswerIndexChanger extends StatelessWidget {
 
     context.read<QuestionTabBloc>().add(
           GetBasePrice(
-            //product: context.read<QuestionTabBloc>().product!,
             pickupQuestionModel: pickepQuestionModel,
             abandendOrderRequestModel: abandendOrderRequestModel,
           ),

@@ -45,6 +45,7 @@ class RowDatas extends StatelessWidget {
                             : subHead!,
                         maxLines: 3,
                         style: textHeadBold1.copyWith(fontSize: 16),
+                        overflow: TextOverflow.ellipsis,
                       ),
                       kWidth10,
                       Text(
@@ -59,6 +60,7 @@ class RowDatas extends StatelessWidget {
                     child: Text(
                       subHead!,
                       maxLines: 3,
+                      overflow: TextOverflow.ellipsis,
                       style: textHeadBold1.copyWith(fontSize: 16),
                     ),
                   ),

@@ -106,7 +106,7 @@ class AddressService implements ProfileRepo {
       log('deletAcocunt data ${responce.data}');
       return Right(DeleteAccountResponceModel.fromJson(responce.data));
     } on DioException catch (e) {
-      return Left(Failure(message: e.message));
+      return Left(Failure(message: e.response?.data['error'] ?? errorMessage));
     } catch (e) {
       return Left(Failure(message: e.toString()));
     }

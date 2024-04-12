@@ -1,13 +1,10 @@
-// ignore_for_file: use_build_context_synchronously
-
 import 'dart:async';
 import 'dart:developer';
 import 'package:beachdu/application/business_logic/brands_bloc/category_bloc_bloc.dart';
 import 'package:beachdu/application/business_logic/home_bloc/home_bloc.dart';
 import 'package:beachdu/application/business_logic/internet_connection_check/internet_connection_check_cubit.dart';
 import 'package:beachdu/application/business_logic/location/location_bloc.dart';
-
-import 'package:beachdu/application/presentation/screens/home/best_selling_devices/recomented_home.dart';
+import 'package:beachdu/application/presentation/screens/home/best_selling_devices/best_selling.dart';
 import 'package:beachdu/application/presentation/screens/home/courosal_top/caurosal_top.dart';
 import 'package:beachdu/application/presentation/screens/home/global_search/global_search.dart';
 import 'package:beachdu/application/presentation/screens/home/location/city_choose.dart';
@@ -15,7 +12,6 @@ import 'package:beachdu/application/presentation/screens/home/search_feild/custo
 import 'package:beachdu/application/presentation/screens/home/widgets/join_our_team.dart';
 import 'package:beachdu/application/presentation/screens/home/hot_deals/hot_deals.dart';
 import 'package:beachdu/application/presentation/screens/home/what_to_sell/what_to_sell.dart';
-import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/application/presentation/utils/no_internet_banner.dart';
 import 'package:beachdu/data/secure_storage/secure_fire_store.dart';
@@ -42,15 +38,16 @@ class _ScreenHomeState extends State<ScreenHome> {
     setState(() {
       locationSelected = isLocation || isPincode || isSkip;
     });
-
-    if (!locationSelected) {
-      Future.delayed(const Duration(seconds: 10), () {
-        if (!locationSelected && homeScreens.value != 1) {
-          Navigator.of(context).push(MaterialPageRoute(
-            builder: (context) => const ScreenLocations(),
-          ));
-        }
-      });
+    if (homeScreens.value == 0) {
+      if (!locationSelected) {
+        Future.delayed(const Duration(seconds: 10), () {
+          if (!locationSelected) {
+            Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => const ScreenLocations(),
+            ));
+          }
+        });
+      }
     }
   }
 
@@ -59,12 +56,14 @@ class _ScreenHomeState extends State<ScreenHome> {
     print('==========================================================');
     controller.addListener(() {
       log('Inside addListener 0ne');
-      if (controller.position.pixels == controller.position.maxScrollExtent) {
+      if (controller.position.pixels == controller.position.maxScrollExtent &&
+          homeScreens.value == 1) {
         log('Inside addListener');
         context.read<HomeBloc>().add(const HomeEvent.nextPage());
       }
     });
     _checkLocationAndShowScreen();
+
     super.initState();
   }
 
@@ -114,9 +113,9 @@ class _ScreenHomeState extends State<ScreenHome> {
           body: SafeArea(
             child: RefreshIndicator(
               onRefresh: () async {
-                context
-                    .read<LocationBloc>()
-                    .add(const LocationEvent.locationPick(isLoad: true));
+                // context
+                //     .read<LocationBloc>()
+                //     .add(const LocationEvent.locationPick(isLoad: true));
                 context
                     .read<HomeBloc>()
                     .add(const HomeEvent.homePageBanners(isLoad: true));

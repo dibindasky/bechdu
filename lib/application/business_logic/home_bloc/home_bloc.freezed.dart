@@ -997,9 +997,11 @@ abstract class Clear implements HomeEvent {
 
 /// @nodoc
 mixin _$HomeState {
-  bool get isLoading => throw _privateConstructorUsedError;
   bool get hasError => throw _privateConstructorUsedError;
   bool get loadMore => throw _privateConstructorUsedError;
+  bool get bannerLoad => throw _privateConstructorUsedError;
+  bool get whatToSellLoad => throw _privateConstructorUsedError;
+  bool get bestSellingLoad => throw _privateConstructorUsedError;
   String? get message => throw _privateConstructorUsedError;
   String? get selectedCategory => throw _privateConstructorUsedError;
   GetCategoryResponceModel? get getCategoryResponceModel =>
@@ -1025,9 +1027,11 @@ abstract class $HomeStateCopyWith<$Res> {
       _$HomeStateCopyWithImpl<$Res, HomeState>;
   @useResult
   $Res call(
-      {bool isLoading,
-      bool hasError,
+      {bool hasError,
       bool loadMore,
+      bool bannerLoad,
+      bool whatToSellLoad,
+      bool bestSellingLoad,
       String? message,
       String? selectedCategory,
       GetCategoryResponceModel? getCategoryResponceModel,
@@ -1051,9 +1055,11 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? isLoading = null,
     Object? hasError = null,
     Object? loadMore = null,
+    Object? bannerLoad = null,
+    Object? whatToSellLoad = null,
+    Object? bestSellingLoad = null,
     Object? message = freezed,
     Object? selectedCategory = freezed,
     Object? getCategoryResponceModel = freezed,
@@ -1064,10 +1070,6 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
     Object? products = freezed,
   }) {
     return _then(_value.copyWith(
-      isLoading: null == isLoading
-          ? _value.isLoading
-          : isLoading // ignore: cast_nullable_to_non_nullable
-              as bool,
       hasError: null == hasError
           ? _value.hasError
           : hasError // ignore: cast_nullable_to_non_nullable
@@ -1075,6 +1077,18 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
       loadMore: null == loadMore
           ? _value.loadMore
           : loadMore // ignore: cast_nullable_to_non_nullable
+              as bool,
+      bannerLoad: null == bannerLoad
+          ? _value.bannerLoad
+          : bannerLoad // ignore: cast_nullable_to_non_nullable
+              as bool,
+      whatToSellLoad: null == whatToSellLoad
+          ? _value.whatToSellLoad
+          : whatToSellLoad // ignore: cast_nullable_to_non_nullable
+              as bool,
+      bestSellingLoad: null == bestSellingLoad
+          ? _value.bestSellingLoad
+          : bestSellingLoad // ignore: cast_nullable_to_non_nullable
               as bool,
       message: freezed == message
           ? _value.message
@@ -1123,9 +1137,11 @@ abstract class _$$InitialImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {bool isLoading,
-      bool hasError,
+      {bool hasError,
       bool loadMore,
+      bool bannerLoad,
+      bool whatToSellLoad,
+      bool bestSellingLoad,
       String? message,
       String? selectedCategory,
       GetCategoryResponceModel? getCategoryResponceModel,
@@ -1147,9 +1163,11 @@ class __$$InitialImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? isLoading = null,
     Object? hasError = null,
     Object? loadMore = null,
+    Object? bannerLoad = null,
+    Object? whatToSellLoad = null,
+    Object? bestSellingLoad = null,
     Object? message = freezed,
     Object? selectedCategory = freezed,
     Object? getCategoryResponceModel = freezed,
@@ -1160,10 +1178,6 @@ class __$$InitialImplCopyWithImpl<$Res>
     Object? products = freezed,
   }) {
     return _then(_$InitialImpl(
-      isLoading: null == isLoading
-          ? _value.isLoading
-          : isLoading // ignore: cast_nullable_to_non_nullable
-              as bool,
       hasError: null == hasError
           ? _value.hasError
           : hasError // ignore: cast_nullable_to_non_nullable
@@ -1171,6 +1185,18 @@ class __$$InitialImplCopyWithImpl<$Res>
       loadMore: null == loadMore
           ? _value.loadMore
           : loadMore // ignore: cast_nullable_to_non_nullable
+              as bool,
+      bannerLoad: null == bannerLoad
+          ? _value.bannerLoad
+          : bannerLoad // ignore: cast_nullable_to_non_nullable
+              as bool,
+      whatToSellLoad: null == whatToSellLoad
+          ? _value.whatToSellLoad
+          : whatToSellLoad // ignore: cast_nullable_to_non_nullable
+              as bool,
+      bestSellingLoad: null == bestSellingLoad
+          ? _value.bestSellingLoad
+          : bestSellingLoad // ignore: cast_nullable_to_non_nullable
               as bool,
       message: freezed == message
           ? _value.message
@@ -1214,9 +1240,11 @@ class __$$InitialImplCopyWithImpl<$Res>
 
 class _$InitialImpl implements _Initial {
   const _$InitialImpl(
-      {required this.isLoading,
-      required this.hasError,
+      {required this.hasError,
       required this.loadMore,
+      required this.bannerLoad,
+      required this.whatToSellLoad,
+      required this.bestSellingLoad,
       this.message,
       this.selectedCategory,
       this.getCategoryResponceModel,
@@ -1228,11 +1256,15 @@ class _$InitialImpl implements _Initial {
       : _products = products;
 
   @override
-  final bool isLoading;
-  @override
   final bool hasError;
   @override
   final bool loadMore;
+  @override
+  final bool bannerLoad;
+  @override
+  final bool whatToSellLoad;
+  @override
+  final bool bestSellingLoad;
   @override
   final String? message;
   @override
@@ -1259,7 +1291,7 @@ class _$InitialImpl implements _Initial {
 
   @override
   String toString() {
-    return 'HomeState(isLoading: $isLoading, hasError: $hasError, loadMore: $loadMore, message: $message, selectedCategory: $selectedCategory, getCategoryResponceModel: $getCategoryResponceModel, homeBannerResponceModel: $homeBannerResponceModel, bestSellingProductsResponceModel: $bestSellingProductsResponceModel, searchResponceModel: $searchResponceModel, globalProductSearchResponceModel: $globalProductSearchResponceModel, products: $products)';
+    return 'HomeState(hasError: $hasError, loadMore: $loadMore, bannerLoad: $bannerLoad, whatToSellLoad: $whatToSellLoad, bestSellingLoad: $bestSellingLoad, message: $message, selectedCategory: $selectedCategory, getCategoryResponceModel: $getCategoryResponceModel, homeBannerResponceModel: $homeBannerResponceModel, bestSellingProductsResponceModel: $bestSellingProductsResponceModel, searchResponceModel: $searchResponceModel, globalProductSearchResponceModel: $globalProductSearchResponceModel, products: $products)';
   }
 
   @override
@@ -1267,12 +1299,16 @@ class _$InitialImpl implements _Initial {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$InitialImpl &&
-            (identical(other.isLoading, isLoading) ||
-                other.isLoading == isLoading) &&
             (identical(other.hasError, hasError) ||
                 other.hasError == hasError) &&
             (identical(other.loadMore, loadMore) ||
                 other.loadMore == loadMore) &&
+            (identical(other.bannerLoad, bannerLoad) ||
+                other.bannerLoad == bannerLoad) &&
+            (identical(other.whatToSellLoad, whatToSellLoad) ||
+                other.whatToSellLoad == whatToSellLoad) &&
+            (identical(other.bestSellingLoad, bestSellingLoad) ||
+                other.bestSellingLoad == bestSellingLoad) &&
             (identical(other.message, message) || other.message == message) &&
             (identical(other.selectedCategory, selectedCategory) ||
                 other.selectedCategory == selectedCategory) &&
@@ -1298,9 +1334,11 @@ class _$InitialImpl implements _Initial {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      isLoading,
       hasError,
       loadMore,
+      bannerLoad,
+      whatToSellLoad,
+      bestSellingLoad,
       message,
       selectedCategory,
       getCategoryResponceModel,
@@ -1319,9 +1357,11 @@ class _$InitialImpl implements _Initial {
 
 abstract class _Initial implements HomeState {
   const factory _Initial(
-      {required final bool isLoading,
-      required final bool hasError,
+      {required final bool hasError,
       required final bool loadMore,
+      required final bool bannerLoad,
+      required final bool whatToSellLoad,
+      required final bool bestSellingLoad,
       final String? message,
       final String? selectedCategory,
       final GetCategoryResponceModel? getCategoryResponceModel,
@@ -1332,11 +1372,15 @@ abstract class _Initial implements HomeState {
       final List<Product>? products}) = _$InitialImpl;
 
   @override
-  bool get isLoading;
-  @override
   bool get hasError;
   @override
   bool get loadMore;
+  @override
+  bool get bannerLoad;
+  @override
+  bool get whatToSellLoad;
+  @override
+  bool get bestSellingLoad;
   @override
   String? get message;
   @override

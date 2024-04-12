@@ -94,19 +94,18 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         event.isLoad == false) {
       return;
     }
-    emit(state.copyWith(isLoading: true, hasError: false));
+    emit(state.copyWith(bestSellingLoad: true, hasError: false));
     final data = await homeRepository.getBestSellingProducts();
-
     data.fold(
       (failure) => emit(
         state.copyWith(
-          isLoading: false,
+          bestSellingLoad: false,
           hasError: true,
         ),
       ),
       (bestSellingSuccess) => emit(
         state.copyWith(
-          isLoading: false,
+          bestSellingLoad: false,
           hasError: false,
           bestSellingProductsResponceModel: bestSellingSuccess,
         ),
@@ -115,20 +114,23 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   }
 
   FutureOr<void> homePageBanners(HomePageBanners event, emit) async {
-    if (state.homeBannerResponceModel != null && event.isLoad == false) return;
-    emit(state.copyWith(isLoading: true, hasError: false));
+    if ((state.homeBannerResponceModel != null ||
+            state.homeBannerResponceModel?.sectionOne != null ||
+            state.homeBannerResponceModel?.sectionTwo != null) &&
+        !event.isLoad) return;
+    emit(state.copyWith(bannerLoad: true, hasError: false));
     final data = await homeRepository.getbanners();
     data.fold(
       (failure) => emit(
         state.copyWith(
-          isLoading: false,
+          bannerLoad: false,
           hasError: true,
           message: failure.message,
         ),
       ),
       (homePageBananers) => emit(
         state.copyWith(
-          isLoading: false,
+          bannerLoad: false,
           hasError: false,
           homeBannerResponceModel: homePageBananers,
         ),
@@ -141,16 +143,16 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     Emitter<HomeState> emit,
   ) async {
     if (state.getCategoryResponceModel != null && event.isLoad == false) return;
-    emit(state.copyWith(isLoading: true, hasError: false));
+    emit(state.copyWith(whatToSellLoad: true, hasError: false));
     final data = await homeRepository.getAllCategory();
     data.fold(
         (failure) => emit(state.copyWith(
-              isLoading: false,
+              whatToSellLoad: false,
               hasError: true,
               message: failure.message,
             )), (successCagetgoryModel) {
       emit(state.copyWith(
-        isLoading: false,
+        whatToSellLoad: false,
         hasError: false,
         getCategoryResponceModel: successCagetgoryModel,
       ));
