@@ -24,7 +24,7 @@ class AuthService implements AuthRepo {
     required LoginModel loginModel,
   }) async {
     try {
-      log('${loginModel.toJson()}');
+      //log('${loginModel.toJson()}');
       final responce = await _apiService.post(
         ApiEndPoints.sendOTP,
         data: loginModel.toJson(),
