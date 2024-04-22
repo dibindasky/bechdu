@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:developer';
 import 'package:beachdu/application/business_logic/brands_bloc/category_bloc_bloc.dart';
 import 'package:beachdu/application/business_logic/home_bloc/home_bloc.dart';
 import 'package:beachdu/application/business_logic/internet_connection_check/internet_connection_check_cubit.dart';
@@ -53,17 +52,13 @@ class _ScreenHomeState extends State<ScreenHome> {
 
   @override
   void initState() {
-    print('==========================================================');
     controller.addListener(() {
-      log('Inside addListener 0ne');
       if (controller.position.pixels == controller.position.maxScrollExtent &&
           homeScreens.value == 1) {
-        log('Inside addListener');
         context.read<HomeBloc>().add(const HomeEvent.nextPage());
       }
     });
     _checkLocationAndShowScreen();
-
     super.initState();
   }
 
@@ -113,9 +108,6 @@ class _ScreenHomeState extends State<ScreenHome> {
           body: SafeArea(
             child: RefreshIndicator(
               onRefresh: () async {
-                // context
-                //     .read<LocationBloc>()
-                //     .add(const LocationEvent.locationPick(isLoad: true));
                 context
                     .read<HomeBloc>()
                     .add(const HomeEvent.homePageBanners(isLoad: true));
@@ -131,7 +123,7 @@ class _ScreenHomeState extends State<ScreenHome> {
                 await Future.delayed(const Duration(seconds: 1));
               },
               child: SingleChildScrollView(
-                //  physics: NeverScrollableScrollPhysics(),
+                
                 controller: controller,
                 child: Stack(
                   children: [

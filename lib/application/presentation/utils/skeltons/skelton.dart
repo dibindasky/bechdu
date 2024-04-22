@@ -49,3 +49,23 @@ class Skeleton extends StatelessWidget {
     );
   }
 }
+
+class Loadmore extends StatelessWidget {
+  const Loadmore({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Shimmer.fromColors(
+      baseColor: Colors.grey[300]!,
+      highlightColor: Colors.grey[100]!,
+      child: Container(
+        decoration: BoxDecoration(
+          color: klightwhite,
+          borderRadius: kRadius5,
+        ),
+      ),
+    );
+  }
+}

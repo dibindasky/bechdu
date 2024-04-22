@@ -26,14 +26,17 @@ class BrandSearchField extends StatelessWidget {
               child: DropdownButtonHideUnderline(
                 child: DropdownButton<String>(
                   onChanged: (newValue) {
-                    context.read<CategoryBlocBloc>().add(
-                          GetSingleCategoryBrands(
-                            isLoad: true,
-                            categoryType: newValue,
-                          ),
-                        );
-                    context.read<CategoryBlocBloc>().categoryType =
-                        newValue ?? 'mobile';
+                    if (context.read<CategoryBlocBloc>().categoryType !=
+                        newValue) {
+                      context.read<CategoryBlocBloc>().add(
+                            GetSingleCategoryBrands(
+                              isLoad: true,
+                              categoryType: newValue,
+                            ),
+                          );
+                      context.read<CategoryBlocBloc>().categoryType =
+                          newValue ?? 'mobile';
+                    }
                   },
                   value: context.read<CategoryBlocBloc>().categoryType,
                   items: homeState.getCategoryResponceModel?.category!

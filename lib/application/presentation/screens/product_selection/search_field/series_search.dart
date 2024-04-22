@@ -29,14 +29,18 @@ class SeriesSearchField extends StatelessWidget {
                 return DropdownButton<String>(
                   onChanged: (newValue) {
                     // Dispatch an event to fetch series for a specific brand
-                    context.read<CategoryBlocBloc>().barndName = newValue;
-                    context.read<CategoryBlocBloc>().add(
-                          GetSeries(
-                            brandName: newValue!,
-                            categoryType:
-                                context.read<CategoryBlocBloc>().categoryType!,
-                          ),
-                        );
+                    if (context.read<CategoryBlocBloc>().barndName !=
+                        newValue) {
+                      context.read<CategoryBlocBloc>().barndName = newValue;
+                      context.read<CategoryBlocBloc>().add(
+                            GetSeries(
+                              brandName: newValue!,
+                              categoryType: context
+                                  .read<CategoryBlocBloc>()
+                                  .categoryType!,
+                            ),
+                          );
+                    }
                   },
                   value: context.read<CategoryBlocBloc>().barndName,
                   items: [

@@ -35,8 +35,6 @@ class ScreenLogin extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: SingleChildScrollView(
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const LogoToMobileNumber(),
                 InternationalPhoneNumberInput(

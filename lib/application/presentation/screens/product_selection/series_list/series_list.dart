@@ -12,41 +12,49 @@ class SeriesSelectionBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<CategoryBlocBloc, CategoryBlocState>(
-      builder: (context, state) {
-        if (state.isLoading) {
-          return const Skeleton(
-            crossAxisCount: 2,
-            itemCount: 15,
-          );
-        } else if (state.filteredSeries == null) {
-          return Lottie.asset(emptyLottie);
+    return GestureDetector(
+      onTap: () {
+        FocusScopeNode focusScopeNode = FocusScope.of(context);
+        if (!focusScopeNode.hasPrimaryFocus) {
+          focusScopeNode.unfocus();
         }
-        final seriesList = state.filteredSeries!;
-        return Column(
-          children: [
-            const SeriesSearchField(),
-            kHeight20,
-            seriesList.isEmpty
-                ? Center(child: Lottie.asset(emptyLottie))
-                : GridView.builder(
-                    itemCount: seriesList.length,
-                    physics: const NeverScrollableScrollPhysics(),
-                    shrinkWrap: true,
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      crossAxisSpacing: 10,
-                      mainAxisSpacing: 10,
-                      childAspectRatio: 1 / .3,
-                    ),
-                    itemBuilder: (context, index) {
-                      return SeriesContainer(index: index);
-                    },
-                  ),
-          ],
-        );
       },
+      child: BlocBuilder<CategoryBlocBloc, CategoryBlocState>(
+        builder: (context, state) {
+          if (state.isLoading) {
+            return const Skeleton(
+              crossAxisCount: 2,
+              itemCount: 15,
+            );
+          } else if (state.filteredSeries == null) {
+            return Lottie.asset(emptyLottie);
+          }
+          final seriesList = state.filteredSeries!;
+          return Column(
+            children: [
+              const SeriesSearchField(),
+              kHeight20,
+              seriesList.isEmpty
+                  ? Center(child: Lottie.asset(emptyLottie))
+                  : GridView.builder(
+                      itemCount: seriesList.length,
+                      physics: const NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        crossAxisSpacing: 10,
+                        mainAxisSpacing: 10,
+                        childAspectRatio: 1 / .3,
+                      ),
+                      itemBuilder: (context, index) {
+                        return SeriesContainer(index: index);
+                      },
+                    ),
+            ],
+          );
+        },
+      ),
     );
   }
 }

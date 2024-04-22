@@ -1,5 +1,6 @@
 class ApiEndPoints {
-  static const String baseUrl = 'https://bechdu-main-backend.onrender.com/';
+  //static const String baseUrl = 'https://bechdu-main-backend.onrender.com/';
+  static const String baseUrl = 'https://api.bechdu.in/';
   static const String sendOTP = 'user/send-sms';
   static const String verifyOTP = 'user/sms-login';
   static const String getCityNames = 'pincode/cityNames';
