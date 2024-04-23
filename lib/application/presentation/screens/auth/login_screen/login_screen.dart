@@ -27,19 +27,15 @@ class ScreenLogin extends StatelessWidget {
         }
       },
       child: Scaffold(
-        appBar: AppBar(
-          automaticallyImplyLeading: false,
-          toolbarHeight: 80,
-        ),
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: SingleChildScrollView(
             child: Column(
               children: [
+                SizedBox(height: sHeight * .12),
                 const LogoToMobileNumber(),
                 InternationalPhoneNumberInput(
                   onInputChanged: (PhoneNumber number) {},
-                  onInputValidated: (bool value) {},
                   selectorConfig: const SelectorConfig(
                     trailingSpace: false,
                     showFlags: false,

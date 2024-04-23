@@ -67,7 +67,7 @@ class BrandContainer extends StatelessWidget {
                           child: Image.memory(
                             base64.decode(base64String),
                             errorBuilder: (context, error, stackTrace) {
-                              return const Icon(Icons.error);
+                              return const Icon(Icons.broken_image_outlined);
                             },
                           ),
                         ),

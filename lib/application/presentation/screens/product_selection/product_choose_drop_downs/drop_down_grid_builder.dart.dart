@@ -26,6 +26,13 @@ class _ScreenProductSelectionProductFindDropdownGridViewState
   Widget build(BuildContext context) {
     return BlocBuilder<CategoryBlocBloc, CategoryBlocState>(
       builder: (context, state) {
+        Set<String> uniqueBrands = {};
+        // Add all brand/model names to the set
+        if (state.models != null) {
+          for (var brand in state.models!) {
+            uniqueBrands.add(brand);
+          }
+        }
         return Row(
           children: [
             Expanded(
@@ -81,19 +88,18 @@ class _ScreenProductSelectionProductFindDropdownGridViewState
                               overflow: TextOverflow.ellipsis,
                             ),
                           ),
-                          if (state.models != null)
-                            for (var brand in state.models!)
-                              DropdownMenuItem<String>(
-                                value: brand,
-                                child: Text(
-                                  brand.replaceAll('Samsung ', ''),
-                                  style: textHeadSemiBold1.copyWith(
-                                    color: kWhite,
-                                    fontSize: sWidth * 0.036,
-                                  ),
-                                  overflow: TextOverflow.ellipsis,
+                          for (var brand in uniqueBrands)
+                            DropdownMenuItem<String>(
+                              value: brand,
+                              child: Text(
+                                brand.replaceAll('Samsung ', ''),
+                                style: textHeadSemiBold1.copyWith(
+                                  color: kWhite,
+                                  fontSize: sWidth * 0.036,
                                 ),
+                                overflow: TextOverflow.ellipsis,
                               ),
+                            ),
                         ],
                         onChanged: (value) {
                           if (value == "All") {
@@ -213,7 +219,8 @@ class _ScreenProductSelectionProductFindDropdownGridViewState
                         style: textHeadInter.copyWith(color: kWhite),
                       ),
                       isExpanded: true,
-                      items: state.varients.map<DropdownMenuItem<String>>(
+                      items:
+                          state.varients.toSet().map<DropdownMenuItem<String>>(
                         (varient) {
                           return DropdownMenuItem<String>(
                             value: varient,

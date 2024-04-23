@@ -22,7 +22,7 @@ mixin _$PlaceOrderEvent {
         getPromoCode,
     required TResult Function() getDatetime,
     required TResult Function() orderPlacing,
-    required TResult Function(bool? isLoad) getOrders,
+    required TResult Function(bool isLoad) getOrders,
     required TResult Function(
             OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)
@@ -51,7 +51,7 @@ mixin _$PlaceOrderEvent {
         getPromoCode,
     TResult? Function()? getDatetime,
     TResult? Function()? orderPlacing,
-    TResult? Function(bool? isLoad)? getOrders,
+    TResult? Function(bool isLoad)? getOrders,
     TResult? Function(OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)?
         orderCancel,
@@ -77,7 +77,7 @@ mixin _$PlaceOrderEvent {
     TResult Function(PromoCodeRequestModel promoCodeRequestModel)? getPromoCode,
     TResult Function()? getDatetime,
     TResult Function()? orderPlacing,
-    TResult Function(bool? isLoad)? getOrders,
+    TResult Function(bool isLoad)? getOrders,
     TResult Function(OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)?
         orderCancel,
@@ -258,7 +258,7 @@ class _$GetPromoCodeImpl implements GetPromoCode {
         getPromoCode,
     required TResult Function() getDatetime,
     required TResult Function() orderPlacing,
-    required TResult Function(bool? isLoad) getOrders,
+    required TResult Function(bool isLoad) getOrders,
     required TResult Function(
             OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)
@@ -290,7 +290,7 @@ class _$GetPromoCodeImpl implements GetPromoCode {
         getPromoCode,
     TResult? Function()? getDatetime,
     TResult? Function()? orderPlacing,
-    TResult? Function(bool? isLoad)? getOrders,
+    TResult? Function(bool isLoad)? getOrders,
     TResult? Function(OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)?
         orderCancel,
@@ -319,7 +319,7 @@ class _$GetPromoCodeImpl implements GetPromoCode {
     TResult Function(PromoCodeRequestModel promoCodeRequestModel)? getPromoCode,
     TResult Function()? getDatetime,
     TResult Function()? orderPlacing,
-    TResult Function(bool? isLoad)? getOrders,
+    TResult Function(bool isLoad)? getOrders,
     TResult Function(OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)?
         orderCancel,
@@ -482,7 +482,7 @@ class _$GetDatetimeImpl implements GetDatetime {
         getPromoCode,
     required TResult Function() getDatetime,
     required TResult Function() orderPlacing,
-    required TResult Function(bool? isLoad) getOrders,
+    required TResult Function(bool isLoad) getOrders,
     required TResult Function(
             OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)
@@ -514,7 +514,7 @@ class _$GetDatetimeImpl implements GetDatetime {
         getPromoCode,
     TResult? Function()? getDatetime,
     TResult? Function()? orderPlacing,
-    TResult? Function(bool? isLoad)? getOrders,
+    TResult? Function(bool isLoad)? getOrders,
     TResult? Function(OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)?
         orderCancel,
@@ -543,7 +543,7 @@ class _$GetDatetimeImpl implements GetDatetime {
     TResult Function(PromoCodeRequestModel promoCodeRequestModel)? getPromoCode,
     TResult Function()? getDatetime,
     TResult Function()? orderPlacing,
-    TResult Function(bool? isLoad)? getOrders,
+    TResult Function(bool isLoad)? getOrders,
     TResult Function(OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)?
         orderCancel,
@@ -699,7 +699,7 @@ class _$OrderPlacingImpl implements OrderPlacing {
         getPromoCode,
     required TResult Function() getDatetime,
     required TResult Function() orderPlacing,
-    required TResult Function(bool? isLoad) getOrders,
+    required TResult Function(bool isLoad) getOrders,
     required TResult Function(
             OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)
@@ -731,7 +731,7 @@ class _$OrderPlacingImpl implements OrderPlacing {
         getPromoCode,
     TResult? Function()? getDatetime,
     TResult? Function()? orderPlacing,
-    TResult? Function(bool? isLoad)? getOrders,
+    TResult? Function(bool isLoad)? getOrders,
     TResult? Function(OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)?
         orderCancel,
@@ -760,7 +760,7 @@ class _$OrderPlacingImpl implements OrderPlacing {
     TResult Function(PromoCodeRequestModel promoCodeRequestModel)? getPromoCode,
     TResult Function()? getDatetime,
     TResult Function()? orderPlacing,
-    TResult Function(bool? isLoad)? getOrders,
+    TResult Function(bool isLoad)? getOrders,
     TResult Function(OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)?
         orderCancel,
@@ -880,7 +880,7 @@ abstract class _$$GetOrdersImplCopyWith<$Res> {
           _$GetOrdersImpl value, $Res Function(_$GetOrdersImpl) then) =
       __$$GetOrdersImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({bool? isLoad});
+  $Res call({bool isLoad});
 }
 
 /// @nodoc
@@ -894,13 +894,13 @@ class __$$GetOrdersImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? isLoad = freezed,
+    Object? isLoad = null,
   }) {
     return _then(_$GetOrdersImpl(
-      isLoad: freezed == isLoad
+      isLoad: null == isLoad
           ? _value.isLoad
           : isLoad // ignore: cast_nullable_to_non_nullable
-              as bool?,
+              as bool,
     ));
   }
 }
@@ -908,10 +908,10 @@ class __$$GetOrdersImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$GetOrdersImpl implements GetOrders {
-  const _$GetOrdersImpl({this.isLoad});
+  const _$GetOrdersImpl({required this.isLoad});
 
   @override
-  final bool? isLoad;
+  final bool isLoad;
 
   @override
   String toString() {
@@ -942,7 +942,7 @@ class _$GetOrdersImpl implements GetOrders {
         getPromoCode,
     required TResult Function() getDatetime,
     required TResult Function() orderPlacing,
-    required TResult Function(bool? isLoad) getOrders,
+    required TResult Function(bool isLoad) getOrders,
     required TResult Function(
             OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)
@@ -974,7 +974,7 @@ class _$GetOrdersImpl implements GetOrders {
         getPromoCode,
     TResult? Function()? getDatetime,
     TResult? Function()? orderPlacing,
-    TResult? Function(bool? isLoad)? getOrders,
+    TResult? Function(bool isLoad)? getOrders,
     TResult? Function(OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)?
         orderCancel,
@@ -1003,7 +1003,7 @@ class _$GetOrdersImpl implements GetOrders {
     TResult Function(PromoCodeRequestModel promoCodeRequestModel)? getPromoCode,
     TResult Function()? getDatetime,
     TResult Function()? orderPlacing,
-    TResult Function(bool? isLoad)? getOrders,
+    TResult Function(bool isLoad)? getOrders,
     TResult Function(OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)?
         orderCancel,
@@ -1114,9 +1114,9 @@ class _$GetOrdersImpl implements GetOrders {
 }
 
 abstract class GetOrders implements PlaceOrderEvent {
-  const factory GetOrders({final bool? isLoad}) = _$GetOrdersImpl;
+  const factory GetOrders({required final bool isLoad}) = _$GetOrdersImpl;
 
-  bool? get isLoad;
+  bool get isLoad;
   @JsonKey(ignore: true)
   _$$GetOrdersImplCopyWith<_$GetOrdersImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1205,7 +1205,7 @@ class _$OrderCancelImpl implements OrderCancel {
         getPromoCode,
     required TResult Function() getDatetime,
     required TResult Function() orderPlacing,
-    required TResult Function(bool? isLoad) getOrders,
+    required TResult Function(bool isLoad) getOrders,
     required TResult Function(
             OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)
@@ -1237,7 +1237,7 @@ class _$OrderCancelImpl implements OrderCancel {
         getPromoCode,
     TResult? Function()? getDatetime,
     TResult? Function()? orderPlacing,
-    TResult? Function(bool? isLoad)? getOrders,
+    TResult? Function(bool isLoad)? getOrders,
     TResult? Function(OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)?
         orderCancel,
@@ -1266,7 +1266,7 @@ class _$OrderCancelImpl implements OrderCancel {
     TResult Function(PromoCodeRequestModel promoCodeRequestModel)? getPromoCode,
     TResult Function()? getDatetime,
     TResult Function()? orderPlacing,
-    TResult Function(bool? isLoad)? getOrders,
+    TResult Function(bool isLoad)? getOrders,
     TResult Function(OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)?
         orderCancel,
@@ -1458,7 +1458,7 @@ class _$ProductDetailsPickImpl implements ProductDetailsPick {
         getPromoCode,
     required TResult Function() getDatetime,
     required TResult Function() orderPlacing,
-    required TResult Function(bool? isLoad) getOrders,
+    required TResult Function(bool isLoad) getOrders,
     required TResult Function(
             OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)
@@ -1490,7 +1490,7 @@ class _$ProductDetailsPickImpl implements ProductDetailsPick {
         getPromoCode,
     TResult? Function()? getDatetime,
     TResult? Function()? orderPlacing,
-    TResult? Function(bool? isLoad)? getOrders,
+    TResult? Function(bool isLoad)? getOrders,
     TResult? Function(OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)?
         orderCancel,
@@ -1519,7 +1519,7 @@ class _$ProductDetailsPickImpl implements ProductDetailsPick {
     TResult Function(PromoCodeRequestModel promoCodeRequestModel)? getPromoCode,
     TResult Function()? getDatetime,
     TResult Function()? orderPlacing,
-    TResult Function(bool? isLoad)? getOrders,
+    TResult Function(bool isLoad)? getOrders,
     TResult Function(OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)?
         orderCancel,
@@ -1708,7 +1708,7 @@ class _$PromoCodePickImpl implements PromoCodePick {
         getPromoCode,
     required TResult Function() getDatetime,
     required TResult Function() orderPlacing,
-    required TResult Function(bool? isLoad) getOrders,
+    required TResult Function(bool isLoad) getOrders,
     required TResult Function(
             OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)
@@ -1740,7 +1740,7 @@ class _$PromoCodePickImpl implements PromoCodePick {
         getPromoCode,
     TResult? Function()? getDatetime,
     TResult? Function()? orderPlacing,
-    TResult? Function(bool? isLoad)? getOrders,
+    TResult? Function(bool isLoad)? getOrders,
     TResult? Function(OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)?
         orderCancel,
@@ -1769,7 +1769,7 @@ class _$PromoCodePickImpl implements PromoCodePick {
     TResult Function(PromoCodeRequestModel promoCodeRequestModel)? getPromoCode,
     TResult Function()? getDatetime,
     TResult Function()? orderPlacing,
-    TResult Function(bool? isLoad)? getOrders,
+    TResult Function(bool isLoad)? getOrders,
     TResult Function(OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)?
         orderCancel,
@@ -1957,7 +1957,7 @@ class _$AddressPickImpl implements AddressPick {
         getPromoCode,
     required TResult Function() getDatetime,
     required TResult Function() orderPlacing,
-    required TResult Function(bool? isLoad) getOrders,
+    required TResult Function(bool isLoad) getOrders,
     required TResult Function(
             OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)
@@ -1989,7 +1989,7 @@ class _$AddressPickImpl implements AddressPick {
         getPromoCode,
     TResult? Function()? getDatetime,
     TResult? Function()? orderPlacing,
-    TResult? Function(bool? isLoad)? getOrders,
+    TResult? Function(bool isLoad)? getOrders,
     TResult? Function(OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)?
         orderCancel,
@@ -2018,7 +2018,7 @@ class _$AddressPickImpl implements AddressPick {
     TResult Function(PromoCodeRequestModel promoCodeRequestModel)? getPromoCode,
     TResult Function()? getDatetime,
     TResult Function()? orderPlacing,
-    TResult Function(bool? isLoad)? getOrders,
+    TResult Function(bool isLoad)? getOrders,
     TResult Function(OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)?
         orderCancel,
@@ -2205,7 +2205,7 @@ class _$PaymentOptionImpl implements PaymentOption {
         getPromoCode,
     required TResult Function() getDatetime,
     required TResult Function() orderPlacing,
-    required TResult Function(bool? isLoad) getOrders,
+    required TResult Function(bool isLoad) getOrders,
     required TResult Function(
             OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)
@@ -2237,7 +2237,7 @@ class _$PaymentOptionImpl implements PaymentOption {
         getPromoCode,
     TResult? Function()? getDatetime,
     TResult? Function()? orderPlacing,
-    TResult? Function(bool? isLoad)? getOrders,
+    TResult? Function(bool isLoad)? getOrders,
     TResult? Function(OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)?
         orderCancel,
@@ -2266,7 +2266,7 @@ class _$PaymentOptionImpl implements PaymentOption {
     TResult Function(PromoCodeRequestModel promoCodeRequestModel)? getPromoCode,
     TResult Function()? getDatetime,
     TResult Function()? orderPlacing,
-    TResult Function(bool? isLoad)? getOrders,
+    TResult Function(bool isLoad)? getOrders,
     TResult Function(OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)?
         orderCancel,
@@ -2464,7 +2464,7 @@ class _$SelectedOptionEventImpl implements SelectedOptionEvent {
         getPromoCode,
     required TResult Function() getDatetime,
     required TResult Function() orderPlacing,
-    required TResult Function(bool? isLoad) getOrders,
+    required TResult Function(bool isLoad) getOrders,
     required TResult Function(
             OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)
@@ -2496,7 +2496,7 @@ class _$SelectedOptionEventImpl implements SelectedOptionEvent {
         getPromoCode,
     TResult? Function()? getDatetime,
     TResult? Function()? orderPlacing,
-    TResult? Function(bool? isLoad)? getOrders,
+    TResult? Function(bool isLoad)? getOrders,
     TResult? Function(OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)?
         orderCancel,
@@ -2525,7 +2525,7 @@ class _$SelectedOptionEventImpl implements SelectedOptionEvent {
     TResult Function(PromoCodeRequestModel promoCodeRequestModel)? getPromoCode,
     TResult Function()? getDatetime,
     TResult Function()? orderPlacing,
-    TResult Function(bool? isLoad)? getOrders,
+    TResult Function(bool isLoad)? getOrders,
     TResult Function(OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)?
         orderCancel,
@@ -2688,7 +2688,7 @@ class _$RemoveAppliedPromoImpl implements RemoveAppliedPromo {
         getPromoCode,
     required TResult Function() getDatetime,
     required TResult Function() orderPlacing,
-    required TResult Function(bool? isLoad) getOrders,
+    required TResult Function(bool isLoad) getOrders,
     required TResult Function(
             OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)
@@ -2720,7 +2720,7 @@ class _$RemoveAppliedPromoImpl implements RemoveAppliedPromo {
         getPromoCode,
     TResult? Function()? getDatetime,
     TResult? Function()? orderPlacing,
-    TResult? Function(bool? isLoad)? getOrders,
+    TResult? Function(bool isLoad)? getOrders,
     TResult? Function(OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)?
         orderCancel,
@@ -2749,7 +2749,7 @@ class _$RemoveAppliedPromoImpl implements RemoveAppliedPromo {
     TResult Function(PromoCodeRequestModel promoCodeRequestModel)? getPromoCode,
     TResult Function()? getDatetime,
     TResult Function()? orderPlacing,
-    TResult Function(bool? isLoad)? getOrders,
+    TResult Function(bool isLoad)? getOrders,
     TResult Function(OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)?
         orderCancel,
@@ -2942,7 +2942,7 @@ class _$PickupDetailsPickImpl implements PickupDetailsPick {
         getPromoCode,
     required TResult Function() getDatetime,
     required TResult Function() orderPlacing,
-    required TResult Function(bool? isLoad) getOrders,
+    required TResult Function(bool isLoad) getOrders,
     required TResult Function(
             OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)
@@ -2974,7 +2974,7 @@ class _$PickupDetailsPickImpl implements PickupDetailsPick {
         getPromoCode,
     TResult? Function()? getDatetime,
     TResult? Function()? orderPlacing,
-    TResult? Function(bool? isLoad)? getOrders,
+    TResult? Function(bool isLoad)? getOrders,
     TResult? Function(OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)?
         orderCancel,
@@ -3003,7 +3003,7 @@ class _$PickupDetailsPickImpl implements PickupDetailsPick {
     TResult Function(PromoCodeRequestModel promoCodeRequestModel)? getPromoCode,
     TResult Function()? getDatetime,
     TResult Function()? orderPlacing,
-    TResult Function(bool? isLoad)? getOrders,
+    TResult Function(bool isLoad)? getOrders,
     TResult Function(OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)?
         orderCancel,
@@ -3167,7 +3167,7 @@ class _$UserNumberImpl implements UserNumber {
         getPromoCode,
     required TResult Function() getDatetime,
     required TResult Function() orderPlacing,
-    required TResult Function(bool? isLoad) getOrders,
+    required TResult Function(bool isLoad) getOrders,
     required TResult Function(
             OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)
@@ -3199,7 +3199,7 @@ class _$UserNumberImpl implements UserNumber {
         getPromoCode,
     TResult? Function()? getDatetime,
     TResult? Function()? orderPlacing,
-    TResult? Function(bool? isLoad)? getOrders,
+    TResult? Function(bool isLoad)? getOrders,
     TResult? Function(OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)?
         orderCancel,
@@ -3228,7 +3228,7 @@ class _$UserNumberImpl implements UserNumber {
     TResult Function(PromoCodeRequestModel promoCodeRequestModel)? getPromoCode,
     TResult Function()? getDatetime,
     TResult Function()? orderPlacing,
-    TResult Function(bool? isLoad)? getOrders,
+    TResult Function(bool isLoad)? getOrders,
     TResult Function(OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)?
         orderCancel,
@@ -3384,7 +3384,7 @@ class _$RemoveAllFieldDataImpl implements RemoveAllFieldData {
         getPromoCode,
     required TResult Function() getDatetime,
     required TResult Function() orderPlacing,
-    required TResult Function(bool? isLoad) getOrders,
+    required TResult Function(bool isLoad) getOrders,
     required TResult Function(
             OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)
@@ -3416,7 +3416,7 @@ class _$RemoveAllFieldDataImpl implements RemoveAllFieldData {
         getPromoCode,
     TResult? Function()? getDatetime,
     TResult? Function()? orderPlacing,
-    TResult? Function(bool? isLoad)? getOrders,
+    TResult? Function(bool isLoad)? getOrders,
     TResult? Function(OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)?
         orderCancel,
@@ -3445,7 +3445,7 @@ class _$RemoveAllFieldDataImpl implements RemoveAllFieldData {
     TResult Function(PromoCodeRequestModel promoCodeRequestModel)? getPromoCode,
     TResult Function()? getDatetime,
     TResult Function()? orderPlacing,
-    TResult Function(bool? isLoad)? getOrders,
+    TResult Function(bool isLoad)? getOrders,
     TResult Function(OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)?
         orderCancel,
@@ -3601,7 +3601,7 @@ class _$PromoCodeSuccessImpl implements PromoCodeSuccess {
         getPromoCode,
     required TResult Function() getDatetime,
     required TResult Function() orderPlacing,
-    required TResult Function(bool? isLoad) getOrders,
+    required TResult Function(bool isLoad) getOrders,
     required TResult Function(
             OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)
@@ -3633,7 +3633,7 @@ class _$PromoCodeSuccessImpl implements PromoCodeSuccess {
         getPromoCode,
     TResult? Function()? getDatetime,
     TResult? Function()? orderPlacing,
-    TResult? Function(bool? isLoad)? getOrders,
+    TResult? Function(bool isLoad)? getOrders,
     TResult? Function(OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)?
         orderCancel,
@@ -3662,7 +3662,7 @@ class _$PromoCodeSuccessImpl implements PromoCodeSuccess {
     TResult Function(PromoCodeRequestModel promoCodeRequestModel)? getPromoCode,
     TResult Function()? getDatetime,
     TResult Function()? orderPlacing,
-    TResult Function(bool? isLoad)? getOrders,
+    TResult Function(bool isLoad)? getOrders,
     TResult Function(OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)?
         orderCancel,
@@ -3853,7 +3853,7 @@ class _$InvoiceDownloadImpl implements InvoiceDownload {
         getPromoCode,
     required TResult Function() getDatetime,
     required TResult Function() orderPlacing,
-    required TResult Function(bool? isLoad) getOrders,
+    required TResult Function(bool isLoad) getOrders,
     required TResult Function(
             OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)
@@ -3885,7 +3885,7 @@ class _$InvoiceDownloadImpl implements InvoiceDownload {
         getPromoCode,
     TResult? Function()? getDatetime,
     TResult? Function()? orderPlacing,
-    TResult? Function(bool? isLoad)? getOrders,
+    TResult? Function(bool isLoad)? getOrders,
     TResult? Function(OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)?
         orderCancel,
@@ -3914,7 +3914,7 @@ class _$InvoiceDownloadImpl implements InvoiceDownload {
     TResult Function(PromoCodeRequestModel promoCodeRequestModel)? getPromoCode,
     TResult Function()? getDatetime,
     TResult Function()? orderPlacing,
-    TResult Function(bool? isLoad)? getOrders,
+    TResult Function(bool isLoad)? getOrders,
     TResult Function(OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)?
         orderCancel,
@@ -4078,7 +4078,7 @@ class _$ClearImpl implements Clear {
         getPromoCode,
     required TResult Function() getDatetime,
     required TResult Function() orderPlacing,
-    required TResult Function(bool? isLoad) getOrders,
+    required TResult Function(bool isLoad) getOrders,
     required TResult Function(
             OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)
@@ -4110,7 +4110,7 @@ class _$ClearImpl implements Clear {
         getPromoCode,
     TResult? Function()? getDatetime,
     TResult? Function()? orderPlacing,
-    TResult? Function(bool? isLoad)? getOrders,
+    TResult? Function(bool isLoad)? getOrders,
     TResult? Function(OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)?
         orderCancel,
@@ -4139,7 +4139,7 @@ class _$ClearImpl implements Clear {
     TResult Function(PromoCodeRequestModel promoCodeRequestModel)? getPromoCode,
     TResult Function()? getDatetime,
     TResult Function()? orderPlacing,
-    TResult Function(bool? isLoad)? getOrders,
+    TResult Function(bool isLoad)? getOrders,
     TResult Function(OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)?
         orderCancel,
@@ -4322,7 +4322,7 @@ class _$SelectedRadioImpl implements SelectedRadio {
         getPromoCode,
     required TResult Function() getDatetime,
     required TResult Function() orderPlacing,
-    required TResult Function(bool? isLoad) getOrders,
+    required TResult Function(bool isLoad) getOrders,
     required TResult Function(
             OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)
@@ -4354,7 +4354,7 @@ class _$SelectedRadioImpl implements SelectedRadio {
         getPromoCode,
     TResult? Function()? getDatetime,
     TResult? Function()? orderPlacing,
-    TResult? Function(bool? isLoad)? getOrders,
+    TResult? Function(bool isLoad)? getOrders,
     TResult? Function(OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)?
         orderCancel,
@@ -4383,7 +4383,7 @@ class _$SelectedRadioImpl implements SelectedRadio {
     TResult Function(PromoCodeRequestModel promoCodeRequestModel)? getPromoCode,
     TResult Function()? getDatetime,
     TResult Function()? orderPlacing,
-    TResult Function(bool? isLoad)? getOrders,
+    TResult Function(bool isLoad)? getOrders,
     TResult Function(OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)?
         orderCancel,
@@ -4545,7 +4545,7 @@ class _$OrderResponceNullImpl implements OrderResponceNull {
         getPromoCode,
     required TResult Function() getDatetime,
     required TResult Function() orderPlacing,
-    required TResult Function(bool? isLoad) getOrders,
+    required TResult Function(bool isLoad) getOrders,
     required TResult Function(
             OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)
@@ -4577,7 +4577,7 @@ class _$OrderResponceNullImpl implements OrderResponceNull {
         getPromoCode,
     TResult? Function()? getDatetime,
     TResult? Function()? orderPlacing,
-    TResult? Function(bool? isLoad)? getOrders,
+    TResult? Function(bool isLoad)? getOrders,
     TResult? Function(OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)?
         orderCancel,
@@ -4606,7 +4606,7 @@ class _$OrderResponceNullImpl implements OrderResponceNull {
     TResult Function(PromoCodeRequestModel promoCodeRequestModel)? getPromoCode,
     TResult Function()? getDatetime,
     TResult Function()? orderPlacing,
-    TResult Function(bool? isLoad)? getOrders,
+    TResult Function(bool isLoad)? getOrders,
     TResult Function(OrderCancelationRequestModel orderCancelationRequestModel,
             String orderId)?
         orderCancel,

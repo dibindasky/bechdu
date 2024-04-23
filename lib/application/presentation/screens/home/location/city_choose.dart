@@ -172,10 +172,12 @@ class ScreenLocations extends StatelessWidget {
                                         ),
                                         const SizedBox(width: 4),
                                         Text(
-                                          "${state.filteredLocations![index].substring(0, 7)} ...",
+                                          state.filteredLocations![index]
+                                                      .length >
+                                                  7
+                                              ? '${state.filteredLocations![index].substring(0, 7)}...'
+                                              : state.filteredLocations![index],
                                           style: textHeadSemiBold1,
-                                          maxLines: 2,
-                                          overflow: TextOverflow.ellipsis,
                                         ),
                                         kWidth10,
                                       ],

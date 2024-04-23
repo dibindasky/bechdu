@@ -142,7 +142,8 @@ class _PersonalDetailsState extends State<PersonalDetails> {
                 text: 'Continue',
               ),
             ),
-            kHeight10,
+            kHeight40,
+            kHeight10
           ],
         ),
       ),

@@ -15,6 +15,6 @@ bool isValidPhoneNumber(String phoneNumber) {
 }
 
 bool isValidUPI(String upiId) {
-  RegExp regExp = RegExp(r"^[a-zA-Z0-9\.-]{2,256}@[a-zA-Z]{2,64}$");
+  RegExp regExp = RegExp(r'^[a-zA-Z0-9]+@[a-zA-Z]+$');
   return regExp.hasMatch(upiId);
 }

@@ -96,8 +96,20 @@ class ScreenProductPreview extends StatelessWidget {
                       text: 'Continue',
                       onPressed: () {
                         if (state.basePriceModelResponce != null) {
-                          secondtabScreensNotifier.value = 3;
-                          secondtabScreensNotifier.notifyListeners();
+                          if (state.basePriceModelResponce?.basePrice == 0) {
+                            showSnack(
+                              context: context,
+                              message:
+                                  "You can't place order becouse the product price is Zero",
+                              color: kRed,
+                            );
+                          } else {
+                            context
+                                .read<QuestionTabBloc>()
+                                .add(const ResetTabSelection());
+                            secondtabScreensNotifier.value = 3;
+                            secondtabScreensNotifier.notifyListeners();
+                          }
                         } else {
                           showSnack(
                             context: context,

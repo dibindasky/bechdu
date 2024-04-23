@@ -14,6 +14,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
 final navigatorKey = GlobalKey<NavigatorState>();
 Future<void> main() async {
@@ -22,7 +23,9 @@ Future<void> main() async {
     [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown],
   );
   await configureInjection();
-  runApp(Beachdu(connectivity: Connectivity()));
+  initializeDateFormatting('en_IN', null).then((_) {
+    runApp(Beachdu(connectivity: Connectivity()));
+  });
 }
 
 class Beachdu extends StatelessWidget {

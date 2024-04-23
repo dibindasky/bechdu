@@ -8,7 +8,7 @@ class PlaceOrderEvent with _$PlaceOrderEvent {
 
   const factory PlaceOrderEvent.getDatetime() = GetDatetime;
   const factory PlaceOrderEvent.orderPlacing() = OrderPlacing;
-  const factory PlaceOrderEvent.getOrders({bool? isLoad}) = GetOrders;
+  const factory PlaceOrderEvent.getOrders({required bool isLoad}) = GetOrders;
   const factory PlaceOrderEvent.orderCancel({
     required OrderCancelationRequestModel orderCancelationRequestModel,
     required String orderId,

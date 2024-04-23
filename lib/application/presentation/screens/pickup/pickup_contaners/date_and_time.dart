@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:beachdu/application/business_logic/brands_bloc/category_bloc_bloc.dart';
 import 'package:beachdu/application/business_logic/place_order/place_order_bloc.dart';
 import 'package:beachdu/application/business_logic/question_tab/question_tab_bloc.dart';
@@ -14,6 +16,7 @@ import 'package:beachdu/domain/model/order_model/order_placed_request_model/prod
 import 'package:beachdu/domain/model/order_model/order_placed_request_model/promo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 
 class DateOrTime extends StatefulWidget {
   const DateOrTime({super.key});
@@ -25,6 +28,43 @@ class DateOrTime extends StatefulWidget {
 class _DateOrTimeState extends State<DateOrTime> {
   String? selectedDate;
   String? selectedTime;
+  String currentDate = '';
+
+  setCurrentDate() {
+    DateTime now = DateTime.now();
+    setState(() {
+      currentDate = DateFormat('dd MMMM', 'en_IN').format(now);
+      log('$currentDate', name: 'currentDate');
+    });
+  }
+
+  List<String> filteredSlots = [];
+
+  void filterTimeSlots(List<String> timeSlot, String? currentDate) {
+    log('inside func');
+    if (currentDate == null) return;
+
+    DateTime now = DateTime.now();
+    int currentHour = now.hour;
+    log('$currentHour', name: 'current hour');
+    for (String slot in timeSlot) {
+      String startTime = slot.split(" - ")[0];
+      int startHour = int.parse(startTime.split(":")[0]);
+      if (now.isAtSameMomentAs(DateTime.parse(currentDate))) {
+        if (startHour > currentHour || (startHour == currentHour)) {
+          filteredSlots.add(slot);
+        }
+      } else {
+        filteredSlots.add(slot);
+      }
+    }
+  }
+
+  @override
+  void initState() {
+    setCurrentDate();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -82,8 +122,17 @@ class _DateOrTimeState extends State<DateOrTime> {
                                 setState(() {
                                   selectedDate = newValue;
                                 });
+
+                                if (currentDate == selectedDate) {
+                                  filterTimeSlots(
+                                    state.time ?? [],
+                                    newValue,
+                                  );
+                                }
                               },
-                              items: state.dates?.map<DropdownMenuItem<String>>(
+                              items: state.dates
+                                  ?.toSet()
+                                  .map<DropdownMenuItem<String>>(
                                 (String value) {
                                   return DropdownMenuItem<String>(
                                     value: value,
@@ -130,7 +179,9 @@ class _DateOrTimeState extends State<DateOrTime> {
                                   selectedTime = newValue;
                                 });
                               },
-                              items: state.time?.map<DropdownMenuItem<String>>(
+                              items: state.time
+                                  ?.toSet()
+                                  .map<DropdownMenuItem<String>>(
                                 (String value) {
                                   return DropdownMenuItem<String>(
                                     value: value,
@@ -193,7 +244,6 @@ class _DateOrTimeState extends State<DateOrTime> {
                         );
                         return;
                       }
-
                       Promo promo = Promo(
                           code: context
                                       .read<PlaceOrderBloc>()

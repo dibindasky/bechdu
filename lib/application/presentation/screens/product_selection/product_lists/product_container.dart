@@ -22,8 +22,7 @@ class ProductContainer extends StatelessWidget {
       builder: (context, categoryState) {
         List<Product> product = categoryState.filteredProducts ?? [];
         String url =
-            "${ApiEndPoints.baseUrlImagePath}${Uri.encodeComponent(product[index].productImage!)}";
-
+            "${ApiEndPoints.baseUrl}${ApiEndPoints.imagePath}${Uri.encodeComponent(product[index].productImage!)}";
         return GestureDetector(
           onTap: () {
             context.read<QuestionTabBloc>().add(QuestionTabEvent.getQuestions(
@@ -45,7 +44,7 @@ class ProductContainer extends StatelessWidget {
             context.read<CategoryBlocBloc>().productImage =
                 product[index].productImage;
 
-            //Builder cahnges
+            // Builder cahnges
             secondtabScreensNotifier.value = 1;
             secondtabScreensNotifier.notifyListeners();
             brandSeriesProductValueNotifier.value = 0;

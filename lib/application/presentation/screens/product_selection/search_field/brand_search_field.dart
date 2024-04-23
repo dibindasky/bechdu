@@ -40,6 +40,7 @@ class BrandSearchField extends StatelessWidget {
                   },
                   value: context.read<CategoryBlocBloc>().categoryType,
                   items: homeState.getCategoryResponceModel?.category!
+                      .toSet()
                       .map((category) {
                     return DropdownMenuItem<String>(
                       value: category.categoryType,

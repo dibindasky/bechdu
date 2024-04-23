@@ -105,21 +105,26 @@ class PlaceOrderBloc extends Bloc<PlaceOrderEvent, PlaceOrderState> {
 
   FutureOr<void> getDateTime(GetDatetime event, emit) async {
     final data = await placeOrderRepo.getDateTime();
-    data.fold((falure) {
-      emit(state.copyWith(
-        hasError: true,
-        isLoading: false,
-        message: falure.message,
-      ));
-    }, (r) {
-      emit(state.copyWith(
-        hasError: false,
-        isLoading: false,
-        dateTomeResponceModel: r,
-        time: r.timeSlot,
-        dates: r.dates,
-      ));
-    });
+    data.fold(
+      (failure) {
+        emit(state.copyWith(
+          hasError: true,
+          isLoading: false,
+          message: failure.message,
+        ));
+      },
+      (response) {
+        // log('dates ${response.dates}');
+        // log('time ${response.timeSlot}');
+        emit(state.copyWith(
+          hasError: false,
+          isLoading: false,
+          dateTomeResponceModel: response,
+          time: response.timeSlot,
+          dates: response.dates,
+        ));
+      },
+    );
   }
 
   FutureOr<void> removeAppliedPromo(RemoveAppliedPromo event, emit) {
@@ -168,7 +173,7 @@ class PlaceOrderBloc extends Bloc<PlaceOrderEvent, PlaceOrderState> {
   }
 
   FutureOr<void> getOrders(GetOrders event, emit) async {
-    if (state.getAllOrderResponceModel != null && event.isLoad == false) return;
+    if (state.getAllOrderResponceModel != null && !event.isLoad) return;
     emit(state.copyWith(isLoading: true, hasError: false));
     final number = await SecureSotrage.getNumber();
     final login = await SecureSotrage.getlLogin();
@@ -233,8 +238,6 @@ class PlaceOrderBloc extends Bloc<PlaceOrderEvent, PlaceOrderState> {
     final number = await SecureSotrage.getNumber();
     if (state.orderPlacedRequestModel.user != null) {
       state.orderPlacedRequestModel.user!.phone = number;
-    } else {
-      log('orderPlacing user is null');
     }
     emit(state.copyWith(isLoading: true, hasError: false));
     var orderModel = state.orderPlacedRequestModel;
@@ -248,7 +251,6 @@ class PlaceOrderBloc extends Bloc<PlaceOrderEvent, PlaceOrderState> {
     final data = await placeOrderRepo.orderPlacing(
       orderPlacedRequestModel: orderModel,
     );
-
     data.fold((falure) {
       emit(state.copyWith(
         hasError: true,
@@ -263,7 +265,7 @@ class PlaceOrderBloc extends Bloc<PlaceOrderEvent, PlaceOrderState> {
           orderPlacedResponceModel: orderPlacingSuccess,
         ),
       );
-      add(const PlaceOrderEvent.getOrders());
+      add(const PlaceOrderEvent.getOrders(isLoad: true));
     });
   }
 

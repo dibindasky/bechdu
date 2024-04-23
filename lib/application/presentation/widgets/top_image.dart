@@ -22,8 +22,7 @@ class TopImage extends StatelessWidget {
             final product = questiontabBloc.product;
             final image = questiontabBloc.product?.productImage;
 
-            String url =
-                "${ApiEndPoints.baseUrlImagePath}${Uri.encodeComponent(image ?? dummyImage)}";
+            String url = imageUrlchange(image ?? dummyImage);
             return SizedBox(
               height: fromWhere == FromWhere.recalculateWithAmount
                   ? sWidth * .36
@@ -51,6 +50,9 @@ class TopImage extends StatelessWidget {
                         child: Image.network(
                           url,
                           fit: BoxFit.fill,
+                          errorBuilder: (context, error, stackTrace) {
+                            return const Icon(Icons.broken_image_outlined);
+                          },
                         ),
                       ),
                       fromWhere == FromWhere.pickupScreen ||

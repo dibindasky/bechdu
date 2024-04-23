@@ -1,4 +1,5 @@
 import 'package:beachdu/application/presentation/utils/colors.dart';
+import 'package:beachdu/domain/core/api_endpoints/api_endpoints.dart';
 import 'package:flutter/material.dart';
 
 const gilroyBold = 'Gilroy-Bold';
@@ -109,6 +110,10 @@ void sizeFinder(BuildContext context) {
   print(size.width);
   sHeight = size.height > 900 ? 900 : size.height;
   sWidth = size.width > 450 ? 450 : size.width;
+}
+
+String imageUrlchange(String path) {
+  return "${ApiEndPoints.baseUrl}${ApiEndPoints.imagePath}${Uri.encodeComponent(path)}";
 }
 
 Color getStatusColor(String status) {

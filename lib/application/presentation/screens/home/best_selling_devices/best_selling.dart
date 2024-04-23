@@ -55,11 +55,9 @@ class BestSellingDevices extends StatelessWidget {
                       itemBuilder: (context, index) {
                         final items = data.products![index];
                         String url =
-                            "${ApiEndPoints.baseUrlImagePath}${Uri.encodeComponent(items.productImage!)}";
+                            "${ApiEndPoints.baseUrl}${ApiEndPoints.imagePath}${Uri.encodeComponent(items.productImage!)}";
                         return GestureDetector(
                           onTap: () {
-                            log('Tapp data ${data.products![index]}');
-
                             context
                                 .read<QuestionTabBloc>()
                                 .add(QuestionTabEvent.getQuestions(

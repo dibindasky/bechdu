@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:beachdu/application/business_logic/auth/auth_bloc.dart';
 import 'package:beachdu/application/business_logic/brands_bloc/category_bloc_bloc.dart';
 import 'package:beachdu/application/business_logic/home_bloc/home_bloc.dart';
@@ -38,10 +37,6 @@ class OTPScreen extends StatelessWidget {
       child: PopScope(
         canPop: false,
         child: Scaffold(
-          appBar: AppBar(
-            automaticallyImplyLeading: false,
-            toolbarHeight: 100,
-          ),
           body: BlocListener<AuthBloc, AuthState>(
             listener: (context, state) {
               if (state.hasError) {
@@ -61,6 +56,7 @@ class OTPScreen extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: ListView(
                 children: [
+                  SizedBox(height: sHeight * .12),
                   const LogoToCountDownSection(),
                   kHeight50,
                   PinEnterField(),

@@ -23,9 +23,9 @@ class GlobalProductSearchBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String url = "${ApiEndPoints.baseUrlImagePath}${Uri.encodeComponent(
-      products[index].productImage!,
-    )}";
+    String url =
+        "${ApiEndPoints.baseUrl}${ApiEndPoints.imagePath}${Uri.encodeComponent(products[index].productImage!)}";
+
     return BlocBuilder<HomeBloc, HomeState>(
       builder: (context, state) {
         return GestureDetector(
@@ -78,9 +78,7 @@ class GlobalProductSearchBuilder extends StatelessWidget {
                         url,
                         fit: BoxFit.cover,
                         errorBuilder: (context, error, stackTrace) {
-                          return const Icon(
-                            Icons.error,
-                          );
+                          return const Icon(Icons.broken_image_outlined);
                         },
                       ),
                     ),
