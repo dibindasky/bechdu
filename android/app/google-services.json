@@ -26,9 +26,9 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:313232559854:android:65af73bb3a94d3e586adff",
+        "mobilesdk_app_id": "1:313232559854:android:5d3c51c6f64cab0b86adff",
         "android_client_info": {
-          "package_name": "com.example.beachdu"
+          "package_name": "com.zikrabyte.bechdu"
         }
       },
       "oauth_client": [],
