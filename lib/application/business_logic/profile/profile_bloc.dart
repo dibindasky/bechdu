@@ -146,27 +146,37 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     emit(state.copyWith(isLoading: true, hasError: false));
     final number = await SecureSotrage.getNumber();
     event.addressCreationRequestModel.phone = number;
-    final data = await profileRepo.addAddress(
-      addressCreationRequestModel: event.addressCreationRequestModel,
-    );
-    data.fold((failure) {
-      emit(state.copyWith(
-        isLoading: false,
-        hasError: true,
-      ));
-    }, (succsess) {
-      addressList = List.from(state.address);
-      if (succsess.user!.address != null) {
-        addressList = succsess.user!.address!;
-      }
+    final login = await SecureSotrage.getlLogin();
+    if (login) {
+      final data = await profileRepo.addAddress(
+        addressCreationRequestModel: event.addressCreationRequestModel,
+      );
+      data.fold((failure) {
+        emit(state.copyWith(
+          isLoading: false,
+          hasError: true,
+        ));
+      }, (succsess) {
+        addressList = List.from(state.address);
+        if (succsess.user!.address != null) {
+          addressList = succsess.user!.address!;
+        }
+        emit(state.copyWith(
+          isLoading: false,
+          hasError: false,
+          message: succsess.message,
+          address: addressList,
+          addressCreationResponceModel: succsess,
+        ));
+      });
+    } else {
       emit(state.copyWith(
         isLoading: false,
         hasError: false,
-        message: succsess.message,
-        address: addressList,
-        addressCreationResponceModel: succsess,
+        address: [],
+        addressCreationResponceModel: null,
       ));
-    });
+    }
   }
 
   FutureOr<void> deleteAddress(DeleteAddress event, emit) async {

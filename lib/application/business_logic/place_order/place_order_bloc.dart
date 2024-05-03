@@ -194,6 +194,12 @@ class PlaceOrderBloc extends Bloc<PlaceOrderEvent, PlaceOrderState> {
           ),
         );
       });
+    } else {
+      emit(state.copyWith(
+        isLoading: false,
+        hasError: false,
+        getAllOrderResponceModel: null,
+      ));
     }
   }
 

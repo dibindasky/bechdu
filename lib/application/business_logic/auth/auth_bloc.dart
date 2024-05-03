@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 import 'package:beachdu/data/secure_storage/secure_fire_store.dart';
 import 'package:beachdu/domain/model/get_products_respoce_model/product.dart';
 import 'package:beachdu/domain/model/login/login_model/login_model.dart';
@@ -7,6 +8,7 @@ import 'package:beachdu/domain/model/login/otp_verify_request_model/otp_verify_r
 import 'package:beachdu/domain/model/login/otp_verify_responce_model/otp_verify_responce_model.dart';
 import 'package:beachdu/domain/model/token_model/token_model.dart';
 import 'package:beachdu/domain/repository/auth_repo.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -42,6 +44,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
   FutureOr<void> otpSend(OtpSend event, emit) async {
     emit(state.copyWith(hasError: false, isLoading: true, load: true));
+
     final data = await authRepo.otpSend(loginModel: event.loginModel);
     data.fold(
         (failure) => emit(
@@ -66,6 +69,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
   FutureOr<void> otpVerifying(OtpVeriying event, emit) async {
     emit(state.copyWith(hasError: false, isLoading: true, load: false));
+    event.otpVerifyRequestModel.deviceToken =
+        await FirebaseMessaging.instance.getToken();
     final data = await authRepo.otpVerifying(
       otpVerifyRequestModel: event.otpVerifyRequestModel,
     );
@@ -94,15 +99,18 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           tokenModel: TokenModel(
         accessToken: successNumberVerifying.token,
       ));
+
       await SecureSotrage.setLogin();
     });
   }
 
   FutureOr<void> logOut(LogOut event, emit) async {
+    emit(state.copyWith(logOrNot: false));
     phoneNumberController.clear();
     otpController.clear();
     await SecureSotrage.clearLogin();
     await SecureSotrage.setOnboardBool();
     emit(AuthState.initail());
+    log('${state.logOrNot}', name: 'logOrNot');
   }
 }

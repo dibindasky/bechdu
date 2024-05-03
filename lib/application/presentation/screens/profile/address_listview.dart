@@ -28,21 +28,24 @@ class _AddressListViewState extends State<AddressListView> {
         if (state.isLoading) {
           return LoadingAnimation(width: 30);
         }
-        if (state.hasError) {
-          return Center(
-            child: IconButton(
-              onPressed: () {
-                log('Address refresh icon');
-                context
-                    .read<ProfileBloc>()
-                    .add(const ProfileEvent.getUserInfo(isLoad: true));
-              },
-              icon: const Icon(
-                Icons.refresh,
-              ),
-            ),
-          );
+        if (state.address.isEmpty) {
+          return kEmpty;
         }
+        // if (state.addressCreationResponceModel==null&&state.addressCreationResponceModel!.user==null) {
+        //   return Center(
+        //     child: IconButton(
+        //       onPressed: () {
+
+        //         context
+        //             .read<ProfileBloc>()
+        //             .add(const ProfileEvent.getUserInfo(isLoad: true));
+        //       },
+        //       icon: const Icon(
+        //         Icons.refresh,
+        //       ),
+        //     ),
+        //   );
+        // }
         return ListView.separated(
           separatorBuilder: (context, index) {
             return kHeight20;

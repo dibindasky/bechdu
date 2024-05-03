@@ -69,3 +69,45 @@ class Loadmore extends StatelessWidget {
     );
   }
 }
+
+class ShimmerLoader extends StatelessWidget {
+  const ShimmerLoader({
+    Key? key,
+    required this.itemCount,
+    required this.height,
+    required this.width,
+    this.seprator = const SizedBox(),
+    this.scrollDirection = Axis.vertical,
+  }) : super(key: key);
+
+  final int itemCount;
+  final double height;
+  final double width;
+  final Axis scrollDirection;
+  final Widget seprator;
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.separated(
+      separatorBuilder: (context, index) => seprator,
+      physics: const BouncingScrollPhysics(),
+      shrinkWrap: true,
+      itemCount: itemCount,
+      scrollDirection: scrollDirection,
+      itemBuilder: (context, index) {
+        return Shimmer.fromColors(
+          baseColor: const Color.fromARGB(255, 134, 132, 132),
+          highlightColor: const Color.fromARGB(255, 146, 142, 142),
+          child: Container(
+            height: height,
+            width: width,
+            decoration: const BoxDecoration(
+              color: klightgrey,
+              borderRadius: BorderRadius.all(Radius.circular(10)),
+            ),
+          ),
+        );
+      },
+    );
+  }
+}

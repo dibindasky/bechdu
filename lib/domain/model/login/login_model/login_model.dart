@@ -5,10 +5,6 @@ part 'login_model.g.dart';
 @JsonSerializable()
 class LoginModel {
   String? mobileNumber;
-  String? diviceId;
-  String? deviceToken;
-  String? deviceType;
-  String? deviceId;
 
   LoginModel({this.mobileNumber});
 

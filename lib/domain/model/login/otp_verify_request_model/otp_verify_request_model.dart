@@ -6,6 +6,7 @@ part 'otp_verify_request_model.g.dart';
 class OtpVerifyRequestModel {
   String? otp;
   String? phone;
+  String? deviceToken;
 
   OtpVerifyRequestModel({this.otp, this.phone});
 

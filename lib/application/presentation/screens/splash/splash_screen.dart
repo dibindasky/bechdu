@@ -3,11 +3,29 @@ import 'package:beachdu/application/business_logic/auth/auth_bloc.dart';
 import 'package:beachdu/application/presentation/routes/routes.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/application/presentation/utils/enums/type_display.dart';
+import 'package:beachdu/data/firebase_configuration/firebase_notification.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class ScreenSplash extends StatelessWidget {
+class ScreenSplash extends StatefulWidget {
   const ScreenSplash({super.key});
+
+  @override
+  State<ScreenSplash> createState() => _ScreenSplashState();
+}
+
+class _ScreenSplashState extends State<ScreenSplash> {
+  NotificationServices notificationServices = NotificationServices();
+
+  @override
+  void initState() {
+    super.initState();
+    notificationServices.requestNotificationPermission();
+    notificationServices.forgroundMessage();
+    notificationServices.firebaseInit(context);
+    notificationServices.setupInteractMessage(context);
+    notificationServices.isTokenRefresh();
+  }
 
   @override
   Widget build(BuildContext context) {

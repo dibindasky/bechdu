@@ -65,6 +65,8 @@ class WhatToSellWidget extends StatelessWidget {
                   String base64String = data[index].categoryImage!;
                   base64String = base64String.replaceFirst(
                       RegExp(r'data:image/[^;]+;base64,'), '');
+                  final categeryType = data[index].categoryType;
+                  final result = lowercaseFirstLetter(categeryType ?? '');
                   return InkWell(
                     onTap: () {
                       context.read<CategoryBlocBloc>().modelFilter = null;
@@ -114,7 +116,7 @@ class WhatToSellWidget extends StatelessWidget {
                             kHeight5,
                             Expanded(
                               child: Text(
-                                data[index].categoryType!,
+                                result,
                                 style: textHeadMedium1.copyWith(
                                   fontSize: sWidth * .029,
                                 ),

@@ -23,7 +23,10 @@ class HotDealsSession extends StatelessWidget {
           builder: (context, state) {
             if (state.homeBannerResponceModel != null &&
                 state.homeBannerResponceModel!.sectionTwo != null) {
-              return Text('Hot Deals', style: textHeadBoldBig);
+              return Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 12),
+                child: Text('Hot Deals', style: textHeadBoldBig),
+              );
             }
             return const SizedBox();
           },
@@ -121,39 +124,12 @@ class HotDealsSession extends StatelessWidget {
                                     ],
                                   ),
                                 ),
-                                //kHeight10,
-                                // Row(
-                                //   mainAxisAlignment: MainAxisAlignment.center,
-                                //   children: [
-                                //     const Icon(
-                                //       Icons.star_border,
-                                //       color: textFieldBorderColor,
-                                //       // size: 17,
-                                //     ),
-                                //     Text('(163 sold in last 7days)',
-                                //         style: textHeadSemiBold1.copyWith(
-                                //           color: textFieldBorderColor,
-                                //         )),
-                                //     kWidth5,
-                                //     const Icon(
-                                //       Icons.access_alarm_rounded,
-                                //       color: textFieldBorderColor,
-                                //       //size: 17,
-                                //     ),
-                                //     Flexible(
-                                //       child: Text(
-                                //         '01:04:00 S',
-                                //         style: textHeadSemiBold1.copyWith(
-                                //           color: textFieldBorderColor,
-                                //         ),
-                                //       ),
-                                //     ),
-                                //   ],
-                                // ),
-                                //kHeight10,
-                                Text(data[index].buttonText!,
-                                    style: textHeadBoldBig.copyWith(
-                                        color: priceColor)),
+                                Text(
+                                  data[index].buttonText!,
+                                  style: textHeadBoldBig.copyWith(
+                                    color: priceColor,
+                                  ),
+                                ),
                                 kHeight5
                               ],
                             ),
@@ -167,11 +143,9 @@ class HotDealsSession extends StatelessWidget {
             }
             if (state.homeBannerResponceModel == null ||
                 state.homeBannerResponceModel?.sectionTwo == null) {
-              //log('state.homeBannerResponceModel?.sectionOne == null ${state.homeBannerResponceModel?.sectionOne == null}');
               return const SizedBox();
             }
             if (state.homeBannerResponceModel!.sectionTwo!.isEmpty) {
-              // log('state.homeBannerResponceModel!.sectionOne!.isEmpty ${state.homeBannerResponceModel!.sectionOne!.isEmpty}');
               return const SizedBox();
             }
             return const SizedBox();

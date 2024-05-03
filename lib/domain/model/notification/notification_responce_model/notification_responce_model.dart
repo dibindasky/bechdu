@@ -7,10 +7,10 @@ part 'notification_responce_model.g.dart';
 @JsonSerializable()
 class NotificationResponceModel {
   @JsonKey(name: 'data')
-  List<Notifications>? notifications;
+  List<Notifications>? data;
   int? length;
 
-  NotificationResponceModel({this.notifications, this.length});
+  NotificationResponceModel({this.data, this.length});
 
   factory NotificationResponceModel.fromJson(Map<String, dynamic> json) {
     return _$NotificationResponceModelFromJson(json);

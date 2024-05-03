@@ -1,3 +1,6 @@
+import 'dart:developer';
+
+import 'package:beachdu/data/secure_storage/secure_fire_store.dart';
 import 'package:beachdu/data/service/api_service.dart';
 import 'package:beachdu/domain/core/api_endpoints/api_endpoints.dart';
 import 'package:beachdu/domain/core/failure/failure.dart';
@@ -53,6 +56,7 @@ class HomeServices implements HomeRepository {
     try {
       final responce = await _apiService
           .get(ApiEndPoints.getBestSellingProducts, addHeader: true);
+
       return Right(BestSellingProductsResponceModel.fromJson(responce.data));
     } on DioException catch (e) {
       return Left(Failure(message: e.message ?? errorMessage));
@@ -82,12 +86,19 @@ class HomeServices implements HomeRepository {
   Future<Either<Failure, NotificationResponceModel>> getAllnotification(
       {required int pageSize}) async {
     try {
-      final responce = await _apiService.get(ApiEndPoints.notifications
-          .replaceFirst('{pageSize}', pageSize.toString()));
+      final number = await SecureSotrage.getNumber();
+      final responce = await _apiService.get(
+        ApiEndPoints.notifications.replaceFirst('{number}', number),
+        addHeader: true,
+      );
+      // log('${responce.data}');
+      log('done noti');
       return Right(NotificationResponceModel.fromJson(responce.data));
     } on DioException catch (e) {
+      log('DioException noti');
       return Left(Failure(message: e.message ?? errorMessage));
     } catch (e) {
+      log('catch noti');
       return Left(Failure(message: errorMessage));
     }
   }
