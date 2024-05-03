@@ -1,8 +1,10 @@
 import 'package:beachdu/application/business_logic/question_tab/question_tab_bloc.dart';
+import 'package:beachdu/application/presentation/screens/questions/tabs/answer_index_changer.dart';
 import 'package:beachdu/application/presentation/screens/questions/tabs/image_seletion_tile.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/domain/model/get_question_model/question.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ImageGridMaker extends StatefulWidget {
@@ -15,34 +17,30 @@ class ImageGridMaker extends StatefulWidget {
 }
 
 class _ImageGridMakerState extends State<ImageGridMaker> {
-  late ScrollController _scrollController;
+  int dependencyValue = 0;
+  int previousDependencyValue = 0;
 
+  ScrollController scrollController = ScrollController();
   @override
   void initState() {
     super.initState();
-    _scrollController = ScrollController();
-  }
-
-  @override
-  void dispose() {
-    _scrollController.dispose();
-    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
       child: SingleChildScrollView(
+        controller: scrollController,
+        //physics: const NeverScrollableScrollPhysics(),
         child: Column(
           children: [
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: GridView.builder(
-                controller: _scrollController,
                 shrinkWrap: true,
                 itemCount: widget.list.length,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  childAspectRatio: widget.list.length <= 4 ? 1 / 1.2 : 1 / 1.5,
+                  childAspectRatio: widget.list.length <= 4 ? 1 / 1.7 : 1 / 3,
                   mainAxisSpacing: 20,
                   crossAxisSpacing: 20,
                   crossAxisCount: widget.list.length <= 4 ? 2 : 3,
@@ -70,8 +68,13 @@ class _ImageGridMakerState extends State<ImageGridMaker> {
               ),
             ),
             kHeight20,
-            // const AnswerIndexChanger(),
-            // kHeight20
+            AnswerIndexChanger(
+              scrollController: scrollController,
+              onTap: () {
+                scrollController.jumpTo(0);
+              },
+            ),
+            kHeight20
           ],
         ),
       ),

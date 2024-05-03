@@ -19,54 +19,46 @@ class ScreenLogin extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        FocusScopeNode focusScopeNode = FocusScope.of(context);
-        if (!focusScopeNode.hasPrimaryFocus) {
-          focusScopeNode.unfocus();
-        }
-      },
-      child: Scaffold(
-        body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                SizedBox(height: sHeight * .12),
-                const LogoToMobileNumber(),
-                InternationalPhoneNumberInput(
-                  onInputChanged: (PhoneNumber number) {},
-                  selectorConfig: const SelectorConfig(
-                    trailingSpace: false,
-                    showFlags: false,
-                    selectorType: PhoneInputSelectorType.BOTTOM_SHEET,
-                    useBottomSheetSafeArea: true,
-                  ),
-                  ignoreBlank: false,
-                  autoValidateMode: AutovalidateMode.disabled,
-                  selectorTextStyle: const TextStyle(color: kBlack),
-                  initialValue: phoneNumber,
-                  textFieldController:
-                      context.read<AuthBloc>().phoneNumberController,
-                  formatInput: true,
-                  keyboardType: const TextInputType.numberWithOptions(
-                    signed: true,
-                    decimal: true,
-                  ),
-                  inputBorder: OutlineInputBorder(
-                    borderRadius: kRadius10,
-                    borderSide: const BorderSide(
-                      color: klightgrey,
-                      width: 1.0,
-                    ),
-                  ),
-                  onSaved: (PhoneNumber number) {
-                    log('On Saved: $number');
-                  },
+    return Scaffold(
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(height: sHeight * .12),
+              const LogoToMobileNumber(),
+              InternationalPhoneNumberInput(
+                onInputChanged: (PhoneNumber number) {},
+                selectorConfig: const SelectorConfig(
+                  trailingSpace: false,
+                  showFlags: false,
+                  selectorType: PhoneInputSelectorType.BOTTOM_SHEET,
+                  useBottomSheetSafeArea: true,
                 ),
-                BottomSections(loginWay: loginWay)
-              ],
-            ),
+                ignoreBlank: false,
+                autoValidateMode: AutovalidateMode.disabled,
+                selectorTextStyle: const TextStyle(color: kBlack),
+                initialValue: phoneNumber,
+                textFieldController:
+                    context.read<AuthBloc>().phoneNumberController,
+                formatInput: true,
+                keyboardType: const TextInputType.numberWithOptions(
+                  signed: true,
+                  decimal: true,
+                ),
+                inputBorder: OutlineInputBorder(
+                  borderRadius: kRadius10,
+                  borderSide: const BorderSide(
+                    color: klightgrey,
+                    width: 1.0,
+                  ),
+                ),
+                onSaved: (PhoneNumber number) {
+                  log('On Saved: $number');
+                },
+              ),
+              BottomSections(loginWay: loginWay)
+            ],
           ),
         ),
       ),

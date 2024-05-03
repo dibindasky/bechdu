@@ -14,6 +14,8 @@ class ApiEndPoints {
   static const String getAllCategory = 'api/category/get-all-categories';
   static const String getsingleCategoryBrands = 'api/brand/brands-category/';
   static const String getProducts = 'product/get-products/';
+  static const String notifications =
+      'user/notifications/8105823389?page={pageNumber}&pageSize={pageSize}/';
 
   static const String getSeries = 'api/brand/series/';
   static const String getModels = 'api/brand/models/';

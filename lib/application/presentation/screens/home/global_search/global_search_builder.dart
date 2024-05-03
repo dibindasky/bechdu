@@ -30,6 +30,9 @@ class GlobalProductSearchBuilder extends StatelessWidget {
       builder: (context, state) {
         return GestureDetector(
           onTap: () {
+            context
+                .read<QuestionTabBloc>()
+                .add(const QuestionTabEvent.resetTabSelection());
             context.read<QuestionTabBloc>().add(QuestionTabEvent.getQuestions(
                   categoryType:
                       state.searchResponceModel!.product![index].categoryType!,

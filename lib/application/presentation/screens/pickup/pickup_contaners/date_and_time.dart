@@ -16,7 +16,6 @@ import 'package:beachdu/domain/model/order_model/order_placed_request_model/prod
 import 'package:beachdu/domain/model/order_model/order_placed_request_model/promo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:intl/intl.dart';
 
 class DateOrTime extends StatefulWidget {
   const DateOrTime({super.key});
@@ -28,43 +27,9 @@ class DateOrTime extends StatefulWidget {
 class _DateOrTimeState extends State<DateOrTime> {
   String? selectedDate;
   String? selectedTime;
-  String currentDate = '';
+  String date = '';
 
-  setCurrentDate() {
-    DateTime now = DateTime.now();
-    setState(() {
-      currentDate = DateFormat('dd MMMM', 'en_IN').format(now);
-      log('$currentDate', name: 'currentDate');
-    });
-  }
-
-  List<String> filteredSlots = [];
-
-  void filterTimeSlots(List<String> timeSlot, String? currentDate) {
-    log('inside func');
-    if (currentDate == null) return;
-
-    DateTime now = DateTime.now();
-    int currentHour = now.hour;
-    log('$currentHour', name: 'current hour');
-    for (String slot in timeSlot) {
-      String startTime = slot.split(" - ")[0];
-      int startHour = int.parse(startTime.split(":")[0]);
-      if (now.isAtSameMomentAs(DateTime.parse(currentDate))) {
-        if (startHour > currentHour || (startHour == currentHour)) {
-          filteredSlots.add(slot);
-        }
-      } else {
-        filteredSlots.add(slot);
-      }
-    }
-  }
-
-  @override
-  void initState() {
-    setCurrentDate();
-    super.initState();
-  }
+  List<String> timeSlots = [];
 
   @override
   Widget build(BuildContext context) {
@@ -122,12 +87,36 @@ class _DateOrTimeState extends State<DateOrTime> {
                                 setState(() {
                                   selectedDate = newValue;
                                 });
+                                date = newValue ?? 'Select Date';
+                                List<String> timess =
+                                    List.from(state.time ?? []);
+                                timeSlots = List.from(state.time ?? []);
+                                if (date != 'Select Date') {
+                                  String day = date.split(' ').first;
+                                  if (day.length == 1) {
+                                    day = '0$day';
+                                  }
+                                  final toDay = DateTime.now().day.toString();
+                                  if (day == toDay) {
+                                    DateTime currentTime = DateTime.now();
+                                    List<String> remainingTimeSlots =
+                                        timess.where((timeSlot) {
+                                      List<String> times =
+                                          timeSlot.split(" - ");
+                                      int startTime = int.parse(times.first
+                                          .substring(
+                                              0, times.first.length - 2));
+                                      if (times.first.substring(
+                                              times.first.length - 2) ==
+                                          'PM') {
+                                        startTime += 12;
+                                      }
 
-                                if (currentDate == selectedDate) {
-                                  filterTimeSlots(
-                                    state.time ?? [],
-                                    newValue,
-                                  );
+                                      final timenow = currentTime.hour;
+                                      return startTime > timenow;
+                                    }).toList();
+                                    timeSlots = remainingTimeSlots;
+                                  }
                                 }
                               },
                               items: state.dates
@@ -179,9 +168,7 @@ class _DateOrTimeState extends State<DateOrTime> {
                                   selectedTime = newValue;
                                 });
                               },
-                              items: state.time
-                                  ?.toSet()
-                                  .map<DropdownMenuItem<String>>(
+                              items: timeSlots.map<DropdownMenuItem<String>>(
                                 (String value) {
                                   return DropdownMenuItem<String>(
                                     value: value,

@@ -116,6 +116,11 @@ String imageUrlchange(String path) {
   return "${ApiEndPoints.baseUrl}${ApiEndPoints.imagePath}${Uri.encodeComponent(path)}";
 }
 
+String lowercaseFirstLetter(String input) {
+  if (input.isEmpty) return input;
+  return input.substring(0, 1).toLowerCase() + input.substring(1);
+}
+
 Color getStatusColor(String status) {
   switch (status) {
     case "new":

@@ -54,13 +54,16 @@ class _CaurosalViewHomePageOffersState
                           RegExp(r'data:image/[^;]+;base64,'), '');
                       final heading =
                           data[index].heading!.replaceAll('<br/>', '');
+                      final String mobilelInk = data[index].mobileLink!;
+                      String result = lowercaseFirstLetter(mobilelInk);
+
                       return InkWell(
                         onTap: () {
                           context
                               .read<CategoryBlocBloc>()
                               .add(GetSingleCategoryBrands(
                                 isLoad: true,
-                                categoryType: data[index].mobileLink,
+                                categoryType: result,
                               ));
 
                           context.read<CategoryBlocBloc>().categoryType =
@@ -102,7 +105,7 @@ class _CaurosalViewHomePageOffersState
                               ),
                               Positioned(
                                 bottom: 20,
-                                top: 18,
+                                top: 20,
                                 child: Container(
                                   width: sWidth * .54,
                                   margin: const EdgeInsets.symmetric(

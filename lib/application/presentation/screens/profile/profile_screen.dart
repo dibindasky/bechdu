@@ -152,7 +152,7 @@ class ScreenProfile extends StatelessWidget {
                                       .profileNameController
                                       .text
                                       .substring(0, 2)
-                                  : 'NN';
+                                  : '';
                               return AnimatedGrowShrinkContainer(
                                 child: CircleAvatar(
                                   backgroundColor: kGreenPrimary,
@@ -160,13 +160,19 @@ class ScreenProfile extends StatelessWidget {
                                   child: CircleAvatar(
                                     backgroundColor: kBluePrimary,
                                     radius: 50,
-                                    child: Text(
-                                      ' ${name.toUpperCase()} ',
-                                      style: textHeadBoldBig.copyWith(
-                                        fontSize: sWidth * .1,
-                                        color: kWhite,
-                                      ),
-                                    ),
+                                    child: name == ''
+                                        ? const Icon(
+                                            size: 50,
+                                            Icons.person,
+                                            color: kGreenPrimary,
+                                          )
+                                        : Text(
+                                            name.toUpperCase(),
+                                            style: textHeadBoldBig.copyWith(
+                                              fontSize: sWidth * .1,
+                                              color: kWhite,
+                                            ),
+                                          ),
                                   ),
                                 ),
                               );

@@ -174,7 +174,7 @@ class ScreenLocations extends StatelessWidget {
                                         Text(
                                           state.filteredLocations![index]
                                                       .length >
-                                                  7
+                                                  6
                                               ? '${state.filteredLocations![index].substring(0, 7)}...'
                                               : state.filteredLocations![index],
                                           style: textHeadSemiBold1,

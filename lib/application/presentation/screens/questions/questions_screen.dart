@@ -1,6 +1,5 @@
 import 'package:beachdu/application/business_logic/question_tab/question_tab_bloc.dart';
 import 'package:beachdu/application/presentation/screens/product_selection/product_screen.dart';
-import 'package:beachdu/application/presentation/screens/questions/tabs/answer_index_changer.dart';
 import 'package:beachdu/application/presentation/screens/questions/tabs/requote_tabs.dart';
 import 'package:beachdu/application/presentation/screens/questions/tabs/requote_answer_session.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
@@ -50,8 +49,8 @@ class QuestionTabs extends StatelessWidget {
                     kHeight20,
                     RequoteAnswerSessio(),
                     kHeight5,
-                    AnswerIndexChanger(),
-                    kHeight20,
+                    // AnswerIndexChanger(),
+                    // kHeight20,
                   ],
                 );
               },

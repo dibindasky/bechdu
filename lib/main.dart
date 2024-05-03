@@ -10,11 +10,11 @@ import 'package:beachdu/application/business_logic/question_tab/question_tab_blo
 import 'package:beachdu/application/presentation/routes/route_generator.dart';
 import 'package:beachdu/application/presentation/routes/routes.dart';
 import 'package:beachdu/domain/core/di/dipendency_injection.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:intl/date_symbol_data_local.dart';
 
 final navigatorKey = GlobalKey<NavigatorState>();
 Future<void> main() async {
@@ -22,10 +22,9 @@ Future<void> main() async {
   SystemChrome.setPreferredOrientations(
     [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown],
   );
+
   await configureInjection();
-  initializeDateFormatting('en_IN', null).then((_) {
-    runApp(Beachdu(connectivity: Connectivity()));
-  });
+  runApp(Beachdu(connectivity: Connectivity()));
 }
 
 class Beachdu extends StatelessWidget {

@@ -3,6 +3,7 @@ import 'package:beachdu/domain/model/best_selling_products_responce_model/best_s
 import 'package:beachdu/domain/model/category_model/get_category_responce_model/get_category_responce_model.dart';
 import 'package:beachdu/domain/model/get_products_respoce_model/product.dart';
 import 'package:beachdu/domain/model/home_banners_model/home_banner_responce_model/home_banner_responce_model.dart';
+import 'package:beachdu/domain/model/notification/notification_responce_model/notifications.dart';
 import 'package:beachdu/domain/model/search_model/global_product_search_responce_model/global_product_search_responce_model.dart';
 import 'package:beachdu/domain/model/search_model/search_param_model/search_param_model.dart';
 import 'package:beachdu/domain/model/search_model/search_responce_model/search_responce_model.dart';
@@ -27,7 +28,24 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     on<GetBestSellingProducts>(getBestSellingProducts);
     on<GlobalPrductSearch>(globalProductSearch);
     on<NextPage>(nextPage);
+    on<Notification>(notification);
     on<Clear>(clear);
+  }
+
+  FutureOr<void> notification(Notification event, emit) async {
+    emit(state.copyWith(notificationLoad: true, hasError: false));
+    final data = await homeRepository.getAllnotification(pageSize: 15);
+    data.fold(
+      (l) => emit(state.copyWith(
+        notificationLoad: false,
+        hasError: true,
+      )),
+      (r) => state.copyWith(
+        notificationLoad: false,
+        hasError: false,
+        notifications: r.notifications!,
+      ),
+    );
   }
 
   FutureOr<void> clear(Clear event, emit) {

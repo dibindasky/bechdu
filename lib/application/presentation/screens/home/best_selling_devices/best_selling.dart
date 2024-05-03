@@ -1,10 +1,8 @@
-import 'dart:developer';
 import 'package:beachdu/application/business_logic/brands_bloc/category_bloc_bloc.dart';
 import 'package:beachdu/application/business_logic/home_bloc/home_bloc.dart';
 import 'package:beachdu/application/business_logic/navbar/navbar_cubit.dart';
 import 'package:beachdu/application/business_logic/place_order/place_order_bloc.dart';
 import 'package:beachdu/application/business_logic/question_tab/question_tab_bloc.dart';
-import 'package:beachdu/application/presentation/screens/home/best_selling_devices/circle_count_images/circle_count_images.dart';
 import 'package:beachdu/application/presentation/screens/product_selection/product_screen.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
@@ -24,9 +22,17 @@ class BestSellingDevices extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            '   Best Selling',
-            style: textHeadBoldBig,
+          BlocBuilder<HomeBloc, HomeState>(
+            builder: (context, state) {
+              if (state.bestSellingProductsResponceModel == null ||
+                  state.bestSellingProductsResponceModel!.products == null) {
+                return kEmpty;
+              }
+              return Text(
+                '   Best Selling',
+                style: textHeadBoldBig,
+              );
+            },
           ),
           kHeight10,
           AspectRatio(
@@ -40,8 +46,8 @@ class BestSellingDevices extends StatelessWidget {
                     height: 0,
                   );
                 } else if (state.bestSellingProductsResponceModel == null ||
-                    state.bestSellingProductsResponceModel!.products == null) {
-                  return const Icon(Icons.no_accounts);
+                    state.bestSellingProductsResponceModel?.products == null) {
+                  return kEmpty;
                 } else if (state
                     .bestSellingProductsResponceModel!.products!.isEmpty) {
                   return Lottie.asset(emptyLottie);
@@ -58,6 +64,8 @@ class BestSellingDevices extends StatelessWidget {
                             "${ApiEndPoints.baseUrl}${ApiEndPoints.imagePath}${Uri.encodeComponent(items.productImage!)}";
                         return GestureDetector(
                           onTap: () {
+                            context.read<QuestionTabBloc>().add(
+                                const QuestionTabEvent.resetTabSelection());
                             context
                                 .read<QuestionTabBloc>()
                                 .add(QuestionTabEvent.getQuestions(

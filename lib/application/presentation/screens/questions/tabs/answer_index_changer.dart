@@ -13,7 +13,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AnswerIndexChanger extends StatelessWidget {
-  const AnswerIndexChanger({super.key});
+  const AnswerIndexChanger({
+    super.key,
+    this.onTap,
+    this.scrollController,
+  });
+
+  final Function? onTap;
+  final ScrollController? scrollController;
 
   @override
   Widget build(BuildContext context) {
@@ -31,6 +38,11 @@ class AnswerIndexChanger extends StatelessWidget {
               builder: (context, state) {
                 return StatusColoredBox(
                   onTap: () {
+                    onTap;
+                    // if (scrollController != null) {
+                    //   scrollController!.jumpTo(0);
+                    // }
+                    // resetScrollPosition();
                     context.read<QuestionTabBloc>().add(
                         QuestionTabEvent.changeIndex(
                             index: state.selectedTabIndex + 1));

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "313232559854",
+    "project_id": "bechdu-9649a",
+    "storage_bucket": "bechdu-9649a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:313232559854:android:eeb94378408ef25f86adff",
+        "android_client_info": {
+          "package_name": "com.Zikrabyte.bechdu_partner"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDwUL7XyYQpavUu5LO1VVL9c3APVlf68SA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:313232559854:android:65af73bb3a94d3e586adff",
+        "android_client_info": {
+          "package_name": "com.example.beachdu"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDwUL7XyYQpavUu5LO1VVL9c3APVlf68SA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -24,9 +24,9 @@ class WhatToSellWidget extends StatelessWidget {
             builder: (context, state) {
               if (state.getCategoryResponceModel == null &&
                   state.getCategoryResponceModel?.category == null) {
-                return const SizedBox();
+                return kEmpty;
               } else if (state.getCategoryResponceModel!.category!.isEmpty) {
-                return const SizedBox();
+                return kEmpty;
               }
               return Text(
                 'What Do You Wanna Do Today ?',
@@ -48,9 +48,9 @@ class WhatToSellWidget extends StatelessWidget {
                 );
               } else if (state.getCategoryResponceModel == null &&
                   state.getCategoryResponceModel?.category == null) {
-                return const SizedBox();
+                return kEmpty;
               } else if (state.getCategoryResponceModel!.category!.isEmpty) {
-                return const SizedBox();
+                return kEmpty;
               }
               final data = state.getCategoryResponceModel!.category!;
               return GridView.builder(

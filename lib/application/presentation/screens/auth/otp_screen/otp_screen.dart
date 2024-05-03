@@ -52,9 +52,8 @@ class OTPScreen extends StatelessWidget {
                 loginOrSignup(context);
               }
             },
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: ListView(
+            child: SingleChildScrollView(
+              child: Column(
                 children: [
                   SizedBox(height: sHeight * .12),
                   const LogoToCountDownSection(),

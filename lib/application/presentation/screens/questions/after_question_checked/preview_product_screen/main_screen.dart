@@ -100,7 +100,7 @@ class ScreenProductPreview extends StatelessWidget {
                             showSnack(
                               context: context,
                               message:
-                                  "You can't place order becouse the product price is Zero",
+                                  "You can't place the order becouse the product price is very less",
                               color: kRed,
                             );
                           } else {

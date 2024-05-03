@@ -7,6 +7,7 @@ import 'package:beachdu/application/presentation/screens/home/best_selling_devic
 import 'package:beachdu/application/presentation/screens/home/courosal_top/caurosal_top.dart';
 import 'package:beachdu/application/presentation/screens/home/global_search/global_search.dart';
 import 'package:beachdu/application/presentation/screens/home/location/city_choose.dart';
+import 'package:beachdu/application/presentation/screens/home/notofication/notification.dart';
 import 'package:beachdu/application/presentation/screens/home/search_feild/custom_search_field.dart';
 import 'package:beachdu/application/presentation/screens/home/widgets/join_our_team.dart';
 import 'package:beachdu/application/presentation/screens/home/hot_deals/hot_deals.dart';
@@ -123,7 +124,6 @@ class _ScreenHomeState extends State<ScreenHome> {
                 await Future.delayed(const Duration(seconds: 1));
               },
               child: SingleChildScrollView(
-                
                 controller: controller,
                 child: Stack(
                   children: [
@@ -163,8 +163,10 @@ class _ScreenHomeState extends State<ScreenHome> {
                                         HotDealsSession(),
                                       ],
                                     );
-                                  } else {
+                                  } else if (value == 1) {
                                     return const GlobalProductSearch();
+                                  } else {
+                                    return const NotiiFicationScreen();
                                   }
                                 },
                               ),

@@ -16,6 +16,7 @@ class Routes {
   static const String produtPreview = '/product_preview_screen';
   static const String pickUpDetailScreen = '/pickup_detail_screen';
   static const String addressAdd = '/address_add';
+  static const String notification = '/notification';
   static const String location = '/location_selection';
   static const String pincode = '/pincode_selection';
   static const String pdfPage = 'pdf_view';

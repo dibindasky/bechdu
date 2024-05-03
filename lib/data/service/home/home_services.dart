@@ -4,6 +4,7 @@ import 'package:beachdu/domain/core/failure/failure.dart';
 import 'package:beachdu/domain/model/best_selling_products_responce_model/best_selling_products_responce_model.dart';
 import 'package:beachdu/domain/model/category_model/get_category_responce_model/get_category_responce_model.dart';
 import 'package:beachdu/domain/model/home_banners_model/home_banner_responce_model/home_banner_responce_model.dart';
+import 'package:beachdu/domain/model/notification/notification_responce_model/notification_responce_model.dart';
 import 'package:beachdu/domain/model/search_model/search_param_model/search_param_model.dart';
 import 'package:beachdu/domain/model/search_model/search_responce_model/search_responce_model.dart';
 import 'package:beachdu/domain/repository/home_repo.dart';
@@ -70,6 +71,20 @@ class HomeServices implements HomeRepository {
         queryParameters: searchParamModel.toJson(),
       );
       return Right(SearchResponceModel.fromJson(responce.data));
+    } on DioException catch (e) {
+      return Left(Failure(message: e.message ?? errorMessage));
+    } catch (e) {
+      return Left(Failure(message: errorMessage));
+    }
+  }
+
+  @override
+  Future<Either<Failure, NotificationResponceModel>> getAllnotification(
+      {required int pageSize}) async {
+    try {
+      final responce = await _apiService.get(ApiEndPoints.notifications
+          .replaceFirst('{pageSize}', pageSize.toString()));
+      return Right(NotificationResponceModel.fromJson(responce.data));
     } on DioException catch (e) {
       return Left(Failure(message: e.message ?? errorMessage));
     } catch (e) {

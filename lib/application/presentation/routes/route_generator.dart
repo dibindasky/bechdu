@@ -1,5 +1,6 @@
 import 'package:beachdu/application/presentation/screens/home/location/city_choose.dart';
 import 'package:beachdu/application/presentation/screens/home/location/pincode_selection.dart';
+import 'package:beachdu/application/presentation/screens/home/notofication/notification.dart';
 import 'package:beachdu/application/presentation/screens/onboarding_screens/onboarding_screens.dart';
 import 'package:beachdu/application/presentation/routes/animated_routes.dart';
 import 'package:beachdu/application/presentation/routes/routes.dart';
@@ -73,6 +74,8 @@ class RouteGenerator {
         return fadePageRoute(screen: const SuuccessOrderPlaced());
       case Routes.addressAdd:
         return fadePageRoute(screen: const AddAddressScreen());
+      case Routes.notification:
+        return fadePageRoute(screen: const NotiiFicationScreen());
       default:
         return _errorScreen();
     }

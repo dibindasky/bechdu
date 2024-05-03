@@ -21,7 +21,7 @@ class CustomSearchFieldHome extends StatelessWidget {
           Container(
             decoration:
                 BoxDecoration(borderRadius: kRadius10, color: klightwhite),
-            width: sWidth * 0.78,
+            width: sWidth * 0.68,
             child: TextField(
               controller:
                   context.read<HomeBloc>().globalProductSearchController,
@@ -86,6 +86,21 @@ class CustomSearchFieldHome extends StatelessWidget {
               ),
               onPressed: () {
                 Navigator.of(context).pushNamed(Routes.location);
+              },
+            ),
+          ),
+          Container(
+            decoration: BoxDecoration(
+              color: klightwhite,
+              borderRadius: kRadius10,
+            ),
+            child: IconButton(
+              icon: const Icon(
+                Icons.notifications_active_outlined,
+                color: kBlack,
+              ),
+              onPressed: () {
+                Navigator.of(context).pushNamed(Routes.notification);
               },
             ),
           ),
