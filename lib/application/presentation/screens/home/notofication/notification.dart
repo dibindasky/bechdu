@@ -18,8 +18,11 @@ class NotiiFicationScreen extends StatelessWidget {
             onPressed: () {
               Navigator.pop(context);
             },
-            icon: const Icon(Icons.arrow_back_ios)),
-        title: const Text('Notification'),
+            icon: const Icon(
+              Icons.arrow_back_ios,
+              size: 17,
+            )),
+        title: const Text('Notifications'),
       ),
       body: SingleChildScrollView(
         child: Column(

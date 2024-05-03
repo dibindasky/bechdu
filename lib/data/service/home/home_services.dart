@@ -51,8 +51,8 @@ class HomeServices implements HomeRepository {
   Future<Either<Failure, BestSellingProductsResponceModel>>
       getBestSellingProducts() async {
     try {
-      final responce =
-          await _apiService.get(ApiEndPoints.getBestSellingProducts);
+      final responce = await _apiService
+          .get(ApiEndPoints.getBestSellingProducts, addHeader: true);
       return Right(BestSellingProductsResponceModel.fromJson(responce.data));
     } on DioException catch (e) {
       return Left(Failure(message: e.message ?? errorMessage));

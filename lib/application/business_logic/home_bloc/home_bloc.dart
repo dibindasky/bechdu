@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:beachdu/data/secure_storage/secure_fire_store.dart';
 import 'package:beachdu/domain/model/best_selling_products_responce_model/best_selling_products_responce_model.dart';
 import 'package:beachdu/domain/model/category_model/get_category_responce_model/get_category_responce_model.dart';
 import 'package:beachdu/domain/model/get_products_respoce_model/product.dart';
@@ -34,18 +35,21 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
   FutureOr<void> notification(Notification event, emit) async {
     emit(state.copyWith(notificationLoad: true, hasError: false));
-    final data = await homeRepository.getAllnotification(pageSize: 15);
-    data.fold(
-      (l) => emit(state.copyWith(
-        notificationLoad: false,
-        hasError: true,
-      )),
-      (r) => state.copyWith(
-        notificationLoad: false,
-        hasError: false,
-        notifications: r.notifications!,
-      ),
-    );
+    final login = await SecureSotrage.getlLogin();
+    if (login) {
+      final data = await homeRepository.getAllnotification(pageSize: 15);
+      data.fold(
+        (l) => emit(state.copyWith(
+          notificationLoad: false,
+          hasError: true,
+        )),
+        (r) => state.copyWith(
+          notificationLoad: false,
+          hasError: false,
+          notifications: r.notifications!,
+        ),
+      );
+    }
   }
 
   FutureOr<void> clear(Clear event, emit) {
