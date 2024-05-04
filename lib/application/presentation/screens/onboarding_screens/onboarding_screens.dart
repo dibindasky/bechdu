@@ -108,38 +108,9 @@ class _BechDuUserOnBoardingScreensState
                               ),
                             )
                           : selectedIndex == 1
-                              ? Stack(
-                                  children: [
-                                    const Center(
-                                      child: CircleAvatar(
-                                        backgroundColor: kBluePrimary,
-                                        radius: 77,
-                                        child: CircleAvatar(
-                                          backgroundColor: kWhite,
-                                          radius: 75,
-                                          child: CircleAvatar(
-                                            backgroundColor: kBluePrimary,
-                                            radius: 67,
-                                            child: CircleAvatar(
-                                              backgroundColor: kWhite,
-                                              radius: 65,
-                                              child: CircleAvatar(
-                                                backgroundColor: kBluePrimary,
-                                                radius: 60,
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                    Center(
-                                      child: SizedBox(
-                                        height: sWidth * 0.45,
-                                        child:
-                                            Image.asset(onBoardingsecondScreen),
-                                      ),
-                                    ),
-                                  ],
+                              ? SizedBox(
+                                  height: sWidth * 0.45,
+                                  child: Image.asset(onBoardingsecondScreen),
                                 )
                               : selectedIndex == 2
                                   ? Stack(
@@ -151,13 +122,13 @@ class _BechDuUserOnBoardingScreensState
                                           ),
                                         ),
                                         Positioned(
-                                          top: 0, // Adjust as needed
-                                          bottom: 0, // Adjust as needed
-                                          left: 0, // Adjust as needed
-                                          right: 0, // Adjust as needed
+                                          top: -30,
+                                          bottom: 0,
+                                          left: -10,
+                                          right: 0,
                                           child: Center(
                                             child: SizedBox(
-                                              height: sWidth * 0.8,
+                                              height: sWidth * 0.9,
                                               child: Image.asset(
                                                   onBoardingThirdScreen),
                                             ),

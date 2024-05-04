@@ -40,7 +40,7 @@ class _ImageGridMakerState extends State<ImageGridMaker> {
                 shrinkWrap: true,
                 itemCount: widget.list.length,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  childAspectRatio: widget.list.length <= 4 ? 1 / 1.7 : 1 / 3,
+                  childAspectRatio: widget.list.length <= 4 ? 1 / 1.1 : 1 / 1.7,
                   mainAxisSpacing: 20,
                   crossAxisSpacing: 20,
                   crossAxisCount: widget.list.length <= 4 ? 2 : 3,

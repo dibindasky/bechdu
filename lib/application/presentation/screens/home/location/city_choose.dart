@@ -113,7 +113,7 @@ class ScreenLocations extends StatelessWidget {
                             }
                             return GridView.builder(
                               itemCount: state.filteredLocations!.length,
-                              physics: const NeverScrollableScrollPhysics(),
+                              //  physics: const NeverScrollableScrollPhysics(),
                               shrinkWrap: true,
                               gridDelegate:
                                   const SliverGridDelegateWithFixedCrossAxisCount(
@@ -189,7 +189,7 @@ class ScreenLocations extends StatelessWidget {
                         ),
                       ),
                       kHeight10,
-                      const Spacer(),
+                      //const Spacer(),
                       Center(
                         child: CustomButton(
                           onPressed: () {

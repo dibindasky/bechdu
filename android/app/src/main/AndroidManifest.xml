@@ -9,9 +9,9 @@
     <uses-permission android:name="android.hardware.location.gps" />
 
     <application
-        android:label="bechdu"
+        android:label="Bechdu"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/launcher_icon"
         android:hardwareAccelerated="true"
         android:theme="@style/LaunchTheme"
         android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"

@@ -1,4 +1,5 @@
 import 'package:beachdu/application/business_logic/home_bloc/home_bloc.dart';
+import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/application/presentation/utils/skeltons/skelton.dart';
 import 'package:flutter/material.dart';
@@ -26,7 +27,7 @@ class NotiiFicationScreen extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 0),
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 0),
           child: Column(
             children: [
               BlocBuilder<HomeBloc, HomeState>(
@@ -56,7 +57,7 @@ class NotiiFicationScreen extends StatelessWidget {
                     );
                   }
                   return ListView.separated(
-                    padding: EdgeInsets.all(0),
+                    padding: const EdgeInsets.all(0),
                     physics: const BouncingScrollPhysics(),
                     shrinkWrap: true,
                     itemCount: state.notifications!.length,
@@ -65,12 +66,9 @@ class NotiiFicationScreen extends StatelessWidget {
                     },
                     itemBuilder: (context, index) {
                       final data = state.notifications![index];
-
                       String dateTimeString = '2024-05-03 15:32:39.670Z';
-
                       // Parse the string into a DateTime object
-                      DateTime dateTime = DateTime.now();
-
+                      DateTime dateTime = DateTime.parse(dateTimeString);
                       // Extract hour and minute separately
                       int year = dateTime.year;
                       int hour = dateTime.hour;
@@ -81,11 +79,25 @@ class NotiiFicationScreen extends StatelessWidget {
                       if (hour == 0) {
                         hour = 12;
                       }
-                      return SizedBox(
+                      return Container(
+                        decoration: BoxDecoration(
+                          color: kWhite,
+                          borderRadius: kRadius10,
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.1),
+                              spreadRadius: 5,
+                              blurRadius: 7,
+                              offset: const Offset(0, 3),
+                            ),
+                          ],
+                        ),
+                        margin: const EdgeInsets.all(10),
+                        width: double.infinity,
                         height: 110,
                         child: Padding(
                           padding: const EdgeInsets.symmetric(
-                              horizontal: 0, vertical: 0),
+                              horizontal: 10, vertical: 0),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.center,

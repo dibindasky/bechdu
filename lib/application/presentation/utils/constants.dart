@@ -37,8 +37,9 @@ const orderSuccessNetwrokImage =
 const orderSuccessLottie = 'assets/images/orderSuccessBechdu.jpeg';
 const onBoardingpersonScreen =
     'assets/images/personAnimationPich-removebg-preview.png';
-const onBoardingsecondScreen = 'assets/images/onboard second_phone image.jpeg';
-const onBoardingThirdScreen = 'assets/images/onboarding icon third.png';
+const onBoardingsecondScreen = 'assets/images/bechdu onbaord second image.png';
+const onBoardingThirdScreen =
+    'assets/images/bechdu onboard third person with mobile.png';
 const locationbackgropundImage = 'assets/images/location_backgrounds.png';
 const emptyLottie = 'assets/lottie/animation_lmyr4fc2.json';
 double sHeight = 900;
@@ -97,6 +98,7 @@ final textHeadSemiBold1 = TextStyle(
   fontWeight: FontWeight.w400,
   fontSize: sWidth < 400 ? sWidth * 0.040 : sWidth * 0.035,
 );
+
 final textHeadInter = TextStyle(
   color: kBlack,
   fontFamily: inter,
@@ -106,8 +108,6 @@ final textHeadInter = TextStyle(
 
 void sizeFinder(BuildContext context) {
   final size = MediaQuery.of(context).size;
-  print(size.height);
-  print(size.width);
   sHeight = size.height > 900 ? 900 : size.height;
   sWidth = size.width > 450 ? 450 : size.width;
 }
@@ -117,6 +117,11 @@ String imageUrlchange(String path) {
 }
 
 String lowercaseFirstLetter(String input) {
+  if (input.isEmpty) return input;
+  return input.substring(0, 1).toLowerCase() + input.substring(1);
+}
+
+String uppercaseFirstLetter(String input) {
   if (input.isEmpty) return input;
   return input.substring(0, 1).toUpperCase() + input.substring(1);
 }

@@ -39,7 +39,7 @@ class LocationService implements LocationRepo {
     try {
       final response = await _apiService
           .get(ApiEndPoints.getPinCodes.replaceFirst('{location}', cityName));
-      log('pincodePick retVal ${response.data}');
+      log('pincodePick done');
       final data = response.data[0]['pinCodes'];
       return Right(List<String>.from(data));
     } on DioException catch (e) {
