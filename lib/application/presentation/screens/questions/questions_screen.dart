@@ -40,7 +40,7 @@ class QuestionTabs extends StatelessWidget {
                   return LoadingAnimation(width: 50);
                 } else if (questionTabBloc.product == null) {
                   return const Center(
-                    child: CircularProgressIndicator(color: kGreenPrimary),
+                    child: Text('No products'),
                   );
                 }
                 return const Column(

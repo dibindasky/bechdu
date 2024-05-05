@@ -90,7 +90,7 @@ class RowIconsValueListanable extends StatelessWidget {
                     if (profile.selectedAddressIndex == -1) {
                       showSnack(
                         context: context,
-                        message: 'Please select one  address',
+                        message: 'Please select one address',
                         color: kRed,
                       );
                     } else {

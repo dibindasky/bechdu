@@ -7,10 +7,8 @@ import 'package:beachdu/application/presentation/screens/product_selection/produ
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/application/presentation/utils/skeltons/skelton.dart';
-import 'package:beachdu/domain/core/api_endpoints/api_endpoints.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:lottie/lottie.dart';
 
 class BestSellingDevices extends StatelessWidget {
   const BestSellingDevices({super.key});
@@ -50,7 +48,7 @@ class BestSellingDevices extends StatelessWidget {
                   return kEmpty;
                 } else if (state
                     .bestSellingProductsResponceModel!.products!.isEmpty) {
-                  return Lottie.asset(emptyLottie);
+                  return kEmpty;
                 }
                 final data = state.bestSellingProductsResponceModel;
                 return BlocBuilder<CategoryBlocBloc, CategoryBlocState>(
@@ -60,8 +58,7 @@ class BestSellingDevices extends StatelessWidget {
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (context, index) {
                         final items = data.products![index];
-                        String url =
-                            "${ApiEndPoints.baseUrl}${ApiEndPoints.imagePath}${Uri.encodeComponent(items.productImage!)}";
+                        String url = imageUrlchange(items.productImage!);
                         return GestureDetector(
                           onTap: () {
                             context.read<QuestionTabBloc>().add(

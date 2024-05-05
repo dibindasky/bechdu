@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:beachdu/application/business_logic/brands_bloc/category_bloc_bloc.dart';
 import 'package:beachdu/application/business_logic/place_order/place_order_bloc.dart';
 import 'package:beachdu/application/business_logic/question_tab/question_tab_bloc.dart';
@@ -87,7 +85,6 @@ class _DateOrTimeState extends State<DateOrTime> {
                               onChanged: (String? newValue) {
                                 setState(() {
                                   selectedDate = newValue;
-                                  selectedTime = null;
                                 });
                                 date = newValue ?? 'Select Date';
                                 List<String> timess =
@@ -101,8 +98,10 @@ class _DateOrTimeState extends State<DateOrTime> {
                                       DateTime.now().day.toString().length == 1
                                           ? "0${DateTime.now().day.toString()}"
                                           : DateTime.now().day.toString();
-
                                   if (day == toDay) {
+                                    setState(() {
+                                      selectedTime = null;
+                                    });
                                     DateTime currentTime = DateTime.now();
                                     List<String> remainingTimeSlots =
                                         timess.where((timeSlot) {

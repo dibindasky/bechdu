@@ -152,6 +152,7 @@ class CategoryBlocBloc extends Bloc<CategoryBlocEvent, CategoryBlocState> {
       for (Brands element in successSingleCagetgoryModel.brands!) {
         brandsList.add(element);
       }
+
       emit(
         state.copyWith(
           isLoading: false,

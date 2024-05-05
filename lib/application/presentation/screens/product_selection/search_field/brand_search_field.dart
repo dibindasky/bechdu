@@ -12,8 +12,8 @@ class BrandSearchField extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<HomeBloc, HomeState>(
       builder: (context, homeState) {
-        final brandName = homeState.getCategoryResponceModel?.category!;
-        final result = uppercaseFirstLetter(brandName!.first.categoryType!);
+        // final brandName = homeState.getCategoryResponceModel?.category!;
+
         return TextFormField(
           onChanged: (value) {
             context
@@ -44,11 +44,10 @@ class BrandSearchField extends StatelessWidget {
                   items: homeState.getCategoryResponceModel?.category!
                       .toSet()
                       .map((category) {
-                    final brandName = category.categoryType;
-                    final result = uppercaseFirstLetter(brandName!);
+                    final result = uppercaseFirstLetter(category.categoryType!);
                     return DropdownMenuItem<String>(
                       value: category.categoryType,
-                      child: Text(category.categoryType ?? 'mobile'),
+                      child: Text(result),
                     );
                   }).toList(),
                   hint: Text(

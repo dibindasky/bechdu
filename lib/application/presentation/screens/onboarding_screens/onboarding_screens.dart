@@ -118,19 +118,21 @@ class _BechDuUserOnBoardingScreensState
                                         const Center(
                                           child: CircleAvatar(
                                             backgroundColor: kBluePrimary,
-                                            radius: 70,
+                                            radius: 80,
                                           ),
                                         ),
                                         Positioned(
-                                          top: -30,
+                                          top: -100,
                                           bottom: 0,
                                           left: -10,
                                           right: 0,
                                           child: Center(
                                             child: SizedBox(
-                                              height: sWidth * 0.9,
+                                              height: sWidth * .8,
                                               child: Image.asset(
-                                                  onBoardingThirdScreen),
+                                                onBoardingThirdScreen,
+                                                fit: BoxFit.fitHeight,
+                                              ),
                                             ),
                                           ),
                                         ),

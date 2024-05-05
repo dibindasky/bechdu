@@ -172,8 +172,7 @@ class _CaurosalViewHomePageOffersState
                 ],
               );
             }
-            log('CaurosalViewHomePageOffers');
-            return const SizedBox();
+            return kEmpty;
           },
         ),
       ],

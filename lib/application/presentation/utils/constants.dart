@@ -126,6 +126,10 @@ String uppercaseFirstLetter(String input) {
   return input.substring(0, 1).toUpperCase() + input.substring(1);
 }
 
+List<String> capitalizeFirstLetterInList(List<String> list) {
+  return list.map((str) => uppercaseFirstLetter(str)).toList();
+}
+
 Color getStatusColor(String status) {
   switch (status) {
     case "new":
