@@ -47,7 +47,7 @@ class GlobalProductSearch extends StatelessWidget {
                     }
                     return GlobalProductSearchBuilder(
                       index: index,
-                      products: products,
+                      // products: products,
                     );
                   },
                 ),

@@ -64,7 +64,7 @@ class CashOrUPI extends StatelessWidget {
                     TTextFormField(
                       controller:
                           context.read<PlaceOrderBloc>().upiIdController,
-                      text: 'Enter UPI id',
+                      text: 'Enter UPI ID',
                     ),
                   ],
                 ],

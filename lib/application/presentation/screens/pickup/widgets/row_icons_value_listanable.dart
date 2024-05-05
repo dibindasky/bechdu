@@ -27,7 +27,7 @@ class RowIconsValueListanable extends StatelessWidget {
               context,
             ),
             circleAvatar(
-              'assets/images/address_icon.png',
+              'assets/images/address creation icon.png',
               PickupDetailContainers.address,
               context,
             ),

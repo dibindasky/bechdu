@@ -53,6 +53,7 @@ class _PersonalDetailsState extends State<PersonalDetails> {
               style: textHeadMedium1.copyWith(fontSize: sWidth * .033),
             ),
             TTextFormField(
+              textCapitalization: TextCapitalization.words,
               inputType: TextInputType.name,
               controller: context.read<PlaceOrderBloc>().nameController,
               text: 'Enter name',

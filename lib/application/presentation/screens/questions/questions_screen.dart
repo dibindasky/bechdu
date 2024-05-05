@@ -19,6 +19,8 @@ class QuestionTabs extends StatelessWidget {
       onWillPop: () async {
         secondtabScreensNotifier.value = 0;
         secondtabScreensNotifier.notifyListeners();
+        brandSeriesProductValueNotifier.value = 2;
+        brandSeriesProductValueNotifier.notifyListeners();
         context
             .read<QuestionTabBloc>()
             .add(const QuestionTabEvent.resetTabSelection());

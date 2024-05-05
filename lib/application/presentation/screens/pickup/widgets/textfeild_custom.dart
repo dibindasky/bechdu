@@ -17,6 +17,7 @@ class TTextFormField extends StatelessWidget {
   final Function(String)? onChanaged;
   final VoidCallback? onTap;
   final String? Function(String?)? validator;
+  final TextCapitalization? textCapitalization;
   const TTextFormField({
     Key? key,
     this.clr,
@@ -32,6 +33,7 @@ class TTextFormField extends StatelessWidget {
     this.function,
     this.onTap,
     this.onChanaged,
+    this.textCapitalization,
   }) : super(key: key);
 
   @override
@@ -39,6 +41,7 @@ class TTextFormField extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 5),
       child: TextFormField(
+        textCapitalization: textCapitalization ?? TextCapitalization.none,
         keyboardType: inputType,
         onTap: onTap,
         maxLines: maxLines ?? 1,

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:beachdu/application/business_logic/brands_bloc/category_bloc_bloc.dart';
 import 'package:beachdu/application/business_logic/place_order/place_order_bloc.dart';
 import 'package:beachdu/application/business_logic/question_tab/question_tab_bloc.dart';
@@ -28,6 +30,7 @@ class _DateOrTimeState extends State<DateOrTime> {
   String date = '';
 
   List<String> timeSlots = [];
+  //List<String> uniqueTimeSlots = timeSlots.toSet().toList();
 
   @override
   Widget build(BuildContext context) {
@@ -84,17 +87,21 @@ class _DateOrTimeState extends State<DateOrTime> {
                               onChanged: (String? newValue) {
                                 setState(() {
                                   selectedDate = newValue;
+                                  selectedTime = null;
                                 });
                                 date = newValue ?? 'Select Date';
                                 List<String> timess =
                                     List.from(state.time ?? []);
                                 timeSlots = List.from(state.time ?? []);
                                 if (date != 'Select Date') {
-                                  String day = date.split(' ').first;
-                                  if (day.length == 1) {
-                                    day = '0$day';
-                                  }
-                                  final toDay = DateTime.now().day.toString();
+                                  final day = date.split(' ').first.length == 1
+                                      ? '0${date.split(' ').first}'
+                                      : date.split(' ').first;
+                                  final toDay =
+                                      DateTime.now().day.toString().length == 1
+                                          ? "0${DateTime.now().day.toString()}"
+                                          : DateTime.now().day.toString();
+
                                   if (day == toDay) {
                                     DateTime currentTime = DateTime.now();
                                     List<String> remainingTimeSlots =
@@ -109,7 +116,6 @@ class _DateOrTimeState extends State<DateOrTime> {
                                           'PM') {
                                         startTime += 12;
                                       }
-
                                       final timenow = currentTime.hour;
                                       return startTime > timenow;
                                     }).toList();
@@ -166,7 +172,9 @@ class _DateOrTimeState extends State<DateOrTime> {
                                   selectedTime = newValue;
                                 });
                               },
-                              items: timeSlots.map<DropdownMenuItem<String>>(
+                              items: timeSlots
+                                  .toSet()
+                                  .map<DropdownMenuItem<String>>(
                                 (String value) {
                                   return DropdownMenuItem<String>(
                                     value: value,

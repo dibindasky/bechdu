@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:beachdu/application/business_logic/location/location_bloc.dart';
 import 'package:beachdu/application/business_logic/profile/profile_bloc.dart';
 import 'package:beachdu/application/presentation/screens/pickup/widgets/textfeild_custom.dart';
@@ -39,6 +38,7 @@ class _AddresCreationFieldsState extends State<AddresCreationFields> {
               ),
             ),
             TTextFormField(
+              textCapitalization: TextCapitalization.words,
               controller: context.read<ProfileBloc>().addressController,
               text: 'Address',
             ),
@@ -66,7 +66,7 @@ class _AddresCreationFieldsState extends State<AddresCreationFields> {
                         style: textHeadInter.copyWith(color: klightgrey),
                       ),
                       isExpanded: true,
-                      items: context.read<LocationBloc>().locations.map(
+                      items: context.read<LocationBloc>().locations.toSet().map(
                         (entry) {
                           return DropdownMenuItem(
                             value: entry,
@@ -153,6 +153,7 @@ class _AddresCreationFieldsState extends State<AddresCreationFields> {
                           items: context
                               .read<LocationBloc>()
                               .pinCodes
+                              .toSet()
                               .map<DropdownMenuItem<String>>(
                             (pincode) {
                               return DropdownMenuItem<String>(
