@@ -52,16 +52,14 @@ class OTPScreen extends StatelessWidget {
                 loginOrSignup(context);
               }
             },
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  SizedBox(height: sHeight * .12),
-                  const LogoToCountDownSection(),
-                  kHeight50,
-                  PinEnterField(),
-                  BottomSection(loginWay: loginWay),
-                ],
-              ),
+            child: ListView(
+              children: [
+                SizedBox(height: sHeight * .12),
+                const LogoToCountDownSection(),
+                kHeight50,
+                PinEnterField(),
+                BottomSection(loginWay: loginWay),
+              ],
             ),
           ),
         ),
