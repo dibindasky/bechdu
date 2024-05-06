@@ -174,7 +174,11 @@ class PlaceOrderBloc extends Bloc<PlaceOrderEvent, PlaceOrderState> {
 
   FutureOr<void> getOrders(GetOrders event, emit) async {
     if (state.getAllOrderResponceModel != null && !event.isLoad) return;
-    emit(state.copyWith(isLoading: true, hasError: false));
+    emit(state.copyWith(
+      isLoading: true,
+      hasError: false,
+      downloaded: false,
+    ));
     final number = await SecureSotrage.getNumber();
     final login = await SecureSotrage.getlLogin();
     final accessToken = await SecureSotrage.getAccessToken();
@@ -182,12 +186,14 @@ class PlaceOrderBloc extends Bloc<PlaceOrderEvent, PlaceOrderState> {
       final data = await placeOrderRepo.getOrders(number: number);
       data.fold((failure) {
         emit(state.copyWith(
+          downloaded: false,
           isLoading: false,
           hasError: true,
         ));
       }, (success) {
         emit(
           state.copyWith(
+            downloaded: false,
             hasError: false,
             isLoading: false,
             getAllOrderResponceModel: success,
@@ -196,6 +202,7 @@ class PlaceOrderBloc extends Bloc<PlaceOrderEvent, PlaceOrderState> {
       });
     } else {
       emit(state.copyWith(
+        downloaded: false,
         isLoading: false,
         hasError: false,
         getAllOrderResponceModel: null,

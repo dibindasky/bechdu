@@ -101,8 +101,7 @@ class _StreetAddressState extends State<StreetAddress> {
                         name: name,
                         addPhone: addPhone.isEmpty ? '' : addPhone,
                       );
-                      log('address ${user.toJson()}');
-                      log('Picked addrs ${user.address}');
+
                       context
                           .read<PlaceOrderBloc>()
                           .add(PlaceOrderEvent.addressPick(user: user));
@@ -112,7 +111,7 @@ class _StreetAddressState extends State<StreetAddress> {
                     }
                   },
                   text: 'Continue',
-                )
+                ),
             ],
           );
         },

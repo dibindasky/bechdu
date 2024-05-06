@@ -52,7 +52,7 @@ class ScreenPickUp extends StatelessWidget {
                       style: textHeadBold1.copyWith(fontSize: sWidth * .05),
                     ),
                     kHeight20,
-                    const RowIconsValueListanable(),
+                    RowIconsValueListanable(),
                     kHeight30,
                     const DataValueListanableContainers(),
                     kHeight10,

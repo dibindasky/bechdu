@@ -11,8 +11,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class RowIconsValueListanable extends StatelessWidget {
-  const RowIconsValueListanable({super.key});
-
+  RowIconsValueListanable({super.key});
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder(

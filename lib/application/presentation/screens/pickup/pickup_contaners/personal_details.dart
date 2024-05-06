@@ -144,7 +144,8 @@ class _PersonalDetailsState extends State<PersonalDetails> {
               ),
             ),
             kHeight40,
-            kHeight10
+            kHeight10,
+            kHeight40,
           ],
         ),
       ),

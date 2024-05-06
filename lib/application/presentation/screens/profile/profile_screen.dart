@@ -113,7 +113,7 @@ class ScreenProfile extends StatelessWidget {
                           );
                         },
                         child: Text(
-                          'Log in now',
+                          'Log in Now',
                           style: textHeadMedium1,
                         ),
                       ),
