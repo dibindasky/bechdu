@@ -39,5 +39,5 @@ class ApiEndPoints {
   static const String invoiceDownLoad =
       'order/generate-invoice/{number}/{order_id}';
   static const String deleteAccount = 'user/account-deletion';
-  static const String joinOurteam = 'https://bechdu-zikrabyte.netlify.app/form';
+  static const String joinOurteam = 'https://bechdu.in/form';
 }

@@ -1,4 +1,5 @@
 import 'package:beachdu/application/business_logic/home_bloc/home_bloc.dart';
+import 'package:beachdu/application/business_logic/navbar/navbar_cubit.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/application/presentation/utils/skeltons/skelton.dart';
@@ -79,52 +80,58 @@ class NotiiFicationScreen extends StatelessWidget {
                       if (hour == 0) {
                         hour = 12;
                       }
-                      return Container(
-                        decoration: BoxDecoration(
-                          color: kWhite,
-                          borderRadius: kRadius10,
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.1),
-                              spreadRadius: 5,
-                              blurRadius: 7,
-                              offset: const Offset(0, 3),
-                            ),
-                          ],
-                        ),
-                        margin: const EdgeInsets.all(10),
-                        width: double.infinity,
-                        height: 110,
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 10, vertical: 0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    data.title!,
-                                    style: textHeadBoldBig,
-                                  ),
-                                  Text(
-                                    '$hour $minute $period $year',
-                                    style: textHeadBold1,
-                                  ),
-                                ],
-                              ),
-                              Text(
-                                data.body!,
-                                style: textHeadMedium1,
-                              ),
-                              Text(
-                                data.type!,
-                                style: textHeadBoldBig,
+                      return InkWell(
+                        onTap: () {
+                          context.read<NavbarCubit>().changeNavigationIndex(2);
+                          Navigator.pop(context);
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: kWhite,
+                            borderRadius: kRadius10,
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.1),
+                                spreadRadius: 5,
+                                blurRadius: 7,
+                                offset: const Offset(0, 3),
                               ),
                             ],
+                          ),
+                          margin: const EdgeInsets.all(10),
+                          width: double.infinity,
+                          height: 110,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 10, vertical: 0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      data.title!,
+                                      style: textHeadBoldBig,
+                                    ),
+                                    Text(
+                                      '$hour $minute $period $year',
+                                      style: textHeadBold1,
+                                    ),
+                                  ],
+                                ),
+                                Text(
+                                  data.body!,
+                                  style: textHeadMedium1,
+                                ),
+                                Text(
+                                  data.type!,
+                                  style: textHeadBoldBig,
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       );

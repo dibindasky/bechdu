@@ -47,6 +47,9 @@ class ScreenProfile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final name = context.read<ProfileBloc>().profileNameController.length >= 2
+        ? context.read<ProfileBloc>().profileNameController.text.substring(0, 2)
+        : '';
     WidgetsBinding.instance.addPostFrameCallback(
       (timeStamp) async {
         final islogin = await SecureSotrage.getlLogin();
@@ -118,220 +121,185 @@ class ScreenProfile extends StatelessWidget {
                   );
                 }
                 return SingleChildScrollView(
-                  child: BlocListener<ProfileBloc, ProfileState>(
-                    listener: (context, state) {
-                      if (state.hasError) {
-                        showSnack(
-                          context: context,
-                          message: state.message!,
-                        );
-                      }
-                      if (state.accountDeleted) {
-                        logOut(context);
-                        showSnack(
-                          context: context,
-                          message: state.deleteAccountResponceModel!.message!,
-                        );
-                      }
-                    },
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 30,
-                      ),
-                      child: Column(
-                        children: [
-                          BlocBuilder<ProfileBloc, ProfileState>(
-                            builder: (context, state) {
-                              final name = context
-                                          .read<ProfileBloc>()
-                                          .profileNameController
-                                          .length >=
-                                      2
-                                  ? context
-                                      .read<ProfileBloc>()
-                                      .profileNameController
-                                      .text
-                                      .substring(0, 2)
-                                  : '';
-                              return AnimatedGrowShrinkContainer(
-                                child: CircleAvatar(
-                                  backgroundColor: kGreenPrimary,
-                                  radius: 58,
-                                  child: CircleAvatar(
-                                    backgroundColor: kBluePrimary,
-                                    radius: 50,
-                                    child: name == ''
-                                        ? const Icon(
-                                            size: 50,
-                                            Icons.person,
-                                            color: kGreenPrimary,
-                                          )
-                                        : Text(
-                                            name.toUpperCase(),
-                                            style: textHeadBoldBig.copyWith(
-                                              fontSize: sWidth * .1,
-                                              color: kWhite,
-                                            ),
-                                          ),
-                                  ),
-                                ),
-                              );
-                            },
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 30,
+                    ),
+                    child: Column(
+                      children: [
+                        AnimatedGrowShrinkContainer(
+                          child: CircleAvatar(
+                            backgroundColor: kGreenPrimary,
+                            radius: 58,
+                            child: CircleAvatar(
+                              backgroundColor: kBluePrimary,
+                              radius: 50,
+                              child: name == ''
+                                  ? const Icon(
+                                      size: 50,
+                                      Icons.person,
+                                      color: kGreenPrimary,
+                                    )
+                                  : Text(
+                                      name.toUpperCase(),
+                                      style: textHeadBoldBig.copyWith(
+                                        fontSize: sWidth * .1,
+                                        color: kWhite,
+                                      ),
+                                    ),
+                            ),
                           ),
-                          kHeight30,
-                          const UserInfoFields(),
-                          kHeight20,
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                'Address',
-                                style: textHeadRegular1,
-                              ),
-                              GestureDetector(
-                                onTap: () {
-                                  profileScreensNotifier.value = 1;
-                                  profileScreensNotifier.notifyListeners();
-                                },
-                                child: const CircleAvatar(
-                                  backgroundColor: kBlack,
-                                  radius: 12,
-                                  child: Icon(
-                                    Icons.add,
-                                    color: kWhite,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                          kHeight20,
-                          const AddressListView(isFromProfile: true),
-                          kHeight30,
-                          GestureDetector(
-                            onTap: () {
-                              showConfirmationDialog(
-                                context,
-                                heading:
-                                    'Are you really want to log out from Bechdu',
-                                onPressed: () async {
-                                  await logOut(context);
-                                },
-                              );
-                            },
-                            child: Container(
-                              padding: const EdgeInsets.only(left: 10),
-                              height: 45,
-                              width: double.infinity,
-                              decoration: BoxDecoration(
-                                color: klightwhite,
-                                border: Border.all(color: klightgrey),
-                                borderRadius: kRadius10,
-                              ),
-                              child: Center(
-                                child: Text(
-                                  'Log out',
-                                  style: textHeadBold1,
+                        ),
+                        kHeight30,
+                        const UserInfoFields(),
+                        kHeight20,
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              'Address',
+                              style: textHeadRegular1,
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                profileScreensNotifier.value = 1;
+                                profileScreensNotifier.notifyListeners();
+                              },
+                              child: const CircleAvatar(
+                                backgroundColor: kBlack,
+                                radius: 12,
+                                child: Icon(
+                                  Icons.add,
+                                  color: kWhite,
                                 ),
                               ),
                             ),
+                          ],
+                        ),
+                        kHeight20,
+                        const AddressListView(isFromProfile: true),
+                        kHeight30,
+                        GestureDetector(
+                          onTap: () {
+                            showConfirmationDialog(
+                              context,
+                              heading:
+                                  'Are you really want to log out from Bechdu',
+                              onPressed: () async {
+                                await logOut(context);
+                              },
+                            );
+                          },
+                          child: Container(
+                            padding: const EdgeInsets.only(left: 10),
+                            height: 45,
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                              color: klightwhite,
+                              border: Border.all(color: klightgrey),
+                              borderRadius: kRadius10,
+                            ),
+                            child: Center(
+                              child: Text(
+                                'Log out',
+                                style: textHeadBold1,
+                              ),
+                            ),
                           ),
-                          kHeight20,
-                          GestureDetector(
-                            onTap: () {
-                              showConfirmationDialog(
-                                heading:
-                                    'Are you sure to delete your account permanantly',
-                                operationButtonName: 'Sure',
-                                context,
-                                onPressed: () {
-                                  context
-                                      .read<AuthBloc>()
-                                      .otpController
-                                      .clear();
-                                  Navigator.pop(context);
-                                  context
-                                      .read<ProfileBloc>()
-                                      .add(const ProfileEvent.getDeletionOtp());
-                                  showConfirmationDialog(
-                                    noButton: true,
-                                    operationButtonName: 'Delete',
-                                    content: SizedBox(
-                                        height: 50, child: PinEnterField()),
-                                    context,
-                                    heading: 'Enter Your Account deletion OTP',
-                                    onPressed: () {
-                                      final otp = context
-                                          .read<AuthBloc>()
-                                          .otpController
-                                          .text
-                                          .replaceAll(' ', '');
-                                      RegExp phoneNumberRegExp =
-                                          RegExp(r'^[0-9]+$');
-                                      if (phoneNumberRegExp.hasMatch(otp)) {
-                                        if (otp.isEmpty) {
-                                          showSnack(
-                                            context: context,
-                                            message: 'Enter your otp here',
-                                            color: kRed,
-                                          );
-                                        } else if (otp.length < 4) {
-                                          showSnack(
-                                            context: context,
-                                            message:
-                                                'OTP number should keep 4 digits',
-                                            color: kRed,
-                                          );
-                                        } else {
-                                          //Delete account event calling
-                                          OtpVerifyRequestModel
-                                              otpVerifyRequestModel =
-                                              OtpVerifyRequestModel(
-                                            otp: otp,
-                                          );
-                                          context.read<ProfileBloc>().add(
-                                                ProfileEvent.deleteAccount(
-                                                  otpVerifyRequestModel:
-                                                      otpVerifyRequestModel,
-                                                ),
-                                              );
-                                        }
-                                      } else {
+                        ),
+                        kHeight20,
+                        GestureDetector(
+                          onTap: () {
+                            showConfirmationDialog(
+                              heading:
+                                  'Are you sure to delete your account permanantly',
+                              operationButtonName: 'Sure',
+                              context,
+                              onPressed: () {
+                                context.read<AuthBloc>().otpController.clear();
+                                Navigator.pop(context);
+                                context
+                                    .read<ProfileBloc>()
+                                    .add(const ProfileEvent.getDeletionOtp());
+                                showConfirmationDialog(
+                                  noButton: true,
+                                  operationButtonName: 'Delete',
+                                  content: SizedBox(
+                                      height: 50, child: PinEnterField()),
+                                  context,
+                                  heading: 'Enter Your Account deletion OTP',
+                                  onPressed: () {
+                                    final otp = context
+                                        .read<AuthBloc>()
+                                        .otpController
+                                        .text
+                                        .replaceAll(' ', '');
+                                    RegExp phoneNumberRegExp =
+                                        RegExp(r'^[0-9]+$');
+                                    if (phoneNumberRegExp.hasMatch(otp)) {
+                                      if (otp.isEmpty) {
                                         showSnack(
                                           context: context,
-                                          message: 'Not a OTP number: $otp',
+                                          message: 'Enter your otp here',
                                           color: kRed,
                                         );
+                                      } else if (otp.length < 4) {
+                                        showSnack(
+                                          context: context,
+                                          message:
+                                              'OTP number should keep 4 digits',
+                                          color: kRed,
+                                        );
+                                      } else {
+                                        //Delete account event calling
+                                        OtpVerifyRequestModel
+                                            otpVerifyRequestModel =
+                                            OtpVerifyRequestModel(
+                                          otp: otp,
+                                        );
+                                        context.read<ProfileBloc>().add(
+                                              ProfileEvent.deleteAccount(
+                                                otpVerifyRequestModel:
+                                                    otpVerifyRequestModel,
+                                              ),
+                                            );
                                       }
-                                    },
-                                  );
-                                },
-                              );
-                            },
-                            child: state.isLoading
-                                ? LoadingAnimation(
-                                    width: 30,
-                                    color: klightgrey,
-                                  )
-                                : Container(
-                                    padding: const EdgeInsets.only(left: 10),
-                                    height: 45,
-                                    width: double.infinity,
-                                    decoration: BoxDecoration(
-                                      color: klightwhite,
-                                      border: Border.all(color: klightgrey),
-                                      borderRadius: kRadius10,
-                                    ),
-                                    child: Center(
-                                      child: Text(
-                                        'Delete account',
-                                        style: textHeadBold1,
-                                      ),
+                                    } else {
+                                      showSnack(
+                                        context: context,
+                                        message: 'Not a OTP number: $otp',
+                                        color: kRed,
+                                      );
+                                    }
+                                  },
+                                );
+                              },
+                            );
+                          },
+                          child: state.isLoading
+                              ? LoadingAnimation(
+                                  width: 30,
+                                  color: klightgrey,
+                                )
+                              : Container(
+                                  padding: const EdgeInsets.only(left: 10),
+                                  height: 45,
+                                  width: double.infinity,
+                                  decoration: BoxDecoration(
+                                    color: klightwhite,
+                                    border: Border.all(color: klightgrey),
+                                    borderRadius: kRadius10,
+                                  ),
+                                  child: Center(
+                                    child: Text(
+                                      'Delete account',
+                                      style: textHeadBold1,
                                     ),
                                   ),
-                          ),
-                          kHeight20,
-                        ],
-                      ),
+                                ),
+                        ),
+                        kHeight20,
+                      ],
                     ),
                   ),
                 );

@@ -1,12 +1,10 @@
 import 'package:beachdu/application/business_logic/home_bloc/home_bloc.dart';
 import 'package:beachdu/application/presentation/screens/home/global_search/global_search_builder.dart';
-import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/application/presentation/utils/skeltons/skelton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
-import 'package:shimmer/shimmer.dart';
 
 class GlobalProductSearch extends StatelessWidget {
   const GlobalProductSearch({super.key});
@@ -47,7 +45,7 @@ class GlobalProductSearch extends StatelessWidget {
                     }
                     return GlobalProductSearchBuilder(
                       index: index,
-                      // products: products,
+                      products: products,
                     );
                   },
                 ),

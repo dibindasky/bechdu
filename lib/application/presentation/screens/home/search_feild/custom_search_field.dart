@@ -79,46 +79,56 @@ class CustomSearchFieldHome extends StatelessWidget {
             ),
           ),
           kWidth10,
-          Container(
-            width: sWidth * 0.13,
-            decoration: BoxDecoration(
-              color: klightwhite,
-              borderRadius: kRadius10,
-            ),
-            child: IconButton(
-              icon: const Icon(
-                Icons.place_outlined,
-                color: kBlack,
+          if (context
+              .read<HomeBloc>()
+              .globalProductSearchController
+              .text
+              .isEmpty)
+            Container(
+              width: sWidth * 0.13,
+              decoration: BoxDecoration(
+                color: klightwhite,
+                borderRadius: kRadius10,
               ),
-              onPressed: () {
-                Navigator.of(context).pushNamed(Routes.location);
+              child: IconButton(
+                icon: const Icon(
+                  Icons.place_outlined,
+                  color: kBlack,
+                ),
+                onPressed: () {
+                  Navigator.of(context).pushNamed(Routes.location);
+                },
+              ),
+            ),
+          kWidth10,
+          if (context
+              .read<HomeBloc>()
+              .globalProductSearchController
+              .text
+              .isEmpty)
+            BlocBuilder<AuthBloc, AuthState>(
+              builder: (context, state) {
+                if (!state.logOrNot) {
+                  return kEmpty;
+                }
+                return Container(
+                  width: sWidth * 0.13,
+                  decoration: BoxDecoration(
+                    color: klightwhite,
+                    borderRadius: kRadius10,
+                  ),
+                  child: IconButton(
+                    icon: const Icon(
+                      Icons.notifications_active_outlined,
+                      color: kBlack,
+                    ),
+                    onPressed: () {
+                      Navigator.of(context).pushNamed(Routes.notification);
+                    },
+                  ),
+                );
               },
             ),
-          ),
-          kWidth10,
-          BlocBuilder<AuthBloc, AuthState>(
-            builder: (context, state) {
-              if (!state.logOrNot) {
-                return kEmpty;
-              }
-              return Container(
-                width: sWidth * 0.13,
-                decoration: BoxDecoration(
-                  color: klightwhite,
-                  borderRadius: kRadius10,
-                ),
-                child: IconButton(
-                  icon: const Icon(
-                    Icons.notifications_active_outlined,
-                    color: kBlack,
-                  ),
-                  onPressed: () {
-                    Navigator.of(context).pushNamed(Routes.notification);
-                  },
-                ),
-              );
-            },
-          ),
           kWidth10,
         ],
       ),

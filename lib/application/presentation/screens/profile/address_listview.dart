@@ -4,6 +4,7 @@ import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/confirmation_daillogue/exit_app_dailogue.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/application/presentation/utils/loading_indicators/loading_indicator.dart';
+import 'package:beachdu/application/presentation/utils/snackbar/snackbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -23,7 +24,15 @@ class _AddressListViewState extends State<AddressListView> {
   int isSelected = 0;
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ProfileBloc, ProfileState>(
+    return BlocConsumer<ProfileBloc, ProfileState>(
+      listener: (context, state) {
+        if (state.deletedAddress) {
+          showSnack(context: context, message: 'Address Deleted Successfully');
+        }
+        if (state.addedAddress) {
+          showSnack(context: context, message: 'Address Added Successfully');
+        }
+      },
       builder: (context, state) {
         if (state.isLoading) {
           return LoadingAnimation(width: 30);

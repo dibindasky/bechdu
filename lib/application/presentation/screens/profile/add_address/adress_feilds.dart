@@ -97,9 +97,6 @@ class _AddresCreationFieldsState extends State<AddresCreationFields> {
                                 cityUpdateRequestModel: cityUpdateRequestModel,
                               ),
                             );
-                        // setState(() {
-                        //   selected = value!;
-                        // });
                       },
                       value: context.read<LocationBloc>().location,
                       dropdownStyleData: DropdownStyleData(
@@ -192,8 +189,10 @@ class _AddresCreationFieldsState extends State<AddresCreationFields> {
                           menuItemStyleData: const MenuItemStyleData(
                             height: 40,
                           ),
-                          dropdownSearchData:
-                              dropdownSearchData(pincodeControlelr),
+                          dropdownSearchData: dropdownSearchData(
+                            pincodeControlelr,
+                            textInputType: TextInputType.number,
+                          ),
                           onMenuStateChange: (isOpen) {
                             if (!isOpen) {
                               pincodeControlelr.clear();
@@ -260,7 +259,8 @@ class _AddresCreationFieldsState extends State<AddresCreationFields> {
   }
 
   DropdownSearchData<String> dropdownSearchData(
-      TextEditingController controller) {
+      TextEditingController controller,
+      {TextInputType? textInputType}) {
     return DropdownSearchData(
       searchController: controller,
       searchInnerWidgetHeight: 50,
@@ -273,6 +273,7 @@ class _AddresCreationFieldsState extends State<AddresCreationFields> {
         child: Padding(
           padding: const EdgeInsets.only(right: 10, top: 5),
           child: TextFormField(
+            keyboardType: textInputType ?? TextInputType.name,
             style: const TextStyle(color: kBlack),
             expands: true,
             maxLines: null,

@@ -6,25 +6,26 @@ import 'package:beachdu/application/business_logic/question_tab/question_tab_blo
 import 'package:beachdu/application/presentation/screens/product_selection/product_screen.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
+import 'package:beachdu/domain/model/get_products_respoce_model/product.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class GlobalProductSearchBuilder extends StatelessWidget {
   const GlobalProductSearchBuilder({
     super.key,
-    // required this.products,
+    required this.products,
     required this.index,
   });
 
-  //final List<Product> products;
+  final List<Product> products;
   final int index;
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<HomeBloc, HomeState>(
       builder: (context, state) {
-        final product = state.searchResponceModel!.product![index];
-        String url = imageUrlchange(product.productImage!);
+        // final product = state.searchResponceModel!.product![index];
+        String url = imageUrlchange(products[index].productImage!);
         // "${ApiEndPoints.baseUrl}${ApiEndPoints.imagePath}${Uri.encodeComponent(products[index].productImage!)}";
 
         return GestureDetector(
@@ -35,24 +36,24 @@ class GlobalProductSearchBuilder extends StatelessWidget {
             context.read<QuestionTabBloc>().add(QuestionTabEvent.getQuestions(
                   categoryType:
                       state.searchResponceModel!.product![index].categoryType!,
-                  product: product,
+                  product: products[index],
                 ));
 
             final categoryType =
                 context.read<CategoryBlocBloc>().categoryType ?? 'mobile';
             context.read<CategoryBlocBloc>().categoryType = categoryType;
             //Selected product Slug assigning
-            context.read<CategoryBlocBloc>().slug = product.slug!;
+            context.read<CategoryBlocBloc>().slug = products[index].slug!;
 
             // Selected product Model assigning
-            context.read<CategoryBlocBloc>().model = product.model;
+            context.read<CategoryBlocBloc>().model = products[index].model;
 
             //Selected product varient assigning
-            context.read<CategoryBlocBloc>().verient = product.variant;
+            context.read<CategoryBlocBloc>().verient = products[index].variant;
 
             //Selected product image assinging
             context.read<CategoryBlocBloc>().productImage =
-                product.productImage;
+                products[index].productImage;
 
             context.read<NavbarCubit>().changeNavigationIndex(1);
             secondtabScreensNotifier.value = 1;
@@ -87,17 +88,17 @@ class GlobalProductSearchBuilder extends StatelessWidget {
                   ),
                   kHeight10,
                   Text(
-                    product.model!,
+                    products[index].model!,
                     style:
                         textHeadBold1.copyWith(overflow: TextOverflow.ellipsis),
                   ),
                   kWidth10,
                   Text(
-                    product.variant!,
+                    products[index].variant!,
                     style: textHeadBold1,
                   ),
                   Text(
-                    'Upto ₹${product.estimatedPrice}',
+                    'Upto ₹${products[index].estimatedPrice}',
                     style: textHeadMedium1.copyWith(
                       fontSize: sWidth * .034,
                     ),
