@@ -114,8 +114,6 @@ class PlaceOrderBloc extends Bloc<PlaceOrderEvent, PlaceOrderState> {
         ));
       },
       (response) {
-        // log('dates ${response.dates}');
-        // log('time ${response.timeSlot}');
         emit(state.copyWith(
           hasError: false,
           isLoading: false,

@@ -101,7 +101,6 @@ class _StreetAddressState extends State<StreetAddress> {
                         name: name,
                         addPhone: addPhone.isEmpty ? '' : addPhone,
                       );
-
                       context
                           .read<PlaceOrderBloc>()
                           .add(PlaceOrderEvent.addressPick(user: user));
