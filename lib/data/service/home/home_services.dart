@@ -1,6 +1,4 @@
 import 'dart:developer';
-
-import 'package:beachdu/data/secure_storage/secure_fire_store.dart';
 import 'package:beachdu/data/service/api_service.dart';
 import 'package:beachdu/domain/core/api_endpoints/api_endpoints.dart';
 import 'package:beachdu/domain/core/failure/failure.dart';
@@ -8,6 +6,7 @@ import 'package:beachdu/domain/model/best_selling_products_responce_model/best_s
 import 'package:beachdu/domain/model/category_model/get_category_responce_model/get_category_responce_model.dart';
 import 'package:beachdu/domain/model/home_banners_model/home_banner_responce_model/home_banner_responce_model.dart';
 import 'package:beachdu/domain/model/notification/notification_responce_model/notification_responce_model.dart';
+import 'package:beachdu/domain/model/page_size_query_model/page_size_query_model.dart';
 import 'package:beachdu/domain/model/search_model/search_param_model/search_param_model.dart';
 import 'package:beachdu/domain/model/search_model/search_responce_model/search_responce_model.dart';
 import 'package:beachdu/domain/repository/home_repo.dart';
@@ -84,12 +83,13 @@ class HomeServices implements HomeRepository {
 
   @override
   Future<Either<Failure, NotificationResponceModel>> getAllnotification(
-      {required int pageSize}) async {
+      {required String number,
+      required PageSizeQueryModel pageSizeQueryModel}) async {
     try {
-      final number = await SecureSotrage.getNumber();
       final responce = await _apiService.get(
         ApiEndPoints.notifications.replaceFirst('{number}', number),
         addHeader: true,
+        queryParameters: pageSizeQueryModel.toJson(),
       );
       // log('${responce.data}');
       log('done noti');

@@ -26,235 +26,245 @@ class _AddresCreationFieldsState extends State<AddresCreationFields> {
   String? selected;
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'ADDRESS',
-              style: textHeadMedium1.copyWith(
-                fontSize: sWidth * .033,
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'ADDRESS',
+                style: textHeadMedium1.copyWith(
+                  fontSize: sWidth * .033,
+                ),
               ),
-            ),
-            TTextFormField(
-              textCapitalization: TextCapitalization.words,
-              controller: context.read<ProfileBloc>().addressController,
-              text: 'Address',
-            ),
-            Text(
-              'LOCATION',
-              style: textHeadMedium1.copyWith(
-                fontSize: sWidth * .033,
+              TTextFormField(
+                textCapitalization: TextCapitalization.words,
+                controller: context.read<ProfileBloc>().addressController,
+                text: 'Address',
               ),
-            ),
-            kHeight10,
-            BlocBuilder<LocationBloc, LocationState>(
-              builder: (context, state) {
-                return Container(
-                  padding: const EdgeInsets.only(left: 0, right: 0),
-                  height: 60,
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    border: Border.all(color: textFieldBorderColor),
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: DropdownButtonHideUnderline(
-                    child: DropdownButton2<String>(
-                      hint: Text(
-                        'Location',
-                        style: textHeadInter.copyWith(color: klightgrey),
-                      ),
-                      isExpanded: true,
-                      items: context.read<LocationBloc>().locations.toSet().map(
-                        (entry) {
-                          return DropdownMenuItem(
-                            value: entry,
-                            child: Text(
-                              entry,
-                              style: textHeadSemiBold1.copyWith(
-                                  fontSize: sWidth * 0.04),
-                            ),
-                          );
-                        },
-                      ).toList(),
-                      onChanged: (value) {
-                        if (context.read<LocationBloc>().location != value) {
-                          context.read<LocationBloc>().pincode = null;
-                        }
-                        context.read<LocationBloc>().location = value;
-
-                        context
-                            .read<LocationBloc>()
-                            .add(LocationEvent.pinCodePick(cityName: value!));
-                        //picked loaction update event
-                        CityUpdateRequestModel cityUpdateRequestModel =
-                            CityUpdateRequestModel(
-                          city: value,
-                        );
-                        context.read<LocationBloc>().add(
-                              LocationEvent.locationUpdate(
-                                cityUpdateRequestModel: cityUpdateRequestModel,
+              Text(
+                'LOCATION',
+                style: textHeadMedium1.copyWith(
+                  fontSize: sWidth * .033,
+                ),
+              ),
+              kHeight10,
+              BlocBuilder<LocationBloc, LocationState>(
+                builder: (context, state) {
+                  return Container(
+                    padding: const EdgeInsets.only(left: 0, right: 0),
+                    height: 60,
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      border: Border.all(color: textFieldBorderColor),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: DropdownButtonHideUnderline(
+                      child: DropdownButton2<String>(
+                        hint: Text(
+                          'Location',
+                          style: textHeadInter.copyWith(color: klightgrey),
+                        ),
+                        isExpanded: true,
+                        items:
+                            context.read<LocationBloc>().locations.toSet().map(
+                          (entry) {
+                            return DropdownMenuItem(
+                              value: entry,
+                              child: Text(
+                                entry,
+                                style: textHeadSemiBold1.copyWith(
+                                    fontSize: sWidth * 0.04),
                               ),
                             );
-                      },
-                      value: context.read<LocationBloc>().location,
-                      dropdownStyleData: DropdownStyleData(
-                        decoration: BoxDecoration(
-                          borderRadius: kRadius5,
-                          color: kWhite,
-                        ),
-                        offset: const Offset(0, -5),
-                        maxHeight: 250,
-                      ),
-                      menuItemStyleData: const MenuItemStyleData(
-                        height: 40,
-                      ),
-                      dropdownSearchData: dropdownSearchData(locationControler),
-                      onMenuStateChange: (isOpen) {
-                        if (!isOpen) {
-                          locationControler.clear();
-                        }
-                      },
-                    ),
-                  ),
-                );
-              },
-            ),
-            kHeight10,
-            Text(
-              'PINCODE',
-              style: textHeadMedium1.copyWith(
-                fontSize: sWidth * .033,
-              ),
-            ),
-            kHeight10,
-            BlocBuilder<LocationBloc, LocationState>(
-              builder: (context, state) {
-                return Container(
-                  height: 60,
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    border: Border.all(color: textFieldBorderColor),
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: BlocBuilder<LocationBloc, LocationState>(
-                    builder: (context, state) {
-                      return DropdownButtonHideUnderline(
-                        child: DropdownButton2<String>(
-                          hint: Text(
-                            'Pincode',
-                            style: textHeadInter.copyWith(color: klightgrey),
-                          ),
-                          isExpanded: true,
-                          items: context
+                          },
+                        ).toList(),
+                        onChanged: (value) {
+                          if (context.read<LocationBloc>().location != value) {
+                            context.read<LocationBloc>().pincode = null;
+                          }
+                          context.read<LocationBloc>().location = value;
+
+                          context
                               .read<LocationBloc>()
-                              .pinCodes
-                              .toSet()
-                              .map<DropdownMenuItem<String>>(
-                            (pincode) {
-                              return DropdownMenuItem<String>(
-                                value: pincode,
-                                child: Text(
-                                  pincode,
-                                  style: textHeadSemiBold1.copyWith(
-                                      fontSize: sWidth * 0.04),
+                              .add(LocationEvent.pinCodePick(cityName: value!));
+                          //picked loaction update event
+                          CityUpdateRequestModel cityUpdateRequestModel =
+                              CityUpdateRequestModel(
+                            city: value,
+                          );
+                          context.read<LocationBloc>().add(
+                                LocationEvent.locationUpdate(
+                                  cityUpdateRequestModel:
+                                      cityUpdateRequestModel,
                                 ),
                               );
-                            },
-                          ).toList(),
-                          onChanged: (value) {
-                            context.read<LocationBloc>().pincode = value;
-                            PincodeUpdateRequestModel
-                                pincodeUpdateRequestModel =
-                                PincodeUpdateRequestModel(
-                              pincode: value,
-                            );
-                            context.read<LocationBloc>().add(
-                                  LocationEvent.pincodeUpdate(
-                                    pincodeUpdateRequestModel:
-                                        pincodeUpdateRequestModel,
-                                  ),
-                                );
-                          },
-                          value: context.read<LocationBloc>().pincode,
-                          dropdownStyleData: DropdownStyleData(
-                            decoration: BoxDecoration(
-                              borderRadius: kRadius5,
-                              color: kWhite,
-                            ),
-                            offset: const Offset(0, -5),
-                            maxHeight: 250,
+                        },
+                        value: context.read<LocationBloc>().location,
+                        dropdownStyleData: DropdownStyleData(
+                          decoration: BoxDecoration(
+                            borderRadius: kRadius5,
+                            color: kWhite,
                           ),
-                          menuItemStyleData: const MenuItemStyleData(
-                            height: 40,
-                          ),
-                          dropdownSearchData: dropdownSearchData(
-                            pincodeControlelr,
-                            textInputType: TextInputType.number,
-                          ),
-                          onMenuStateChange: (isOpen) {
-                            if (!isOpen) {
-                              pincodeControlelr.clear();
-                            }
-                          },
+                          offset: const Offset(0, -5),
+                          maxHeight: 250,
                         ),
-                      );
-                    },
-                  ),
-                );
-              },
-            ),
-          ],
-        ),
-        kHeight50,
-        kHeight50,
-        CustomButton(
-          onPressed: () {
-            if (context.read<ProfileBloc>().addressController.text.isNotEmpty &&
-                context.read<LocationBloc>().pincode != null &&
-                context.read<LocationBloc>().location != null &&
-                context.read<LocationBloc>().pincode!.isNotEmpty &&
-                context.read<LocationBloc>().location!.isNotEmpty) {
-              //Entered data concatination
-              final address =
-                  '${context.read<ProfileBloc>().addressController.text.trim()} ${context.read<LocationBloc>().location} ${context.read<LocationBloc>().pincode}';
-              //Oblect creation
-              AddressCreationRequestModel addressCreationRequestModel =
-                  AddressCreationRequestModel(
-                address: address,
-              );
-              //Bloc event call
-              context.read<ProfileBloc>().add(
-                    ProfileEvent.addAddress(
-                      addressCreationRequestModel: addressCreationRequestModel,
+                        menuItemStyleData: const MenuItemStyleData(
+                          height: 40,
+                        ),
+                        dropdownSearchData:
+                            dropdownSearchData(locationControler),
+                        onMenuStateChange: (isOpen) {
+                          if (!isOpen) {
+                            locationControler.clear();
+                          }
+                        },
+                      ),
                     ),
                   );
+                },
+              ),
+              kHeight10,
+              Text(
+                'PINCODE',
+                style: textHeadMedium1.copyWith(
+                  fontSize: sWidth * .033,
+                ),
+              ),
+              kHeight10,
+              BlocBuilder<LocationBloc, LocationState>(
+                builder: (context, state) {
+                  return Container(
+                    height: 60,
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      border: Border.all(color: textFieldBorderColor),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: BlocBuilder<LocationBloc, LocationState>(
+                      builder: (context, state) {
+                        return DropdownButtonHideUnderline(
+                          child: DropdownButton2<String>(
+                            hint: Text(
+                              'Pincode',
+                              style: textHeadInter.copyWith(color: klightgrey),
+                            ),
+                            isExpanded: true,
+                            items: context
+                                .read<LocationBloc>()
+                                .pinCodes
+                                .toSet()
+                                .map<DropdownMenuItem<String>>(
+                              (pincode) {
+                                return DropdownMenuItem<String>(
+                                  value: pincode,
+                                  child: Text(
+                                    pincode,
+                                    style: textHeadSemiBold1.copyWith(
+                                        fontSize: sWidth * 0.04),
+                                  ),
+                                );
+                              },
+                            ).toList(),
+                            onChanged: (value) {
+                              context.read<LocationBloc>().pincode = value;
+                              PincodeUpdateRequestModel
+                                  pincodeUpdateRequestModel =
+                                  PincodeUpdateRequestModel(
+                                pincode: value,
+                              );
+                              context.read<LocationBloc>().add(
+                                    LocationEvent.pincodeUpdate(
+                                      pincodeUpdateRequestModel:
+                                          pincodeUpdateRequestModel,
+                                    ),
+                                  );
+                            },
+                            value: context.read<LocationBloc>().pincode,
+                            dropdownStyleData: DropdownStyleData(
+                              decoration: BoxDecoration(
+                                borderRadius: kRadius5,
+                                color: kWhite,
+                              ),
+                              offset: const Offset(0, -5),
+                              maxHeight: 250,
+                            ),
+                            menuItemStyleData: const MenuItemStyleData(
+                              height: 40,
+                            ),
+                            dropdownSearchData: dropdownSearchData(
+                              pincodeControlelr,
+                              textInputType: TextInputType.number,
+                            ),
+                            onMenuStateChange: (isOpen) {
+                              if (!isOpen) {
+                                pincodeControlelr.clear();
+                              }
+                            },
+                          ),
+                        );
+                      },
+                    ),
+                  );
+                },
+              ),
+            ],
+          ),
+          kHeight50,
+          kHeight50,
+          CustomButton(
+            onPressed: () {
+              if (context
+                      .read<ProfileBloc>()
+                      .addressController
+                      .text
+                      .isNotEmpty &&
+                  context.read<LocationBloc>().pincode != null &&
+                  context.read<LocationBloc>().location != null &&
+                  context.read<LocationBloc>().pincode!.isNotEmpty &&
+                  context.read<LocationBloc>().location!.isNotEmpty) {
+                //Entered data concatination
+                final address =
+                    '${context.read<ProfileBloc>().addressController.text.trim()} ${context.read<LocationBloc>().location} ${context.read<LocationBloc>().pincode}';
+                //Oblect creation
+                AddressCreationRequestModel addressCreationRequestModel =
+                    AddressCreationRequestModel(
+                  address: address,
+                );
+                //Bloc event call
+                context.read<ProfileBloc>().add(
+                      ProfileEvent.addAddress(
+                        addressCreationRequestModel:
+                            addressCreationRequestModel,
+                      ),
+                    );
 
-              // Clear selected fields after adding address
-              context.read<ProfileBloc>().addressController.clear();
-              context.read<LocationBloc>().add(const LocationEvent.clear());
-              //Screen notifier changing
-              // setState(() {
-              //   selected = null;
-              // });
-              setState(() {
-                context.read<ProfileBloc>().isShowAddress =
-                    !context.read<ProfileBloc>().isShowAddress;
-              });
-              profileScreensNotifier.value = 0;
-              profileScreensNotifier.notifyListeners();
-            } else {
-              showSnack(
-                context: context,
-                message: "please fill required feilds",
-                color: kRed,
-              );
-            }
-          },
-          text: 'Add address',
-        ),
-      ],
+                // Clear selected fields after adding address
+                context.read<ProfileBloc>().addressController.clear();
+                context.read<LocationBloc>().add(const LocationEvent.clear());
+                //Screen notifier changing
+                // setState(() {
+                //   selected = null;
+                // });
+                setState(() {
+                  context.read<ProfileBloc>().isShowAddress =
+                      !context.read<ProfileBloc>().isShowAddress;
+                });
+                profileScreensNotifier.value = 0;
+                profileScreensNotifier.notifyListeners();
+              } else {
+                showSnack(
+                  context: context,
+                  message: "please fill required feilds",
+                  color: kRed,
+                );
+              }
+            },
+            text: 'Add address',
+          ),
+        ],
+      ),
     );
   }
 
@@ -273,6 +283,7 @@ class _AddresCreationFieldsState extends State<AddresCreationFields> {
         child: Padding(
           padding: const EdgeInsets.only(right: 10, top: 5),
           child: TextFormField(
+            textCapitalization: TextCapitalization.sentences,
             keyboardType: textInputType ?? TextInputType.name,
             style: const TextStyle(color: kBlack),
             expands: true,

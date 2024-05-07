@@ -88,6 +88,7 @@ dev_dependencies:
 # The following section is specific to Flutter packages.
 flutter:
 
+
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
@@ -99,11 +100,7 @@ flutter:
     - assets/lottie/animation_lmyr4fc2.json
     - assets/lottie/animation_lktfta3t.json
   #   - images/a_dot_ham.jpeg
-flutter_launcher_icons:
-  android: "launcher_icon"
-  ios: false
-  image_path: "assets/icon/bechdu app icon.png"
-  min_sdk_android: 21
+
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 
@@ -131,6 +128,9 @@ flutter_launcher_icons:
     - family: Inter-VariableFont_slnt,wght.ttf
       fonts:
         - asset: assets/fonts/Inter-VariableFont_slnt,wght.ttf
+
+
+ 
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
@@ -141,3 +141,8 @@ flutter_launcher_icons:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: false
+  image_path: "assets/icon/bechdu app icon.png"
+  min_sdk_android: 21

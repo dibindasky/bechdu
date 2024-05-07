@@ -4726,6 +4726,7 @@ mixin _$PlaceOrderState {
   bool get hasError => throw _privateConstructorUsedError;
   bool get loginStatus => throw _privateConstructorUsedError;
   String get selectedRadio => throw _privateConstructorUsedError;
+  bool get orderPlaced => throw _privateConstructorUsedError;
   String? get message => throw _privateConstructorUsedError;
   PromoCodeResponceModel? get promoCodeResponceModel =>
       throw _privateConstructorUsedError;
@@ -4772,6 +4773,7 @@ abstract class $PlaceOrderStateCopyWith<$Res> {
       bool hasError,
       bool loginStatus,
       String selectedRadio,
+      bool orderPlaced,
       String? message,
       PromoCodeResponceModel? promoCodeResponceModel,
       OrderPlacedResponceModel? orderPlacedResponceModel,
@@ -4813,6 +4815,7 @@ class _$PlaceOrderStateCopyWithImpl<$Res, $Val extends PlaceOrderState>
     Object? hasError = null,
     Object? loginStatus = null,
     Object? selectedRadio = null,
+    Object? orderPlaced = null,
     Object? message = freezed,
     Object? promoCodeResponceModel = freezed,
     Object? orderPlacedResponceModel = freezed,
@@ -4853,6 +4856,10 @@ class _$PlaceOrderStateCopyWithImpl<$Res, $Val extends PlaceOrderState>
           ? _value.selectedRadio
           : selectedRadio // ignore: cast_nullable_to_non_nullable
               as String,
+      orderPlaced: null == orderPlaced
+          ? _value.orderPlaced
+          : orderPlaced // ignore: cast_nullable_to_non_nullable
+              as bool,
       message: freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -4958,6 +4965,7 @@ abstract class _$$InitialImplCopyWith<$Res>
       bool hasError,
       bool loginStatus,
       String selectedRadio,
+      bool orderPlaced,
       String? message,
       PromoCodeResponceModel? promoCodeResponceModel,
       OrderPlacedResponceModel? orderPlacedResponceModel,
@@ -4997,6 +5005,7 @@ class __$$InitialImplCopyWithImpl<$Res>
     Object? hasError = null,
     Object? loginStatus = null,
     Object? selectedRadio = null,
+    Object? orderPlaced = null,
     Object? message = freezed,
     Object? promoCodeResponceModel = freezed,
     Object? orderPlacedResponceModel = freezed,
@@ -5037,6 +5046,10 @@ class __$$InitialImplCopyWithImpl<$Res>
           ? _value.selectedRadio
           : selectedRadio // ignore: cast_nullable_to_non_nullable
               as String,
+      orderPlaced: null == orderPlaced
+          ? _value.orderPlaced
+          : orderPlaced // ignore: cast_nullable_to_non_nullable
+              as bool,
       message: freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -5137,6 +5150,7 @@ class _$InitialImpl implements _Initial {
       required this.hasError,
       required this.loginStatus,
       required this.selectedRadio,
+      required this.orderPlaced,
       this.message,
       this.promoCodeResponceModel,
       this.orderPlacedResponceModel,
@@ -5172,6 +5186,8 @@ class _$InitialImpl implements _Initial {
   final bool loginStatus;
   @override
   final String selectedRadio;
+  @override
+  final bool orderPlaced;
   @override
   final String? message;
   @override
@@ -5251,7 +5267,7 @@ class _$InitialImpl implements _Initial {
 
   @override
   String toString() {
-    return 'PlaceOrderState(isLoading: $isLoading, hasError: $hasError, loginStatus: $loginStatus, selectedRadio: $selectedRadio, message: $message, promoCodeResponceModel: $promoCodeResponceModel, orderPlacedResponceModel: $orderPlacedResponceModel, orderPlacedRequestModel: $orderPlacedRequestModel, user: $user, payment: $payment, pickUpDetails: $pickUpDetails, productDetails: $productDetails, address: $address, promo: $promo, number: $number, selectedNewOptions: $selectedNewOptions, orderCancelationResponceModel: $orderCancelationResponceModel, getAllOrderResponceModel: $getAllOrderResponceModel, dateTomeResponceModel: $dateTomeResponceModel, dates: $dates, time: $time, downloading: $downloading, downloaded: $downloaded, data: $data, invoice: $invoice, addressList: $addressList)';
+    return 'PlaceOrderState(isLoading: $isLoading, hasError: $hasError, loginStatus: $loginStatus, selectedRadio: $selectedRadio, orderPlaced: $orderPlaced, message: $message, promoCodeResponceModel: $promoCodeResponceModel, orderPlacedResponceModel: $orderPlacedResponceModel, orderPlacedRequestModel: $orderPlacedRequestModel, user: $user, payment: $payment, pickUpDetails: $pickUpDetails, productDetails: $productDetails, address: $address, promo: $promo, number: $number, selectedNewOptions: $selectedNewOptions, orderCancelationResponceModel: $orderCancelationResponceModel, getAllOrderResponceModel: $getAllOrderResponceModel, dateTomeResponceModel: $dateTomeResponceModel, dates: $dates, time: $time, downloading: $downloading, downloaded: $downloaded, data: $data, invoice: $invoice, addressList: $addressList)';
   }
 
   @override
@@ -5267,6 +5283,8 @@ class _$InitialImpl implements _Initial {
                 other.loginStatus == loginStatus) &&
             (identical(other.selectedRadio, selectedRadio) ||
                 other.selectedRadio == selectedRadio) &&
+            (identical(other.orderPlaced, orderPlaced) ||
+                other.orderPlaced == orderPlaced) &&
             (identical(other.message, message) || other.message == message) &&
             (identical(other.promoCodeResponceModel, promoCodeResponceModel) ||
                 other.promoCodeResponceModel == promoCodeResponceModel) &&
@@ -5315,6 +5333,7 @@ class _$InitialImpl implements _Initial {
         hasError,
         loginStatus,
         selectedRadio,
+        orderPlaced,
         message,
         promoCodeResponceModel,
         orderPlacedResponceModel,
@@ -5352,6 +5371,7 @@ abstract class _Initial implements PlaceOrderState {
       required final bool hasError,
       required final bool loginStatus,
       required final String selectedRadio,
+      required final bool orderPlaced,
       final String? message,
       final PromoCodeResponceModel? promoCodeResponceModel,
       final OrderPlacedResponceModel? orderPlacedResponceModel,
@@ -5383,6 +5403,8 @@ abstract class _Initial implements PlaceOrderState {
   bool get loginStatus;
   @override
   String get selectedRadio;
+  @override
+  bool get orderPlaced;
   @override
   String? get message;
   @override

@@ -12,6 +12,7 @@ class SeriesSearchField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      textCapitalization: TextCapitalization.words,
       onChanged: (value) {
         log(value);
         context

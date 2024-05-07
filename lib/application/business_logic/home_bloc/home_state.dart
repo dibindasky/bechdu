@@ -9,8 +9,11 @@ class HomeState with _$HomeState {
     required bool bannerLoad,
     required bool whatToSellLoad,
     required bool bestSellingLoad,
+    required bool pageLoading,
     String? message,
     String? selectedCategory,
+    int? notiLength,
+    int? totalNotiLength,
     List<Notifications>? notifications,
     GetCategoryResponceModel? getCategoryResponceModel,
     HomeBannerResponceModel? homeBannerResponceModel,
@@ -22,6 +25,7 @@ class HomeState with _$HomeState {
 
   factory HomeState.initial() => const HomeState(
         notificationLoad: false,
+        pageLoading: false,
         hasError: false,
         loadMore: false,
         bannerLoad: false,

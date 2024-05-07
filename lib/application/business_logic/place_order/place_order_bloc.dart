@@ -173,6 +173,7 @@ class PlaceOrderBloc extends Bloc<PlaceOrderEvent, PlaceOrderState> {
   FutureOr<void> getOrders(GetOrders event, emit) async {
     if (state.getAllOrderResponceModel != null && !event.isLoad) return;
     emit(state.copyWith(
+      orderPlaced: false,
       isLoading: true,
       hasError: false,
       downloaded: false,
@@ -184,6 +185,7 @@ class PlaceOrderBloc extends Bloc<PlaceOrderEvent, PlaceOrderState> {
       final data = await placeOrderRepo.getOrders(number: number);
       data.fold((failure) {
         emit(state.copyWith(
+          orderPlaced: false,
           downloaded: false,
           isLoading: false,
           hasError: true,
@@ -191,6 +193,7 @@ class PlaceOrderBloc extends Bloc<PlaceOrderEvent, PlaceOrderState> {
       }, (success) {
         emit(
           state.copyWith(
+            orderPlaced: false,
             downloaded: false,
             hasError: false,
             isLoading: false,
@@ -250,7 +253,11 @@ class PlaceOrderBloc extends Bloc<PlaceOrderEvent, PlaceOrderState> {
     if (state.orderPlacedRequestModel.user != null) {
       state.orderPlacedRequestModel.user!.phone = number;
     }
-    emit(state.copyWith(isLoading: true, hasError: false));
+    emit(state.copyWith(
+      isLoading: true,
+      hasError: false,
+      orderPlaced: false,
+    ));
     var orderModel = state.orderPlacedRequestModel;
 
     log('orderPlacing bloc promo ${orderModel.promo?.toJson()}');
@@ -264,6 +271,7 @@ class PlaceOrderBloc extends Bloc<PlaceOrderEvent, PlaceOrderState> {
     );
     data.fold((falure) {
       emit(state.copyWith(
+        orderPlaced: false,
         hasError: true,
         isLoading: false,
         message: falure.message,
@@ -273,6 +281,7 @@ class PlaceOrderBloc extends Bloc<PlaceOrderEvent, PlaceOrderState> {
         state.copyWith(
           hasError: false,
           isLoading: false,
+          orderPlaced: true,
           orderPlacedResponceModel: orderPlacingSuccess,
         ),
       );

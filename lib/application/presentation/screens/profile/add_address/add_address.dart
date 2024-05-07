@@ -48,11 +48,9 @@ class AddAddressScreen extends StatelessWidget {
               style: textHeadSemiBold1,
             ),
           ),
-          body: const SingleChildScrollView(
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 15),
-              child: AddresCreationFields(),
-            ),
+          body: const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 15),
+            child: AddresCreationFields(),
           ),
         ),
       ),

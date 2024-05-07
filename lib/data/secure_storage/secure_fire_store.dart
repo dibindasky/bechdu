@@ -14,6 +14,7 @@ class SecureSotrage {
   static String phoneNumberKey = 'phone_number';
   static String onboardBool = 'on_board_bool';
   static String setlocatioSkipd = 'set_locatio_Skip';
+  static const String notificationKey = 'notification_key';
 
   static const FlutterSecureStorage secureStorage = FlutterSecureStorage();
   static const FlutterSecureStorage onBoardVistedSecure =
@@ -70,6 +71,16 @@ class SecureSotrage {
     final isLogin = await secureStorage.read(key: loginKey);
     log("getlLogin ==>> ${isLogin == '1'}");
     return isLogin == '1';
+  }
+
+  static Future<void> setNotification({required int length}) async {
+    await secureStorage.write(key: notificationKey, value: length.toString());
+  }
+
+  static Future<int> getNotification() async {
+    final String? notiString = await secureStorage.read(key: notificationKey);
+    final int noti = notiString != null ? int.parse(notiString) : 0;
+    return noti;
   }
 
   static Future<void> saveNumber({required String phoneNumber}) async {

@@ -12,6 +12,7 @@ class ProductSearchField extends StatelessWidget {
     return BlocBuilder<CategoryBlocBloc, CategoryBlocState>(
       builder: (context, state) {
         return TextFormField(
+          textCapitalization: TextCapitalization.words,
           onChanged: (value) {
             context
                 .read<CategoryBlocBloc>()

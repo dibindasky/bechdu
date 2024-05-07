@@ -6,6 +6,7 @@ import 'package:beachdu/domain/model/category_model/get_category_responce_model/
 import 'package:beachdu/domain/model/get_products_respoce_model/product.dart';
 import 'package:beachdu/domain/model/home_banners_model/home_banner_responce_model/home_banner_responce_model.dart';
 import 'package:beachdu/domain/model/notification/notification_responce_model/notifications.dart';
+import 'package:beachdu/domain/model/page_size_query_model/page_size_query_model.dart';
 import 'package:beachdu/domain/model/search_model/global_product_search_responce_model/global_product_search_responce_model.dart';
 import 'package:beachdu/domain/model/search_model/search_param_model/search_param_model.dart';
 import 'package:beachdu/domain/model/search_model/search_responce_model/search_responce_model.dart';
@@ -23,45 +24,83 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   final HomeRepository homeRepository;
   String? slug;
   int globalProduct = 1;
+  int size = 15;
   TextEditingController globalProductSearchController = TextEditingController();
   HomeBloc(this.homeRepository) : super(HomeState.initial()) {
     on<GetAllCategory>(getAllcategory);
     on<HomePageBanners>(homePageBanners);
     on<GetBestSellingProducts>(getBestSellingProducts);
     on<GlobalPrductSearch>(globalProductSearch);
-    on<NextPage>(nextPage);
+    on<NextPage>(produstSearchnextPage);
     on<Notification>(notification);
+    on<GetNotificationsNext>(getNotificationsNext);
     on<Clear>(clear);
+    on<ResetLength>(resetLength);
+  }
+
+  FutureOr<void> resetLength(ResetLength event, emit) async {
+    if (state.totalNotiLength != null) {
+      await SecureSotrage.setNotification(length: state.totalNotiLength!);
+      emit(state.copyWith(notiLength: state.totalNotiLength!));
+    }
   }
 
   FutureOr<void> notification(Notification event, emit) async {
     emit(state.copyWith(notificationLoad: true, hasError: false));
+    final notiLen = await SecureSotrage.getNotification();
     final login = await SecureSotrage.getlLogin();
+    final number = await SecureSotrage.getNumber();
     if (login) {
-      final data = await homeRepository.getAllnotification(pageSize: 15);
+      final data = await homeRepository.getAllnotification(
+          number: number,
+          pageSizeQueryModel: PageSizeQueryModel(page: 1, pageSize: size));
       data.fold(
           (l) => emit(state.copyWith(
                 notificationLoad: false,
                 hasError: true,
               )), (r) {
-        log('${r.data?.length}');
         emit(
           state.copyWith(
+            totalNotiLength: r.length,
+            notiLength: notiLen,
             notificationLoad: false,
             hasError: false,
             notifications: r.data!,
           ),
         );
-        log('${state.notifications}');
+        if (event.reset) {
+          add(const HomeEvent.resetLength());
+        }
       });
     }
+  }
+
+  FutureOr<void> getNotificationsNext(GetNotificationsNext event, emit) async {
+    emit(state.copyWith(pageLoading: true, hasError: false));
+    final number = await SecureSotrage.getNumber();
+    final result = await homeRepository.getAllnotification(
+      number: number,
+      pageSizeQueryModel: PageSizeQueryModel(
+        page: 1,
+        pageSize: ++size,
+      ),
+    );
+    result.fold((l) => emit(state.copyWith(pageLoading: false)), (r) {
+      emit(state.copyWith(
+        pageLoading: false,
+        notifications: r.data,
+        notiLength: 0,
+        totalNotiLength: r.length,
+      ));
+      add(const HomeEvent.resetLength());
+    });
   }
 
   FutureOr<void> clear(Clear event, emit) {
     emit(HomeState.initial());
   }
 
-  FutureOr<void> nextPage(NextPage event, emit) async {
+  FutureOr<void> produstSearchnextPage(NextPage event, emit) async {
     emit(state.copyWith(loadMore: true));
     final data = await homeRepository.globalProductSearch(
         searchParamModel:

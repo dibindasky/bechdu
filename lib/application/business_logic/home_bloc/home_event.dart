@@ -12,6 +12,8 @@ class HomeEvent with _$HomeEvent {
     required String searchQuery,
   }) = GlobalPrductSearch;
   const factory HomeEvent.nextPage() = NextPage;
-  const factory HomeEvent.notification() = Notification;
+  const factory HomeEvent.notification({required bool reset}) = Notification;
   const factory HomeEvent.clear() = Clear;
+  const factory HomeEvent.resetLength() = ResetLength;
+  const factory HomeEvent.getNotificationsNext() = GetNotificationsNext;
 }

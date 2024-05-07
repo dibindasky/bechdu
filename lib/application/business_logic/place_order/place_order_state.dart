@@ -7,6 +7,7 @@ class PlaceOrderState with _$PlaceOrderState {
     required bool hasError,
     required bool loginStatus,
     required String selectedRadio,
+    required bool orderPlaced,
     String? message,
     PromoCodeResponceModel? promoCodeResponceModel,
     OrderPlacedResponceModel? orderPlacedResponceModel,
@@ -32,6 +33,7 @@ class PlaceOrderState with _$PlaceOrderState {
   }) = _Initial;
 
   factory PlaceOrderState.initial() => PlaceOrderState(
+        orderPlaced: false,
         isLoading: false,
         hasError: false,
         loginStatus: false,

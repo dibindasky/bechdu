@@ -2,6 +2,7 @@ import 'package:beachdu/application/business_logic/auth/auth_bloc.dart';
 import 'package:beachdu/application/business_logic/home_bloc/home_bloc.dart';
 import 'package:beachdu/application/presentation/routes/routes.dart';
 import 'package:beachdu/application/presentation/screens/home/home_screen.dart';
+import 'package:beachdu/application/presentation/utils/animations/notification_animation.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/application/presentation/utils/debouncer.dart';
@@ -26,6 +27,7 @@ class CustomSearchFieldHome extends StatelessWidget {
                   BoxDecoration(borderRadius: kRadius10, color: klightwhite),
               width: sWidth * 0.68,
               child: TextField(
+                textCapitalization: TextCapitalization.words,
                 controller:
                     context.read<HomeBloc>().globalProductSearchController,
                 style: textHeadMedium1,
@@ -85,7 +87,8 @@ class CustomSearchFieldHome extends StatelessWidget {
               .text
               .isEmpty)
             Container(
-              width: sWidth * 0.13,
+              height: 49,
+              width: 49,
               decoration: BoxDecoration(
                 color: klightwhite,
                 borderRadius: kRadius10,
@@ -111,21 +114,46 @@ class CustomSearchFieldHome extends StatelessWidget {
                 if (!state.logOrNot) {
                   return kEmpty;
                 }
-                return Container(
-                  width: sWidth * 0.13,
-                  decoration: BoxDecoration(
-                    color: klightwhite,
-                    borderRadius: kRadius10,
-                  ),
-                  child: IconButton(
-                    icon: const Icon(
-                      Icons.notifications_active_outlined,
-                      color: kBlack,
-                    ),
-                    onPressed: () {
-                      Navigator.of(context).pushNamed(Routes.notification);
-                    },
-                  ),
+                return BlocBuilder<HomeBloc, HomeState>(
+                  builder: (context, state) {
+                    return InkWell(
+                      onTap: () =>
+                          Navigator.pushNamed(context, Routes.notification),
+                      child: BellIconAnimation(
+                        animate: state.notiLength != null &&
+                            state.totalNotiLength != null &&
+                            state.notiLength! < state.totalNotiLength!,
+                        child: Container(
+                          height: 49,
+                          width: 49,
+                          decoration: BoxDecoration(
+                            color: klightwhite,
+                            borderRadius: kRadius10,
+                          ),
+                          child: Center(
+                            child: Stack(
+                              children: [
+                                const Icon(
+                                  Icons.notifications_active_outlined,
+                                  color: kBlack,
+                                ),
+                                state.notiLength != null &&
+                                        state.totalNotiLength != null &&
+                                        state.notiLength! <
+                                            state.totalNotiLength!
+                                    ? const Icon(
+                                        Icons.circle,
+                                        color: kRed,
+                                        size: 10,
+                                      )
+                                    : kEmpty
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    );
+                  },
                 );
               },
             ),

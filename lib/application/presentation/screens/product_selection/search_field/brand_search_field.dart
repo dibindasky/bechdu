@@ -15,6 +15,7 @@ class BrandSearchField extends StatelessWidget {
         // final brandName = homeState.getCategoryResponceModel?.category!;
 
         return TextFormField(
+          textCapitalization: TextCapitalization.words,
           onChanged: (value) {
             context
                 .read<CategoryBlocBloc>()
