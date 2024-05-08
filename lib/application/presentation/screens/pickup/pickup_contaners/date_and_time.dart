@@ -39,9 +39,6 @@ class _DateOrTimeState extends State<DateOrTime> {
     );
     return BlocConsumer<PlaceOrderBloc, PlaceOrderState>(
       listener: (context, state) {
-        if (state.orderPlaced) {
-          showSnack(context: context, message: 'Order Placed Successfully');
-        }
         if (state.orderPlacedResponceModel != null) {
           secondtabScreensNotifier.value = 5;
           secondtabScreensNotifier.notifyListeners();
