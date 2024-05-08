@@ -22,6 +22,7 @@ class MyOrderContainer extends StatelessWidget {
       builder: (context, state) {
         final data = state.getAllOrderResponceModel!.orders![index];
         final type = data.payment?.type!;
+        final status = uppercaseFirstLetter(data.status ?? '');
         String productPrice = '';
         String promoPrice = '';
         int finalPrice = 0;
@@ -83,7 +84,7 @@ class MyOrderContainer extends StatelessWidget {
                           vertical: 5,
                         ),
                         child: Text(
-                          '${data.status}',
+                          status,
                           style: textHeadRegular1.copyWith(
                             color: kWhite,
                             fontSize: sWidth * .03,

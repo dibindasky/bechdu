@@ -68,7 +68,7 @@ class _CaurosalViewHomePageOffersState
 
                           context.read<CategoryBlocBloc>().categoryType =
                               data[index].mobileLink!;
-                          log('UI state.homeBannerResponceModel!.sectionOne![index].mobileLink! ===>>> : ${state.homeBannerResponceModel!.sectionOne![index].mobileLink!}');
+
                           context.read<NavbarCubit>().changeNavigationIndex(1);
                           brandSeriesProductValueNotifier.value = 0;
                           brandSeriesProductValueNotifier.notifyListeners();
