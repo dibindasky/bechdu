@@ -97,7 +97,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/
-    -assets/icon/bechdu app icon.png
+    - assets/icon/bechdu app icon.png
     - assets/lottie/animation_lmyr4fc2.json
     - assets/lottie/animation_lktfta3t.json
   #   - images/a_dot_ham.jpeg
