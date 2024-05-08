@@ -147,6 +147,41 @@ Color getStatusColor(String status) {
   }
 }
 
+// Color getStatusColorNotification(String status) {
+//   switch (status) {
+//     case "Success":
+//       return kBluePrimary;
+//     case "Requoted":
+//       return Colors.orangeAccent;
+//     case "Rescheduled":
+//       return kYellowPrimary;
+//     case "Completed":
+//       return kGreenPrimary;
+//     case "rescheduled":
+//       return kYellowPrimary;
+//     default:
+//       return kBluePrimary;
+//   }
+// }
+Color getStatusColorNotification(String status) {
+  switch (status) {
+    case "Success":
+      return kBluePrimary;
+    case "Cancelled":
+      return kRed;
+    case "Completed":
+      return kGreenPrimary;
+    case "Requoted":
+      return kGreenPrimary;
+    case "Processing":
+      return kYellowPrimary;
+    case "Rescheduled":
+      return kYellowPrimary;
+    default:
+      return kBluePrimary;
+  }
+}
+
 List<String> textListFirst = [
   'Hi There!',
   'Want to sell',

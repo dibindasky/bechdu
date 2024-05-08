@@ -53,7 +53,7 @@ class ApiService {
       return response;
     } on DioException catch (exception) {
       log('Dio exception code => ${exception.response?.statusCode}');
-      log('Dio exception => ${exception.response}');
+      log('Dio exception => ${exception}');
       if (exception.response?.statusCode == 403) {
         _logOut();
       }

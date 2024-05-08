@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:beachdu/application/business_logic/home_bloc/home_bloc.dart';
 import 'package:beachdu/application/business_logic/navbar/navbar_cubit.dart';
 import 'package:beachdu/application/presentation/utils/colors.dart';
@@ -7,6 +9,7 @@ import 'package:beachdu/application/presentation/utils/refresh_indicator.dart';
 import 'package:beachdu/application/presentation/utils/skeltons/skelton.dart';
 import 'package:beachdu/application/presentation/utils/time/time.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class NotiiFicationScreen extends StatefulWidget {
@@ -85,22 +88,13 @@ class _NotiiFicationScreenState extends State<NotiiFicationScreen> {
                   itemBuilder: (context, index) {
                     if (index == state.notifications!.length) {
                       return ShimmerLoader(
-                          itemCount: 1, height: 100, width: sWidth);
+                        itemCount: 1,
+                        height: 100,
+                        width: sWidth,
+                      );
                     }
                     final data = state.notifications![index];
-                    String dateTimeString = '2024-05-03 15:32:39.670Z';
-                    // Parse the string into a DateTime object
-                    DateTime dateTime = DateTime.parse(dateTimeString);
-                    // Extract hour and minute separately
-                    int year = dateTime.year;
-                    int hour = dateTime.hour;
-                    int minute = dateTime.minute;
-                    // Convert hour to 12-hour format
-                    String period = hour < 12 ? 'AM' : 'PM';
-                    hour = hour % 12;
-                    if (hour == 0) {
-                      hour = 12;
-                    }
+                    final color = getStatusColorNotification(data.type ?? "");
                     return InkWell(
                       onTap: () {
                         context.read<NavbarCubit>().changeNavigationIndex(2);
@@ -147,9 +141,15 @@ class _NotiiFicationScreenState extends State<NotiiFicationScreen> {
                                 data.body!,
                                 style: textHeadMedium1,
                               ),
-                              Text(
-                                data.type!,
-                                style: textHeadBoldBig,
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                  Text(
+                                    data.type!,
+                                    style:
+                                        textHeadBoldBig.copyWith(color: color),
+                                  ),
+                                ],
                               ),
                             ],
                           ),
@@ -161,13 +161,14 @@ class _NotiiFicationScreenState extends State<NotiiFicationScreen> {
               );
             } else {
               return ErrorRefreshIndicator(
-                  image: gifNoData,
-                  errorMessage: 'No Notifications',
-                  onRefresh: () {
-                    context
-                        .read<HomeBloc>()
-                        .add(const HomeEvent.notification(reset: true));
-                  });
+                image: gifNoData,
+                errorMessage: 'No Notifications',
+                onRefresh: () {
+                  context
+                      .read<HomeBloc>()
+                      .add(const HomeEvent.notification(reset: true));
+                },
+              );
             }
           },
         ),

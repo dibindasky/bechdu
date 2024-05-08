@@ -40,6 +40,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
   FutureOr<void> resetLength(ResetLength event, emit) async {
     if (state.totalNotiLength != null) {
+      log('${state.totalNotiLength}',
+          name: 'resetLength state.totalNotiLength');
       await SecureSotrage.setNotification(length: state.totalNotiLength!);
       emit(state.copyWith(notiLength: state.totalNotiLength!));
     }
@@ -52,8 +54,9 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     final number = await SecureSotrage.getNumber();
     if (login) {
       final data = await homeRepository.getAllnotification(
-          number: number,
-          pageSizeQueryModel: PageSizeQueryModel(page: 1, pageSize: size));
+        number: number,
+        pageSizeQueryModel: PageSizeQueryModel(page: 1, pageSize: size),
+      );
       data.fold(
           (l) => emit(state.copyWith(
                 notificationLoad: false,
@@ -68,11 +71,21 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
             notifications: r.data!,
           ),
         );
+        log('$notiLen', name: 'notiLen');
+        //log('${r.data}', name: 'r.data ');
         if (event.reset) {
+          log('event.reset for resetLength');
           add(const HomeEvent.resetLength());
         }
       });
     }
+    emit(
+      state.copyWith(
+        notificationLoad: false,
+        hasError: false,
+        notifications: null,
+      ),
+    );
   }
 
   FutureOr<void> getNotificationsNext(GetNotificationsNext event, emit) async {
@@ -101,7 +114,10 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   }
 
   FutureOr<void> produstSearchnextPage(NextPage event, emit) async {
-    emit(state.copyWith(loadMore: true));
+    emit(state.copyWith(
+      loadMore: true,
+      hasError: false,
+    ));
     final data = await homeRepository.globalProductSearch(
         searchParamModel:
             SearchParamModel(page: ++globalProduct, pageSize: 16));
@@ -127,7 +143,6 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   FutureOr<void> globalProductSearch(GlobalPrductSearch event, emit) async {
     emit(state.copyWith(loadMore: true, hasError: false));
     globalProduct = 1;
-
     final data = await homeRepository.globalProductSearch(
       searchParamModel: SearchParamModel(
         page: globalProduct,
@@ -135,7 +150,6 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         search: event.searchQuery,
       ),
     );
-
     data.fold(
         (failure) => emit(
               state.copyWith(

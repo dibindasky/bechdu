@@ -89,9 +89,9 @@ class _CaurosalViewHomePageOffersState
                             children: [
                               Positioned(
                                 right: 10,
-                                top: 30,
+                                bottom: 20,
                                 child: SizedBox(
-                                  height: 60,
+                                  // height: 90,
                                   width: 70,
                                   child: Image.memory(
                                     base64.decode(base64String),
@@ -114,16 +114,18 @@ class _CaurosalViewHomePageOffersState
                                   child: Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
-                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      SizedBox(
-                                        width: sWidth * .6,
-                                        child: Text(
-                                          heading,
-                                          style: textHeadMedium1.copyWith(
-                                            color: kWhite,
+                                      FittedBox(
+                                        child: SizedBox(
+                                          width: sWidth * .6,
+                                          child: Text(
+                                            heading,
+                                            style: textHeadMedium1.copyWith(
+                                              color: kWhite,
+                                            ),
+                                            maxLines: 3,
                                           ),
-                                          maxLines: 3,
                                         ),
                                       ),
                                       kHeight10,
@@ -133,11 +135,14 @@ class _CaurosalViewHomePageOffersState
                                           color: kBlueLight,
                                           child: Padding(
                                             padding: const EdgeInsets.all(5.0),
-                                            child: Text(
-                                              '${data[index].buttonText}',
-                                              style: textHeadSemiBold1.copyWith(
-                                                color: kWhite,
-                                                fontSize: 12,
+                                            child: FittedBox(
+                                              child: Text(
+                                                ' ${data[index].buttonText} ',
+                                                style:
+                                                    textHeadSemiBold1.copyWith(
+                                                  color: kWhite,
+                                                  fontSize: 12,
+                                                ),
                                               ),
                                             ),
                                           ),
@@ -153,7 +158,7 @@ class _CaurosalViewHomePageOffersState
                       );
                     },
                     options: CarouselOptions(
-                      height: 170,
+                      aspectRatio: 1 / .38,
                       autoPlay: true,
                       autoPlayAnimationDuration: const Duration(seconds: 1),
                       enlargeStrategy: CenterPageEnlargeStrategy.height,

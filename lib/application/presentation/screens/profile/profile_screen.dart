@@ -201,7 +201,7 @@ class ScreenProfile extends StatelessWidget {
                             ),
                             child: Center(
                               child: Text(
-                                'Log out',
+                                'Log Out',
                                 style: textHeadBold1,
                               ),
                             ),
@@ -292,7 +292,7 @@ class ScreenProfile extends StatelessWidget {
                                   ),
                                   child: Center(
                                     child: Text(
-                                      'Delete account',
+                                      'Delete Account',
                                       style: textHeadBold1,
                                     ),
                                   ),

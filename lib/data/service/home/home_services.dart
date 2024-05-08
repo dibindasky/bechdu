@@ -87,9 +87,11 @@ class HomeServices implements HomeRepository {
       required PageSizeQueryModel pageSizeQueryModel}) async {
     try {
       final responce = await _apiService.get(
-        ApiEndPoints.notifications.replaceFirst('{number}', number),
+        ApiEndPoints.notifications
+            .replaceFirst('{number}', number)
+            .replaceAll('{pageSize}', pageSizeQueryModel.pageSize.toString()),
         addHeader: true,
-        queryParameters: pageSizeQueryModel.toJson(),
+        //queryParameters: pageSizeQueryModel.toJson(),
       );
       // log('${responce.data}');
       log('done noti');
