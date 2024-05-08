@@ -199,26 +199,13 @@ class MyOrderContainer extends StatelessWidget {
                         : data.status == 'Completed'
                             ? Row(
                                 children: [
-                                  BlocConsumer<PlaceOrderBloc, PlaceOrderState>(
-                                    listener: (context, state) {
-                                      if (state.downloaded) {
-                                        showSnack(
-                                          context: context,
-                                          message: state.message!,
-                                        );
-                                        Navigator.of(context).pushNamed(
-                                          Routes.pdfPage,
-                                          arguments: state.invoice,
-                                        );
-                                      }
-                                    },
+                                  BlocBuilder<PlaceOrderBloc, PlaceOrderState>(
                                     builder: (context, state) {
                                       if (state.downloading) {
                                         return const Center(
                                           child: CircularProgressIndicator(),
                                         );
                                       }
-
                                       return CustomButton(
                                         fontSize: 11,
                                         height: 30,

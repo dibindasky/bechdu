@@ -44,7 +44,7 @@ class _BottomSectionState extends State<BottomSection> {
     _timer = Timer(const Duration(seconds: 30), () {
       setState(() {
         _canResend = true;
-        resendButtonColor = Colors.black;
+        resendButtonColor = kBlack;
       });
     });
   }
@@ -123,7 +123,7 @@ class _BottomSectionState extends State<BottomSection> {
                         .pushReplacementNamed(Routes.bottomBar);
                   },
                   child: Text(
-                    'Skip for now',
+                    'Skip For Now',
                     style: textHeadInter.copyWith(
                       fontSize: sWidth * .045,
                       color: kGreenPrimary,
@@ -185,7 +185,7 @@ class _BottomSectionState extends State<BottomSection> {
                 } else {
                   showSnack(
                     context: context,
-                    message: 'Not a OTP number: $otp',
+                    message: 'Not a OTP Number: $otp',
                     color: kRed,
                   );
                 }

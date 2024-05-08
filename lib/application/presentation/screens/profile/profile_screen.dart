@@ -184,7 +184,7 @@ class ScreenProfile extends StatelessWidget {
                             showConfirmationDialog(
                               operationButtonName: 'Log Out',
                               context: context,
-                              heading: 'Are you sure you want Log Out?',
+                              heading: 'Are you sure do you want to Log Out?',
                               onPressed: () async {
                                 await logOut(context);
                               },
@@ -212,7 +212,7 @@ class ScreenProfile extends StatelessWidget {
                           onTap: () {
                             showConfirmationDialog(
                               heading:
-                                  'Are you sure do you want to delete your account permanantly?',
+                                  'Are you sure you want to delete your account permanantly?',
                               operationButtonName: 'Sure',
                               context: context,
                               onPressed: () {
@@ -224,7 +224,6 @@ class ScreenProfile extends StatelessWidget {
                                 showConfirmationDialogg(
                                   cancelButtonText: 'Cancel',
                                   noButton: true,
-                                  operationButtonName: 'Delete',
                                   content: SizedBox(
                                     height: 50,
                                     child: PinEnterField(),
