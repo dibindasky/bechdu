@@ -10,9 +10,16 @@ import 'package:beachdu/application/presentation/utils/skeltons/skelton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class BestSellingDevices extends StatelessWidget {
+bool fromHome = false;
+
+class BestSellingDevices extends StatefulWidget {
   const BestSellingDevices({super.key});
 
+  @override
+  State<BestSellingDevices> createState() => _BestSellingDevicesState();
+}
+
+class _BestSellingDevicesState extends State<BestSellingDevices> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -61,6 +68,9 @@ class BestSellingDevices extends StatelessWidget {
                         String url = imageUrlchange(items.productImage!);
                         return GestureDetector(
                           onTap: () {
+                            setState(() {
+                              fromHome = true;
+                            });
                             context.read<QuestionTabBloc>().add(
                                 const QuestionTabEvent.resetTabSelection());
                             context

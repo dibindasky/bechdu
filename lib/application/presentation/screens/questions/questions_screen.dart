@@ -1,4 +1,7 @@
+import 'package:beachdu/application/business_logic/navbar/navbar_cubit.dart';
 import 'package:beachdu/application/business_logic/question_tab/question_tab_bloc.dart';
+import 'package:beachdu/application/presentation/screens/home/best_selling_devices/best_selling.dart';
+import 'package:beachdu/application/presentation/screens/home/home_screen.dart';
 import 'package:beachdu/application/presentation/screens/product_selection/product_screen.dart';
 import 'package:beachdu/application/presentation/screens/questions/tabs/requote_tabs.dart';
 import 'package:beachdu/application/presentation/screens/questions/tabs/requote_answer_session.dart';
@@ -9,17 +12,29 @@ import 'package:beachdu/application/presentation/widgets/top_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class QuestionTabs extends StatelessWidget {
+class QuestionTabs extends StatefulWidget {
   const QuestionTabs({super.key});
 
+  @override
+  State<QuestionTabs> createState() => _QuestionTabsState();
+}
+
+class _QuestionTabsState extends State<QuestionTabs> {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async {
-        secondtabScreensNotifier.value = 0;
-        secondtabScreensNotifier.notifyListeners();
-        brandSeriesProductValueNotifier.value = 2;
-        brandSeriesProductValueNotifier.notifyListeners();
+        if (fromHome) {
+          context.read<NavbarCubit>().changeNavigationIndex(0);
+          setState(() {
+            fromHome = false;
+          });
+        } else {
+          secondtabScreensNotifier.value = 0;
+          secondtabScreensNotifier.notifyListeners();
+          brandSeriesProductValueNotifier.value = 2;
+          brandSeriesProductValueNotifier.notifyListeners();
+        }
         context
             .read<QuestionTabBloc>()
             .add(const QuestionTabEvent.resetTabSelection());
