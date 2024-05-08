@@ -78,14 +78,15 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           add(const HomeEvent.resetLength());
         }
       });
+    } else {
+      emit(
+        state.copyWith(
+          notificationLoad: false,
+          hasError: false,
+          notifications: null,
+        ),
+      );
     }
-    emit(
-      state.copyWith(
-        notificationLoad: false,
-        hasError: false,
-        notifications: null,
-      ),
-    );
   }
 
   FutureOr<void> getNotificationsNext(GetNotificationsNext event, emit) async {
@@ -102,7 +103,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       emit(state.copyWith(
         pageLoading: false,
         notifications: r.data,
-        notiLength: 0,
+        // notiLength: 0,
         totalNotiLength: r.length,
       ));
       add(const HomeEvent.resetLength());

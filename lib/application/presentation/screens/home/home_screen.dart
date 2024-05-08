@@ -111,7 +111,7 @@ class _ScreenHomeState extends State<ScreenHome> {
               onRefresh: () async {
                 context
                     .read<HomeBloc>()
-                    .add(const HomeEvent.notification(reset: true));
+                    .add(const HomeEvent.notification(reset: false));
                 context
                     .read<HomeBloc>()
                     .add(const HomeEvent.homePageBanners(isLoad: true));

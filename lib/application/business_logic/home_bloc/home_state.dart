@@ -24,12 +24,13 @@ class HomeState with _$HomeState {
   }) = _Initial;
 
   factory HomeState.initial() => const HomeState(
-        notificationLoad: false,
-        pageLoading: false,
-        hasError: false,
-        loadMore: false,
-        bannerLoad: false,
-        whatToSellLoad: false,
-        bestSellingLoad: false,
-      );
+      notificationLoad: false,
+      pageLoading: false,
+      hasError: false,
+      loadMore: false,
+      bannerLoad: false,
+      whatToSellLoad: false,
+      bestSellingLoad: false,
+      notiLength: 0,
+      totalNotiLength: 0);
 }
