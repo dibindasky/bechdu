@@ -71,10 +71,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
             notifications: r.data!,
           ),
         );
-        log('$notiLen', name: 'notiLen');
-        //log('${r.data}', name: 'r.data ');
         if (event.reset) {
-          log('event.reset for resetLength');
           add(const HomeEvent.resetLength());
         }
       });
@@ -96,7 +93,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       number: number,
       pageSizeQueryModel: PageSizeQueryModel(
         page: 1,
-        pageSize: ++size,
+        pageSize: size += size,
       ),
     );
     result.fold((l) => emit(state.copyWith(pageLoading: false)), (r) {

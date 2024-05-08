@@ -52,7 +52,7 @@ class BrandSearchField extends StatelessWidget {
                     );
                   }).toList(),
                   hint: Text(
-                    context.read<CategoryBlocBloc>().categoryType ?? 'mobile',
+                    context.read<CategoryBlocBloc>().categoryType ?? 'Mobile',
                   ),
                 ),
               ),

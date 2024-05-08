@@ -119,36 +119,36 @@ class CustomSearchFieldHome extends StatelessWidget {
                     return InkWell(
                       onTap: () =>
                           Navigator.pushNamed(context, Routes.notification),
-                      child: BellIconAnimation(
-                        animate: state.notiLength != null &&
-                            state.totalNotiLength != null &&
-                            state.notiLength! < state.totalNotiLength!,
-                        child: Container(
-                          height: 49,
-                          width: 49,
-                          decoration: BoxDecoration(
-                            color: klightwhite,
-                            borderRadius: kRadius10,
-                          ),
-                          child: Center(
-                            child: Stack(
-                              children: [
-                                const Icon(
-                                  Icons.notifications_active_outlined,
-                                  color: kBlack,
-                                ),
-                                state.notiLength != null &&
-                                        state.totalNotiLength != null &&
-                                        state.notiLength! <
-                                            state.totalNotiLength!
-                                    ? const Icon(
+                      child: Container(
+                        height: 49,
+                        width: 49,
+                        decoration: BoxDecoration(
+                          color: klightwhite,
+                          borderRadius: kRadius10,
+                        ),
+                        child: Center(
+                          child: Stack(
+                            children: [
+                              const Icon(
+                                Icons.notifications_active_outlined,
+                                color: kBlack,
+                              ),
+                              state.notiLength != null &&
+                                      state.totalNotiLength != null &&
+                                      state.notiLength! < state.totalNotiLength!
+                                  ? BellIconAnimation(
+                                      animate: state.notiLength != null &&
+                                          state.totalNotiLength != null &&
+                                          state.notiLength! <
+                                              state.totalNotiLength!,
+                                      child: const Icon(
                                         Icons.circle,
                                         color: kRed,
                                         size: 10,
-                                      )
-                                    : kEmpty
-                              ],
-                            ),
+                                      ),
+                                    )
+                                  : kEmpty
+                            ],
                           ),
                         ),
                       ),

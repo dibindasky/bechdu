@@ -96,10 +96,9 @@ class _PrivacyPolicyCheckboxState extends State<PrivacyPolicyCheckbox> {
                 secondtabScreensNotifier.value = 4;
                 secondtabScreensNotifier.notifyListeners();
               } else {
-                showConfirmationDialog(
+                showConfirmationDialogg(
                   context,
-                  heading: 'Please accept Privacy Policy',
-                  noButton: true,
+                  heading: 'Please Accept Privacy Policy',
                 );
               }
             },

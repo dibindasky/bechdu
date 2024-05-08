@@ -46,7 +46,7 @@ class _LogoToMobileNumberState extends State<LogoToMobileNumber>
         ),
         kHeight40,
         Text(
-          'Login With your \nphone number',
+          'Login With your \nPhone Number',
           style: textHeadBoldBig.copyWith(
             fontSize: sWidth * .06,
             fontWeight: FontWeight.w600,
@@ -72,7 +72,7 @@ class _LogoToMobileNumberState extends State<LogoToMobileNumber>
         ),
         kHeight20,
         Text(
-          'Enter mobile no.*',
+          'Enter Mobile No.*',
           style: textHeadBold1.copyWith(fontWeight: FontWeight.w600),
         ),
         kHeight5,

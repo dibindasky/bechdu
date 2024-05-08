@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:beachdu/application/business_logic/place_order/place_order_bloc.dart';
 import 'package:beachdu/application/business_logic/profile/profile_bloc.dart';
 import 'package:beachdu/application/presentation/screens/pickup/widgets/textfeild_custom.dart';
@@ -39,7 +37,7 @@ class _UserInfoFieldsState extends State<UserInfoFields> {
                   ? TTextFormField(
                       controller:
                           context.read<ProfileBloc>().profileNameController,
-                      text: 'Enter name',
+                      text: 'Enter Name',
                     )
                   : Column(
                       children: [
@@ -48,7 +46,7 @@ class _UserInfoFieldsState extends State<UserInfoFields> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              '${profile.user != null && profile.user!.user != null && profile.user!.user!.name != null && profile.user!.user!.name!.isNotEmpty ? profile.user!.user!.name : 'Enter name'}',
+                              '${profile.user != null && profile.user!.user != null && profile.user!.user!.name != null && profile.user!.user!.name!.isNotEmpty ? profile.user!.user!.name : 'Enter Name'}',
                               style: textHeadMedium1,
                             ),
                             TextButton(
@@ -75,7 +73,7 @@ class _UserInfoFieldsState extends State<UserInfoFields> {
                   ? TTextFormField(
                       controller:
                           context.read<ProfileBloc>().profileEmailController,
-                      text: 'Enter email',
+                      text: 'Enter Email',
                     )
                   : Column(
                       children: [
@@ -84,7 +82,7 @@ class _UserInfoFieldsState extends State<UserInfoFields> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              '${profile.user != null && profile.user!.user != null && profile.user!.user!.email != null && profile.user!.user!.email!.isNotEmpty ? profile.user!.user!.email : 'Enter email'}',
+                              '${profile.user != null && profile.user!.user != null && profile.user!.user!.email != null && profile.user!.user!.email!.isNotEmpty ? profile.user!.user!.email : 'Enter Email'}',
                               style: textHeadMedium1,
                             ),
                             TextButton(
@@ -143,7 +141,7 @@ class _UserInfoFieldsState extends State<UserInfoFields> {
                       controller:
                           context.read<ProfileBloc>().profileAddPhoneController,
                       inputType: TextInputType.number,
-                      text: 'Additional number',
+                      text: 'Additional Number',
                     )
                   : Column(
                       children: [
@@ -152,7 +150,7 @@ class _UserInfoFieldsState extends State<UserInfoFields> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              '${profile.user != null && profile.user!.user != null && profile.user!.user!.addPhone != null && profile.user!.user!.addPhone!.isNotEmpty ? profile.user!.user!.addPhone : 'Enter your Additional number'}',
+                              '${profile.user != null && profile.user!.user != null && profile.user!.user!.addPhone != null && profile.user!.user!.addPhone!.isNotEmpty ? profile.user!.user!.addPhone : 'Enter Your Additional Number'}',
                               style: textHeadMedium1,
                             ),
                             TextButton(
@@ -208,7 +206,6 @@ class _UserInfoFieldsState extends State<UserInfoFields> {
                                 ),
                               );
                         }
-                        log('updateUser');
                         // Reset flags
                         setState(() {
                           context.read<ProfileBloc>().isVisible = false;
@@ -220,7 +217,6 @@ class _UserInfoFieldsState extends State<UserInfoFields> {
                   ),
                 ),
               kHeight20,
-              // Save button
             ],
           ),
         );

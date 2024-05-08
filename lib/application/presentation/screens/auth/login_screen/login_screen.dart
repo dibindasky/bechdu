@@ -27,6 +27,7 @@ class ScreenLogin extends StatelessWidget {
             SizedBox(height: sHeight * .12),
             const LogoToMobileNumber(),
             InternationalPhoneNumberInput(
+              hintText: 'Phone Number',
               onInputChanged: (PhoneNumber number) {},
               selectorConfig: const SelectorConfig(
                 trailingSpace: false,

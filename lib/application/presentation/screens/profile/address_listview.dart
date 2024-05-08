@@ -111,7 +111,8 @@ class _AddressListViewState extends State<AddressListView> {
                               ? InkWell(
                                   onTap: () {
                                     showConfirmationDialog(
-                                      context,
+                                      operationButtonName: 'Delete',
+                                      context: context,
                                       heading:
                                           'Do you want to delete this address',
                                       onPressed: () {

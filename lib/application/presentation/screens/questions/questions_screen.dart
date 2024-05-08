@@ -2,7 +2,6 @@ import 'package:beachdu/application/business_logic/question_tab/question_tab_blo
 import 'package:beachdu/application/presentation/screens/product_selection/product_screen.dart';
 import 'package:beachdu/application/presentation/screens/questions/tabs/requote_tabs.dart';
 import 'package:beachdu/application/presentation/screens/questions/tabs/requote_answer_session.dart';
-import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/application/presentation/utils/enums/type_display.dart';
 import 'package:beachdu/application/presentation/utils/loading_indicators/loading_indicator.dart';

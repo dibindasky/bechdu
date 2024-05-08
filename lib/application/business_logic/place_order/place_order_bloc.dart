@@ -108,6 +108,7 @@ class PlaceOrderBloc extends Bloc<PlaceOrderEvent, PlaceOrderState> {
     data.fold(
       (failure) {
         emit(state.copyWith(
+          downloaded: false,
           hasError: true,
           isLoading: false,
           message: failure.message,
@@ -115,6 +116,7 @@ class PlaceOrderBloc extends Bloc<PlaceOrderEvent, PlaceOrderState> {
       },
       (response) {
         emit(state.copyWith(
+          downloaded: false,
           hasError: false,
           isLoading: false,
           dateTomeResponceModel: response,
@@ -141,6 +143,7 @@ class PlaceOrderBloc extends Bloc<PlaceOrderEvent, PlaceOrderState> {
     );
     data.fold((falure) {
       emit(state.copyWith(
+        downloaded: false,
         hasError: true,
         isLoading: false,
         message: falure.message,
@@ -156,6 +159,7 @@ class PlaceOrderBloc extends Bloc<PlaceOrderEvent, PlaceOrderState> {
           .indexWhere((element) => element.id == orderModel.id);
       orderList.orders![orderIndex] = orderModel;
       emit(state.copyWith(
+        downloaded: false,
         hasError: false,
         isLoading: false,
         message: orderCancelSuccess.message,
@@ -290,7 +294,11 @@ class PlaceOrderBloc extends Bloc<PlaceOrderEvent, PlaceOrderState> {
   }
 
   FutureOr<void> getPromoCode(GetPromoCode event, emit) async {
-    emit(state.copyWith(isLoading: true, hasError: false));
+    emit(state.copyWith(
+      isLoading: true,
+      hasError: false,
+      downloaded: false,
+    ));
     final number = await SecureSotrage.getNumber();
     event.promoCodeRequestModel.phone = number;
     final data = await placeOrderRepo.getPomoCode(
@@ -299,6 +307,7 @@ class PlaceOrderBloc extends Bloc<PlaceOrderEvent, PlaceOrderState> {
 
     data.fold((falure) {
       emit(state.copyWith(
+        downloaded: false,
         hasError: true,
         isLoading: false,
         message: falure.message,
@@ -307,6 +316,7 @@ class PlaceOrderBloc extends Bloc<PlaceOrderEvent, PlaceOrderState> {
       value = promoCodeResponceModel.value!;
       emit(
         state.copyWith(
+          downloaded: false,
           hasError: false,
           isLoading: false,
           promoCodeResponceModel: promoCodeResponceModel,

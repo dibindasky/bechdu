@@ -182,9 +182,9 @@ class ScreenProfile extends StatelessWidget {
                         GestureDetector(
                           onTap: () {
                             showConfirmationDialog(
-                              context,
-                              heading:
-                                  'Are you really want to log out from Bechdu',
+                              operationButtonName: 'Log Out',
+                              context: context,
+                              heading: 'Are you sure you want Log Out?',
                               onPressed: () async {
                                 await logOut(context);
                               },
@@ -212,20 +212,23 @@ class ScreenProfile extends StatelessWidget {
                           onTap: () {
                             showConfirmationDialog(
                               heading:
-                                  'Are you sure to delete your account permanantly',
+                                  'Are you sure do you want to delete your account permanantly?',
                               operationButtonName: 'Sure',
-                              context,
+                              context: context,
                               onPressed: () {
                                 context.read<AuthBloc>().otpController.clear();
                                 Navigator.pop(context);
                                 context
                                     .read<ProfileBloc>()
                                     .add(const ProfileEvent.getDeletionOtp());
-                                showConfirmationDialog(
+                                showConfirmationDialogg(
+                                  cancelButtonText: 'Cancel',
                                   noButton: true,
                                   operationButtonName: 'Delete',
                                   content: SizedBox(
-                                      height: 50, child: PinEnterField()),
+                                    height: 50,
+                                    child: PinEnterField(),
+                                  ),
                                   context,
                                   heading: 'Enter Your Account deletion OTP',
                                   onPressed: () {
@@ -240,7 +243,7 @@ class ScreenProfile extends StatelessWidget {
                                       if (otp.isEmpty) {
                                         showSnack(
                                           context: context,
-                                          message: 'Enter your otp here',
+                                          message: 'Enter your OTP here',
                                           color: kRed,
                                         );
                                       } else if (otp.length < 4) {
@@ -267,7 +270,7 @@ class ScreenProfile extends StatelessWidget {
                                     } else {
                                       showSnack(
                                         context: context,
-                                        message: 'Not a OTP number: $otp',
+                                        message: 'Not a OTP Number: $otp',
                                         color: kRed,
                                       );
                                     }

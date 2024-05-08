@@ -63,14 +63,14 @@ class _LogoToCountDownSectionState extends State<LogoToCountDownSection>
         ),
         kHeight20,
         Text(
-          'Enter the code from the sms we sent to ',
+          'Enter the code from the SMS we sent to ',
           style: textHeadMedium1.copyWith(
             color: kBlack,
             fontSize: sWidth * .037,
           ),
         ),
         Text(
-          context.read<AuthBloc>().phoneNumberController.text,
+          '+91 ${context.read<AuthBloc>().phoneNumberController.text}',
           style: textHeadMedium1.copyWith(
             color: kBlack,
             fontSize: sWidth * .037,

@@ -77,7 +77,7 @@ class BottomSections extends StatelessWidget {
                         .pushReplacementNamed(Routes.bottomBar);
                   },
                   child: Text(
-                    'Skip for now',
+                    'Skip For Now',
                     style: textHeadInter.copyWith(
                       fontSize: sWidth * .045,
                       color: kGreenPrimary,

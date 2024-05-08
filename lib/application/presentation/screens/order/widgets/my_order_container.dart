@@ -224,9 +224,8 @@ class MyOrderContainer extends StatelessWidget {
                                         height: 30,
                                         width: 130,
                                         color: kRed,
-                                        text: 'Download invoice',
+                                        text: 'Download Invoice',
                                         onPressed: () async {
-                                          //downloadPdf(data.id!, context);
                                           context.read<PlaceOrderBloc>().add(
                                                   PlaceOrderEvent
                                                       .invoiceDownload(
