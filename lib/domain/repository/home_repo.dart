@@ -6,6 +6,7 @@ import 'package:beachdu/domain/model/notification/notification_responce_model/no
 import 'package:beachdu/domain/model/page_size_query_model/page_size_query_model.dart';
 import 'package:beachdu/domain/model/search_model/search_param_model/search_param_model.dart';
 import 'package:beachdu/domain/model/search_model/search_responce_model/search_responce_model.dart';
+import 'package:beachdu/domain/model/success_responce/success_responce.dart';
 import 'package:dartz/dartz.dart';
 
 abstract class HomeRepository {
@@ -18,4 +19,8 @@ abstract class HomeRepository {
   });
   Future<Either<Failure, NotificationResponceModel>> getAllnotification(
       {required String number, required PageSizeQueryModel pageSizeQueryModel});
+  Future<Either<Failure, SuccessResponce>> chnageNotificationStatus({
+    required String number,
+    required String notiId,
+  });
 }

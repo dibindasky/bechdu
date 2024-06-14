@@ -36,6 +36,23 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     on<GetNotificationsNext>(getNotificationsNext);
     on<Clear>(clear);
     on<ResetLength>(resetLength);
+    on<ChangeNotificationStatus>(changeNotiStatus);
+  }
+
+  FutureOr<void> changeNotiStatus(ChangeNotificationStatus event, emit) async {
+    final number = await SecureSotrage.getNumber();
+    final data = await homeRepository.chnageNotificationStatus(
+        number: number, notiId: event.notiId);
+    data.fold((l) => null, (r) {
+      List<Notifications> notifications = [];
+      for (Notifications notification in state.notifications ?? []) {
+        if (notification.id == event.notiId) {
+          notification = notification.copyWith(status: true);
+        }
+        notifications.add(notification);
+      }
+      return emit(state.copyWith(notifications: notifications));
+    });
   }
 
   FutureOr<void> resetLength(ResetLength event, emit) async {

@@ -97,12 +97,18 @@ class _NotiiFicationScreenState extends State<NotiiFicationScreen> {
                     final color = getStatusColorNotification(data.type ?? "");
                     return InkWell(
                       onTap: () {
+                        context.read<HomeBloc>().add(
+                            HomeEvent.changeNotificationStatus(
+                                notiId: data.id.toString()));
+                        log('${data.id}', name: 'Noti');
                         context.read<NavbarCubit>().changeNavigationIndex(2);
                         Navigator.pop(context);
                       },
                       child: Container(
                         decoration: BoxDecoration(
-                          color: kWhite,
+                          color: data.status == false
+                              ? kBluelight.withOpacity(0.5)
+                              : kWhite,
                           borderRadius: kRadius10,
                           boxShadow: [
                             BoxShadow(
@@ -113,24 +119,30 @@ class _NotiiFicationScreenState extends State<NotiiFicationScreen> {
                             ),
                           ],
                         ),
-                        margin: const EdgeInsets.all(10),
+                        margin: const EdgeInsets.symmetric(
+                            horizontal: 8, vertical: 4),
                         width: double.infinity,
                         height: 110,
                         child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 10, vertical: 0),
+                          padding: const EdgeInsets.symmetric(horizontal: 6),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
                                 children: [
+                                  data.status == false
+                                      ? const CircleAvatar(
+                                          radius: 4,
+                                          backgroundColor: kGreenPrimary,
+                                        )
+                                      : kEmpty,
+                                  kWidth10,
                                   Text(
                                     data.title!,
                                     style: textHeadBoldBig,
                                   ),
+                                  const Spacer(),
                                   Text(
                                     formatDateTime(data.timestamp!),
                                     style: textHeadRegular1,

@@ -27,6 +27,7 @@ mixin _$HomeEvent {
     required TResult Function() clear,
     required TResult Function() resetLength,
     required TResult Function() getNotificationsNext,
+    required TResult Function(String notiId) changeNotificationStatus,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -40,6 +41,7 @@ mixin _$HomeEvent {
     TResult? Function()? clear,
     TResult? Function()? resetLength,
     TResult? Function()? getNotificationsNext,
+    TResult? Function(String notiId)? changeNotificationStatus,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -53,6 +55,7 @@ mixin _$HomeEvent {
     TResult Function()? clear,
     TResult Function()? resetLength,
     TResult Function()? getNotificationsNext,
+    TResult Function(String notiId)? changeNotificationStatus,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -68,6 +71,8 @@ mixin _$HomeEvent {
     required TResult Function(Clear value) clear,
     required TResult Function(ResetLength value) resetLength,
     required TResult Function(GetNotificationsNext value) getNotificationsNext,
+    required TResult Function(ChangeNotificationStatus value)
+        changeNotificationStatus,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -81,6 +86,7 @@ mixin _$HomeEvent {
     TResult? Function(Clear value)? clear,
     TResult? Function(ResetLength value)? resetLength,
     TResult? Function(GetNotificationsNext value)? getNotificationsNext,
+    TResult? Function(ChangeNotificationStatus value)? changeNotificationStatus,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -94,6 +100,7 @@ mixin _$HomeEvent {
     TResult Function(Clear value)? clear,
     TResult Function(ResetLength value)? resetLength,
     TResult Function(GetNotificationsNext value)? getNotificationsNext,
+    TResult Function(ChangeNotificationStatus value)? changeNotificationStatus,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -190,6 +197,7 @@ class _$GetAllCategoryImpl implements GetAllCategory {
     required TResult Function() clear,
     required TResult Function() resetLength,
     required TResult Function() getNotificationsNext,
+    required TResult Function(String notiId) changeNotificationStatus,
   }) {
     return getAllCategory(isLoad);
   }
@@ -206,6 +214,7 @@ class _$GetAllCategoryImpl implements GetAllCategory {
     TResult? Function()? clear,
     TResult? Function()? resetLength,
     TResult? Function()? getNotificationsNext,
+    TResult? Function(String notiId)? changeNotificationStatus,
   }) {
     return getAllCategory?.call(isLoad);
   }
@@ -222,6 +231,7 @@ class _$GetAllCategoryImpl implements GetAllCategory {
     TResult Function()? clear,
     TResult Function()? resetLength,
     TResult Function()? getNotificationsNext,
+    TResult Function(String notiId)? changeNotificationStatus,
     required TResult orElse(),
   }) {
     if (getAllCategory != null) {
@@ -243,6 +253,8 @@ class _$GetAllCategoryImpl implements GetAllCategory {
     required TResult Function(Clear value) clear,
     required TResult Function(ResetLength value) resetLength,
     required TResult Function(GetNotificationsNext value) getNotificationsNext,
+    required TResult Function(ChangeNotificationStatus value)
+        changeNotificationStatus,
   }) {
     return getAllCategory(this);
   }
@@ -259,6 +271,7 @@ class _$GetAllCategoryImpl implements GetAllCategory {
     TResult? Function(Clear value)? clear,
     TResult? Function(ResetLength value)? resetLength,
     TResult? Function(GetNotificationsNext value)? getNotificationsNext,
+    TResult? Function(ChangeNotificationStatus value)? changeNotificationStatus,
   }) {
     return getAllCategory?.call(this);
   }
@@ -275,6 +288,7 @@ class _$GetAllCategoryImpl implements GetAllCategory {
     TResult Function(Clear value)? clear,
     TResult Function(ResetLength value)? resetLength,
     TResult Function(GetNotificationsNext value)? getNotificationsNext,
+    TResult Function(ChangeNotificationStatus value)? changeNotificationStatus,
     required TResult orElse(),
   }) {
     if (getAllCategory != null) {
@@ -368,6 +382,7 @@ class _$HomePageBannersImpl implements HomePageBanners {
     required TResult Function() clear,
     required TResult Function() resetLength,
     required TResult Function() getNotificationsNext,
+    required TResult Function(String notiId) changeNotificationStatus,
   }) {
     return homePageBanners(isLoad);
   }
@@ -384,6 +399,7 @@ class _$HomePageBannersImpl implements HomePageBanners {
     TResult? Function()? clear,
     TResult? Function()? resetLength,
     TResult? Function()? getNotificationsNext,
+    TResult? Function(String notiId)? changeNotificationStatus,
   }) {
     return homePageBanners?.call(isLoad);
   }
@@ -400,6 +416,7 @@ class _$HomePageBannersImpl implements HomePageBanners {
     TResult Function()? clear,
     TResult Function()? resetLength,
     TResult Function()? getNotificationsNext,
+    TResult Function(String notiId)? changeNotificationStatus,
     required TResult orElse(),
   }) {
     if (homePageBanners != null) {
@@ -421,6 +438,8 @@ class _$HomePageBannersImpl implements HomePageBanners {
     required TResult Function(Clear value) clear,
     required TResult Function(ResetLength value) resetLength,
     required TResult Function(GetNotificationsNext value) getNotificationsNext,
+    required TResult Function(ChangeNotificationStatus value)
+        changeNotificationStatus,
   }) {
     return homePageBanners(this);
   }
@@ -437,6 +456,7 @@ class _$HomePageBannersImpl implements HomePageBanners {
     TResult? Function(Clear value)? clear,
     TResult? Function(ResetLength value)? resetLength,
     TResult? Function(GetNotificationsNext value)? getNotificationsNext,
+    TResult? Function(ChangeNotificationStatus value)? changeNotificationStatus,
   }) {
     return homePageBanners?.call(this);
   }
@@ -453,6 +473,7 @@ class _$HomePageBannersImpl implements HomePageBanners {
     TResult Function(Clear value)? clear,
     TResult Function(ResetLength value)? resetLength,
     TResult Function(GetNotificationsNext value)? getNotificationsNext,
+    TResult Function(ChangeNotificationStatus value)? changeNotificationStatus,
     required TResult orElse(),
   }) {
     if (homePageBanners != null) {
@@ -548,6 +569,7 @@ class _$GetBestSellingProductsImpl implements GetBestSellingProducts {
     required TResult Function() clear,
     required TResult Function() resetLength,
     required TResult Function() getNotificationsNext,
+    required TResult Function(String notiId) changeNotificationStatus,
   }) {
     return getBestSellingProducts(isLoad);
   }
@@ -564,6 +586,7 @@ class _$GetBestSellingProductsImpl implements GetBestSellingProducts {
     TResult? Function()? clear,
     TResult? Function()? resetLength,
     TResult? Function()? getNotificationsNext,
+    TResult? Function(String notiId)? changeNotificationStatus,
   }) {
     return getBestSellingProducts?.call(isLoad);
   }
@@ -580,6 +603,7 @@ class _$GetBestSellingProductsImpl implements GetBestSellingProducts {
     TResult Function()? clear,
     TResult Function()? resetLength,
     TResult Function()? getNotificationsNext,
+    TResult Function(String notiId)? changeNotificationStatus,
     required TResult orElse(),
   }) {
     if (getBestSellingProducts != null) {
@@ -601,6 +625,8 @@ class _$GetBestSellingProductsImpl implements GetBestSellingProducts {
     required TResult Function(Clear value) clear,
     required TResult Function(ResetLength value) resetLength,
     required TResult Function(GetNotificationsNext value) getNotificationsNext,
+    required TResult Function(ChangeNotificationStatus value)
+        changeNotificationStatus,
   }) {
     return getBestSellingProducts(this);
   }
@@ -617,6 +643,7 @@ class _$GetBestSellingProductsImpl implements GetBestSellingProducts {
     TResult? Function(Clear value)? clear,
     TResult? Function(ResetLength value)? resetLength,
     TResult? Function(GetNotificationsNext value)? getNotificationsNext,
+    TResult? Function(ChangeNotificationStatus value)? changeNotificationStatus,
   }) {
     return getBestSellingProducts?.call(this);
   }
@@ -633,6 +660,7 @@ class _$GetBestSellingProductsImpl implements GetBestSellingProducts {
     TResult Function(Clear value)? clear,
     TResult Function(ResetLength value)? resetLength,
     TResult Function(GetNotificationsNext value)? getNotificationsNext,
+    TResult Function(ChangeNotificationStatus value)? changeNotificationStatus,
     required TResult orElse(),
   }) {
     if (getBestSellingProducts != null) {
@@ -727,6 +755,7 @@ class _$GlobalPrductSearchImpl implements GlobalPrductSearch {
     required TResult Function() clear,
     required TResult Function() resetLength,
     required TResult Function() getNotificationsNext,
+    required TResult Function(String notiId) changeNotificationStatus,
   }) {
     return globalPrductSearch(searchQuery);
   }
@@ -743,6 +772,7 @@ class _$GlobalPrductSearchImpl implements GlobalPrductSearch {
     TResult? Function()? clear,
     TResult? Function()? resetLength,
     TResult? Function()? getNotificationsNext,
+    TResult? Function(String notiId)? changeNotificationStatus,
   }) {
     return globalPrductSearch?.call(searchQuery);
   }
@@ -759,6 +789,7 @@ class _$GlobalPrductSearchImpl implements GlobalPrductSearch {
     TResult Function()? clear,
     TResult Function()? resetLength,
     TResult Function()? getNotificationsNext,
+    TResult Function(String notiId)? changeNotificationStatus,
     required TResult orElse(),
   }) {
     if (globalPrductSearch != null) {
@@ -780,6 +811,8 @@ class _$GlobalPrductSearchImpl implements GlobalPrductSearch {
     required TResult Function(Clear value) clear,
     required TResult Function(ResetLength value) resetLength,
     required TResult Function(GetNotificationsNext value) getNotificationsNext,
+    required TResult Function(ChangeNotificationStatus value)
+        changeNotificationStatus,
   }) {
     return globalPrductSearch(this);
   }
@@ -796,6 +829,7 @@ class _$GlobalPrductSearchImpl implements GlobalPrductSearch {
     TResult? Function(Clear value)? clear,
     TResult? Function(ResetLength value)? resetLength,
     TResult? Function(GetNotificationsNext value)? getNotificationsNext,
+    TResult? Function(ChangeNotificationStatus value)? changeNotificationStatus,
   }) {
     return globalPrductSearch?.call(this);
   }
@@ -812,6 +846,7 @@ class _$GlobalPrductSearchImpl implements GlobalPrductSearch {
     TResult Function(Clear value)? clear,
     TResult Function(ResetLength value)? resetLength,
     TResult Function(GetNotificationsNext value)? getNotificationsNext,
+    TResult Function(ChangeNotificationStatus value)? changeNotificationStatus,
     required TResult orElse(),
   }) {
     if (globalPrductSearch != null) {
@@ -878,6 +913,7 @@ class _$NextPageImpl implements NextPage {
     required TResult Function() clear,
     required TResult Function() resetLength,
     required TResult Function() getNotificationsNext,
+    required TResult Function(String notiId) changeNotificationStatus,
   }) {
     return nextPage();
   }
@@ -894,6 +930,7 @@ class _$NextPageImpl implements NextPage {
     TResult? Function()? clear,
     TResult? Function()? resetLength,
     TResult? Function()? getNotificationsNext,
+    TResult? Function(String notiId)? changeNotificationStatus,
   }) {
     return nextPage?.call();
   }
@@ -910,6 +947,7 @@ class _$NextPageImpl implements NextPage {
     TResult Function()? clear,
     TResult Function()? resetLength,
     TResult Function()? getNotificationsNext,
+    TResult Function(String notiId)? changeNotificationStatus,
     required TResult orElse(),
   }) {
     if (nextPage != null) {
@@ -931,6 +969,8 @@ class _$NextPageImpl implements NextPage {
     required TResult Function(Clear value) clear,
     required TResult Function(ResetLength value) resetLength,
     required TResult Function(GetNotificationsNext value) getNotificationsNext,
+    required TResult Function(ChangeNotificationStatus value)
+        changeNotificationStatus,
   }) {
     return nextPage(this);
   }
@@ -947,6 +987,7 @@ class _$NextPageImpl implements NextPage {
     TResult? Function(Clear value)? clear,
     TResult? Function(ResetLength value)? resetLength,
     TResult? Function(GetNotificationsNext value)? getNotificationsNext,
+    TResult? Function(ChangeNotificationStatus value)? changeNotificationStatus,
   }) {
     return nextPage?.call(this);
   }
@@ -963,6 +1004,7 @@ class _$NextPageImpl implements NextPage {
     TResult Function(Clear value)? clear,
     TResult Function(ResetLength value)? resetLength,
     TResult Function(GetNotificationsNext value)? getNotificationsNext,
+    TResult Function(ChangeNotificationStatus value)? changeNotificationStatus,
     required TResult orElse(),
   }) {
     if (nextPage != null) {
@@ -1049,6 +1091,7 @@ class _$NotificationImpl implements Notification {
     required TResult Function() clear,
     required TResult Function() resetLength,
     required TResult Function() getNotificationsNext,
+    required TResult Function(String notiId) changeNotificationStatus,
   }) {
     return notification(reset);
   }
@@ -1065,6 +1108,7 @@ class _$NotificationImpl implements Notification {
     TResult? Function()? clear,
     TResult? Function()? resetLength,
     TResult? Function()? getNotificationsNext,
+    TResult? Function(String notiId)? changeNotificationStatus,
   }) {
     return notification?.call(reset);
   }
@@ -1081,6 +1125,7 @@ class _$NotificationImpl implements Notification {
     TResult Function()? clear,
     TResult Function()? resetLength,
     TResult Function()? getNotificationsNext,
+    TResult Function(String notiId)? changeNotificationStatus,
     required TResult orElse(),
   }) {
     if (notification != null) {
@@ -1102,6 +1147,8 @@ class _$NotificationImpl implements Notification {
     required TResult Function(Clear value) clear,
     required TResult Function(ResetLength value) resetLength,
     required TResult Function(GetNotificationsNext value) getNotificationsNext,
+    required TResult Function(ChangeNotificationStatus value)
+        changeNotificationStatus,
   }) {
     return notification(this);
   }
@@ -1118,6 +1165,7 @@ class _$NotificationImpl implements Notification {
     TResult? Function(Clear value)? clear,
     TResult? Function(ResetLength value)? resetLength,
     TResult? Function(GetNotificationsNext value)? getNotificationsNext,
+    TResult? Function(ChangeNotificationStatus value)? changeNotificationStatus,
   }) {
     return notification?.call(this);
   }
@@ -1134,6 +1182,7 @@ class _$NotificationImpl implements Notification {
     TResult Function(Clear value)? clear,
     TResult Function(ResetLength value)? resetLength,
     TResult Function(GetNotificationsNext value)? getNotificationsNext,
+    TResult Function(ChangeNotificationStatus value)? changeNotificationStatus,
     required TResult orElse(),
   }) {
     if (notification != null) {
@@ -1199,6 +1248,7 @@ class _$ClearImpl implements Clear {
     required TResult Function() clear,
     required TResult Function() resetLength,
     required TResult Function() getNotificationsNext,
+    required TResult Function(String notiId) changeNotificationStatus,
   }) {
     return clear();
   }
@@ -1215,6 +1265,7 @@ class _$ClearImpl implements Clear {
     TResult? Function()? clear,
     TResult? Function()? resetLength,
     TResult? Function()? getNotificationsNext,
+    TResult? Function(String notiId)? changeNotificationStatus,
   }) {
     return clear?.call();
   }
@@ -1231,6 +1282,7 @@ class _$ClearImpl implements Clear {
     TResult Function()? clear,
     TResult Function()? resetLength,
     TResult Function()? getNotificationsNext,
+    TResult Function(String notiId)? changeNotificationStatus,
     required TResult orElse(),
   }) {
     if (clear != null) {
@@ -1252,6 +1304,8 @@ class _$ClearImpl implements Clear {
     required TResult Function(Clear value) clear,
     required TResult Function(ResetLength value) resetLength,
     required TResult Function(GetNotificationsNext value) getNotificationsNext,
+    required TResult Function(ChangeNotificationStatus value)
+        changeNotificationStatus,
   }) {
     return clear(this);
   }
@@ -1268,6 +1322,7 @@ class _$ClearImpl implements Clear {
     TResult? Function(Clear value)? clear,
     TResult? Function(ResetLength value)? resetLength,
     TResult? Function(GetNotificationsNext value)? getNotificationsNext,
+    TResult? Function(ChangeNotificationStatus value)? changeNotificationStatus,
   }) {
     return clear?.call(this);
   }
@@ -1284,6 +1339,7 @@ class _$ClearImpl implements Clear {
     TResult Function(Clear value)? clear,
     TResult Function(ResetLength value)? resetLength,
     TResult Function(GetNotificationsNext value)? getNotificationsNext,
+    TResult Function(ChangeNotificationStatus value)? changeNotificationStatus,
     required TResult orElse(),
   }) {
     if (clear != null) {
@@ -1344,6 +1400,7 @@ class _$ResetLengthImpl implements ResetLength {
     required TResult Function() clear,
     required TResult Function() resetLength,
     required TResult Function() getNotificationsNext,
+    required TResult Function(String notiId) changeNotificationStatus,
   }) {
     return resetLength();
   }
@@ -1360,6 +1417,7 @@ class _$ResetLengthImpl implements ResetLength {
     TResult? Function()? clear,
     TResult? Function()? resetLength,
     TResult? Function()? getNotificationsNext,
+    TResult? Function(String notiId)? changeNotificationStatus,
   }) {
     return resetLength?.call();
   }
@@ -1376,6 +1434,7 @@ class _$ResetLengthImpl implements ResetLength {
     TResult Function()? clear,
     TResult Function()? resetLength,
     TResult Function()? getNotificationsNext,
+    TResult Function(String notiId)? changeNotificationStatus,
     required TResult orElse(),
   }) {
     if (resetLength != null) {
@@ -1397,6 +1456,8 @@ class _$ResetLengthImpl implements ResetLength {
     required TResult Function(Clear value) clear,
     required TResult Function(ResetLength value) resetLength,
     required TResult Function(GetNotificationsNext value) getNotificationsNext,
+    required TResult Function(ChangeNotificationStatus value)
+        changeNotificationStatus,
   }) {
     return resetLength(this);
   }
@@ -1413,6 +1474,7 @@ class _$ResetLengthImpl implements ResetLength {
     TResult? Function(Clear value)? clear,
     TResult? Function(ResetLength value)? resetLength,
     TResult? Function(GetNotificationsNext value)? getNotificationsNext,
+    TResult? Function(ChangeNotificationStatus value)? changeNotificationStatus,
   }) {
     return resetLength?.call(this);
   }
@@ -1429,6 +1491,7 @@ class _$ResetLengthImpl implements ResetLength {
     TResult Function(Clear value)? clear,
     TResult Function(ResetLength value)? resetLength,
     TResult Function(GetNotificationsNext value)? getNotificationsNext,
+    TResult Function(ChangeNotificationStatus value)? changeNotificationStatus,
     required TResult orElse(),
   }) {
     if (resetLength != null) {
@@ -1490,6 +1553,7 @@ class _$GetNotificationsNextImpl implements GetNotificationsNext {
     required TResult Function() clear,
     required TResult Function() resetLength,
     required TResult Function() getNotificationsNext,
+    required TResult Function(String notiId) changeNotificationStatus,
   }) {
     return getNotificationsNext();
   }
@@ -1506,6 +1570,7 @@ class _$GetNotificationsNextImpl implements GetNotificationsNext {
     TResult? Function()? clear,
     TResult? Function()? resetLength,
     TResult? Function()? getNotificationsNext,
+    TResult? Function(String notiId)? changeNotificationStatus,
   }) {
     return getNotificationsNext?.call();
   }
@@ -1522,6 +1587,7 @@ class _$GetNotificationsNextImpl implements GetNotificationsNext {
     TResult Function()? clear,
     TResult Function()? resetLength,
     TResult Function()? getNotificationsNext,
+    TResult Function(String notiId)? changeNotificationStatus,
     required TResult orElse(),
   }) {
     if (getNotificationsNext != null) {
@@ -1543,6 +1609,8 @@ class _$GetNotificationsNextImpl implements GetNotificationsNext {
     required TResult Function(Clear value) clear,
     required TResult Function(ResetLength value) resetLength,
     required TResult Function(GetNotificationsNext value) getNotificationsNext,
+    required TResult Function(ChangeNotificationStatus value)
+        changeNotificationStatus,
   }) {
     return getNotificationsNext(this);
   }
@@ -1559,6 +1627,7 @@ class _$GetNotificationsNextImpl implements GetNotificationsNext {
     TResult? Function(Clear value)? clear,
     TResult? Function(ResetLength value)? resetLength,
     TResult? Function(GetNotificationsNext value)? getNotificationsNext,
+    TResult? Function(ChangeNotificationStatus value)? changeNotificationStatus,
   }) {
     return getNotificationsNext?.call(this);
   }
@@ -1575,6 +1644,7 @@ class _$GetNotificationsNextImpl implements GetNotificationsNext {
     TResult Function(Clear value)? clear,
     TResult Function(ResetLength value)? resetLength,
     TResult Function(GetNotificationsNext value)? getNotificationsNext,
+    TResult Function(ChangeNotificationStatus value)? changeNotificationStatus,
     required TResult orElse(),
   }) {
     if (getNotificationsNext != null) {
@@ -1586,6 +1656,193 @@ class _$GetNotificationsNextImpl implements GetNotificationsNext {
 
 abstract class GetNotificationsNext implements HomeEvent {
   const factory GetNotificationsNext() = _$GetNotificationsNextImpl;
+}
+
+/// @nodoc
+abstract class _$$ChangeNotificationStatusImplCopyWith<$Res> {
+  factory _$$ChangeNotificationStatusImplCopyWith(
+          _$ChangeNotificationStatusImpl value,
+          $Res Function(_$ChangeNotificationStatusImpl) then) =
+      __$$ChangeNotificationStatusImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String notiId});
+}
+
+/// @nodoc
+class __$$ChangeNotificationStatusImplCopyWithImpl<$Res>
+    extends _$HomeEventCopyWithImpl<$Res, _$ChangeNotificationStatusImpl>
+    implements _$$ChangeNotificationStatusImplCopyWith<$Res> {
+  __$$ChangeNotificationStatusImplCopyWithImpl(
+      _$ChangeNotificationStatusImpl _value,
+      $Res Function(_$ChangeNotificationStatusImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? notiId = null,
+  }) {
+    return _then(_$ChangeNotificationStatusImpl(
+      notiId: null == notiId
+          ? _value.notiId
+          : notiId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ChangeNotificationStatusImpl implements ChangeNotificationStatus {
+  const _$ChangeNotificationStatusImpl({required this.notiId});
+
+  @override
+  final String notiId;
+
+  @override
+  String toString() {
+    return 'HomeEvent.changeNotificationStatus(notiId: $notiId)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ChangeNotificationStatusImpl &&
+            (identical(other.notiId, notiId) || other.notiId == notiId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, notiId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ChangeNotificationStatusImplCopyWith<_$ChangeNotificationStatusImpl>
+      get copyWith => __$$ChangeNotificationStatusImplCopyWithImpl<
+          _$ChangeNotificationStatusImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(bool isLoad) getAllCategory,
+    required TResult Function(bool isLoad) homePageBanners,
+    required TResult Function(bool isLoad) getBestSellingProducts,
+    required TResult Function(String searchQuery) globalPrductSearch,
+    required TResult Function() nextPage,
+    required TResult Function(bool reset) notification,
+    required TResult Function() clear,
+    required TResult Function() resetLength,
+    required TResult Function() getNotificationsNext,
+    required TResult Function(String notiId) changeNotificationStatus,
+  }) {
+    return changeNotificationStatus(notiId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(bool isLoad)? getAllCategory,
+    TResult? Function(bool isLoad)? homePageBanners,
+    TResult? Function(bool isLoad)? getBestSellingProducts,
+    TResult? Function(String searchQuery)? globalPrductSearch,
+    TResult? Function()? nextPage,
+    TResult? Function(bool reset)? notification,
+    TResult? Function()? clear,
+    TResult? Function()? resetLength,
+    TResult? Function()? getNotificationsNext,
+    TResult? Function(String notiId)? changeNotificationStatus,
+  }) {
+    return changeNotificationStatus?.call(notiId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(bool isLoad)? getAllCategory,
+    TResult Function(bool isLoad)? homePageBanners,
+    TResult Function(bool isLoad)? getBestSellingProducts,
+    TResult Function(String searchQuery)? globalPrductSearch,
+    TResult Function()? nextPage,
+    TResult Function(bool reset)? notification,
+    TResult Function()? clear,
+    TResult Function()? resetLength,
+    TResult Function()? getNotificationsNext,
+    TResult Function(String notiId)? changeNotificationStatus,
+    required TResult orElse(),
+  }) {
+    if (changeNotificationStatus != null) {
+      return changeNotificationStatus(notiId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GetAllCategory value) getAllCategory,
+    required TResult Function(HomePageBanners value) homePageBanners,
+    required TResult Function(GetBestSellingProducts value)
+        getBestSellingProducts,
+    required TResult Function(GlobalPrductSearch value) globalPrductSearch,
+    required TResult Function(NextPage value) nextPage,
+    required TResult Function(Notification value) notification,
+    required TResult Function(Clear value) clear,
+    required TResult Function(ResetLength value) resetLength,
+    required TResult Function(GetNotificationsNext value) getNotificationsNext,
+    required TResult Function(ChangeNotificationStatus value)
+        changeNotificationStatus,
+  }) {
+    return changeNotificationStatus(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetAllCategory value)? getAllCategory,
+    TResult? Function(HomePageBanners value)? homePageBanners,
+    TResult? Function(GetBestSellingProducts value)? getBestSellingProducts,
+    TResult? Function(GlobalPrductSearch value)? globalPrductSearch,
+    TResult? Function(NextPage value)? nextPage,
+    TResult? Function(Notification value)? notification,
+    TResult? Function(Clear value)? clear,
+    TResult? Function(ResetLength value)? resetLength,
+    TResult? Function(GetNotificationsNext value)? getNotificationsNext,
+    TResult? Function(ChangeNotificationStatus value)? changeNotificationStatus,
+  }) {
+    return changeNotificationStatus?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetAllCategory value)? getAllCategory,
+    TResult Function(HomePageBanners value)? homePageBanners,
+    TResult Function(GetBestSellingProducts value)? getBestSellingProducts,
+    TResult Function(GlobalPrductSearch value)? globalPrductSearch,
+    TResult Function(NextPage value)? nextPage,
+    TResult Function(Notification value)? notification,
+    TResult Function(Clear value)? clear,
+    TResult Function(ResetLength value)? resetLength,
+    TResult Function(GetNotificationsNext value)? getNotificationsNext,
+    TResult Function(ChangeNotificationStatus value)? changeNotificationStatus,
+    required TResult orElse(),
+  }) {
+    if (changeNotificationStatus != null) {
+      return changeNotificationStatus(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ChangeNotificationStatus implements HomeEvent {
+  const factory ChangeNotificationStatus({required final String notiId}) =
+      _$ChangeNotificationStatusImpl;
+
+  String get notiId;
+  @JsonKey(ignore: true)
+  _$$ChangeNotificationStatusImplCopyWith<_$ChangeNotificationStatusImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc

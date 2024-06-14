@@ -16,4 +16,6 @@ class HomeEvent with _$HomeEvent {
   const factory HomeEvent.clear() = Clear;
   const factory HomeEvent.resetLength() = ResetLength;
   const factory HomeEvent.getNotificationsNext() = GetNotificationsNext;
+  const factory HomeEvent.changeNotificationStatus({required String notiId}) =
+      ChangeNotificationStatus;
 }

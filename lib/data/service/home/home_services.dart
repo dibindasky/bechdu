@@ -9,6 +9,7 @@ import 'package:beachdu/domain/model/notification/notification_responce_model/no
 import 'package:beachdu/domain/model/page_size_query_model/page_size_query_model.dart';
 import 'package:beachdu/domain/model/search_model/search_param_model/search_param_model.dart';
 import 'package:beachdu/domain/model/search_model/search_responce_model/search_responce_model.dart';
+import 'package:beachdu/domain/model/success_responce/success_responce.dart';
 import 'package:beachdu/domain/repository/home_repo.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
@@ -18,7 +19,6 @@ import 'package:injectable/injectable.dart';
 @injectable
 class HomeServices implements HomeRepository {
   final ApiService _apiService;
-
   HomeServices(this._apiService);
 
   @override
@@ -99,6 +99,30 @@ class HomeServices implements HomeRepository {
       return Left(Failure(message: e.message ?? errorMessage));
     } catch (e) {
       log('catch noti');
+      return Left(Failure(message: errorMessage));
+    }
+  }
+
+  @override
+  Future<Either<Failure, SuccessResponce>> chnageNotificationStatus({
+    required String number,
+    required String notiId,
+  }) async {
+    try {
+      await _apiService.put(
+        ApiEndPoints.changeNotificationStatus
+            .replaceFirst("{number}", number)
+            .replaceAll("{order_id}", notiId),
+        addHeader: true,
+      );
+
+      log('done chnageNotificationStatus');
+      return Right(SuccessResponce(message: 'Success'));
+    } on DioException catch (e) {
+      log('DioException chnageNotificationStatus');
+      return Left(Failure(message: e.message ?? errorMessage));
+    } catch (e) {
+      log('catch chnageNotificationStatus');
       return Left(Failure(message: errorMessage));
     }
   }

@@ -22,3 +22,4 @@ const Color knill = Colors.transparent;
 const Color lightGreySheet = Color.fromARGB(255, 225, 225, 225);
 const Color klightgrey = Color.fromARGB(255, 155, 154, 154);
 const Color kYellowPrimary = Color.fromARGB(255, 255, 193, 7);
+const Color kBluelight = Color.fromARGB(125, 186, 227, 255);
