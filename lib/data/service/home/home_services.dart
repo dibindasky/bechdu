@@ -115,8 +115,6 @@ class HomeServices implements HomeRepository {
             .replaceAll("{order_id}", notiId),
         addHeader: true,
       );
-
-      log('done chnageNotificationStatus');
       return Right(SuccessResponce(message: 'Success'));
     } on DioException catch (e) {
       log('DioException chnageNotificationStatus');

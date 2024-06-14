@@ -21,7 +21,9 @@ import 'package:beachdu/application/presentation/utils/confirmation_daillogue/ex
 import 'package:beachdu/application/presentation/utils/enums/type_display.dart';
 import 'package:beachdu/application/presentation/utils/loading_indicators/loading_indicator.dart';
 import 'package:beachdu/application/presentation/utils/snackbar/snackbar.dart';
+import 'package:beachdu/application/presentation/utils/url_laucher.dart';
 import 'package:beachdu/data/secure_storage/secure_fire_store.dart';
+import 'package:beachdu/domain/core/api_endpoints/api_endpoints.dart';
 import 'package:beachdu/domain/model/login/otp_verify_request_model/otp_verify_request_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -207,7 +209,7 @@ class ScreenProfile extends StatelessWidget {
                             ),
                           ),
                         ),
-                        kHeight20,
+                        kHeight10,
                         GestureDetector(
                           onTap: () {
                             showConfirmationDialog(
@@ -279,10 +281,7 @@ class ScreenProfile extends StatelessWidget {
                             );
                           },
                           child: state.isLoading
-                              ? LoadingAnimation(
-                                  width: 30,
-                                  color: klightgrey,
-                                )
+                              ? LoadingAnimation(width: 30, color: klightgrey)
                               : Container(
                                   padding: const EdgeInsets.only(left: 10),
                                   height: 45,
@@ -300,7 +299,51 @@ class ScreenProfile extends StatelessWidget {
                                   ),
                                 ),
                         ),
-                        kHeight20,
+                        kHeight10,
+                        GestureDetector(
+                          onTap: () {
+                            launchURL(ApiEndPoints.termsAndConditions);
+                          },
+                          child: Container(
+                            padding: const EdgeInsets.only(left: 10),
+                            height: 45,
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                              color: klightwhite,
+                              border: Border.all(color: klightgrey),
+                              borderRadius: kRadius10,
+                            ),
+                            child: Center(
+                              child: Text(
+                                'Terms and conditions',
+                                style: textHeadBold1,
+                              ),
+                            ),
+                          ),
+                        ),
+                        kHeight10,
+                        GestureDetector(
+                          onTap: () {
+                            launchURL(ApiEndPoints.privacyPolicy);
+                          },
+                          child: Container(
+                            padding: const EdgeInsets.only(left: 10),
+                            height: 45,
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                              color: klightwhite,
+                              border: Border.all(color: klightgrey),
+                              borderRadius: kRadius10,
+                            ),
+                            child: Center(
+                              child: Text(
+                                'Privacy policy',
+                                style: textHeadBold1,
+                              ),
+                            ),
+                          ),
+                        ),
+                        kHeight10,
                       ],
                     ),
                   ),
