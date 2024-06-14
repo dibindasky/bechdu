@@ -16,7 +16,6 @@ class ApiEndPoints {
   static const String getProducts = 'product/get-products/';
   static const String notifications =
       'user/notifications/{number}?page=1&pageSize={pageSize}';
-
   static const String getSeries = 'api/brand/series/';
   static const String getModels = 'api/brand/models/';
   static const String getVarients = 'api/brand/variants/';

@@ -30,7 +30,6 @@ class _ImageGridMakerState extends State<ImageGridMaker> {
     return Expanded(
       child: SingleChildScrollView(
         controller: scrollController,
-        //physics: const NeverScrollableScrollPhysics(),
         child: Column(
           children: [
             Padding(
@@ -39,7 +38,7 @@ class _ImageGridMakerState extends State<ImageGridMaker> {
                 shrinkWrap: true,
                 itemCount: widget.list.length,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  childAspectRatio: widget.list.length <= 4 ? 1 / 1.1 : 1 / 1.7,
+                  childAspectRatio: widget.list.length <= 4 ? 1 / 1.1 : 1 / 1.4,
                   mainAxisSpacing: 20,
                   crossAxisSpacing: 20,
                   crossAxisCount: widget.list.length <= 4 ? 2 : 3,
@@ -66,13 +65,13 @@ class _ImageGridMakerState extends State<ImageGridMaker> {
                 },
               ),
             ),
-            kHeight20,
-            AnswerIndexChanger(
-              scrollController: scrollController,
-              onTap: () {
-                scrollController.jumpTo(0);
-              },
-            ),
+            //kHeight20,
+            // AnswerIndexChanger(
+            //   scrollController: scrollController,
+            //   onTap: () {
+            //     scrollController.jumpTo(0);
+            //   },
+            // ),
             kHeight20
           ],
         ),

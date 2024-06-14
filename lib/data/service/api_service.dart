@@ -53,7 +53,7 @@ class ApiService {
       return response;
     } on DioException catch (exception) {
       log('Dio exception code => ${exception.response?.statusCode}');
-      log('Dio exception => ${exception}');
+      log('Dio exception => $exception');
       if (exception.response?.statusCode == 403) {
         _logOut();
       }
@@ -165,6 +165,7 @@ class ApiService {
       log('api uri ==>delete  ${_dio.options.baseUrl + url}');
       final response =
           await _dio.delete(url, data: data, queryParameters: queryParameters);
+
       return response;
     } on DioException catch (exception) {
       log('Dio exception code => ${exception.response?.statusCode}');

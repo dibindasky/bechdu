@@ -91,9 +91,7 @@ class HomeServices implements HomeRepository {
             .replaceFirst('{number}', number)
             .replaceAll('{pageSize}', pageSizeQueryModel.pageSize.toString()),
         addHeader: true,
-        //queryParameters: pageSizeQueryModel.toJson(),
       );
-      // log('${responce.data}');
       log('done noti');
       return Right(NotificationResponceModel.fromJson(responce.data));
     } on DioException catch (e) {

@@ -51,8 +51,8 @@ class _YesOrNoListMakerState extends State<YesOrNoListMaker> {
                 },
               ),
             ),
-            kHeight30,
-            const AnswerIndexChanger(),
+            // kHeight30,
+            // const AnswerIndexChanger(),
             kHeight30
           ],
         ),

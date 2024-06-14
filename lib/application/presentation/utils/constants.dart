@@ -147,22 +147,6 @@ Color getStatusColor(String status) {
   }
 }
 
-// Color getStatusColorNotification(String status) {
-//   switch (status) {
-//     case "Success":
-//       return kBluePrimary;
-//     case "Requoted":
-//       return Colors.orangeAccent;
-//     case "Rescheduled":
-//       return kYellowPrimary;
-//     case "Completed":
-//       return kGreenPrimary;
-//     case "rescheduled":
-//       return kYellowPrimary;
-//     default:
-//       return kBluePrimary;
-//   }
-// }
 Color getStatusColorNotification(String status) {
   switch (status) {
     case "Success":

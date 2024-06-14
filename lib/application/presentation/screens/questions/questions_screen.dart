@@ -3,6 +3,7 @@ import 'package:beachdu/application/business_logic/question_tab/question_tab_blo
 import 'package:beachdu/application/presentation/screens/home/best_selling_devices/best_selling.dart';
 import 'package:beachdu/application/presentation/screens/home/home_screen.dart';
 import 'package:beachdu/application/presentation/screens/product_selection/product_screen.dart';
+import 'package:beachdu/application/presentation/screens/questions/tabs/answer_index_changer.dart';
 import 'package:beachdu/application/presentation/screens/questions/tabs/requote_tabs.dart';
 import 'package:beachdu/application/presentation/screens/questions/tabs/requote_answer_session.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
@@ -60,13 +61,13 @@ class _QuestionTabsState extends State<QuestionTabs> {
                 return const Column(
                   children: [
                     TopImage(fromWhere: FromWhere.questionScreen),
-                    kHeight10,
+                    kHeight20,
                     RequoteTabs(),
                     kHeight20,
                     RequoteAnswerSessio(),
                     kHeight5,
-                    // AnswerIndexChanger(),
-                    // kHeight20,
+                    AnswerIndexChanger(),
+                    kHeight20,
                   ],
                 );
               },

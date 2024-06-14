@@ -1,5 +1,4 @@
 import 'package:beachdu/application/business_logic/question_tab/question_tab_bloc.dart';
-import 'package:beachdu/application/presentation/screens/questions/tabs/answer_index_changer.dart';
 import 'package:beachdu/application/presentation/screens/questions/tabs/grid_option_selector_tile.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/domain/model/get_question_model/question.dart';
@@ -57,8 +56,8 @@ class _GridOptionMakerState extends State<GridOptionMaker> {
                     );
                   },
                 ),
-                kHeight30,
-                const AnswerIndexChanger(),
+                // kHeight30,
+                // const AnswerIndexChanger(),
                 kHeight30
               ],
             ),

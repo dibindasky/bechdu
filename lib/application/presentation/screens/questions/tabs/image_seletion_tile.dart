@@ -90,23 +90,26 @@ class _GridTileQuestionState extends State<GridTileQuestion> {
                       width: widget.selected ? 4 : 1),
                   borderRadius: kRadius10),
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     AspectRatio(
-                      aspectRatio: 1.4,
+                      aspectRatio: 1.2,
                       child: FittedBox(
-                        child: Image.memory(imageBytes!),
+                        child: Image.memory(
+                          imageBytes!,
+                        ),
                       ),
                     ),
-                    Text(
-                      widget.option.description ?? '',
-                      style: textHeadBold1.copyWith(
-                        color: widget.selected ? kGreenPrimary : kBlack,
+                    Expanded(
+                      child: Text(
+                        widget.option.description ?? '',
+                        style: textHeadBold1,
+                        textAlign: TextAlign.center,
+                        maxLines: 2,
                       ),
-                      textAlign: TextAlign.center,
-                      maxLines: 3,
                     ),
                   ],
                 ),
