@@ -3,9 +3,11 @@ import 'package:beachdu/application/presentation/screens/questions/after_questio
 import 'package:beachdu/application/presentation/utils/colors.dart';
 import 'package:beachdu/application/presentation/utils/constants.dart';
 import 'package:beachdu/application/presentation/utils/enums/type_display.dart';
-import 'package:beachdu/application/presentation/utils/confirmation_daillogue/exit_app_dailogue.dart';
+import 'package:beachdu/application/presentation/utils/url_laucher.dart';
 import 'package:beachdu/application/presentation/widgets/custom_elevated_button.dart';
 import 'package:beachdu/application/presentation/widgets/top_image.dart';
+import 'package:beachdu/domain/core/api_endpoints/api_endpoints.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 class FinalPriceScreen extends StatelessWidget {
@@ -83,8 +85,42 @@ class _PrivacyPolicyCheckboxState extends State<PrivacyPolicyCheckbox> {
                 },
               ),
               kWidth10,
-              const Text(
-                'By signing up I agree to the \nTerms of use and Privacy Policy.',
+              Expanded(
+                child: RichText(
+                  text: TextSpan(
+                    children: [
+                      TextSpan(
+                        text: 'Please confirm that you agree to our ',
+                        style: textHeadInter,
+                      ),
+                      TextSpan(
+                        text: 'Privacy Policy',
+                        style: textHeadInter.copyWith(color: kBluePrimary),
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () {
+                            launchURL(ApiEndPoints.privacyPolicy);
+                          },
+                      ),
+                      TextSpan(
+                        text: ' and ',
+                        style: textHeadInter,
+                      ),
+                      TextSpan(
+                        text: 'Terms of use',
+                        style: textHeadInter.copyWith(color: kBluePrimary),
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () {
+                            launchURL(ApiEndPoints.termsAndConditions);
+                          },
+                      ),
+                      TextSpan(
+                        text:
+                            '. By placing this order, you accept our privacy terms.',
+                        style: textHeadInter,
+                      ),
+                    ],
+                  ),
+                ),
               ),
             ],
           ),
@@ -96,9 +132,32 @@ class _PrivacyPolicyCheckboxState extends State<PrivacyPolicyCheckbox> {
                 secondtabScreensNotifier.value = 4;
                 secondtabScreensNotifier.notifyListeners();
               } else {
-                showConfirmationDialogg(
-                  context,
-                  heading: 'Please Accept Privacy Policy',
+                showDialog(
+                  context: context,
+                  builder: (context) => AlertDialog(
+                    iconPadding: const EdgeInsets.all(0),
+                    backgroundColor: kWhiteextra,
+                    title: Text(
+                      'Please Accept Privacy Policy and Terms of Use',
+                      style: textHeadBold1,
+                    ),
+                    actions: [
+                      ClipRRect(
+                        borderRadius: kRadius10,
+                        child: ColoredBox(
+                          color: kBluePrimary,
+                          child: TextButton(
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                              child: Text(
+                                'Ok',
+                                style: textHeadInter.copyWith(color: kWhite),
+                              )),
+                        ),
+                      )
+                    ],
+                  ),
                 );
               }
             },

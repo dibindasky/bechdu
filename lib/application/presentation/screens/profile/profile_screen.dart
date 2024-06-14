@@ -315,7 +315,7 @@ class ScreenProfile extends StatelessWidget {
                             ),
                             child: Center(
                               child: Text(
-                                'Terms and conditions',
+                                'Terms and Conditions',
                                 style: textHeadBold1,
                               ),
                             ),
@@ -337,7 +337,7 @@ class ScreenProfile extends StatelessWidget {
                             ),
                             child: Center(
                               child: Text(
-                                'Privacy policy',
+                                'Privacy Policy',
                                 style: textHeadBold1,
                               ),
                             ),
@@ -370,10 +370,9 @@ class ScreenProfile extends StatelessWidget {
     brandSeriesProductValueNotifier.value = 0;
     brandSeriesProductValueNotifier.notifyListeners();
     Navigator.pushNamedAndRemoveUntil(
-      context,
-      Routes.signInOrLogin,
-      arguments: LoginWay.fromInitial,
-      (route) => false,
-    );
+        context,
+        Routes.signInOrLogin,
+        arguments: LoginWay.fromInitial,
+        (route) => false);
   }
 }
