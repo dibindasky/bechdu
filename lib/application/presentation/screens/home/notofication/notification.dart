@@ -100,7 +100,6 @@ class _NotiiFicationScreenState extends State<NotiiFicationScreen> {
                         context.read<HomeBloc>().add(
                             HomeEvent.changeNotificationStatus(
                                 notiId: data.id.toString()));
-                        log('${data.id}', name: 'Noti');
                         context.read<NavbarCubit>().changeNavigationIndex(2);
                         Navigator.pop(context);
                       },
