@@ -26,6 +26,44 @@
     },
     {
       "client_info": {
+        "mobilesdk_app_id": "1:313232559854:android:a6498b16f9e8897986adff",
+        "android_client_info": {
+          "package_name": "com.bechduapp.mobile"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDwUL7XyYQpavUu5LO1VVL9c3APVlf68SA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:313232559854:android:358980f302cf5de786adff",
+        "android_client_info": {
+          "package_name": "com.bechduapp.partner"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDwUL7XyYQpavUu5LO1VVL9c3APVlf68SA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:313232559854:android:5d3c51c6f64cab0b86adff",
         "android_client_info": {
           "package_name": "com.zikrabyte.bechdu"
